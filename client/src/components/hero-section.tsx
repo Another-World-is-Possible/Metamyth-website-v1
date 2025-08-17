@@ -12,7 +12,7 @@ export default function HeroSection() {
       
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
         <motion.h1 
-          className="font-edensor text-5xl md:text-7xl font-bold shimmer-text mb-8"
+          className="font-edensor text-5xl md:text-7xl font-bold text-gradient-gold mb-8"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -21,7 +21,7 @@ export default function HeroSection() {
         </motion.h1>
         
         <motion.h2 
-          className="font-edensor text-3xl md:text-4xl shimmer-text mb-6"
+          className="font-edensor text-3xl md:text-4xl text-ancient-gold mb-6"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}

@@ -88,7 +88,7 @@ export default function TheSystems() {
     <div className="bg-forest-green py-20 pt-32">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-6xl font-bold shimmer-text text-center mb-16"
+          className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

@@ -151,7 +151,7 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
       
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
         <motion.h2 
-          className="font-edensor text-4xl md:text-6xl font-bold shimmer-text mb-8"
+          className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.2 }}

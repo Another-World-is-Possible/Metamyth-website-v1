@@ -69,7 +69,7 @@ export default function Home() {
       <footer className="bg-deep-black border-t border-mystical-teal/30 py-12">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center mb-6">
-            <span className="font-edensor text-2xl font-bold shimmer-text">Another World is Possible</span>
+            <span className="font-edensor text-2xl font-bold text-ancient-gold">Another World is Possible</span>
           </div>
           <p className="text-silver/60 mb-8">
             The metamyth awaits your authorship. The infinite kindred quest calls you home to your cosmic work.

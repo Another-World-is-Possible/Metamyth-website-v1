@@ -189,19 +189,7 @@
   }
 
   .shimmer-text {
-    background: linear-gradient(
-      90deg,
-      var(--ancient-gold) 0%,
-      var(--silver) 25%,
-      var(--mystical-teal) 50%,
-      var(--silver) 75%,
-      var(--ancient-gold) 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 3s linear infinite;
+    color: var(--ancient-gold);
   }
 
   .mystical-glow {
@@ -226,10 +214,7 @@
   }
 }
 
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
+
 
 @keyframes burn {
   0% { 
@@ -284,14 +269,7 @@
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
+
 
 @keyframes border-glow {
   0%, 100% {
@@ -315,9 +293,7 @@
   }
 }
 
-.animate-flicker {
-  animation: flicker 3s ease-in-out infinite;
-}
+
 
 .animate-burn {
   animation: burn 0.8s ease-out forwards;
