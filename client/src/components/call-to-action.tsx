@@ -7,7 +7,7 @@ export default function CallToAction() {
     <section className="bg-forest-green py-20 border-t border-mystical-teal/30">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-cinzel text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-12"
+          className="font-edensor text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -25,7 +25,7 @@ export default function CallToAction() {
           >
             <Card className="bg-deep-black/50 border border-mystical-teal/30 hover-glow">
               <CardContent className="p-8 text-center">
-                <h3 className="font-cinzel text-2xl font-bold text-mystical-teal mb-4">
+                <h3 className="font-edensor text-2xl font-bold text-mystical-teal mb-4">
                   JOIN THE FEDERATION
                 </h3>
                 <p className="text-silver mb-6">Build the new world with us</p>
@@ -44,7 +44,7 @@ export default function CallToAction() {
           >
             <Card className="bg-deep-black/50 border border-ancient-gold/30 hover-glow">
               <CardContent className="p-8 text-center">
-                <h3 className="font-cinzel text-2xl font-bold text-ancient-gold mb-4">
+                <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4">
                   REGENERATE YOUR STORY
                 </h3>
                 <p className="text-silver mb-6">Let us architect your metamyth</p>

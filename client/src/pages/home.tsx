@@ -70,7 +70,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center space-x-3 mb-6">
             <div className="text-ancient-gold text-2xl animate-spin-slow">⚔️</div>
-            <span className="font-cinzel text-2xl font-bold text-gradient-gold">Another World is Possible</span>
+            <span className="font-edensor text-2xl font-bold text-gradient-gold">Another World is Possible</span>
             <div className="text-ancient-gold text-2xl animate-spin-slow">🛡️</div>
           </div>
           <p className="text-silver/60 mb-8">

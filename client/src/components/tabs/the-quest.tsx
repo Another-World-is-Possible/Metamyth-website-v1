@@ -50,7 +50,7 @@ export default function TheQuest() {
     <div className="bg-forest-green py-20 pt-32">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-cinzel text-4xl md:text-6xl font-bold text-gradient-gold text-center mb-16"
+          className="font-edensor text-4xl md:text-6xl font-bold text-gradient-gold text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -78,7 +78,7 @@ export default function TheQuest() {
             >
               <Card className={`bg-forest-green/50 border border-${horizon.color}/30 hover-glow`}>
                 <CardContent className="p-6">
-                  <h3 className={`font-cinzel text-2xl font-bold text-${horizon.color} mb-4`}>
+                  <h3 className={`font-edensor text-2xl font-bold text-${horizon.color} mb-4`}>
                     {horizon.title}
                   </h3>
                   <p className="text-silver/80 mb-4 text-sm">{horizon.subtitle}</p>
@@ -110,7 +110,7 @@ export default function TheQuest() {
         >
           <Card className="bg-deep-black/50 border border-ancient-gold/30">
             <CardContent className="p-8">
-              <h3 className="font-cinzel text-2xl font-bold text-ancient-gold mb-6 text-center">
+              <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-6 text-center">
                 WHERE WE ARE NOW
               </h3>
               <div className="grid md:grid-cols-2 gap-8">

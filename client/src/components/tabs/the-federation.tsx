@@ -66,7 +66,7 @@ export default function TheFederation() {
     <div className="bg-forest-green py-20 pt-32">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-cinzel text-4xl md:text-6xl font-bold text-gradient-gold text-center mb-16"
+          className="font-edensor text-4xl md:text-6xl font-bold text-gradient-gold text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -113,7 +113,7 @@ export default function TheFederation() {
         >
           <Card className="bg-deep-black/50 border border-ancient-gold/30">
             <CardContent className="p-8">
-              <h3 className="font-cinzel text-2xl font-bold text-ancient-gold text-center mb-8">
+              <h3 className="font-edensor text-2xl font-bold text-ancient-gold text-center mb-8">
                 Initiation Pathway
               </h3>
               
@@ -121,7 +121,7 @@ export default function TheFederation() {
                 <CardContent className="p-8">
                   <div className="flex flex-col md:flex-row items-center gap-8">
                     <div className="flex-1">
-                      <h4 className="font-cinzel text-2xl font-bold text-mystical-teal mb-4">
+                      <h4 className="font-edensor text-2xl font-bold text-mystical-teal mb-4">
                         METAMYTH GUIDE
                       </h4>
                       <p className="text-ancient-gold font-bold text-2xl mb-4">$497</p>

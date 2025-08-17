@@ -76,7 +76,7 @@ export default function OurMetamyth() {
     <div className="bg-forest-green py-20 pt-32">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-cinzel text-4xl md:text-6xl font-bold text-gradient-gold text-center mb-16"
+          className="font-edensor text-4xl md:text-6xl font-bold text-gradient-gold text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -99,7 +99,7 @@ export default function OurMetamyth() {
                 <AccordionTrigger className="hover:bg-mystical-teal/10 transition-colors duration-300 p-6">
                   <div className="flex items-center space-x-4">
                     <span className="text-2xl">{item.icon}</span>
-                    <h3 className="font-cinzel text-xl font-bold text-ancient-gold text-left">
+                    <h3 className="font-edensor text-xl font-bold text-ancient-gold text-left">
                       {item.title}
                     </h3>
                   </div>

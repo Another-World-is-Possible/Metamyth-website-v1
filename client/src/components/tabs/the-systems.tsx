@@ -88,7 +88,7 @@ export default function TheSystems() {
     <div className="bg-forest-green py-20 pt-32">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-cinzel text-4xl md:text-6xl font-bold text-gradient-gold text-center mb-16"
+          className="font-edensor text-4xl md:text-6xl font-bold text-gradient-gold text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -110,7 +110,7 @@ export default function TheSystems() {
                 <CardContent className="p-8">
                   <div className="text-center mb-6">
                     <offering.icon className={`text-${offering.color} text-4xl mb-4 mx-auto`} />
-                    <h3 className={`font-cinzel text-2xl font-bold text-${offering.color} mb-2`}>
+                    <h3 className={`font-edensor text-2xl font-bold text-${offering.color} mb-2`}>
                       {offering.title}
                     </h3>
                     <p className={`text-${offering.color} font-bold text-2xl`}>
@@ -153,7 +153,7 @@ export default function TheSystems() {
         >
           <Card className="bg-deep-black/50 border border-ancient-gold/30">
             <CardContent className="p-8">
-              <h3 className="font-cinzel text-2xl font-bold text-ancient-gold text-center mb-8">
+              <h3 className="font-edensor text-2xl font-bold text-ancient-gold text-center mb-8">
                 Are You Ready for Reality Architecture?
               </h3>
               

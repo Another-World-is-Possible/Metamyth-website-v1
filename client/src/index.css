@@ -1,4 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Custom font imports */
+@font-face {
+  font-family: 'Alice';
+  src: url('./assets/fonts/Alice-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Edensor';
+  src: url('./assets/fonts/Edensor-FREE.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -39,8 +54,8 @@
   --crimson: hsl(0 100% 27%);
   --dark-wine: hsl(345 45% 30%);
   
-  --font-cinzel: 'Cinzel', serif;
-  --font-inter: 'Inter', sans-serif;
+  --font-edensor: 'Edensor', serif;
+  --font-alice: 'Alice', serif;
   --radius: 0.5rem;
 }
 
@@ -76,12 +91,12 @@
   }
 
   body {
-    @apply bg-deep-black text-silver font-inter antialiased overflow-x-hidden;
-    font-family: var(--font-inter);
+    @apply bg-deep-black text-silver antialiased overflow-x-hidden;
+    font-family: var(--font-alice);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-cinzel);
+    font-family: var(--font-edensor);
   }
 }
 
@@ -166,12 +181,12 @@
     transform: translateY(-2px);
   }
 
-  .font-cinzel {
-    font-family: var(--font-cinzel);
+  .font-edensor {
+    font-family: var(--font-edensor);
   }
   
-  .font-inter {
-    font-family: var(--font-inter);
+  .font-alice {
+    font-family: var(--font-alice);
   }
 }
 

@@ -60,10 +60,10 @@ export default {
         },
       },
       fontFamily: {
-        cinzel: ["var(--font-cinzel)"],
-        inter: ["var(--font-inter)"],
-        sans: ["var(--font-inter)"],
-        serif: ["var(--font-cinzel)"],
+        edensor: ["var(--font-edensor)"],
+        alice: ["var(--font-alice)"],
+        sans: ["var(--font-alice)"],
+        serif: ["var(--font-edensor)"],
       },
       animation: {
         "spin-slow": "spin-slow 8s linear infinite",
