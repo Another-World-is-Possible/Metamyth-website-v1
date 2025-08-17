@@ -73,3 +73,27 @@ Preferred communication style: Simple, everyday language.
 - **tsx**: TypeScript execution for development server
 - **esbuild**: Fast JavaScript bundler for production builds
 - **Drizzle Kit**: Database toolkit for migrations and introspection
+
+# Deployment Configuration
+
+## Production Build Process
+The application uses a two-step build process for production deployment:
+1. **Client Build**: Vite builds the React frontend to `dist/public/`
+2. **Server Build**: ESBuild bundles the Express server to `dist/index.js`
+
+## Static File Serving
+- **Development**: Vite middleware handles all client requests with hot module reloading
+- **Production**: `serveStatic` function serves built files from `dist/public/` directory
+- **Implementation**: Environment-based conditional in `server/index.ts` automatically switches between development and production modes
+
+## Deployment Commands
+```bash
+# Build for production
+npm run build
+
+# Run production server
+cd dist && NODE_ENV=production node index.js
+```
+
+## Deployment Fix (Resolved August 17, 2025)
+Fixed production deployment issue where the `serveStatic` function was correctly implemented but required the production server to run from the `dist/` directory to properly locate the built client files. The function expects static files at `{import.meta.dirname}/public` which resolves to `dist/public/` when running the bundled server from the dist directory.
