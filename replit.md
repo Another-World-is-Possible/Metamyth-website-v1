@@ -97,3 +97,29 @@ cd dist && NODE_ENV=production node index.js
 
 ## Deployment Fix (Resolved August 17, 2025)
 Fixed production deployment issue where the `serveStatic` function was correctly implemented but required the production server to run from the `dist/` directory to properly locate the built client files. The function expects static files at `{import.meta.dirname}/public` which resolves to `dist/public/` when running the bundled server from the dist directory.
+
+### Solution Implementation:
+1. **Root Cause**: The deployment error "serveStatic function is not defined" occurred because the production server needs to run from the `dist/` directory, not the project root
+2. **Build Process**: The existing build process (`npm run build`) correctly:
+   - Builds client files to `dist/public/` via Vite
+   - Bundles server to `dist/index.js` via ESBuild
+3. **Production Startup**: Created `start-production.sh` script that:
+   - Changes to the `dist/` directory before starting the server
+   - Runs `NODE_ENV=production node index.js` from the correct location
+   - Validates that required build artifacts exist before starting
+
+### Deployment Commands:
+```bash
+# Build for production
+npm run build
+
+# Start production server (using the correct directory)
+./start-production.sh
+# OR manually:
+cd dist && NODE_ENV=production node index.js
+```
+
+### Technical Details:
+- The `serveStatic` function in `server/vite.ts` uses `path.resolve(import.meta.dirname, "public")` 
+- When the bundled server runs from `dist/`, this resolves to `dist/public/` correctly
+- Running from project root would incorrectly resolve to `server/public/`
