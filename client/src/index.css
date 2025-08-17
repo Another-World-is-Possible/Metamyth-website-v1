@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(210 25% 7.8431%);
+  --card: hsl(180 6.6667% 97.0588%);
+  --card-foreground: hsl(210 25% 7.8431%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(210 25% 7.8431%);
+  --primary: hsl(203.8863 88.2845% 53.1373%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(210 25% 7.8431%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(240 1.9608% 90%);
+  --muted-foreground: hsl(210 25% 7.8431%);
+  --accent: hsl(211.5789 51.3514% 92.7451%);
+  --accent-foreground: hsl(203.8863 88.2845% 53.1373%);
+  --destructive: hsl(356.3033 90.5579% 54.3137%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(201.4286 30.4348% 90.9804%);
+  --input: hsl(200 23.0769% 97.4510%);
+  --ring: hsl(202.8169 89.1213% 53.1373%);
+  --chart-1: hsl(203.8863 88.2845% 53.1373%);
+  --chart-2: hsl(159.7826 100% 36.0784%);
+  --chart-3: hsl(42.0290 92.8251% 56.2745%);
+  --chart-4: hsl(147.1429 78.5047% 41.9608%);
+  --chart-5: hsl(341.4894 75.2000% 50.9804%);
+  
+  /* Custom Metamyth Colors */
+  --forest-green: hsl(120 40% 10%);
+  --deep-black: hsl(0 0% 4%);
+  --ancient-gold: hsl(45 85% 55%);
+  --silver: hsl(0 0% 75%);
+  --mystical-teal: hsl(178 65% 45%);
+  --crimson: hsl(0 100% 27%);
+  --dark-wine: hsl(345 45% 30%);
+  
+  --font-cinzel: 'Cinzel', serif;
+  --font-inter: 'Inter', sans-serif;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: hsl(0 0% 4%);
+  --foreground: hsl(0 0% 75%);
+  --card: hsl(120 40% 10%);
+  --card-foreground: hsl(0 0% 75%);
+  --popover: hsl(0 0% 4%);
+  --popover-foreground: hsl(0 0% 75%);
+  --primary: hsl(178 65% 45%);
+  --primary-foreground: hsl(0 0% 4%);
+  --secondary: hsl(45 85% 55%);
+  --secondary-foreground: hsl(0 0% 4%);
+  --muted: hsl(0 0% 8%);
+  --muted-foreground: hsl(0 0% 60%);
+  --accent: hsl(120 40% 15%);
+  --accent-foreground: hsl(178 65% 45%);
+  --destructive: hsl(0 100% 27%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --border: hsl(120 40% 15%);
+  --input: hsl(120 40% 12%);
+  --ring: hsl(178 65% 45%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-deep-black text-silver font-inter antialiased overflow-x-hidden;
+    font-family: var(--font-inter);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cinzel);
+  }
+}
+
+@layer utilities {
+  .bg-deep-black {
+    background-color: var(--deep-black);
+  }
+  
+  .bg-forest-green {
+    background-color: var(--forest-green);
+  }
+  
+  .text-ancient-gold {
+    color: var(--ancient-gold);
+  }
+  
+  .text-silver {
+    color: var(--silver);
+  }
+  
+  .text-mystical-teal {
+    color: var(--mystical-teal);
+  }
+  
+  .text-crimson {
+    color: var(--crimson);
+  }
+  
+  .text-dark-wine {
+    color: var(--dark-wine);
+  }
+  
+  .border-mystical-teal {
+    border-color: var(--mystical-teal);
+  }
+  
+  .border-ancient-gold {
+    border-color: var(--ancient-gold);
+  }
+  
+  .border-crimson {
+    border-color: var(--crimson);
+  }
+  
+  .bg-mystical-teal {
+    background-color: var(--mystical-teal);
+  }
+  
+  .bg-ancient-gold {
+    background-color: var(--ancient-gold);
+  }
+  
+  .bg-crimson {
+    background-color: var(--crimson);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--ancient-gold) 0%, var(--silver) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-mystical-gradient {
+    background: radial-gradient(circle at center, var(--forest-green) 0%, var(--deep-black) 70%);
+  }
+  
+  .glow-teal {
+    box-shadow: 0 0 20px hsla(178, 65%, 45%, 0.3);
+  }
+  
+  .glow-gold {
+    box-shadow: 0 0 30px hsla(45, 85%, 55%, 0.4);
+  }
+  
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 30px hsla(45, 85%, 55%, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .font-cinzel {
+    font-family: var(--font-cinzel);
+  }
+  
+  .font-inter {
+    font-family: var(--font-inter);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes burn {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.8);
+    filter: sepia(1) saturate(5) hue-rotate(25deg);
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1);
+    filter: none;
+  }
+}
+
+@keyframes thread {
+  0% { 
+    width: 0; 
+    opacity: 0; 
+  }
+  100% { 
+    width: 100%; 
+    opacity: 1; 
+  }
+}
+
+@keyframes flash {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(10px) scale(0.98);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 1; 
+    filter: drop-shadow(0 0 10px var(--mystical-teal));
+  }
+  50% { 
+    opacity: 0.7; 
+    filter: drop-shadow(0 0 20px var(--mystical-teal));
+  }
+}
+
+.animate-flicker {
+  animation: flicker 3s ease-in-out infinite;
+}
+
+.animate-burn {
+  animation: burn 0.8s ease-out forwards;
+}
+
+.animate-thread {
+  animation: thread 1.2s ease-in-out forwards;
+}
+
+.animate-flash {
+  animation: flash 0.6s ease-out forwards;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
