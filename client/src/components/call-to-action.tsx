@@ -47,7 +47,7 @@ export default function CallToAction() {
                 <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4">
                   REGENERATE YOUR STORY
                 </h3>
-                <p className="text-silver mb-6">Let us architect your metamyth</p>
+                <p className="text-silver mb-6">Transform your organization through story</p>
                 <Button className="bg-ancient-gold text-deep-black font-bold py-3 px-8 rounded-lg hover:bg-ancient-gold/80 transition-colors duration-300">
                   WORK WITH US
                 </Button>

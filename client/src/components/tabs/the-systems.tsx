@@ -1,85 +1,79 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, User, Building2, Network } from "lucide-react";
+import { Compass, Users, Film, Globe, CheckCircle, ArrowRight } from "lucide-react";
 
-const offerings = [
+const phases = [
   {
-    icon: User,
-    title: "INDIVIDUAL METAMYTH",
-    price: "$2,497",
+    id: 1,
+    icon: Compass,
+    title: "Phase 1: The Metamyth Journey",
+    subtitle: "The Foundational Story Regeneration",
+    duration: "90-minute intensive session",
     color: "mystical-teal",
-    features: [
-      "Personal story regeneration through 5 movements",
-      "20+ artifacts sequenced for life navigation",
-      "Complete metamyth guide and implementation", 
-      "Ongoing community access"
+    movements: [
+      "The Calling: The crisis that called the organization into existence",
+      "The Quest: Their deepest purpose and unique role in planetary transformation",
+      "The Vision: The world they're creating when they follow purpose fully",
+      "The Mission: Their practical mission plan and pathway forward",
+      "The Request: How others discover their role in this larger story"
     ],
-    process: "8-week guided journey + lifetime system access",
-    scale: false
+    outcome: "Complete Metamyth distilled into five core statements, plus comprehensive Story Living Guide"
   },
   {
-    icon: Building2,
-    title: "ORGANIZATIONAL METAMYTH", 
-    price: "$24,997",
+    id: 2,
+    icon: Users,
+    title: "Phase 2: The Story Living Intensive",
+    subtitle: "Complete Organizational Alignment",
+    duration: "Multi-day deep dive",
     color: "ancient-gold",
-    features: [
-      "Complete story infrastructure for teams",
-      "Organizational story regeneration",
-      "Team alignment through shared narrative",
-      "Strategic repositioning for authentic authority"
+    movements: [
+      "22 living artifacts that become practical tools for decision-making",
+      "Organizational story alignment across messaging and operations",
+      "Custom mythology and visual identity",
+      "Brand strategy, marketing, and regenerative development",
+      "Team training to embody and share the story naturally"
     ],
-    process: "12-week transformation + ongoing integration",
-    scale: true
+    outcome: "Complete coherence between who they are and how they operate"
   },
   {
-    icon: Network,
-    title: "FEDERATION BUILDING",
-    price: "$100,000+",
+    id: 3,
+    icon: Film,
+    title: "Phase 3: Story Cinema",
+    subtitle: "Bringing Stories to Life Through Media",
+    duration: "Comprehensive media ecosystem",
     color: "crimson",
-    features: [
-      "Multi-organization story coordination",
-      "Shared resource pooling systems", 
-      "Cooperative economic architecture",
-      "Planetary mission alignment"
+    movements: [
+      "Cinematic narrative production using regenerated stories",
+      "Fundraising support through authentic storytelling",
+      "Community building across platforms",
+      "Complete media implementation strategy",
+      "Movie magic that makes transformation feel inevitable"
     ],
-    process: "6-month federation development + ecosystem integration",
-    scale: false
+    outcome: "Compelling visual media that attracts people into the organization's quest"
   }
 ];
 
-const assessmentQuestions = [
+const transformationResults = [
   {
-    question: "What scale transformation are you seeking?",
-    options: [
-      "Personal story regeneration and life navigation",
-      "Organizational transformation and team alignment", 
-      "Multi-organization federation and planetary coordination"
-    ]
+    title: "Strategic Clarity",
+    description: "The story becomes their foundation, guiding all decisions and eliminating scattered energy"
   },
   {
-    question: "How do you value story infrastructure investment?",
-    options: [
-      "Essential foundation for authentic transformation",
-      "Interesting but need to see proven results first",
-      "Seeking lowest-cost entry point to test approach"
-    ]
+    title: "Natural Marketing", 
+    description: "Communication becomes authentic expression rather than promotional manipulation"
   },
   {
-    question: "Are you prepared for cosmic responsibility?",
-    options: [
-      "Yes, I serve the story over personal extraction",
-      "Learning what this means for my specific context",
-      "Still focused primarily on personal/organizational benefits"
-    ]
+    title: "Organic Culture",
+    description: "Team culture develops around shared narrative and purpose"
   },
   {
-    question: "Do you want to serve the story or extract from it?",
-    options: [
-      "Committed to regenerative collaboration over competition",
-      "Open to new economic models but need practical examples",
-      "Primarily seeking competitive advantage and profit maximization"
-    ]
+    title: "Regenerative Operations",
+    description: "Systems flow from collaborative principles rather than extractive business models"
+  },
+  {
+    title: "Aligned Resources",
+    description: "They attract investors, partners, and team members who share their vision"
   }
 ];
 
@@ -87,109 +81,197 @@ export default function TheSystems() {
   return (
     <div className="bg-forest-green py-20 pt-32">
       <div className="max-w-6xl mx-auto px-4">
-        <motion.h2 
-          className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-16"
+        <motion.div 
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          THE SYSTEMS
-        </motion.h2>
-        
-        {/* Service Offerings */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {offerings.map((offering, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={offering.scale ? "transform scale-105" : ""}
-            >
-              <Card className={`bg-deep-black/50 mystical-border enhanced-glow hover-glow`}>
-                <CardContent className="p-8">
-                  <div className="text-center mb-6">
-                    <offering.icon className={`text-${offering.color} text-4xl mb-4 mx-auto`} />
-                    <h3 className={`font-edensor text-2xl font-bold text-${offering.color} mb-2`}>
-                      {offering.title}
-                    </h3>
-                    <p className={`text-${offering.color} font-bold text-2xl`}>
-                      {offering.price}
-                    </p>
-                  </div>
-                  
-                  <ul className="space-y-3 text-silver text-sm mb-8">
-                    {offering.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start">
-                        <CheckCircle className={`text-${offering.color} mr-2 mt-0.5 h-4 w-4 flex-shrink-0`} />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <div className={`bg-${offering.color}/10 border border-${offering.color}/30 p-4 rounded mb-6`}>
-                    <p className={`text-${offering.color} font-bold text-sm mb-1`}>Process:</p>
-                    <p className="text-silver/80 text-sm">{offering.process}</p>
-                  </div>
-                  
-                  <Button 
-                    className={`w-full bg-${offering.color} text-deep-black font-bold py-3 rounded-lg hover:opacity-80 transition-opacity duration-300`}
-                  >
-                    {index === 0 && "Begin Your Metamyth"}
-                    {index === 1 && "Transform Your Organization"}
-                    {index === 2 && "Build Your Federation"}
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+          <h2 className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold mb-6">
+            THE METAMYTH SYSTEM
+          </h2>
+          <p className="text-2xl text-mystical-teal font-bold mb-4">
+            Organizational Story Transformation
+          </p>
+          <p className="text-xl text-silver max-w-4xl mx-auto leading-relaxed">
+            The radical process of reality authorship. We give people back control of their stories, 
+            transforming scattered narratives into coherent forces of planetary transformation.
+          </p>
+        </motion.div>
 
-        {/* Assessment Framework */}
+        {/* System Overview */}
         <motion.div
+          className="mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <Card className="bg-deep-black/50 mystical-border mystical-glow">
+            <CardContent className="p-8">
+              <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4 text-center">
+                THE RADICAL PROCESS OF REALITY AUTHORSHIP
+              </h3>
+              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto">
+                Most organizations operate from scattered narratives written by market forces, investor expectations, 
+                and cultural programming rather than their authentic purpose. We connect their deepest mission to a 
+                larger planetary story, raising the stakes of what they're doing and connecting people to their 
+                highest self while helping them navigate the distance between here and there.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Three Phases */}
+        <div className="mb-16">
+          <h3 className="font-edensor text-3xl font-bold text-center text-mystical-teal mb-12">
+            HOW THE SYSTEM WORKS
+          </h3>
+          
+          <div className="space-y-8">
+            {phases.map((phase, index) => (
+              <motion.div
+                key={phase.id}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
+                <Card className="bg-deep-black/50 mystical-border enhanced-glow">
+                  <CardContent className="p-8">
+                    <div className="flex items-start gap-6">
+                      <div className={`p-4 rounded-lg bg-${phase.color}/20 border border-${phase.color}/30`}>
+                        <phase.icon className={`text-${phase.color} text-3xl`} />
+                      </div>
+                      
+                      <div className="flex-1">
+                        <h4 className={`font-edensor text-2xl font-bold text-${phase.color} mb-2`}>
+                          {phase.title}
+                        </h4>
+                        <p className="text-xl text-silver/80 mb-2 italic">
+                          {phase.subtitle}
+                        </p>
+                        <p className="text-ancient-gold font-bold mb-4">
+                          {phase.duration}
+                        </p>
+                        
+                        <div className="grid md:grid-cols-2 gap-4 mb-4">
+                          <div>
+                            <h5 className="text-mystical-teal font-bold mb-2">Key Elements:</h5>
+                            <ul className="space-y-1">
+                              {phase.movements.map((movement, idx) => (
+                                <li key={idx} className="text-silver/90 text-sm flex items-start gap-2">
+                                  <CheckCircle className="text-ancient-gold text-xs mt-1 flex-shrink-0" size={16} />
+                                  {movement}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          
+                          <div>
+                            <h5 className="text-mystical-teal font-bold mb-2">Outcome:</h5>
+                            <p className="text-silver/90 text-sm">
+                              {phase.outcome}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Who We Serve */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <Card className="bg-deep-black/50 mystical-border mystical-glow">
+            <CardContent className="p-8">
+              <h3 className="font-edensor text-2xl font-bold text-mystical-teal mb-4 text-center">
+                WHO WE SERVE
+              </h3>
+              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto">
+                Purpose-driven organizations ready to stop playing by someone else's rules and start authoring 
+                their own reality. These include conscious entrepreneurs, B-Corp founders, nonprofit leaders, 
+                and mission-driven companies who know their work matters but struggle to communicate why in 
+                ways that create the response they need.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Transformation Results */}
+        <div className="mb-16">
+          <h3 className="font-edensor text-3xl font-bold text-center text-ancient-gold mb-12">
+            THE TRANSFORMATION
+          </h3>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {transformationResults.map((result, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="bg-deep-black/50 border border-ancient-gold/30 hover-glow h-full">
+                  <CardContent className="p-6">
+                    <h4 className="font-bold text-ancient-gold mb-3">
+                      {result.title}
+                    </h4>
+                    <p className="text-silver/80 text-sm">
+                      {result.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Larger Vision */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
         >
           <Card className="bg-deep-black/50 mystical-border enhanced-glow">
             <CardContent className="p-8">
-              <h3 className="font-edensor text-2xl font-bold text-ancient-gold text-center mb-8">
-                Are You Ready for Reality Architecture?
-              </h3>
-              
-              <div className="grid md:grid-cols-2 gap-8">
-                {assessmentQuestions.map((question, questionIndex) => (
-                  <motion.div
-                    key={questionIndex}
-                    initial={{ opacity: 0, x: questionIndex % 2 === 0 ? -30 : 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 + questionIndex * 0.1 }}
-                  >
-                    <h4 className="font-bold text-mystical-teal mb-3">
-                      {question.question}
-                    </h4>
-                    <div className="space-y-2">
-                      {question.options.map((option, optionIndex) => (
-                        <label 
-                          key={optionIndex}
-                          className="flex items-start text-silver text-sm cursor-pointer hover:text-ancient-gold transition-colors duration-300"
-                        >
-                          <input 
-                            type="radio" 
-                            name={`question-${questionIndex}`}
-                            className="mr-3 mt-1 accent-mystical-teal"
-                          />
-                          {option}
-                        </label>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="flex items-center justify-center mb-6">
+                <Globe className="text-crimson text-4xl mr-4" />
+                <h3 className="font-edensor text-3xl font-bold text-crimson">
+                  THE LARGER VISION
+                </h3>
               </div>
-
-              <div className="text-center mt-8">
-                <Button className="bg-ancient-gold text-deep-black font-bold py-3 px-8 rounded-lg hover-glow transition-all duration-300">
-                  Get Your Readiness Assessment
+              
+              <h4 className="text-2xl font-bold text-ancient-gold mb-4">
+                Building the New Operating System: MythOS
+              </h4>
+              
+              <p className="text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
+                We're creating a world that works for all, where work is an adventure, through a new operating 
+                system—MythOS—that makes the process of doing meaningful work into the adventure it deserves. 
+                This AI-first platform brings stories to life, guides people along their authentic paths, and 
+                enables interconnection with compatible stories.
+              </p>
+              
+              <div className="border-t border-mystical-teal/30 pt-6">
+                <p className="text-xl font-bold text-mystical-teal mb-2">
+                  The Metamyth System isn't just organizational consulting—
+                </p>
+                <p className="text-2xl font-bold text-ancient-gold">
+                  it's civilizational transformation, one story at a time.
+                </p>
+              </div>
+              
+              <div className="mt-8">
+                <Button className="bg-crimson hover:bg-crimson/80 text-white font-bold py-4 px-8 rounded-lg transition-colors duration-300 text-lg">
+                  BEGIN YOUR METAMYTH JOURNEY <ArrowRight className="ml-2" />
                 </Button>
               </div>
             </CardContent>
