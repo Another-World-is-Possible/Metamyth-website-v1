@@ -21,7 +21,7 @@ export default function HeroSection() {
         </motion.h1>
         
         <motion.h2 
-          className="font-edensor text-3xl md:text-4xl text-ancient-gold enhanced-glow mb-6"
+          className="font-edensor text-3xl md:text-4xl shimmer-text mb-6"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
@@ -45,14 +45,12 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
         >
           <Button className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg">
-            <span className="mr-2">👥</span>
             JOIN THE STORYTELLERS
           </Button>
           <Button 
             variant="outline" 
             className="border-2 border-ancient-gold text-ancient-gold hover:bg-ancient-gold hover:text-deep-black font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg"
           >
-            <span className="mr-2">✍️</span>
             REGENERATE YOUR STORY
           </Button>
         </motion.div>

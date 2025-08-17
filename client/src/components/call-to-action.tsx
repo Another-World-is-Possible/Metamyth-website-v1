@@ -7,7 +7,7 @@ export default function CallToAction() {
     <section className="bg-forest-green py-20 border-t border-mystical-teal/30">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-12"
+          className="font-edensor text-4xl md:text-5xl font-bold shimmer-text text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
