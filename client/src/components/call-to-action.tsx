@@ -23,7 +23,7 @@ export default function CallToAction() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Card className="bg-deep-black/50 border border-mystical-teal/30 hover-glow">
+            <Card className="bg-deep-black/50 mystical-border mystical-glow hover-glow">
               <CardContent className="p-8 text-center">
                 <h3 className="font-edensor text-2xl font-bold text-mystical-teal mb-4">
                   JOIN THE FEDERATION
@@ -42,7 +42,7 @@ export default function CallToAction() {
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <Card className="bg-deep-black/50 border border-ancient-gold/30 hover-glow">
+            <Card className="bg-deep-black/50 mystical-border enhanced-glow hover-glow">
               <CardContent className="p-8 text-center">
                 <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4">
                   REGENERATE YOUR STORY

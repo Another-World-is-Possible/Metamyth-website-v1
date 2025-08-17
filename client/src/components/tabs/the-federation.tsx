@@ -66,7 +66,7 @@ export default function TheFederation() {
     <div className="bg-forest-green py-20 pt-32">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-6xl font-bold text-gradient-gold text-center mb-16"
+          className="font-edensor text-4xl md:text-6xl font-bold shimmer-text text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -111,7 +111,7 @@ export default function TheFederation() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mb-16"
         >
-          <Card className="bg-deep-black/50 border border-ancient-gold/30">
+          <Card className="bg-deep-black/50 mystical-border enhanced-glow">
             <CardContent className="p-8">
               <h3 className="font-edensor text-2xl font-bold text-ancient-gold text-center mb-8">
                 Initiation Pathway

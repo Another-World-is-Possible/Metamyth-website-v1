@@ -33,7 +33,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300"
           >
             <Shield className="text-ancient-gold animate-spin-slow h-6 w-6" />
-            <span className="font-edensor text-xl font-bold text-gradient-gold">Another World is Possible</span>
+            <span className="font-edensor text-xl font-bold shimmer-text">Another World is Possible</span>
           </button>
           
           {/* Desktop Navigation */}
@@ -43,7 +43,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
                 className={`text-silver hover:text-ancient-gold transition-colors duration-300 ${
-                  activeTab === item.id ? 'text-ancient-gold' : ''
+                  activeTab === item.id ? 'text-ancient-gold enhanced-glow' : 'hover:mystical-glow'
                 }`}
               >
                 {item.label}
