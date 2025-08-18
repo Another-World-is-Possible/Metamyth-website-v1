@@ -32,7 +32,6 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
             onClick={() => setActiveTab(null)}
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300"
           >
-            <Shield className="text-ancient-gold animate-spin-slow h-6 w-6" />
             <span className="font-edensor text-xl font-bold text-ancient-gold">Metamyth</span>
           </button>
           
