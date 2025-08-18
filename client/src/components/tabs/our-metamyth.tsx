@@ -5,68 +5,84 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 const accordionItems = [
   {
     id: "origin",
-    title: "THE ORIGIN: THE COSMIC SETUP",
-    icon: "🌟",
+    title: "THE ORIGIN: THE END OF THE OLD STORY",
+    icon: "🌱",
     items: [
-      "Our Core Programming: Storytellers who've walked 6 continents",
-      "Our Foundational Influences: Indigenous wisdom + emergent technology", 
-      "Our Pivotal Incident: Recognizing extraction's hold on narrative",
-      "Our Innate Essence: Reality architects and consciousness weavers"
+      "Once upon a time, a storyteller wandered the earth documenting solutions to humanity's greatest challenges, living his life as conscious narrative while building movements that transformed millions.",
+      "Across the world, another soul fought through darkness until his vision reached her in her deepest hour.",
+      "When they found each other beneath distant stars, their love became a beacon drawing forth scattered dreamers and builders who had been searching for the same story in different languages.",
+      "This is the primordial seed from which our metamyth grows."
     ]
   },
   {
     id: "calling",
-    title: "THE CALLING: THE PLANETARY WOUND",
+    title: "I. THE CALL TO ADVENTURE",
     icon: "🐉",
     items: [
-      "The Dragon: The extraction economy destroying our only home",
-      "The Threshold: Our breakdown becoming breakthrough qualification",
-      "The Shield: Protecting others from narrative colonization",
-      "The Pearl: Wisdom that individual healing serves collective healing"
+      "\"All the world's suffering flows from a single source—a story we forgot we wrote.\"",
+      "THE DRAGON: A broken story—a species destroying its only home for a story of money, a story of power, demonstrating narrative's transformative potential by nearly ending the world.",
+      "THE THRESHOLD: Being so broken by meaninglessness we physically couldn't function in the extraction system—our breakdown became our qualification.",
+      "THE SHIELD: The trauma that forged integrity, protecting us from being absorbed into fake stories so we could shield others from narrative colonization.",
+      "THE PEARL: Understanding that consciousness can reprogram itself—we live in mythogenetic sequences that can be consciously evolved from fear/contraction to love/expansion through story technology."
     ]
   },
   {
     id: "quest",
-    title: "THE QUEST: OUR COSMIC ASSIGNMENT",
+    title: "II. THE QUEST",
     icon: "⭐",
     items: [
-      "The Star: Restore story to its rightful place as consciousness technology",
-      "The Character: Purpose-driven visionaries ready to author reality",
-      "The Banner: We serve the story, not profit or competition",
-      "The Sword: Metamyth system that sequences stories into functional tools"
+      "\"We wield the most ancient technology powered by modern magic: Write your reality, play it like the ultimate game, film it into existence to attract people into your quest.\"",
+      "THE STAR: Restore story to its rightful place as consciousness technology—the primordial force that turns scattered tribes into civilizations.",
+      "THE CHARACTER: Purpose-driven visionaries ready to author reality rather than suffer it—the \"we\" identity of planetary-scale storytellers serving the story, not profit or competition.",
+      "THE BANNER: We are planetary-scale storytellers—positioning ourselves not in market competition but as architects of the next phase of human evolution through conscious narrative.",
+      "THE SWORD: Story itself—humanity's most ancient technology powered by modern magic, the specific action we take to cut through illusion and strike at the heart of transformation."
     ]
   },
   {
     id: "possible",
-    title: "WHAT IS POSSIBLE: THE WORLD WE'RE BUILDING",
+    title: "III. WHAT IS POSSIBLE",
     icon: "🔮",
     items: [
-      "The Looking Glass: Work becomes adventure, purpose pays, collaboration wins",
-      "The Transformation: From extraction to regeneration across all systems",
-      "The Globe: Planetary federation of conscious organizations",
-      "The Map: Three horizons of scaling transformation"
+      "\"A world where work becomes adventure, purpose literally pays, and regenerative collaboration outperforms extractive competition.\"",
+      "THE LOOKING GLASS: We transform work into quest, purpose into profit, customers into communities, scattered efforts into coordinated transformation.",
+      "THE TRANSFORMATION: From extraction to regeneration across all systems—the identity change that enables and results from following purpose fully.",
+      "THE GLOBE: A cooperative federation of semi-autonomous, interconnected organizations woven together like tapestry—each thread distinct yet part of a greater pattern.",
+      "THE MAP: Building complete story infrastructure that scales—from individual story regeneration to organizational transformation to planetary coordination."
     ]
   },
   {
     id: "journey",
-    title: "THE JOURNEY: OUR MISSION IN ACTION",
+    title: "IV. THE JOURNEY",
     icon: "⛲",
     items: [
-      "The Fountain: Our actual resources and growing federation",
-      "The Ethos: We serve the story, value flows to regeneration",
-      "The Plot: Building complete story infrastructure for transformation",
-      "The Compass: Eight currencies enabling multi-capital accounting"
+      "\"We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.\"",
+      "THE FOUNTAIN: Our abundance of storytelling magic, vision, and purpose that we urgently need to give away—too much story technology requiring people to join the quest.",
+      "THE ETHOS: We serve the story—when story becomes currency, individual success requires collective flourishing. We are each other's resources.",
+      "THE PLOT: Our current mission—build a company, crystallize our service offering, get back together, assemble the best storytellers in the world.",
+      "THE COMPASS: Eight-dimensional navigation across all forms of capital—Purpose, Vision, Truth, Community, Creativity, Systems, Economy-Ecology, Story."
     ]
   },
   {
     id: "request",
-    title: "THE RE-QUEST: CALLING OUR KINDRED",
+    title: "V. THE RE-QUEST",
     icon: "🏆",
     items: [
-      "The Grail: Complete metamyth system for reality architecture",
-      "The Initiation: From individual transformation to planetary coordination",
-      "The Campfire: Federation of storytellers changing reality",
-      "The Messages: Specific calls to action for different readiness levels"
+      "\"Calling the next generation of storytellers ready to stop being characters in someone else's extraction story and start authoring the regenerative reality your heart knows is possible.\"",
+      "THE GRAIL: Metamyth regeneration technology—the transformation we went through becomes our gift, the specific process that sequences scattered narratives into coherent forces.",
+      "THE INITIATION: Our journey from meaningless extraction to purposeful regeneration mapped as others' pathway—the specific process that transforms strangers into allies.",
+      "THE CAMPFIRE: Spiral community where people advance through meaningful contribution across eight forms of value—the radial system where everyone becomes characters in shared planetary story.",
+      "THE INVITATION: Join the storytellers building the new world through conscious narrative architecture."
+    ]
+  },
+  {
+    id: "legacy",
+    title: "LEGACY: THE STORY TOLD AROUND FUTURE CAMPFIRES",
+    icon: "🔥",
+    items: [
+      "\"Can you believe they had the hardest challenge humanity ever faced—the end of meaning itself—yet they fought for everyone and won?\"",
+      "\"Can you imagine people used to work as slaves to fake money instead of adventuring with friends for purpose?\"",
+      "\"Why didn't they just walk away from the bad game sooner? Well, they finally did. That's why we live free.\"",
+      "The legacy we create: Unremarkable wisdom in a remarkably beautiful world."
     ]
   }
 ];
