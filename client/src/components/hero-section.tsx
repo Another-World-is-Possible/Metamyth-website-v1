@@ -7,10 +7,6 @@ export default function HeroSection() {
   return (
     <div className="relative">
       <section className="min-h-screen bg-mystical-gradient flex items-center justify-center relative overflow-hidden pt-16">
-        {/* Animated Logo Background */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-20">
-          <AnimatedLogo />
-        </div>
       
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
         <motion.h1 
