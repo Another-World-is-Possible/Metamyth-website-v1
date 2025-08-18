@@ -67,7 +67,7 @@ export default function MetamythTiles() {
           <TileComponent tile={tile} index={index} />
           {/* Golden thread divider at the bottom of each section (except last) */}
           {index < tiles.length - 1 && (
-            <div className="absolute bottom-0 left-0 w-full h-2 pointer-events-none">
+            <div className="absolute bottom-0 left-0 w-full h-4 pointer-events-none z-50">
               <ScrollThread sectionIndex={index} />
             </div>
           )}

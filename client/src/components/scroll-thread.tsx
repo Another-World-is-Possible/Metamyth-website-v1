@@ -19,10 +19,10 @@ export default function ScrollThread({ sectionIndex }: ScrollThreadProps) {
   return (
     <div 
       ref={ref}
-      className="absolute left-0 w-full h-1 pointer-events-none"
+      className="absolute left-0 w-full h-4 pointer-events-none"
       style={{ 
-        top: 0,
-        zIndex: 30
+        top: -2,
+        zIndex: 50
       }}
     >
       {/* Simple elegant dividing line */}
