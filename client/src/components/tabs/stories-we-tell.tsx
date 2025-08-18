@@ -3,30 +3,30 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Search, ServerCog, Network, Globe } from "lucide-react";
 
-const transformations = [
+const audienceTypes = [
   {
-    title: "The Regenerative Entrepreneur",
-    description: "From burnout to breakthrough: How one founder used metamyth principles to transform their startup into a regenerative force.",
+    title: "Visionary Changemakers",
+    description: "Revolutionary thinkers struggling to communicate breakthrough ideas that could transform entire industries or social systems.",
     bgImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    startingPoint: "Stuck in extractive business model",
-    transformation: "Discovered authentic purpose-driven narrative",
-    outcomes: "300% revenue growth, team alignment, planetary impact"
+    challenges: "Brilliant concepts trapped in jargon, dismissed as too radical, or failing to gain traction",
+    transformation: "Story architecture translates vision into compelling narrative that attracts allies and resources",
+    potential: "Movements that shift paradigms, attract funding, build coalitions around new possibilities"
   },
   {
-    title: "The Federated Organization",
-    description: "How a traditional nonprofit transformed into a story-driven movement that coordinates multiple organizations.",
+    title: "Purpose-Driven Entrepreneurs",
+    description: "Business leaders seeking to align profit with planetary healing, but struggling to articulate their deeper mission.",
     bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    startingPoint: "Siloed efforts, competition for resources",
-    transformation: "Organizational metamyth revealed federation potential",
-    outcomes: "5x partner network, collaborative funding, systemic impact"
+    challenges: "Caught between profit pressures and purpose, unable to communicate authentic mission without sounding hollow",
+    transformation: "Metamyth methodology reveals the authentic story that naturally integrates impact and income",
+    potential: "Regenerative enterprises that prove another economy is possible while maintaining financial sustainability"
   },
   {
-    title: "The Reality Film Project",
-    description: "Turning personal transformation into cinematic storytelling that attracts resources and builds community.",
+    title: "Transforming Organizations",
+    description: "Nonprofits, corporations, and institutions ready to evolve beyond extractive patterns into regenerative collaboration.",
     bgImage: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    startingPoint: "Personal vision without platform",
-    transformation: "Story architecture became film project",
-    outcomes: "Funded film, speaking opportunities, movement building"
+    challenges: "Stuck in outdated models, competing for resources, struggling with mission drift or organizational dysfunction",
+    transformation: "Organizational metamyth work reveals federation opportunities and authentic collaborative structures",
+    potential: "Network effects that multiply impact, collaborative funding models, systemic transformation at scale"
   }
 ];
 
@@ -70,44 +70,41 @@ export default function StoriesWeTell() {
           STORIES WE TELL
         </motion.h2>
         
-        {/* Featured Transformations */}
+        {/* Who We Serve */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {transformations.map((story, index) => (
+          {audienceTypes.map((audience, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className="bg-deep-black/50 mystical-border mystical-glow overflow-hidden hover-glow">
+              <Card className="bg-deep-black/50 mystical-border mystical-glow overflow-hidden hover-glow h-full">
                 <div 
                   className="h-48 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${story.bgImage})` }}
+                  style={{ backgroundImage: `url(${audience.bgImage})` }}
                 />
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col h-full">
                   <h3 className="font-edensor text-xl font-bold text-ancient-gold mb-3">
-                    {story.title}
+                    {audience.title}
                   </h3>
-                  <p className="text-silver/80 text-sm mb-4">
-                    {story.description}
+                  <p className="text-silver/80 text-sm mb-4 flex-grow">
+                    {audience.description}
                   </p>
-                  <div className="space-y-2 text-xs text-silver/60 mb-4">
-                    <p>
-                      <span className="font-bold text-mystical-teal">Starting Point:</span> {story.startingPoint}
-                    </p>
-                    <p>
-                      <span className="font-bold text-mystical-teal">Transformation:</span> {story.transformation}
-                    </p>
-                    <p>
-                      <span className="font-bold text-mystical-teal">Outcomes:</span> {story.outcomes}
-                    </p>
+                  <div className="space-y-3 text-xs text-silver/70">
+                    <div>
+                      <span className="font-bold text-crimson block mb-1">Common Challenges:</span>
+                      <p>{audience.challenges}</p>
+                    </div>
+                    <div>
+                      <span className="font-bold text-mystical-teal block mb-1">Our Approach:</span>
+                      <p>{audience.transformation}</p>
+                    </div>
+                    <div>
+                      <span className="font-bold text-ancient-gold block mb-1">Potential Unlocked:</span>
+                      <p>{audience.potential}</p>
+                    </div>
                   </div>
-                  <Button 
-                    variant="ghost" 
-                    className="text-mystical-teal font-bold text-sm hover:text-ancient-gold transition-colors duration-300 p-0"
-                  >
-                    Read Full Story →
-                  </Button>
                 </CardContent>
               </Card>
             </motion.div>
@@ -123,28 +120,35 @@ export default function StoriesWeTell() {
           <Card className="bg-deep-black/50 mystical-border enhanced-glow">
             <CardContent className="p-8">
               <h3 className="font-edensor text-2xl font-bold text-ancient-gold text-center mb-8">
-                How Metamyth Regeneration Works
+                Our Process: From Story to System
               </h3>
               <div className="grid md:grid-cols-4 gap-6">
-                {processSteps.map((step, index) => (
-                  <motion.div
-                    key={index}
-                    className="text-center"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-                  >
-                    <div className={`w-16 h-16 bg-${step.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                      <step.icon className="text-deep-black text-2xl" />
+                {processSteps.map((step, index) => {
+                  const IconComponent = step.icon;
+                  return (
+                    <div key={index} className="text-center">
+                      <div className={`mx-auto w-16 h-16 rounded-full bg-${step.color}/20 flex items-center justify-center mb-4 mystical-glow`}>
+                        <IconComponent className={`w-8 h-8 text-${step.color}`} />
+                      </div>
+                      <h4 className={`font-edensor text-lg font-bold text-${step.color} mb-2`}>
+                        {step.title}
+                      </h4>
+                      <p className="text-silver/80 text-sm">
+                        {step.description}
+                      </p>
                     </div>
-                    <h4 className={`font-bold text-${step.color} mb-2`}>
-                      {step.title}
-                    </h4>
-                    <p className="text-silver/80 text-sm">
-                      {step.description}
-                    </p>
-                  </motion.div>
-                ))}
+                  );
+                })}
+              </div>
+              
+              <div className="text-center mt-8">
+                <p className="text-silver/80 mb-6 max-w-2xl mx-auto">
+                  Whether you're an individual visionary, purpose-driven entrepreneur, or transforming organization, 
+                  we meet you where you are and help architect the story that unlocks your authentic power.
+                </p>
+                <Button className="bg-mystical-teal text-deep-black font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-colors duration-300">
+                  Discover Your Story Architecture
+                </Button>
               </div>
             </CardContent>
           </Card>
