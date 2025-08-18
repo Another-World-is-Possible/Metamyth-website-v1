@@ -63,20 +63,14 @@ export default function MetamythTiles() {
   return (
     <section className="relative">
       {tiles.map((tile, index) => (
-        <TileComponent key={tile.id} tile={tile} index={index} />
-      ))}
-      
-      {/* Golden thread transitions between sections */}
-      {tiles.slice(0, -1).map((_, index) => (
-        <div
-          key={`thread-${index}`}
-          className="absolute w-full h-screen pointer-events-none"
-          style={{ 
-            top: `${(index + 1) * 100}vh`,
-            zIndex: 20
-          }}
-        >
-          <ScrollThread sectionIndex={index} totalSections={tiles.length} />
+        <div key={tile.id} className="relative">
+          <TileComponent tile={tile} index={index} />
+          {/* Golden thread divider at the bottom of each section (except last) */}
+          {index < tiles.length - 1 && (
+            <div className="absolute bottom-0 left-0 w-full h-2 pointer-events-none">
+              <ScrollThread sectionIndex={index} />
+            </div>
+          )}
         </div>
       ))}
     </section>
