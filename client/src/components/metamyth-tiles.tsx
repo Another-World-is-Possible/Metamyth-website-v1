@@ -48,15 +48,6 @@ const tiles = [
     bgImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080",
     animation: "flicker",
     gradient: "from-deep-black to-forest-green"
-  },
-  {
-    id: 6,
-    title: "THE INVITATION",
-    quote: "Step into the infinite kindred quest. Your story is the key to unlock the world we're here to build together.",
-    description: "Join the federation of regenerative storytellers ready to transform the world through authentic narrative architecture.",
-    bgImage: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080",
-    animation: "burn",
-    gradient: "from-forest-green to-mystical-teal"
   }
 ];
 
@@ -65,8 +56,7 @@ const titleColors = [
   "text-mystical-teal", 
   "text-ancient-gold",
   "text-crimson",
-  "text-mystical-teal",
-  "text-ancient-gold"
+  "text-mystical-teal"
 ];
 
 export default function MetamythTiles() {
@@ -77,7 +67,7 @@ export default function MetamythTiles() {
           <TileComponent tile={tile} index={index} />
           {/* Golden thread divider at the bottom of each section (except last) */}
           {index < tiles.length - 1 && (
-            <div className="absolute bottom-0 left-0 w-full h-8 pointer-events-none z-50">
+            <div className="absolute bottom-0 left-0 w-full h-px pointer-events-none z-50">
               <ScrollThread sectionIndex={index + 1} />
             </div>
           )}

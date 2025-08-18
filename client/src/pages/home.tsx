@@ -52,6 +52,7 @@ export default function Home() {
           <>
             <HeroSection />
             <MetamythTiles />
+            <CallToAction />
           </>
         );
     }
