@@ -77,8 +77,8 @@ export default function MetamythTiles() {
           <TileComponent tile={tile} index={index} />
           {/* Golden thread divider at the bottom of each section (except last) */}
           {index < tiles.length - 1 && (
-            <div className="absolute bottom-0 left-0 w-full h-4 pointer-events-none z-50">
-              <ScrollThread sectionIndex={index} />
+            <div className="absolute bottom-0 left-0 w-full h-8 pointer-events-none z-50">
+              <ScrollThread sectionIndex={index + 1} />
             </div>
           )}
         </div>
@@ -92,38 +92,11 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
   const isInView = useInView(ref, { amount: 0.3, once: true });
 
   const getAnimationVariants = () => {
-    switch (tile.animation) {
-      case "burn":
-        return {
-          initial: { opacity: 0, scale: 0.8, filter: "sepia(1) saturate(5) hue-rotate(25deg)" },
-          animate: { opacity: 1, scale: 1, filter: "none" }
-        };
-      case "thread":
-        return {
-          initial: { opacity: 0, x: -100 },
-          animate: { opacity: 1, x: 0 }
-        };
-      case "flash":
-        return {
-          initial: { opacity: 0, y: 50, scale: 0.9 },
-          animate: { opacity: 1, y: 0, scale: 1 }
-        };
-      case "crash":
-        return {
-          initial: { opacity: 0, y: -100, rotate: -5 },
-          animate: { opacity: 1, y: 0, rotate: 0 }
-        };
-      case "flicker":
-        return {
-          initial: { opacity: 0 },
-          animate: { opacity: 1 }
-        };
-      default:
-        return {
-          initial: { opacity: 0, y: 50 },
-          animate: { opacity: 1, y: 0 }
-        };
-    }
+    // Standardized fade-in animation for all tiles
+    return {
+      initial: { opacity: 0, y: 30 },
+      animate: { opacity: 1, y: 0 }
+    };
   };
 
   const variants = getAnimationVariants();
@@ -142,32 +115,7 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
         style={{ backgroundImage: `url(${tile.bgImage})` }}
       />
       
-      {/* Special Effects */}
-      {tile.animation === "thread" && (
-        <motion.div 
-          className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-ancient-gold to-transparent"
-          initial={{ width: 0, opacity: 0 }}
-          animate={isInView ? { width: "100%", opacity: 1 } : { width: 0, opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-        />
-      )}
-      
-      {tile.animation === "flash" && (
-        <motion.div 
-          className="absolute inset-0 bg-gradient-radial from-ancient-gold/20 to-transparent"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        />
-      )}
-      
-      {tile.animation === "flicker" && (
-        <motion.div 
-          className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-gradient-radial from-orange-500 to-red-600 rounded-full opacity-40"
-          animate={isInView ? { opacity: [0.2, 1, 0.2] } : { opacity: 0.2 }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        />
-      )}
+
       
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
         <motion.h2 

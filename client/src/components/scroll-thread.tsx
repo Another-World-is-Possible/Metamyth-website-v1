@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 interface ScrollThreadProps {
@@ -7,56 +7,71 @@ interface ScrollThreadProps {
 
 export default function ScrollThread({ sectionIndex }: ScrollThreadProps) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start center", "end center"]
-  });
-
-  // Simple fade in/out based on scroll
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
-  const lineProgress = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+  const isInView = useInView(ref, { amount: 0.8, once: false });
 
   return (
     <div 
       ref={ref}
-      className="absolute left-0 w-full h-4 pointer-events-none"
+      className="absolute left-0 w-full h-1 pointer-events-none flex items-center"
       style={{ 
-        top: -2,
+        top: '50%',
+        transform: 'translateY(-50%)',
         zIndex: 50
       }}
     >
-      {/* Simple elegant dividing line */}
+      {/* Golden thread line */}
       <motion.div
-        className="w-full h-px relative"
-        style={{ opacity }}
+        className="w-full h-0.5 relative"
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={isInView ? { 
+          scaleX: 1, 
+          opacity: 1 
+        } : { 
+          scaleX: 0, 
+          opacity: 0 
+        }}
+        transition={{ 
+          duration: 1.5, 
+          ease: "easeInOut",
+          scaleX: { delay: 0.2 }
+        }}
+        style={{
+          background: "linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.4) 15%, rgba(212, 175, 55, 1) 50%, rgba(212, 175, 55, 0.4) 85%, transparent 100%)",
+          boxShadow: "0 0 8px rgba(212, 175, 55, 0.6), 0 0 16px rgba(212, 175, 55, 0.3)",
+          transformOrigin: "center"
+        }}
       >
-        {/* Main golden thread line */}
+        {/* Additional glow layer */}
         <motion.div
-          className="absolute inset-0 w-full h-px"
+          className="absolute inset-0 w-full h-0.5"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           style={{
-            background: "linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.3) 20%, rgba(212, 175, 55, 0.8) 50%, rgba(212, 175, 55, 0.3) 80%, transparent 100%)",
-            boxShadow: "0 0 4px rgba(212, 175, 55, 0.4)",
-            scaleX: lineProgress,
-            transformOrigin: "center"
+            background: "linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.2) 30%, rgba(212, 175, 55, 0.6) 50%, rgba(212, 175, 55, 0.2) 70%, transparent 100%)",
+            filter: "blur(1px)"
           }}
         />
         
-        {/* Subtle glow effect */}
+        {/* Central bright spot */}
         <motion.div
-          className="absolute top-0 left-1/2 w-32 h-px transform -translate-x-1/2"
-          style={{
-            background: "radial-gradient(ellipse, rgba(212, 175, 55, 0.6) 0%, transparent 70%)",
-            opacity: useTransform(scrollYProgress, [0.3, 0.5, 0.7], [0, 0.8, 0])
+          className="absolute top-1/2 left-1/2 w-4 h-4 transform -translate-x-1/2 -translate-y-1/2"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={isInView ? { 
+            scale: 1, 
+            opacity: [0, 1, 0.7] 
+          } : { 
+            scale: 0, 
+            opacity: 0 
           }}
-        />
-        
-        {/* Small moving particle along the line */}
-        <motion.div
-          className="absolute top-0 w-1 h-1 bg-ancient-gold rounded-full transform -translate-y-1/2"
+          transition={{ 
+            duration: 1, 
+            delay: 0.8,
+            scale: { type: "spring", stiffness: 100 }
+          }}
           style={{
-            left: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
-            boxShadow: "0 0 6px #D4AF37",
-            opacity: useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+            background: "radial-gradient(circle, rgba(212, 175, 55, 0.8) 0%, transparent 70%)",
+            borderRadius: "50%"
           }}
         />
       </motion.div>

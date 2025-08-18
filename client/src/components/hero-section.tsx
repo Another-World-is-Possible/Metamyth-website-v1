@@ -60,8 +60,8 @@ export default function HeroSection() {
       </section>
       
       {/* Golden thread divider after hero section */}
-      <div className="absolute bottom-0 left-0 w-full h-4 pointer-events-none z-50">
-        <ScrollThread sectionIndex={-1} />
+      <div className="absolute bottom-0 left-0 w-full h-8 pointer-events-none z-50">
+        <ScrollThread sectionIndex={0} />
       </div>
     </div>
   );
