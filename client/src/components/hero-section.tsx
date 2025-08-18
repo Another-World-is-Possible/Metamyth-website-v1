@@ -1,14 +1,16 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import AnimatedLogo from "@/components/ui/animated-logo";
+import ScrollThread from "@/components/scroll-thread";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen bg-mystical-gradient flex items-center justify-center relative overflow-hidden pt-16">
-      {/* Animated Logo Background */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-20">
-        <AnimatedLogo />
-      </div>
+    <div className="relative">
+      <section className="min-h-screen bg-mystical-gradient flex items-center justify-center relative overflow-hidden pt-16">
+        {/* Animated Logo Background */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-20">
+          <AnimatedLogo />
+        </div>
       
       <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
         <motion.h1 
@@ -44,17 +46,23 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
         >
-          <Button className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg">
-            JOIN THE STORYTELLERS
-          </Button>
           <Button 
             variant="outline" 
             className="border-2 border-ancient-gold text-ancient-gold hover:bg-ancient-gold hover:text-deep-black font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg"
           >
             REGENERATE YOUR STORY
           </Button>
+          <Button className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg">
+            JOIN THE QUEST
+          </Button>
         </motion.div>
       </div>
-    </section>
+      </section>
+      
+      {/* Golden thread divider after hero section */}
+      <div className="absolute bottom-0 left-0 w-full h-4 pointer-events-none z-50">
+        <ScrollThread sectionIndex={-1} />
+      </div>
+    </div>
   );
 }
