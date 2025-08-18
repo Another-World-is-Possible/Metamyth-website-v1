@@ -1,5 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Button } from "@/components/ui/button";
+import ScrollThread from "@/components/scroll-thread";
 
 const tiles = [
   {
@@ -62,6 +64,20 @@ export default function MetamythTiles() {
     <section className="relative">
       {tiles.map((tile, index) => (
         <TileComponent key={tile.id} tile={tile} index={index} />
+      ))}
+      
+      {/* Golden thread transitions between sections */}
+      {tiles.slice(0, -1).map((_, index) => (
+        <div
+          key={`thread-${index}`}
+          className="absolute w-full h-screen pointer-events-none"
+          style={{ 
+            top: `${(index + 1) * 100}vh`,
+            zIndex: 20
+          }}
+        >
+          <ScrollThread sectionIndex={index} totalSections={tiles.length} />
+        </div>
       ))}
     </section>
   );
