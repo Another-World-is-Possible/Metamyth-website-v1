@@ -7,19 +7,16 @@ const accordionItems = [
     id: "origin",
     title: "THE ORIGIN: THE END OF THE OLD STORY",
     icon: "🌱",
-    items: [
-      "Once upon a time, a storyteller wandered the earth documenting solutions to humanity's greatest challenges, living his life as conscious narrative while building movements that transformed millions.",
-      "Across the world, another soul fought through darkness until his vision reached her in her deepest hour.",
-      "When they found each other beneath distant stars, their love became a beacon drawing forth scattered dreamers and builders who had been searching for the same story in different languages.",
-      "This is the primordial seed from which our metamyth grows."
-    ]
+    isNarrative: true,
+    narrative: "Once upon a time, a storyteller wandered the earth documenting solutions to humanity's greatest challenges, living his life as conscious narrative while building movements that transformed millions. Across the world, another soul fought through darkness until his vision reached her in her deepest hour. When they found each other beneath distant stars, their love became a beacon drawing forth scattered dreamers and builders who had been searching for the same story in different languages."
   },
   {
     id: "calling",
     title: "I. THE CALL TO ADVENTURE",
     icon: "🐉",
+    sectionTitle: "OUR CALLING",
+    quote: "All the world's suffering flows from a single source—a story we forgot we wrote.",
     items: [
-      "\"All the world's suffering flows from a single source—a story we forgot we wrote.\"",
       "THE DRAGON: A broken story—a species destroying its only home for a story of money, a story of power, demonstrating narrative's transformative potential by nearly ending the world.",
       "THE THRESHOLD: Being so broken by meaninglessness we physically couldn't function in the extraction system—our breakdown became our qualification.",
       "THE SHIELD: The trauma that forged integrity, protecting us from being absorbed into fake stories so we could shield others from narrative colonization.",
@@ -30,8 +27,9 @@ const accordionItems = [
     id: "quest",
     title: "II. THE QUEST",
     icon: "⭐",
+    sectionTitle: "OUR QUEST",
+    quote: "We wield the most ancient technology powered by modern magic: Write your reality, play it like the ultimate game, film it into existence to attract people into your quest.",
     items: [
-      "\"We wield the most ancient technology powered by modern magic: Write your reality, play it like the ultimate game, film it into existence to attract people into your quest.\"",
       "THE STAR: Restore story to its rightful place as consciousness technology—the primordial force that turns scattered tribes into civilizations.",
       "THE CHARACTER: Purpose-driven visionaries ready to author reality rather than suffer it—the \"we\" identity of planetary-scale storytellers serving the story, not profit or competition.",
       "THE BANNER: We are planetary-scale storytellers—positioning ourselves not in market competition but as architects of the next phase of human evolution through conscious narrative.",
@@ -42,8 +40,9 @@ const accordionItems = [
     id: "possible",
     title: "III. WHAT IS POSSIBLE",
     icon: "🔮",
+    sectionTitle: "OUR VISION",
+    quote: "A world where work becomes adventure, purpose literally pays, and regenerative collaboration outperforms extractive competition.",
     items: [
-      "\"A world where work becomes adventure, purpose literally pays, and regenerative collaboration outperforms extractive competition.\"",
       "THE LOOKING GLASS: We transform work into quest, purpose into profit, customers into communities, scattered efforts into coordinated transformation.",
       "THE TRANSFORMATION: From extraction to regeneration across all systems—the identity change that enables and results from following purpose fully.",
       "THE GLOBE: A cooperative federation of semi-autonomous, interconnected organizations woven together like tapestry—each thread distinct yet part of a greater pattern.",
@@ -54,8 +53,9 @@ const accordionItems = [
     id: "journey",
     title: "IV. THE JOURNEY",
     icon: "⛲",
+    sectionTitle: "OUR MISSION",
+    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.",
     items: [
-      "\"We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.\"",
       "THE FOUNTAIN: Our abundance of storytelling magic, vision, and purpose that we urgently need to give away—too much story technology requiring people to join the quest.",
       "THE ETHOS: We serve the story—when story becomes currency, individual success requires collective flourishing. We are each other's resources.",
       "THE PLOT: Our current mission—build a company, crystallize our service offering, get back together, assemble the best storytellers in the world.",
@@ -66,8 +66,9 @@ const accordionItems = [
     id: "request",
     title: "V. THE RE-QUEST",
     icon: "🏆",
+    sectionTitle: "OUR CALL TO ACTION",
+    quote: "Calling the next generation of storytellers ready to stop being characters in someone else's extraction story and start authoring the regenerative reality your heart knows is possible.",
     items: [
-      "\"Calling the next generation of storytellers ready to stop being characters in someone else's extraction story and start authoring the regenerative reality your heart knows is possible.\"",
       "THE GRAIL: Metamyth regeneration technology—the transformation we went through becomes our gift, the specific process that sequences scattered narratives into coherent forces.",
       "THE INITIATION: Our journey from meaningless extraction to purposeful regeneration mapped as others' pathway—the specific process that transforms strangers into allies.",
       "THE CAMPFIRE: Spiral community where people advance through meaningful contribution across eight forms of value—the radial system where everyone becomes characters in shared planetary story.",
@@ -121,19 +122,56 @@ export default function OurMetamyth() {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="p-6 border-t border-mystical-teal/30">
-                  <div className="space-y-4">
-                    {item.items.map((text, itemIndex) => (
+                  <div className="space-y-6">
+                    {item.isNarrative ? (
                       <motion.p 
-                        key={itemIndex}
-                        className="text-silver flex items-start"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: itemIndex * 0.1 }}
+                        className="text-silver text-lg leading-relaxed"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
                       >
-                        <span className="text-mystical-teal mr-3 mt-1">•</span>
-                        {text}
+                        {item.narrative}
                       </motion.p>
-                    ))}
+                    ) : (
+                      <>
+                        {item.sectionTitle && (
+                          <motion.h4 
+                            className="font-edensor text-2xl font-bold text-ancient-gold"
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            {item.sectionTitle}
+                          </motion.h4>
+                        )}
+                        {item.quote && (
+                          <motion.blockquote 
+                            className="text-xl font-semibold text-mystical-teal italic border-l-4 border-ancient-gold pl-6 py-2"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.4, delay: 0.1 }}
+                          >
+                            "{item.quote}"
+                          </motion.blockquote>
+                        )}
+                        {item.items && (
+                          <div className="space-y-4">
+                            {item.items.map((text, itemIndex) => (
+                              <motion.p 
+                                key={itemIndex}
+                                className="text-silver flex items-start"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.3, delay: itemIndex * 0.1 + 0.2 }}
+                              >
+                                <span className="text-mystical-teal mr-3 mt-1">•</span>
+                                {text}
+                              </motion.p>
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    )}
                   </div>
                 </AccordionContent>
               </AccordionItem>
