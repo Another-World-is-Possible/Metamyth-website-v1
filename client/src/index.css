@@ -151,6 +151,15 @@
   .scroll-fade-in:nth-child(4) { transition-delay: 300ms; }
   .scroll-fade-in:nth-child(5) { transition-delay: 400ms; }
   
+  /* Realistic flame animation */
+  @keyframes flameFlicker {
+    0% { transform: scale(1) rotate(-1deg); opacity: 0.9; }
+    25% { transform: scale(1.05) rotate(1deg); opacity: 0.8; }
+    50% { transform: scale(0.98) rotate(-0.5deg); opacity: 0.95; }
+    75% { transform: scale(1.02) rotate(0.8deg); opacity: 0.85; }
+    100% { transform: scale(1) rotate(-0.3deg); opacity: 0.9; }
+  }
+  
   /* Enhanced fade for sections */
   .section-fade-in {
     opacity: 0;
