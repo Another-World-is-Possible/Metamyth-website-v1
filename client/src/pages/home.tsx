@@ -6,6 +6,7 @@ import CallToAction from "@/components/call-to-action";
 import OurMetamyth from "@/components/tabs/our-metamyth";
 import TheQuest from "@/components/tabs/the-quest";
 import StoriesWeTell from "@/components/tabs/stories-we-tell";
+import WhyStoryMatters from "@/components/tabs/why-story-matters";
 import TheSystems from "@/components/tabs/the-systems";
 import TheFederation from "@/components/tabs/the-federation";
 
@@ -43,6 +44,8 @@ export default function Home() {
         return <TheQuest />;
       case 'stories':
         return <StoriesWeTell />;
+      case 'why-story':
+        return <WhyStoryMatters />;
       case 'systems':
         return <TheSystems />;
       case 'federation':
