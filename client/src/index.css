@@ -1,7 +1,7 @@
 /* Custom font imports using attached assets */
 @font-face {
   font-family: 'Alice';
-  src: url('@assets/Alice-Regular_1755457328279.ttf') format('truetype');
+  src: url('/attached_assets/Alice-Regular_1755457328279.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'Edensor';
-  src: url('@assets/Edensor-FREE 2_1755457349076.otf') format('opentype');
+  src: url('/attached_assets/Edensor-FREE%202_1755457349076.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -98,9 +98,14 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Edensor', serif;
+    font-family: 'Edensor', 'Alice', serif;
     font-weight: normal;
     letter-spacing: 0.02em;
+  }
+  
+  /* Ensure font-edensor class uses Edensor font */
+  .font-edensor {
+    font-family: 'Edensor', 'Alice', serif !important;
   }
 }
 
