@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import InteractiveTimeline from "@/components/ui/interactive-timeline";
+import { useState } from "react";
 
-const horizons = [
+const questPhases = [
   {
     id: 1,
-    title: "HORIZON 1: FOUNDATION",
-    subtitle: "2024-2027 - Building the Story Technologies",
+    title: "FOUNDATION",
+    subtitle: "Building the Story Technologies",
     color: "ancient-gold",
+    position: { x: 15, y: 80 }, // Start low left
     items: [
       "Developing MythOS operating system",
       "Creating MetaMyth AI architecture", 
@@ -19,9 +18,10 @@ const horizons = [
   },
   {
     id: 2,
-    title: "HORIZON 2: THE ADVENTURE SPREADS",
-    subtitle: "2027-2032 - Creating the Platform of Stories",
+    title: "THE ADVENTURE SPREADS",
+    subtitle: "Creating the Platform of Stories",
     color: "mystical-teal",
+    position: { x: 50, y: 40 }, // Middle peak
     items: [
       "Building platform showcasing the world's best stories",
       "Weaving them together into cooperative federation",
@@ -32,25 +32,140 @@ const horizons = [
   },
   {
     id: 3,
-    title: "HORIZON 3: PLANETARY",
-    subtitle: "2032-2040 - The New Story Becomes Undeniable",
+    title: "PLANETARY HORIZON",
+    subtitle: "The New Story Becomes Undeniable",
     color: "crimson",
+    position: { x: 85, y: 20 }, // High right peak
     items: [
       "Stories we showcase become obvious superior option",
       "MetaMyth system interactive and playable worldwide",
       "People find their quests and federate together",
-      "Global movements emerging from story coherence"
+      "Global movements emerging from story-based collaboration"
     ],
     status: "Ultimate Vision: Species connected through story-based collaboration"
   }
 ];
 
-export default function TheQuest() {
+// Mountain SVG Component
+function MountainPath() {
   return (
-    <div className="bg-forest-green py-20 pt-32">
-      <div className="max-w-6xl mx-auto px-4">
+    <svg 
+      viewBox="0 0 100 100" 
+      className="absolute inset-0 w-full h-full"
+      preserveAspectRatio="none"
+    >
+      {/* Mountain silhouette */}
+      <path
+        d="M0,90 L15,80 L25,70 L35,60 L45,45 L55,35 L65,45 L75,30 L85,20 L95,25 L100,30 L100,100 L0,100 Z"
+        fill="url(#mountainGradient)"
+        opacity="0.3"
+      />
+      
+      {/* Golden quest arc */}
+      <path
+        d="M15,80 Q30,65 50,40 Q70,25 85,20"
+        stroke="url(#arcGradient)"
+        strokeWidth="0.5"
+        fill="none"
+        className="drop-shadow-lg"
+      />
+      
+      {/* Gradient definitions */}
+      <defs>
+        <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#2d2520" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#1a1a1a" stopOpacity="0.8" />
+        </linearGradient>
+        <linearGradient id="arcGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#d4af37" stopOpacity="0.8" />
+          <stop offset="50%" stopColor="#4fd1c7" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#dc143c" stopOpacity="0.8" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
+// Glowing quest marker component
+function QuestMarker({ phase, isActive, isRevealed, onClick }: { 
+  phase: typeof questPhases[0], 
+  isActive: boolean, 
+  isRevealed: boolean,
+  onClick: () => void 
+}) {
+  return (
+    <motion.div
+      className="absolute cursor-pointer"
+      style={{ 
+        left: `${phase.position.x}%`, 
+        top: `${phase.position.y}%`,
+        transform: 'translate(-50%, -50%)'
+      }}
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ 
+        scale: isRevealed ? 1 : 0.3, 
+        opacity: isRevealed ? 1 : 0.3 
+      }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      onClick={onClick}
+    >
+      <motion.div
+        className={`relative w-8 h-8 rounded-full border-2 ${
+          isActive 
+            ? `border-${phase.color} bg-${phase.color}/30` 
+            : `border-${phase.color}/60 bg-${phase.color}/10`
+        }`}
+        animate={{
+          boxShadow: isActive 
+            ? [`0 0 10px var(--${phase.color})`, `0 0 20px var(--${phase.color})`, `0 0 10px var(--${phase.color})`]
+            : `0 0 5px var(--${phase.color})`
+        }}
+        transition={{ duration: 2, repeat: isActive ? Infinity : 0 }}
+      >
+        <div className={`absolute inset-1 rounded-full bg-${phase.color} opacity-70`} />
+      </motion.div>
+      
+      {/* Phase label */}
+      <motion.div
+        className="absolute top-10 left-1/2 transform -translate-x-1/2 text-center min-w-max"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: isRevealed ? 1 : 0, y: isRevealed ? 0 : 10 }}
+        transition={{ delay: 0.3 }}
+      >
+        <div className={`text-${phase.color} font-edensor font-bold text-sm`}>
+          {phase.title}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+export default function TheQuest() {
+  const [activePhase, setActivePhase] = useState(0);
+  const [revealedPhases, setRevealedPhases] = useState([0]); // Start with first phase revealed
+
+  const handlePhaseClick = (index: number) => {
+    setActivePhase(index);
+    // Reveal this phase and all previous phases
+    setRevealedPhases(prev => {
+      const newRevealed = Array.from(new Set([...prev, index])).sort();
+      return newRevealed;
+    });
+  };
+
+  const advanceQuest = () => {
+    const nextPhase = Math.min(activePhase + 1, questPhases.length - 1);
+    if (nextPhase !== activePhase) {
+      setActivePhase(nextPhase);
+      setRevealedPhases(prev => [...prev, nextPhase]);
+    }
+  };
+
+  return (
+    <div className="bg-gradient-to-b from-deep-black via-forest-green/30 to-deep-black min-h-screen py-20 pt-32">
+      <div className="max-w-7xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-16"
+          className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -58,95 +173,129 @@ export default function TheQuest() {
           THE QUEST
         </motion.h2>
         
-        {/* Interactive Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        <motion.p
+          className="text-center text-silver/80 text-xl mb-16 max-w-3xl mx-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <InteractiveTimeline />
+          Navigate the sacred path through three horizons of transformation
+        </motion.p>
+
+        {/* Interactive Mountain Quest Timeline */}
+        <motion.div
+          className="relative h-96 w-full mb-16 overflow-hidden rounded-lg"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <MountainPath />
+          
+          {/* Quest markers */}
+          {questPhases.map((phase, index) => (
+            <QuestMarker
+              key={phase.id}
+              phase={phase}
+              isActive={activePhase === index}
+              isRevealed={revealedPhases.includes(index)}
+              onClick={() => handlePhaseClick(index)}
+            />
+          ))}
+          
+          {/* Glowing traveler */}
+          <motion.div
+            className="absolute w-4 h-4 rounded-full bg-ancient-gold shadow-lg"
+            style={{
+              left: `${questPhases[activePhase].position.x}%`,
+              top: `${questPhases[activePhase].position.y}%`,
+              transform: 'translate(-50%, -50%)',
+              boxShadow: '0 0 15px #d4af37'
+            }}
+            animate={{
+              left: `${questPhases[activePhase].position.x}%`,
+              top: `${questPhases[activePhase].position.y}%`,
+            }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+          />
         </motion.div>
 
-        {/* Horizon Details */}
-        <div className="grid md:grid-cols-3 gap-8 mt-12">
-          {horizons.map((horizon, index) => (
-            <motion.div
-              key={horizon.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-            >
-              <Card className={`bg-forest-green/50 mystical-border mystical-glow hover-glow`}>
-                <CardContent className="p-6">
-                  <h3 className={`font-edensor text-2xl font-bold text-${horizon.color} mb-4`}>
-                    {horizon.title}
-                  </h3>
-                  <p className="text-silver/80 mb-4 text-sm">{horizon.subtitle}</p>
-                  <ul className="space-y-2 text-silver text-sm mb-4">
-                    {horizon.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start">
-                        <span className={`text-${horizon.color} mr-2`}>•</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className={`p-3 bg-${horizon.color}/10 rounded border-l-4 border-${horizon.color}`}>
-                    <p className={`text-${horizon.color} text-sm font-bold`}>
-                      {horizon.status}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Current Chapter */}
+        {/* Active Phase Details */}
         <motion.div
-          className="mt-16"
-          initial={{ opacity: 0, y: 50 }}
+          key={activePhase}
+          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6 }}
         >
-          <Card className="bg-deep-black/50 mystical-border enhanced-glow">
-            <CardContent className="p-8">
-              <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-6 text-center">
-                WHERE WE ARE NOW
-              </h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-bold text-mystical-teal mb-3">What We're Building:</h4>
-                  <p className="text-silver text-sm">
-                    The foundational story technologies that will power the next phase of human collaboration and planetary healing.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-mystical-teal mb-3">What We Need:</h4>
-                  <p className="text-silver text-sm">
-                    Visionary partners ready for reality architecture and committed to serving the story over extraction.
-                  </p>
-                </div>
+          <div className={`bg-${questPhases[activePhase].color}/10 backdrop-blur-sm rounded-lg border border-${questPhases[activePhase].color}/30 p-8`}>
+            <h3 className={`font-edensor text-3xl font-bold text-${questPhases[activePhase].color} mb-4 text-center`}>
+              {questPhases[activePhase].title}
+            </h3>
+            <p className="text-silver/90 text-lg mb-6 text-center italic">
+              {questPhases[activePhase].subtitle}
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 className={`font-bold text-${questPhases[activePhase].color} mb-4 text-lg`}>Quest Objectives:</h4>
+                <ul className="space-y-3">
+                  {questPhases[activePhase].items.map((item, itemIndex) => (
+                    <motion.li 
+                      key={itemIndex} 
+                      className="flex items-start text-silver"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: itemIndex * 0.1 }}
+                    >
+                      <span className={`text-${questPhases[activePhase].color} mr-3 text-lg`}>⟐</span>
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
               </div>
               
-              <div className="flex flex-col md:flex-row gap-4 mt-8 justify-center">
-                <Button className="bg-mystical-teal text-deep-black font-bold py-3 px-6 rounded-lg hover-glow transition-all duration-300">
-                  <span className="mr-2">👥</span>
-                  JOIN OUR COMMUNITY
-                </Button>
-                <Button className="bg-ancient-gold text-deep-black font-bold py-3 px-6 rounded-lg hover-glow transition-all duration-300">
-                  <span className="mr-2">📖</span>
-                  GET THE METAMYTH GUIDE - $497
-                </Button>
-                <Button 
-                  variant="outline"
-                  className="border-2 border-crimson text-crimson font-bold py-3 px-6 rounded-lg hover:bg-crimson hover:text-white transition-all duration-300"
-                >
-                  <span className="mr-2">🤝</span>
-                  BECOME A PARTNER
-                </Button>
+              <div>
+                <h4 className={`font-bold text-${questPhases[activePhase].color} mb-4 text-lg`}>Vision:</h4>
+                <div className={`p-4 bg-${questPhases[activePhase].color}/5 rounded border-l-4 border-${questPhases[activePhase].color}`}>
+                  <p className="text-silver italic">
+                    {questPhases[activePhase].status}
+                  </p>
+                </div>
+                
+                {activePhase < questPhases.length - 1 && (
+                  <motion.button
+                    onClick={advanceQuest}
+                    className={`mt-6 px-6 py-3 bg-${questPhases[activePhase].color}/20 hover:bg-${questPhases[activePhase].color}/30 border border-${questPhases[activePhase].color} rounded-lg text-${questPhases[activePhase].color} font-bold transition-all duration-300 hover-glow`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Advance to Next Horizon →
+                  </motion.button>
+                )}
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Progress indicator */}
+        <motion.div
+          className="mt-12 flex justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <div className="flex space-x-2">
+            {questPhases.map((_, index) => (
+              <div
+                key={index}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  revealedPhases.includes(index)
+                    ? 'bg-ancient-gold shadow-lg shadow-ancient-gold/50'
+                    : 'bg-silver/30'
+                }`}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
     </div>
