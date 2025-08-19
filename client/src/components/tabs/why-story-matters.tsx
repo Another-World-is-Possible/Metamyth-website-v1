@@ -157,30 +157,27 @@ export default function WhyStoryMatters() {
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.h1 
             className="font-edensor text-5xl md:text-7xl font-bold text-crimson mb-8"
-            initial={{ opacity: 0.2, scale: 0.98 }}
-            animate={{ opacity: 1, scale: [0.98, 1.02, 0.98] }}
-            transition={{ 
-              opacity: { duration: 1.5, ease: "easeOut" },
-              scale: { duration: 4, ease: "easeInOut", repeat: Infinity }
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
           >
             WHY TELL STORIES ON A BURNING PLANET?
           </motion.h1>
           
           <motion.p 
             className="text-2xl md:text-3xl text-silver/90 mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1.5 }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
           >
             While the world burns...
           </motion.p>
           
           <motion.p 
             className="text-xl md:text-2xl text-silver/80 mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 3, duration: 1 }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
           >
             ...most organizations waste their voice on meaningless metrics instead of meaningful transformation.
           </motion.p>
@@ -188,9 +185,9 @@ export default function WhyStoryMatters() {
           <motion.p 
             className="text-2xl md:text-4xl font-bold text-ancient-gold"
             style={{ textShadow: '0 0 10px rgba(212, 175, 55, 0.3)' }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4, duration: 1 }}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 3.5, duration: 1.2, ease: "easeOut" }}
           >
             The world is made of stories. Change the story, change reality.
           </motion.p>
@@ -235,10 +232,10 @@ export default function WhyStoryMatters() {
         <div className="max-w-4xl mx-auto">
           <motion.p 
             className="text-2xl md:text-3xl text-silver/90 text-center mb-12"
-            initial={{ opacity: 0.3 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
           >
             You feel the urgency but lack the story technology to create the response you need.
           </motion.p>
@@ -248,10 +245,10 @@ export default function WhyStoryMatters() {
               <motion.div
                 key={index}
                 className="flex items-start space-x-4"
-                initial={{ opacity: 0.3, y: 10 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 1, delay: index * 0.2 }}
+                transition={{ duration: 1.2, delay: index * 0.3, ease: "easeOut" }}
               >
                 <div className="w-2 h-2 bg-ancient-gold rounded-full mt-3 flex-shrink-0"></div>
                 <div className="relative">
