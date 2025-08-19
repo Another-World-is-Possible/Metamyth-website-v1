@@ -13,6 +13,8 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+  font-feature-settings: "liga" 0, "kern" 1;
+  text-rendering: optimizeLegibility;
 }
 
 @tailwind base;
@@ -84,6 +86,8 @@
 @layer base {
   * {
     @apply border-border;
+    text-decoration: none;
+    text-decoration-line: none;
   }
   
   html {
@@ -101,11 +105,25 @@
     font-family: 'Edensor', 'Alice', serif;
     font-weight: normal;
     letter-spacing: 0.02em;
+    text-decoration: none;
+    text-decoration-line: none;
+    text-underline-offset: unset;
+    -webkit-text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   
   /* Ensure font-edensor class uses Edensor font */
   .font-edensor {
     font-family: 'Edensor', 'Alice', serif !important;
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-underline-offset: unset !important;
+    -webkit-text-decoration: none !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
   }
 
   /* Scroll-triggered fade animations */
