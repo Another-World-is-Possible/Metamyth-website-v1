@@ -1,6 +1,6 @@
 # Overview
 
-This is a Next.js-style web application called "Another World is Possible" - a story-driven platform that helps purpose-driven visionaries discover and architect their authentic narratives. The application presents a "metamyth" system that transforms personal and organizational stories into functional tools for regenerative transformation. It features a mystical, fantasy-themed design with sections covering their methodology, quest timeline, stories, systems, and federation building approach.
+This is a Next.js-style web application called "Another World is Possible" - a story-driven platform that helps purpose-driven visionaries discover and architect their authentic narratives. The application presents a "metamyth" system that transforms personal and organizational stories into functional tools for regenerative transformation. It features a mystical, fantasy-themed design with immersive visual storytelling, custom atmospheric backgrounds (flame, earth, mountains, forest, campfire), and progressive zoom effects that create an adventure-like journey through the narrative sections.
 
 # User Preferences
 
@@ -40,7 +40,16 @@ Preferred communication style: Simple, everyday language.
 
 ## Design System
 - **Theme**: Dark fantasy aesthetic with custom color palette (forest-green, deep-black, ancient-gold, mystical-teal, crimson)
-- **Typography**: Custom font stack including Cinzel (serif) and Inter (sans-serif)
+- **Typography**: Custom font stack including Edensor (headers) and Alice (body) with proper font loading and fallbacks
+- **Visual Journey**: Immersive metamyth tiles with custom atmospheric backgrounds:
+  - Flickering flame animation for Call to Adventure
+  - Earth in space with burning effects for Quest intro
+  - Centered earth view for Quest details
+  - Mountain ranges for Vision section
+  - Forest landscape for Journey
+  - Campfire scene for Re-Quest finale
+- **Progressive Zoom**: Subtle scaling effects that create intimacy as story progresses
+- **Text Layouts**: Variable justification (left, right, center) matching content hierarchy
 - **Component Architecture**: Modular component system with consistent spacing and interaction patterns
 - **Responsive Design**: Mobile-first approach with Tailwind responsive utilities
 

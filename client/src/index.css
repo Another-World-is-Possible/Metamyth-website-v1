@@ -393,6 +393,65 @@
   }
 }
 
+/* Custom background animations */
+@keyframes flame-flicker {
+  0%, 100% { 
+    transform: scaleY(1) scaleX(1); 
+    opacity: 0.8;
+  }
+  25% { 
+    transform: scaleY(1.1) scaleX(0.95); 
+    opacity: 0.9;
+  }
+  50% { 
+    transform: scaleY(0.95) scaleX(1.05); 
+    opacity: 0.7;
+  }
+  75% { 
+    transform: scaleY(1.05) scaleX(0.9); 
+    opacity: 0.85;
+  }
+}
+
+@keyframes earth-glow {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(45, 175, 166, 0.4),
+                0 0 60px rgba(45, 175, 166, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(45, 175, 166, 0.6),
+                0 0 90px rgba(45, 175, 166, 0.3);
+  }
+}
+
+/* Custom utility classes */
+.flame-flicker {
+  animation: flame-flicker 2s ease-in-out infinite;
+}
+
+.earth-glow {
+  animation: earth-glow 4s ease-in-out infinite;
+}
+
+.bg-stars {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #d4af37, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #4fd1c7, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #d4af37, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Additional animation delays for staggered flame effects */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+
 
 
 .animate-burn {
