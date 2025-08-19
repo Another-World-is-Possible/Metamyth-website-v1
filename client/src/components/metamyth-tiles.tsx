@@ -7,7 +7,7 @@ const tiles = [
     title: "THE CALL TO ADVENTURE",
     quote: "We're living through the climax of the human story—all threads converging in crisis determining consciousness's fate on Earth.",
     description: "We are stuck in a broken story of extraction chasing meaningless metrics, burnt out, struggling to express why what we do matters, forgetting we write the story.",
-    bgType: "flame",
+    bgType: "burning-sun",
     animation: "burn",
     gradient: "from-forest-green to-deep-black",
     textAlign: "right",
@@ -41,7 +41,7 @@ const tiles = [
     title: "THE JOURNEY",
     quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.",
     description: "From individual story regeneration to organizational transformation to planetary coordination—one integrated system that scales from personal to cosmic.",
-    bgType: "forest",
+    bgType: "tall-forest",
     animation: "crash",
     gradient: "from-forest-green to-deep-black",
     textAlign: "center",
@@ -89,16 +89,16 @@ export default function MetamythTiles() {
 function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }) {
   const getBackgroundElement = (bgType: string) => {
     switch (bgType) {
-      case "flame":
-        return <FlameBackground />;
+      case "burning-sun":
+        return <BurningSunBackground />;
       case "earth-space":
         return <EarthInSpaceBackground />;
       case "earth-center":
         return <EarthCenterBackground />;
       case "mountains":
         return <MountainBackground />;
-      case "forest":
-        return <ForestBackground />;
+      case "tall-forest":
+        return <TallForestBackground />;
       case "campfire":
         return <CampfireBackground />;
       default:
@@ -151,36 +151,32 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
 }
 
 // Background Components
-function FlameBackground() {
+function BurningSunBackground() {
   return (
-    <div className="absolute inset-0 bg-deep-black">
-      {/* Main flame */}
-      <div className="absolute top-1/2 left-1/4 w-20 h-32 transform -translate-y-1/2">
-        {/* Flame core - larger, more organic shape */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-20 bg-gradient-to-t from-orange-600 via-orange-400 to-yellow-300 opacity-90"
+    <div className="absolute inset-0 bg-gradient-to-b from-orange-900 via-red-800 to-deep-black">
+      {/* Large burning sun */}
+      <div className="absolute top-1/4 left-1/4 w-48 h-48 transform -translate-x-1/2 -translate-y-1/2">
+        {/* Sun core */}
+        <div className="w-full h-full rounded-full animate-pulse"
              style={{
-               clipPath: 'polygon(45% 100%, 35% 90%, 25% 70%, 30% 50%, 20% 30%, 35% 20%, 50% 0%, 65% 20%, 80% 30%, 70% 50%, 75% 70%, 65% 90%, 55% 100%)',
-               animation: 'flameFlicker 1.5s ease-in-out infinite alternate'
+               background: 'radial-gradient(circle, #fef3c7 0%, #fb923c 30%, #dc2626 70%)',
+               boxShadow: '0 0 60px rgba(255, 165, 0, 0.8), 0 0 120px rgba(255, 69, 0, 0.6), 0 0 180px rgba(255, 0, 0, 0.4)'
              }} />
         
-        {/* Inner flame - brighter core */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-16 bg-gradient-to-t from-red-500 via-yellow-400 to-yellow-200 opacity-80"
-             style={{
-               clipPath: 'polygon(45% 100%, 35% 85%, 30% 60%, 25% 40%, 40% 25%, 50% 0%, 60% 25%, 75% 40%, 70% 60%, 65% 85%, 55% 100%)',
-               animation: 'flameFlicker 1.2s ease-in-out infinite alternate-reverse'
-             }} />
-        
-        {/* Flame highlights */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-12 bg-gradient-to-t from-transparent via-yellow-200 to-white opacity-60"
-             style={{
-               clipPath: 'polygon(40% 100%, 35% 80%, 30% 50%, 45% 30%, 50% 0%, 55% 30%, 70% 50%, 65% 80%, 60% 100%)',
-               animation: 'flameFlicker 0.8s ease-in-out infinite'
-             }} />
+        {/* Solar flares */}
+        <div className="absolute -top-8 left-1/2 w-4 h-16 bg-gradient-to-t from-orange-400 to-yellow-200 transform -translate-x-1/2 animate-pulse" />
+        <div className="absolute -bottom-8 left-1/2 w-4 h-16 bg-gradient-to-b from-orange-400 to-yellow-200 transform -translate-x-1/2 animate-pulse" />
+        <div className="absolute top-1/2 -left-8 w-16 h-4 bg-gradient-to-l from-orange-400 to-yellow-200 transform -translate-y-1/2 animate-pulse" />
+        <div className="absolute top-1/2 -right-8 w-16 h-4 bg-gradient-to-r from-orange-400 to-yellow-200 transform -translate-y-1/2 animate-pulse" />
       </div>
       
-      {/* Subtle sparks/embers */}
-      <div className="absolute top-1/3 left-1/3 w-1 h-1 bg-orange-400 rounded-full opacity-70 animate-ping" />
-      <div className="absolute top-2/5 left-1/5 w-1 h-1 bg-yellow-300 rounded-full opacity-60 animate-pulse" />
+      {/* Burning sky atmosphere */}
+      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-orange-500/20 to-red-600/30 animate-pulse" />
+      
+      {/* Floating embers */}
+      <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-orange-300 rounded-full opacity-80 animate-bounce" />
+      <div className="absolute top-2/3 left-1/3 w-1 h-1 bg-yellow-400 rounded-full opacity-70 animate-ping" />
+      <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-red-400 rounded-full opacity-60 animate-pulse" />
     </div>
   );
 }
@@ -230,36 +226,37 @@ function MountainBackground() {
   );
 }
 
-function ForestBackground() {
+function TallForestBackground() {
   return (
-    <div className="absolute inset-0 bg-gradient-to-b from-deep-black via-forest-green/20 to-forest-green/60">
-      {/* Dense forest silhouettes */}
-      <svg className="absolute bottom-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        {/* Background trees layer */}
-        <path d="M0,70 Q5,60 10,70 Q15,55 20,70 Q25,50 30,70 Q35,60 40,70 Q45,45 50,70 Q55,55 60,70 Q65,50 70,70 Q75,60 80,70 Q85,55 90,70 Q95,65 100,70 L100,100 L0,100 Z" 
-              fill="#1a332a" opacity="0.8" />
+    <div className="absolute inset-0 bg-gradient-to-b from-forest-green/30 via-forest-green/60 to-deep-black">
+      {/* Towering tree trunks */}
+      <div className="absolute inset-0">
+        {/* Massive tree trunk - left */}
+        <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-amber-900 via-amber-800 to-amber-700 opacity-90" />
+        <div className="absolute left-16 top-0 w-4 h-full bg-amber-900/40" />
         
-        {/* Mid-layer trees */}
-        <path d="M0,80 Q8,65 15,80 Q22,60 30,80 Q38,65 45,80 Q52,55 60,80 Q68,70 75,80 Q82,60 90,80 Q95,75 100,80 L100,100 L0,100 Z" 
-              fill="#2a4d3a" opacity="0.9" />
+        {/* Massive tree trunk - right */}
+        <div className="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-amber-900 via-amber-800 to-amber-700 opacity-85" />
+        <div className="absolute right-20 top-0 w-6 h-full bg-amber-900/50" />
         
-        {/* Foreground trees */}
-        <path d="M0,85 Q10,75 20,85 Q30,70 40,85 Q50,75 60,85 Q70,70 80,85 Q90,80 100,85 L100,100 L0,100 Z" 
-              fill="#1a4a2e" />
+        {/* Central tall tree */}
+        <div className="absolute left-1/2 top-0 w-16 h-full bg-gradient-to-r from-amber-800 via-amber-700 to-amber-800 transform -translate-x-1/2 opacity-70" />
         
-        {/* Individual tree trunks */}
-        <rect x="15" y="80" width="2" height="20" fill="#3d2818" />
-        <rect x="35" y="75" width="3" height="25" fill="#4a3020" />
-        <rect x="65" y="78" width="2.5" height="22" fill="#3d2818" />
-        <rect x="85" y="82" width="2" height="18" fill="#4a3020" />
-      </svg>
+        {/* Additional distant trees */}
+        <div className="absolute left-1/4 top-0 w-12 h-full bg-amber-900/60" />
+        <div className="absolute right-1/3 top-0 w-10 h-full bg-amber-800/50" />
+      </div>
       
-      {/* Atmospheric fog */}
-      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-forest-green/10 to-transparent opacity-60" />
+      {/* Forest canopy above - barely visible */}
+      <div className="absolute top-0 left-0 w-full h-1/4 bg-gradient-to-b from-forest-green to-transparent opacity-80" />
       
-      {/* Subtle light filtering through trees */}
-      <div className="absolute top-1/4 left-1/3 w-16 h-32 bg-gradient-to-b from-ancient-gold/20 to-transparent transform rotate-12 opacity-30" />
-      <div className="absolute top-1/3 right-1/4 w-12 h-24 bg-gradient-to-b from-mystical-teal/15 to-transparent transform -rotate-6 opacity-25" />
+      {/* Dappled sunlight filtering down */}
+      <div className="absolute top-1/4 left-1/3 w-8 h-64 bg-gradient-to-b from-ancient-gold/30 to-transparent transform rotate-12 opacity-60" />
+      <div className="absolute top-1/3 right-1/4 w-6 h-48 bg-gradient-to-b from-ancient-gold/20 to-transparent transform -rotate-6 opacity-40" />
+      <div className="absolute top-1/2 left-2/3 w-4 h-32 bg-gradient-to-b from-mystical-teal/15 to-transparent opacity-30" />
+      
+      {/* Forest floor mist */}
+      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-forest-green/40 to-transparent opacity-70" />
     </div>
   );
 }

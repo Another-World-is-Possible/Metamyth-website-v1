@@ -102,21 +102,21 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Edensor', 'Cinzel', 'Times New Roman', serif !important;
-    font-weight: normal;
+    font-family: 'Edensor', serif !important;
+    font-weight: normal !important;
     letter-spacing: 0.02em;
-    text-decoration: none;
-    text-decoration-line: none;
-    text-underline-offset: unset;
-    -webkit-text-decoration: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-underline-offset: unset !important;
+    -webkit-text-decoration: none !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
   }
   
   /* Ensure font-edensor class uses Edensor font */
   .font-edensor {
-    font-family: 'Edensor', 'Cinzel', 'Times New Roman', serif !important;
+    font-family: 'Edensor', serif !important;
     font-weight: normal !important;
     text-decoration: none !important;
     text-decoration-line: none !important;
@@ -158,6 +158,11 @@
     50% { transform: scale(0.98) rotate(-0.5deg); opacity: 0.95; }
     75% { transform: scale(1.02) rotate(0.8deg); opacity: 0.85; }
     100% { transform: scale(1) rotate(-0.3deg); opacity: 0.9; }
+  }
+
+  /* Add radial gradient utility */
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
   }
   
   /* Enhanced fade for sections */
