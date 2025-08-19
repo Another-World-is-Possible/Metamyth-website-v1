@@ -90,6 +90,17 @@
     text-decoration-line: none;
   }
   
+  /* Remove square text selection, keep only glow */
+  ::selection {
+    background: transparent;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4);
+  }
+  
+  ::-moz-selection {
+    background: transparent;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4);
+  }
+  
   html {
     scroll-behavior: smooth;
   }
