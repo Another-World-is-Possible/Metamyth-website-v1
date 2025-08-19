@@ -173,14 +173,19 @@ export default function TheQuest() {
           THE QUEST
         </motion.h2>
         
-        <motion.p
-          className="text-center text-silver/80 text-xl mb-16 max-w-3xl mx-auto"
+        <motion.div
+          className="text-center text-silver/80 text-xl mb-16 max-w-4xl mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          Navigate the sacred path through three horizons of transformation
-        </motion.p>
+          <p className="text-2xl italic text-ancient-gold mb-6">
+            "Story is the oldest technology on Earth. The original operating system that turns vision into reality."
+          </p>
+          <p className="text-lg">
+            We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real. Your story becomes the foundation for everything that follows.
+          </p>
+        </motion.div>
 
         {/* Interactive Mountain Quest Timeline */}
         <motion.div

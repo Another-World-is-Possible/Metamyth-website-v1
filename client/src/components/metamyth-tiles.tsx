@@ -5,8 +5,8 @@ const tiles = [
   {
     id: 1,
     title: "THE CALL TO ADVENTURE",
-    quote: "All the world's suffering flows from a single source—a story we forgot we wrote.",
-    description: "What created this reality can recreate it. The species that invented every system destroying the world is the same species capable of inventing every system that could heal it.",
+    quote: "We're living through the climax of the human story—all threads converging in crisis determining consciousness's fate on Earth.",
+    description: "We are stuck in a broken story of extraction chasing meaningless metrics, burnt out, struggling to express why what we do matters, forgetting we write the story.",
     bgImage: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080",
     animation: "burn",
     gradient: "from-forest-green to-deep-black"
@@ -14,8 +14,8 @@ const tiles = [
   {
     id: 2,
     title: "THE QUEST",
-    quote: "We wield the most ancient technology powered by modern magic: Write your life, play it like a video game, turn it into a movie to attract people into your quest.",
-    description: "Reality architecture using humanity's most powerful technology to transform purpose-driven visionaries into planetary authorities.",
+    quote: "Story is the oldest technology on Earth. The original operating system that turns vision into reality.",
+    description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real. Your story becomes the foundation for everything that follows.",
     bgImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080",
     animation: "thread",
     gradient: "from-deep-black to-dark-wine"
@@ -42,7 +42,7 @@ const tiles = [
     id: 5,
     title: "THE RE-QUEST",
     quote: "Calling the next generation of storytellers ready to stop being characters in someone else's extraction story and start authoring the regenerative reality your heart knows is possible.",
-    description: "The metamyth awaits your authorship. The infinite kindred quest calls you home to your cosmic work.",
+    description: "The time for waiting is over. The world needs your story now. Will you answer the call?",
     bgImage: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080",
     animation: "flicker",
     gradient: "from-deep-black to-forest-green"
