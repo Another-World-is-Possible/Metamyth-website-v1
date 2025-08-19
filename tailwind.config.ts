@@ -60,10 +60,10 @@ export default {
         },
       },
       fontFamily: {
-        edensor: ["Cinzel", "serif"],
-        alice: ["Inter", "sans-serif"],
-        sans: ["Inter", "sans-serif"],
-        serif: ["Cinzel", "serif"],
+        edensor: ["Edensor", "serif"],
+        alice: ["Alice", "serif"],
+        sans: ["Alice", "serif"],
+        serif: ["Edensor", "serif"],
       },
       animation: {
         "spin-slow": "spin-slow 8s linear infinite",
