@@ -9,36 +9,36 @@ export default function HeroSection() {
         <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
           <motion.h1 
             className="font-edensor text-5xl md:text-7xl font-bold text-gradient-gold mb-8"
-            initial={{ opacity: 0.2 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
             The World is Made of Stories.
           </motion.h1>
           
           <motion.h2 
             className="font-edensor text-3xl md:text-4xl text-ancient-gold mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
           >
             Take Back Your Story to Change the World.
           </motion.h2>
           
           <motion.p 
             className="text-xl md:text-2xl text-silver/90 mb-12 leading-relaxed max-w-4xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.5, duration: 1.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
           >
             We wield the most ancient technology powered by modern magic: Write your reality, play it like the ultimate game, film it into existence to attract people into your quest.
           </motion.p>
           
           <motion.div 
             className="flex flex-col md:flex-row gap-6 justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4, duration: 1.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.8, ease: "easeOut" }}
           >
             <Button 
               className="bg-ancient-gold text-deep-black hover:bg-ancient-gold/80 font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg transform hover:-translate-y-1"
