@@ -7,7 +7,7 @@ export default function CallToAction() {
     <section className="bg-forest-green py-20 border-t border-mystical-teal/30">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-12"
+          className="font-edensor text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -15,6 +15,16 @@ export default function CallToAction() {
         >
           THE INVITATION
         </motion.h2>
+        
+        <motion.p
+          className="text-2xl md:text-3xl text-mystical-teal text-center mb-12 font-light italic"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          the future is one story away
+        </motion.p>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <motion.div
