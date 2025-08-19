@@ -148,11 +148,11 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
             {tile.title}
           </h2>
           
-          <blockquote className="scroll-fade-in text-2xl md:text-3xl font-light text-silver/90 mb-8 italic">
+          <blockquote className="scroll-fade-in font-alice text-2xl md:text-3xl font-light text-silver/90 mb-8 italic">
             "{tile.quote}"
           </blockquote>
           
-          <p className="scroll-fade-in text-xl md:text-2xl text-silver leading-relaxed">
+          <p className="scroll-fade-in font-alice text-xl md:text-2xl text-silver leading-relaxed">
             {tile.description}
           </p>
         </div>

@@ -102,7 +102,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Edensor', 'Alice', serif;
+    font-family: 'Edensor', 'Cinzel', 'Times New Roman', serif !important;
     font-weight: normal;
     letter-spacing: 0.02em;
     text-decoration: none;
@@ -116,7 +116,8 @@
   
   /* Ensure font-edensor class uses Edensor font */
   .font-edensor {
-    font-family: 'Edensor', 'Alice', serif !important;
+    font-family: 'Edensor', 'Cinzel', 'Times New Roman', serif !important;
+    font-weight: normal !important;
     text-decoration: none !important;
     text-decoration-line: none !important;
     text-underline-offset: unset !important;
@@ -124,6 +125,11 @@
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
     text-rendering: optimizeLegibility !important;
+  }
+  
+  /* Ensure Alice font for body text */
+  .font-alice, p, blockquote {
+    font-family: 'Alice', 'Georgia', serif !important;
   }
 
   /* Scroll-triggered fade animations */

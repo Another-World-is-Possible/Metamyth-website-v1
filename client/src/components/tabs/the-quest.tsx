@@ -179,10 +179,10 @@ export default function TheQuest() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <p className="text-2xl italic text-ancient-gold mb-6">
+          <p className="font-alice text-2xl italic text-ancient-gold mb-6">
             "Story is the oldest technology on Earth. The original operating system that turns vision into reality."
           </p>
-          <p className="text-lg">
+          <p className="font-alice text-lg">
             We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real. Your story becomes the foundation for everything that follows.
           </p>
         </motion.div>
