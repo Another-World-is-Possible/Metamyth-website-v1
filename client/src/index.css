@@ -277,6 +277,21 @@
     animation: pulse-glow 2s ease-in-out infinite;
   }
 
+  /* Soft navigation glows with rounded edges */
+  .nav-hover-glow:hover {
+    background: hsla(45, 85%, 55%, 0.1);
+    box-shadow: 0 0 20px hsla(45, 85%, 55%, 0.4);
+    border-radius: 8px;
+  }
+
+  .nav-active-glow {
+    background: hsla(45, 85%, 55%, 0.15);
+    box-shadow: 0 0 25px hsla(45, 85%, 55%, 0.6),
+                0 0 50px hsla(45, 85%, 55%, 0.3);
+    border-radius: 8px;
+    animation: soft-pulse 3s ease-in-out infinite;
+  }
+
   .font-edensor {
     font-family: var(--font-edensor);
   }
@@ -362,6 +377,19 @@
     box-shadow: 0 0 50px rgba(186, 135, 49, 0.8),
                 0 0 100px rgba(186, 135, 49, 0.5),
                 0 0 150px rgba(186, 135, 49, 0.2);
+  }
+}
+
+@keyframes soft-pulse {
+  0%, 100% {
+    box-shadow: 0 0 25px hsla(45, 85%, 55%, 0.6),
+                0 0 50px hsla(45, 85%, 55%, 0.3);
+    background: hsla(45, 85%, 55%, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 35px hsla(45, 85%, 55%, 0.8),
+                0 0 70px hsla(45, 85%, 55%, 0.4);
+    background: hsla(45, 85%, 55%, 0.2);
   }
 }
 

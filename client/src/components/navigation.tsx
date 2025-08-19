@@ -43,8 +43,8 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-silver hover:text-ancient-gold transition-colors duration-300 ${
-                  activeTab === item.id ? 'text-ancient-gold enhanced-glow' : 'hover:mystical-glow'
+                className={`px-4 py-2 rounded-lg text-silver hover:text-ancient-gold transition-all duration-300 ${
+                  activeTab === item.id ? 'text-ancient-gold nav-active-glow' : 'hover:nav-hover-glow'
                 }`}
               >
                 {item.label}
