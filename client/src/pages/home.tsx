@@ -14,21 +14,25 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
   useEffect(() => {
-    // Intersection Observer for scroll animations
+    // Enhanced Intersection Observer for immersive scroll animations
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          // Add visible class with slight delay for more natural feel
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 50);
         }
       });
     }, observerOptions);
 
-    const scrollElements = document.querySelectorAll('.scroll-fade-in');
+    // Observe all scroll-triggered elements
+    const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in');
     scrollElements.forEach(el => observer.observe(el));
 
     return () => {
@@ -54,8 +58,12 @@ export default function Home() {
         return (
           <>
             <HeroSection />
-            <MetamythTiles />
-            <CallToAction />
+            <div className="section-fade-in">
+              <MetamythTiles />
+            </div>
+            <div className="section-fade-in">
+              <CallToAction />
+            </div>
           </>
         );
     }

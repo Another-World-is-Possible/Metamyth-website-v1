@@ -1,5 +1,3 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import ScrollThread from "@/components/scroll-thread";
 
@@ -78,63 +76,27 @@ export default function MetamythTiles() {
 }
 
 function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.3, once: true });
-
-  const getAnimationVariants = () => {
-    // Standardized fade-in animation for all tiles
-    return {
-      initial: { opacity: 0, y: 30 },
-      animate: { opacity: 1, y: 0 }
-    };
-  };
-
-  const variants = getAnimationVariants();
-
   return (
-    <motion.div 
-      ref={ref}
-      className={`min-h-screen bg-gradient-to-br ${tile.gradient} flex items-center justify-center relative overflow-hidden`}
-      initial={variants.initial}
-      animate={isInView ? variants.animate : variants.initial}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
+    <div className={`scroll-fade-in min-h-screen bg-gradient-to-br ${tile.gradient} flex items-center justify-center relative overflow-hidden`}>
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-30"
         style={{ backgroundImage: `url(${tile.bgImage})` }}
       />
       
-
-      
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-        <motion.h2 
-          className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold mb-8"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        <h2 className={`scroll-fade-in font-edensor text-4xl md:text-6xl font-bold ${titleColors[index]} mb-8`}>
           {tile.title}
-        </motion.h2>
+        </h2>
         
-        <motion.blockquote 
-          className="text-2xl md:text-3xl font-light text-silver/90 mb-8 italic"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
+        <blockquote className="scroll-fade-in text-2xl md:text-3xl font-light text-silver/90 mb-8 italic">
           "{tile.quote}"
-        </motion.blockquote>
+        </blockquote>
         
-        <motion.p 
-          className="text-xl md:text-2xl text-silver leading-relaxed"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
+        <p className="scroll-fade-in text-xl md:text-2xl text-silver leading-relaxed">
           {tile.description}
-        </motion.p>
+        </p>
       </div>
-    </motion.div>
+    </div>
   );
 }

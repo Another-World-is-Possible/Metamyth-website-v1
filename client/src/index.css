@@ -107,6 +107,37 @@
   .font-edensor {
     font-family: 'Edensor', 'Alice', serif !important;
   }
+
+  /* Scroll-triggered fade animations */
+  .scroll-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .scroll-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Staggered reveal for multiple elements */
+  .scroll-fade-in:nth-child(1) { transition-delay: 0ms; }
+  .scroll-fade-in:nth-child(2) { transition-delay: 100ms; }
+  .scroll-fade-in:nth-child(3) { transition-delay: 200ms; }
+  .scroll-fade-in:nth-child(4) { transition-delay: 300ms; }
+  .scroll-fade-in:nth-child(5) { transition-delay: 400ms; }
+  
+  /* Enhanced fade for sections */
+  .section-fade-in {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  
+  .section-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @layer utilities {
