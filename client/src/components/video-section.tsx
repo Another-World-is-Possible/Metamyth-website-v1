@@ -17,7 +17,11 @@ export default function VideoSection() {
         </motion.h2>
         
         <motion.p 
-          className="text-lg text-silver/80 text-center mb-12 max-w-4xl mx-auto font-alice leading-relaxed"
+          className="text-lg text-center mb-12 max-w-4xl mx-auto font-alice leading-relaxed"
+          style={{
+            color: '#000000',
+            textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.5), 0 0 24px rgba(212, 175, 55, 0.3)'
+          }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
