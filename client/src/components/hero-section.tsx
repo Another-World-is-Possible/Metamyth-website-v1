@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import ScrollThread from "@/components/scroll-thread";
+
 import heroBackground from "@assets/_f20qmpu9dartjp9dbfcm_0_1755891749225.png";
 
 export default function HeroSection() {
@@ -59,11 +59,6 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </section>
-      
-      {/* Golden thread divider after hero section */}
-      <div className="absolute bottom-0 left-0 w-full h-px pointer-events-none z-50">
-        <ScrollThread sectionIndex={0} />
-      </div>
     </div>
   );
 }
