@@ -63,8 +63,21 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                 className={`px-4 py-2 rounded-lg text-silver hover:text-ancient-gold transition-all duration-300 ${
                   activeTab === item.id ? 'text-ancient-gold nav-active-glow' : 'hover:nav-hover-glow'
                 }`}
+                style={{ 
+                  cursor: 'inherit',
+                  zIndex: 'auto',
+                  position: 'relative'
+                }}
               >
-                <span className="select-none font-game">
+                <span 
+                  className="select-none font-game"
+                  style={{ 
+                    cursor: 'inherit',
+                    pointerEvents: 'none',
+                    position: 'relative',
+                    zIndex: 1
+                  }}
+                >
                   {item.label}
                 </span>
               </button>
