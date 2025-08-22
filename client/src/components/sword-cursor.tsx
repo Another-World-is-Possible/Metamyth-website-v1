@@ -116,13 +116,18 @@ export default function SwordCursor() {
         const style = document.getElementById('cursor-animation-style');
         if (style) {
           style.textContent = `
-            /* Absolute universal override - nothing should escape this */
-            html, html *, body, body *, *, *:before, *:after,
+            /* Direct cursor URL assignment - breaks inheritance chain */
+            html, body {
+              cursor: ${cursorUrl} !important;
+            }
+            
+            /* All elements inherit from html/body cursor */
+            *, *:before, *:after,
             div, span, button, a, nav, header, main, section, article, aside,
             h1, h2, h3, h4, h5, h6, p, ul, li, img, svg, path, g, rect, circle,
             form, input, textarea, select, option, label, fieldset, legend,
             .cursor-auto, .cursor-default, .cursor-pointer, .cursor-text {
-              cursor: ${cursorUrl} !important;
+              cursor: inherit !important;
             }
             
             /* Specifically target all header-related elements */

@@ -63,8 +63,8 @@ export default {
         edensor: ["Edensor", "Alice", "serif"],
         alice: ["Alice", "serif"],
         angle: ["AngleFairy2024", "serif"],
-        game: ["GameReality2024", "serif"],
-        sans: ["GameReality2024", "serif"],
+        game: ["Mugient2024", "serif"],
+        sans: ["Mugient2024", "serif"],
         serif: ["AngleFairy2024", "serif"],
       },
       animation: {

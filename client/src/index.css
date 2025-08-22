@@ -10,8 +10,8 @@
 }
 
 @font-face {
-  font-family: 'GameReality2024';
-  src: url('/attached_assets/Game%20%26%20Reality_1755896347899.ttf?v=2024') format('truetype');
+  font-family: 'Mugient2024';
+  src: url('/attached_assets/Mugient_1755896961492.ttf?v=2024') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -23,7 +23,7 @@
 }
 
 .font-game {
-  font-family: 'GameReality2024', serif !important;
+  font-family: 'Mugient2024', serif !important;
 }
 
 @tailwind base;
@@ -118,7 +118,7 @@
 
   body {
     @apply bg-deep-black text-silver antialiased overflow-x-hidden;
-    font-family: 'GameReality2024', serif;
+    font-family: 'Mugient2024', serif;
     font-weight: normal;
     /* Cursor will be set by SwordCursor component */
   }
@@ -134,11 +134,21 @@
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
     text-rendering: optimizeLegibility !important;
+    /* Add glowing effect to all titles */
+    text-shadow: 
+      0 0 10px rgba(212, 175, 55, 0.6),
+      0 0 20px rgba(212, 175, 55, 0.4),
+      0 0 30px rgba(212, 175, 55, 0.2);
   }
   
-  /* Ensure font-edensor class uses new fonts */
+  /* Ensure font-edensor class uses new fonts with enhanced glow */
   .font-edensor {
     font-family: 'AngleFairy2024', serif !important;
+    text-shadow: 
+      0 0 12px rgba(212, 175, 55, 0.8),
+      0 0 24px rgba(212, 175, 55, 0.5),
+      0 0 36px rgba(212, 175, 55, 0.3),
+      0 0 48px rgba(212, 175, 55, 0.1);
     font-weight: normal !important;
     text-decoration: none !important;
     text-decoration-line: none !important;
@@ -149,9 +159,9 @@
     text-rendering: optimizeLegibility !important;
   }
   
-  /* Ensure Game font for body text */
+  /* Ensure Mugient font for body text */
   .font-alice, p, blockquote {
-    font-family: 'GameReality2024', 'Georgia', serif !important;
+    font-family: 'Mugient2024', 'Georgia', serif !important;
   }
 
   /* Scroll-triggered fade animations */
@@ -381,6 +391,31 @@ input[type="reset"] {
 
   .font-edensor {
     font-family: var(--font-edensor);
+  }
+
+  /* Enhanced title glow classes for different intensities */
+  .title-glow {
+    text-shadow: 
+      0 0 15px rgba(212, 175, 55, 0.9),
+      0 0 30px rgba(212, 175, 55, 0.6),
+      0 0 45px rgba(212, 175, 55, 0.3),
+      0 0 60px rgba(212, 175, 55, 0.1);
+  }
+  
+  .subtitle-glow {
+    text-shadow: 
+      0 0 10px rgba(212, 175, 55, 0.7),
+      0 0 20px rgba(212, 175, 55, 0.4),
+      0 0 30px rgba(212, 175, 55, 0.2);
+  }
+
+  .hero-title-glow {
+    text-shadow: 
+      0 0 20px rgba(212, 175, 55, 1.0),
+      0 0 40px rgba(212, 175, 55, 0.8),
+      0 0 60px rgba(212, 175, 55, 0.5),
+      0 0 80px rgba(212, 175, 55, 0.3),
+      0 0 100px rgba(212, 175, 55, 0.1);
   }
   
   .font-alice {

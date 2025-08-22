@@ -179,18 +179,7 @@ export default function OurMetamyth() {
           </Accordion>
         </motion.div>
 
-        <motion.div 
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <p className="text-xl text-silver mb-6">Ready to create your own metamyth?</p>
-          <Button className="bg-ancient-gold text-deep-black font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg">
-            PURCHASE THE METAMYTH GUIDE - $497
-          </Button>
-          <p className="text-sm text-silver/60 mt-4">Complete system for regenerating your authentic story</p>
-        </motion.div>
+
       </div>
     </div>
   );

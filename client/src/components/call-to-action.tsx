@@ -22,7 +22,7 @@ export default function CallToAction() {
                 </h3>
                 <p className="font-game text-silver mb-6">Transform your organization through story</p>
                 <Button className="bg-ancient-gold text-deep-black font-game font-bold py-3 px-8 rounded-lg hover:bg-ancient-gold/80 transition-colors duration-300">
-                  WORK WITH US
+                  <span className="title-glow">WORK WITH US</span>
                 </Button>
               </CardContent>
             </Card>
@@ -36,7 +36,7 @@ export default function CallToAction() {
                 </h3>
                 <p className="font-game text-silver mb-6">Build the new world with us</p>
                 <Button className="bg-mystical-teal text-deep-black font-game font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-colors duration-300">
-                  BECOME A STORYTELLER
+                  <span className="title-glow">BECOME A STORYTELLER</span>
                 </Button>
               </CardContent>
             </Card>
