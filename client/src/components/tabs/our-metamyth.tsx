@@ -125,7 +125,11 @@ export default function OurMetamyth() {
                   <div className="space-y-6">
                     {item.isNarrative ? (
                       <motion.p 
-                        className="font-game text-silver text-lg leading-relaxed"
+                        className="font-game text-lg leading-relaxed"
+                        style={{
+                          color: '#000000',
+                          textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.5), 0 0 24px rgba(212, 175, 55, 0.3)'
+                        }}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
@@ -159,7 +163,11 @@ export default function OurMetamyth() {
                             {item.items.map((text, itemIndex) => (
                               <motion.p 
                                 key={itemIndex}
-                                className="font-game text-silver flex items-start"
+                                className="font-game flex items-start"
+                                style={{
+                                  color: '#000000',
+                                  textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.5), 0 0 24px rgba(212, 175, 55, 0.3)'
+                                }}
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.3, delay: itemIndex * 0.1 + 0.2 }}
