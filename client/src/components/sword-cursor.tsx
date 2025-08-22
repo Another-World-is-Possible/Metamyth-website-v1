@@ -7,16 +7,16 @@ export default function SwordCursor() {
     let isAnimating = false;
     let animationDirection = 1; // 1 for hover, -1 for unhover
     let animationId: ReturnType<typeof setTimeout> | null = null;
-    const totalFrames = 16; // Frames for smoother 1.2-second animation
-    const animationDuration = 1200; // 1.2 seconds
+    const totalFrames = 12; // Frames for smoother 0.9-second animation
+    const animationDuration = 900; // 0.9 seconds
     const frameInterval = animationDuration / totalFrames;
     
     const createSwordCursor = (baseColor: string, rotation: number, size: number, glowStrength: number = 0) => {
       return new Promise<string>((resolve, reject) => {
         const img = new Image();
         img.onload = () => {
-          // Use larger canvas to prevent clipping during rotation
-          const canvasSize = size + 20;
+          // Use consistent canvas size for all frames to prevent jumping
+          const fixedCanvasSize = 68; // Fixed size that accommodates rotation + glow
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
           
@@ -25,15 +25,15 @@ export default function SwordCursor() {
             return;
           }
           
-          canvas.width = canvasSize;
-          canvas.height = canvasSize;
+          canvas.width = fixedCanvasSize;
+          canvas.height = fixedCanvasSize;
           
           // Clear canvas
-          ctx.clearRect(0, 0, canvasSize, canvasSize);
+          ctx.clearRect(0, 0, fixedCanvasSize, fixedCanvasSize);
           
           // Save context and apply rotation from center
           ctx.save();
-          ctx.translate(canvasSize / 2, canvasSize / 2);
+          ctx.translate(fixedCanvasSize / 2, fixedCanvasSize / 2);
           ctx.rotate((rotation * Math.PI) / 180);
           ctx.translate(-size / 2, -size / 2);
           
@@ -47,17 +47,17 @@ export default function SwordCursor() {
           
           ctx.restore();
           
-          // Add enhanced glow effect based on glow strength (0 to 1)
+          // Always create final canvas with glow (even if glow strength is 0)
+          const finalCanvas = document.createElement('canvas');
+          const finalCtx = finalCanvas.getContext('2d')!;
+          finalCanvas.width = fixedCanvasSize;
+          finalCanvas.height = fixedCanvasSize;
+          
+          // Create glow effect based on glow strength (0 to 1)
+          finalCtx.save();
+          
+          // Multiple glow layers with intensity based on glowStrength
           if (glowStrength > 0) {
-            const glowCanvas = document.createElement('canvas');
-            const glowCtx = glowCanvas.getContext('2d')!;
-            glowCanvas.width = canvasSize + 20;
-            glowCanvas.height = canvasSize + 20;
-            
-            // Create enhanced white glow around the golden sword
-            glowCtx.save();
-            
-            // Multiple glow layers with intensity based on glowStrength
             const glowLayers = [
               { color: '#ffffff', blur: 12, opacity: 1.0 * glowStrength },
               { color: '#ffffff', blur: 18, opacity: 0.8 * glowStrength },
@@ -66,26 +66,24 @@ export default function SwordCursor() {
             ];
             
             glowLayers.forEach(layer => {
-              glowCtx.shadowColor = layer.color;
-              glowCtx.shadowBlur = layer.blur;
-              glowCtx.shadowOffsetX = 0;
-              glowCtx.shadowOffsetY = 0;
-              glowCtx.globalAlpha = layer.opacity;
-              glowCtx.drawImage(canvas, 10, 10);
+              finalCtx.shadowColor = layer.color;
+              finalCtx.shadowBlur = layer.blur;
+              finalCtx.shadowOffsetX = 0;
+              finalCtx.shadowOffsetY = 0;
+              finalCtx.globalAlpha = layer.opacity;
+              finalCtx.drawImage(canvas, 0, 0);
             });
-            
-            // Draw the golden sword on top for crisp edges
-            glowCtx.globalCompositeOperation = 'source-over';
-            glowCtx.shadowBlur = 0;
-            glowCtx.globalAlpha = 1;
-            glowCtx.drawImage(canvas, 10, 10);
-            
-            glowCtx.restore();
-            
-            resolve(glowCanvas.toDataURL('image/png'));
-          } else {
-            resolve(canvas.toDataURL('image/png'));
           }
+          
+          // Draw the golden sword on top for crisp edges
+          finalCtx.globalCompositeOperation = 'source-over';
+          finalCtx.shadowBlur = 0;
+          finalCtx.globalAlpha = 1;
+          finalCtx.drawImage(canvas, 0, 0);
+          
+          finalCtx.restore();
+          
+          resolve(finalCanvas.toDataURL('image/png'));
         };
         
         img.onerror = () => reject(new Error('Failed to load sword image'));
@@ -107,10 +105,9 @@ export default function SwordCursor() {
     };
 
     const updateCursor = (frameIndex: number) => {
-      // Use consistent hotspot that works for all rotation states
-      // Center the hotspot to prevent visual jumping
-      const hotspotX = 24; // Center of 48px canvas
-      const hotspotY = 24; // Center of 48px canvas
+      // Use consistent hotspot at exact center of fixed canvas
+      const hotspotX = 34; // Center of 68px fixed canvas
+      const hotspotY = 34; // Center of 68px fixed canvas
       
       if (animationFrames[frameIndex]) {
         document.body.style.cursor = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, auto`;
