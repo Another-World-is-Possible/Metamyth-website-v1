@@ -278,8 +278,7 @@ export default function WhyStoryMatters() {
       <section 
         ref={sectionRefs[3]}
         data-section="transformation"
-        className="min-h-screen flex items-center justify-center px-4"
-        style={{ background: 'linear-gradient(180deg, #1a1a1a 0%, #2d2520 100%)' }}
+        className="min-h-screen flex items-center justify-center px-4 bg-deep-black"
       >
         <div className="max-w-4xl mx-auto">
           <motion.h2 
