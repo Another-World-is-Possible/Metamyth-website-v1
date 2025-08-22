@@ -110,7 +110,7 @@
     font-family: 'Alice', serif;
     font-weight: normal;
     /* Default cursor: Rotated gold sword */
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cimage href='/attached_assets/sword-01.png' width='32' height='32' transform='rotate(-45 16 16)' style='filter: brightness(0) saturate(100%25) invert(85%25) sepia(68%25) saturate(634%25) hue-rotate(7deg) brightness(102%25) contrast(102%25);'/%3E%3C/svg%3E") 16 16, auto;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cg transform='rotate(-45 12 12)'%3E%3C!-- Sword blade --%3E%3Cpath d='M12 2 L12 16' stroke='%23d4af37' stroke-width='2' stroke-linecap='round'/%3E%3C!-- Crossguard --%3E%3Cpath d='M8 15 L16 15' stroke='%23d4af37' stroke-width='2' stroke-linecap='round'/%3E%3C!-- Handle --%3E%3Cpath d='M12 16 L12 20' stroke='%23c49c2a' stroke-width='2.5'/%3E%3C!-- Pommel --%3E%3Ccircle cx='12' cy='21' r='1.5' fill='%23d4af37'/%3E%3C/g%3E%3C/svg%3E") 12 12, auto;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -191,9 +191,9 @@
 }
 
 @layer utilities {
-  /* Hover effect for interactive elements - layered gold base with white glow, no rotation */
+  /* Hover effect for interactive elements - upright glowing sword */
   button:hover, a:hover, [role="button"]:hover, .cursor-pointer:hover {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='glow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3C!-- Gold base sword --%3E%3Cimage href='/attached_assets/sword-01.png' width='32' height='32' style='filter: brightness(0) saturate(100%25) invert(85%25) sepia(68%25) saturate(634%25) hue-rotate(7deg) brightness(102%25) contrast(102%25);'/%3E%3C!-- White glowing overlay --%3E%3Cimage href='/attached_assets/sword-01.png' width='32' height='32' style='filter: brightness(0) saturate(100%25) invert(100%25) brightness(2);' filter='glow' opacity='0.6'/%3E%3C/svg%3E") 16 16, pointer;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none'%3E%3Cdefs%3E%3Cfilter id='glow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3C!-- Gold base sword (no rotation) --%3E%3Cpath d='M14 2 L14 18' stroke='%23d4af37' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M9 17 L19 17' stroke='%23d4af37' stroke-width='2.5' stroke-linecap='round'/%3E%3Cpath d='M14 18 L14 23' stroke='%23c49c2a' stroke-width='3'/%3E%3Ccircle cx='14' cy='24.5' r='2' fill='%23d4af37'/%3E%3C!-- White glow overlay --%3E%3Cpath d='M14 2 L14 18' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' filter='glow' opacity='0.7'/%3E%3Cpath d='M9 17 L19 17' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' filter='glow' opacity='0.7'/%3E%3Cpath d='M14 18 L14 23' stroke='%23ffffff' stroke-width='2' filter='glow' opacity='0.7'/%3E%3Ccircle cx='14' cy='24.5' r='1.5' fill='%23ffffff' filter='glow' opacity='0.7'/%3E%3C/svg%3E") 14 14, pointer;
   }
   .bg-deep-black {
     background-color: var(--deep-black);
