@@ -39,6 +39,21 @@ app.use((req, res, next) => {
 (async () => {
   const server = await registerRoutes(app);
 
+  // Serve attached assets with proper MIME types BEFORE Vite middleware
+  app.use('/attached_assets', express.static('attached_assets', {
+    setHeaders: (res, path) => {
+      if (path.endsWith('.ttf')) {
+        res.setHeader('Content-Type', 'font/ttf');
+      } else if (path.endsWith('.otf')) {
+        res.setHeader('Content-Type', 'font/otf');
+      } else if (path.endsWith('.woff')) {
+        res.setHeader('Content-Type', 'font/woff');
+      } else if (path.endsWith('.woff2')) {
+        res.setHeader('Content-Type', 'font/woff2');
+      }
+    }
+  }));
+
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";

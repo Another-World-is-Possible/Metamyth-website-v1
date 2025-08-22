@@ -118,13 +118,13 @@
 
   body {
     @apply bg-deep-black text-silver antialiased overflow-x-hidden;
-    font-family: 'Alice', serif;
+    font-family: 'GameReality2024', serif;
     font-weight: normal;
     /* Cursor will be set by SwordCursor component */
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Edensor', serif !important;
+    font-family: 'AngleFairy2024', serif !important;
     font-weight: normal !important;
     letter-spacing: 0.02em;
     text-decoration: none !important;
@@ -136,9 +136,9 @@
     text-rendering: optimizeLegibility !important;
   }
   
-  /* Ensure font-edensor class uses Edensor font */
+  /* Ensure font-edensor class uses new fonts */
   .font-edensor {
-    font-family: 'Edensor', serif !important;
+    font-family: 'AngleFairy2024', serif !important;
     font-weight: normal !important;
     text-decoration: none !important;
     text-decoration-line: none !important;
@@ -149,9 +149,9 @@
     text-rendering: optimizeLegibility !important;
   }
   
-  /* Ensure Alice font for body text */
+  /* Ensure Game font for body text */
   .font-alice, p, blockquote {
-    font-family: 'Alice', 'Georgia', serif !important;
+    font-family: 'GameReality2024', 'Georgia', serif !important;
   }
 
   /* Scroll-triggered fade animations */
