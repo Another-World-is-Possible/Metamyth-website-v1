@@ -190,18 +190,8 @@
 }
 
 @layer utilities {
-  /* Custom sword cursor for interactive elements */
-  .cursor-sword {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 20 20' fill='none'%3E%3C!-- Sword blade --%3E%3Cpath d='M10 1 L10 13' stroke='%23d4af37' stroke-width='2' stroke-linecap='round'/%3E%3C!-- Crossguard --%3E%3Cpath d='M6 12 L14 12' stroke='%23d4af37' stroke-width='2' stroke-linecap='round'/%3E%3C!-- Handle --%3E%3Cpath d='M10 13 L10 16' stroke='%23c49c2a' stroke-width='2.5'/%3E%3C!-- Pommel --%3E%3Ccircle cx='10' cy='17' r='2' fill='%23d4af37'/%3E%3C/svg%3E") 12 17, pointer;
-  }
-  
-  /* Apply sword cursor to interactive elements */
-  button, a, [role="button"], .cursor-pointer {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 20 20' fill='none'%3E%3C!-- Sword blade --%3E%3Cpath d='M10 1 L10 13' stroke='%23d4af37' stroke-width='2' stroke-linecap='round'/%3E%3C!-- Crossguard --%3E%3Cpath d='M6 12 L14 12' stroke='%23d4af37' stroke-width='2' stroke-linecap='round'/%3E%3C!-- Handle --%3E%3Cpath d='M10 13 L10 16' stroke='%23c49c2a' stroke-width='2.5'/%3E%3C!-- Pommel --%3E%3Ccircle cx='10' cy='17' r='2' fill='%23d4af37'/%3E%3C/svg%3E") 12 17, pointer;
-  }
-  
-  /* Special hover effect for buttons */
-  button:hover, a:hover {
+  /* Hover effect for interactive elements */
+  button:hover, a:hover, [role="button"]:hover, .cursor-pointer:hover {
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 20 20' fill='none'%3E%3C!-- Glowing sword blade --%3E%3Cpath d='M10 1 L10 13' stroke='%23e6f3ff' stroke-width='2.5' stroke-linecap='round'/%3E%3C!-- Glowing crossguard --%3E%3Cpath d='M5 12 L15 12' stroke='%23e6f3ff' stroke-width='2.5' stroke-linecap='round'/%3E%3C!-- Glowing handle --%3E%3Cpath d='M10 13 L10 16' stroke='%23f0d060' stroke-width='3'/%3E%3C!-- Glowing pommel --%3E%3Ccircle cx='10' cy='17' r='2.5' fill='%23e6f3ff'/%3E%3C/svg%3E") 14 17, pointer;
   }
   .bg-deep-black {
