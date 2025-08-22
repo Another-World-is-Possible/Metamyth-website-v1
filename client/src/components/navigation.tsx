@@ -74,7 +74,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
         <div className="flex justify-between items-center h-16">
           <button 
             onClick={() => setActiveTab(null)}
-            className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300"
             style={{ cursor: 'inherit !important' } as any}
           >
             <Shield 
@@ -95,7 +95,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-4 py-2 rounded-lg text-silver hover:text-ancient-gold transition-all duration-300 cursor-pointer ${
+                className={`px-4 py-2 rounded-lg text-silver hover:text-ancient-gold transition-all duration-300 ${
                   activeTab === item.id ? 'text-ancient-gold nav-active-glow' : 'hover:nav-hover-glow'
                 }`}
                 style={{ cursor: 'inherit !important' } as any}
@@ -123,7 +123,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`text-left text-silver hover:text-ancient-gold transition-colors duration-300 text-lg cursor-pointer ${
+                    className={`text-left text-silver hover:text-ancient-gold transition-colors duration-300 text-lg ${
                       activeTab === item.id ? 'text-ancient-gold' : ''
                     }`}
                   >

@@ -17,17 +17,20 @@
   text-rendering: optimizeLegibility;
 }
 
+/* Temporarily remove corrupted fonts and fallback to working ones */
 @font-face {
   font-family: 'Angle';
-  src: url('/attached_assets/Angle & Fairy_1755895085623.otf') format('opentype');
+  src: url('/attached_assets/Edensor-FREE%202_1755457349076.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+  font-feature-settings: "liga" 0, "kern" 1;
+  text-rendering: optimizeLegibility;
 }
 
 @font-face {
   font-family: 'Game';
-  src: url('/attached_assets/Game & Reality_1755895129972.otf') format('opentype');
+  src: url('/attached_assets/Alice-Regular_1755457328279.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -205,6 +208,52 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+/* Nuclear option: Force custom cursor everywhere */
+*,
+*::before,
+*::after,
+html,
+body,
+div,
+span,
+button,
+a,
+nav,
+header,
+main,
+section,
+article,
+aside,
+h1, h2, h3, h4, h5, h6,
+p, ul, li, img, svg, path, g, rect, circle,
+form, input, textarea, select, option, label, fieldset, legend {
+  cursor: inherit !important;
+}
+
+/* Specifically target cursor utility classes */
+.cursor-auto,
+.cursor-default,
+.cursor-pointer,
+.cursor-wait,
+.cursor-text,
+.cursor-move,
+.cursor-help,
+.cursor-not-allowed {
+  cursor: inherit !important;
+}
+
+/* Target all possible interactive elements */
+button,
+[role="button"],
+[tabindex],
+a,
+[onclick],
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  cursor: inherit !important;
 }
 
 @layer utilities {
