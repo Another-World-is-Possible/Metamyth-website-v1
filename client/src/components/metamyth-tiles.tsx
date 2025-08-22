@@ -79,9 +79,9 @@ const titleColors = [
 
 export default function MetamythTiles() {
   return (
-    <section className="relative">
+    <section className="relative image-gallery">
       {tiles.map((tile, index) => (
-        <div key={tile.id} className="relative">
+        <div key={tile.id} className={`image-container ${index === 0 ? 'first-image' : ''} ${index === tiles.length - 1 ? 'last-image' : ''}`}>
           <TileComponent tile={tile} index={index} />
           {/* Golden thread divider at the bottom of each section (except last) */}
           {index < tiles.length - 1 && (
@@ -109,7 +109,7 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
   };
 
   return (
-    <div className={`scroll-fade-in min-h-screen flex items-center relative overflow-hidden perspective-1000`}>
+    <div className={`story-image scroll-fade-in min-h-screen flex items-center relative overflow-hidden perspective-1000`}>
       {/* Background Image with zoom effect */}
       <div 
         className="absolute inset-0 transition-transform duration-1000 ease-out"

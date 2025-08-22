@@ -215,6 +215,100 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+
+  /* Seamless fade blend for metamyth tiles */
+  .image-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    background: var(--deep-black);
+  }
+
+  /* Individual image containers with overlap */
+  .image-container {
+    position: relative;
+    width: 100%;
+    margin: -30px 0;
+    z-index: 1;
+  }
+
+  /* Alternate z-index for proper layering */
+  .image-container:nth-child(even) {
+    z-index: 2;
+  }
+
+  .image-container:nth-child(odd) {
+    z-index: 1;
+  }
+
+  /* Top fade gradient - blends with image above */
+  .image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.8) 25%,
+      rgba(0,0,0,0.4) 50%,
+      rgba(0,0,0,0.1) 75%,
+      transparent 100%
+    );
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* Bottom fade gradient - blends with image below */
+  .image-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to top,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.8) 25%,
+      rgba(0,0,0,0.4) 50%,
+      rgba(0,0,0,0.1) 75%,
+      transparent 100%
+    );
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* Remove top fade from first image */
+  .image-container.first-image::before {
+    display: none;
+  }
+
+  /* Remove bottom fade from last image */
+  .image-container.last-image::after {
+    display: none;
+  }
+
+  /* Text overlay styling for metamyth content */
+  .image-container .image-text {
+    position: absolute;
+    z-index: 15;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  }
+
+  /* Responsive adjustments for mobile */
+  @media (max-width: 768px) {
+    .image-container {
+      margin: -20px 0;
+    }
+    
+    .image-container::before,
+    .image-container::after {
+      height: 40px;
+    }
+  }
 }
 
 /* SWORD CURSOR: Simplified approach - let component handle cursor injection */
