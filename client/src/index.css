@@ -9,18 +9,7 @@
   text-rendering: optimizeLegibility;
 }
 
-/* Root level cursor enforcement */
-:root {
-  cursor: inherit;
-}
 
-html {
-  cursor: inherit;
-}
-
-body {
-  cursor: inherit;
-}
 
 @font-face {
   font-family: 'Mugient2024';
