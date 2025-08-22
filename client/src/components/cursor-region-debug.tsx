@@ -32,7 +32,7 @@ export default function CursorRegionDebug() {
   return (
     <div style={{
       position: 'fixed',
-      top: '200px',
+      top: '70px',
       right: '10px',
       background: 'rgba(0,0,0,0.9)',
       color: '#fff',

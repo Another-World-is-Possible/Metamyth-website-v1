@@ -85,13 +85,13 @@ export default function CursorDebug() {
     <div style={{
       position: 'fixed',
       top: '70px',
-      right: '10px',
+      left: '10px',
       background: 'rgba(0,0,0,0.9)',
       color: '#d4af37',
       padding: '12px',
       fontSize: '11px',
       fontFamily: 'monospace',
-      maxWidth: '400px',
+      maxWidth: '350px',
       zIndex: 9999,
       border: '1px solid #333',
       borderRadius: '4px'
