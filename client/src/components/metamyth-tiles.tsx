@@ -80,8 +80,47 @@ const titleColors = [
 export default function MetamythTiles() {
   return (
     <section className="relative">
+      {/* Background image layer with seamless fades */}
+      <div className="absolute inset-0 z-0">
+        {tiles.map((tile, index) => (
+          <div
+            key={`bg-${tile.id}`}
+            className="absolute inset-0 w-full h-full"
+            style={{ 
+              top: `${index * 100}vh`,
+              height: '100vh',
+              backgroundImage: `url(${tile.bgImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'local'
+            }}
+          >
+            {/* Top fade (except first) */}
+            {index > 0 && (
+              <div 
+                className="absolute top-0 left-0 right-0 h-16 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 25%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 75%, transparent 100%)'
+                }}
+              />
+            )}
+            
+            {/* Bottom fade (except last) */}
+            {index < tiles.length - 1 && (
+              <div 
+                className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 25%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 75%, transparent 100%)'
+                }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Content layer */}
       {tiles.map((tile, index) => (
-        <div key={tile.id} className="relative">
+        <div key={tile.id} className="relative z-10">
           <TileComponent tile={tile} index={index} />
           {/* Golden thread divider at the bottom of each section (except last) */}
           {index < tiles.length - 1 && (
@@ -118,72 +157,11 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
           transformOrigin: 'center center'
         }}
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${tile.bgImage})` }}
-        />
-        {/* Dramatic fade-to-black silhouette around all edges */}
-        <div className="absolute inset-0 pointer-events-none z-20">
-          {/* Left and right edge shadows */}
-          <div 
-            className="absolute inset-y-0 left-0 w-32 md:w-48"
-            style={{
-              background: 'linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.6), rgba(0,0,0,0.2), transparent)'
-            }}
-          />
-          <div 
-            className="absolute inset-y-0 right-0 w-32 md:w-48"
-            style={{
-              background: 'linear-gradient(to left, rgba(0,0,0,0.9), rgba(0,0,0,0.6), rgba(0,0,0,0.2), transparent)'
-            }}
-          />
-          
-          {/* Top and bottom edge shadows */}
-          <div 
-            className="absolute inset-x-0 top-0 h-24 md:h-32"
-            style={{
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0.1), transparent)'
-            }}
-          />
-          <div 
-            className="absolute inset-x-0 bottom-0 h-24 md:h-32"
-            style={{
-              background: 'linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0.1), transparent)'
-            }}
-          />
-          
-          {/* Corner vignettes for extra depth */}
-          <div 
-            className="absolute top-0 left-0 w-48 h-48"
-            style={{
-              background: 'radial-gradient(ellipse at top left, rgba(0,0,0,0.7), rgba(0,0,0,0.3), transparent 70%)'
-            }}
-          />
-          <div 
-            className="absolute top-0 right-0 w-48 h-48"
-            style={{
-              background: 'radial-gradient(ellipse at top right, rgba(0,0,0,0.7), rgba(0,0,0,0.3), transparent 70%)'
-            }}
-          />
-          <div 
-            className="absolute bottom-0 left-0 w-48 h-48"
-            style={{
-              background: 'radial-gradient(ellipse at bottom left, rgba(0,0,0,0.7), rgba(0,0,0,0.3), transparent 70%)'
-            }}
-          />
-          <div 
-            className="absolute bottom-0 right-0 w-48 h-48"
-            style={{
-              background: 'radial-gradient(ellipse at bottom right, rgba(0,0,0,0.7), rgba(0,0,0,0.3), transparent 70%)'
-            }}
-          />
-        </div>
-        
-        {/* Subtle overlay to ensure text readability */}
+        {/* Subtle overlay to ensure text readability - background images are now handled separately */}
         <div className={`absolute inset-0 bg-gradient-to-br ${tile.gradient} opacity-25`} />
       </div>
       
-      <div className={`relative z-30 w-full px-8 flex ${getTextAlignment()}`}>
+      <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
         <div className="max-w-2xl">
           <h2 className={`scroll-fade-in font-angle text-4xl md:text-6xl font-bold ${titleColors[index]} mb-8`}>
             {tile.title}
