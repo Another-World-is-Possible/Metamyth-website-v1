@@ -80,42 +80,40 @@ const titleColors = [
 export default function MetamythTiles() {
   return (
     <section className="relative">
-      {/* Background image layer with seamless fades */}
+      {/* Background image layer with true seamless blending */}
       <div className="absolute inset-0 z-0">
-        {tiles.map((tile, index) => (
-          <div
-            key={`bg-${tile.id}`}
-            className="absolute inset-0 w-full h-full"
-            style={{ 
-              top: `${index * 100}vh`,
-              height: '100vh',
-              backgroundImage: `url(${tile.bgImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundAttachment: 'local'
-            }}
-          >
-            {/* Top fade (except first) */}
-            {index > 0 && (
-              <div 
-                className="absolute top-0 left-0 right-0 h-16 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 25%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 75%, transparent 100%)'
-                }}
-              />
-            )}
-            
-            {/* Bottom fade (except last) */}
-            {index < tiles.length - 1 && (
-              <div 
-                className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 25%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 75%, transparent 100%)'
-                }}
-              />
-            )}
-          </div>
-        ))}
+        {tiles.map((tile, index) => {
+          // Calculate staggered positioning for natural overlap
+          const startPosition = index * 95; // 5vh overlap
+          const height = index === tiles.length - 1 ? 105 : 110; // Extend last image less
+          
+          return (
+            <div
+              key={`bg-${tile.id}`}
+              className="absolute w-full"
+              style={{ 
+                top: `${startPosition}vh`,
+                height: `${height}vh`,
+                backgroundImage: `url(${tile.bgImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'local',
+                // Use opacity gradients for true blending without black bars
+                maskImage: index === 0 
+                  ? 'linear-gradient(to bottom, black 95%, transparent 100%)'
+                  : index === tiles.length - 1
+                  ? 'linear-gradient(to bottom, transparent 0%, black 5%)'
+                  : 'linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)',
+                WebkitMaskImage: index === 0 
+                  ? 'linear-gradient(to bottom, black 95%, transparent 100%)'
+                  : index === tiles.length - 1
+                  ? 'linear-gradient(to bottom, transparent 0%, black 5%)'
+                  : 'linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)'
+              }}
+            />
+          );
+        })}
       </div>
 
       {/* Content layer */}
