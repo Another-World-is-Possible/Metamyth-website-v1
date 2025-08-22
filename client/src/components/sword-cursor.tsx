@@ -112,38 +112,57 @@ export default function SwordCursor() {
       if (animationFrames[frameIndex]) {
         const cursorUrl = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, pointer`;
         
-        // Apply custom cursor globally to everything
+        // Apply custom cursor with maximum enforcement
         const style = document.getElementById('cursor-animation-style');
         if (style) {
           style.textContent = `
-            /* Apply custom cursor to absolutely everything */
-            *, *::before, *::after, 
-            html, body, div, span, button, a, nav, header, main, section, article, aside,
-            h1, h2, h3, h4, h5, h6, p, ul, li, img, svg, path {
+            /* Nuclear option - override everything */
+            html *,
+            body *,
+            * {
               cursor: ${cursorUrl} !important;
             }
             
-            /* Ensure all interactive elements get the cursor */
-            button, a, [role="button"], .cursor-pointer,
-            a[href], input[type="button"], input[type="submit"], input[type="reset"] {
+            /* Specific targeting for all possible elements */
+            div, span, button, a, nav, header, main, section, article, aside,
+            h1, h2, h3, h4, h5, h6, p, ul, li, img, svg, path, g, rect, circle,
+            form, input, textarea, select, option, label, fieldset, legend {
               cursor: ${cursorUrl} !important;
             }
             
-            /* All children of interactive elements */
-            button *, a *, [role="button"] *, .cursor-pointer *,
-            a[href] *, input[type="button"] *, input[type="submit"] *, input[type="reset"] * {
+            /* Every possible pseudo-class and state */
+            *:hover, *:focus, *:active, *:visited, *:link {
               cursor: ${cursorUrl} !important;
             }
             
-            /* Special cases that might override */
-            nav *, header *, .navigation *, .nav *, .menu * {
+            /* Tailwind classes that might be in navigation */
+            .fixed, .top-0, .w-full, .z-50, .bg-forest-green\\/90, .backdrop-blur-md,
+            .border-b, .border-mystical-teal\\/30, .max-w-7xl, .mx-auto, .px-4,
+            .sm\\:px-6, .lg\\:px-8, .flex, .justify-between, .items-center, .h-16,
+            .space-x-2, .space-x-8, .hover\\:opacity-80, .transition-opacity,
+            .duration-300, .cursor-pointer, .text-ancient-gold, .animate-spin-slow,
+            .font-edensor, .text-xl, .font-bold, .select-none, .hidden, .md\\:flex,
+            .px-4, .py-2, .rounded-lg, .text-silver, .hover\\:text-ancient-gold,
+            .transition-all, .nav-active-glow, .hover\\:nav-hover-glow {
+              cursor: ${cursorUrl} !important;
+            }
+            
+            /* Force on all children of these classes */
+            .fixed *, .flex *, .items-center *, .space-x-2 *, .space-x-8 *,
+            .cursor-pointer *, button *, nav *, header * {
               cursor: ${cursorUrl} !important;
             }
           `;
         }
         
-        // Also set body cursor as fallback
+        // Set body and html cursors
         document.body.style.cursor = cursorUrl.replace(', pointer', ', auto');
+        document.documentElement.style.cursor = cursorUrl.replace(', pointer', ', auto');
+        
+        // Force cursor on document itself
+        if (document.documentElement) {
+          document.documentElement.style.setProperty('cursor', cursorUrl.replace(', pointer', ', auto'), 'important');
+        }
       }
     };
 

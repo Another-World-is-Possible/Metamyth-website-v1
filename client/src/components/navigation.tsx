@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Shield } from "lucide-react";
@@ -10,6 +10,32 @@ interface NavigationProps {
 
 export default function Navigation({ activeTab, setActiveTab }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Force cursor override specifically for navigation
+  useEffect(() => {
+    const enforceNavigationCursor = () => {
+      const navElement = document.querySelector('nav');
+      if (navElement) {
+        // Apply styles directly to navigation elements
+        const allNavElements = navElement.querySelectorAll('*');
+        allNavElements.forEach((element: Element) => {
+          (element as HTMLElement).style.setProperty('cursor', 'inherit', 'important');
+        });
+      }
+    };
+
+    // Run immediately and on any changes
+    enforceNavigationCursor();
+    
+    // Set up observer to catch dynamic changes
+    const observer = new MutationObserver(enforceNavigationCursor);
+    const navElement = document.querySelector('nav');
+    if (navElement) {
+      observer.observe(navElement, { childList: true, subtree: true, attributes: true });
+    }
+
+    return () => observer.disconnect();
+  }, [activeTab]);
 
   const navItems = [
     { id: 'why-story', label: 'Why Story Matters' },
