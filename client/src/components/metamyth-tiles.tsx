@@ -122,8 +122,13 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${tile.bgImage})` }}
         />
+        {/* Dramatic fade-to-black silhouette around all edges */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 via-transparent via-black/20 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/10 via-transparent via-black/10 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-radial from-transparent from-30% via-black/20 via-70% to-black/90" />
+        
         {/* Subtle overlay to ensure text readability */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${tile.gradient} opacity-40`} />
+        <div className={`absolute inset-0 bg-gradient-to-br ${tile.gradient} opacity-25`} />
       </div>
       
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>

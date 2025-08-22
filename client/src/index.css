@@ -206,6 +206,11 @@
     background: radial-gradient(circle, var(--tw-gradient-stops));
   }
   
+  /* Enhanced radial gradients for silhouette effects */
+  .bg-gradient-radial-silhouette {
+    background: radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.8) 100%);
+  }
+  
   /* Enhanced fade for sections */
   .section-fade-in {
     opacity: 0;
