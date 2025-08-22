@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
-import SwordCursor from "@/components/sword-cursor";
+
 
 function Router() {
   return (
@@ -21,7 +21,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="dark">
-          <SwordCursor />
           <Toaster />
           <Router />
         </div>
