@@ -49,11 +49,19 @@ export default function HeroSection() {
             transition={{ delay: 0.9, duration: 0.8, ease: "easeOut" }}
           >
             <Button 
-              className="bg-ancient-gold text-deep-black hover:bg-ancient-gold/80 font-game font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg transform hover:-translate-y-1"
+              className="bg-ancient-gold text-deep-black hover:bg-ancient-gold/80 font-angle font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 shadow-lg hover:shadow-ancient-gold/50 border-2 border-ancient-gold hover:shadow-2xl"
+              style={{
+                boxShadow: '0 0 20px rgba(212, 175, 55, 0.4), inset 0 0 20px rgba(212, 175, 55, 0.1)'
+              }}
             >
               <span className="title-glow">REGENERATE YOUR STORY</span>
             </Button>
-            <Button className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-game font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg transform hover:-translate-y-1">
+            <Button 
+              className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 shadow-lg hover:shadow-mystical-teal/50 border-2 border-mystical-teal hover:shadow-2xl"
+              style={{
+                boxShadow: '0 0 20px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(20, 184, 166, 0.1)'
+              }}
+            >
               <span className="title-glow">JOIN THE QUEST</span>
             </Button>
           </motion.div>
