@@ -1,11 +1,19 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ScrollThread from "@/components/scroll-thread";
+import heroBackground from "@assets/_f20qmpu9dartjp9dbfcm_0_1755891749225.png";
 
 export default function HeroSection() {
   return (
     <div className="relative">
-      <section className="min-h-screen bg-mystical-gradient flex items-center justify-center relative overflow-hidden pt-16">
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        {/* Cosmic nebula background */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBackground})` }}
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-deep-black/40" />
         <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
           <motion.h1 
             className="font-edensor text-5xl md:text-7xl font-bold text-gradient-gold mb-8"
