@@ -62,10 +62,10 @@ export default {
       fontFamily: {
         edensor: ["Edensor", "Alice", "serif"],
         alice: ["Alice", "serif"],
-        angle: ["Angle", "serif"],
-        game: ["Game", "serif"],
-        sans: ["Game", "serif"],
-        serif: ["Angle", "serif"],
+        angle: ["AngleFairy2024", "serif"],
+        game: ["GameReality2024", "serif"],
+        sans: ["GameReality2024", "serif"],
+        serif: ["AngleFairy2024", "serif"],
       },
       animation: {
         "spin-slow": "spin-slow 8s linear infinite",
