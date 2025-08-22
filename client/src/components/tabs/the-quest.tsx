@@ -5,25 +5,46 @@ const questPhases = [
   {
     id: 1,
     title: "THE CALLING",
-    subtitle: "Building the Foundation Community",
+    subtitle: "Building the Foundation Community", 
     color: "ancient-gold",
     position: { x: 20, y: 75 },
+    items: [
+      "Guiding organizations through the Metamyth methodology",
+      "Revealing authentic stories already alive within purpose-driven entities", 
+      "Building core community of visionary leaders and regenerative enterprises",
+      "Establishing story transformation as foundation for all change"
+    ],
+    status: "Current Mission: Growing the community of the future through authentic story work",
     description: "We guide organizations through the Metamyth methodology, transforming their authentic stories into powerful foundations for regenerative change. Growing a community of visionaries ready to create the future."
   },
   {
     id: 2,
     title: "THE JOURNEY", 
-    subtitle: "Expanding the Story Revolution",
+    subtitle: "Scaling the Story Revolution",
     color: "mystical-teal",
     position: { x: 50, y: 45 },
+    items: [
+      "Expanding methodology globally through community network",
+      "Each guided organization becomes beacon inspiring others",
+      "Creating synergistic regenerative economic system through authentic stories", 
+      "Establishing virtuous cycle of story-based transformation spreading organically"
+    ],
+    status: "Victory: Demonstrating that authentic story work creates unstoppable regenerative momentum",
     description: "As our community grows, we scale the methodology globally. Each organization we guide becomes a beacon, inspiring others to discover their authentic purpose and join the movement toward planetary healing."
   },
   {
     id: 3,
     title: "THE VISION",
-    subtitle: "The Community of the Future",
+    subtitle: "Global Network of Authentic Purpose",
     color: "crimson",
     position: { x: 80, y: 25 },
+    items: [
+      "Thriving global network of purpose-driven organizations connected through story",
+      "Metamyth methodology becomes recognized planetary healing technology",
+      "AI and MythOS emerge naturally to support community-led transformation",
+      "Species-wide collaboration emerging from authentic story-based federation"
+    ],
+    status: "Ultimate Vision: Planetary transformation through authentic story becoming the new operating system",
     description: "A thriving global network of purpose-driven organizations, all connected through authentic story and regenerative mission. AI and MythOS emerge naturally to support this community-led transformation."
   }
 ];
@@ -36,33 +57,28 @@ function MountainArc() {
       className="absolute inset-0 w-full h-full"
       preserveAspectRatio="none"
     >
-      {/* Three mountain horizons - layered from back to front */}
+      {/* Simple mountain silhouettes */}
       <path
-        d="M0,50 L70,25 L85,20 L95,30 L100,40 L100,100 L0,100 Z"
+        d="M0,85 L20,75 L35,80 L100,90 L100,100 L0,100 Z"
+        fill="rgba(45, 37, 32, 0.2)"
+      />
+      <path
+        d="M0,70 L45,45 L60,50 L100,75 L100,100 L0,100 Z"
         fill="rgba(45, 37, 32, 0.15)"
       />
       <path
-        d="M0,65 L40,45 L55,40 L65,50 L100,65 L100,100 L0,100 Z"
-        fill="rgba(45, 37, 32, 0.25)"
-      />
-      <path
-        d="M0,80 L18,75 L25,70 L30,75 L100,85 L100,100 L0,100 Z"
-        fill="rgba(45, 37, 32, 0.35)"
+        d="M0,55 L75,25 L90,30 L100,60 L100,100 L0,100 Z"
+        fill="rgba(45, 37, 32, 0.1)"
       />
       
-      {/* Simple golden arc connecting the three phases */}
+      {/* Clean golden arc */}
       <path
-        d="M20,75 Q35,60 50,45 Q65,35 80,25"
+        d="M20,75 Q50,50 80,25"
         stroke="#d4af37"
-        strokeWidth="1.5"
+        strokeWidth="3"
         fill="none"
-        opacity="0.6"
+        opacity="0.8"
       />
-      
-      {/* Subtle phase markers on the arc */}
-      <circle cx="20" cy="75" r="2" fill="#d4af37" opacity="0.7" />
-      <circle cx="50" cy="45" r="2" fill="#4fd1c7" opacity="0.7" />
-      <circle cx="80" cy="25" r="2" fill="#dc143c" opacity="0.7" />
     </svg>
   );
 }
@@ -171,33 +187,56 @@ export default function TheQuest() {
               {questPhases[activePhase].subtitle}
             </p>
             
-            <div className="text-center">
-              <p className="text-silver font-alice text-lg leading-relaxed max-w-3xl mx-auto">
-                {questPhases[activePhase].description}
-              </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 className={`font-bold text-${questPhases[activePhase].color} mb-4 text-lg`}>Quest Objectives:</h4>
+                <ul className="space-y-3">
+                  {questPhases[activePhase].items.map((item, itemIndex) => (
+                    <motion.li 
+                      key={itemIndex} 
+                      className="flex items-start text-silver"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: itemIndex * 0.1 }}
+                    >
+                      <span className={`text-${questPhases[activePhase].color} mr-3 text-lg`}>⟐</span>
+                      <span className="font-alice">{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
               
-              <div className="flex justify-center gap-4 mt-8">
-                {activePhase > 0 && (
-                  <motion.button
-                    onClick={prevPhase}
-                    className={`px-6 py-3 bg-silver/20 hover:bg-silver/30 border border-silver rounded-lg text-silver font-bold transition-all duration-300`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    ← Previous
-                  </motion.button>
-                )}
+              <div>
+                <h4 className={`font-bold text-${questPhases[activePhase].color} mb-4 text-lg`}>Vision:</h4>
+                <div className={`p-4 bg-${questPhases[activePhase].color}/5 rounded border-l-4 border-${questPhases[activePhase].color}`}>
+                  <p className="text-silver italic font-alice">
+                    {questPhases[activePhase].status}
+                  </p>
+                </div>
                 
-                {activePhase < questPhases.length - 1 && (
-                  <motion.button
-                    onClick={nextPhase}
-                    className={`px-6 py-3 bg-${questPhases[activePhase].color}/20 hover:bg-${questPhases[activePhase].color}/30 border border-${questPhases[activePhase].color} rounded-lg text-${questPhases[activePhase].color} font-bold transition-all duration-300`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Next →
-                  </motion.button>
-                )}
+                <div className="flex justify-center gap-4 mt-6">
+                  {activePhase > 0 && (
+                    <motion.button
+                      onClick={prevPhase}
+                      className={`px-6 py-3 bg-silver/20 hover:bg-silver/30 border border-silver rounded-lg text-silver font-bold transition-all duration-300`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      ← Previous
+                    </motion.button>
+                  )}
+                  
+                  {activePhase < questPhases.length - 1 && (
+                    <motion.button
+                      onClick={nextPhase}
+                      className={`px-6 py-3 bg-${questPhases[activePhase].color}/20 hover:bg-${questPhases[activePhase].color}/30 border border-${questPhases[activePhase].color} rounded-lg text-${questPhases[activePhase].color} font-bold transition-all duration-300`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Next Horizon →
+                    </motion.button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
