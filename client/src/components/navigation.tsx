@@ -11,19 +11,34 @@ interface NavigationProps {
 export default function Navigation({ activeTab, setActiveTab }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Simple cursor consistency - remove the complex enforcement
+  // Aggressive cursor enforcement specifically for navigation
   useEffect(() => {
-    const navElement = document.querySelector('nav');
-    if (navElement) {
-      // Remove any conflicting cursor styles
-      navElement.style.removeProperty('cursor');
-      
-      // Remove cursor styles from all navigation elements
-      const allNavElements = navElement.querySelectorAll('*');
-      allNavElements.forEach((element) => {
-        (element as HTMLElement).style.removeProperty('cursor');
-      });
-    }
+    const enforceNavCursor = () => {
+      const navElement = document.querySelector('nav');
+      if (navElement) {
+        // Get current sword cursor from the style element
+        const cursorStyle = document.getElementById('cursor-animation-style');
+        if (cursorStyle && cursorStyle.textContent) {
+          const urlMatch = cursorStyle.textContent.match(/url\("[^"]+"\)\s+\d+\s+\d+,\s*[^;]+/);
+          if (urlMatch) {
+            const cursorUrl = urlMatch[0];
+            
+            // Force cursor on nav and all children
+            navElement.style.setProperty('cursor', cursorUrl, 'important');
+            const allNavElements = navElement.querySelectorAll('*');
+            allNavElements.forEach((element) => {
+              (element as HTMLElement).style.setProperty('cursor', cursorUrl, 'important');
+            });
+          }
+        }
+      }
+    };
+
+    // Run immediately and set up continuous enforcement
+    enforceNavCursor();
+    const interval = setInterval(enforceNavCursor, 50);
+    
+    return () => clearInterval(interval);
   }, [activeTab]);
 
   const navItems = [

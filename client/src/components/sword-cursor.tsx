@@ -112,21 +112,25 @@ export default function SwordCursor() {
       if (animationFrames[frameIndex]) {
         const cursorUrl = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, pointer`;
         
-        // Apply custom cursor with aggressive enforcement
+        // Apply custom cursor with continuous enforcement
         const style = document.getElementById('cursor-animation-style');
         if (style) {
           style.textContent = `
-            /* Force cursor on root elements */
-            html, body {
-              cursor: ${cursorUrl} !important;
-            }
-            
-            /* Nuclear option: force cursor on ALL elements */
-            *, *:before, *:after,
-            div, span, button, a, nav, header, main, section, article, aside,
-            h1, h2, h3, h4, h5, h6, p, ul, li, img, svg, path, g, rect, circle,
-            form, input, textarea, select, option, label, fieldset, legend,
-            .cursor-auto, .cursor-default, .cursor-pointer, .cursor-text {
+            /* Maximum specificity cursor enforcement */
+            html, html *, body, body *, 
+            nav, nav *, nav button, nav button *,
+            [data-testid], [role], [class], [id],
+            .fixed, .absolute, .relative, .sticky,
+            button, button *, span, span *,
+            a, a *, div, div *,
+            header, header *, main, main *,
+            section, section *, article, article *,
+            h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 *,
+            p, p *, ul, ul *, li, li *, img, svg, svg *,
+            path, g, rect, circle, polygon, ellipse,
+            form, form *, input, textarea, select, option, label, fieldset, legend,
+            .cursor-auto, .cursor-default, .cursor-pointer, .cursor-text, .cursor-move, .cursor-help,
+            .hover\\:cursor-pointer, .focus\\:cursor-pointer, .active\\:cursor-pointer {
               cursor: ${cursorUrl} !important;
             }
             
@@ -161,13 +165,28 @@ export default function SwordCursor() {
           `;
         }
         
-        // Set body and html cursors
-        document.body.style.cursor = cursorUrl.replace(', pointer', ', auto');
-        document.documentElement.style.cursor = cursorUrl.replace(', pointer', ', auto');
+        // Continuous cursor enforcement at multiple levels
+        document.body.style.setProperty('cursor', cursorUrl, 'important');
+        document.documentElement.style.setProperty('cursor', cursorUrl, 'important');
         
-        // Force cursor on document itself with maximum priority
-        if (document.documentElement) {
-          document.documentElement.style.setProperty('cursor', cursorUrl.replace(', pointer', ', auto'), 'important');
+        // Force cursor on all navigation elements immediately
+        const navElements = document.querySelectorAll('nav, nav *, nav button, nav button *, nav span, nav span *');
+        navElements.forEach(el => {
+          (el as HTMLElement).style.setProperty('cursor', cursorUrl, 'important');
+        });
+        
+        // Set up continuous enforcement timer
+        if (!(window as any).cursorEnforcementTimer) {
+          (window as any).cursorEnforcementTimer = setInterval(() => {
+            // Re-enforce cursor on navigation elements every 100ms
+            const navEls = document.querySelectorAll('nav *');
+            navEls.forEach(el => {
+              const element = el as HTMLElement;
+              if (element.style.cursor !== cursorUrl) {
+                element.style.setProperty('cursor', cursorUrl, 'important');
+              }
+            });
+          }, 100);
         }
         
         // Enhanced debugging: Log specific elements with system cursors
