@@ -5,26 +5,26 @@ const questPhases = [
   {
     id: 1,
     title: "THE CALLING",
-    subtitle: "Discovering Your Authentic Story",
+    subtitle: "Building the Foundation Community",
     color: "ancient-gold",
     position: { x: 20, y: 75 },
-    description: "We help you discover the authentic story already alive within your organization and reveal your cosmic purpose."
+    description: "We guide organizations through the Metamyth methodology, transforming their authentic stories into powerful foundations for regenerative change. Growing a community of visionaries ready to create the future."
   },
   {
     id: 2,
     title: "THE JOURNEY", 
-    subtitle: "Transforming Vision into Mission",
+    subtitle: "Expanding the Story Revolution",
     color: "mystical-teal",
     position: { x: 50, y: 45 },
-    description: "Through our Metamyth System, we expand your vision and create the practical mission that makes it real."
+    description: "As our community grows, we scale the methodology globally. Each organization we guide becomes a beacon, inspiring others to discover their authentic purpose and join the movement toward planetary healing."
   },
   {
     id: 3,
     title: "THE VISION",
-    subtitle: "Story as Planetary Technology",
+    subtitle: "The Community of the Future",
     color: "crimson",
     position: { x: 80, y: 25 },
-    description: "Your story becomes the foundation for regenerative transformation and planetary healing."
+    description: "A thriving global network of purpose-driven organizations, all connected through authentic story and regenerative mission. AI and MythOS emerge naturally to support this community-led transformation."
   }
 ];
 
