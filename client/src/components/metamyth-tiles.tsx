@@ -128,15 +128,15 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
       
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
         <div className="max-w-2xl">
-          <h2 className={`scroll-fade-in font-edensor text-4xl md:text-6xl font-bold ${titleColors[index]} mb-8`}>
+          <h2 className={`scroll-fade-in font-angle text-4xl md:text-6xl font-bold ${titleColors[index]} mb-8`}>
             {tile.title}
           </h2>
           
-          <blockquote className="scroll-fade-in font-alice text-2xl md:text-3xl font-light text-silver/90 mb-8 italic">
+          <blockquote className="scroll-fade-in font-game text-2xl md:text-3xl font-light text-silver/90 mb-8 italic">
             "{tile.quote}"
           </blockquote>
           
-          <p className="scroll-fade-in font-alice text-xl md:text-2xl text-silver leading-relaxed">
+          <p className="scroll-fade-in font-game text-xl md:text-2xl text-silver leading-relaxed">
             {tile.description}
           </p>
         </div>

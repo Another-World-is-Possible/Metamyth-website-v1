@@ -93,7 +93,7 @@ export default function OurMetamyth() {
     <div className="bg-forest-green py-20 pt-32">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-6xl font-bold shimmer-text text-center mb-16"
+          className="font-angle text-4xl md:text-6xl font-bold shimmer-text text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -116,7 +116,7 @@ export default function OurMetamyth() {
                 <AccordionTrigger className="hover:bg-mystical-teal/10 transition-colors duration-300 p-6">
                   <div className="flex items-center space-x-4">
                     <span className="text-2xl">{item.icon}</span>
-                    <h3 className="font-edensor text-xl font-bold text-ancient-gold text-left">
+                    <h3 className="font-angle text-xl font-bold text-ancient-gold text-left">
                       {item.title}
                     </h3>
                   </div>
@@ -125,7 +125,7 @@ export default function OurMetamyth() {
                   <div className="space-y-6">
                     {item.isNarrative ? (
                       <motion.p 
-                        className="text-silver text-lg leading-relaxed"
+                        className="font-game text-silver text-lg leading-relaxed"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
@@ -136,7 +136,7 @@ export default function OurMetamyth() {
                       <>
                         {item.sectionTitle && (
                           <motion.h4 
-                            className="font-edensor text-2xl font-bold text-ancient-gold"
+                            className="font-angle text-2xl font-bold text-ancient-gold"
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3 }}
@@ -146,7 +146,7 @@ export default function OurMetamyth() {
                         )}
                         {item.quote && (
                           <motion.blockquote 
-                            className="text-xl font-semibold text-mystical-teal italic border-l-4 border-ancient-gold pl-6 py-2"
+                            className="font-game text-xl font-semibold text-mystical-teal italic border-l-4 border-ancient-gold pl-6 py-2"
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.4, delay: 0.1 }}
@@ -159,7 +159,7 @@ export default function OurMetamyth() {
                             {item.items.map((text, itemIndex) => (
                               <motion.p 
                                 key={itemIndex}
-                                className="text-silver flex items-start"
+                                className="font-game text-silver flex items-start"
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.3, delay: itemIndex * 0.1 + 0.2 }}

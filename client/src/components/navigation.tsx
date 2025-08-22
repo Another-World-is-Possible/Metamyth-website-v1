@@ -82,7 +82,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
               style={{ cursor: 'inherit !important', pointerEvents: 'none' } as any}
             />
             <span 
-              className="font-edensor text-xl font-bold text-ancient-gold select-none"
+              className="font-angle text-xl font-bold text-ancient-gold select-none"
               style={{ cursor: 'inherit !important', pointerEvents: 'none' } as any}
             >
               Metamyth
@@ -101,7 +101,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                 style={{ cursor: 'inherit !important' } as any}
               >
                 <span 
-                  className="select-none"
+                  className="select-none font-game"
                   style={{ cursor: 'inherit !important', pointerEvents: 'none' } as any}
                 >
                   {item.label}

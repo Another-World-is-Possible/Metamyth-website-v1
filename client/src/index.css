@@ -17,6 +17,22 @@
   text-rendering: optimizeLegibility;
 }
 
+@font-face {
+  font-family: 'Angle';
+  src: url('/attached_assets/Angle & Fairy_1755895085623.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Game';
+  src: url('/attached_assets/Game & Reality_1755895129972.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -58,6 +74,8 @@
   
   --font-edensor: 'Edensor', serif;
   --font-alice: 'Alice', serif;
+  --font-angle: 'Angle', serif;
+  --font-game: 'Game', serif;
   --radius: 0.5rem;
 }
 

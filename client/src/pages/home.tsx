@@ -84,9 +84,9 @@ export default function Home() {
       <footer className="bg-deep-black border-t border-mystical-teal/30 py-12">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <div className="flex items-center justify-center mb-6">
-            <span className="font-edensor text-2xl font-bold text-ancient-gold">Another World is Possible</span>
+            <span className="font-angle text-2xl font-bold text-ancient-gold">Another World is Possible</span>
           </div>
-          <p className="text-silver/60 mb-8">
+          <p className="font-game text-silver/60 mb-8">
             The metamyth awaits your authorship. The infinite kindred quest calls you home to your cosmic work.
           </p>
           <div className="flex justify-center space-x-6 mb-8">
@@ -106,7 +106,7 @@ export default function Home() {
               </svg>
             </a>
           </div>
-          <p className="text-silver/40 text-sm">
+          <p className="font-game text-silver/40 text-sm">
             © 2024 Another World is Possible. All rights reserved. | We serve the story, not profit.
           </p>
         </div>
