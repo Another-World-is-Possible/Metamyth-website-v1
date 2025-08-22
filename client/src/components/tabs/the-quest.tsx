@@ -10,9 +10,9 @@ const questPhases = [
     position: { x: 20, y: 75 },
     items: [
       "Guiding organizations through the Metamyth methodology",
-      "Revealing authentic stories already alive within purpose-driven entities", 
+      "Developing MythOS operating system and MetaMyth AI architecture", 
       "Building core community of visionary leaders and regenerative enterprises",
-      "Establishing story transformation as foundation for all change"
+      "Establishing story transformation infrastructure and complete metamyth process"
     ],
     status: "Current Mission: Growing the community of the future through authentic story work",
     description: "We guide organizations through the Metamyth methodology, transforming their authentic stories into powerful foundations for regenerative change. Growing a community of visionaries ready to create the future."
