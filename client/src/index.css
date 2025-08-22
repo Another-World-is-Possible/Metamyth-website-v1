@@ -1,25 +1,6 @@
-/* Custom font imports using attached assets */
+/* Working font declarations - clean and simple */
 @font-face {
-  font-family: 'Alice';
-  src: url('/attached_assets/Alice-Regular_1755457328279.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Edensor';
-  src: url('/attached_assets/Edensor-FREE%202_1755457349076.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  font-feature-settings: "liga" 0, "kern" 1;
-  text-rendering: optimizeLegibility;
-}
-
-/* Use working fonts - the new uploaded fonts are corrupted (OTS parsing errors) */
-@font-face {
-  font-family: 'AngleWorking';
+  font-family: 'Angle';
   src: url('/attached_assets/Edensor-FREE%202_1755457349076.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
@@ -29,20 +10,20 @@
 }
 
 @font-face {
-  font-family: 'GameWorking';
+  font-family: 'Game';
   src: url('/attached_assets/Alice-Regular_1755457328279.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-/* Apply working fonts temporarily until user provides valid font files */
+/* Font class declarations */
 .font-angle {
-  font-family: 'AngleWorking', serif !important;
+  font-family: 'Angle', serif !important;
 }
 
 .font-game {
-  font-family: 'GameWorking', serif !important;
+  font-family: 'Game', serif !important;
 }
 
 @tailwind base;

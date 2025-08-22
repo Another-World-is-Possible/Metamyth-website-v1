@@ -1,0 +1,194 @@
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+Failed to decode downloaded font: <URL>
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+OTS parsing error: invalid sfntVersion: 1008813135
+q4-D5VfJUNU:1  [Deprecation] -ms-high-contrast is in the process of being deprecated. Please see https://blogs.windows.com/msedgedev/2024/04/29/deprecating-ms-high-contrast/ for tips on updating to the new Forced Colors Mode standard.
+q4-D5VfJUNU:1  [Deprecation] -ms-high-contrast is in the process of being deprecated. Please see https://blogs.windows.com/msedgedev/2024/04/29/deprecating-ms-high-contrast/ for tips on updating to the new Forced Colors Mode standard.
+q4-D5VfJUNU:10  Access to XMLHttpRequest at 'https://googleads.g.doubleclick.net/pagead/id' from origin 'https://www.youtube.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+www-embed-player.js:1219   GET https://googleads.g.doubleclick.net/pagead/id net::ERR_FAILED
+Mq @ www-embed-player.js:1219
+Qq @ www-embed-player.js:1224
+(anonymous) @ www-embed-player.js:1824
+Hk @ www-embed-player.js:678
+Ny @ www-embed-player.js:1821
+Yp @ www-embed-player.js:1843
+gz @ www-embed-player.js:1848
+mA @ www-embed-player.js:1901
+(anonymous) @ www-embed-player.js:2325
+(anonymous) @ q4-D5VfJUNU?si=vv_sDNDszpG_c9_j:10
+base.js:1110   POST https://play.google.com/log?hasfast=true&authuser=0&format=json 403 (Forbidden)
+(anonymous) @ base.js:1110
+tjN @ base.js:1111
+$MK @ base.js:1110
+g.y.flush @ base.js:8341
+eO.flush @ base.js:8351
+flush @ base.js:1224
+g.y.Qt @ base.js:8393
+(anonymous) @ base.js:1233
+(anonymous) @ base.js:1228
+setTimeout
+Ikx @ base.js:1228
+ZL.GE @ base.js:8447
+(anonymous) @ base.js:1244
+Promise.then
+D @ base.js:1244
+JW @ VM29:7240
+hW @ VM29:7240
+RT @ VM29:7240
+iT @ VM29:7240
+a @ VM29:7240
+aeb_ @ VM29:7240
+n5 @ VM29:7240
+En @ VM29:7240
+EF @ base.js:1247
+HVS @ base.js:2734
+(anonymous) @ base.js:2733
+k @ base.js:2103
+(anonymous) @ base.js:1677
+setTimeout
+g.C7 @ base.js:1701
+(anonymous) @ base.js:2104
+p.zb @ www-embed-player.js:984
+g.On @ base.js:2108
+(anonymous) @ base.js:2113
+setTimeout
+Uxj.Z.onload @ base.js:2114
+script
+Wb @ base.js:383
+g.tM @ base.js:382
+Uxj @ base.js:2114
+dxk @ base.js:2113
+g.Ku @ base.js:2112
+jRr @ base.js:2733
+g.y.initialize @ base.js:9123
+emC @ base.js:3856
+g.WO @ base.js:3864
+nC @ base.js:7253
+GEx @ base.js:7252
+g.d$ @ base.js:7223
+g.d$.create @ base.js:13396
+a.G @ www-embed-player.js:2264
+eE @ www-embed-player.js:2265
+p.loadNewVideoConfig @ www-embed-player.js:2259
+(anonymous) @ www-embed-player.js:2257
+setTimeout
+bE @ www-embed-player.js:2257
+vE @ www-embed-player.js:2297
+(anonymous) @ www-embed-player.js:2327
+(anonymous) @ q4-D5VfJUNU?si=vv_sDNDszpG_c9_j:10
