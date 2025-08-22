@@ -11,6 +11,10 @@ import WhyStoryMatters from "@/components/tabs/why-story-matters";
 import TheSystems from "@/components/tabs/the-systems";
 import TheFederation from "@/components/tabs/the-federation";
 
+import CursorDiagnostic from "../cursor-diagnostic";
+
+import CursorDebugger from "../debug-cursor";
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
@@ -75,6 +79,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-deep-black text-silver overflow-x-hidden">
+      <CursorDiagnostic />
+      <CursorDebugger />
       <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="relative">
         {renderTabContent()}
