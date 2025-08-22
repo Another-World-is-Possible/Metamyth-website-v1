@@ -112,44 +112,45 @@ export default function SwordCursor() {
       if (animationFrames[frameIndex]) {
         const cursorUrl = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, pointer`;
         
-        // Apply custom cursor with maximum enforcement
+        // Apply custom cursor with comprehensive debugging and enforcement
         const style = document.getElementById('cursor-animation-style');
         if (style) {
           style.textContent = `
-            /* Nuclear option - override everything */
-            html *,
-            body *,
-            * {
-              cursor: ${cursorUrl} !important;
-            }
-            
-            /* Specific targeting for all possible elements */
+            /* Absolute universal override - nothing should escape this */
+            html, html *, body, body *, *, *:before, *:after,
             div, span, button, a, nav, header, main, section, article, aside,
             h1, h2, h3, h4, h5, h6, p, ul, li, img, svg, path, g, rect, circle,
-            form, input, textarea, select, option, label, fieldset, legend {
+            form, input, textarea, select, option, label, fieldset, legend,
+            .cursor-auto, .cursor-default, .cursor-pointer, .cursor-text {
               cursor: ${cursorUrl} !important;
             }
             
-            /* Every possible pseudo-class and state */
-            *:hover, *:focus, *:active, *:visited, *:link {
+            /* Specifically target all header-related elements */
+            [class*="header"], [class*="Header"], [data-sidebar="header"],
+            [role="banner"], [role="navigation"], .nav, .navigation, .navbar,
+            .sheet-header, .dialog-header, .alert-dialog-header, .drawer-header, .sidebar-header {
               cursor: ${cursorUrl} !important;
             }
             
-            /* Tailwind classes that might be in navigation */
-            .fixed, .top-0, .w-full, .z-50, .bg-forest-green\\/90, .backdrop-blur-md,
-            .border-b, .border-mystical-teal\\/30, .max-w-7xl, .mx-auto, .px-4,
-            .sm\\:px-6, .lg\\:px-8, .flex, .justify-between, .items-center, .h-16,
-            .space-x-2, .space-x-8, .hover\\:opacity-80, .transition-opacity,
-            .duration-300, .cursor-pointer, .text-ancient-gold, .animate-spin-slow,
-            .font-edensor, .text-xl, .font-bold, .select-none, .hidden, .md\\:flex,
-            .px-4, .py-2, .rounded-lg, .text-silver, .hover\\:text-ancient-gold,
-            .transition-all, .nav-active-glow, .hover\\:nav-hover-glow {
+            /* Target all possible UI component patterns */
+            [class*="Sheet"], [class*="Dialog"], [class*="Alert"], [class*="Drawer"], [class*="Sidebar"],
+            [data-testid*="header"], [data-testid*="button"], [data-testid*="nav"] {
               cursor: ${cursorUrl} !important;
             }
             
-            /* Force on all children of these classes */
-            .fixed *, .flex *, .items-center *, .space-x-2 *, .space-x-8 *,
-            .cursor-pointer *, button *, nav *, header * {
+            /* Pseudo states and dynamic elements */
+            *:hover, *:focus, *:active, *:visited, *:link, *:target {
+              cursor: ${cursorUrl} !important;
+            }
+            
+            /* All flex layouts and positioning classes */
+            .fixed, .absolute, .relative, .sticky, .flex, .inline-flex, .grid, .inline-grid,
+            .block, .inline-block, .inline, .contents, .list-item, .hidden {
+              cursor: ${cursorUrl} !important;
+            }
+            
+            /* Every child of every element */
+            * > *, * > * > *, * > * > * > * {
               cursor: ${cursorUrl} !important;
             }
           `;
@@ -159,9 +160,24 @@ export default function SwordCursor() {
         document.body.style.cursor = cursorUrl.replace(', pointer', ', auto');
         document.documentElement.style.cursor = cursorUrl.replace(', pointer', ', auto');
         
-        // Force cursor on document itself
+        // Force cursor on document itself with maximum priority
         if (document.documentElement) {
           document.documentElement.style.setProperty('cursor', cursorUrl.replace(', pointer', ', auto'), 'important');
+        }
+        
+        // Debugging: Log any elements that might have different cursors
+        if (frameIndex === 0) {
+          setTimeout(() => {
+            const allElements = document.querySelectorAll('*');
+            allElements.forEach((el) => {
+              const computedStyle = window.getComputedStyle(el);
+              const cursor = computedStyle.cursor;
+              if (cursor && cursor !== 'inherit' && !cursor.includes('url(')) {
+                console.warn('Element with system cursor found:', el, 'cursor:', cursor);
+                (el as HTMLElement).style.setProperty('cursor', cursorUrl, 'important');
+              }
+            });
+          }, 100);
         }
       }
     };
