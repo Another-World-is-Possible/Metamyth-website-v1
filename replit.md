@@ -40,7 +40,7 @@ Preferred communication style: Simple, everyday language.
 
 ## Design System
 - **Theme**: Dark fantasy aesthetic with custom color palette (forest-green, deep-black, ancient-gold, mystical-teal, crimson)
-- **Typography**: Custom font stack including Edensor (headers) and Alice (body) with proper font loading and fallbacks
+- **Typography**: NCL Enigmatic Waesbendiy Slanted (dramatic titles) and Game & Reality (body text) with cache-busting font loading and serif fallbacks
 - **Visual Journey**: Immersive metamyth tiles with custom atmospheric backgrounds:
   - Flickering flame animation for Call to Adventure
   - Earth in space with burning effects for Quest intro

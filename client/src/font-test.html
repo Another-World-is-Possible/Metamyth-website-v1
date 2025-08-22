@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font Debug Test</title>
+    <style>
+        @font-face {
+            font-family: 'TestAngle';
+            src: url('/attached_assets/NCL%20Enigmatic%20Waesbendiy%20Slanted_1755895714048.ttf') format('truetype');
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'TestGame';
+            src: url('/attached_assets/Game%20%26%20Reality_1755895665423.ttf') format('truetype');
+            font-display: swap;
+        }
+        
+        body { background: #000; color: white; padding: 20px; font-family: serif; }
+        .test-angle { font-family: 'TestAngle', serif; font-size: 48px; color: gold; margin: 20px 0; }
+        .test-game { font-family: 'TestGame', serif; font-size: 24px; color: cyan; margin: 20px 0; }
+        .fallback { font-family: serif; font-size: 24px; color: white; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <h1 class="test-angle">ANGLE FONT - NCL Enigmatic</h1>
+    <p class="test-game">Game & Reality font test paragraph</p>
+    <p class="fallback">Default serif fallback text</p>
+    
+    <script>
+        // Check if fonts loaded
+        document.fonts.ready.then(function() {
+            console.log('Fonts loaded:', document.fonts.size);
+            document.fonts.forEach(font => console.log('Font:', font.family));
+        });
+    </script>
+</body>
+</html>
