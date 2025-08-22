@@ -122,12 +122,6 @@ export default function MetamythTiles() {
       {tiles.map((tile, index) => (
         <div key={tile.id} className="relative z-10">
           <TileComponent tile={tile} index={index} />
-          {/* Golden thread divider at the bottom of each section (except last) */}
-          {index < tiles.length - 1 && (
-            <div className="absolute bottom-0 left-0 w-full h-px pointer-events-none z-50">
-              <ScrollThread sectionIndex={index + 1} />
-            </div>
-          )}
         </div>
       ))}
     </section>
