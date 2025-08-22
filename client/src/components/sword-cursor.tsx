@@ -248,6 +248,14 @@ export default function SwordCursor() {
             cursor: inherit !important;
           }
           
+          /* Disable pointer events on text inside interactive elements */
+          button span, button *, a span, a *,
+          [role="button"] span, [role="button"] *,
+          .cursor-pointer span, .cursor-pointer * {
+            pointer-events: none !important;
+            cursor: inherit !important;
+          }
+          
           /* Hide system text cursor on text elements */
           input, textarea, [contenteditable] {
             cursor: text !important;
