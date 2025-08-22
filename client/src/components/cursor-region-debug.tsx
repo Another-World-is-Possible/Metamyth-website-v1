@@ -10,10 +10,10 @@ export default function CursorRegionDebug() {
       
       // Get all elements at cursor position
       const elementsAtPoint = document.elementsFromPoint(e.clientX, e.clientY);
-      const navElements = elementsAtPoint.filter(el => el.closest('nav'));
       
-      if (navElements.length > 0) {
-        const stack = navElements.map((el, index) => {
+      // Show all elements in top area (y < 200px) regardless of nav
+      if (e.clientY < 200) {
+        const stack = elementsAtPoint.map((el, index) => {
           const computed = getComputedStyle(el);
           const hasCustomCursor = computed.cursor.includes('url');
           const zIndex = computed.zIndex;
@@ -43,7 +43,7 @@ export default function CursorRegionDebug() {
       zIndex: 10001,
       border: '1px solid #555'
     }}>
-      <div style={{ color: '#ff6b6b', marginBottom: '8px' }}>Element Stack at ({coords.x}, {coords.y}):</div>
+      <div style={{ color: '#ff6b6b', marginBottom: '8px' }}>Top Area Elements at ({coords.x}, {coords.y}):</div>
       {elementStack.map((element, i) => (
         <div key={i} style={{ 
           margin: '2px 0', 
