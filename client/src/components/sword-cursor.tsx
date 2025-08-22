@@ -7,8 +7,8 @@ export default function SwordCursor() {
     let isAnimating = false;
     let animationDirection = 1; // 1 for hover, -1 for unhover
     let animationId: ReturnType<typeof setTimeout> | null = null;
-    const totalFrames = 20; // More frames for smoother 2-second animation
-    const animationDuration = 2000; // 2 seconds
+    const totalFrames = 16; // Frames for smoother 1.2-second animation
+    const animationDuration = 1200; // 1.2 seconds
     const frameInterval = animationDuration / totalFrames;
     
     const createSwordCursor = (baseColor: string, rotation: number, size: number, glowStrength: number = 0) => {
@@ -107,17 +107,23 @@ export default function SwordCursor() {
     };
 
     const updateCursor = (frameIndex: number) => {
-      const hotspotX = 20;
-      const hotspotY = 20;
+      // Use consistent hotspot that works for all rotation states
+      // Center the hotspot to prevent visual jumping
+      const hotspotX = 24; // Center of 48px canvas
+      const hotspotY = 24; // Center of 48px canvas
       
       if (animationFrames[frameIndex]) {
         document.body.style.cursor = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, auto`;
         
-        // Update hover styles for interactive elements
-        const hoverElements = document.querySelectorAll('button:hover, a:hover, [role="button"]:hover, .cursor-pointer:hover');
-        hoverElements.forEach((el: any) => {
-          el.style.cursor = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, pointer`;
-        });
+        // Update all interactive elements consistently
+        const style = document.getElementById('cursor-animation-style');
+        if (style) {
+          style.textContent = `
+            button, a, [role="button"], .cursor-pointer {
+              cursor: url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, pointer !important;
+            }
+          `;
+        }
       }
     };
 
@@ -190,23 +196,30 @@ export default function SwordCursor() {
           subtree: true
         });
         
+        // Create dynamic cursor style element for consistent hotspots
+        const cursorStyle = document.createElement('style');
+        cursorStyle.id = 'cursor-animation-style';
+        document.head.appendChild(cursorStyle);
+        
         // Enhanced element hover effects
-        const style = document.createElement('style');
-        style.textContent = `
+        const hoverStyle = document.createElement('style');
+        hoverStyle.textContent = `
           button:hover, a:hover, [role="button"]:hover, .cursor-pointer:hover {
             transform: translateY(-1px);
             filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3));
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           }
         `;
-        document.head.appendChild(style);
+        document.head.appendChild(hoverStyle);
         
         // Cleanup function
         return () => {
           if (animationId) clearTimeout(animationId);
           observer.disconnect();
-          if (document.head.contains(style)) {
-            document.head.removeChild(style);
+          const cursorStyleEl = document.getElementById('cursor-animation-style');
+          if (cursorStyleEl) document.head.removeChild(cursorStyleEl);
+          if (document.head.contains(hoverStyle)) {
+            document.head.removeChild(hoverStyle);
           }
         };
       } catch (error) {
