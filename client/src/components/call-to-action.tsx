@@ -7,7 +7,12 @@ export default function CallToAction() {
       {/* Overlay for readability */}
       <div className="absolute inset-0 bg-deep-black/50"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">
-        <h2 className="scroll-fade-in font-angle text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-4">
+        <h2 
+          className="scroll-fade-in font-angle text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-4"
+          style={{
+            textShadow: '2px 2px 0px #000000, -2px -2px 0px #000000, 2px -2px 0px #000000, -2px 2px 0px #000000, 0px 2px 0px #000000, 2px 0px 0px #000000, 0px -2px 0px #000000, -2px 0px 0px #000000'
+          }}
+        >
           THE INVITATION
         </h2>
         
