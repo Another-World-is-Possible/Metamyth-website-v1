@@ -215,58 +215,7 @@
   }
 }
 
-/* SWORD CURSOR: Nuclear option to override all system cursors */
-*,
-*::before,
-*::after,
-html,
-body,
-div,
-span,
-button,
-a,
-nav,
-header,
-main,
-section,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-article,
-aside,
-h1, h2, h3, h4, h5, h6,
-p, ul, li, img, svg, path, g, rect, circle,
-form, input, textarea, select, option, label, fieldset, legend {
-  cursor: inherit !important;
-}
-
-/* Specifically target cursor utility classes */
-.cursor-auto,
-.cursor-default,
-.cursor-pointer,
-.cursor-wait,
-.cursor-text,
-.cursor-move,
-.cursor-help,
-.cursor-not-allowed {
-  cursor: inherit !important;
-}
-
-/* Target all possible interactive elements */
-button,
-[role="button"],
-[tabindex],
-a,
-[onclick],
-input[type="button"],
-input[type="submit"],
-input[type="reset"] {
-  cursor: inherit !important;
-}
+/* SWORD CURSOR: Simplified approach - let component handle cursor injection */
 
 @layer utilities {
   /* Hover styles will be set by SwordCursor component */
