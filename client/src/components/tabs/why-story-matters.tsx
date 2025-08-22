@@ -476,7 +476,7 @@ export default function WhyStoryMatters() {
               transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
             >
               <Button className="bg-mystical-teal text-deep-black hover:bg-mystical-teal/80 font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1">
-                JOIN THE FEDERATION
+                JOIN THE QUEST
               </Button>
             </motion.div>
           </div>
