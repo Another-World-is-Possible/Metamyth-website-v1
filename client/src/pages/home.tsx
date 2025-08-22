@@ -3,6 +3,7 @@ import Navigation from "@/components/navigation";
 import HeroSection from "@/components/hero-section";
 import MetamythTiles from "@/components/metamyth-tiles";
 import CallToAction from "@/components/call-to-action";
+import VideoSection from "@/components/video-section";
 import OurMetamyth from "@/components/tabs/our-metamyth";
 import TheQuest from "@/components/tabs/the-quest";
 import StoriesWeTell from "@/components/tabs/stories-we-tell";
@@ -63,6 +64,9 @@ export default function Home() {
             </div>
             <div className="section-fade-in">
               <CallToAction />
+            </div>
+            <div className="section-fade-in">
+              <VideoSection />
             </div>
           </>
         );
