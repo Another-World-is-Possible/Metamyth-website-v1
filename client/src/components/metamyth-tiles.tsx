@@ -132,7 +132,7 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
           
-          <p className="font-game text-xl md:text-2xl text-silver leading-relaxed">
+          <p className="font-game text-xl md:text-2xl text-silver leading-loose">
             {tile.description}
           </p>
         </div>

@@ -119,7 +119,7 @@ export default function TheQuest() {
           <p className="font-alice text-2xl italic text-ancient-gold mb-6">
             "Story is the oldest technology on Earth. The original operating system that turns vision into reality."
           </p>
-          <p className="font-alice text-lg">
+          <p className="font-alice text-lg leading-loose">
             We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real.
           </p>
         </motion.div>
