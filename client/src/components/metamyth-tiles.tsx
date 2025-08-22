@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
 
 
 // Import the background images
@@ -79,73 +78,11 @@ const titleColors = [
 ];
 
 export default function MetamythTiles() {
-  useEffect(() => {
-    const handleBackgroundTransition = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      
-      // Calculate which section should be active based on scroll position
-      const sectionHeight = windowHeight;
-      const currentSection = Math.floor(scrollY / sectionHeight);
-      
-      // Update background opacity for smooth transitions
-      tiles.forEach((_, index) => {
-        const bgElement = document.querySelector(`.metamyth-bg-${index}`) as HTMLElement;
-        if (!bgElement) return;
-        
-        const sectionStart = index * sectionHeight;
-        const sectionEnd = (index + 1) * sectionHeight;
-        const transitionZone = sectionHeight * 0.2; // 20% of section height for transition
-        
-        let opacity = 0;
-        
-        if (scrollY >= sectionStart - transitionZone && scrollY <= sectionEnd + transitionZone) {
-          if (scrollY >= sectionStart && scrollY <= sectionEnd) {
-            // Fully visible in the main section
-            opacity = 1;
-          } else if (scrollY < sectionStart) {
-            // Fading in from previous section
-            opacity = Math.max(0, (scrollY - (sectionStart - transitionZone)) / transitionZone);
-          } else {
-            // Fading out to next section
-            opacity = Math.max(0, 1 - ((scrollY - sectionEnd) / transitionZone));
-          }
-        }
-        
-        bgElement.style.opacity = opacity.toString();
-      });
-    };
-    
-    // Set up scroll listener
-    window.addEventListener('scroll', handleBackgroundTransition);
-    handleBackgroundTransition(); // Initial call
-    
-    return () => window.removeEventListener('scroll', handleBackgroundTransition);
-  }, []);
-
   return (
     <section className="relative">
-      {/* Fixed background that changes based on scroll position */}
-      <div className="fixed inset-0 z-0">
-        {tiles.map((tile, index) => (
-          <div
-            key={`bg-${tile.id}`}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out metamyth-bg metamyth-bg-${index}`}
-            style={{ 
-              backgroundImage: `url(${tile.bgImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              backgroundAttachment: 'fixed',
-              opacity: index === 0 ? 1 : 0
-            }}
-          />
-        ))}
-      </div>
-
       {/* Content layer */}
       {tiles.map((tile, index) => (
-        <div key={tile.id} className="relative z-10">
+        <div key={tile.id} className="relative">
           <TileComponent tile={tile} index={index} />
         </div>
       ))}
@@ -176,7 +113,11 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
           transformOrigin: 'center center'
         }}
       >
-        {/* Subtle overlay to ensure text readability - background images are now handled separately */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${tile.bgImage})` }}
+        />
+        {/* Subtle overlay to ensure text readability */}
         <div className={`absolute inset-0 bg-gradient-to-br ${tile.gradient} opacity-25`} />
       </div>
       
