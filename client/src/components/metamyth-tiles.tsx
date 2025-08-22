@@ -53,7 +53,7 @@ const tiles = [
     bgImage: journeyImg,
     animation: "crash",
     gradient: "from-forest-green to-deep-black",
-    textAlign: "center",
+    textAlign: "right",
     zoom: 3
   },
   {
