@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 
 
 // Import the background images
@@ -78,42 +79,68 @@ const titleColors = [
 ];
 
 export default function MetamythTiles() {
+  useEffect(() => {
+    const handleBackgroundTransition = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Calculate which section should be active based on scroll position
+      const sectionHeight = windowHeight;
+      const currentSection = Math.floor(scrollY / sectionHeight);
+      
+      // Update background opacity for smooth transitions
+      tiles.forEach((_, index) => {
+        const bgElement = document.querySelector(`.metamyth-bg-${index}`) as HTMLElement;
+        if (!bgElement) return;
+        
+        const sectionStart = index * sectionHeight;
+        const sectionEnd = (index + 1) * sectionHeight;
+        const transitionZone = sectionHeight * 0.2; // 20% of section height for transition
+        
+        let opacity = 0;
+        
+        if (scrollY >= sectionStart - transitionZone && scrollY <= sectionEnd + transitionZone) {
+          if (scrollY >= sectionStart && scrollY <= sectionEnd) {
+            // Fully visible in the main section
+            opacity = 1;
+          } else if (scrollY < sectionStart) {
+            // Fading in from previous section
+            opacity = Math.max(0, (scrollY - (sectionStart - transitionZone)) / transitionZone);
+          } else {
+            // Fading out to next section
+            opacity = Math.max(0, 1 - ((scrollY - sectionEnd) / transitionZone));
+          }
+        }
+        
+        bgElement.style.opacity = opacity.toString();
+      });
+    };
+    
+    // Set up scroll listener
+    window.addEventListener('scroll', handleBackgroundTransition);
+    handleBackgroundTransition(); // Initial call
+    
+    return () => window.removeEventListener('scroll', handleBackgroundTransition);
+  }, []);
+
   return (
     <section className="relative">
-      {/* Background image layer with true seamless blending */}
-      <div className="absolute inset-0 z-0">
-        {tiles.map((tile, index) => {
-          // Calculate staggered positioning for natural overlap
-          const startPosition = index * 95; // 5vh overlap
-          const height = index === tiles.length - 1 ? 105 : 110; // Extend last image less
-          
-          return (
-            <div
-              key={`bg-${tile.id}`}
-              className="absolute w-full"
-              style={{ 
-                top: `${startPosition}vh`,
-                height: `${height}vh`,
-                backgroundImage: `url(${tile.bgImage})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundAttachment: 'local',
-                // Use opacity gradients for true blending without black bars
-                maskImage: index === 0 
-                  ? 'linear-gradient(to bottom, black 95%, transparent 100%)'
-                  : index === tiles.length - 1
-                  ? 'linear-gradient(to bottom, transparent 0%, black 5%)'
-                  : 'linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)',
-                WebkitMaskImage: index === 0 
-                  ? 'linear-gradient(to bottom, black 95%, transparent 100%)'
-                  : index === tiles.length - 1
-                  ? 'linear-gradient(to bottom, transparent 0%, black 5%)'
-                  : 'linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%)'
-              }}
-            />
-          );
-        })}
+      {/* Fixed background that changes based on scroll position */}
+      <div className="fixed inset-0 z-0">
+        {tiles.map((tile, index) => (
+          <div
+            key={`bg-${tile.id}`}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-500 ease-in-out metamyth-bg metamyth-bg-${index}`}
+            style={{ 
+              backgroundImage: `url(${tile.bgImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'fixed',
+              opacity: index === 0 ? 1 : 0
+            }}
+          />
+        ))}
       </div>
 
       {/* Content layer */}
