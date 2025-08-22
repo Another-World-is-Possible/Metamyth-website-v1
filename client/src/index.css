@@ -17,10 +17,10 @@
   text-rendering: optimizeLegibility;
 }
 
-/* Force strong font declarations with cache busting */
+/* Updated fonts with new uploaded files */
 @font-face {
   font-family: 'Angle';
-  src: url('/attached_assets/Edensor-FREE%202_1755457349076.otf?v=3') format('opentype');
+  src: url('/attached_assets/NCL%20Enigmatic%20Waesbendiy%20Slanted_1755895714048.ttf?v=4') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -30,19 +30,19 @@
 
 @font-face {
   font-family: 'Game';
-  src: url('/attached_assets/Alice-Regular_1755457328279.ttf?v=3') format('truetype');
+  src: url('/attached_assets/Game%20&%20Reality_1755895665423.ttf?v=4') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-/* Force font application to Tailwind classes */
+/* Force font application to Tailwind classes with new fonts */
 .font-angle {
-  font-family: 'Angle', 'Edensor', serif !important;
+  font-family: 'Angle', serif !important;
 }
 
 .font-game {
-  font-family: 'Game', 'Alice', serif !important;
+  font-family: 'Game', serif !important;
 }
 
 @tailwind base;
