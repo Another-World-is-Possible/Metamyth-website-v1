@@ -127,8 +127,8 @@ export default function OurMetamyth() {
                       <motion.p 
                         className="font-game text-lg leading-relaxed"
                         style={{
-                          color: '#000000',
-                          textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.5), 0 0 24px rgba(212, 175, 55, 0.3)'
+                          color: '#ffffff',
+                          textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
                         }}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -165,8 +165,8 @@ export default function OurMetamyth() {
                                 key={itemIndex}
                                 className="font-game flex items-start"
                                 style={{
-                                  color: '#000000',
-                                  textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.5), 0 0 24px rgba(212, 175, 55, 0.3)'
+                                  color: '#ffffff',
+                                  textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
                                 }}
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
