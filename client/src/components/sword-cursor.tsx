@@ -7,8 +7,8 @@ export default function SwordCursor() {
     let isAnimating = false;
     let animationDirection = 1; // 1 for hover, -1 for unhover
     let animationId: ReturnType<typeof setTimeout> | null = null;
-    const totalFrames = 12; // Frames for smoother 0.9-second animation
-    const animationDuration = 900; // 0.9 seconds
+    const totalFrames = 10; // Frames for smoother 0.75-second animation
+    const animationDuration = 750; // 0.75 seconds
     const frameInterval = animationDuration / totalFrames;
     
     const createSwordCursor = (baseColor: string, rotation: number, size: number, glowStrength: number = 0) => {
@@ -110,14 +110,21 @@ export default function SwordCursor() {
       const hotspotY = 34; // Center of 68px fixed canvas
       
       if (animationFrames[frameIndex]) {
-        document.body.style.cursor = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, auto`;
+        const cursorUrl = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, pointer`;
         
-        // Update all interactive elements consistently
+        // Update body cursor
+        document.body.style.cursor = cursorUrl;
+        
+        // Update all interactive elements consistently with immediate application
         const style = document.getElementById('cursor-animation-style');
         if (style) {
           style.textContent = `
-            button, a, [role="button"], .cursor-pointer {
-              cursor: url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, pointer !important;
+            * {
+              cursor: ${cursorUrl} !important;
+            }
+            button, a, [role="button"], .cursor-pointer, 
+            button *, a *, [role="button"] *, .cursor-pointer * {
+              cursor: ${cursorUrl} !important;
             }
           `;
         }
@@ -170,14 +177,22 @@ export default function SwordCursor() {
           const interactiveElements = document.querySelectorAll('button, a, [role="button"], .cursor-pointer');
           
           interactiveElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-              startAnimation(1); // Animate to hover state
-            });
+            // Remove existing listeners to prevent duplicates
+            element.removeEventListener('mouseenter', handleMouseEnter);
+            element.removeEventListener('mouseleave', handleMouseLeave);
             
-            element.addEventListener('mouseleave', () => {
-              startAnimation(-1); // Animate back to default state
-            });
+            // Add fresh listeners
+            element.addEventListener('mouseenter', handleMouseEnter);
+            element.addEventListener('mouseleave', handleMouseLeave);
           });
+        };
+
+        const handleMouseEnter = () => {
+          startAnimation(1); // Animate to hover state
+        };
+
+        const handleMouseLeave = () => {
+          startAnimation(-1); // Animate back to default state
         };
 
         // Initial setup
@@ -198,13 +213,22 @@ export default function SwordCursor() {
         cursorStyle.id = 'cursor-animation-style';
         document.head.appendChild(cursorStyle);
         
-        // Enhanced element hover effects
+        // Enhanced element hover effects with cursor override
         const hoverStyle = document.createElement('style');
         hoverStyle.textContent = `
           button:hover, a:hover, [role="button"]:hover, .cursor-pointer:hover {
             transform: translateY(-1px);
             filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3));
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          
+          /* Prevent default cursor from showing */
+          button, a, [role="button"], .cursor-pointer {
+            cursor: none !important;
+          }
+          
+          button *, a *, [role="button"] *, .cursor-pointer * {
+            cursor: inherit !important;
           }
         `;
         document.head.appendChild(hoverStyle);
