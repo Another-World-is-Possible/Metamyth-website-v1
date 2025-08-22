@@ -31,10 +31,11 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
         <div className="flex justify-between items-center h-16">
           <button 
             onClick={() => setActiveTab(null)}
-            className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300"
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+            style={{ pointerEvents: 'auto' }}
           >
-            <Shield className="text-ancient-gold animate-spin-slow h-6 w-6" />
-            <span className="font-edensor text-xl font-bold text-ancient-gold">Metamyth</span>
+            <Shield className="text-ancient-gold animate-spin-slow h-6 w-6" style={{ pointerEvents: 'none' }} />
+            <span className="font-edensor text-xl font-bold text-ancient-gold" style={{ pointerEvents: 'none' }}>Metamyth</span>
           </button>
           
           {/* Desktop Navigation */}
@@ -43,11 +44,12 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-4 py-2 rounded-lg text-silver hover:text-ancient-gold transition-all duration-300 ${
+                className={`px-4 py-2 rounded-lg text-silver hover:text-ancient-gold transition-all duration-300 cursor-pointer ${
                   activeTab === item.id ? 'text-ancient-gold nav-active-glow' : 'hover:nav-hover-glow'
                 }`}
+                style={{ pointerEvents: 'auto' }}
               >
-                {item.label}
+                <span style={{ pointerEvents: 'none' }}>{item.label}</span>
               </button>
             ))}
           </div>
@@ -65,11 +67,12 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`text-left text-silver hover:text-ancient-gold transition-colors duration-300 text-lg ${
+                    className={`text-left text-silver hover:text-ancient-gold transition-colors duration-300 text-lg cursor-pointer ${
                       activeTab === item.id ? 'text-ancient-gold' : ''
                     }`}
+                    style={{ pointerEvents: 'auto' }}
                   >
-                    {item.label}
+                    <span style={{ pointerEvents: 'none' }}>{item.label}</span>
                   </button>
                 ))}
               </div>

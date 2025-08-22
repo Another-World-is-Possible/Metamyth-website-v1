@@ -119,10 +119,16 @@ export default function SwordCursor() {
         const style = document.getElementById('cursor-animation-style');
         if (style) {
           style.textContent = `
-            button, a, [role="button"], .cursor-pointer {
+            button, a, [role="button"], .cursor-pointer,
+            a[href], input[type="button"], input[type="submit"], input[type="reset"] {
               cursor: ${cursorUrl} !important;
             }
-            button *, a *, [role="button"] *, .cursor-pointer * {
+            button *, a *, [role="button"] *, .cursor-pointer *,
+            a[href] *, input[type="button"] *, input[type="submit"] *, input[type="reset"] * {
+              cursor: ${cursorUrl} !important;
+            }
+            /* Override any text cursor on links */
+            a, a * {
               cursor: ${cursorUrl} !important;
             }
           `;
