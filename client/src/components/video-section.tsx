@@ -1,9 +1,20 @@
 import { motion } from "framer-motion";
+import lightPossibilityImage from "@assets/json__light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold__kma1ye6sql0jr5rdegoq_3_1755898973420.png";
 
 export default function VideoSection() {
   return (
-    <section className="bg-gradient-to-b from-forest-green to-deep-black py-20 border-t border-ancient-gold/30">
-      <div className="max-w-6xl mx-auto px-4">
+    <section 
+      className="relative py-20 border-t border-ancient-gold/30 overflow-hidden"
+      style={{
+        backgroundImage: `url(${lightPossibilityImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-deep-black/60"></div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4">
         <motion.h2 
           className="font-edensor text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-4"
           initial={{ opacity: 0, y: 30 }}

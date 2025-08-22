@@ -1,10 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import lightPossibilityImage from "@assets/json__light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold__kma1ye6sql0jr5rdegoq_3_1755898973420.png";
 
 export default function CallToAction() {
   return (
-    <section className="bg-forest-green py-20 border-t border-mystical-teal/30">
-      <div className="max-w-6xl mx-auto px-4">
+    <section 
+      className="relative py-20 border-t border-mystical-teal/30 overflow-hidden"
+      style={{
+        backgroundImage: `url(${lightPossibilityImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-deep-black/50"></div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4">
         <h2 className="scroll-fade-in font-angle text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-4">
           THE INVITATION
         </h2>
