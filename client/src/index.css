@@ -17,10 +17,10 @@
   text-rendering: optimizeLegibility;
 }
 
-/* Clear browser cache and force new fonts */
+/* Use working fonts - the new uploaded fonts are corrupted (OTS parsing errors) */
 @font-face {
-  font-family: 'AngleNew';
-  src: url('/attached_assets/NCL%20Enigmatic%20Waesbendiy%20Slanted_1755895714048.ttf?bust=1755895800') format('truetype');
+  font-family: 'AngleWorking';
+  src: url('/attached_assets/Edensor-FREE%202_1755457349076.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -29,20 +29,20 @@
 }
 
 @font-face {
-  font-family: 'GameNew';
-  src: url('/attached_assets/Game%20%26%20Reality_1755895665423.ttf?bust=1755895800') format('truetype');
+  font-family: 'GameWorking';
+  src: url('/attached_assets/Alice-Regular_1755457328279.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-/* Force font application with completely new family names */
+/* Apply working fonts temporarily until user provides valid font files */
 .font-angle {
-  font-family: 'AngleNew', serif !important;
+  font-family: 'AngleWorking', serif !important;
 }
 
 .font-game {
-  font-family: 'GameNew', serif !important;
+  font-family: 'GameWorking', serif !important;
 }
 
 @tailwind base;
@@ -224,7 +224,7 @@
   }
 }
 
-/* Nuclear option: Force custom cursor everywhere */
+/* SWORD CURSOR: Nuclear option to override all system cursors */
 *,
 *::before,
 *::after,
@@ -238,6 +238,13 @@ nav,
 header,
 main,
 section,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 article,
 aside,
 h1, h2, h3, h4, h5, h6,
