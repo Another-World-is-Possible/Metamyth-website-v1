@@ -4,7 +4,7 @@ import lightPossibilityImage from "@assets/json__light_possibility_space-__promp
 export default function VideoSection() {
   return (
     <section 
-      className="relative py-20 border-t border-ancient-gold/30 overflow-hidden"
+      className="relative py-20 overflow-hidden"
       style={{
         backgroundImage: `url(${lightPossibilityImage})`,
         backgroundSize: 'cover',
