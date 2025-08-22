@@ -1,7 +1,7 @@
-/* New font files - testing if these are valid */
+/* Force cache refresh with timestamp - new valid fonts */
 @font-face {
   font-family: 'Angle';
-  src: url('/attached_assets/NCL%20Enigmatic%20Waesbendiy%20Slanted_1755896330770.otf') format('opentype');
+  src: url('/attached_assets/NCL%20Enigmatic%20Waesbendiy%20Slanted_1755896330770.otf?refresh=1755896450') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'Game';
-  src: url('/attached_assets/Game%20%26%20Reality_1755896347899.ttf') format('truetype');
+  src: url('/attached_assets/Game%20%26%20Reality_1755896347899.ttf?refresh=1755896450') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
