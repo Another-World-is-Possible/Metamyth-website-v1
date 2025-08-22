@@ -123,7 +123,7 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
           style={{ backgroundImage: `url(${tile.bgImage})` }}
         />
         {/* Dramatic fade-to-black silhouette around all edges */}
-        <div className="absolute inset-0 pointer-events-none z-10">
+        <div className="absolute inset-0 pointer-events-none z-20">
           {/* Left and right edge shadows */}
           <div 
             className="absolute inset-y-0 left-0 w-32 md:w-48"
@@ -183,7 +183,7 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
         <div className={`absolute inset-0 bg-gradient-to-br ${tile.gradient} opacity-25`} />
       </div>
       
-      <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
+      <div className={`relative z-30 w-full px-8 flex ${getTextAlignment()}`}>
         <div className="max-w-2xl">
           <h2 className={`scroll-fade-in font-angle text-4xl md:text-6xl font-bold ${titleColors[index]} mb-8`}>
             {tile.title}

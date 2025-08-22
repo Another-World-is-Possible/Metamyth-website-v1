@@ -257,7 +257,7 @@
       rgba(0,0,0,0.1) 75%,
       transparent 100%
     );
-    z-index: 10;
+    z-index: 25;
     pointer-events: none;
   }
 
@@ -276,7 +276,7 @@
       rgba(0,0,0,0.1) 75%,
       transparent 100%
     );
-    z-index: 10;
+    z-index: 25;
     pointer-events: none;
   }
 
