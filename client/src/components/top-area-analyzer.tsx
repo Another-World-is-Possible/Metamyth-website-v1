@@ -38,9 +38,22 @@ export default function TopAreaAnalyzer() {
       fixedElements.forEach(el => {
         const rect = el.getBoundingClientRect();
         if (rect.top <= 33) {
-          findings.push(`FIXED: ${el.tagName.toLowerCase()} top=${rect.top} height=${rect.height}`);
+          const computed = getComputedStyle(el);
+          findings.push(`FIXED: ${el.tagName.toLowerCase()} top=${rect.top} height=${rect.height} cursor=${computed.cursor}`);
         }
       });
+
+      // Check browser viewport cursor behavior
+      const htmlCursor = getComputedStyle(document.documentElement).cursor;
+      const bodyCursor = getComputedStyle(document.body).cursor;
+      findings.push(`HTML cursor: ${htmlCursor}`);
+      findings.push(`BODY cursor: ${bodyCursor}`);
+
+      // Check for potential browser cursor overrides
+      const topPixels = document.elementsFromPoint(window.innerWidth / 2, 5);
+      if (topPixels.length > 0) {
+        findings.push(`Top pixel element: ${topPixels[0].tagName} cursor=${getComputedStyle(topPixels[0]).cursor}`);
+      }
       
       setAnalysis(findings);
     };
