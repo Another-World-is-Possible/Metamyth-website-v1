@@ -39,27 +39,37 @@ export default function SwordCursor() {
           
           ctx.restore();
           
-          // Add glow effect if needed (white glow around golden sword)
+          // Add enhanced glow effect if needed (white glow around golden sword)
           if (glow) {
             const glowCanvas = document.createElement('canvas');
             const glowCtx = glowCanvas.getContext('2d')!;
-            glowCanvas.width = canvasSize + 6;
-            glowCanvas.height = canvasSize + 6;
+            glowCanvas.width = canvasSize + 12;
+            glowCanvas.height = canvasSize + 12;
             
-            // Create white glow around the golden sword
+            // Create enhanced white glow around the golden sword
             glowCtx.save();
-            glowCtx.shadowColor = '#ffffff';
-            glowCtx.shadowBlur = 4;
-            glowCtx.shadowOffsetX = 0;
-            glowCtx.shadowOffsetY = 0;
             
-            // Draw the golden sword with white glow
-            glowCtx.drawImage(canvas, 3, 3);
+            // Multiple glow layers for stronger effect
+            const glowLayers = [
+              { color: '#ffffff', blur: 8, opacity: 0.8 },
+              { color: '#ffffff', blur: 12, opacity: 0.6 },
+              { color: '#ffffff', blur: 16, opacity: 0.4 }
+            ];
             
-            // Draw the sword again on top for crisp edges
+            glowLayers.forEach(layer => {
+              glowCtx.shadowColor = layer.color;
+              glowCtx.shadowBlur = layer.blur;
+              glowCtx.shadowOffsetX = 0;
+              glowCtx.shadowOffsetY = 0;
+              glowCtx.globalAlpha = layer.opacity;
+              glowCtx.drawImage(canvas, 6, 6);
+            });
+            
+            // Draw the golden sword on top for crisp edges
             glowCtx.globalCompositeOperation = 'source-over';
             glowCtx.shadowBlur = 0;
-            glowCtx.drawImage(canvas, 3, 3);
+            glowCtx.globalAlpha = 1;
+            glowCtx.drawImage(canvas, 6, 6);
             
             glowCtx.restore();
             
@@ -76,20 +86,23 @@ export default function SwordCursor() {
 
     const setupCursors = async () => {
       try {
-        // Create default cursor: gold sword rotated -45 degrees
-        const defaultCursor = await createSwordCursor('#d4af37', -45, 24, false);
+        // Create default cursor: gold sword rotated -45 degrees (larger size)
+        const defaultCursor = await createSwordCursor('#d4af37', -45, 28, false);
         
-        // Create hover cursor: gold sword upright with white glow
+        // Create hover cursor: gold sword upright with enhanced white glow
         const hoverCursor = await createSwordCursor('#d4af37', 0, 28, true);
         
-        // Apply cursors with hotspot at sword tip (top center)
-        document.body.style.cursor = `url("${defaultCursor}") 16 8, auto`;
+        // Use consistent hotspot to avoid jarring jumps - center point works for both orientations
+        const hotspotX = 18; // Center-ish X for both rotated and upright
+        const hotspotY = 14; // Center-ish Y that works for both orientations
         
-        // Create hover styles
+        document.body.style.cursor = `url("${defaultCursor}") ${hotspotX} ${hotspotY}, auto`;
+        
+        // Create hover styles with same hotspot for smooth transition
         const style = document.createElement('style');
         style.textContent = `
           button:hover, a:hover, [role="button"]:hover, .cursor-pointer:hover {
-            cursor: url("${hoverCursor}") 17 5, pointer !important;
+            cursor: url("${hoverCursor}") ${hotspotX} ${hotspotY}, pointer !important;
           }
         `;
         document.head.appendChild(style);
