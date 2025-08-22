@@ -14,7 +14,7 @@ const tiles = [
   {
     id: 1,
     title: "THE CALL TO ADVENTURE",
-    quote: "We're living through the climax of the human story—all threads converging in crisis determining consciousness's fate on Earth.",
+    quote: "We're living through the climax of the human story—all threads converging in crisis determining fate on Earth.",
     description: "We are stuck in a broken story of extraction chasing meaningless metrics, burnt out, struggling to express why what we do matters, forgetting we write the story.",
     bgImage: callToAdventureImg,
     animation: "burn",
@@ -26,7 +26,7 @@ const tiles = [
   {
     id: 2,
     title: "THE QUEST",
-    quote: "Story is the oldest technology on Earth. The original operating system that turns vision into reality.",
+    quote: "Story is the oldest technology on Earth.<br/>The original operating system that turns vision into reality.",
     description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real. Your story becomes the foundation for everything that follows.",
     bgImage: questImg,
     animation: "thread",
@@ -121,9 +121,16 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
             {tile.title}
           </h2>
           
-          <blockquote className="font-game text-2xl md:text-3xl font-light text-silver/90 mb-8 italic">
-            "{tile.quote}"
-          </blockquote>
+          <blockquote 
+            className="font-game text-2xl md:text-3xl font-light mb-8 italic"
+            style={{
+              color: index === 2 ? 'rgba(255, 255, 255, 0.95)' : 'rgba(192, 192, 192, 0.9)',
+              textShadow: index === 2 || index === 3 || index === 4 
+                ? '2px 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.6)' 
+                : 'none'
+            }}
+            dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
+          />
           
           <p className="font-game text-xl md:text-2xl text-silver leading-relaxed">
             {tile.description}
