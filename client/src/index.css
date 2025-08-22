@@ -1,7 +1,7 @@
-/* New fonts with proper MIME type serving */
+/* Updated Angle font with Angle & Fairy */
 @font-face {
   font-family: 'Angle';
-  src: url('/attached_assets/NCL%20Enigmatic%20Waesbendiy%20Slanted_1755896330770.otf') format('opentype');
+  src: url('/attached_assets/Angle%20%26%20Fairy_1755896701809.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

@@ -6,21 +6,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Serve attached assets with proper MIME types BEFORE Vite middleware
-app.use('/attached_assets', express.static('attached_assets', {
-  setHeaders: (res, path) => {
-    if (path.endsWith('.ttf')) {
-      res.setHeader('Content-Type', 'font/ttf');
-    } else if (path.endsWith('.otf')) {
-      res.setHeader('Content-Type', 'font/otf');
-    } else if (path.endsWith('.woff')) {
-      res.setHeader('Content-Type', 'font/woff');
-    } else if (path.endsWith('.woff2')) {
-      res.setHeader('Content-Type', 'font/woff2');
-    }
-  }
-}));
-
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
