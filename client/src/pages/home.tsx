@@ -67,7 +67,7 @@ export default function Home() {
               <div 
                 className="relative"
                 style={{
-                  backgroundImage: `url(/attached_assets/json__light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold__kma1ye6sql0jr5rdegoq_3_1755898973420.png)`,
+                  backgroundImage: `url(/attached_assets/_zln01ad4mec8v0qmtav0_0_1755899727372.png)`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   backgroundAttachment: 'fixed'
