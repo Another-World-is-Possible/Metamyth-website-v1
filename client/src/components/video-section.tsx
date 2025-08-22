@@ -9,7 +9,7 @@ export default function VideoSection() {
         <motion.h2 
           className="font-edensor text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-4"
           style={{
-            textShadow: '0 0 10px rgba(212, 175, 55, 0.9), 0 0 20px rgba(212, 175, 55, 0.7), 0 0 30px rgba(212, 175, 55, 0.5), 0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6)'
+            textShadow: '0 0 12px rgba(212, 175, 55, 0.9), 0 0 24px rgba(212, 175, 55, 0.7), 0 0 36px rgba(212, 175, 55, 0.5), 0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.6)'
           }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
