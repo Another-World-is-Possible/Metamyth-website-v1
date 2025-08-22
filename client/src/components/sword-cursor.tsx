@@ -112,17 +112,16 @@ export default function SwordCursor() {
       if (animationFrames[frameIndex]) {
         const cursorUrl = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, pointer`;
         
-        // Update body cursor
-        document.body.style.cursor = cursorUrl;
+        // Update body cursor for default state
+        document.body.style.cursor = cursorUrl.replace(', pointer', ', auto');
         
-        // Update all interactive elements consistently with immediate application
+        // Update interactive elements specifically
         const style = document.getElementById('cursor-animation-style');
         if (style) {
           style.textContent = `
-            * {
+            button, a, [role="button"], .cursor-pointer {
               cursor: ${cursorUrl} !important;
             }
-            button, a, [role="button"], .cursor-pointer, 
             button *, a *, [role="button"] *, .cursor-pointer * {
               cursor: ${cursorUrl} !important;
             }
@@ -174,7 +173,19 @@ export default function SwordCursor() {
         
         // Create hover event listeners for interactive elements
         const addHoverListeners = () => {
-          const interactiveElements = document.querySelectorAll('button, a, [role="button"], .cursor-pointer');
+          // More comprehensive selector for interactive elements
+          const interactiveElements = document.querySelectorAll(`
+            button, 
+            a[href], 
+            [role="button"], 
+            [role="link"], 
+            .cursor-pointer,
+            input[type="button"],
+            input[type="submit"],
+            input[type="reset"],
+            [onclick],
+            [tabindex]:not([tabindex="-1"])
+          `);
           
           interactiveElements.forEach(element => {
             // Remove existing listeners to prevent duplicates
@@ -187,8 +198,12 @@ export default function SwordCursor() {
           });
         };
 
-        const handleMouseEnter = () => {
-          startAnimation(1); // Animate to hover state
+        const handleMouseEnter = (e: Event) => {
+          const target = e.target as HTMLElement;
+          // Only animate if it's actually an interactive element
+          if (target.matches('button, a[href], [role="button"], [role="link"], .cursor-pointer, input[type="button"], input[type="submit"], input[type="reset"], [onclick]')) {
+            startAnimation(1); // Animate to hover state
+          }
         };
 
         const handleMouseLeave = () => {
@@ -213,7 +228,7 @@ export default function SwordCursor() {
         cursorStyle.id = 'cursor-animation-style';
         document.head.appendChild(cursorStyle);
         
-        // Enhanced element hover effects with cursor override
+        // Enhanced element hover effects
         const hoverStyle = document.createElement('style');
         hoverStyle.textContent = `
           button:hover, a:hover, [role="button"]:hover, .cursor-pointer:hover {
@@ -222,13 +237,14 @@ export default function SwordCursor() {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           }
           
-          /* Prevent default cursor from showing */
+          /* Ensure consistent cursor inheritance */
           button, a, [role="button"], .cursor-pointer {
-            cursor: none !important;
+            cursor: inherit !important;
           }
           
-          button *, a *, [role="button"] *, .cursor-pointer * {
-            cursor: inherit !important;
+          /* Hide system text cursor on text elements */
+          input, textarea, [contenteditable] {
+            cursor: text !important;
           }
         `;
         document.head.appendChild(hoverStyle);
