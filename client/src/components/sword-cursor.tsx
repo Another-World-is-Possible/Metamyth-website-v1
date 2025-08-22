@@ -112,27 +112,38 @@ export default function SwordCursor() {
       if (animationFrames[frameIndex]) {
         const cursorUrl = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, pointer`;
         
-        // Update body cursor for default state
-        document.body.style.cursor = cursorUrl.replace(', pointer', ', auto');
-        
-        // Update interactive elements specifically
+        // Apply custom cursor globally to everything
         const style = document.getElementById('cursor-animation-style');
         if (style) {
           style.textContent = `
+            /* Apply custom cursor to absolutely everything */
+            *, *::before, *::after, 
+            html, body, div, span, button, a, nav, header, main, section, article, aside,
+            h1, h2, h3, h4, h5, h6, p, ul, li, img, svg, path {
+              cursor: ${cursorUrl} !important;
+            }
+            
+            /* Ensure all interactive elements get the cursor */
             button, a, [role="button"], .cursor-pointer,
             a[href], input[type="button"], input[type="submit"], input[type="reset"] {
               cursor: ${cursorUrl} !important;
             }
+            
+            /* All children of interactive elements */
             button *, a *, [role="button"] *, .cursor-pointer *,
             a[href] *, input[type="button"] *, input[type="submit"] *, input[type="reset"] * {
               cursor: ${cursorUrl} !important;
             }
-            /* Override any text cursor on links */
-            a, a * {
+            
+            /* Special cases that might override */
+            nav *, header *, .navigation *, .nav *, .menu * {
               cursor: ${cursorUrl} !important;
             }
           `;
         }
+        
+        // Also set body cursor as fallback
+        document.body.style.cursor = cursorUrl.replace(', pointer', ', auto');
       }
     };
 
@@ -253,7 +264,6 @@ export default function SwordCursor() {
           [role="button"] span, [role="button"] *,
           .cursor-pointer span, .cursor-pointer * {
             pointer-events: none !important;
-            cursor: inherit !important;
           }
           
           /* Hide system text cursor on text elements */
