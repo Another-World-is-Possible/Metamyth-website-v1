@@ -9,6 +9,20 @@
   text-rendering: optimizeLegibility;
 }
 
+/* Viewport cursor enforcement */
+html {
+  cursor: var(--enforced-cursor, inherit) !important;
+}
+
+body {
+  cursor: var(--enforced-cursor, inherit) !important;
+}
+
+/* Ensure top viewport area inherits cursor */
+body > *:first-child {
+  cursor: inherit !important;
+}
+
 @font-face {
   font-family: 'Mugient2024';
   src: url('/attached_assets/Mugient_1755896961492.ttf?v=2024') format('truetype');

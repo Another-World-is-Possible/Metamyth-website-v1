@@ -13,7 +13,7 @@ import TheFederation from "@/components/tabs/the-federation";
 import CursorDebug from "@/components/cursor-debug";
 import CursorRegionDebug from "@/components/cursor-region-debug";
 import TopAreaAnalyzer from "@/components/top-area-analyzer";
-import BrowserCursorOverride from "@/components/browser-cursor-override";
+import ViewportCursorEnforcer from "@/components/viewport-cursor-enforcer";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<string | null>(null);
@@ -79,7 +79,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-deep-black text-silver overflow-x-hidden">
-      <BrowserCursorOverride />
+      <ViewportCursorEnforcer />
       <CursorRegionDebug />
       <TopAreaAnalyzer />
       <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
