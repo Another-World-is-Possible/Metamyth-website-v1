@@ -34,7 +34,7 @@ export default function Home() {
     }, observerOptions);
 
     // Observe all scroll-triggered elements
-    const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in');
+    const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in, .metamyth-section');
     scrollElements.forEach(el => observer.observe(el));
 
     return () => {

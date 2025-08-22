@@ -204,6 +204,26 @@
     background: radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.8) 100%);
   }
   
+  /* Consistent metamyth section fade in - no movement, just unveiling */
+  .metamyth-section {
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+
+  .metamyth-section.visible {
+    opacity: 1;
+  }
+
+  /* Background image fade in - no transform, just opacity */
+  .metamyth-bg-fade {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+  }
+
+  .metamyth-section.visible .metamyth-bg-fade {
+    opacity: 1;
+  }
+
   /* Enhanced fade for sections */
   .section-fade-in {
     opacity: 0;

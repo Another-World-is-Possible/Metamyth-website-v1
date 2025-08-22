@@ -104,17 +104,11 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
   };
 
   return (
-    <div className={`scroll-fade-in min-h-screen flex items-center relative overflow-hidden perspective-1000`}>
-      {/* Background Image with zoom effect */}
-      <div 
-        className="absolute inset-0 transition-transform duration-1000 ease-out"
-        style={{ 
-          transform: `scale(${1 + (tile.zoom - 1) * 0.2})`,
-          transformOrigin: 'center center'
-        }}
-      >
+    <div className={`metamyth-section min-h-screen flex items-center relative overflow-hidden`}>
+      {/* Background Image - simple fade in, no movement */}
+      <div className="absolute inset-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat metamyth-bg-fade"
           style={{ backgroundImage: `url(${tile.bgImage})` }}
         />
         {/* Subtle overlay to ensure text readability */}
@@ -123,15 +117,15 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
       
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
         <div className="max-w-2xl">
-          <h2 className={`scroll-fade-in font-angle text-4xl md:text-6xl font-bold ${titleColors[index]} mb-8`}>
+          <h2 className={`font-angle text-4xl md:text-6xl font-bold ${titleColors[index]} mb-8`}>
             {tile.title}
           </h2>
           
-          <blockquote className="scroll-fade-in font-game text-2xl md:text-3xl font-light text-silver/90 mb-8 italic">
+          <blockquote className="font-game text-2xl md:text-3xl font-light text-silver/90 mb-8 italic">
             "{tile.quote}"
           </blockquote>
           
-          <p className="scroll-fade-in font-game text-xl md:text-2xl text-silver leading-relaxed">
+          <p className="font-game text-xl md:text-2xl text-silver leading-relaxed">
             {tile.description}
           </p>
         </div>
