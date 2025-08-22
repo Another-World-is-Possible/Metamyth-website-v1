@@ -17,7 +17,7 @@ export default function CallToAction() {
         </h2>
         
         <p className="scroll-fade-in font-game text-2xl md:text-3xl text-mystical-teal text-center mb-12 font-light italic">
-          the future is one story away
+          "The future we dream is one story away."
         </p>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">

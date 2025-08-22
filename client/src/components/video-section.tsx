@@ -20,10 +20,10 @@ export default function VideoSection() {
         </motion.h2>
         
         <motion.p 
-          className="text-lg text-center mb-8 max-w-4xl mx-auto font-alice leading-relaxed"
+          className="text-lg text-center mb-12 max-w-4xl mx-auto font-alice leading-relaxed"
           style={{
             color: '#000000',
-            textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5), 0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.5)'
+            textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.5), 0 0 24px rgba(212, 175, 55, 0.3), 0 0 2px rgba(0, 0, 0, 0.8)'
           }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,19 +31,6 @@ export default function VideoSection() {
           viewport={{ once: true }}
         >
           Speaking to conscious leaders and visionary changemakers, founder <span className="text-mystical-teal font-bold">Zachary Marlow</span> drops a mind-bending truth: we're destroying the world for stories. But if we imagined this nightmare, we can imagine our way out. This talk unveils the Metamyth System—five questions that transform crisis into compelling quest. Marlow shows how ancient storytelling technology can liberate organizations from extractive paradigms. Ready to stop being trapped in someone else's story and start writing your own?
-        </motion.p>
-
-        <motion.p 
-          className="text-2xl text-center mb-12 max-w-4xl mx-auto font-alice italic text-ancient-gold"
-          style={{
-            textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          "The future we dream is one story away."
         </motion.p>
 
         <motion.div
