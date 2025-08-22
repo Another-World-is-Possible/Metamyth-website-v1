@@ -1,13 +1,20 @@
 import { Button } from "@/components/ui/button";
 import ScrollThread from "@/components/scroll-thread";
 
+// Import the background images
+import callToAdventureImg from "@assets/_cosmic_call_to_adventure-__prompt-_earth_in_deep_space_glowing_red_and_orange_like_a_dying_star_wi_h5e90ujrtt6e75cwup2u_0_1755889868628.png";
+import questImg from "@assets/json__earth_precious-__prompt-_earth_floating_in_the_center_of_the_frame_rich_green_continents_and__k8hbrb45onp8xjogrgvn_1_1755889893638.png";
+import visionImg from "@assets/json__cosmic_city_vision-__prompt-_an_impossibly_vast_and_epic_landscape_like_the_sierra_nevada_de__h8rnlsruu7ca00t0jh44_1_1755889977562.png";
+import journeyImg from "@assets/new_prompt-_a_dense_forest_with_a_winding_path_through_it_enchanted_feeling_but_a_journey_that_is_p_068nz5cvgoo7q3dazjwb_1_1755889999792.png";
+import requestImg from "@assets/enhanced_a1dc6029-a02e-49fc-920e-7998718e89ba_1755890220116.png";
+
 const tiles = [
   {
     id: 1,
     title: "THE CALL TO ADVENTURE",
     quote: "We're living through the climax of the human story—all threads converging in crisis determining consciousness's fate on Earth.",
     description: "We are stuck in a broken story of extraction chasing meaningless metrics, burnt out, struggling to express why what we do matters, forgetting we write the story.",
-    bgImage: "/attached_assets/_cosmic_call_to_adventure-__prompt-_earth_in_deep_space_glowing_red_and_orange_like_a_dying_star_wi_h5e90ujrtt6e75cwup2u_0_1755889868628.png",
+    bgImage: callToAdventureImg,
     animation: "burn",
     gradient: "from-forest-green to-deep-black",
     textAlign: "right",
@@ -19,7 +26,7 @@ const tiles = [
     title: "THE QUEST",
     quote: "Story is the oldest technology on Earth. The original operating system that turns vision into reality.",
     description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real. Your story becomes the foundation for everything that follows.",
-    bgImage: "/attached_assets/json__earth_precious-__prompt-_earth_floating_in_the_center_of_the_frame_rich_green_continents_and__k8hbrb45onp8xjogrgvn_1_1755889893638.png",
+    bgImage: questImg,
     animation: "thread",
     gradient: "from-deep-black to-dark-wine",
     textAlign: "center",
@@ -30,7 +37,7 @@ const tiles = [
     title: "THE VISION OF WHAT IS POSSIBLE",
     quote: "A world where work becomes adventure, purpose literally pays, and regenerative collaboration outperforms extractive competition.",
     description: "We transform work into quest, purpose into profit, customers into communities, scattered efforts into coordinated transformation—proving another world works by living it.",
-    bgImage: "/attached_assets/json__cosmic_city_vision-__prompt-_an_impossibly_vast_and_epic_landscape_like_the_sierra_nevada_de__h8rnlsruu7ca00t0jh44_1_1755889977562.png",
+    bgImage: visionImg,
     animation: "flash",
     gradient: "from-dark-wine to-forest-green",
     textAlign: "left",
@@ -41,7 +48,7 @@ const tiles = [
     title: "THE JOURNEY",
     quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.",
     description: "From individual story regeneration to organizational transformation to planetary coordination—one integrated system that scales from personal to cosmic.",
-    bgImage: "/attached_assets/new_prompt-_a_dense_forest_with_a_winding_path_through_it_enchanted_feeling_but_a_journey_that_is_p_068nz5cvgoo7q3dazjwb_1_1755889999792.png",
+    bgImage: journeyImg,
     animation: "crash",
     gradient: "from-forest-green to-deep-black",
     textAlign: "center",
@@ -52,7 +59,7 @@ const tiles = [
     title: "THE RE-QUEST",
     quote: "Calling the next generation of storytellers ready to stop being characters in someone else's extraction story and start authoring the regenerative reality your heart knows is possible.",
     description: "The time for waiting is over. The world needs your story now. Will you answer the call?",
-    bgImage: "/attached_assets/enhanced_a1dc6029-a02e-49fc-920e-7998718e89ba_1755890220116.png",
+    bgImage: requestImg,
     animation: "flicker",
     gradient: "from-deep-black to-forest-green",
     textAlign: "center",
