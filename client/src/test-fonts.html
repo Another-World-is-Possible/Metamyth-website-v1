@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font Test</title>
+    <style>
+        @font-face {
+            font-family: 'Angle';
+            src: url('/attached_assets/Edensor-FREE%202_1755457349076.otf?v=3') format('opentype');
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Game';
+            src: url('/attached_assets/Alice-Regular_1755457328279.ttf?v=3') format('truetype');
+            font-display: swap;
+        }
+        
+        .test-angle {
+            font-family: 'Angle', serif;
+            font-size: 48px;
+            color: gold;
+            margin: 20px 0;
+        }
+        
+        .test-game {
+            font-family: 'Game', serif;
+            font-size: 24px;
+            color: teal;
+            margin: 20px 0;
+        }
+        
+        .test-default {
+            font-family: serif;
+            font-size: 24px;
+            color: white;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body style="background: black; padding: 20px;">
+    <h1 class="test-angle">ANGLE FONT TEST - This should be Edensor style</h1>
+    <p class="test-game">Game font test - This should be Alice style for body text</p>
+    <p class="test-default">Default serif font - for comparison</p>
+</body>
+</html>
