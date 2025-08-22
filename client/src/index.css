@@ -9,18 +9,17 @@
   text-rendering: optimizeLegibility;
 }
 
-/* Viewport cursor enforcement */
+/* Root level cursor enforcement */
+:root {
+  cursor: inherit;
+}
+
 html {
-  cursor: var(--enforced-cursor, inherit) !important;
+  cursor: inherit;
 }
 
 body {
-  cursor: var(--enforced-cursor, inherit) !important;
-}
-
-/* Ensure top viewport area inherits cursor */
-body > *:first-child {
-  cursor: inherit !important;
+  cursor: inherit;
 }
 
 @font-face {
