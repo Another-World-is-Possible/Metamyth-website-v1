@@ -7,9 +7,10 @@ export default function VideoSection() {
       <div className="absolute inset-0 bg-deep-black/60"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-4"
+          className="font-edensor text-4xl md:text-5xl font-bold text-center mb-4"
           style={{
-            textShadow: '0 0 12px rgba(212, 175, 55, 0.9), 0 0 24px rgba(212, 175, 55, 0.7), 0 0 36px rgba(212, 175, 55, 0.5), 0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.6)'
+            color: '#000000',
+            textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
           }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,8 +23,8 @@ export default function VideoSection() {
         <motion.p 
           className="text-lg text-center mb-12 max-w-4xl mx-auto font-alice leading-relaxed"
           style={{
-            color: '#000000',
-            textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.5), 0 0 24px rgba(212, 175, 55, 0.3), 0 0 2px rgba(0, 0, 0, 0.8)'
+            color: '#ffffff',
+            textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
           }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
