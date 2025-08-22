@@ -30,7 +30,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
     { id: 'systems', label: 'The Systems' },
     { id: 'metamyth', label: 'Our Metamyth' },
     { id: 'stories', label: 'Stories We Tell' },
-    { id: 'quest', label: 'The Quest' }
+    { id: 'quest', label: 'Our Quest' }
     // { id: 'federation', label: 'The Federation' } - Hidden but retained
   ];
 
