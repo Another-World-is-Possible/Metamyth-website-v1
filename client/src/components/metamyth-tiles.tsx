@@ -7,7 +7,7 @@ const tiles = [
     title: "THE CALL TO ADVENTURE",
     quote: "We're living through the climax of the human story—all threads converging in crisis determining consciousness's fate on Earth.",
     description: "We are stuck in a broken story of extraction chasing meaningless metrics, burnt out, struggling to express why what we do matters, forgetting we write the story.",
-    bgType: "burning-sun",
+    bgImage: "/attached_assets/_cosmic_call_to_adventure-__prompt-_earth_in_deep_space_glowing_red_and_orange_like_a_dying_star_wi_h5e90ujrtt6e75cwup2u_0_1755889868628.png",
     animation: "burn",
     gradient: "from-forest-green to-deep-black",
     textAlign: "right",
@@ -19,7 +19,7 @@ const tiles = [
     title: "THE QUEST",
     quote: "Story is the oldest technology on Earth. The original operating system that turns vision into reality.",
     description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real. Your story becomes the foundation for everything that follows.",
-    bgType: "earth-center",
+    bgImage: "/attached_assets/json__earth_precious-__prompt-_earth_floating_in_the_center_of_the_frame_rich_green_continents_and__k8hbrb45onp8xjogrgvn_1_1755889893638.png",
     animation: "thread",
     gradient: "from-deep-black to-dark-wine",
     textAlign: "center",
@@ -30,7 +30,7 @@ const tiles = [
     title: "THE VISION OF WHAT IS POSSIBLE",
     quote: "A world where work becomes adventure, purpose literally pays, and regenerative collaboration outperforms extractive competition.",
     description: "We transform work into quest, purpose into profit, customers into communities, scattered efforts into coordinated transformation—proving another world works by living it.",
-    bgType: "mountains",
+    bgImage: "/attached_assets/json__cosmic_city_vision-__prompt-_an_impossibly_vast_and_epic_landscape_like_the_sierra_nevada_de__h8rnlsruu7ca00t0jh44_1_1755889977562.png",
     animation: "flash",
     gradient: "from-dark-wine to-forest-green",
     textAlign: "left",
@@ -41,7 +41,7 @@ const tiles = [
     title: "THE JOURNEY",
     quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.",
     description: "From individual story regeneration to organizational transformation to planetary coordination—one integrated system that scales from personal to cosmic.",
-    bgType: "tall-forest",
+    bgImage: "/attached_assets/new_prompt-_a_dense_forest_with_a_winding_path_through_it_enchanted_feeling_but_a_journey_that_is_p_068nz5cvgoo7q3dazjwb_1_1755889999792.png",
     animation: "crash",
     gradient: "from-forest-green to-deep-black",
     textAlign: "center",
@@ -52,7 +52,7 @@ const tiles = [
     title: "THE RE-QUEST",
     quote: "Calling the next generation of storytellers ready to stop being characters in someone else's extraction story and start authoring the regenerative reality your heart knows is possible.",
     description: "The time for waiting is over. The world needs your story now. Will you answer the call?",
-    bgType: "campfire",
+    bgImage: "/attached_assets/enhanced_a1dc6029-a02e-49fc-920e-7998718e89ba_1755890220116.png",
     animation: "flicker",
     gradient: "from-deep-black to-forest-green",
     textAlign: "center",
@@ -87,25 +87,6 @@ export default function MetamythTiles() {
 }
 
 function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }) {
-  const getBackgroundElement = (bgType: string) => {
-    switch (bgType) {
-      case "burning-sun":
-        return <BurningSunBackground />;
-      case "earth-space":
-        return <EarthInSpaceBackground />;
-      case "earth-center":
-        return <EarthCenterBackground />;
-      case "mountains":
-        return <MountainBackground />;
-      case "tall-forest":
-        return <TallForestBackground />;
-      case "campfire":
-        return <CampfireBackground />;
-      default:
-        return null;
-    }
-  };
-
   const getTextAlignment = () => {
     switch (tile.textAlign) {
       case "left":
@@ -119,8 +100,8 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
   };
 
   return (
-    <div className={`scroll-fade-in min-h-screen bg-gradient-to-br ${tile.gradient} flex items-center relative overflow-hidden perspective-1000`}>
-      {/* Custom Background with zoom effect */}
+    <div className={`scroll-fade-in min-h-screen flex items-center relative overflow-hidden perspective-1000`}>
+      {/* Background Image with zoom effect */}
       <div 
         className="absolute inset-0 transition-transform duration-1000 ease-out"
         style={{ 
@@ -128,7 +109,12 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
           transformOrigin: 'center center'
         }}
       >
-        {getBackgroundElement(tile.bgType)}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${tile.bgImage})` }}
+        />
+        {/* Subtle overlay to ensure text readability */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${tile.gradient} opacity-40`} />
       </div>
       
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
@@ -150,132 +136,3 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
   );
 }
 
-// Background Components
-function BurningSunBackground() {
-  return (
-    <div className="absolute inset-0 bg-gradient-to-b from-orange-900 via-red-800 to-deep-black">
-      {/* Large burning sun */}
-      <div className="absolute top-1/4 left-1/4 w-48 h-48 transform -translate-x-1/2 -translate-y-1/2">
-        {/* Sun core */}
-        <div className="w-full h-full rounded-full animate-pulse"
-             style={{
-               background: 'radial-gradient(circle, #fef3c7 0%, #fb923c 30%, #dc2626 70%)',
-               boxShadow: '0 0 60px rgba(255, 165, 0, 0.8), 0 0 120px rgba(255, 69, 0, 0.6), 0 0 180px rgba(255, 0, 0, 0.4)'
-             }} />
-        
-        {/* Solar flares */}
-        <div className="absolute -top-8 left-1/2 w-4 h-16 bg-gradient-to-t from-orange-400 to-yellow-200 transform -translate-x-1/2 animate-pulse" />
-        <div className="absolute -bottom-8 left-1/2 w-4 h-16 bg-gradient-to-b from-orange-400 to-yellow-200 transform -translate-x-1/2 animate-pulse" />
-        <div className="absolute top-1/2 -left-8 w-16 h-4 bg-gradient-to-l from-orange-400 to-yellow-200 transform -translate-y-1/2 animate-pulse" />
-        <div className="absolute top-1/2 -right-8 w-16 h-4 bg-gradient-to-r from-orange-400 to-yellow-200 transform -translate-y-1/2 animate-pulse" />
-      </div>
-      
-      {/* Burning sky atmosphere */}
-      <div className="absolute inset-0 bg-gradient-to-t from-transparent via-orange-500/20 to-red-600/30 animate-pulse" />
-      
-      {/* Floating embers */}
-      <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-orange-300 rounded-full opacity-80 animate-bounce" />
-      <div className="absolute top-2/3 left-1/3 w-1 h-1 bg-yellow-400 rounded-full opacity-70 animate-ping" />
-      <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-red-400 rounded-full opacity-60 animate-pulse" />
-    </div>
-  );
-}
-
-function EarthInSpaceBackground() {
-  return (
-    <div className="absolute inset-0 bg-deep-black bg-stars">
-      <div className="absolute top-1/2 right-1/4 w-32 h-32 transform -translate-y-1/2">
-        <div className="w-full h-full rounded-full bg-gradient-to-br from-mystical-teal via-forest-green to-crimson earth-glow animate-spin-slow" />
-        <div className="absolute inset-2 rounded-full bg-gradient-to-t from-crimson/50 to-transparent animate-pulse" />
-      </div>
-    </div>
-  );
-}
-
-function EarthCenterBackground() {
-  return (
-    <div className="absolute inset-0 bg-deep-black bg-stars">
-      <div className="absolute top-1/2 left-1/2 w-48 h-48 transform -translate-x-1/2 -translate-y-1/2">
-        <div className="w-full h-full rounded-full bg-gradient-to-br from-mystical-teal via-forest-green to-dark-wine earth-glow animate-spin-slow" />
-        <div className="absolute inset-4 rounded-full bg-gradient-to-t from-forest-green/30 to-transparent" />
-      </div>
-    </div>
-  );
-}
-
-function MountainBackground() {
-  return (
-    <div className="absolute inset-0 bg-gradient-to-b from-deep-black to-forest-green/30">
-      <svg className="absolute bottom-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path d="M0,80 L20,60 L35,40 L50,20 L65,35 L80,15 L100,25 L100,100 L0,100 Z" 
-              fill="url(#mountainGrad)" opacity="0.6" />
-        <path d="M0,90 L15,70 L30,50 L45,30 L60,45 L75,25 L90,35 L100,40 L100,100 L0,100 Z" 
-              fill="url(#mountainGrad2)" opacity="0.4" />
-        <defs>
-          <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#2d2520" />
-            <stop offset="100%" stopColor="#1a1a1a" />
-          </linearGradient>
-          <linearGradient id="mountainGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#3a3a2a" />
-            <stop offset="100%" stopColor="#2a2a1a" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-  );
-}
-
-function TallForestBackground() {
-  return (
-    <div className="absolute inset-0 bg-gradient-to-b from-forest-green/30 via-forest-green/60 to-deep-black">
-      {/* Towering tree trunks */}
-      <div className="absolute inset-0">
-        {/* Massive tree trunk - left */}
-        <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-amber-900 via-amber-800 to-amber-700 opacity-90" />
-        <div className="absolute left-16 top-0 w-4 h-full bg-amber-900/40" />
-        
-        {/* Massive tree trunk - right */}
-        <div className="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-amber-900 via-amber-800 to-amber-700 opacity-85" />
-        <div className="absolute right-20 top-0 w-6 h-full bg-amber-900/50" />
-        
-        {/* Central tall tree */}
-        <div className="absolute left-1/2 top-0 w-16 h-full bg-gradient-to-r from-amber-800 via-amber-700 to-amber-800 transform -translate-x-1/2 opacity-70" />
-        
-        {/* Additional distant trees */}
-        <div className="absolute left-1/4 top-0 w-12 h-full bg-amber-900/60" />
-        <div className="absolute right-1/3 top-0 w-10 h-full bg-amber-800/50" />
-      </div>
-      
-      {/* Forest canopy above - barely visible */}
-      <div className="absolute top-0 left-0 w-full h-1/4 bg-gradient-to-b from-forest-green to-transparent opacity-80" />
-      
-      {/* Dappled sunlight filtering down */}
-      <div className="absolute top-1/4 left-1/3 w-8 h-64 bg-gradient-to-b from-ancient-gold/30 to-transparent transform rotate-12 opacity-60" />
-      <div className="absolute top-1/3 right-1/4 w-6 h-48 bg-gradient-to-b from-ancient-gold/20 to-transparent transform -rotate-6 opacity-40" />
-      <div className="absolute top-1/2 left-2/3 w-4 h-32 bg-gradient-to-b from-mystical-teal/15 to-transparent opacity-30" />
-      
-      {/* Forest floor mist */}
-      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-forest-green/40 to-transparent opacity-70" />
-    </div>
-  );
-}
-
-function CampfireBackground() {
-  return (
-    <div className="absolute inset-0 bg-deep-black">
-      <div className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 w-32 h-32">
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-8 bg-dark-wine rounded-full" />
-        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-16 flame-flicker">
-          <div className="w-full h-full bg-gradient-to-t from-crimson via-ancient-gold to-transparent rounded-full animate-pulse" />
-        </div>
-        <div className="absolute bottom-2 left-1/3 w-6 h-12 flame-flicker delay-100">
-          <div className="w-full h-full bg-gradient-to-t from-ancient-gold to-transparent rounded-full animate-pulse" />
-        </div>
-        <div className="absolute bottom-2 right-1/3 w-4 h-10 flame-flicker delay-200">
-          <div className="w-full h-full bg-gradient-to-t from-crimson to-transparent rounded-full animate-pulse" />
-        </div>
-      </div>
-    </div>
-  );
-}
