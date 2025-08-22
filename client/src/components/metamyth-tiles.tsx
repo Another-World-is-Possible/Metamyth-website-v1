@@ -123,16 +123,61 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
           style={{ backgroundImage: `url(${tile.bgImage})` }}
         />
         {/* Dramatic fade-to-black silhouette around all edges */}
-        <div 
-          className="absolute inset-0" 
-          style={{
-            background: `
-              linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 20%, transparent 40%, transparent 60%, rgba(0,0,0,0.2) 80%, rgba(0,0,0,0.8) 100%),
-              linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 20%, transparent 40%, transparent 60%, rgba(0,0,0,0.1) 80%, rgba(0,0,0,0.7) 100%),
-              radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.9) 100%)
-            `
-          }}
-        />
+        <div className="absolute inset-0 pointer-events-none z-10">
+          {/* Left and right edge shadows */}
+          <div 
+            className="absolute inset-y-0 left-0 w-32 md:w-48"
+            style={{
+              background: 'linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.6), rgba(0,0,0,0.2), transparent)'
+            }}
+          />
+          <div 
+            className="absolute inset-y-0 right-0 w-32 md:w-48"
+            style={{
+              background: 'linear-gradient(to left, rgba(0,0,0,0.9), rgba(0,0,0,0.6), rgba(0,0,0,0.2), transparent)'
+            }}
+          />
+          
+          {/* Top and bottom edge shadows */}
+          <div 
+            className="absolute inset-x-0 top-0 h-24 md:h-32"
+            style={{
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0.1), transparent)'
+            }}
+          />
+          <div 
+            className="absolute inset-x-0 bottom-0 h-24 md:h-32"
+            style={{
+              background: 'linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4), rgba(0,0,0,0.1), transparent)'
+            }}
+          />
+          
+          {/* Corner vignettes for extra depth */}
+          <div 
+            className="absolute top-0 left-0 w-48 h-48"
+            style={{
+              background: 'radial-gradient(ellipse at top left, rgba(0,0,0,0.7), rgba(0,0,0,0.3), transparent 70%)'
+            }}
+          />
+          <div 
+            className="absolute top-0 right-0 w-48 h-48"
+            style={{
+              background: 'radial-gradient(ellipse at top right, rgba(0,0,0,0.7), rgba(0,0,0,0.3), transparent 70%)'
+            }}
+          />
+          <div 
+            className="absolute bottom-0 left-0 w-48 h-48"
+            style={{
+              background: 'radial-gradient(ellipse at bottom left, rgba(0,0,0,0.7), rgba(0,0,0,0.3), transparent 70%)'
+            }}
+          />
+          <div 
+            className="absolute bottom-0 right-0 w-48 h-48"
+            style={{
+              background: 'radial-gradient(ellipse at bottom right, rgba(0,0,0,0.7), rgba(0,0,0,0.3), transparent 70%)'
+            }}
+          />
+        </div>
         
         {/* Subtle overlay to ensure text readability */}
         <div className={`absolute inset-0 bg-gradient-to-br ${tile.gradient} opacity-25`} />
