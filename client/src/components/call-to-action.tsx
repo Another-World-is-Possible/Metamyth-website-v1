@@ -29,10 +29,22 @@ export default function CallToAction() {
           <div className="scroll-fade-in">
             <Card className="bg-deep-black/50 mystical-border enhanced-glow hover-glow">
               <CardContent className="p-8 text-center">
-                <h3 className="font-angle text-2xl font-bold text-ancient-gold mb-4">
+                <h3 
+                  className="font-angle text-2xl font-bold text-ancient-gold mb-4"
+                  style={{
+                    textShadow: '0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6)'
+                  }}
+                >
                   REGENERATE YOUR STORY
                 </h3>
-                <p className="font-game text-silver mb-6">Transform your organization through story</p>
+                <p 
+                  className="font-game text-silver mb-6"
+                  style={{
+                    textShadow: '0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6)'
+                  }}
+                >
+                  Transform your organization through story
+                </p>
                 <Button className="bg-ancient-gold text-deep-black font-game font-bold py-3 px-8 rounded-lg hover:bg-ancient-gold/80 transition-colors duration-300">
                   <span className="title-glow">WORK WITH US</span>
                 </Button>
@@ -43,10 +55,22 @@ export default function CallToAction() {
           <div className="scroll-fade-in">
             <Card className="bg-deep-black/50 mystical-border mystical-glow hover-glow">
               <CardContent className="p-8 text-center">
-                <h3 className="font-angle text-2xl font-bold text-mystical-teal mb-4">
+                <h3 
+                  className="font-angle text-2xl font-bold text-mystical-teal mb-4"
+                  style={{
+                    textShadow: '0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6)'
+                  }}
+                >
                   JOIN THE QUEST
                 </h3>
-                <p className="font-game text-silver mb-6">Build the new world with us</p>
+                <p 
+                  className="font-game text-silver mb-6"
+                  style={{
+                    textShadow: '0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6)'
+                  }}
+                >
+                  Build the new world with us
+                </p>
                 <Button className="bg-mystical-teal text-deep-black font-game font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-colors duration-300">
                   <span className="title-glow">BECOME A STORYTELLER</span>
                 </Button>
