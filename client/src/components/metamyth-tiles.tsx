@@ -8,6 +8,8 @@ import visionImg from "@assets/json__cosmic_city_vision-__prompt-_an_impossibly_
 import journeyImg from "@assets/new_prompt-_a_dense_forest_with_a_winding_path_through_it_enchanted_feeling_but_a_journey_that_is_p_068nz5cvgoo7q3dazjwb_1_1755889999792.png";
 import requestImg from "@assets/enhanced_a1dc6029-a02e-49fc-920e-7998718e89ba_1755890220116.png";
 
+
+
 const tiles = [
   {
     id: 1,
