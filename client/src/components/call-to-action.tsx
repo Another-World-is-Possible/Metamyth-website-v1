@@ -10,7 +10,7 @@ export default function CallToAction() {
         <h2 
           className="scroll-fade-in font-angle text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-4"
           style={{
-            textShadow: '2px 2px 0px #000000, -2px -2px 0px #000000, 2px -2px 0px #000000, -2px 2px 0px #000000, 0px 2px 0px #000000, 2px 0px 0px #000000, 0px -2px 0px #000000, -2px 0px 0px #000000'
+            textShadow: '0 0 10px rgba(212, 175, 55, 0.9), 0 0 20px rgba(212, 175, 55, 0.7), 0 0 30px rgba(212, 175, 55, 0.5), 0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6)'
           }}
         >
           THE INVITATION
