@@ -6,17 +6,40 @@ export default function CursorDebug() {
   const [swordCursorStatus, setSwordCursorStatus] = useState<string>('');
 
   useEffect(() => {
-    // Check SwordCursor initialization
+    // Enhanced cursor state tracking
     const checkSwordCursor = () => {
       const cursorStyle = document.getElementById('cursor-animation-style');
       const htmlCursor = getComputedStyle(document.documentElement).cursor;
       const bodyCursor = getComputedStyle(document.body).cursor;
+      const styleContent = cursorStyle?.textContent?.includes('url') ? 'HAS_URL' : 'NO_URL';
       
-      setSwordCursorStatus(`Style: ${!!cursorStyle} | HTML: ${htmlCursor.slice(0, 20)}... | Body: ${bodyCursor.slice(0, 20)}...`);
+      setSwordCursorStatus(`Style: ${!!cursorStyle} (${styleContent}) | HTML: ${htmlCursor.includes('url') ? 'CUSTOM' : 'SYSTEM'} | Body: ${bodyCursor.includes('url') ? 'CUSTOM' : 'SYSTEM'}`);
     };
     
     checkSwordCursor();
-    const interval = setInterval(checkSwordCursor, 2000);
+    const interval = setInterval(checkSwordCursor, 1000);
+    
+    // Track cursor property changes via mutation observer
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+          const target = mutation.target as HTMLElement;
+          if (target.style.cursor && target.closest('nav')) {
+            console.log('Nav cursor style changed:', target.tagName, target.style.cursor);
+          }
+        }
+      });
+    });
+    
+    // Observe the entire navigation area
+    const nav = document.querySelector('nav');
+    if (nav) {
+      observer.observe(nav, { 
+        attributes: true, 
+        subtree: true, 
+        attributeFilter: ['style', 'class'] 
+      });
+    }
 
     const handleMouseMove = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -54,6 +77,7 @@ export default function CursorDebug() {
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       clearInterval(interval);
+      observer.disconnect();
     };
   }, []);
 

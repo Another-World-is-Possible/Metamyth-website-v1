@@ -112,22 +112,22 @@ export default function SwordCursor() {
       if (animationFrames[frameIndex]) {
         const cursorUrl = `url("${animationFrames[frameIndex]}") ${hotspotX} ${hotspotY}, pointer`;
         
-        // Apply custom cursor with comprehensive debugging and enforcement
+        // Apply custom cursor with aggressive enforcement
         const style = document.getElementById('cursor-animation-style');
         if (style) {
           style.textContent = `
-            /* Direct cursor URL assignment - breaks inheritance chain */
+            /* Force cursor on root elements */
             html, body {
               cursor: ${cursorUrl} !important;
             }
             
-            /* All elements inherit from html/body cursor */
+            /* Nuclear option: force cursor on ALL elements */
             *, *:before, *:after,
             div, span, button, a, nav, header, main, section, article, aside,
             h1, h2, h3, h4, h5, h6, p, ul, li, img, svg, path, g, rect, circle,
             form, input, textarea, select, option, label, fieldset, legend,
             .cursor-auto, .cursor-default, .cursor-pointer, .cursor-text {
-              cursor: inherit !important;
+              cursor: ${cursorUrl} !important;
             }
             
             /* Specifically target all header-related elements */
