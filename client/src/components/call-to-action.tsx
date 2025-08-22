@@ -1,18 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import lightPossibilityImage from "@assets/json__light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold__kma1ye6sql0jr5rdegoq_3_1755898973420.png";
 
 export default function CallToAction() {
   return (
-    <section 
-      className="relative py-20 overflow-hidden"
-      style={{
-        backgroundImage: `url(${lightPossibilityImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
-    >
+    <section className="relative py-20 overflow-hidden">
       {/* Overlay for readability */}
       <div className="absolute inset-0 bg-deep-black/50"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">

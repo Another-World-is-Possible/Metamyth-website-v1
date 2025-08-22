@@ -64,10 +64,18 @@ export default function Home() {
               <MetamythTiles />
             </div>
             <div className="section-fade-in">
-              <CallToAction />
-            </div>
-            <div className="section-fade-in">
-              <VideoSection />
+              <div 
+                className="relative"
+                style={{
+                  backgroundImage: `url(/attached_assets/json__light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold__kma1ye6sql0jr5rdegoq_3_1755898973420.png)`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundAttachment: 'fixed'
+                }}
+              >
+                <CallToAction />
+                <VideoSection />
+              </div>
             </div>
           </>
         );
