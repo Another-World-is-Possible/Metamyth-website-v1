@@ -51,10 +51,10 @@ export default function HeroSection() {
             <Button 
               className="bg-ancient-gold text-deep-black hover:bg-ancient-gold/80 font-game font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg transform hover:-translate-y-1"
             >
-              REGENERATE YOUR STORY
+              <span className="title-glow">REGENERATE YOUR STORY</span>
             </Button>
             <Button className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-game font-bold py-4 px-8 rounded-lg hover-glow transition-all duration-300 text-lg transform hover:-translate-y-1">
-              JOIN THE QUEST
+              <span className="title-glow">JOIN THE QUEST</span>
             </Button>
           </motion.div>
         </div>
