@@ -11,8 +11,8 @@ export default function CursorRegionDebug() {
       // Get all elements at cursor position
       const elementsAtPoint = document.elementsFromPoint(e.clientX, e.clientY);
       
-      // Show all elements in top area (y < 200px) regardless of nav
-      if (e.clientY < 200) {
+      // Focus specifically on problematic top 33px area
+      if (e.clientY < 35) {
         const stack = elementsAtPoint.map((el, index) => {
           const computed = getComputedStyle(el);
           const hasCustomCursor = computed.cursor.includes('url');
@@ -43,7 +43,7 @@ export default function CursorRegionDebug() {
       zIndex: 10001,
       border: '1px solid #555'
     }}>
-      <div style={{ color: '#ff6b6b', marginBottom: '8px' }}>Top Area Elements at ({coords.x}, {coords.y}):</div>
+      <div style={{ color: '#ff6b6b', marginBottom: '8px' }}>Top 33px Elements at ({coords.x}, {coords.y}):</div>
       {elementStack.map((element, i) => (
         <div key={i} style={{ 
           margin: '2px 0', 

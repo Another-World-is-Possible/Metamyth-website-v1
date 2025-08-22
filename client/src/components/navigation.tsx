@@ -11,34 +11,18 @@ interface NavigationProps {
 export default function Navigation({ activeTab, setActiveTab }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Aggressive cursor enforcement specifically for navigation
+  // Clean approach - no forced cursor styles
   useEffect(() => {
-    const enforceNavCursor = () => {
-      const navElement = document.querySelector('nav');
-      if (navElement) {
-        // Get current sword cursor from the style element
-        const cursorStyle = document.getElementById('cursor-animation-style');
-        if (cursorStyle && cursorStyle.textContent) {
-          const urlMatch = cursorStyle.textContent.match(/url\("[^"]+"\)\s+\d+\s+\d+,\s*[^;]+/);
-          if (urlMatch) {
-            const cursorUrl = urlMatch[0];
-            
-            // Force cursor on nav and all children
-            navElement.style.setProperty('cursor', cursorUrl, 'important');
-            const allNavElements = navElement.querySelectorAll('*');
-            allNavElements.forEach((element) => {
-              (element as HTMLElement).style.setProperty('cursor', cursorUrl, 'important');
-            });
-          }
-        }
-      }
-    };
-
-    // Run immediately and set up continuous enforcement
-    enforceNavCursor();
-    const interval = setInterval(enforceNavCursor, 50);
-    
-    return () => clearInterval(interval);
+    // Just ensure navigation elements don't have conflicting cursor styles
+    const navElement = document.querySelector('nav');
+    if (navElement) {
+      const allNavElements = navElement.querySelectorAll('*');
+      allNavElements.forEach((element) => {
+        const el = element as HTMLElement;
+        // Remove any explicit cursor styles to allow inheritance
+        el.style.removeProperty('cursor');
+      });
+    }
   }, [activeTab]);
 
   const navItems = [
@@ -78,21 +62,9 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                 className={`px-4 py-2 rounded-lg text-silver hover:text-ancient-gold transition-all duration-300 ${
                   activeTab === item.id ? 'text-ancient-gold nav-active-glow' : 'hover:nav-hover-glow'
                 }`}
-                style={{ 
-                  cursor: 'inherit',
-                  zIndex: 'auto',
-                  position: 'relative'
-                }}
+
               >
-                <span 
-                  className="select-none font-game"
-                  style={{ 
-                    cursor: 'inherit',
-                    pointerEvents: 'none',
-                    position: 'relative',
-                    zIndex: 1
-                  }}
-                >
+                <span className="select-none font-game">
                   {item.label}
                 </span>
               </button>
