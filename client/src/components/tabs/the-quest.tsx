@@ -113,23 +113,27 @@ export default function TheQuest() {
 
   return (
     <div ref={containerRef} className="relative bg-gradient-to-b from-deep-black via-forest-green/30 to-deep-black min-h-screen py-20 pt-32" style={{ minHeight: '400vh' }}>
-      {/* Debug - let's make the background more visible */}
+      {/* Horizontal scrolling landscape background */}
       <div 
-        className="fixed inset-0 z-0"
+        className="fixed inset-0"
         style={{
           backgroundImage: `url(${horizontalLandscape})`,
-          backgroundSize: 'cover', // Use cover for now to ensure it's visible
+          backgroundSize: '300% 100%', // Make image 3x wider so horizontal movement is visible
           backgroundPosition: `${horizontalOffset}% center`, // Move horizontally based on scroll
           backgroundRepeat: 'no-repeat',
-          opacity: backgroundLoaded ? 0.8 : 0,
-          transition: 'opacity 300ms ease-out'
+          opacity: backgroundLoaded ? 0.7 : 0,
+          transition: 'opacity 300ms ease-out',
+          zIndex: 1
         }}
       />
       
-      {/* Less dark overlay so we can see the background */}
-      <div className="fixed inset-0 bg-deep-black/30 z-5" />
+      {/* Dark overlay for text readability */}
+      <div 
+        className="fixed inset-0 bg-deep-black/50" 
+        style={{ zIndex: 2 }}
+      />
       
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 relative" style={{ zIndex: 10 }}>
         <motion.h2 
           className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-8"
           initial={{ opacity: 0, y: 30 }}
