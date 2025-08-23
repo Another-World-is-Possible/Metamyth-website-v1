@@ -8,13 +8,22 @@ export default function HeroSection() {
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
 
   useEffect(() => {
-    // Preload hero background and fade it in
+    // Reliable fade-in with fallback
+    const timer = setTimeout(() => {
+      setBackgroundLoaded(true);
+    }, 800); // Start fade after 0.8 seconds regardless
+    
+    // Also try to preload for optimization
     const img = new Image();
     img.onload = () => {
-      setTimeout(() => setBackgroundLoaded(true), 500); // Slight delay for drama
+      if (!backgroundLoaded) {
+        setTimeout(() => setBackgroundLoaded(true), 200);
+      }
     };
     img.src = heroBackground;
-  }, []);
+    
+    return () => clearTimeout(timer);
+  }, [backgroundLoaded]);
 
   return (
     <div className="relative">
@@ -24,7 +33,7 @@ export default function HeroSection() {
         
         {/* Fade-in background */}
         <div 
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-2000 ${
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1500 ease-out ${
             backgroundLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           style={{ backgroundImage: `url(${heroBackground})` }}
