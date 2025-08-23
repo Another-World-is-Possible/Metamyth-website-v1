@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useRef, useState, useEffect } from "react";
 import { Dna, Network, Building, RotateCcw } from "lucide-react";
 
-import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0(1)_1755972671476.jpg";
+import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0_1755922660417.png";
 
 const audienceTypes = [
   {
@@ -130,6 +130,7 @@ export default function WhyStoryMatters() {
   ];
 
   useEffect(() => {
+    console.log('Cosmic dragon URL:', cosmicDragon);
     // Just show the background immediately - no delays
 
     const observers = sectionRefs.map((ref, index) => {
@@ -166,10 +167,8 @@ export default function WhyStoryMatters() {
           backgroundRepeat: 'no-repeat'
         }}
       />
-      {/* Lighter overlay so we can see the cosmic dragon */}
-      <div className="absolute inset-0 bg-deep-black/40 z-0" />
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-black/50 via-deep-black/30 to-deep-black/20 z-0" />
-      <div className="absolute inset-0 bg-mystical-teal/5 z-0" />
+      {/* Much lighter overlay to see the cosmic dragon clearly */}
+      <div className="absolute inset-0 bg-deep-black/20 z-0" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}
