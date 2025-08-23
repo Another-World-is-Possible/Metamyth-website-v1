@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useRef, useState, useEffect } from "react";
 import { Dna, Network, Building, RotateCcw } from "lucide-react";
 
-import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0_1755922660417.png";
+import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0(1)_1755972671476.jpg";
 
 const audienceTypes = [
   {
@@ -130,14 +130,19 @@ export default function WhyStoryMatters() {
   ];
 
   useEffect(() => {
-    // Preload image completely before showing to avoid progressive loading flash
+    // Fast fallback - show after 300ms regardless
+    const quickTimer = setTimeout(() => {
+      setBackgroundLoaded(true);
+    }, 300);
+    
+    // Try to preload but don't wait too long
     const img = new Image();
     img.onload = () => {
-      // Image fully loaded, now fade it in smoothly
+      clearTimeout(quickTimer);
       setBackgroundLoaded(true);
     };
     img.onerror = () => {
-      // If loading fails, show it anyway
+      clearTimeout(quickTimer);
       setBackgroundLoaded(true);
     };
     img.src = cosmicDragon;
@@ -157,6 +162,7 @@ export default function WhyStoryMatters() {
     });
 
     return () => {
+      clearTimeout(quickTimer);
       observers.forEach(observer => observer.disconnect());
     };
   }, []);
@@ -168,7 +174,7 @@ export default function WhyStoryMatters() {
       
       {/* Fade-in background image */}
       <div 
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-out z-0 ${
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-400 ease-out z-0 ${
           backgroundLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
