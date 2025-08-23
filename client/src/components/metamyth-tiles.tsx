@@ -118,7 +118,7 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
       
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
         <div className="max-w-2xl">
-          <h2 className={`font-angle text-4xl md:text-6xl font-bold ${titleColors[index]} mb-8`}>
+          <h2 className="font-angle text-4xl md:text-6xl font-bold mb-8" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)' }}>
             {tile.title}
           </h2>
           
@@ -135,16 +135,17 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
             className="font-game text-xl md:text-2xl leading-loose"
             style={{
               color: '#f0f0f0',
-              textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
+              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
             }}
             dangerouslySetInnerHTML={{ __html: tile.description }}
           ></p>
           
           {tile.callToAction && (
             <p 
-              className="font-angle text-3xl md:text-5xl font-bold text-white mt-8"
+              className="font-angle text-3xl md:text-5xl font-bold mt-8"
+              style={{ color: '#f0f0f0' }}
               style={{
-                textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
+                textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
               }}
             >
               {tile.callToAction}
