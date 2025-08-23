@@ -118,6 +118,7 @@ function ConstellationNav({ activeSection }: { activeSection: number }) {
 
 export default function WhyStoryMatters() {
   const [activeSection, setActiveSection] = useState(0);
+  const [backgroundLoaded, setBackgroundLoaded] = useState(false);
   
   const sectionRefs = [
     useRef(null),
@@ -129,6 +130,13 @@ export default function WhyStoryMatters() {
   ];
 
   useEffect(() => {
+    // Preload background image and fade it in
+    const img = new Image();
+    img.onload = () => {
+      setTimeout(() => setBackgroundLoaded(true), 300); // Small delay for dramatic effect
+    };
+    img.src = cosmicDragon;
+
     const observers = sectionRefs.map((ref, index) => {
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -147,17 +155,22 @@ export default function WhyStoryMatters() {
   }, []);
 
   return (
-    <div 
-      className="relative"
-      style={{
-        minHeight: '600vh', // Extra tall page for full dragon journey
-        backgroundImage: `url(${cosmicDragon})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-        backgroundRepeat: 'no-repeat'
-        // NO fixed attachment - lets it scroll naturally
-      }}
-    >
+    <div className="relative" style={{ minHeight: '600vh' }}>
+      {/* Black background base */}
+      <div className="absolute inset-0 bg-deep-black z-0" />
+      
+      {/* Fade-in background image */}
+      <div 
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-2000 z-0 ${
+          backgroundLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{
+          backgroundImage: `url(${cosmicDragon})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
       {/* MUCH STRONGER overlay to actually dim the background */}
       <div className="absolute inset-0 bg-deep-black/60 z-10" />
       <div className="absolute inset-0 bg-gradient-to-b from-deep-black/80 via-deep-black/60 to-deep-black/40 z-10" />
