@@ -45,7 +45,7 @@ export default function VideoSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          "The future we dream is one story away."
+          "The future we want is one story away."
         </motion.h3>
 
         <motion.div
