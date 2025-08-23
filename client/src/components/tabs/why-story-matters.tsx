@@ -252,7 +252,7 @@ export default function WhyStoryMatters() {
         className="min-h-screen flex items-center justify-center px-4"
       >
         <motion.div 
-          className="max-w-4xl mx-auto text-center relative z-10"
+          className="max-w-4xl mx-auto text-center relative z-20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -280,7 +280,7 @@ export default function WhyStoryMatters() {
         data-section="heroes"
         className="min-h-screen flex items-center justify-center px-4"
       >
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-20">
           <motion.p 
             className="font-game text-xl md:text-2xl text-center mb-8"
             style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
@@ -329,9 +329,9 @@ export default function WhyStoryMatters() {
       </section>
 
       {/* Transition Section - "If you believe" */}
-      <section className="flex items-center justify-center px-4 py-20">
+      <section className="flex items-center justify-center px-4 py-20 relative z-10">
         <motion.div 
-          className="text-center max-w-5xl mx-auto"
+          className="text-center max-w-5xl mx-auto relative z-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -368,7 +368,7 @@ export default function WhyStoryMatters() {
         data-section="transformation"
         className="min-h-screen flex items-center justify-center px-4"
       >
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-20">
           {/* Opaque frame for transformation section */}
           <div className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 rounded-lg p-8 shadow-lg shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10">
             <motion.h2 
@@ -452,7 +452,7 @@ export default function WhyStoryMatters() {
         data-section="science"
         className="min-h-screen flex items-center justify-center px-4 pt-20"
       >
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-20">
           <motion.div 
             className="text-center mb-6"
             initial={{ opacity: 0 }}
@@ -520,7 +520,7 @@ export default function WhyStoryMatters() {
         className="min-h-screen flex items-center justify-center px-4"
       >
         <motion.div 
-          className="max-w-4xl mx-auto text-center relative z-10"
+          className="max-w-4xl mx-auto text-center relative z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 1.0 }}
@@ -572,7 +572,7 @@ export default function WhyStoryMatters() {
       {/* The Call to Adventure */}
       <section className="min-h-screen flex items-center justify-center px-4 relative">
         <motion.div 
-          className="max-w-4xl mx-auto text-center relative z-10"
+          className="max-w-4xl mx-auto text-center relative z-20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
