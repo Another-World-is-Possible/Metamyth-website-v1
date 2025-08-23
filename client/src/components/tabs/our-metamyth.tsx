@@ -27,7 +27,7 @@ const accordionItems = [
     id: "quest",
     title: "II. THE QUEST",
     icon: "⭐",
-    sectionTitle: "THE QUEST",
+    sectionTitle: "OUR QUEST",
     quote: "We wield the most ancient technology powered by modern magic: Write your reality, play it like the ultimate game, film it into existence to attract people into your quest.",
     items: [
       "THE STAR: Restore story to its rightful place as consciousness technology—the primordial force that turns scattered tribes into civilizations.",

@@ -1,97 +1,61 @@
 import { motion } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-
-// Direct image path
-const horizontalLandscape = "/attached_assets/krea-edit(1)_1755989239486.png";
 
 const questHorizons = [
   {
     id: 1,
-    title: "HORIZON 1: DISCOVER",
-    subtitle: "What Is Already Dying",
-    description: "We identify the extractive patterns and limiting stories that no longer serve your organization's evolution.",
-    color: "crimson",
-    details: [
-      "Map current narrative landscape",
-      "Identify extraction patterns", 
-      "Discover authentic purpose",
-      "Clarify transformation readiness"
-    ]
+    title: "THE CALLING",
+    subtitle: "Building the Foundation Community", 
+    color: "ancient-gold",
+    items: [
+      "Guiding organizations through the Metamyth methodology",
+      "Developing MythOS operating system and MetaMyth AI architecture", 
+      "Building core community of visionary leaders and regenerative enterprises",
+      "Establishing story transformation infrastructure and complete metamyth process"
+    ],
+    status: "Current Mission: Growing the community of the future through authentic story work",
+    description: "We guide organizations through the Metamyth methodology, transforming their authentic stories into powerful foundations for regenerative change. Growing a community of visionaries ready to create the future."
   },
   {
     id: 2,
-    title: "HORIZON 2: TRANSFORM", 
-    subtitle: "What Is Emerging",
-    description: "We architect regenerative systems and stories that align with your cosmic purpose and planetary healing.",
+    title: "THE JOURNEY", 
+    subtitle: "Scaling the Story Revolution",
     color: "mystical-teal",
-    details: [
-      "Design regenerative business model",
-      "Develop authentic narrative system",
-      "Build community magnetism",
-      "Create transformation infrastructure"
-    ]
+    items: [
+      "Expanding methodology globally through community network",
+      "Each guided organization becomes beacon inspiring others",
+      "Creating synergistic regenerative economic system through authentic stories", 
+      "Establishing virtuous cycle of story-based transformation spreading organically"
+    ],
+    status: "Victory: Demonstrating that authentic story work creates unstoppable regenerative momentum",
+    description: "As our community grows, we scale the methodology globally. Each organization we guide becomes a beacon, inspiring others to discover their authentic purpose and join the movement toward planetary healing."
   },
   {
     id: 3,
-    title: "HORIZON 3: EMBODY",
-    subtitle: "What We Are Creating",
-    description: "We implement the new story as living practice, becoming the change we wish to see in the world.",
-    color: "ancient-gold",
-    details: [
-      "Launch regenerative operations",
-      "Activate community networks", 
-      "Measure transformation impact",
-      "Scale authentic influence"
-    ]
+    title: "THE VISION",
+    subtitle: "Global Network of Authentic Purpose",
+    color: "crimson",
+    items: [
+      "Thriving global network of purpose-driven organizations connected through story",
+      "Metamyth methodology becomes recognized planetary healing technology",
+      "AI and MythOS emerge naturally to support community-led transformation",
+      "Species-wide collaboration emerging from authentic story-based federation"
+    ],
+    status: "Ultimate Vision: Planetary transformation through authentic story becoming the new operating system",
+    description: "A thriving global network of purpose-driven organizations, all connected through authentic story and regenerative mission. AI and MythOS emerge naturally to support this community-led transformation."
   }
 ];
 
 export default function TheQuest() {
-  const [backgroundLoaded, setBackgroundLoaded] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    // Preload image
-    const img = new Image();
-    img.onload = () => setBackgroundLoaded(true);
-    img.src = horizontalLandscape;
-
-    // Track scroll position
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Calculate horizontal movement based on scroll
-  const horizontalOffset = Math.min(scrollY * 0.1, 70); // Move horizontally as user scrolls
-
   return (
-    <div className="relative min-h-screen" style={{ minHeight: '300vh' }}>
-      {/* Horizontal scrolling background */}
-      <div 
-        className="fixed inset-0 z-0"
-        style={{
-          backgroundImage: `url(${horizontalLandscape})`,
-          backgroundSize: '200% 100%',
-          backgroundPosition: `${horizontalOffset}% center`,
-          backgroundRepeat: 'no-repeat',
-          opacity: backgroundLoaded ? 0.7 : 0,
-          transition: 'opacity 500ms ease-out'
-        }}
-      />
-      
-      {/* Overlay for text readability */}
-      <div className="fixed inset-0 bg-deep-black/50 z-5" />
-      
-      <div className="max-w-7xl mx-auto px-4 relative z-10 py-20 pt-32">
+    <div className="bg-gradient-to-b from-deep-black via-forest-green/30 to-deep-black min-h-screen py-20 pt-32">
+      <div className="max-w-7xl mx-auto px-4">
         <motion.h2 
           className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          THE QUEST
+          OUR QUEST
         </motion.h2>
         
         <motion.div
@@ -102,10 +66,10 @@ export default function TheQuest() {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <p className="font-alice text-2xl italic text-ancient-gold mb-6">
-            "Story is the oldest technology on Earth.<br/>The original operating system that turns vision into reality."
+            "We are on a journey to change the human story and transform along the way."
           </p>
           <p className="font-alice text-lg leading-loose">
-            We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real.<br/><br/>Your story becomes the foundation for everything that follows.
+            Our quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence. This is how we change the human story—one authentic narrative at a time.
           </p>
         </motion.div>
 
@@ -124,63 +88,79 @@ export default function TheQuest() {
                 <motion.div
                   initial={{ y: 20, opacity: 0.5 }}
                   whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.3 }}
                   viewport={{ once: true }}
                 >
-                  <div className="text-center mb-6">
-                    <h3 className={`font-edensor text-2xl md:text-3xl font-bold text-${horizon.color} mb-2`}>
-                      {horizon.title}
-                    </h3>
-                    <h4 className="font-alice text-xl text-ancient-gold italic">
-                      {horizon.subtitle}
-                    </h4>
+                  <div className="flex items-center mb-6">
+                    <div className={`w-12 h-12 rounded-full bg-${horizon.color}/20 border-2 border-${horizon.color} flex items-center justify-center mr-6`}>
+                      <span className={`text-${horizon.color} font-bold text-xl`}>
+                        {horizon.id}
+                      </span>
+                    </div>
+                    <div>
+                      <h3 
+                        className="font-edensor text-2xl md:text-3xl font-bold mb-2"
+                        style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                      >
+                        {horizon.title}
+                      </h3>
+                      <h4 className="font-alice text-lg italic" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.6), 0 0 12px rgba(212, 175, 55, 0.3), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+                        {horizon.subtitle}
+                      </h4>
+                    </div>
                   </div>
                   
-                  <p className="font-alice text-lg text-center mb-6 text-silver max-w-3xl mx-auto">
+                  <p 
+                    className="font-alice text-lg leading-loose mb-6"
+                    style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                  >
                     {horizon.description}
                   </p>
                   
-                  <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-                    {horizon.details.map((detail, detailIndex) => (
-                      <motion.div
-                        key={detailIndex}
-                        className="flex items-center gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: (index * 0.1) + (detailIndex * 0.1) }}
-                        viewport={{ once: true }}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h5 className={`font-edensor text-lg font-bold text-${horizon.color} mb-4`}>
+                        OBJECTIVES
+                      </h5>
+                      <ul className="space-y-3">
+                        {horizon.items.map((item, itemIndex) => (
+                          <motion.li 
+                            key={itemIndex} 
+                            className="flex items-start font-alice"
+                            style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                            initial={{ x: -20, opacity: 0 }}
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: 0.4, delay: index * 0.3 + itemIndex * 0.1 }}
+                            viewport={{ once: true }}
+                          >
+                            <span className={`text-${horizon.color} mr-3 mt-1`}>•</span>
+                            {item}
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h5 className={`font-edensor text-lg font-bold text-${horizon.color} mb-4`}>
+                        STATUS
+                      </h5>
+                      <p 
+                        className={`font-alice text-${horizon.color} italic`}
+                        style={{
+                          textShadow: '0 0 2px rgba(0, 0, 0, 0.7)'
+                        }}
                       >
-                        <div className={`w-2 h-2 rounded-full bg-${horizon.color}`} />
-                        <span className="font-alice text-silver">{detail}</span>
-                      </motion.div>
-                    ))}
+                        {horizon.status}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Call to Action */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <p className="font-alice text-xl text-ancient-gold mb-6">
-            Ready to begin your transformation?
-          </p>
-          <Card className="bg-deep-black/80 mystical-border max-w-2xl mx-auto">
-            <CardContent className="p-6">
-              <p className="font-alice text-silver leading-relaxed">
-                Every regenerative future begins with an authentic story. Let's discover yours.
-              </p>
-            </CardContent>
-          </Card>
-        </motion.div>
       </div>
     </div>
   );
 }
+
