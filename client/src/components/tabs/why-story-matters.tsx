@@ -317,7 +317,7 @@ export default function WhyStoryMatters() {
           
           {/* Metamyth Divider */}
           <motion.div 
-            className="flex justify-center my-8"
+            className="flex justify-center my-8 relative z-20"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -350,7 +350,7 @@ export default function WhyStoryMatters() {
       </section>
 
       {/* Metamyth Divider */}
-      <section className="flex justify-center py-16">
+      <section className="flex justify-center py-16 relative z-20">
         <motion.div 
           className="flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -434,7 +434,7 @@ export default function WhyStoryMatters() {
       </section>
 
       {/* Metamyth Divider */}
-      <section className="flex justify-center py-16">
+      <section className="flex justify-center py-16 relative z-20">
         <motion.div 
           className="flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -501,7 +501,7 @@ export default function WhyStoryMatters() {
       </section>
 
       {/* Metamyth Divider */}
-      <section className="flex justify-center py-16">
+      <section className="flex justify-center py-16 relative z-20">
         <motion.div 
           className="flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -557,7 +557,7 @@ export default function WhyStoryMatters() {
       </section>
 
       {/* Metamyth Divider */}
-      <section className="flex justify-center py-16">
+      <section className="flex justify-center py-16 relative z-20">
         <motion.div 
           className="flex justify-center"
           initial={{ opacity: 0, scale: 0.8 }}
