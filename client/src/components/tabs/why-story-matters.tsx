@@ -159,8 +159,8 @@ export default function WhyStoryMatters() {
       }}
     >
       {/* Gradient overlay from black to transparent for cosmic dragon reveal */}
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-black/95 via-deep-black/80 to-deep-black/60" />
-      <div className="absolute inset-0 bg-mystical-teal/20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-deep-black/98 via-deep-black/85 to-deep-black/70" />
+      <div className="absolute inset-0 bg-mystical-teal/5" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}
