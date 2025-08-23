@@ -83,8 +83,92 @@ const transformationResults = [
 
 export default function TheSystems() {
   return (
-    <div className="bg-forest-green py-20 pt-32">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="relative bg-forest-green py-20 pt-32 overflow-hidden">
+      {/* Constellation Background */}
+      <div className="absolute inset-0 opacity-30">
+        <svg className="w-full h-full" viewBox="0 0 1200 800" fill="none">
+          {/* Constellation nodes */}
+          <circle cx="150" cy="150" r="3" fill="#3EEECB" className="animate-pulse" />
+          <circle cx="300" cy="100" r="2" fill="#D4AF37" className="animate-pulse" style={{animationDelay: '0.5s'}} />
+          <circle cx="500" cy="200" r="4" fill="#3EEECB" className="animate-pulse" style={{animationDelay: '1s'}} />
+          <circle cx="700" cy="120" r="3" fill="#D4AF37" className="animate-pulse" style={{animationDelay: '1.5s'}} />
+          <circle cx="900" cy="180" r="2" fill="#3EEECB" className="animate-pulse" style={{animationDelay: '2s'}} />
+          <circle cx="1050" cy="140" r="3" fill="#D4AF37" className="animate-pulse" style={{animationDelay: '0.3s'}} />
+          
+          <circle cx="200" cy="350" r="3" fill="#D4AF37" className="animate-pulse" style={{animationDelay: '0.8s'}} />
+          <circle cx="400" cy="400" r="4" fill="#3EEECB" className="animate-pulse" style={{animationDelay: '1.3s'}} />
+          <circle cx="600" cy="350" r="2" fill="#D4AF37" className="animate-pulse" style={{animationDelay: '1.8s'}} />
+          <circle cx="800" cy="420" r="3" fill="#3EEECB" className="animate-pulse" style={{animationDelay: '2.3s'}} />
+          <circle cx="1000" cy="380" r="3" fill="#D4AF37" className="animate-pulse" style={{animationDelay: '0.6s'}} />
+          
+          <circle cx="100" cy="600" r="2" fill="#3EEECB" className="animate-pulse" style={{animationDelay: '1.1s'}} />
+          <circle cx="350" cy="650" r="3" fill="#D4AF37" className="animate-pulse" style={{animationDelay: '1.6s'}} />
+          <circle cx="550" cy="600" r="4" fill="#3EEECB" className="animate-pulse" style={{animationDelay: '2.1s'}} />
+          <circle cx="750" cy="680" r="2" fill="#D4AF37" className="animate-pulse" style={{animationDelay: '0.4s'}} />
+          <circle cx="950" cy="620" r="3" fill="#3EEECB" className="animate-pulse" style={{animationDelay: '0.9s'}} />
+          
+          {/* Energy flow lines */}
+          <path d="M150 150 Q225 125 300 100" stroke="#3EEECB" strokeWidth="1" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '0.2s'}}>
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="8s" repeatCount="indefinite" />
+          </path>
+          <path d="M300 100 Q400 150 500 200" stroke="#D4AF37" strokeWidth="1" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '0.7s'}}>
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="10s" repeatCount="indefinite" />
+          </path>
+          <path d="M500 200 Q600 160 700 120" stroke="#3EEECB" strokeWidth="1" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '1.2s'}}>
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="12s" repeatCount="indefinite" />
+          </path>
+          <path d="M700 120 Q800 150 900 180" stroke="#D4AF37" strokeWidth="1" fill="none" opacity="0.6" className="animate-pulse" style={{animationDelay: '1.7s'}}>
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="9s" repeatCount="indefinite" />
+          </path>
+          
+          {/* Vertical connections */}
+          <path d="M200 350 Q300 275 400 200" stroke="#3EEECB" strokeWidth="1" fill="none" opacity="0.5" className="animate-pulse" style={{animationDelay: '0.9s'}}>
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="11s" repeatCount="indefinite" />
+          </path>
+          <path d="M600 350 Q650 275 700 200" stroke="#D4AF37" strokeWidth="1" fill="none" opacity="0.5" className="animate-pulse" style={{animationDelay: '1.4s'}}>
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="13s" repeatCount="indefinite" />
+          </path>
+          <path d="M400 400 Q475 500 550 600" stroke="#3EEECB" strokeWidth="1" fill="none" opacity="0.5" className="animate-pulse" style={{animationDelay: '1.9s'}}>
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="14s" repeatCount="indefinite" />
+          </path>
+          
+          {/* Cross connections */}
+          <path d="M150 150 Q175 250 200 350" stroke="#D4AF37" strokeWidth="1" fill="none" opacity="0.4" className="animate-pulse" style={{animationDelay: '2.4s'}}>
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="15s" repeatCount="indefinite" />
+          </path>
+          <path d="M800 420 Q875 520 950 620" stroke="#3EEECB" strokeWidth="1" fill="none" opacity="0.4" className="animate-pulse" style={{animationDelay: '0.1s'}}>
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="16s" repeatCount="indefinite" />
+          </path>
+        </svg>
+      </div>
+      
+      {/* Energy connections through content */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+        <svg className="w-full h-full" viewBox="0 0 1200 1000" fill="none">
+          {/* Flowing energy through main content areas */}
+          <path d="M600 200 Q650 350 600 500 Q550 650 600 800" stroke="#D4AF37" strokeWidth="2" fill="none" opacity="0.8">
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="12s" repeatCount="indefinite" />
+          </path>
+          <path d="M100 300 Q300 320 500 300 Q700 280 900 300 Q1100 320 1200 300" stroke="#3EEECB" strokeWidth="1.5" fill="none" opacity="0.6">
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="15s" repeatCount="indefinite" />
+          </path>
+          <path d="M200 600 Q400 580 600 600 Q800 620 1000 600" stroke="#D4AF37" strokeWidth="1.5" fill="none" opacity="0.6">
+            <animate attributeName="stroke-dasharray" values="0,1000;1000,0;0,1000" dur="18s" repeatCount="indefinite" />
+          </path>
+          
+          {/* Radial energy emanating from center */}
+          <circle cx="600" cy="400" r="150" stroke="#3EEECB" strokeWidth="1" fill="none" opacity="0.3">
+            <animate attributeName="r" values="150;180;150" dur="8s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.3;0.1;0.3" dur="8s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="600" cy="400" r="250" stroke="#D4AF37" strokeWidth="1" fill="none" opacity="0.2">
+            <animate attributeName="r" values="250;280;250" dur="10s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.2;0.05;0.2" dur="10s" repeatCount="indefinite" />
+          </circle>
+        </svg>
+      </div>
+      
+      <div className="relative max-w-6xl mx-auto px-4 z-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -110,7 +194,11 @@ export default function TheSystems() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card className="bg-deep-black/50 mystical-border mystical-glow">
+          <Card className="relative bg-deep-black/80 rounded-lg border-2 border-ancient-gold/70 shadow-lg shadow-ancient-gold/30 backdrop-blur-sm" style={{
+            background: 'linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(29,66,65,0.3) 50%, rgba(0,0,0,0.9) 100%)',
+            boxShadow: 'inset 0 1px 0 rgba(212,175,55,0.3), inset 0 -1px 0 rgba(212,175,55,0.1), 0 0 20px rgba(212,175,55,0.2), 0 0 40px rgba(62,238,203,0.1)',
+            borderImage: 'linear-gradient(45deg, #D4AF37, #3EEECB, #D4AF37) 1'
+          }}>
             <CardContent className="p-8">
               <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4 text-center">
                 THE RADICAL PROCESS OF REALITY AUTHORSHIP
@@ -139,10 +227,17 @@ export default function TheSystems() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <Card className="bg-deep-black/50 mystical-border enhanced-glow">
+                <Card className="relative bg-deep-black/80 rounded-lg border-2 border-ancient-gold/70 shadow-lg shadow-ancient-gold/30 backdrop-blur-sm" style={{
+                  background: 'linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(29,66,65,0.3) 50%, rgba(0,0,0,0.9) 100%)',
+                  boxShadow: 'inset 0 1px 0 rgba(212,175,55,0.3), inset 0 -1px 0 rgba(212,175,55,0.1), 0 0 20px rgba(212,175,55,0.2), 0 0 40px rgba(62,238,203,0.1)',
+                  borderImage: 'linear-gradient(45deg, #D4AF37, #3EEECB, #D4AF37) 1'
+                }}>
                   <CardContent className="p-8">
                     <div className="flex items-start gap-6">
-                      <div className="p-4 rounded-lg bg-mystical-teal/20 border-2 border-mystical-teal/60 shadow-lg shadow-mystical-teal/30">
+                      <div className="p-4 rounded-lg border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/30 backdrop-blur-sm" style={{
+                        background: 'linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(62,238,203,0.1) 50%, rgba(212,175,55,0.2) 100%)',
+                        boxShadow: 'inset 0 1px 0 rgba(212,175,55,0.3), 0 0 15px rgba(212,175,55,0.2)'
+                      }}>
                         <phase.icon className="text-mystical-teal text-3xl" style={{ textShadow: '0 0 8px currentColor' }} />
                       </div>
                       
@@ -170,7 +265,10 @@ export default function TheSystems() {
                             </ul>
                           </div>
                           
-                          <div className="bg-deep-black/60 border-2 border-mystical-teal/60 rounded-lg p-4 shadow-lg shadow-mystical-teal/30">
+                          <div className="rounded-lg border-2 border-ancient-gold/60 p-4 shadow-lg shadow-ancient-gold/30 backdrop-blur-sm" style={{
+                            background: 'linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(29,66,65,0.4) 50%, rgba(0,0,0,0.8) 100%)',
+                            boxShadow: 'inset 0 1px 0 rgba(212,175,55,0.3), inset 0 -1px 0 rgba(212,175,55,0.1), 0 0 15px rgba(212,175,55,0.2)'
+                          }}>
                             <h5 className="text-mystical-teal font-bold mb-3 text-lg" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
                             <p className="text-silver text-base font-medium leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                               {phase.outcome}
@@ -193,7 +291,11 @@ export default function TheSystems() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <Card className="bg-deep-black/50 mystical-border mystical-glow">
+          <Card className="relative bg-deep-black/80 rounded-lg border-2 border-ancient-gold/70 shadow-lg shadow-ancient-gold/30 backdrop-blur-sm" style={{
+            background: 'linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(29,66,65,0.3) 50%, rgba(0,0,0,0.9) 100%)',
+            boxShadow: 'inset 0 1px 0 rgba(212,175,55,0.3), inset 0 -1px 0 rgba(212,175,55,0.1), 0 0 20px rgba(212,175,55,0.2), 0 0 40px rgba(62,238,203,0.1)',
+            borderImage: 'linear-gradient(45deg, #D4AF37, #3EEECB, #D4AF37) 1'
+          }}>
             <CardContent className="p-8">
               <h3 className="font-edensor text-2xl font-bold text-mystical-teal mb-4 text-center">
                 WHO WE SERVE
@@ -222,7 +324,11 @@ export default function TheSystems() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="bg-deep-black/90 border-2 border-mystical-teal/60 shadow-lg shadow-mystical-teal/40 ring-2 ring-mystical-teal/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-mystical-teal/10 hover:border-mystical-teal/80 hover:shadow-mystical-teal/60 transition-all duration-300 h-full">
+                <Card className="relative bg-deep-black/80 rounded-lg border-2 border-ancient-gold/70 shadow-lg shadow-ancient-gold/30 backdrop-blur-sm h-full hover:shadow-ancient-gold/50 hover:border-ancient-gold/90 transition-all duration-300" style={{
+                  background: 'linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(29,66,65,0.3) 50%, rgba(0,0,0,0.9) 100%)',
+                  boxShadow: 'inset 0 1px 0 rgba(212,175,55,0.3), inset 0 -1px 0 rgba(212,175,55,0.1), 0 0 20px rgba(212,175,55,0.2), 0 0 40px rgba(62,238,203,0.1)',
+                  borderImage: 'linear-gradient(45deg, #D4AF37, #3EEECB, #D4AF37) 1'
+                }}>
                   <CardContent className="p-6">
                     <h4 className="font-bold text-ancient-gold mb-3" style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
                       {result.title}
