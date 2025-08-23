@@ -39,13 +39,23 @@
   text-rendering: optimizeLegibility;
 }
 
+@font-face {
+  font-family: 'Thornelia2024';
+  src: url('/attached_assets/Thornelia-Regular_1755924349754.ttf?v=2024') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 0, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
 /* Font class declarations with new names */
 .font-angle {
   font-family: 'AngleFairy2024', serif !important;
 }
 
 .font-game {
-  font-family: 'Glocs2024', serif !important;
+  font-family: 'Thornelia2024', serif !important;
 }
 
 @tailwind base;
