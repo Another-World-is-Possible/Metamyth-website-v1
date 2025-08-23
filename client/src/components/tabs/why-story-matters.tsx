@@ -334,7 +334,7 @@ export default function WhyStoryMatters() {
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>⭐</div>
+          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>🔮</div>
         </motion.div>
       </section>
 
@@ -402,23 +402,23 @@ export default function WhyStoryMatters() {
         data-section="science"
         className="min-h-screen flex items-center justify-center px-4"
       >
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-10">
           <motion.div 
-            className="text-center mb-8"
+            className="text-center mb-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1 }}
           >
-            <h2 className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold mb-4" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+            <h2 className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold mb-3" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               The Science Behind Story as Evolutionary Technology
             </h2>
-            <p className="font-game text-lg" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+            <p className="font-game text-base" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               How consciousness actually works:
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-3">
             {scienceConcepts.map((concept, index) => {
               const IconComponent = concept.icon;
               return (
@@ -431,14 +431,14 @@ export default function WhyStoryMatters() {
                   whileHover={{ y: -5, transition: { duration: 0.3 } }}
                 >
                   <Card className="bg-deep-black/70 backdrop-blur-sm border border-mystical-teal/40 shadow-lg shadow-mystical-teal/20 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/80 via-deep-black/70 to-mystical-teal/5 h-full hover:border-mystical-teal/60 transition-all duration-300">
-                    <CardContent className="p-4 text-center">
-                      <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-${concept.color}/20 flex items-center justify-center border border-${concept.color}/30`}>
-                        <IconComponent className={`w-8 h-8 text-${concept.color}`} />
+                    <CardContent className="p-3 text-center">
+                      <div className={`w-12 h-12 mx-auto mb-2 rounded-full bg-${concept.color}/20 flex items-center justify-center border border-${concept.color}/30`}>
+                        <IconComponent className={`w-6 h-6 text-${concept.color}`} />
                       </div>
-                      <h3 className={`font-edensor text-sm font-bold text-${concept.color} mb-3 tracking-wider`}>
+                      <h3 className={`font-edensor text-xs font-bold text-${concept.color} mb-2 tracking-wider`}>
                         {concept.title}
                       </h3>
-                      <p className="text-silver/80 text-sm leading-relaxed">
+                      <p className="text-silver/80 text-xs leading-relaxed">
                         {concept.description}
                       </p>
                     </CardContent>
@@ -448,6 +448,19 @@ export default function WhyStoryMatters() {
             })}
           </div>
         </div>
+      </section>
+
+      {/* Metamyth Divider */}
+      <section className="flex justify-center py-16">
+        <motion.div 
+          className="flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>⛲</div>
+        </motion.div>
       </section>
 
       {/* The Moment of Choice */}
