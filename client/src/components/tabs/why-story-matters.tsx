@@ -162,23 +162,14 @@ export default function WhyStoryMatters() {
       {/* Black background base */}
       <div className="absolute inset-0 bg-deep-black z-0" />
       
-      {/* TEST: Simple visible background */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          background: 'radial-gradient(circle, #4a0080 0%, #000080 50%, #000000 100%)'
-        }}
-      />
-      
-      {/* Real background image */}
+      {/* Background image */}
       <div 
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `url(${cosmicDragon})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
-          opacity: 0.8
+          backgroundRepeat: 'no-repeat'
         }}
       />
       {/* MUCH STRONGER overlay to actually dim the background */}
