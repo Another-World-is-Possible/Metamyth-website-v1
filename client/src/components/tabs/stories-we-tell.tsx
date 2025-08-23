@@ -101,7 +101,7 @@ export default function StoriesWeTell() {
                   className="h-56 bg-cover bg-center relative"
                   style={{ backgroundImage: `url(${audience.bgImage})` }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-deep-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                 </div>
                 <CardContent className="p-6">
                   <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4">
