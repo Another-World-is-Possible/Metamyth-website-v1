@@ -395,7 +395,6 @@ export default function WhyStoryMatters() {
                 </div>
               </motion.div>
             ))}
-            </div>
           </div>
         </div>
       </section>
