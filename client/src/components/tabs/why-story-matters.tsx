@@ -130,22 +130,8 @@ export default function WhyStoryMatters() {
   ];
 
   useEffect(() => {
-    // Immediate fallback for very fast display
-    const fallbackTimer = setTimeout(() => {
-      setBackgroundLoaded(true);
-    }, 500); // Show after 0.5 seconds regardless
-    
-    // Try to preload for optimization but don't wait
-    const img = new Image();
-    img.onload = () => {
-      clearTimeout(fallbackTimer);
-      setBackgroundLoaded(true);
-    };
-    img.onerror = () => {
-      clearTimeout(fallbackTimer);
-      setBackgroundLoaded(true);
-    };
-    img.src = cosmicDragon;
+    // Simplified - just show the background immediately
+    setBackgroundLoaded(true);
 
     const observers = sectionRefs.map((ref, index) => {
       const observer = new IntersectionObserver(
@@ -162,7 +148,6 @@ export default function WhyStoryMatters() {
     });
 
     return () => {
-      clearTimeout(fallbackTimer);
       observers.forEach(observer => observer.disconnect());
     };
   }, []);
