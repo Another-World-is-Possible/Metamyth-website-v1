@@ -268,7 +268,7 @@ export default function WhyStoryMatters() {
           </motion.p>
           
           {/* Opaque frame for bulleted section */}
-          <div className="max-w-4xl mx-auto bg-deep-black/70 backdrop-blur-sm border border-ancient-gold/30 rounded-lg p-8 shadow-lg shadow-ancient-gold/20">
+          <div className="max-w-4xl mx-auto bg-deep-black/70 backdrop-blur-sm border border-mystical-teal/40 rounded-lg p-8 shadow-lg shadow-mystical-teal/30 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/80 via-deep-black/70 to-mystical-teal/5">
             <div className="grid gap-8 max-w-3xl mx-auto">
             {audienceTypes.map((audience, index) => (
               <motion.div
@@ -291,7 +291,7 @@ export default function WhyStoryMatters() {
             </div>
           </div>
           
-          {/* Sword Divider */}
+          {/* Metamyth Divider */}
           <motion.div 
             className="flex justify-center my-16"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -299,10 +299,7 @@ export default function WhyStoryMatters() {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <div className="w-1 h-12 bg-gradient-to-b from-ancient-gold via-mystical-teal to-ancient-gold rounded-full relative">
-              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-ancient-gold rounded-sm rotate-45"></div>
-              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3 h-2 bg-mystical-teal rounded-full"></div>
-            </div>
+            <div className="text-4xl" style={{ textShadow: '0 0 12px rgba(129, 236, 236, 0.8)' }}>🐉</div>
           </motion.div>
         </div>
       </section>
@@ -328,7 +325,7 @@ export default function WhyStoryMatters() {
         </motion.div>
       </section>
 
-      {/* Sword Divider */}
+      {/* Metamyth Divider */}
       <section className="flex justify-center py-16">
         <motion.div 
           className="flex justify-center"
@@ -337,10 +334,7 @@ export default function WhyStoryMatters() {
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-          <div className="w-1 h-16 bg-gradient-to-b from-ancient-gold via-mystical-teal to-ancient-gold rounded-full relative">
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-ancient-gold rounded-sm rotate-45 shadow-lg shadow-ancient-gold/50"></div>
-            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-4 h-3 bg-mystical-teal rounded-full shadow-lg shadow-mystical-teal/50"></div>
-          </div>
+          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>⭐</div>
         </motion.div>
       </section>
 
@@ -351,18 +345,20 @@ export default function WhyStoryMatters() {
         className="min-h-screen flex items-center justify-center px-4"
       >
         <div className="max-w-5xl mx-auto relative z-10">
-          <motion.h2 
-            className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold text-center mb-12"
-            style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1 }}
-          >
-            When story serves life, everything changes:
-          </motion.h2>
-          
-          <div className="space-y-8">
+          {/* Opaque frame for transformation section */}
+          <div className="bg-deep-black/70 backdrop-blur-sm border border-mystical-teal/40 rounded-lg p-8 shadow-lg shadow-mystical-teal/30 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/80 via-deep-black/70 to-mystical-teal/5">
+            <motion.h2 
+              className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold text-center mb-12"
+              style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1 }}
+            >
+              When story serves life, everything changes:
+            </motion.h2>
+            
+            <div className="space-y-8">
             {transformations.map((transform, index) => (
               <motion.div
                 key={index}
@@ -395,6 +391,7 @@ export default function WhyStoryMatters() {
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
         </div>
       </section>
