@@ -158,8 +158,8 @@ export default function WhyStoryMatters() {
         // REMOVED backgroundAttachment: 'fixed' - now background scrolls WITH content
       }}
     >
-      {/* Very strong dark overlay for text readability */}
-      <div className="absolute inset-0 bg-deep-black/80" />
+      {/* Maximum dark overlay for text readability */}
+      <div className="absolute inset-0 bg-deep-black/85" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}
@@ -186,7 +186,7 @@ export default function WhyStoryMatters() {
             className="font-game text-2xl md:text-3xl mb-6"
             style={{ 
               color: '#f0f0f0', 
-              textShadow: '0 0 1px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1), 2px 2px 2px rgba(0,0,0,1), 3px 3px 6px rgba(0,0,0,0.9), 4px 4px 8px rgba(0,0,0,0.8)' 
+              textShadow: '0 0 1px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,1), 0 0 3px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1), 0 0 6px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1), 1px 1px 2px rgba(0,0,0,1), 2px 2px 4px rgba(0,0,0,1), 3px 3px 6px rgba(0,0,0,1), 4px 4px 8px rgba(0,0,0,1), 5px 5px 10px rgba(0,0,0,0.9)' 
             }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -199,7 +199,7 @@ export default function WhyStoryMatters() {
             className="font-game text-xl md:text-2xl mb-8"
             style={{ 
               color: '#f0f0f0', 
-              textShadow: '0 0 1px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1), 2px 2px 2px rgba(0,0,0,1), 3px 3px 6px rgba(0,0,0,0.9), 4px 4px 8px rgba(0,0,0,0.8)' 
+              textShadow: '0 0 1px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,1), 0 0 3px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1), 0 0 6px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1), 1px 1px 2px rgba(0,0,0,1), 2px 2px 4px rgba(0,0,0,1), 3px 3px 6px rgba(0,0,0,1), 4px 4px 8px rgba(0,0,0,1), 5px 5px 10px rgba(0,0,0,0.9)' 
             }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -446,7 +446,7 @@ export default function WhyStoryMatters() {
           <p 
             className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold"
             style={{ 
-              textShadow: '0 0 1px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1), 2px 2px 2px rgba(0,0,0,1), 3px 3px 6px rgba(0,0,0,0.9), 4px 4px 8px rgba(0,0,0,0.8)'
+              textShadow: '0 0 1px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,1), 0 0 3px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1), 0 0 6px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1), 1px 1px 2px rgba(0,0,0,1), 2px 2px 4px rgba(0,0,0,1), 3px 3px 6px rgba(0,0,0,1), 4px 4px 8px rgba(0,0,0,1), 5px 5px 10px rgba(0,0,0,0.9)'
             }}
           >
             The choice is simple: Author the world your heart knows is possible.
@@ -466,7 +466,7 @@ export default function WhyStoryMatters() {
           <h2 
             className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold mb-4"
             style={{ 
-              textShadow: '0 0 1px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1), 2px 2px 2px rgba(0,0,0,1), 3px 3px 6px rgba(0,0,0,0.9), 4px 4px 8px rgba(0,0,0,0.8)'
+              textShadow: '0 0 1px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,1), 0 0 3px rgba(0,0,0,1), 0 0 4px rgba(0,0,0,1), 0 0 6px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1), 1px 1px 2px rgba(0,0,0,1), 2px 2px 4px rgba(0,0,0,1), 3px 3px 6px rgba(0,0,0,1), 4px 4px 8px rgba(0,0,0,1), 5px 5px 10px rgba(0,0,0,0.9)'
             }}
           >
             Ready to transform scattered narrative into coherent planetary force?
