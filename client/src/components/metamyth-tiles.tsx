@@ -71,10 +71,10 @@ const tiles = [
 
 const titleColors = [
   "text-ancient-gold",
-  "text-mystical-teal",
+  "text-white",
   "text-ancient-gold", 
-  "text-crimson",
-  "text-mystical-teal"
+  "text-white",
+  "text-white"
 ];
 
 export default function MetamythTiles() {

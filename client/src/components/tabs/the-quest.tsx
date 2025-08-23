@@ -98,7 +98,7 @@ export default function TheQuest() {
                     </div>
                     <div>
                       <h3 
-                        className={`font-edensor text-2xl md:text-3xl font-bold text-${horizon.color} mb-2`}
+                        className="font-edensor text-2xl md:text-3xl font-bold text-white mb-2"
                         style={{
                           textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.9)'
                         }}
