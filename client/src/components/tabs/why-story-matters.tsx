@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useRef, useState, useEffect } from "react";
 import { Dna, Network, Building, RotateCcw } from "lucide-react";
 
-import cosmicSpiral from "@assets/_ji91cqiibmu6d38x4ukt_0_1755919449745.png";
+import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0_1755922660417.png";
 
 const audienceTypes = [
   {
@@ -148,16 +148,18 @@ export default function WhyStoryMatters() {
 
   return (
     <div 
-      className="min-h-screen relative"
+      className="relative"
       style={{
-        backgroundImage: `url(${cosmicSpiral})`,
+        minHeight: '500vh', // Make page extra tall for scrolling journey
+        backgroundImage: `url(${cosmicDragon})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
+        backgroundPosition: 'top center',
+        backgroundAttachment: 'fixed', // Fixed background creates "traveling through space" effect
+        backgroundRepeat: 'no-repeat'
       }}
     >
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-deep-black/60" />
+      <div className="absolute inset-0 bg-deep-black/50" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}
