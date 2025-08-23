@@ -23,8 +23,8 @@ export default function VideoSection() {
         <motion.p 
           className="text-lg text-center mb-8 max-w-4xl mx-auto font-alice leading-relaxed"
           style={{
-            color: '#f0f0f0',
-            textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
+            color: '#ffffff',
+            textShadow: '0 0 8px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.5)'
           }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
