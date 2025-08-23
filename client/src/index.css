@@ -29,13 +29,23 @@
   text-rendering: optimizeLegibility;
 }
 
+@font-face {
+  font-family: 'Glocs2024';
+  src: url('/attached_assets/Glocs_1755915736427.otf?v=2024') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 0, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
 /* Font class declarations with new names */
 .font-angle {
   font-family: 'AngleFairy2024', serif !important;
 }
 
 .font-game {
-  font-family: 'CookConthic2024', serif !important;
+  font-family: 'Glocs2024', serif !important;
 }
 
 @tailwind base;
@@ -130,7 +140,7 @@
 
   body {
     @apply bg-deep-black text-silver antialiased overflow-x-hidden;
-    font-family: 'CookConthic2024', serif;
+    font-family: 'Glocs2024', serif;
     font-weight: normal;
     /* Cursor will be set by SwordCursor component */
   }
@@ -171,9 +181,9 @@
     text-rendering: optimizeLegibility !important;
   }
   
-  /* Ensure CookConthic font for body text */
+  /* Ensure Glocs font for body text */
   .font-alice, p, blockquote {
-    font-family: 'CookConthic2024', 'Georgia', serif !important;
+    font-family: 'Glocs2024', 'Georgia', serif !important;
   }
 
   /* Scroll-triggered fade animations */
