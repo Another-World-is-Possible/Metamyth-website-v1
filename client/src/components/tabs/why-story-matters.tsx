@@ -424,7 +424,7 @@ export default function WhyStoryMatters() {
           transition={{ duration: 1.5 }}
         >
           <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
-            We're living through the climax of the human story—all threads converging in crisis determining consciousness's fate on Earth.
+            Every thread of human experience is converging now—this generation writes the story that determines Earth's future.
           </p>
           
           <div 
