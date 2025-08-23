@@ -75,7 +75,7 @@ export default function Home() {
                   backgroundImage: `url(/attached_assets/_zln01ad4mec8v0qmtav0_0_1755899727372.png)`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  backgroundAttachment: 'fixed'
+                  backgroundAttachment: 'scroll' // Fixed doesn't work on mobile
                 }}
               >
                 <CallToAction />

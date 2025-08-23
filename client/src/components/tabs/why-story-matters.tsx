@@ -152,8 +152,8 @@ export default function WhyStoryMatters() {
       style={{
         minHeight: '600vh', // Extra tall page for full dragon journey
         backgroundImage: `url(${cosmicDragon})`,
-        backgroundSize: 'auto 100%', // Show full image height, let width scale proportionally
-        backgroundPosition: 'center top',
+        backgroundSize: 'cover', // Better mobile compatibility
+        backgroundPosition: 'center center', // Better mobile positioning
         backgroundRepeat: 'no-repeat'
         // REMOVED backgroundAttachment: 'fixed' - now background scrolls WITH content
       }}
