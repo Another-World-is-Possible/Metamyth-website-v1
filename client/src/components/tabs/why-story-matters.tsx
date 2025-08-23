@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useRef, useState, useEffect } from "react";
 import { Dna, Network, Building, RotateCcw } from "lucide-react";
 
-import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0(1)_1755972671476.jpg";
+import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0_1755922660417.png";
 
 const audienceTypes = [
   {
@@ -317,7 +317,7 @@ export default function WhyStoryMatters() {
           
           {/* Metamyth Divider */}
           <motion.div 
-            className="flex justify-center my-16"
+            className="flex justify-center my-8"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -329,7 +329,7 @@ export default function WhyStoryMatters() {
       </section>
 
       {/* Transition Section - "If you believe" */}
-      <section className="min-h-screen flex items-center justify-center px-4">
+      <section className="flex items-center justify-center px-4 py-20">
         <motion.div 
           className="text-center max-w-5xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
@@ -346,19 +346,6 @@ export default function WhyStoryMatters() {
             If you believe another world is possible but struggle to make others see it—<br/>
             <span className="text-mystical-teal">this work makes the impossible inevitable.</span>
           </h2>
-        </motion.div>
-      </section>
-
-      {/* Metamyth Divider */}
-      <section className="flex justify-center py-16">
-        <motion.div 
-          className="flex justify-center"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>🔮</div>
         </motion.div>
       </section>
 
@@ -431,6 +418,19 @@ export default function WhyStoryMatters() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Metamyth Divider */}
+      <section className="flex justify-center py-16">
+        <motion.div 
+          className="flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>⚡</div>
+        </motion.div>
       </section>
 
       {/* Metamyth Divider */}
