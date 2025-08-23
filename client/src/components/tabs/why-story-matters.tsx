@@ -130,17 +130,14 @@ export default function WhyStoryMatters() {
   ];
 
   useEffect(() => {
-    // Reliable fade-in with fallback
-    const timer = setTimeout(() => {
-      setBackgroundLoaded(true);
-    }, 1000); // Start fade after 1 second regardless
-    
-    // Also try to preload for optimization
+    // Fast image preloading - no artificial delays
     const img = new Image();
     img.onload = () => {
-      if (!backgroundLoaded) {
-        setTimeout(() => setBackgroundLoaded(true), 200);
-      }
+      setBackgroundLoaded(true);
+    };
+    img.onerror = () => {
+      // Fallback - show anyway after brief delay
+      setTimeout(() => setBackgroundLoaded(true), 100);
     };
     img.src = cosmicDragon;
 
@@ -159,7 +156,6 @@ export default function WhyStoryMatters() {
     });
 
     return () => {
-      clearTimeout(timer);
       observers.forEach(observer => observer.disconnect());
     };
   }, []);
@@ -171,7 +167,7 @@ export default function WhyStoryMatters() {
       
       {/* Fade-in background image */}
       <div 
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1500 ease-out z-0 ${
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-500 ease-out z-0 ${
           backgroundLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         style={{

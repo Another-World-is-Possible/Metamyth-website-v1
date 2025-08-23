@@ -237,7 +237,7 @@
   /* Consistent metamyth section fade in - no movement, just unveiling */
   .metamyth-section {
     opacity: 0;
-    transition: opacity 1.2s ease-in-out;
+    transition: opacity 0.6s ease-in-out;
   }
 
   .metamyth-section.visible {
@@ -247,7 +247,7 @@
   /* Background image fade in - no transform, just opacity */
   .metamyth-bg-fade {
     opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+    transition: opacity 0.6s ease-in-out;
   }
 
   .metamyth-section.visible .metamyth-bg-fade {

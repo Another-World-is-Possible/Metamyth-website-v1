@@ -7,8 +7,8 @@ export default function SwordCursor() {
     let isAnimating = false;
     let animationDirection = 1; // 1 for hover, -1 for unhover
     let animationId: ReturnType<typeof setTimeout> | null = null;
-    const totalFrames = 10; // Frames for smoother 0.75-second animation
-    const animationDuration = 750; // 0.75 seconds
+    const totalFrames = 6; // Reduced frames for better performance
+    const animationDuration = 400; // Faster animation
     const frameInterval = animationDuration / totalFrames;
     
     const createSwordCursor = (baseColor: string, rotation: number, size: number, glowStrength: number = 0) => {
@@ -156,45 +156,15 @@ export default function SwordCursor() {
         document.body.style.cursor = cursorUrl;
         document.documentElement.style.cursor = cursorUrl;
         
-        // Enhanced debugging: Log specific elements with system cursors
+        // Simplified cursor enforcement - reduced performance impact
         if (frameIndex === 0) {
           setTimeout(() => {
-            // Target navigation specifically
-            const navElements = document.querySelectorAll('nav, nav *, button, [role="button"], a');
-            navElements.forEach((el) => {
-              const computedStyle = window.getComputedStyle(el);
-              const cursor = computedStyle.cursor;
-              if (cursor && cursor !== 'inherit' && !cursor.includes('url(')) {
-                console.warn('Nav element with system cursor:', {
-                  element: el,
-                  tagName: el.tagName,
-                  className: el.className,
-                  cursor: cursor,
-                  textContent: el.textContent?.slice(0, 50)
-                });
-                (el as HTMLElement).style.setProperty('cursor', cursorUrl, 'important');
-              }
+            // Quick enforcement for key interactive elements only
+            const keyElements = document.querySelectorAll('button, a[href], [role="button"]');
+            keyElements.forEach((el) => {
+              (el as HTMLElement).style.setProperty('cursor', cursorUrl, 'important');
             });
-            
-            // Also check for any problematic elements
-            const allElements = document.querySelectorAll('*');
-            let systemCursorCount = 0;
-            allElements.forEach((el) => {
-              const computedStyle = window.getComputedStyle(el);
-              const cursor = computedStyle.cursor;
-              if (cursor && cursor !== 'inherit' && !cursor.includes('url(')) {
-                systemCursorCount++;
-                if (systemCursorCount <= 5) { // Limit spam
-                  console.warn('System cursor element:', {
-                    tag: el.tagName,
-                    class: el.className,
-                    cursor: cursor
-                  });
-                }
-                (el as HTMLElement).style.setProperty('cursor', cursorUrl, 'important');
-              }
-            });
-          }, 100);
+          }, 50);
         }
       }
     };
