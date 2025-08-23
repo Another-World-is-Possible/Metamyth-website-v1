@@ -48,7 +48,7 @@ const tiles = [
   {
     id: 4,
     title: "THE JOURNEY",
-    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools,<br/>and federate with aligned stories to solve planetary challenges.",
+    quote: "We build the complete story system that helps purpose-driven visionaries<br/>discover their authentic narrative, sequence it into functional tools, and federate<br/>with aligned stories to solve planetary challenges.",
     description: "From individual story regeneration to organizational transformation to planetary coordination—one integrated system that scales from personal to cosmic.",
     bgImage: journeyImg,
     animation: "crash",
@@ -123,7 +123,11 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
           </h2>
           
           <blockquote 
-            className="font-game text-2xl md:text-3xl font-light mb-8 italic text-silver"
+            className="font-game text-2xl md:text-3xl font-light mb-8 italic"
+            style={{
+              color: '#f0f0f0',
+              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
+            }}
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
           

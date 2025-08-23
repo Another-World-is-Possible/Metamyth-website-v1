@@ -20,8 +20,8 @@ export default function CallToAction() {
         <p 
           className="scroll-fade-in font-game text-2xl md:text-3xl text-center mb-12 font-light italic"
           style={{
-            color: 'rgba(192, 192, 192, 0.9)',
-            textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.6)'
+            color: '#f0f0f0',
+            textShadow: '0 0 12px rgba(212, 175, 55, 0.9), 0 0 24px rgba(212, 175, 55, 0.6), 2px 2px 4px rgba(0,0,0,0.8)'
           }}
         >
           "The future we dream is one story away."
