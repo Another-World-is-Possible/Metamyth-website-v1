@@ -74,6 +74,10 @@ const transformationResults = [
   {
     title: "Aligned Resources",
     description: "They attract investors, partners, and team members who share their vision"
+  },
+  {
+    title: "Futureproof Your Company",
+    description: "Stay ahead of changing culture, AI advancement, and climate challenges by charting the future we want to create"
   }
 ];
 
@@ -218,12 +222,12 @@ export default function TheSystems() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="bg-deep-black/50 border border-ancient-gold/30 hover-glow h-full">
+                <Card className="bg-deep-black/90 border-2 border-mystical-teal/60 shadow-lg shadow-mystical-teal/40 ring-2 ring-mystical-teal/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-mystical-teal/10 hover:border-mystical-teal/80 hover:shadow-mystical-teal/60 transition-all duration-300 h-full">
                   <CardContent className="p-6">
-                    <h4 className="font-bold text-ancient-gold mb-3">
+                    <h4 className="font-bold text-ancient-gold mb-3" style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
                       {result.title}
                     </h4>
-                    <p className="text-silver/80 text-sm">
+                    <p className="text-silver text-sm" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                       {result.description}
                     </p>
                   </CardContent>
