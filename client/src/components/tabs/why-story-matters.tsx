@@ -165,7 +165,7 @@ export default function WhyStoryMatters() {
   }, []);
 
   return (
-    <div className="relative" style={{ minHeight: '100vh' }}>
+    <div className="relative" style={{ minHeight: '500vh' }}>
       {/* Black background base */}
       <div className="absolute inset-0 bg-deep-black z-0" />
       
