@@ -142,8 +142,8 @@ export default function TheSystems() {
                 <Card className="bg-deep-black/50 mystical-border enhanced-glow">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-6">
-                      <div className="p-4 rounded-lg bg-mystical-teal/20 border-2 border-mystical-teal/60 shadow-lg shadow-mystical-teal/30">
-                        <phase.icon className="text-mystical-teal text-3xl" style={{ textShadow: '0 0 8px currentColor' }} />
+                      <div className="p-4 rounded-lg bg-ancient-gold/20 border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/30">
+                        <phase.icon className="text-ancient-gold text-3xl" style={{ textShadow: '0 0 8px currentColor' }} />
                       </div>
                       
                       <div className="flex-1">
@@ -159,7 +159,7 @@ export default function TheSystems() {
                         
                         <div className="grid md:grid-cols-2 gap-4 mb-4">
                           <div>
-                            <h5 className="text-mystical-teal font-bold mb-2">Key Elements:</h5>
+                            <h5 className="text-ancient-gold font-bold mb-2">Key Elements:</h5>
                             <ul className="space-y-1">
                               {phase.movements.map((movement, idx) => (
                                 <li key={idx} className="text-silver/90 text-sm flex items-start gap-2">
@@ -170,8 +170,8 @@ export default function TheSystems() {
                             </ul>
                           </div>
                           
-                          <div className="bg-deep-black/60 border-2 border-mystical-teal/60 rounded-lg p-4 shadow-lg shadow-mystical-teal/30">
-                            <h5 className="text-mystical-teal font-bold mb-3 text-lg" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
+                          <div className="bg-deep-black/60 border-2 border-ancient-gold/60 rounded-lg p-4 shadow-lg shadow-ancient-gold/30">
+                            <h5 className="text-ancient-gold font-bold mb-3 text-lg" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
                             <p className="text-silver text-base font-medium leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                               {phase.outcome}
                             </p>
@@ -264,7 +264,7 @@ export default function TheSystems() {
                 enables interconnection with compatible stories.
               </p>
               
-              <div className="border-t border-mystical-teal/30 pt-6">
+              <div className="border-t border-ancient-gold/30 pt-6">
                 <p className="text-xl font-bold text-mystical-teal mb-2">
                   The Metamyth System isn't just organizational consulting—
                 </p>
