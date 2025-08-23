@@ -59,7 +59,8 @@ export default function TheQuest() {
         </motion.h2>
         
         <motion.div
-          className="text-center text-silver/80 text-xl mb-16 max-w-4xl mx-auto"
+          className="text-center text-xl mb-16 max-w-4xl mx-auto"
+          style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
@@ -112,7 +113,8 @@ export default function TheQuest() {
                   </div>
                   
                   <p 
-                    className="font-alice text-lg text-silver leading-loose mb-6"
+                    className="font-alice text-lg leading-loose mb-6"
+                    style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
                     style={{
                       textShadow: '0 0 2px rgba(0, 0, 0, 0.7)'
                     }}
@@ -129,7 +131,8 @@ export default function TheQuest() {
                         {horizon.items.map((item, itemIndex) => (
                           <motion.li 
                             key={itemIndex} 
-                            className="flex items-start font-alice text-silver/90"
+                            className="flex items-start font-alice"
+                            style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
                             style={{
                               textShadow: '0 0 2px rgba(0, 0, 0, 0.7)'
                             }}

@@ -166,7 +166,8 @@ export default function WhyStoryMatters() {
           </motion.h1>
           
           <motion.p 
-            className="text-2xl md:text-3xl text-silver/90 mb-6"
+            className="text-2xl md:text-3xl mb-6"
+            style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
@@ -175,7 +176,8 @@ export default function WhyStoryMatters() {
           </motion.p>
           
           <motion.p 
-            className="text-xl md:text-2xl text-silver/80 mb-8"
+            className="text-xl md:text-2xl mb-8"
+            style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
@@ -208,12 +210,12 @@ export default function WhyStoryMatters() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          <p className="text-2xl md:text-3xl text-silver/90 mb-8 leading-relaxed">
+          <p className="text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
             The same consciousness that authored every system destroying our planet can author every system that could heal it.
           </p>
           
           <div className="border-l-3 border-crimson pl-6 mb-8">
-            <p className="text-xl md:text-2xl text-silver/80 mb-4">
+            <p className="text-xl md:text-2xl mb-4" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
               Story built civilization. Story can rebuild it.
             </p>
           </div>
@@ -232,7 +234,8 @@ export default function WhyStoryMatters() {
       >
         <div className="max-w-4xl mx-auto">
           <motion.p 
-            className="text-2xl md:text-3xl text-silver/90 text-center mb-12"
+            className="text-2xl md:text-3xl text-center mb-12"
+            style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}

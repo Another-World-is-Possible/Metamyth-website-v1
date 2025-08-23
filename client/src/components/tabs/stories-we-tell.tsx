@@ -90,7 +90,7 @@ export default function StoriesWeTell() {
                   <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4">
                     {audience.title}
                   </h3>
-                  <p className="text-silver/90 mb-6 leading-relaxed">
+                  <p className="mb-6 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
                     {audience.description}
                   </p>
                   <div className="space-y-4">
@@ -99,21 +99,21 @@ export default function StoriesWeTell() {
                         <span className="w-2 h-2 bg-crimson rounded-full mr-2"></span>
                         Common Challenges
                       </h4>
-                      <p className="text-silver/80 text-sm leading-relaxed">{audience.challenges}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.challenges}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-mystical-teal mb-2 flex items-center">
                         <span className="w-2 h-2 bg-mystical-teal rounded-full mr-2"></span>
                         Our Approach
                       </h4>
-                      <p className="text-silver/80 text-sm leading-relaxed">{audience.transformation}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.transformation}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-ancient-gold mb-2 flex items-center">
                         <span className="w-2 h-2 bg-ancient-gold rounded-full mr-2"></span>
                         Potential Unlocked
                       </h4>
-                      <p className="text-silver/80 text-sm leading-relaxed">{audience.potential}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.potential}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -144,7 +144,7 @@ export default function StoriesWeTell() {
                       <h4 className={`font-edensor text-lg font-bold text-${step.color} mb-2`}>
                         {step.title}
                       </h4>
-                      <p className="text-silver/80 text-sm">
+                      <p className="text-sm" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
                         {step.description}
                       </p>
                     </div>
@@ -153,7 +153,7 @@ export default function StoriesWeTell() {
               </div>
               
               <div className="text-center mt-8">
-                <p className="text-silver/80 mb-6 max-w-2xl mx-auto">
+                <p className="mb-6 max-w-2xl mx-auto" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
                   Whether you're an individual visionary, purpose-driven entrepreneur, or transforming organization, 
                   we meet you where you are and help architect the story that unlocks your authentic power.
                 </p>

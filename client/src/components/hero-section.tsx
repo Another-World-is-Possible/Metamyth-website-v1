@@ -34,7 +34,11 @@ export default function HeroSection() {
           </motion.h2>
           
           <motion.p 
-            className="font-game text-xl md:text-2xl text-silver/90 mb-12 leading-relaxed max-w-4xl mx-auto"
+            className="font-game text-xl md:text-2xl mb-12 leading-relaxed max-w-4xl mx-auto"
+            style={{
+              color: '#f0f0f0',
+              textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}

@@ -39,10 +39,8 @@ export default function CallToAction() {
                   REGENERATE YOUR STORY
                 </h3>
                 <p 
-                  className="font-game text-silver mb-6"
-                  style={{
-                    textShadow: '0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6)'
-                  }}
+                  className="font-game mb-6"
+                  style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
                 >
                   Transform your organization through story
                 </p>
@@ -65,10 +63,8 @@ export default function CallToAction() {
                   JOIN THE QUEST
                 </h3>
                 <p 
-                  className="font-game text-silver mb-6"
-                  style={{
-                    textShadow: '0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6)'
-                  }}
+                  className="font-game mb-6"
+                  style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
                 >
                   Build the new world with us
                 </p>
