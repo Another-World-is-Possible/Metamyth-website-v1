@@ -70,9 +70,9 @@ const tiles = [
 ];
 
 const titleColors = [
-  "text-ancient-gold",
   "text-white",
-  "text-ancient-gold", 
+  "text-white",
+  "text-white", 
   "text-white",
   "text-white"
 ];

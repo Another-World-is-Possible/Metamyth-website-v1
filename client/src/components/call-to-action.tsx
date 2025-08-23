@@ -8,9 +8,10 @@ export default function CallToAction() {
       <div className="absolute inset-0 bg-deep-black/50"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <h2 
-          className="scroll-fade-in font-angle text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-4"
+          className="scroll-fade-in font-angle text-4xl md:text-5xl font-bold text-center mb-4"
           style={{
-            textShadow: '0 0 12px rgba(212, 175, 55, 0.9), 0 0 24px rgba(212, 175, 55, 0.7), 0 0 36px rgba(212, 175, 55, 0.5), 0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.6)'
+            color: '#000000',
+            textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
           }}
         >
           THE INVITATION
