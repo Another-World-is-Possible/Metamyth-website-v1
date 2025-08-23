@@ -150,12 +150,12 @@ export default function WhyStoryMatters() {
     <div 
       className="relative"
       style={{
-        minHeight: '500vh', // Make page extra tall for scrolling journey
+        minHeight: '600vh', // Extra tall page for full dragon journey
         backgroundImage: `url(${cosmicDragon})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'top center',
-        backgroundAttachment: 'fixed', // Fixed background creates "traveling through space" effect
+        backgroundSize: 'auto 100%', // Show full image height, let width scale proportionally
+        backgroundPosition: 'center top',
         backgroundRepeat: 'no-repeat'
+        // REMOVED backgroundAttachment: 'fixed' - now background scrolls WITH content
       }}
     >
       {/* Dark overlay for text readability */}
