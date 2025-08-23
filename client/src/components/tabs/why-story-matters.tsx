@@ -162,7 +162,15 @@ export default function WhyStoryMatters() {
       {/* Black background base */}
       <div className="absolute inset-0 bg-deep-black z-0" />
       
-      {/* Background image - always visible */}
+      {/* TEST: Simple visible background */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          background: 'radial-gradient(circle, #4a0080 0%, #000080 50%, #000000 100%)'
+        }}
+      />
+      
+      {/* Real background image */}
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -170,7 +178,7 @@ export default function WhyStoryMatters() {
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
-          opacity: 1
+          opacity: 0.8
         }}
       />
       {/* MUCH STRONGER overlay to actually dim the background */}

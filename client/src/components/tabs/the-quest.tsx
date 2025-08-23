@@ -68,21 +68,30 @@ export default function TheQuest() {
 
   return (
     <div className="relative min-h-screen" style={{ minHeight: '300vh' }}>
-      {/* Horizontal scrolling background */}
+      {/* TEST: Simple color background that moves */}
+      <div 
+        className="fixed inset-0 z-0"
+        style={{
+          background: `linear-gradient(90deg, #ff0000 0%, #00ff00 ${horizontalOffset}%, #0000ff 100%)`,
+          transition: 'all 0.1s ease-out'
+        }}
+      />
+      
+      {/* Real landscape background */}
       <div 
         className="fixed inset-0 z-0"
         style={{
           backgroundImage: `url(${horizontalLandscape})`,
-          backgroundSize: '200% 100%', // Make image wider than screen
-          backgroundPosition: `${horizontalOffset}% center`, // Move horizontally
+          backgroundSize: '200% 100%',
+          backgroundPosition: `${horizontalOffset}% center`,
           backgroundRepeat: 'no-repeat',
-          opacity: backgroundLoaded ? 0.7 : 0,
+          opacity: backgroundLoaded ? 0.8 : 0,
           transition: 'opacity 500ms ease-out'
         }}
       />
       
       {/* Overlay for text readability */}
-      <div className="fixed inset-0 bg-deep-black/50 z-5" />
+      <div className="fixed inset-0 bg-deep-black/30 z-5" />
       
       <div className="max-w-7xl mx-auto px-4 relative z-10 py-20 pt-32">
         <motion.h2 
