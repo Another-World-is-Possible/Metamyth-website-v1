@@ -17,15 +17,14 @@ export default function CallToAction() {
           THE INVITATION
         </h2>
         
-        <p 
-          className="scroll-fade-in font-game text-2xl md:text-3xl text-center mb-12 font-light italic"
+        <h3 
+          className="scroll-fade-in font-angle text-2xl md:text-3xl text-ancient-gold text-center mb-12"
           style={{
-            color: '#f0f0f0',
-            textShadow: '0 0 12px rgba(212, 175, 55, 0.9), 0 0 24px rgba(212, 175, 55, 0.6), 2px 2px 4px rgba(0,0,0,0.8)'
+            textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
           }}
         >
-          "The future we dream is one story away."
-        </p>
+          Ready to stop being trapped in someone else's story and start writing your own?
+        </h3>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="scroll-fade-in">
