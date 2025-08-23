@@ -165,7 +165,7 @@ export default function WhyStoryMatters() {
   }, []);
 
   return (
-    <div className="relative" style={{ minHeight: '600vh' }}>
+    <div className="relative" style={{ minHeight: '100vh' }}>
       {/* Black background base */}
       <div className="absolute inset-0 bg-deep-black z-0" />
       
@@ -362,6 +362,19 @@ export default function WhyStoryMatters() {
         </motion.div>
       </section>
 
+      {/* Metamyth Divider */}
+      <section className="flex justify-center py-16">
+        <motion.div 
+          className="flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>🌀</div>
+        </motion.div>
+      </section>
+
       {/* The Transformation Reveals */}
       <section 
         ref={sectionRefs[3]}
@@ -418,6 +431,19 @@ export default function WhyStoryMatters() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Metamyth Divider */}
+      <section className="flex justify-center py-16">
+        <motion.div 
+          className="flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>⚡</div>
+        </motion.div>
       </section>
 
       {/* The Science Unveils Itself */}
@@ -483,7 +509,7 @@ export default function WhyStoryMatters() {
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>⛲</div>
+          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>🌟</div>
         </motion.div>
       </section>
 
