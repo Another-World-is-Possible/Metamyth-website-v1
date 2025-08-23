@@ -118,6 +118,7 @@ function ConstellationNav({ activeSection }: { activeSection: number }) {
 
 export default function WhyStoryMatters() {
   const [activeSection, setActiveSection] = useState(0);
+  const [backgroundLoaded, setBackgroundLoaded] = useState(false);
   
   const sectionRefs = [
     useRef(null),
@@ -129,6 +130,13 @@ export default function WhyStoryMatters() {
   ];
 
   useEffect(() => {
+    // Lazy load the background image after initial render
+    const timer = setTimeout(() => {
+      const img = new Image();
+      img.onload = () => setBackgroundLoaded(true);
+      img.src = cosmicDragon;
+    }, 1000); // Delay to prioritize above-the-fold content
+
     const observers = sectionRefs.map((ref, index) => {
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -143,25 +151,40 @@ export default function WhyStoryMatters() {
       return observer;
     });
 
-    return () => observers.forEach(observer => observer.disconnect());
+    return () => {
+      clearTimeout(timer);
+      observers.forEach(observer => observer.disconnect());
+    };
   }, []);
 
   return (
     <div 
       className="relative"
       style={{
-        minHeight: '600vh', // Extra tall page for full dragon journey
-        backgroundImage: `url(${cosmicDragon})`,
-        backgroundSize: 'cover', // Better mobile compatibility
-        backgroundPosition: 'center center', // Better mobile positioning
-        backgroundRepeat: 'no-repeat'
-        // REMOVED backgroundAttachment: 'fixed' - now background scrolls WITH content
+        minHeight: '600vh' // Extra tall page for full dragon journey
       }}
     >
+      {/* Optimized background image with lazy loading */}
+      <div className="fixed inset-0 z-0">
+        {/* Loading placeholder */}
+        {!backgroundLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-deep-black via-forest-green to-deep-black" />
+        )}
+        {/* Lazy-loaded background */}
+        {backgroundLoaded && (
+          <img 
+            src={cosmicDragon}
+            alt="Cosmic dragon journey background"
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
       {/* MUCH STRONGER overlay to actually dim the background */}
-      <div className="absolute inset-0 bg-deep-black/60" />
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-black/80 via-deep-black/60 to-deep-black/40" />
-      <div className="absolute inset-0 bg-mystical-teal/5" />
+      <div className="absolute inset-0 bg-deep-black/60 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-deep-black/80 via-deep-black/60 to-deep-black/40 z-10" />
+      <div className="absolute inset-0 bg-mystical-teal/5 z-10" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}

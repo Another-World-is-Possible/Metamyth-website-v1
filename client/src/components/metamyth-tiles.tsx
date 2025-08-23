@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-
+import { useState, useRef, useEffect } from "react";
 
 // Import the background images
 import callToAdventureImg from "@assets/_cosmic_call_to_adventure-__prompt-_earth_in_deep_space_glowing_red_and_orange_like_a_dying_star_wi_h5e90ujrtt6e75cwup2u_0_1755889868628.png";

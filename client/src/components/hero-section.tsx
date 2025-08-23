@@ -1,19 +1,42 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 
 import heroBackground from "@assets/_f20qmpu9dartjp9dbfcm_0_1755891749225.png";
 
 export default function HeroSection() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  
+  useEffect(() => {
+    // Preload the critical hero image
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.src = heroBackground;
+  }, []);
+
   return (
     <div className="relative">
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-        {/* Cosmic nebula background */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroBackground})` }}
-        />
+        {/* Cosmic nebula background with loading optimization */}
+        <div className="absolute inset-0">
+          {/* Loading placeholder */}
+          {!imageLoaded && (
+            <div className="absolute inset-0 bg-gradient-to-br from-deep-black via-forest-green to-deep-black animate-pulse" />
+          )}
+          {/* Optimized background image */}
+          <img 
+            src={heroBackground}
+            alt="Cosmic nebula background"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            loading="eager"
+            decoding="async"
+            onLoad={() => setImageLoaded(true)}
+          />
+        </div>
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-deep-black/40" />
+        <div className="absolute inset-0 bg-deep-black/40 z-10" />
         <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
           <motion.h1 
             className="font-angle text-5xl md:text-7xl font-bold text-gradient-gold mb-8"
