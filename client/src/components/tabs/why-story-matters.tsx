@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useRef, useState, useEffect } from "react";
 import { Dna, Network, Building, RotateCcw } from "lucide-react";
 
+import cosmicSpiral from "@assets/_ji91cqiibmu6d38x4ukt_0_1755919449745.png";
+
 const audienceTypes = [
   {
     title: "Conscious founders",
@@ -145,7 +147,17 @@ export default function WhyStoryMatters() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-deep-black via-deep-black to-forest-green/20 min-h-screen">
+    <div 
+      className="min-h-screen relative"
+      style={{
+        backgroundImage: `url(${cosmicSpiral})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-deep-black/60" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}
@@ -154,10 +166,13 @@ export default function WhyStoryMatters() {
         data-section="opening" 
         className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
       >
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <motion.h1 
-            className="font-edensor text-5xl md:text-7xl font-bold text-crimson mb-8"
-            style={{ textDecoration: 'none', textDecorationLine: 'none' }}
+            className="font-angle text-5xl md:text-7xl font-bold mb-8"
+            style={{
+              color: '#000000',
+              textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
@@ -166,8 +181,11 @@ export default function WhyStoryMatters() {
           </motion.h1>
           
           <motion.p 
-            className="text-2xl md:text-3xl mb-6"
-            style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
+            className="font-game text-2xl md:text-3xl mb-6"
+            style={{ 
+              color: '#f0f0f0', 
+              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' 
+            }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
@@ -176,8 +194,11 @@ export default function WhyStoryMatters() {
           </motion.p>
           
           <motion.p 
-            className="text-xl md:text-2xl mb-8"
-            style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
+            className="font-game text-xl md:text-2xl mb-8"
+            style={{ 
+              color: '#f0f0f0', 
+              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' 
+            }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
@@ -186,8 +207,8 @@ export default function WhyStoryMatters() {
           </motion.p>
           
           <motion.p 
-            className="text-2xl md:text-4xl font-bold text-ancient-gold"
-            style={{ textShadow: '0 0 10px rgba(212, 175, 55, 0.3)' }}
+            className="font-angle text-2xl md:text-4xl font-bold text-ancient-gold"
+            style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3.5, duration: 1.2, ease: "easeOut" }}
@@ -204,23 +225,23 @@ export default function WhyStoryMatters() {
         className="min-h-screen flex items-center justify-center px-4"
       >
         <motion.div 
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center relative z-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          <p className="text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
+          <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             The same consciousness that authored every system destroying our planet can author every system that could heal it.
           </p>
           
-          <div className="border-l-3 border-crimson pl-6 mb-8">
-            <p className="text-xl md:text-2xl mb-4" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
+          <div className="border-l-3 border-ancient-gold pl-6 mb-8">
+            <p className="font-game text-xl md:text-2xl mb-4" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               Story built civilization. Story can rebuild it.
             </p>
           </div>
           
-          <p className="text-2xl md:text-3xl font-bold text-mystical-teal">
+          <p className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             Whoever tells the best story wins.
           </p>
         </motion.div>
@@ -232,10 +253,10 @@ export default function WhyStoryMatters() {
         data-section="heroes"
         className="min-h-screen flex items-center justify-center px-4"
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto relative z-10">
           <motion.p 
-            className="text-2xl md:text-3xl text-center mb-12"
-            style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
+            className="font-game text-2xl md:text-3xl text-center mb-12"
+            style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
@@ -266,7 +287,8 @@ export default function WhyStoryMatters() {
           </div>
           
           <motion.p 
-            className="text-xl md:text-2xl font-bold text-ancient-gold text-center mt-12 leading-relaxed"
+            className="font-game text-xl md:text-2xl font-bold text-ancient-gold text-center mt-12 leading-relaxed"
+            style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.4 }}
@@ -281,11 +303,12 @@ export default function WhyStoryMatters() {
       <section 
         ref={sectionRefs[3]}
         data-section="transformation"
-        className="min-h-screen flex items-center justify-center px-4 bg-deep-black"
+        className="min-h-screen flex items-center justify-center px-4"
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto relative z-10">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-ancient-gold text-center mb-12"
+            className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold text-center mb-12"
+            style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -337,7 +360,7 @@ export default function WhyStoryMatters() {
         data-section="science"
         className="min-h-screen flex items-center justify-center px-4"
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div 
             className="text-center mb-12"
             initial={{ opacity: 0 }}
@@ -345,10 +368,10 @@ export default function WhyStoryMatters() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1 }}
           >
-            <h2 className="font-edensor text-3xl md:text-4xl font-bold text-ancient-gold mb-4">
+            <h2 className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold mb-4" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               The Science Behind Story as Evolutionary Technology
             </h2>
-            <p className="text-xl text-silver/90 font-bold" style={{ filter: 'brightness(1.1)' }}>
+            <p className="font-game text-xl" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               How consciousness actually works:
             </p>
           </motion.div>
@@ -392,13 +415,13 @@ export default function WhyStoryMatters() {
         className="min-h-screen flex items-center justify-center px-4"
       >
         <motion.div 
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center relative z-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5 }}
         >
-          <p className="text-2xl md:text-3xl text-silver/90 mb-8 leading-relaxed">
+          <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             We're living through the climax of the human story—all threads converging in crisis determining consciousness's fate on Earth.
           </p>
           
@@ -419,10 +442,9 @@ export default function WhyStoryMatters() {
           </div>
           
           <p 
-            className="text-2xl md:text-3xl font-bold text-ancient-gold"
+            className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold"
             style={{ 
-              textShadow: '0 0 20px rgba(212, 175, 55, 0.5)',
-              fontWeight: 700
+              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
             }}
           >
             The choice is simple: Author the world your heart knows is possible.
@@ -432,10 +454,6 @@ export default function WhyStoryMatters() {
 
       {/* The Call to Adventure */}
       <section className="min-h-screen flex items-center justify-center px-4 relative">
-        <div 
-          className="absolute inset-0"
-          style={{ background: 'radial-gradient(circle at center, #2d2520 0%, #1a1a1a 70%)' }}
-        />
         <motion.div 
           className="max-w-4xl mx-auto text-center relative z-10"
           initial={{ opacity: 0 }}
@@ -444,16 +462,15 @@ export default function WhyStoryMatters() {
           transition={{ duration: 1.5 }}
         >
           <h2 
-            className="font-edensor text-3xl md:text-4xl font-bold text-ancient-gold mb-4"
+            className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold mb-4"
             style={{ 
-              filter: 'brightness(1.2)', 
-              textShadow: '0 0 15px rgba(230, 243, 255, 0.4)' 
+              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
             }}
           >
             Ready to transform scattered narrative into coherent planetary force?
           </h2>
           
-          <p className="text-xl text-silver/90 mb-12 font-bold">
+          <p className="font-game text-xl mb-12 font-bold" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             Using humanity's oldest technology to serve humanity's greatest need.
           </p>
           
@@ -483,7 +500,7 @@ export default function WhyStoryMatters() {
             </motion.div>
           </div>
           
-          <p className="text-silver/60 italic mt-8 text-sm">
+          <p className="font-game italic mt-8 text-sm" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             Limited availability for organizations ready to serve the story.
           </p>
         </motion.div>
