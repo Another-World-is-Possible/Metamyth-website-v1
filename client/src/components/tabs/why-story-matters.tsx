@@ -292,7 +292,7 @@ export default function WhyStoryMatters() {
           </motion.p>
           
           {/* Opaque frame for bulleted section */}
-          <div className="max-w-4xl mx-auto bg-deep-black/40 backdrop-blur-sm border border-mystical-teal/40 rounded-lg p-6 shadow-lg shadow-mystical-teal/30 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/50 via-deep-black/40 to-mystical-teal/5">
+          <div className="max-w-4xl mx-auto bg-deep-black/40 backdrop-blur-sm border-2 border-[#81ecec]/60 rounded-lg p-6 shadow-lg shadow-[#81ecec]/30 ring-1 ring-[#81ecec]/20 bg-gradient-to-br from-deep-black/50 via-deep-black/40 to-[#81ecec]/5">
             <div className="grid gap-6 max-w-3xl mx-auto">
             {audienceTypes.map((audience, index) => (
               <motion.div
@@ -383,7 +383,7 @@ export default function WhyStoryMatters() {
       >
         <div className="max-w-5xl mx-auto relative z-10">
           {/* Opaque frame for transformation section */}
-          <div className="bg-deep-black/90 backdrop-blur-sm border-2 border-mystical-teal/60 rounded-lg p-8 shadow-lg shadow-mystical-teal/50 ring-2 ring-mystical-teal/40 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-mystical-teal/10">
+          <div className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 rounded-lg p-8 shadow-lg shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10">
             <motion.h2 
               className="font-angle text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-12"
               style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
@@ -480,7 +480,7 @@ export default function WhyStoryMatters() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -5, transition: { duration: 0.3 } }}
                 >
-                  <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-mystical-teal/60 shadow-lg shadow-mystical-teal/40 ring-2 ring-mystical-teal/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-mystical-teal/10 h-full hover:border-mystical-teal/80 hover:shadow-mystical-teal/60 transition-all duration-300">
+                  <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 h-full hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
                     <CardContent className="p-3 text-center">
                       <div className={`w-12 h-12 mx-auto mb-2 rounded-full bg-${concept.color}/20 flex items-center justify-center border border-${concept.color}/30`}>
                         <IconComponent className={`w-6 h-6 text-${concept.color}`} />
