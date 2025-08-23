@@ -265,7 +265,7 @@ export default function WhyStoryMatters() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
           >
-            You feel the urgency but lack the story technology to create the response you need.
+            You feel the urgency but lack the story technology<br/>to create the response you need.
           </motion.p>
           
           {/* Opaque frame for bulleted section */}
@@ -401,7 +401,7 @@ export default function WhyStoryMatters() {
       <section 
         ref={sectionRefs[4]}
         data-section="science"
-        className="min-h-screen flex items-center justify-center px-4"
+        className="min-h-screen flex items-center justify-center px-4 pt-20"
       >
         <div className="max-w-4xl mx-auto relative z-10">
           <motion.div 
