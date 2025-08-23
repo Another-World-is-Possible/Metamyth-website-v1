@@ -34,15 +34,18 @@ export default function VideoSection() {
           Speaking to conscious leaders and visionary changemakers, founder <span className="text-mystical-teal font-bold">Zachary Marlow</span> drops a mind-bending truth: we're destroying the world for stories. But if we imagined this nightmare, we can imagine our way out. This talk unveils the Metamyth System—five questions that transform crisis into compelling quest. Marlow shows how ancient storytelling technology can liberate organizations from extractive paradigms.
         </motion.p>
         
-        <motion.p 
-          className="text-xl text-center mb-12 max-w-4xl mx-auto font-alice leading-relaxed text-mystical-teal italic"
+        <motion.h3 
+          className="font-angle text-3xl md:text-4xl text-center mb-12 max-w-4xl mx-auto text-mystical-teal font-bold"
+          style={{
+            textShadow: '0 0 8px rgba(45, 175, 166, 0.8), 0 0 16px rgba(45, 175, 166, 0.4)'
+          }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
           "The future we dream is one story away."
-        </motion.p>
+        </motion.h3>
 
         <motion.div
           className="relative max-w-4xl mx-auto"
