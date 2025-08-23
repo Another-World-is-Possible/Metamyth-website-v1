@@ -182,9 +182,9 @@ export default function WhyStoryMatters() {
         }}
       />
       {/* MUCH STRONGER overlay to actually dim the background */}
-      <div className="absolute inset-0 bg-deep-black/60 z-10" />
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-black/80 via-deep-black/60 to-deep-black/40 z-10" />
-      <div className="absolute inset-0 bg-mystical-teal/5 z-10" />
+      <div className="absolute inset-0 bg-deep-black/60 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-deep-black/80 via-deep-black/60 to-deep-black/40 z-0" />
+      <div className="absolute inset-0 bg-mystical-teal/5 z-0" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}
