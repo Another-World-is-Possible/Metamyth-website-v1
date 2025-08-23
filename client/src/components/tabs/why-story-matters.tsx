@@ -130,11 +130,17 @@ export default function WhyStoryMatters() {
   ];
 
   useEffect(() => {
-    // Debug the image path
-    console.log('Cosmic dragon path:', cosmicDragon);
-    
-    // Simplified - just show the background immediately
-    setBackgroundLoaded(true);
+    // Preload image completely before showing to avoid progressive loading flash
+    const img = new Image();
+    img.onload = () => {
+      // Image fully loaded, now fade it in smoothly
+      setBackgroundLoaded(true);
+    };
+    img.onerror = () => {
+      // If loading fails, show it anyway
+      setBackgroundLoaded(true);
+    };
+    img.src = cosmicDragon;
 
     const observers = sectionRefs.map((ref, index) => {
       const observer = new IntersectionObserver(
@@ -162,7 +168,7 @@ export default function WhyStoryMatters() {
       
       {/* Fade-in background image */}
       <div 
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300 ease-out z-0 ${
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-out z-0 ${
           backgroundLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
