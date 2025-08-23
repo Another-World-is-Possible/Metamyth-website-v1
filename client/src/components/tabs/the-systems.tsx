@@ -18,7 +18,7 @@ const phases = [
       "The Mission: Their practical mission plan and pathway forward",
       "The Request: How others discover their role in this larger story"
     ],
-    outcome: "Complete Metamyth distilled into five core statements, plus comprehensive Story Living Guide"
+    outcome: "Complete organizational metamyth with five foundational statements, comprehensive Story Living Guide, and systematic framework that transforms scattered purpose into unified direction across all operations"
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const phases = [
       "Brand strategy, marketing, and regenerative development",
       "Team training to embody and share the story naturally"
     ],
-    outcome: "Complete coherence between who they are and how they operate"
+    outcome: "Full organizational transformation with 22 living artifacts, unified brand ecosystem, aligned team culture, and regenerative business operations that naturally attract ideal stakeholders and eliminate internal friction"
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const phases = [
       "Complete media implementation strategy",
       "Movie magic that makes transformation feel inevitable"
     ],
-    outcome: "Compelling visual media that attracts people into the organization's quest"
+    outcome: "A complete media ecology attracting people into your story across social media, with cinematic content, community magnetism, and storytelling systems that make joining your mission feel inevitable"
   }
 ];
 
