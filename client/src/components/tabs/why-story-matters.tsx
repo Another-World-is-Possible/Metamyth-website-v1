@@ -150,14 +150,14 @@ export default function WhyStoryMatters() {
     <div 
       className="relative"
       style={{
-        minHeight: '600vh' // Extra tall page for full dragon journey
+        minHeight: '600vh', // Extra tall page for full dragon journey
+        backgroundImage: `url(${cosmicDragon})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat'
+        // NO fixed attachment - lets it scroll naturally
       }}
     >
-      {/* Restored background image */}
-      <div 
-        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${cosmicDragon})` }}
-      />
       {/* MUCH STRONGER overlay to actually dim the background */}
       <div className="absolute inset-0 bg-deep-black/60 z-10" />
       <div className="absolute inset-0 bg-gradient-to-b from-deep-black/80 via-deep-black/60 to-deep-black/40 z-10" />
