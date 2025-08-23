@@ -43,7 +43,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
           >
-            We wield the most ancient technology powered by modern magic: Write your reality, play it like the ultimate game, film it into existence to attract people into your quest.
+            We wield the most ancient technology powered by modern magic: Write your reality, play it like the ultimate game, film it into cinema to attract people into your quest.
           </motion.p>
           
           <motion.div 
