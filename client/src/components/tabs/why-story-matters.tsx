@@ -268,7 +268,7 @@ export default function WhyStoryMatters() {
           </motion.p>
           
           {/* Opaque frame for bulleted section */}
-          <div className="max-w-4xl mx-auto bg-deep-black/70 backdrop-blur-sm border border-mystical-teal/40 rounded-lg p-8 shadow-lg shadow-mystical-teal/30 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/80 via-deep-black/70 to-mystical-teal/5">
+          <div className="max-w-4xl mx-auto bg-deep-black/40 backdrop-blur-sm border border-mystical-teal/40 rounded-lg p-8 shadow-lg shadow-mystical-teal/30 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/50 via-deep-black/40 to-mystical-teal/5">
             <div className="grid gap-8 max-w-3xl mx-auto">
             {audienceTypes.map((audience, index) => (
               <motion.div
@@ -346,7 +346,7 @@ export default function WhyStoryMatters() {
       >
         <div className="max-w-5xl mx-auto relative z-10">
           {/* Opaque frame for transformation section */}
-          <div className="bg-deep-black/70 backdrop-blur-sm border border-mystical-teal/40 rounded-lg p-8 shadow-lg shadow-mystical-teal/30 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/80 via-deep-black/70 to-mystical-teal/5">
+          <div className="bg-deep-black/40 backdrop-blur-sm border border-mystical-teal/40 rounded-lg p-8 shadow-lg shadow-mystical-teal/30 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/50 via-deep-black/40 to-mystical-teal/5">
             <motion.h2 
               className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold text-center mb-12"
               style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
@@ -504,6 +504,19 @@ export default function WhyStoryMatters() {
           >
             The choice is simple: Author the world your heart knows is possible.
           </p>
+        </motion.div>
+      </section>
+
+      {/* Metamyth Divider */}
+      <section className="flex justify-center py-16">
+        <motion.div 
+          className="flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>🏆</div>
         </motion.div>
       </section>
 
