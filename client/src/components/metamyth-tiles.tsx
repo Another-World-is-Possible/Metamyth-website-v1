@@ -124,24 +124,14 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
           <blockquote 
             className="font-game text-2xl md:text-3xl font-light mb-8 italic"
             style={{
-              color: index === 2 ? 'rgba(255, 255, 255, 0.95)' : 'rgba(192, 192, 192, 0.9)',
-              textShadow: index === 2 || index === 3 || index === 4 
-                ? '2px 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.6)' 
-                : 'none'
+              color: 'rgba(192, 192, 192, 0.9)',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.6)'
             }}
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
           
           <p 
-            className={`font-game text-xl md:text-2xl leading-loose ${
-              index === 0 || index === 2 ? 'text-white' : 'text-silver'
-            }`}
-            style={
-              index === 0 || index === 2 ? {
-                color: '#ffffff',
-                textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
-              } : {}
-            }
+            className="font-game text-xl md:text-2xl text-silver leading-loose"
             dangerouslySetInnerHTML={{ __html: tile.description }}
           ></p>
         </div>

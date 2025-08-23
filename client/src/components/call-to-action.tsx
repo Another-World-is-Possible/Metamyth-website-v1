@@ -18,9 +18,10 @@ export default function CallToAction() {
         </h2>
         
         <p 
-          className="scroll-fade-in font-game text-2xl md:text-3xl text-white text-center mb-12 font-light italic"
+          className="scroll-fade-in font-game text-2xl md:text-3xl text-center mb-12 font-light italic"
           style={{
-            textShadow: '0 0 2px rgba(0, 0, 0, 0.7), 0 0 4px rgba(0, 0, 0, 0.5)'
+            color: 'rgba(192, 192, 192, 0.9)',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.6)'
           }}
         >
           "The future we dream is one story away."
