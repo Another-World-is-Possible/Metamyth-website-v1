@@ -102,10 +102,10 @@ export default function TheQuest() {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <p className="font-alice text-2xl italic text-ancient-gold mb-6">
-            "We are on a journey to change the human story and transform along the way."
+            "Story is the oldest technology on Earth.<br/>The original operating system that turns vision into reality."
           </p>
           <p className="font-alice text-lg leading-loose">
-            The quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence. This is how we change the human story—one authentic narrative at a time.
+            We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real.<br/><br/>Your story becomes the foundation for everything that follows.
           </p>
         </motion.div>
 
