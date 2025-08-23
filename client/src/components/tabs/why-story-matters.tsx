@@ -154,12 +154,13 @@ export default function WhyStoryMatters() {
         backgroundImage: `url(${cosmicDragon})`,
         backgroundSize: 'cover', // Better mobile compatibility
         backgroundPosition: 'center center', // Better mobile positioning
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
+        filter: 'brightness(0.9)' // Dim the background image directly by 10%
         // REMOVED backgroundAttachment: 'fixed' - now background scrolls WITH content
       }}
     >
       {/* Gradient overlay from black to transparent for cosmic dragon reveal */}
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-black/98 via-deep-black/85 to-deep-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-deep-black/60 via-deep-black/40 to-transparent" />
       <div className="absolute inset-0 bg-mystical-teal/5" />
       <ConstellationNav activeSection={activeSection} />
       
