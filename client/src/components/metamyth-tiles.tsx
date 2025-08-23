@@ -123,11 +123,7 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
           </h2>
           
           <blockquote 
-            className="font-game text-2xl md:text-3xl font-light mb-8 italic"
-            style={{
-              color: 'rgba(192, 192, 192, 0.9)',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.6)'
-            }}
+            className="font-game text-2xl md:text-3xl font-light mb-8 italic text-silver"
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
           
