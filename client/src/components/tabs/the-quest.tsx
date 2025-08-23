@@ -106,13 +106,35 @@ export default function TheQuest() {
   // Calculate horizontal background position (left to right as user scrolls down)
   const horizontalOffset = scrollProgress * 70; // 0% to 70% horizontal movement for better effect
   
-  // Debug logging
+  // Comprehensive debugging
   useEffect(() => {
-    console.log('Quest component mounted, scroll progress:', scrollProgress, 'background loaded:', backgroundLoaded);
-  }, [scrollProgress, backgroundLoaded]);
+    console.log('🔍 DEBUGGING:', {
+      scrollProgress, 
+      backgroundLoaded, 
+      horizontalOffset,
+      imageUrl: horizontalLandscape,
+      containerExists: !!containerRef.current
+    });
+    
+    // Test if image actually loads
+    const testImg = new Image();
+    testImg.onload = () => console.log('✅ Image loads successfully:', horizontalLandscape);
+    testImg.onerror = () => console.log('❌ Image failed to load:', horizontalLandscape);
+    testImg.src = horizontalLandscape;
+  }, [scrollProgress, backgroundLoaded, horizontalOffset]);
 
   return (
     <div ref={containerRef} className="relative bg-gradient-to-b from-deep-black via-forest-green/30 to-deep-black min-h-screen py-20 pt-32" style={{ minHeight: '400vh' }}>
+      {/* TEST: Bright background to verify visibility */}
+      <div 
+        className="fixed inset-0"
+        style={{
+          background: `linear-gradient(90deg, red ${horizontalOffset}%, blue ${horizontalOffset + 20}%, green 100%)`,
+          zIndex: 999999, // Super high z-index to ensure visibility
+          opacity: 0.3 // Semi-transparent so we can see it
+        }}
+      />
+      
       {/* Horizontal scrolling landscape background */}
       <div 
         className="fixed inset-0"
@@ -121,19 +143,19 @@ export default function TheQuest() {
           backgroundSize: '300% 100%', // Make image 3x wider so horizontal movement is visible
           backgroundPosition: `${horizontalOffset}% center`, // Move horizontally based on scroll
           backgroundRepeat: 'no-repeat',
-          opacity: backgroundLoaded ? 0.7 : 0,
+          opacity: backgroundLoaded ? 0.5 : 0,
           transition: 'opacity 300ms ease-out',
-          zIndex: 1
+          zIndex: 999998 // Very high z-index
         }}
       />
       
       {/* Dark overlay for text readability */}
       <div 
-        className="fixed inset-0 bg-deep-black/50" 
-        style={{ zIndex: 2 }}
+        className="fixed inset-0 bg-deep-black/30" 
+        style={{ zIndex: 999997 }}
       />
       
-      <div className="max-w-7xl mx-auto px-4 relative" style={{ zIndex: 10 }}>
+      <div className="max-w-7xl mx-auto px-4 relative" style={{ zIndex: 1000000 }}>
         <motion.h2 
           className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-8"
           initial={{ opacity: 0, y: 30 }}
