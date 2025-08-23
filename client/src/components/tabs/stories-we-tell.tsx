@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Search, ServerCog, Network, Globe } from "lucide-react";
 
-import visionaryShield from "@assets/Screenshot 2025-08-23 at 10.55.55 AM_1755973624457.png";
+import visionaryShield from "@assets/_visionary_shield-__prompt-_a_luminous_crystalline_shield_with_ornate_art_nouveau_gold_filigree_dec_gxzt46t0ueltrmkhzq7l_0_1755928707621.png";
 import visionaryBanner from "@assets/of_course_here_is_the_revised_prompt-_a_luminous_crystalline_banner_waving_in_the_wind_with_ornate__fln51hw0qgjq8z60o21h_1_1755928687790.png";
 import visionaryGlobe from "@assets/_visionary_globe-__prompt-_a_luminous_crystalline_globe_with_ornate_art_nouveau_gold_filigree_base__aw6pnmwev2ygzjspd1bk_1_1755928679344.png";
 
