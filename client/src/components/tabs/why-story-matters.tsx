@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useRef, useState, useEffect } from "react";
 import { Dna, Network, Building, RotateCcw } from "lucide-react";
 
-import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0_1755922660417.png";
+import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0(1)_1755972671476.jpg";
 
 const audienceTypes = [
   {
