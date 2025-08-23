@@ -402,9 +402,9 @@ export default function WhyStoryMatters() {
         data-section="science"
         className="min-h-screen flex items-center justify-center px-4"
       >
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-10">
           <motion.div 
-            className="text-center mb-12"
+            className="text-center mb-8"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -413,12 +413,12 @@ export default function WhyStoryMatters() {
             <h2 className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold mb-4" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               The Science Behind Story as Evolutionary Technology
             </h2>
-            <p className="font-game text-xl" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+            <p className="font-game text-lg" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               How consciousness actually works:
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 gap-4">
             {scienceConcepts.map((concept, index) => {
               const IconComponent = concept.icon;
               return (
@@ -430,8 +430,8 @@ export default function WhyStoryMatters() {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -5, transition: { duration: 0.3 } }}
                 >
-                  <Card className="bg-deep-black/50 border border-ancient-gold/20 backdrop-blur-sm h-full hover:border-ancient-gold/40 transition-all duration-300">
-                    <CardContent className="p-6 text-center">
+                  <Card className="bg-deep-black/70 backdrop-blur-sm border border-mystical-teal/40 shadow-lg shadow-mystical-teal/20 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/80 via-deep-black/70 to-mystical-teal/5 h-full hover:border-mystical-teal/60 transition-all duration-300">
+                    <CardContent className="p-4 text-center">
                       <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-${concept.color}/20 flex items-center justify-center border border-${concept.color}/30`}>
                         <IconComponent className={`w-8 h-8 text-${concept.color}`} />
                       </div>
