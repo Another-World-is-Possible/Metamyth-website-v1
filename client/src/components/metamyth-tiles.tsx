@@ -48,7 +48,7 @@ const tiles = [
   {
     id: 4,
     title: "THE JOURNEY",
-    quote: "We build the complete story system that helps purpose-driven visionaries<br/>discover their authentic narrative, sequence it into functional tools, and federate<br/>with aligned stories to solve planetary challenges.",
+    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.",
     description: "From individual story regeneration to organizational transformation to planetary coordination—one integrated system that scales from personal to cosmic.",
     bgImage: journeyImg,
     animation: "crash",
@@ -132,7 +132,11 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
           />
           
           <p 
-            className="font-game text-xl md:text-2xl text-silver leading-loose"
+            className="font-game text-xl md:text-2xl leading-loose"
+            style={{
+              color: '#f0f0f0',
+              textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
+            }}
             dangerouslySetInnerHTML={{ __html: tile.description }}
           ></p>
           
