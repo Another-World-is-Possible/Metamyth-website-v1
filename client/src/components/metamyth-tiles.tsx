@@ -27,7 +27,7 @@ const tiles = [
     id: 2,
     title: "THE QUEST",
     quote: "Story is the oldest technology on Earth.<br/>The original operating system that turns vision into reality.",
-    description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real. Your story becomes the foundation for everything that follows.",
+    description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real.<br/><br/>Your story becomes the foundation for everything that follows.",
     bgImage: questImg,
     animation: "thread",
     gradient: "from-deep-black to-dark-wine",
@@ -48,7 +48,7 @@ const tiles = [
   {
     id: 4,
     title: "THE JOURNEY",
-    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.",
+    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary<br/>challenges.",
     description: "From individual story regeneration to organizational transformation to planetary coordination—one integrated system that scales from personal to cosmic.",
     bgImage: journeyImg,
     animation: "crash",
@@ -60,7 +60,7 @@ const tiles = [
     id: 5,
     title: "THE RE-QUEST",
     quote: "Calling the next generation of storytellers ready to stop being characters in someone else's extraction story and start authoring the regenerative reality your heart knows is possible.",
-    description: "The time for waiting is over. The world needs your story now. Will you answer the call?",
+    description: "The time for waiting is over. The world needs your story now.<br/><br/>Will you answer the call?",
     bgImage: requestImg,
     animation: "flicker",
     gradient: "from-deep-black to-forest-green",
@@ -132,9 +132,18 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
           
-          <p className="font-game text-xl md:text-2xl text-silver leading-loose">
-            {tile.description}
-          </p>
+          <p 
+            className={`font-game text-xl md:text-2xl leading-loose ${
+              index === 0 || index === 2 ? 'text-white' : 'text-silver'
+            }`}
+            style={
+              index === 0 || index === 2 ? {
+                color: '#ffffff',
+                textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
+              } : {}
+            }
+            dangerouslySetInnerHTML={{ __html: tile.description }}
+          ></p>
         </div>
       </div>
     </div>
