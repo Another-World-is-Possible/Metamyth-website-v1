@@ -59,10 +59,10 @@ export default function SwordCursor() {
           // Multiple glow layers with intensity based on glowStrength
           if (glowStrength > 0) {
             const glowLayers = [
-              { color: '#ffffff', blur: 12, opacity: 1.0 * glowStrength },
-              { color: '#ffffff', blur: 18, opacity: 0.8 * glowStrength },
-              { color: '#ffffff', blur: 24, opacity: 0.6 * glowStrength },
-              { color: '#ffffff', blur: 30, opacity: 0.4 * glowStrength }
+              { color: '#2DBBAB', blur: 12, opacity: 1.0 * glowStrength },
+              { color: '#2DBBAB', blur: 18, opacity: 0.8 * glowStrength },
+              { color: '#2DBBAB', blur: 24, opacity: 0.6 * glowStrength },
+              { color: '#2DBBAB', blur: 30, opacity: 0.4 * glowStrength }
             ];
             
             glowLayers.forEach(layer => {
@@ -75,7 +75,7 @@ export default function SwordCursor() {
             });
           }
           
-          // Draw the golden sword on top for crisp edges
+          // Draw the teal sword on top for crisp edges
           finalCtx.globalCompositeOperation = 'source-over';
           finalCtx.shadowBlur = 0;
           finalCtx.globalAlpha = 1;
@@ -98,7 +98,7 @@ export default function SwordCursor() {
         const rotation = -45 + (45 * progress); // From -45° to 0°
         const glowStrength = progress; // From 0 to 1
         
-        const frame = await createSwordCursor('#d4af37', rotation, 28, glowStrength);
+        const frame = await createSwordCursor('#2DBBAB', rotation, 28, glowStrength);
         frames.push(frame);
       }
       return frames;
@@ -302,7 +302,7 @@ export default function SwordCursor() {
         hoverStyle.textContent = `
           button:hover, a:hover, [role="button"]:hover, .cursor-pointer:hover {
             transform: translateY(-1px);
-            filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3));
+            filter: drop-shadow(0 4px 8px rgba(45, 187, 171, 0.3));
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           }
           
