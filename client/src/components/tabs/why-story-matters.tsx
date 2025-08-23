@@ -159,7 +159,7 @@ export default function WhyStoryMatters() {
       }}
     >
       {/* Gradient overlay from black to transparent for cosmic dragon reveal */}
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-black via-deep-black/30 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-deep-black/60 via-deep-black/10 to-transparent" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}
@@ -213,7 +213,7 @@ export default function WhyStoryMatters() {
             style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.5, duration: 1.2, ease: "easeOut" }}
+            transition={{ delay: 1.5, duration: 1.2, ease: "easeOut" }}
           >
             If we aren't writing our own story, someone else is writing for us.
           </motion.p>
@@ -260,9 +260,8 @@ export default function WhyStoryMatters() {
             className="font-game text-xl md:text-2xl text-center mb-8"
             style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
           >
             You feel the urgency but lack the story technology to create the response you need.
           </motion.p>
@@ -472,9 +471,8 @@ export default function WhyStoryMatters() {
         <motion.div 
           className="max-w-4xl mx-auto text-center relative z-10"
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.5 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, delay: 1.0 }}
         >
           <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             Every thread of human experience is converging now—this generation writes the story that determines Earth's future.
