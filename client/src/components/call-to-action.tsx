@@ -18,12 +18,13 @@ export default function CallToAction() {
         </h2>
         
         <h3 
-          className="scroll-fade-in font-angle text-2xl md:text-3xl text-ancient-gold text-center mb-12"
+          className="scroll-fade-in font-angle text-2xl md:text-3xl text-center mb-12"
           style={{
+            color: '#000000',
             textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
           }}
         >
-          Ready to stop being trapped in someone else's story and start writing your own?
+          Ready to stop being trapped in someone else's story<br />and writing your own?
         </h3>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -40,7 +41,7 @@ export default function CallToAction() {
                 </h3>
                 <p 
                   className="font-game mb-6"
-                  style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
+                  style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                 >
                   Transform your organization through story
                 </p>
@@ -64,7 +65,7 @@ export default function CallToAction() {
                 </h3>
                 <p 
                   className="font-game mb-6"
-                  style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}
+                  style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                 >
                   Build the new world with us
                 </p>

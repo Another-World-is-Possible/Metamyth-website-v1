@@ -143,8 +143,8 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
           {tile.callToAction && (
             <p 
               className="font-angle text-3xl md:text-5xl font-bold mt-8"
-              style={{ color: '#f0f0f0' }}
               style={{
+                color: '#f0f0f0',
                 textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
               }}
             >
