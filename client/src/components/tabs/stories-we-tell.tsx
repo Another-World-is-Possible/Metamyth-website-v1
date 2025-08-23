@@ -74,6 +74,19 @@ export default function StoriesWeTell() {
           STORIES WE TELL
         </motion.h2>
         
+        {/* Metamyth Divider */}
+        <section className="flex justify-center py-16">
+          <motion.div 
+            className="flex justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          >
+            <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>🌱</div>
+          </motion.div>
+        </section>
+        
         {/* Who We Serve */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {audienceTypes.map((audience, index) => (
@@ -126,6 +139,19 @@ export default function StoriesWeTell() {
           ))}
         </div>
 
+        {/* Metamyth Divider */}
+        <section className="flex justify-center py-16">
+          <motion.div 
+            className="flex justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          >
+            <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>⭐</div>
+          </motion.div>
+        </section>
+
         {/* Process Demonstration */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -168,6 +194,19 @@ export default function StoriesWeTell() {
             </CardContent>
           </Card>
         </motion.div>
+
+        {/* Metamyth Divider */}
+        <section className="flex justify-center py-16">
+          <motion.div 
+            className="flex justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+          >
+            <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>🔥</div>
+          </motion.div>
+        </section>
       </div>
     </div>
   );
