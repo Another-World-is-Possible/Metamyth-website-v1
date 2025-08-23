@@ -213,7 +213,7 @@ export default function WhyStoryMatters() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 3.5, duration: 1.2, ease: "easeOut" }}
           >
-            The world is made of stories. Change the story, change reality.
+            If we aren't writing our own story, someone else is writing for us.
           </motion.p>
         </div>
       </section>
