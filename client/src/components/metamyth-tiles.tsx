@@ -48,7 +48,7 @@ const tiles = [
   {
     id: 4,
     title: "THE JOURNEY",
-    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary<br/>challenges.",
+    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools,<br/>and federate with aligned stories to solve planetary challenges.",
     description: "From individual story regeneration to organizational transformation to planetary coordination—one integrated system that scales from personal to cosmic.",
     bgImage: journeyImg,
     animation: "crash",
@@ -60,7 +60,8 @@ const tiles = [
     id: 5,
     title: "THE RE-QUEST",
     quote: "Calling the next generation of storytellers ready to stop being characters in someone else's extraction story and start authoring the regenerative reality your heart knows is possible.",
-    description: "The time for waiting is over. The world needs your story now.<br/><br/>Will you answer the call?",
+    description: "The time for waiting is over. The world needs your story now.",
+    callToAction: "Will you answer the call?",
     bgImage: requestImg,
     animation: "flicker",
     gradient: "from-deep-black to-forest-green",
@@ -90,7 +91,7 @@ export default function MetamythTiles() {
   );
 }
 
-function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }) {
+function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction?: string }, index: number }) {
   const getTextAlignment = () => {
     switch (tile.textAlign) {
       case "left":
@@ -134,6 +135,17 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0], index: number }
             className="font-game text-xl md:text-2xl text-silver leading-loose"
             dangerouslySetInnerHTML={{ __html: tile.description }}
           ></p>
+          
+          {tile.callToAction && (
+            <p 
+              className="font-angle text-3xl md:text-5xl font-bold text-white mt-8"
+              style={{
+                textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
+              }}
+            >
+              {tile.callToAction}
+            </p>
+          )}
         </div>
       </div>
     </div>
