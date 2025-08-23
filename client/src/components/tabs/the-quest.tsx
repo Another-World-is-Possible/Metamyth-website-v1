@@ -70,7 +70,7 @@ export default function TheQuest() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          OUR QUEST
+          THE QUEST
         </motion.h2>
         
         <motion.div
