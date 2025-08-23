@@ -217,7 +217,7 @@ export default function WhyStoryMatters() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 1.2, ease: "easeOut" }}
           >
-            If we aren't writing our own story, someone else is writing for us.
+            If we aren't writing our own story,<br/>someone else is writing for us.
           </motion.p>
         </div>
       </section>
