@@ -118,7 +118,7 @@ function ConstellationNav({ activeSection }: { activeSection: number }) {
 
 export default function WhyStoryMatters() {
   const [activeSection, setActiveSection] = useState(0);
-  const [backgroundLoaded, setBackgroundLoaded] = useState(false);
+  const [backgroundLoaded, setBackgroundLoaded] = useState(true);
   
   const sectionRefs = [
     useRef(null),
@@ -130,22 +130,7 @@ export default function WhyStoryMatters() {
   ];
 
   useEffect(() => {
-    // Fast fallback - show after 300ms regardless
-    const quickTimer = setTimeout(() => {
-      setBackgroundLoaded(true);
-    }, 300);
-    
-    // Try to preload but don't wait too long
-    const img = new Image();
-    img.onload = () => {
-      clearTimeout(quickTimer);
-      setBackgroundLoaded(true);
-    };
-    img.onerror = () => {
-      clearTimeout(quickTimer);
-      setBackgroundLoaded(true);
-    };
-    img.src = cosmicDragon;
+    // Just show the background immediately - no delays
 
     const observers = sectionRefs.map((ref, index) => {
       const observer = new IntersectionObserver(
@@ -162,7 +147,6 @@ export default function WhyStoryMatters() {
     });
 
     return () => {
-      clearTimeout(quickTimer);
       observers.forEach(observer => observer.disconnect());
     };
   }, []);
@@ -174,9 +158,7 @@ export default function WhyStoryMatters() {
       
       {/* Fade-in background image */}
       <div 
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-400 ease-out z-0 ${
-          backgroundLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{
           backgroundImage: `url(${cosmicDragon})`,
           backgroundSize: 'cover',
