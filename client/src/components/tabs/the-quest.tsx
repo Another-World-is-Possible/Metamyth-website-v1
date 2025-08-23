@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
 
-import earthVideo from "@assets/Earth Rotation Loop [FREE TO USE] - Mars (1080p, h264)_1755992452609.mp4";
+import questBackground from "@assets/_e7sgebpnxk7u4yvtn50v_0_1755993467347.png";
 
 const questHorizons = [
   {
@@ -49,45 +48,21 @@ const questHorizons = [
 ];
 
 export default function TheQuest() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handleLoadedMetadata = () => {
-      const duration = video.duration;
-      
-      const handleScroll = () => {
-        const scrollPos = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-        video.currentTime = duration * scrollPos;
-      };
-
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    };
-
-    video.addEventListener('loadedmetadata', handleLoadedMetadata);
-    return () => video.removeEventListener('loadedmetadata', handleLoadedMetadata);
-  }, []);
-
   return (
-    <div className="relative" style={{ minHeight: '300vh' }}>
-      {/* Fixed video background with scroll scrubbing */}
-      <video
-        ref={videoRef}
-        src={earthVideo}
-        preload="auto"
-        muted
-        className="fixed top-0 left-0 w-full h-full object-cover z-0"
-        style={{ zIndex: -1 }}
-      />
-      
+    <div 
+      className="relative min-h-screen py-20 pt-32"
+      style={{
+        backgroundImage: `url(${questBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       {/* Dark overlay to make text readable */}
-      <div className="fixed inset-0 bg-deep-black/40 z-0" />
+      <div className="absolute inset-0 bg-deep-black/40" />
       
-      {/* Scrollable content */}
-      <div className="relative z-10 bg-gradient-to-b from-deep-black/80 via-transparent to-deep-black/80 min-h-screen py-20 pt-32">
+      {/* Content */}
+      <div className="relative z-10">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2 
           className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-8"
