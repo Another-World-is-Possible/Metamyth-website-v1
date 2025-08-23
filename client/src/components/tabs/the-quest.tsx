@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
-import horizontalLandscape from "@assets/krea-edit(1)_1755989239486.png";
+// Test with direct path first
+const horizontalLandscape = "/attached_assets/krea-edit(1)_1755989239486.png";
 
 const questHorizons = [
   {
@@ -103,25 +104,30 @@ export default function TheQuest() {
   }, []);
 
   // Calculate horizontal background position (left to right as user scrolls down)
-  const horizontalOffset = scrollProgress * 100; // 0% to 100% horizontal movement
+  const horizontalOffset = scrollProgress * 70; // 0% to 70% horizontal movement for better effect
+  
+  // Debug logging
+  useEffect(() => {
+    console.log('Quest component mounted, scroll progress:', scrollProgress, 'background loaded:', backgroundLoaded);
+  }, [scrollProgress, backgroundLoaded]);
 
   return (
     <div ref={containerRef} className="relative bg-gradient-to-b from-deep-black via-forest-green/30 to-deep-black min-h-screen py-20 pt-32" style={{ minHeight: '400vh' }}>
-      {/* Horizontal scrolling landscape background */}
+      {/* Debug - let's make the background more visible */}
       <div 
-        className={`fixed inset-0 transition-opacity duration-300 ease-out z-0 ${
-          backgroundLoaded ? 'opacity-60' : 'opacity-0'
-        }`}
+        className="fixed inset-0 z-0"
         style={{
           backgroundImage: `url(${horizontalLandscape})`,
-          backgroundSize: 'auto 100%', // Make sure height fills viewport, width scales accordingly
+          backgroundSize: 'cover', // Use cover for now to ensure it's visible
           backgroundPosition: `${horizontalOffset}% center`, // Move horizontally based on scroll
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: 'no-repeat',
+          opacity: backgroundLoaded ? 0.8 : 0,
+          transition: 'opacity 300ms ease-out'
         }}
       />
       
-      {/* Dark overlay for text readability */}
-      <div className="fixed inset-0 bg-deep-black/40 z-5" />
+      {/* Less dark overlay so we can see the background */}
+      <div className="fixed inset-0 bg-deep-black/30 z-5" />
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <motion.h2 
