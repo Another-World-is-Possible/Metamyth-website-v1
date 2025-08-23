@@ -33,11 +33,16 @@ export default function Home() {
       });
     }, observerOptions);
 
-    // Observe all scroll-triggered elements
-    const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in, .metamyth-section');
-    scrollElements.forEach(el => observer.observe(el));
+    // Small delay to ensure DOM is updated after tab change
+    const timeoutId = setTimeout(() => {
+      // Observe all scroll-triggered elements
+      const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in, .metamyth-section');
+      scrollElements.forEach(el => observer.observe(el));
+    }, 100);
 
     return () => {
+      clearTimeout(timeoutId);
+      const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in, .metamyth-section');
       scrollElements.forEach(el => observer.unobserve(el));
     };
   }, [activeTab]);
