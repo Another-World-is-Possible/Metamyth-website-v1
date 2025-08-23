@@ -1,0 +1,86 @@
+## **3 Horizons Horizontal Timeline - Simple Visual Design**
+
+### **Visual Structure**
+
+**Three distinct sections** representing the time horizons, connected by a flowing golden timeline:
+
+**Layout:**
+- **Horizon 1 (1-3 years):** Left section - current/near-term
+- **Horizon 2 (3-7 years):** Middle section - breakthrough phase  
+- **Horizon 3 (7-20 years):** Right section - ultimate vision
+
+**Simple Visual Elements:**
+- **Single flowing line** connecting all three horizons
+- **Three large circular nodes** - one for each horizon
+- **Content cards** above each node with horizon details
+- **Visual progression** from solid/concrete (left) to ethereal/visionary (right)
+- **Color gradient** along timeline from gold → teal → cosmic
+
+**CSS Structure:**
+```css
+.horizons-timeline {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 100px 50px;
+  background: linear-gradient(to right,
+    rgba(255, 215, 0, 0.1) 0%,
+    rgba(64, 224, 208, 0.1) 50%, 
+    rgba(64, 224, 208, 0.2) 100%);
+}
+
+.horizon-stage {
+  min-width: 500px;
+  scroll-snap-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.horizon-node {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  font-size: 48px;
+}
+
+.horizon-1 .horizon-node {
+  background: linear-gradient(45deg, gold, #ffcc00);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+}
+
+.horizon-2 .horizon-node {
+  background: linear-gradient(45deg, #ffcc00, teal);
+  box-shadow: 0 0 40px rgba(64, 224, 208, 0.6);
+}
+
+.horizon-3 .horizon-node {
+  background: linear-gradient(45deg, teal, #20b2aa);
+  box-shadow: 0 0 40px rgba(64, 224, 208, 0.8);
+}
+
+.horizon-card {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  border: 2px solid;
+}
+
+.horizon-1 .horizon-card { border-color: rgba(255, 215, 0, 0.5); }
+.horizon-2 .horizon-card { border-color: rgba(64, 224, 208, 0.5); }
+.horizon-3 .horizon-card { border-color: rgba(64, 224, 208, 0.7); }
+```
+
+**Content Structure:**
+- **Horizon 1:** "Foundation" - Shield icon, immediate goals
+- **Horizon 2:** "Breakthrough" - Banner icon, scaling phase
+- **Horizon 3:** "Vision" - Globe icon, ultimate transformation
+
+Simple horizontal scroll takes users through the three phases of your transformational journey.
