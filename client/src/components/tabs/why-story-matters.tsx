@@ -159,7 +159,7 @@ export default function WhyStoryMatters() {
       }}
     >
       {/* Gradient overlay from black to transparent for cosmic dragon reveal */}
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-black via-deep-black/70 to-deep-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-deep-black via-deep-black/50 to-deep-black/20" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}
@@ -170,7 +170,7 @@ export default function WhyStoryMatters() {
       >
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <motion.h1 
-            className="font-angle text-5xl md:text-7xl font-bold mb-8"
+            className="font-angle text-4xl md:text-6xl font-bold mb-6"
             style={{
               color: '#000000',
               textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
@@ -183,7 +183,7 @@ export default function WhyStoryMatters() {
           </motion.h1>
           
           <motion.p 
-            className="font-game text-2xl md:text-3xl mb-6"
+            className="font-game text-xl md:text-2xl mb-4"
             style={{ 
               color: '#f0f0f0', 
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' 
@@ -196,7 +196,7 @@ export default function WhyStoryMatters() {
           </motion.p>
           
           <motion.p 
-            className="font-game text-xl md:text-2xl mb-8"
+            className="font-game text-lg md:text-xl mb-6"
             style={{ 
               color: '#f0f0f0', 
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' 
@@ -209,7 +209,7 @@ export default function WhyStoryMatters() {
           </motion.p>
           
           <motion.p 
-            className="font-angle text-2xl md:text-4xl font-bold text-ancient-gold"
+            className="font-angle text-xl md:text-3xl font-bold text-ancient-gold"
             style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -257,7 +257,7 @@ export default function WhyStoryMatters() {
       >
         <div className="max-w-4xl mx-auto relative z-10">
           <motion.p 
-            className="font-game text-2xl md:text-3xl text-center mb-12"
+            className="font-game text-xl md:text-2xl text-center mb-8"
             style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -268,8 +268,8 @@ export default function WhyStoryMatters() {
           </motion.p>
           
           {/* Opaque frame for bulleted section */}
-          <div className="max-w-4xl mx-auto bg-deep-black/40 backdrop-blur-sm border border-mystical-teal/40 rounded-lg p-8 shadow-lg shadow-mystical-teal/30 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/50 via-deep-black/40 to-mystical-teal/5">
-            <div className="grid gap-8 max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto bg-deep-black/40 backdrop-blur-sm border border-mystical-teal/40 rounded-lg p-6 shadow-lg shadow-mystical-teal/30 ring-1 ring-mystical-teal/20 bg-gradient-to-br from-deep-black/50 via-deep-black/40 to-mystical-teal/5">
+            <div className="grid gap-6 max-w-3xl mx-auto">
             {audienceTypes.map((audience, index) => (
               <motion.div
                 key={index}
