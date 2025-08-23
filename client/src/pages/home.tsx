@@ -96,7 +96,7 @@ export default function Home() {
             <span className="font-angle text-2xl font-bold text-ancient-gold">Another World is Possible</span>
           </div>
           <p className="font-game text-silver/60 mb-8">
-            The metamyth awaits your authorship. The infinite kindred quest calls you home to your cosmic work.
+            Your story is the bridge between worlds.
           </p>
           <div className="flex justify-center space-x-6 mb-8">
             <a href="#" className="text-mystical-teal hover:text-ancient-gold transition-colors duration-300">
