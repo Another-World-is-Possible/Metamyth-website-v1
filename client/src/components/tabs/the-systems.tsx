@@ -222,7 +222,7 @@ export default function TheSystems() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="bg-deep-black/90 border-2 border-mystical-teal/60 shadow-lg shadow-mystical-teal/40 ring-2 ring-mystical-teal/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-mystical-teal/10 hover:border-mystical-teal/80 hover:shadow-mystical-teal/60 transition-all duration-300 h-full">
+                <Card className="bg-deep-black/90 border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/40 ring-2 ring-ancient-gold/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-ancient-gold/10 hover:border-ancient-gold/80 hover:shadow-ancient-gold/60 transition-all duration-300 h-full">
                   <CardContent className="p-6">
                     <h4 className="font-bold text-ancient-gold mb-3" style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
                       {result.title}
