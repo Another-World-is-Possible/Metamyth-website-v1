@@ -158,8 +158,8 @@ export default function WhyStoryMatters() {
         // REMOVED backgroundAttachment: 'fixed' - now background scrolls WITH content
       }}
     >
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-deep-black/60" />
+      {/* Gradient overlay from black to transparent for cosmic dragon reveal */}
+      <div className="absolute inset-0 bg-gradient-to-b from-deep-black via-deep-black/70 to-deep-black/40" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}
@@ -267,7 +267,9 @@ export default function WhyStoryMatters() {
             You feel the urgency but lack the story technology to create the response you need.
           </motion.p>
           
-          <div className="grid gap-8 max-w-3xl mx-auto">
+          {/* Opaque frame for bulleted section */}
+          <div className="max-w-4xl mx-auto bg-deep-black/70 backdrop-blur-sm border border-ancient-gold/30 rounded-lg p-8 shadow-lg shadow-ancient-gold/20">
+            <div className="grid gap-8 max-w-3xl mx-auto">
             {audienceTypes.map((audience, index) => (
               <motion.div
                 key={index}
@@ -286,19 +288,60 @@ export default function WhyStoryMatters() {
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
           
-          <motion.p 
-            className="font-game text-xl md:text-2xl font-bold text-ancient-gold text-center mt-12 leading-relaxed"
-            style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 1.5, delay: 0.8 }}
+          {/* Sword Divider */}
+          <motion.div 
+            className="flex justify-center my-16"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.5 }}
           >
-            If you believe another world is possible but struggle to make others see it—this work makes the impossible inevitable.
-          </motion.p>
+            <div className="w-1 h-12 bg-gradient-to-b from-ancient-gold via-mystical-teal to-ancient-gold rounded-full relative">
+              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-ancient-gold rounded-sm rotate-45"></div>
+              <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3 h-2 bg-mystical-teal rounded-full"></div>
+            </div>
+          </motion.div>
         </div>
+      </section>
+
+      {/* Transition Section - "If you believe" */}
+      <section className="min-h-screen flex items-center justify-center px-4">
+        <motion.div 
+          className="text-center max-w-5xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+        >
+          <h2 
+            className="font-angle text-4xl md:text-6xl font-bold text-ancient-gold leading-tight"
+            style={{ 
+              textShadow: '0 0 12px rgba(212, 175, 55, 0.9), 0 0 24px rgba(212, 175, 55, 0.6), 2px 2px 6px rgba(0,0,0,0.9)' 
+            }}
+          >
+            If you believe another world is possible but struggle to make others see it—<br/>
+            <span className="text-mystical-teal">this work makes the impossible inevitable.</span>
+          </h2>
+        </motion.div>
+      </section>
+
+      {/* Sword Divider */}
+      <section className="flex justify-center py-16">
+        <motion.div 
+          className="flex justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+        >
+          <div className="w-1 h-16 bg-gradient-to-b from-ancient-gold via-mystical-teal to-ancient-gold rounded-full relative">
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-ancient-gold rounded-sm rotate-45 shadow-lg shadow-ancient-gold/50"></div>
+            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-4 h-3 bg-mystical-teal rounded-full shadow-lg shadow-mystical-teal/50"></div>
+          </div>
+        </motion.div>
       </section>
 
       {/* The Transformation Reveals */}
@@ -307,7 +350,7 @@ export default function WhyStoryMatters() {
         data-section="transformation"
         className="min-h-screen flex items-center justify-center px-4"
       >
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-5xl mx-auto relative z-10">
           <motion.h2 
             className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold text-center mb-12"
             style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
@@ -352,6 +395,7 @@ export default function WhyStoryMatters() {
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
         </div>
       </section>
