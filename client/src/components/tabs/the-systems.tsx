@@ -142,8 +142,8 @@ export default function TheSystems() {
                 <Card className="bg-deep-black/50 mystical-border enhanced-glow">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-6">
-                      <div className={`p-4 rounded-lg bg-${phase.color}/20 border border-${phase.color}/30`}>
-                        <phase.icon className={`text-${phase.color} text-3xl`} />
+                      <div className="p-4 rounded-lg bg-mystical-teal/20 border-2 border-mystical-teal/60 shadow-lg shadow-mystical-teal/30">
+                        <phase.icon className="text-mystical-teal text-3xl" style={{ textShadow: '0 0 8px currentColor' }} />
                       </div>
                       
                       <div className="flex-1">
@@ -170,9 +170,9 @@ export default function TheSystems() {
                             </ul>
                           </div>
                           
-                          <div>
-                            <h5 className="text-mystical-teal font-bold mb-2">Outcome:</h5>
-                            <p className="text-silver/90 text-sm">
+                          <div className="bg-deep-black/60 border-2 border-mystical-teal/60 rounded-lg p-4 shadow-lg shadow-mystical-teal/30">
+                            <h5 className="text-mystical-teal font-bold mb-3 text-lg" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
+                            <p className="text-silver text-base font-medium leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                               {phase.outcome}
                             </p>
                           </div>
