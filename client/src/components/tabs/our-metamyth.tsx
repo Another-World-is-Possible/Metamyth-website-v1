@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
+import metamythBackground from "@assets/_sunrise_mountain_road-__prompt-_vertical_composition_showing_rough_winding_mountain_road_with_dirt_wsb0x3teddz05i8om0dq_0_1755994182701.png";
+
 const accordionItems = [
   {
     id: "origin",
@@ -90,8 +92,18 @@ const accordionItems = [
 
 export default function OurMetamyth() {
   return (
-    <div className="bg-forest-green py-20 pt-32">
-      <div className="max-w-6xl mx-auto px-4">
+    <div 
+      className="relative py-20 pt-32 min-h-screen"
+      style={{
+        backgroundImage: `url(${metamythBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Dark overlay to make text readable */}
+      <div className="absolute inset-0 bg-deep-black/50" />
+      <div className="relative z-10 max-w-6xl mx-auto px-4">
         <motion.h2 
           className="font-angle text-4xl md:text-6xl font-bold shimmer-text text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
