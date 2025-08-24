@@ -85,12 +85,12 @@ export default function TheQuest() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          filter: 'brightness(0.3) contrast(1.2)'
+          filter: 'brightness(0.95) contrast(1.0)'
         }}
       />
       
       {/* Dark overlay to make text readable */}
-      <div className="absolute inset-0 bg-deep-black/40" />
+      <div className="absolute inset-0 bg-deep-black/5" />
       
       {/* Content */}
       <div className="relative z-10">
