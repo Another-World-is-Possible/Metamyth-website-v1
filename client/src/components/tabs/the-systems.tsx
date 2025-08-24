@@ -248,7 +248,10 @@ export default function TheSystems() {
             <CardContent className="p-8">
               <div className="flex items-center justify-center mb-6">
                 <Globe className="text-crimson text-4xl mr-4" />
-                <h3 className="font-edensor text-3xl font-bold text-crimson">
+                <h3 
+                  className="font-edensor text-3xl font-bold text-crimson"
+                  style={{ textShadow: '0 0 8px rgba(129, 236, 236, 0.8), 0 0 16px rgba(129, 236, 236, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                >
                   THE LARGER VISION
                 </h3>
               </div>

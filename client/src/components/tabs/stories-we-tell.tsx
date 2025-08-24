@@ -112,7 +112,10 @@ export default function StoriesWeTell() {
                   </p>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-bold text-crimson mb-2 flex items-center">
+                      <h4 
+                        className="font-bold text-crimson mb-2 flex items-center"
+                        style={{ textShadow: '0 0 8px rgba(129, 236, 236, 0.8), 0 0 16px rgba(129, 236, 236, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                      >
                         <span className="w-2 h-2 bg-crimson rounded-full mr-2"></span>
                         Common Challenges
                       </h4>
