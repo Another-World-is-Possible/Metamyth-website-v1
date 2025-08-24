@@ -92,15 +92,19 @@ const accordionItems = [
 
 export default function OurMetamyth() {
   return (
-    <div 
-      className="relative py-20 pt-32 min-h-screen"
-      style={{
-        backgroundImage: `url(${metamythBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
-    >
+    <div className="relative py-20 pt-32 min-h-screen">
+      {/* Background image with filter */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${metamythBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          filter: 'brightness(0.3) contrast(1.2)'
+        }}
+      />
+      
       {/* Dark overlay to make text readable */}
       <div className="absolute inset-0 bg-deep-black/50" />
       <div className="relative z-10 max-w-6xl mx-auto px-4">
