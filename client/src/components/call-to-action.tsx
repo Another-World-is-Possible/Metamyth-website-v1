@@ -1,23 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useImageLoading } from "@/contexts/ImageLoadingContext";
 
 export default function CallToAction() {
-  const { isImageReady, getImageSrc } = useImageLoading();
-  const heroBackground = getImageSrc('hero');
-  const backgroundReady = isImageReady('hero');
-
   return (
     <section className="relative py-20 overflow-hidden">
-      {/* Background image */}
-      <div 
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-out ${
-          backgroundReady ? 'opacity-100' : 'opacity-0'
-        }`}
-        style={{ backgroundImage: backgroundReady ? `url(${heroBackground})` : 'none' }}
-      />
       {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-deep-black/60"></div>
+      <div className="absolute inset-0 bg-deep-black/50"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <h2 
           className="scroll-fade-in font-angle text-4xl md:text-5xl font-bold text-center mb-4"
