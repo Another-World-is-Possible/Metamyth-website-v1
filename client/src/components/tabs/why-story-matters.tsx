@@ -164,7 +164,8 @@ export default function WhyStoryMatters() {
           backgroundImage: `url(${cosmicDragon})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: 'no-repeat',
+          filter: 'brightness(0.3) contrast(1.2)'
         }}
       />
       {/* Much lighter overlay to see the cosmic dragon clearly */}
