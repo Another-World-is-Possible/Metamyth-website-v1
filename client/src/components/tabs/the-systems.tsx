@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Compass, Users, Film, Globe, CheckCircle, ArrowRight } from "lucide-react";
@@ -84,17 +85,26 @@ const transformationResults = [
 ];
 
 export default function TheSystems() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.src = systemsBackground;
+  }, []);
+
   return (
     <div className="relative min-h-screen py-20 pt-32">
-      {/* Background image with filter */}
+      {/* Background image with filter - only show when loaded */}
       <div 
         className="absolute inset-0"
         style={{
-          backgroundImage: `url(${systemsBackground})`,
+          backgroundImage: imageLoaded ? `url(${systemsBackground})` : 'none',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          filter: 'brightness(0.3) contrast(1.2)'
+          filter: 'brightness(0.3) contrast(1.2)',
+          backgroundColor: imageLoaded ? 'transparent' : 'hsl(120, 80%, 2%)'
         }}
       />
       

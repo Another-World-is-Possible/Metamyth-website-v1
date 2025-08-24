@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 import questBackground from "@assets/_e7sgebpnxk7u4yvtn50v_0_1755993467347.png";
 
@@ -48,17 +49,26 @@ const questHorizons = [
 ];
 
 export default function TheQuest() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.src = questBackground;
+  }, []);
+
   return (
     <div className="relative min-h-screen py-20 pt-32">
-      {/* Background image with filter */}
+      {/* Background image with filter - only show when loaded */}
       <div 
         className="absolute inset-0"
         style={{
-          backgroundImage: `url(${questBackground})`,
+          backgroundImage: imageLoaded ? `url(${questBackground})` : 'none',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          filter: 'brightness(0.3) contrast(1.2)'
+          filter: 'brightness(0.3) contrast(1.2)',
+          backgroundColor: imageLoaded ? 'transparent' : 'hsl(120, 80%, 2%)'
         }}
       />
       

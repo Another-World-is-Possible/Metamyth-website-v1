@@ -118,7 +118,7 @@ function ConstellationNav({ activeSection }: { activeSection: number }) {
 
 export default function WhyStoryMatters() {
   const [activeSection, setActiveSection] = useState(0);
-  const [backgroundLoaded, setBackgroundLoaded] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
   
   const sectionRefs = [
     useRef(null),
@@ -130,8 +130,9 @@ export default function WhyStoryMatters() {
   ];
 
   useEffect(() => {
-    console.log('Cosmic dragon URL:', cosmicDragon);
-    // Just show the background immediately - no delays
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.src = cosmicDragon;
 
     const observers = sectionRefs.map((ref, index) => {
       const observer = new IntersectionObserver(
@@ -157,15 +158,16 @@ export default function WhyStoryMatters() {
       {/* Black background base */}
       <div className="absolute inset-0 bg-deep-black z-0" />
       
-      {/* Fade-in background image */}
+      {/* Fade-in background image - only show when loaded */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{
-          backgroundImage: `url(${cosmicDragon})`,
+          backgroundImage: imageLoaded ? `url(${cosmicDragon})` : 'none',
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
-          filter: 'brightness(0.3) contrast(1.2)'
+          filter: 'brightness(0.3) contrast(1.2)',
+          backgroundColor: imageLoaded ? 'transparent' : 'hsl(120, 80%, 2%)'
         }}
       />
       {/* Much lighter overlay to see the cosmic dragon clearly */}

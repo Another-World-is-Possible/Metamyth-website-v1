@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -91,17 +92,26 @@ const accordionItems = [
 ];
 
 export default function OurMetamyth() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.src = metamythBackground;
+  }, []);
+
   return (
     <div className="relative py-20 pt-32 min-h-screen">
-      {/* Background image with filter */}
+      {/* Background image with filter - only show when loaded */}
       <div 
         className="absolute inset-0"
         style={{
-          backgroundImage: `url(${metamythBackground})`,
+          backgroundImage: imageLoaded ? `url(${metamythBackground})` : 'none',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          filter: 'brightness(0.6) contrast(1.2)'
+          filter: 'brightness(0.6) contrast(1.2)',
+          backgroundColor: imageLoaded ? 'transparent' : 'hsl(120, 80%, 2%)'
         }}
       />
       
