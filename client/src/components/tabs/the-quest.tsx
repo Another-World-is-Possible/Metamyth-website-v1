@@ -66,6 +66,10 @@ export default function TheQuest() {
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2 
           className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-8"
+          style={{ 
+            textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)',
+            WebkitTextStroke: '2px rgba(0, 0, 0, 0.8)'
+          }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -81,7 +85,7 @@ export default function TheQuest() {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <p className="font-alice text-2xl italic text-ancient-gold mb-6">
-            "We are on a journey to change the human story and transform along the way."
+            "We are on a journey to change the human story<br />and transform along the way."
           </p>
           <p className="font-alice text-lg leading-loose">
             Our quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence. This is how we change the human story—one authentic narrative at a time.
