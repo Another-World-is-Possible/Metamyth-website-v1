@@ -49,16 +49,19 @@ const questHorizons = [
 
 export default function TheQuest() {
   return (
-    <div 
-      className="relative min-h-screen py-20 pt-32"
-      style={{
-        backgroundImage: `url(${questBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        filter: 'brightness(0.3) contrast(1.2)'
-      }}
-    >
+    <div className="relative min-h-screen py-20 pt-32">
+      {/* Background image with filter */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${questBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          filter: 'brightness(0.3) contrast(1.2)'
+        }}
+      />
+      
       {/* Dark overlay to make text readable */}
       <div className="absolute inset-0 bg-deep-black/40" />
       
