@@ -186,11 +186,11 @@ export default function WhyStoryMatters() {
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
-          filter: 'brightness(0.3) contrast(1.2)'
+          filter: 'brightness(0.15) contrast(0.8)'
         }}
       />
       {/* Much lighter overlay to see the cosmic dragon clearly */}
-      <div className="absolute inset-0 bg-deep-black/20 z-0" />
+      <div className="absolute inset-0 bg-deep-black/75 z-0" />
       <ConstellationNav activeSection={activeSection} />
       
       {/* Opening Transmission */}

@@ -101,12 +101,12 @@ export default function StoriesWeTell() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          filter: 'brightness(0.4) contrast(1.2)'
+          filter: 'brightness(0.15) contrast(0.8)'
         }}
       />
       
       {/* Dark overlay to make text readable */}
-      <div className="absolute inset-0 bg-deep-black/50" />
+      <div className="absolute inset-0 bg-deep-black/80" />
       
       {/* Content */}
       <div className="relative z-10">
