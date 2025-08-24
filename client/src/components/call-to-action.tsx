@@ -24,7 +24,7 @@ export default function CallToAction() {
             textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
           }}
         >
-          Ready to stop being trapped in someone else's story<br />and writing your own?
+          Ready to stop being trapped in someone else's story<br />and start writing your own?
         </h3>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
