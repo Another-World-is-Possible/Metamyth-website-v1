@@ -59,10 +59,10 @@ export default function SwordCursor() {
           // Multiple glow layers with intensity based on glowStrength
           if (glowStrength > 0) {
             const glowLayers = [
-              { color: '#2DBBAB', blur: 12, opacity: 1.0 * glowStrength },
-              { color: '#2DBBAB', blur: 18, opacity: 0.8 * glowStrength },
-              { color: '#2DBBAB', blur: 24, opacity: 0.6 * glowStrength },
-              { color: '#2DBBAB', blur: 30, opacity: 0.4 * glowStrength }
+              { color: '#F0F0F0', blur: 12, opacity: 1.0 * glowStrength },
+              { color: '#FFFFFF', blur: 18, opacity: 0.8 * glowStrength },
+              { color: '#F8F8F8', blur: 24, opacity: 0.6 * glowStrength },
+              { color: '#FFFFFF', blur: 30, opacity: 0.4 * glowStrength }
             ];
             
             glowLayers.forEach(layer => {
