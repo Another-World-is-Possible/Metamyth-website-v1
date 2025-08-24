@@ -4,7 +4,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 import heroBackground from "@assets/_f20qmpu9dartjp9dbfcm_0_1755891749225.png";
 import questBackground from "@assets/_e7sgebpnxk7u4yvtn50v_0_1755993467347.png";
 import metamythBackground from "@assets/_sunrise_mountain_road-__prompt-_vertical_composition_showing_rough_winding_mountain_road_with_dirt_wsb0x3teddz05i8om0dq_0_1755994182701.png";
-import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0_1755922660417.png";
+import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0(1)_1755972671476.jpg";
 import systemsBackground from "@assets/_x7er1zk1fla8a9b7ylmk_0_1755995147112.png";
 
 interface ImageLoadingState {
