@@ -427,19 +427,6 @@ export default function WhyStoryMatters() {
       </section>
 
       {/* Metamyth Divider */}
-      <section className="flex justify-center py-16">
-        <motion.div 
-          className="flex justify-center"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-        >
-          <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>⚡</div>
-        </motion.div>
-      </section>
-
-      {/* Metamyth Divider */}
       <section className="flex justify-center py-16 relative z-20">
         <motion.div 
           className="flex justify-center"
