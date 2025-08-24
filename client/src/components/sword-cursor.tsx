@@ -156,16 +156,14 @@ export default function SwordCursor() {
         document.body.style.cursor = cursorUrl;
         document.documentElement.style.cursor = cursorUrl;
         
-        // Simplified cursor enforcement - reduced performance impact
-        if (frameIndex === 0) {
-          setTimeout(() => {
-            // Quick enforcement for key interactive elements only
-            const keyElements = document.querySelectorAll('button, a[href], [role="button"]');
-            keyElements.forEach((el) => {
-              (el as HTMLElement).style.setProperty('cursor', cursorUrl, 'important');
-            });
-          }, 50);
-        }
+        // Enforce cursor on every frame to ensure animation is visible
+        setTimeout(() => {
+          // Quick enforcement for key interactive elements only
+          const keyElements = document.querySelectorAll('button, a[href], [role="button"]');
+          keyElements.forEach((el) => {
+            (el as HTMLElement).style.setProperty('cursor', cursorUrl, 'important');
+          });
+        }, 10);
       }
     };
 
