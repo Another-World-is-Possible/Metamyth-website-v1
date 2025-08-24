@@ -29,12 +29,12 @@ export default function CallToAction() {
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="scroll-fade-in">
-            <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300 hover-glow">
+            <Card className="bg-deep-black/95 backdrop-blur-md border-2 border-[#81ecec]/80 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-deep-black/98 via-deep-black/95 to-[#81ecec]/15 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
               <CardContent className="p-8 text-center">
                 <h3 
                   className="font-angle text-2xl font-bold text-ancient-gold mb-4"
                   style={{
-                    textShadow: '0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6)'
+                    textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 0, 0, 0.7), 2px 2px 6px rgba(0, 0, 0, 0.9)'
                   }}
                 >
                   REGENERATE YOUR STORY
@@ -45,20 +45,25 @@ export default function CallToAction() {
                 >
                   Transform your organization through story
                 </p>
-                <Button className="bg-ancient-gold text-deep-black font-game font-bold py-3 px-8 rounded-lg hover:bg-ancient-gold/80 transition-colors duration-300">
-                  <span className="title-glow">WORK WITH US</span>
+                <Button 
+                  className="bg-ancient-gold text-deep-black font-game font-bold py-3 px-8 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  style={{
+                    boxShadow: '0 4px 20px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                  }}
+                >
+                  <span className="title-glow font-bold" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)' }}>WORK WITH US</span>
                 </Button>
               </CardContent>
             </Card>
           </div>
           
           <div className="scroll-fade-in">
-            <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300 hover-glow">
+            <Card className="bg-deep-black/95 backdrop-blur-md border-2 border-[#81ecec]/80 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-deep-black/98 via-deep-black/95 to-[#81ecec]/15 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
               <CardContent className="p-8 text-center">
                 <h3 
                   className="font-angle text-2xl font-bold text-mystical-teal mb-4"
                   style={{
-                    textShadow: '0 0 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(0, 0, 0, 0.6)'
+                    textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 0, 0, 0.7), 2px 2px 6px rgba(0, 0, 0, 0.9)'
                   }}
                 >
                   JOIN THE QUEST
@@ -69,8 +74,13 @@ export default function CallToAction() {
                 >
                   Build the new world with us
                 </p>
-                <Button className="bg-mystical-teal text-deep-black font-game font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-colors duration-300">
-                  <span className="title-glow">BECOME A STORYTELLER</span>
+                <Button 
+                  className="bg-mystical-teal text-deep-black font-game font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  style={{
+                    boxShadow: '0 4px 20px rgba(20, 184, 166, 0.4), 0 0 20px rgba(20, 184, 166, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                  }}
+                >
+                  <span className="title-glow font-bold" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.5)' }}>BECOME A STORYTELLER</span>
                 </Button>
               </CardContent>
             </Card>
