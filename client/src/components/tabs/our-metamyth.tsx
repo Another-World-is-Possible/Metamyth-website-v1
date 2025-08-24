@@ -101,7 +101,7 @@ export default function OurMetamyth() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          filter: 'brightness(0.3) contrast(1.2)'
+          filter: 'brightness(0.6) contrast(1.2)'
         }}
       />
       
