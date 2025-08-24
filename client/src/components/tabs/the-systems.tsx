@@ -95,7 +95,7 @@ export default function TheSystems() {
       }}
     >
       {/* Dark overlay to make text readable */}
-      <div className="absolute inset-0 bg-deep-black/70" />
+      <div className="absolute inset-0 bg-deep-black/85" />
       
       {/* Content */}
       <div className="relative z-10">
