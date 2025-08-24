@@ -6,7 +6,7 @@ import questBackground from "@assets/_e7sgebpnxk7u4yvtn50v_0_1755993467347.png";
 import metamythBackground from "@assets/_sunrise_mountain_road-__prompt-_vertical_composition_showing_rough_winding_mountain_road_with_dirt_wsb0x3teddz05i8om0dq_0_1755994182701.png";
 import cosmicDragon from "@assets/cosmic_dragon_optimized.jpg";
 import systemsBackground from "@assets/_x7er1zk1fla8a9b7ylmk_0_1755995147112.png";
-import storiesBackground from "@assets/krea-edit(3)_1756059460183.png";
+import storiesBackground from "@assets/arhuacoupscale_1756065342045.png";
 
 interface ImageLoadingState {
   hero: boolean;
