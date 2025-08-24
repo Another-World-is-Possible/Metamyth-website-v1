@@ -29,7 +29,7 @@ export default function CallToAction() {
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="scroll-fade-in">
-            <Card className="bg-deep-black/50 mystical-border enhanced-glow hover-glow">
+            <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300 hover-glow">
               <CardContent className="p-8 text-center">
                 <h3 
                   className="font-angle text-2xl font-bold text-ancient-gold mb-4"
@@ -53,7 +53,7 @@ export default function CallToAction() {
           </div>
           
           <div className="scroll-fade-in">
-            <Card className="bg-deep-black/50 mystical-border mystical-glow hover-glow">
+            <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300 hover-glow">
               <CardContent className="p-8 text-center">
                 <h3 
                   className="font-angle text-2xl font-bold text-mystical-teal mb-4"

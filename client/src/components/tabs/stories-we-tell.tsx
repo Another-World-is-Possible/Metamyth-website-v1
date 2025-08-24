@@ -96,7 +96,7 @@ export default function StoriesWeTell() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className="bg-deep-black/50 mystical-border mystical-glow overflow-hidden hover-glow">
+              <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 overflow-hidden hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
                 <div 
                   className="h-56 bg-cover bg-center relative"
                   style={{ backgroundImage: `url(${audience.bgImage})` }}
@@ -158,7 +158,7 @@ export default function StoriesWeTell() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Card className="bg-deep-black/50 mystical-border enhanced-glow">
+          <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="font-edensor text-2xl font-bold text-ancient-gold text-center mb-8">
                 Our Process: From Story to System

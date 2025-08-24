@@ -111,7 +111,7 @@ export default function TheFederation() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mb-16"
         >
-          <Card className="bg-deep-black/50 mystical-border enhanced-glow">
+          <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="font-edensor text-2xl font-bold text-ancient-gold text-center mb-8">
                 Initiation Pathway

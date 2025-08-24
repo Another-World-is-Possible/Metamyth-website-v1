@@ -102,7 +102,7 @@ export default function TheQuest() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-ancient-gold/5 mystical-border p-8 backdrop-blur-sm border-2 shadow-lg ring-2">
+              <div className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 p-8 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
                 <motion.div
                   initial={{ y: 20, opacity: 0.5 }}
                   whileInView={{ y: 0, opacity: 1 }}
