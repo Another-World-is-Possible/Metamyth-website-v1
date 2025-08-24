@@ -1,7 +1,7 @@
 /* Force new font names to bypass all browser caching */
 @font-face {
   font-family: 'AngleFairy2024';
-  src: url('/attached_assets/Angle%20%26%20Fairy_1755896701809.ttf?v=2024') format('truetype');
+  src: url('/attached_assets/angle_fairy.ttf?v=2024') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
