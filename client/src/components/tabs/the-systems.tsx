@@ -121,12 +121,12 @@ export default function TheSystems() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          filter: 'brightness(0.7) contrast(1.0)'
+          filter: 'brightness(0.5) contrast(1.0)'
         }}
       />
       
       {/* Dark overlay to make text readable */}
-      <div className="absolute inset-0 bg-deep-black/25" />
+      <div className="absolute inset-0 bg-deep-black/40" />
       
       {/* Content */}
       <div className="relative z-10">
