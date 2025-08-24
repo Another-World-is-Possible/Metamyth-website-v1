@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Compass, Users, Film, Globe, CheckCircle, ArrowRight } from "lucide-react";
-
-import systemsBackground from "@assets/_x7er1zk1fla8a9b7ylmk_0_1755995147112.png";
+import { useImageLoading } from "@/contexts/ImageLoadingContext";
 
 const phases = [
   {
@@ -85,26 +84,44 @@ const transformationResults = [
 ];
 
 export default function TheSystems() {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const { isImageReady, getImageSrc } = useImageLoading();
+  const [showBackground, setShowBackground] = useState(false);
+  const imageReady = isImageReady('systems');
+  const systemsBackground = getImageSrc('systems');
 
   useEffect(() => {
-    const img = new Image();
-    img.onload = () => setImageLoaded(true);
-    img.src = systemsBackground;
-  }, []);
+    // Always fade in when navigating to tab, even if already loaded
+    setShowBackground(false);
+    const timer = setTimeout(() => {
+      if (imageReady) {
+        setShowBackground(true);
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [imageReady]);
+
+  // Wait for image to be ready before showing tab
+  if (!imageReady) {
+    return (
+      <div className="relative min-h-screen py-20 pt-32 flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
+        <div className="text-ancient-gold font-angle text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen py-20 pt-32">
-      {/* Background image with filter - only show when loaded */}
+      {/* Background image with filter - fade in on navigate */}
       <div 
-        className="absolute inset-0"
+        className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+          showBackground ? 'opacity-100' : 'opacity-0'
+        }`}
         style={{
-          backgroundImage: imageLoaded ? `url(${systemsBackground})` : 'none',
+          backgroundImage: `url(${systemsBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          filter: 'brightness(0.3) contrast(1.2)',
-          backgroundColor: imageLoaded ? 'transparent' : 'hsl(120, 80%, 2%)'
+          filter: 'brightness(0.3) contrast(1.2)'
         }}
       />
       

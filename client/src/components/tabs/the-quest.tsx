@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-
-import questBackground from "@assets/_e7sgebpnxk7u4yvtn50v_0_1755993467347.png";
+import { useImageLoading } from "@/contexts/ImageLoadingContext";
 
 const questHorizons = [
   {
@@ -49,26 +48,44 @@ const questHorizons = [
 ];
 
 export default function TheQuest() {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const { isImageReady, getImageSrc } = useImageLoading();
+  const [showBackground, setShowBackground] = useState(false);
+  const imageReady = isImageReady('quest');
+  const questBackground = getImageSrc('quest');
 
   useEffect(() => {
-    const img = new Image();
-    img.onload = () => setImageLoaded(true);
-    img.src = questBackground;
-  }, []);
+    // Always fade in when navigating to tab, even if already loaded
+    setShowBackground(false);
+    const timer = setTimeout(() => {
+      if (imageReady) {
+        setShowBackground(true);
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [imageReady]);
+
+  // Wait for image to be ready before showing tab
+  if (!imageReady) {
+    return (
+      <div className="relative min-h-screen py-20 pt-32 flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
+        <div className="text-ancient-gold font-angle text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen py-20 pt-32">
-      {/* Background image with filter - only show when loaded */}
+      {/* Background image with filter - fade in on navigate */}
       <div 
-        className="absolute inset-0"
+        className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+          showBackground ? 'opacity-100' : 'opacity-0'
+        }`}
         style={{
-          backgroundImage: imageLoaded ? `url(${questBackground})` : 'none',
+          backgroundImage: `url(${questBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          filter: 'brightness(0.3) contrast(1.2)',
-          backgroundColor: imageLoaded ? 'transparent' : 'hsl(120, 80%, 2%)'
+          filter: 'brightness(0.3) contrast(1.2)'
         }}
       />
       

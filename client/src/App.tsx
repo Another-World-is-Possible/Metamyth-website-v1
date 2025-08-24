@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import SwordCursor from "@/components/sword-cursor";
+import { ImageLoadingProvider } from "@/contexts/ImageLoadingContext";
 import { useEffect } from "react";
 
 
@@ -21,13 +22,15 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <div className="dark">
-          <SwordCursor />
-          <Toaster />
-          <Router />
-        </div>
-      </TooltipProvider>
+      <ImageLoadingProvider>
+        <TooltipProvider>
+          <div className="dark">
+            <SwordCursor />
+            <Toaster />
+            <Router />
+          </div>
+        </TooltipProvider>
+      </ImageLoadingProvider>
     </QueryClientProvider>
   );
 }

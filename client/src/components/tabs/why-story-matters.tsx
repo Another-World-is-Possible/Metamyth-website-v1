@@ -3,8 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useRef, useState, useEffect } from "react";
 import { Dna, Network, Building, RotateCcw } from "lucide-react";
-
-import cosmicDragon from "@assets/_oft0al5633cuwxb5dpy6_0_1755922660417.png";
+import { useImageLoading } from "@/contexts/ImageLoadingContext";
 
 const audienceTypes = [
   {
@@ -118,7 +117,10 @@ function ConstellationNav({ activeSection }: { activeSection: number }) {
 
 export default function WhyStoryMatters() {
   const [activeSection, setActiveSection] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const { isImageReady, getImageSrc } = useImageLoading();
+  const [showBackground, setShowBackground] = useState(false);
+  const imageReady = isImageReady('whyStory');
+  const cosmicDragon = getImageSrc('whyStory');
   
   const sectionRefs = [
     useRef(null),
@@ -130,9 +132,15 @@ export default function WhyStoryMatters() {
   ];
 
   useEffect(() => {
-    const img = new Image();
-    img.onload = () => setImageLoaded(true);
-    img.src = cosmicDragon;
+    // Always fade in when navigating to tab, even if already loaded
+    setShowBackground(false);
+    const timer = setTimeout(() => {
+      if (imageReady) {
+        setShowBackground(true);
+      }
+    }, 100);
+
+    const cleanup = () => clearTimeout(timer);
 
     const observers = sectionRefs.map((ref, index) => {
       const observer = new IntersectionObserver(
@@ -149,25 +157,36 @@ export default function WhyStoryMatters() {
     });
 
     return () => {
+      cleanup();
       observers.forEach(observer => observer.disconnect());
     };
-  }, []);
+  }, [imageReady]);
+
+  // Wait for image to be ready before showing tab
+  if (!imageReady) {
+    return (
+      <div className="relative flex items-center justify-center" style={{ minHeight: '100vh', backgroundColor: 'hsl(120, 80%, 2%)' }}>
+        <div className="text-ancient-gold font-angle text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative" style={{ minHeight: '500vh' }}>
       {/* Black background base */}
       <div className="absolute inset-0 bg-deep-black z-0" />
       
-      {/* Fade-in background image - only show when loaded */}
+      {/* Fade-in background image - fade in on navigate */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transition-opacity duration-1000 ease-out ${
+          showBackground ? 'opacity-100' : 'opacity-0'
+        }`}
         style={{
-          backgroundImage: imageLoaded ? `url(${cosmicDragon})` : 'none',
+          backgroundImage: `url(${cosmicDragon})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
-          filter: 'brightness(0.3) contrast(1.2)',
-          backgroundColor: imageLoaded ? 'transparent' : 'hsl(120, 80%, 2%)'
+          filter: 'brightness(0.3) contrast(1.2)'
         }}
       />
       {/* Much lighter overlay to see the cosmic dragon clearly */}

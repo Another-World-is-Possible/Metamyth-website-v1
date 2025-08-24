@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-
-import metamythBackground from "@assets/_sunrise_mountain_road-__prompt-_vertical_composition_showing_rough_winding_mountain_road_with_dirt_wsb0x3teddz05i8om0dq_0_1755994182701.png";
+import { useImageLoading } from "@/contexts/ImageLoadingContext";
 
 const accordionItems = [
   {
@@ -92,26 +91,44 @@ const accordionItems = [
 ];
 
 export default function OurMetamyth() {
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const { isImageReady, getImageSrc } = useImageLoading();
+  const [showBackground, setShowBackground] = useState(false);
+  const imageReady = isImageReady('metamyth');
+  const metamythBackground = getImageSrc('metamyth');
 
   useEffect(() => {
-    const img = new Image();
-    img.onload = () => setImageLoaded(true);
-    img.src = metamythBackground;
-  }, []);
+    // Always fade in when navigating to tab, even if already loaded
+    setShowBackground(false);
+    const timer = setTimeout(() => {
+      if (imageReady) {
+        setShowBackground(true);
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [imageReady]);
+
+  // Wait for image to be ready before showing tab
+  if (!imageReady) {
+    return (
+      <div className="relative py-20 pt-32 min-h-screen flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
+        <div className="text-ancient-gold font-angle text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative py-20 pt-32 min-h-screen">
-      {/* Background image with filter - only show when loaded */}
+      {/* Background image with filter - fade in on navigate */}
       <div 
-        className="absolute inset-0"
+        className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+          showBackground ? 'opacity-100' : 'opacity-0'
+        }`}
         style={{
-          backgroundImage: imageLoaded ? `url(${metamythBackground})` : 'none',
+          backgroundImage: `url(${metamythBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
-          filter: 'brightness(0.6) contrast(1.2)',
-          backgroundColor: imageLoaded ? 'transparent' : 'hsl(120, 80%, 2%)'
+          filter: 'brightness(0.6) contrast(1.2)'
         }}
       />
       

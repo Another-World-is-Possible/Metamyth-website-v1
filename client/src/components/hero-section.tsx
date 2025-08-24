@@ -1,24 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
-
-import heroBackground from "@assets/_f20qmpu9dartjp9dbfcm_0_1755891749225.png";
+import { useImageLoading } from "@/contexts/ImageLoadingContext";
 
 export default function HeroSection() {
-  const [backgroundLoaded, setBackgroundLoaded] = useState(false);
-
-  useEffect(() => {
-    // Fast image preloading - no artificial delays
-    const img = new Image();
-    img.onload = () => {
-      setBackgroundLoaded(true);
-    };
-    img.onerror = () => {
-      // Fallback - show anyway after brief delay
-      setTimeout(() => setBackgroundLoaded(true), 100);
-    };
-    img.src = heroBackground;
-  }, []);
+  const { isImageReady, getImageSrc } = useImageLoading();
+  const backgroundLoaded = isImageReady('hero');
+  const heroBackground = getImageSrc('hero');
 
   return (
     <div className="relative">
@@ -28,10 +15,10 @@ export default function HeroSection() {
         
         {/* Fade-in background */}
         <div 
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-500 ease-out ${
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-out ${
             backgroundLoaded ? 'opacity-100' : 'opacity-0'
           }`}
-          style={{ backgroundImage: `url(${heroBackground})` }}
+          style={{ backgroundImage: backgroundLoaded ? `url(${heroBackground})` : 'none' }}
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-deep-black/40 z-10" />
