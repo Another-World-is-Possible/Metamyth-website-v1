@@ -3,8 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Compass, Users, Film, Globe, CheckCircle, ArrowRight } from "lucide-react";
 
-import systemsBackground from "@assets/_x7er1zk1fla8a9b7ylmk_0_1755995147112.png";
-
 const phases = [
   {
     id: 1,
@@ -86,19 +84,11 @@ const transformationResults = [
 export default function TheSystems() {
   return (
     <div 
-      className="relative min-h-screen py-20 pt-32"
+      className="bg-forest-green py-20 pt-32 relative"
       style={{
-        backgroundImage: `url(${systemsBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
+        background: `radial-gradient(ellipse at center, hsl(120, 40%, 10%) 0%, hsl(120, 60%, 5%) 70%, hsl(120, 80%, 2%) 100%)`
       }}
     >
-      {/* Dark overlay to make text readable */}
-      <div className="absolute inset-0 bg-deep-black/80 backdrop-blur-sm" />
-      
-      {/* Content */}
-      <div className="relative z-10">
       <div className="max-w-6xl mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
@@ -299,7 +289,6 @@ export default function TheSystems() {
             </CardContent>
           </Card>
         </motion.div>
-      </div>
       </div>
     </div>
   );
