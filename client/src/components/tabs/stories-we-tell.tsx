@@ -2,15 +2,18 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Search, ServerCog, Network, Globe, Shield, Flag, Building } from "lucide-react";
+import { Search, ServerCog, Network, Globe } from "lucide-react";
 import { useImageLoading } from "@/contexts/ImageLoadingContext";
+
+import visionaryShield from "@assets/_visionary_shield-__prompt-_a_luminous_crystalline_shield_with_ornate_art_nouveau_gold_filigree_dec_gxzt46t0ueltrmkhzq7l_0_1755928707621.png";
+import visionaryBanner from "@assets/of_course_here_is_the_revised_prompt-_a_luminous_crystalline_banner_waving_in_the_wind_with_ornate__fln51hw0qgjq8z60o21h_1_1755928687790.png";
+import visionaryGlobe from "@assets/_visionary_globe-__prompt-_a_luminous_crystalline_globe_with_ornate_art_nouveau_gold_filigree_base__aw6pnmwev2ygzjspd1bk_1_1755928679344.png";
 
 const audienceTypes = [
   {
     title: "Visionary Changemakers",
     description: "Revolutionary thinkers who see the world that's possible but struggle to communicate transformative ideas that could reshape entire systems. These are the pattern-breakers, paradigm-shifters, and evolutionary catalysts whose visions are often dismissed as too radical or impossible.",
-    icon: Shield,
-    bgColor: "from-mystical-teal/20 to-mystical-teal/5",
+    bgImage: visionaryShield,
     challenges: "Brilliant breakthrough concepts trapped in academic jargon, dismissed by conventional thinking, or failing to gain traction despite their transformative potential. Often feeling isolated in their vision.",
     transformation: "Through metamyth methodology, we translate visionary concepts into compelling narrative architecture that makes the impossible feel inevitable and attracts the right allies and resources.",
     potential: "Movements that fundamentally shift how we understand reality, attract significant funding, build powerful coalitions, and create new categories of possibility that didn't exist before."
@@ -18,8 +21,7 @@ const audienceTypes = [
   {
     title: "Purpose-Driven Entrepreneurs", 
     description: "Business leaders who know there's a better way to do commerce - one that heals rather than extracts - but find themselves caught between profit pressures and authentic purpose. They're building the regenerative economy but need story architecture to communicate their deeper mission.",
-    icon: Flag,
-    bgColor: "from-ancient-gold/20 to-ancient-gold/5",
+    bgImage: visionaryBanner,
     challenges: "Caught between investor expectations and authentic mission, unable to communicate purpose without sounding hollow or naive. Struggling to prove that regenerative business models can be both profitable and transformative.",
     transformation: "Metamyth work reveals the authentic organizational story that naturally integrates impact with income, purpose with profit, showing how regenerative models are actually more sustainable long-term.",
     potential: "Regenerative enterprises that prove another economy is not only possible but more profitable, creating new business models that other entrepreneurs replicate, ultimately shifting how we understand commerce itself."
@@ -27,8 +29,7 @@ const audienceTypes = [
   {
     title: "Transforming Organizations",
     description: "Nonprofits, corporations, and institutions that have outgrown their original structures and are ready to evolve beyond extractive patterns into regenerative collaboration. These organizations sense they could be part of something much larger.",
-    icon: Building,
-    bgColor: "from-crimson/20 to-crimson/5",
+    bgImage: visionaryGlobe,
     challenges: "Stuck in outdated organizational models, competing for limited resources, struggling with mission drift, internal dysfunction, or the sense that their impact isn't matching their potential despite good intentions.",
     transformation: "Organizational metamyth work reveals unexpected federation opportunities and authentic collaborative structures that multiply rather than divide impact, creating entirely new models of institutional cooperation.",
     potential: "Network effects that exponentially multiply impact beyond what any single organization could achieve, collaborative funding models that replace competition with coordination, and systemic transformation at the scale our challenges require."
@@ -144,11 +145,10 @@ export default function StoriesWeTell() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 overflow-hidden hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
-                  <div className={`h-56 bg-gradient-to-br ${audience.bgColor} flex items-center justify-center relative`}>
-                    {(() => {
-                      const IconComponent = audience.icon;
-                      return <IconComponent className="w-24 h-24 text-ancient-gold/40" />;
-                    })()}
+                  <div 
+                    className="h-56 bg-cover bg-center relative"
+                    style={{ backgroundImage: `url(${audience.bgImage})` }}
+                  >
                     <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                   </div>
                   <CardContent className="p-6">
@@ -199,11 +199,10 @@ export default function StoriesWeTell() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 overflow-hidden hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
-                <div className={`h-56 bg-gradient-to-br ${audienceTypes[2].bgColor} flex items-center justify-center relative`}>
-                  {(() => {
-                    const IconComponent = audienceTypes[2].icon;
-                    return <IconComponent className="w-24 h-24 text-ancient-gold/40" />;
-                  })()}
+                <div 
+                  className="h-56 bg-cover bg-center relative"
+                  style={{ backgroundImage: `url(${audienceTypes[2].bgImage})` }}
+                >
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                 </div>
                 <CardContent className="p-6">
