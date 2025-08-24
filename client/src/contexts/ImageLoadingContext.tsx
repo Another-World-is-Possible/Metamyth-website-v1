@@ -6,6 +6,7 @@ import questBackground from "@assets/_e7sgebpnxk7u4yvtn50v_0_1755993467347.png";
 import metamythBackground from "@assets/_sunrise_mountain_road-__prompt-_vertical_composition_showing_rough_winding_mountain_road_with_dirt_wsb0x3teddz05i8om0dq_0_1755994182701.png";
 import cosmicDragon from "@assets/cosmic_dragon_optimized.jpg";
 import systemsBackground from "@assets/_x7er1zk1fla8a9b7ylmk_0_1755995147112.png";
+import storiesBackground from "@assets/krea-edit(3)_1756059460183.png";
 
 interface ImageLoadingState {
   hero: boolean;
@@ -13,6 +14,7 @@ interface ImageLoadingState {
   metamyth: boolean;
   whyStory: boolean;
   systems: boolean;
+  stories: boolean;
   allLoaded: boolean;
 }
 
@@ -28,6 +30,7 @@ const imageMap = {
   metamyth: metamythBackground,
   whyStory: cosmicDragon,
   systems: systemsBackground,
+  stories: storiesBackground,
 };
 
 const ImageLoadingContext = createContext<ImageLoadingContextType | null>(null);
@@ -51,6 +54,7 @@ export const ImageLoadingProvider = ({ children }: ImageLoadingProviderProps) =>
     metamyth: false,
     whyStory: false,
     systems: false,
+    stories: false,
     allLoaded: false,
   });
 
@@ -86,6 +90,9 @@ export const ImageLoadingProvider = ({ children }: ImageLoadingProviderProps) =>
           loadImage(systemsBackground).then(() => 
             setImageState(prev => ({ ...prev, systems: true }))
           ),
+          loadImage(storiesBackground).then(() => 
+            setImageState(prev => ({ ...prev, stories: true }))
+          ),
         ];
 
         // Wait for all tab backgrounds to load
@@ -101,6 +108,7 @@ export const ImageLoadingProvider = ({ children }: ImageLoadingProviderProps) =>
           metamyth: true,
           whyStory: true,
           systems: true,
+          stories: true,
           allLoaded: true,
         });
       }

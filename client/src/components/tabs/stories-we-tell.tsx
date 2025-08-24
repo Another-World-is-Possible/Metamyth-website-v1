@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Search, ServerCog, Network, Globe } from "lucide-react";
+import { useImageLoading } from "@/contexts/ImageLoadingContext";
 
 import visionaryShield from "@assets/_visionary_shield-__prompt-_a_luminous_crystalline_shield_with_ornate_art_nouveau_gold_filigree_dec_gxzt46t0ueltrmkhzq7l_0_1755928707621.png";
 import visionaryBanner from "@assets/of_course_here_is_the_revised_prompt-_a_luminous_crystalline_banner_waving_in_the_wind_with_ornate__fln51hw0qgjq8z60o21h_1_1755928687790.png";
@@ -62,8 +64,52 @@ const processSteps = [
 ];
 
 export default function StoriesWeTell() {
+  const { isImageReady, getImageSrc } = useImageLoading();
+  const [showBackground, setShowBackground] = useState(false);
+  const imageReady = isImageReady('stories');
+  const storiesBackground = getImageSrc('stories');
+
+  useEffect(() => {
+    // Always fade in when navigating to tab, even if already loaded
+    setShowBackground(false);
+    const timer = setTimeout(() => {
+      if (imageReady) {
+        setShowBackground(true);
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [imageReady]);
+
+  // Wait for image to be ready before showing tab
+  if (!imageReady) {
+    return (
+      <div className="relative min-h-screen py-20 pt-32 flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
+        <div className="text-ancient-gold font-angle text-xl">Loading...</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="bg-forest-green py-20 pt-32">
+    <div className="relative min-h-screen py-20 pt-32">
+      {/* Background image with filter - fade in on navigate */}
+      <div 
+        className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
+          showBackground ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{
+          backgroundImage: `url(${storiesBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          filter: 'brightness(0.4) contrast(1.2)'
+        }}
+      />
+      
+      {/* Dark overlay to make text readable */}
+      <div className="absolute inset-0 bg-deep-black/50" />
+      
+      {/* Content */}
+      <div className="relative z-10">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
           className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-16"
@@ -266,6 +312,7 @@ export default function StoriesWeTell() {
             <div className="text-5xl" style={{ textShadow: '0 0 16px rgba(129, 236, 236, 0.9)' }}>🔥</div>
           </motion.div>
         </section>
+      </div>
       </div>
     </div>
   );
