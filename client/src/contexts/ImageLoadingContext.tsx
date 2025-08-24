@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect, ReactNode } from 'react
 // Import all background images
 import heroBackground from "@assets/_f20qmpu9dartjp9dbfcm_0_1755891749225.png";
 import questBackground from "@assets/_e7sgebpnxk7u4yvtn50v_0_1755993467347.png";
-import metamythBackground from "@assets/krea-edit(3)_1756059235729.png";
+import metamythBackground from "@assets/metamyth_contemplative_scene.png";
 import cosmicDragon from "@assets/cosmic_dragon_optimized.jpg";
 import systemsBackground from "@assets/_x7er1zk1fla8a9b7ylmk_0_1755995147112.png";
 
