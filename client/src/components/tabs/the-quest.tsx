@@ -55,7 +55,8 @@ export default function TheQuest() {
         backgroundImage: `url(${questBackground})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
+        backgroundAttachment: 'fixed',
+        filter: 'brightness(0.3) contrast(1.2)'
       }}
     >
       {/* Dark overlay to make text readable */}
