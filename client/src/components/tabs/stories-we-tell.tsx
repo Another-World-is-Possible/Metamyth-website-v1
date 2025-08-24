@@ -88,27 +88,83 @@ export default function StoriesWeTell() {
         </section>
         
         {/* Who We Serve */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {audienceTypes.map((audience, index) => (
+        <div className="mb-16">
+          {/* First two cards in a row */}
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            {audienceTypes.slice(0, 2).map((audience, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 overflow-hidden hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
+                  <div 
+                    className="h-56 bg-cover bg-center relative"
+                    style={{ backgroundImage: `url(${audience.bgImage})` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4">
+                      {audience.title}
+                    </h3>
+                    <p className="mb-6 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
+                      {audience.description}
+                    </p>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 
+                          className="font-bold text-crimson mb-2 flex items-center"
+                          style={{ textShadow: '0 0 8px rgba(129, 236, 236, 0.8), 0 0 16px rgba(129, 236, 236, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                        >
+                          <span className="w-2 h-2 bg-crimson rounded-full mr-2"></span>
+                          Common Challenges
+                        </h4>
+                        <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.challenges}</p>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-mystical-teal mb-2 flex items-center">
+                          <span className="w-2 h-2 bg-mystical-teal rounded-full mr-2"></span>
+                          Our Approach
+                        </h4>
+                        <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.transformation}</p>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-ancient-gold mb-2 flex items-center">
+                          <span className="w-2 h-2 bg-ancient-gold rounded-full mr-2"></span>
+                          Potential Unlocked
+                        </h4>
+                        <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.potential}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Third card centered */}
+          <div className="flex justify-center">
             <motion.div
-              key={index}
+              className="w-full max-w-md"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 overflow-hidden hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
                 <div 
                   className="h-56 bg-cover bg-center relative"
-                  style={{ backgroundImage: `url(${audience.bgImage})` }}
+                  style={{ backgroundImage: `url(${audienceTypes[2].bgImage})` }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                 </div>
                 <CardContent className="p-6">
                   <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4">
-                    {audience.title}
+                    {audienceTypes[2].title}
                   </h3>
                   <p className="mb-6 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
-                    {audience.description}
+                    {audienceTypes[2].description}
                   </p>
                   <div className="space-y-4">
                     <div>
@@ -119,27 +175,27 @@ export default function StoriesWeTell() {
                         <span className="w-2 h-2 bg-crimson rounded-full mr-2"></span>
                         Common Challenges
                       </h4>
-                      <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.challenges}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audienceTypes[2].challenges}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-mystical-teal mb-2 flex items-center">
                         <span className="w-2 h-2 bg-mystical-teal rounded-full mr-2"></span>
                         Our Approach
                       </h4>
-                      <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.transformation}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audienceTypes[2].transformation}</p>
                     </div>
                     <div>
                       <h4 className="font-bold text-ancient-gold mb-2 flex items-center">
                         <span className="w-2 h-2 bg-ancient-gold rounded-full mr-2"></span>
                         Potential Unlocked
                       </h4>
-                      <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.potential}</p>
+                      <p className="text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audienceTypes[2].potential}</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
-          ))}
+          </div>
         </div>
 
         {/* Metamyth Divider */}
