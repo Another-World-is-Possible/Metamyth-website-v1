@@ -302,11 +302,11 @@ export default function TheSystems() {
                 </h3>
               </div>
               
-              <h4 className="text-2xl font-bold text-ancient-gold mb-4">
+              <h4 className="font-angle text-2xl font-bold text-ancient-gold mb-4">
                 Building the New Operating System: MythOS
               </h4>
               
-              <p className="text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
+              <p className="font-game text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
                 We're creating a world that works for all, where work is an adventure, through a new operating 
                 system—MythOS—that makes the process of doing meaningful work into the adventure it deserves. 
                 This AI-first platform brings stories to life, guides people along their authentic paths, and 
@@ -314,16 +314,16 @@ export default function TheSystems() {
               </p>
               
               <div className="border-t border-ancient-gold/30 pt-6">
-                <p className="text-xl font-bold text-mystical-teal mb-2">
+                <p className="font-angle text-xl font-bold text-mystical-teal mb-2">
                   The Metamyth System creates
                 </p>
-                <p className="text-2xl font-bold text-ancient-gold">
+                <p className="font-angle text-2xl font-bold text-ancient-gold">
                   civilizational transformation, one story at a time.
                 </p>
               </div>
               
               <div className="mt-8">
-                <Button className="bg-crimson hover:bg-crimson/80 text-white font-bold py-4 px-8 rounded-lg transition-colors duration-300 text-lg">
+                <Button className="bg-crimson hover:bg-crimson/80 text-white font-angle font-bold py-4 px-8 rounded-lg transition-colors duration-300 text-lg">
                   BEGIN YOUR METAMYTH JOURNEY <ArrowRight className="ml-2" />
                 </Button>
               </div>
