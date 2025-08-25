@@ -315,10 +315,10 @@ export default function TheSystems() {
               
               <div className="border-t border-ancient-gold/30 pt-6">
                 <p className="text-xl font-bold text-mystical-teal mb-2">
-                  The Metamyth System isn't just organizational consulting—
+                  The Metamyth System creates
                 </p>
                 <p className="text-2xl font-bold text-ancient-gold">
-                  it's civilizational transformation, one story at a time.
+                  civilizational transformation, one story at a time.
                 </p>
               </div>
               
