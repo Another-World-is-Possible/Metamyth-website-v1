@@ -6,7 +6,7 @@ import callToAdventureImg from "@assets/_cosmic_call_to_adventure-__prompt-_eart
 import questImg from "@assets/json__earth_precious-__prompt-_earth_floating_in_the_center_of_the_frame_rich_green_continents_and__k8hbrb45onp8xjogrgvn_1_1755889893638.png";
 import visionImg from "@assets/json__cosmic_city_vision-__prompt-_an_impossibly_vast_and_epic_landscape_like_the_sierra_nevada_de__h8rnlsruu7ca00t0jh44_1_1755889977562.png";
 import journeyImg from "@assets/new_prompt-_a_dense_forest_with_a_winding_path_through_it_enchanted_feeling_but_a_journey_that_is_p_068nz5cvgoo7q3dazjwb_1_1755889999792.png";
-import requestImg from "@assets/enhanced_a1dc6029-a02e-49fc-920e-7998718e89ba_1755890220116.png";
+import requestImg from "@assets/request_tile_optimized.jpg";
 
 
 
