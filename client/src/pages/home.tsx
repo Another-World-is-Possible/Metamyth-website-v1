@@ -10,6 +10,7 @@ import StoriesWeTell from "@/components/tabs/stories-we-tell";
 import WhyStoryMatters from "@/components/tabs/why-story-matters";
 import TheSystems from "@/components/tabs/the-systems";
 import TheFederation from "@/components/tabs/the-federation";
+import QUESTionaire from "@/components/tabs/questionaire";
 
 
 export default function Home() {
@@ -49,6 +50,8 @@ export default function Home() {
 
   const renderTabContent = () => {
     switch (activeTab) {
+      case 'questionaire':
+        return <QUESTionaire />;
       case 'metamyth':
         return <OurMetamyth />;
       case 'quest':
