@@ -115,7 +115,11 @@ function ConstellationNav({ activeSection }: { activeSection: number }) {
   );
 }
 
-export default function WhyStoryMatters() {
+interface WhyStoryMattersProps {
+  setActiveTab?: (tab: string) => void;
+}
+
+export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) {
   const [activeSection, setActiveSection] = useState(0);
   const { isImageReady, getImageSrc } = useImageLoading();
   const [showBackground, setShowBackground] = useState(false);
@@ -585,17 +589,16 @@ export default function WhyStoryMatters() {
           </p>
           
           <div className="flex flex-col md:flex-row gap-6 justify-center max-w-2xl mx-auto">
-            <a href="https://zcal.co/i/kEqudqJ1" target="_blank" rel="noopener noreferrer">
-              <Button 
-                className="bg-gradient-to-r from-ancient-gold to-mystical-teal text-deep-black hover:from-ancient-gold/80 hover:to-mystical-teal/80 font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1"
-                style={{ 
-                  border: '2px solid transparent',
-                  backgroundClip: 'padding-box'
-                }}
-              >
-                DISCOVER YOUR METAMYTH
-              </Button>
-            </a>
+            <Button 
+              onClick={() => setActiveTab?.('questionaire')}
+              className="bg-gradient-to-r from-ancient-gold to-mystical-teal text-deep-black hover:from-ancient-gold/80 hover:to-mystical-teal/80 font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 cursor-pointer"
+              style={{ 
+                border: '2px solid transparent',
+                backgroundClip: 'padding-box'
+              }}
+            >
+              DISCOVER YOUR METAMYTH
+            </Button>
             <motion.div
               animate={{ 
                 boxShadow: [
@@ -606,11 +609,12 @@ export default function WhyStoryMatters() {
               }}
               transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
             >
-              <a href="https://zcal.co/i/kEqudqJ1" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-mystical-teal text-deep-black hover:bg-mystical-teal/80 font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1">
-                  JOIN THE QUEST
-                </Button>
-              </a>
+              <Button 
+                onClick={() => setActiveTab?.('questionaire')}
+                className="bg-mystical-teal text-deep-black hover:bg-mystical-teal/80 font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 cursor-pointer"
+              >
+                JOIN THE QUEST
+              </Button>
             </motion.div>
           </div>
           

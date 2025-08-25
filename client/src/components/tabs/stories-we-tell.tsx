@@ -63,7 +63,11 @@ const processSteps = [
   }
 ];
 
-export default function StoriesWeTell() {
+interface StoriesWeTellProps {
+  setActiveTab?: (tab: string) => void;
+}
+
+export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
   const { isImageReady, getImageSrc } = useImageLoading();
   const [showBackground, setShowBackground] = useState(false);
   const imageReady = isImageReady('stories');
@@ -268,11 +272,12 @@ export default function StoriesWeTell() {
                   Whether you're an individual visionary, purpose-driven entrepreneur, or transforming organization, 
                   we meet you where you are and help architect the story that unlocks your authentic power.
                 </p>
-                <a href="https://zcal.co/i/kEqudqJ1" target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-mystical-teal text-deep-black font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-colors duration-300">
-                    Discover Your Story Architecture
-                  </Button>
-                </a>
+                <Button 
+                  onClick={() => setActiveTab?.('questionaire')}
+                  className="bg-mystical-teal text-deep-black font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-colors duration-300 cursor-pointer"
+                >
+                  Discover Your Story Architecture
+                </Button>
               </div>
             </CardContent>
           </Card>

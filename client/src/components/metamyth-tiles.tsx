@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { useState, useRef, useEffect } from "react";
 
+interface MetamythTilesProps {
+  setActiveTab?: (tab: string) => void;
+}
+
 // Import the background images
 import callToAdventureImg from "@assets/_cosmic_call_to_adventure-__prompt-_earth_in_deep_space_glowing_red_and_orange_like_a_dying_star_wi_h5e90ujrtt6e75cwup2u_0_1755889868628.png";
 import questImg from "@assets/json__earth_precious-__prompt-_earth_floating_in_the_center_of_the_frame_rich_green_continents_and__k8hbrb45onp8xjogrgvn_1_1755889893638.png";
@@ -78,7 +82,7 @@ const titleColors = [
   "text-white"
 ];
 
-export default function MetamythTiles() {
+export default function MetamythTiles({ setActiveTab }: MetamythTilesProps) {
   return (
     <section className="relative">
       {/* Content layer */}

@@ -57,19 +57,19 @@ export default function Home() {
       case 'quest':
         return <TheQuest />;
       case 'stories':
-        return <StoriesWeTell />;
+        return <StoriesWeTell setActiveTab={setActiveTab} />;
       case 'why-story':
-        return <WhyStoryMatters />;
+        return <WhyStoryMatters setActiveTab={setActiveTab} />;
       case 'systems':
-        return <TheSystems />;
+        return <TheSystems setActiveTab={setActiveTab} />;
       case 'federation':
         return <TheFederation />;
       default:
         return (
           <>
-            <HeroSection />
+            <HeroSection setActiveTab={setActiveTab} />
             <div className="section-fade-in">
-              <MetamythTiles />
+              <MetamythTiles setActiveTab={setActiveTab} />
             </div>
             <div className="section-fade-in">
               <div 
@@ -81,8 +81,8 @@ export default function Home() {
                   backgroundAttachment: 'scroll' // Fixed doesn't work on mobile
                 }}
               >
-                <CallToAction />
-                <VideoSection />
+                <CallToAction setActiveTab={setActiveTab} />
+                <VideoSection setActiveTab={setActiveTab} />
               </div>
             </div>
           </>

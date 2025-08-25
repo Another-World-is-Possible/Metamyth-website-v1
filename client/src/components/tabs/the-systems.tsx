@@ -83,7 +83,11 @@ const transformationResults = [
   }
 ];
 
-export default function TheSystems() {
+interface TheSystemsProps {
+  setActiveTab?: (tab: string) => void;
+}
+
+export default function TheSystems({ setActiveTab }: TheSystemsProps) {
   const { isImageReady, getImageSrc } = useImageLoading();
   const [showBackground, setShowBackground] = useState(false);
   const imageReady = isImageReady('systems');
@@ -320,11 +324,12 @@ export default function TheSystems() {
               </div>
               
               <div className="mt-8">
-                <a href="https://zcal.co/i/kEqudqJ1" target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-crimson hover:bg-crimson/80 text-white font-angle font-bold py-4 px-8 rounded-lg transition-colors duration-300 text-lg">
-                    BEGIN YOUR METAMYTH JOURNEY <ArrowRight className="ml-2" />
-                  </Button>
-                </a>
+                <Button 
+                  onClick={() => setActiveTab?.('questionaire')}
+                  className="bg-crimson hover:bg-crimson/80 text-white font-angle font-bold py-4 px-8 rounded-lg transition-colors duration-300 text-lg cursor-pointer"
+                >
+                  BEGIN YOUR METAMYTH JOURNEY <ArrowRight className="ml-2" />
+                </Button>
               </div>
             </CardContent>
           </Card>

@@ -26,7 +26,6 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
   }, [activeTab]);
 
   const navItems = [
-    { id: 'questionaire', label: 'QUESTionaire' },
     { id: 'why-story', label: 'Why Story Matters' },
     { id: 'systems', label: 'The Systems' },
     { id: 'metamyth', label: 'Our Metamyth' },

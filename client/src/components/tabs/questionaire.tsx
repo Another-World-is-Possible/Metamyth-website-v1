@@ -172,7 +172,7 @@ export default function QUESTionaire() {
           animate={{ opacity: 1, scale: 1 }}
           className="max-w-2xl mx-auto text-center"
         >
-          <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/40 p-8">
+          <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 p-8">
             <CardContent>
               <h2 className="font-angle text-3xl font-bold text-ancient-gold mb-6">
                 Your QUESTionaire Journey Complete
@@ -269,7 +269,7 @@ export default function QUESTionaire() {
                   style={{ 
                     textShadow: '0 0 20px rgba(212, 175, 55, 0.8), 0 0 40px rgba(212, 175, 55, 0.4)'
                   }}>
-                THE QUESTionaire
+                QUESTionaire
               </h1>
               <h2 className="font-game text-2xl md:text-3xl text-mystical-teal mb-6 italic">
                 "The 7-Question Journey That Reveals Who's Really Writing Your Life"
@@ -321,7 +321,7 @@ export default function QUESTionaire() {
                         type="email"
                         value={contactInfo.email}
                         onChange={(e) => setContactInfo(prev => ({ ...prev, email: e.target.value }))}
-                        className="bg-deep-black/50 border-ancient-gold/30 text-silver"
+                        className="bg-deep-black/50 border-[#81ecec]/30 text-silver"
                         placeholder="your@email.com"
                         data-testid="input-email"
                       />
@@ -336,7 +336,7 @@ export default function QUESTionaire() {
                         type="tel"
                         value={contactInfo.phone}
                         onChange={(e) => setContactInfo(prev => ({ ...prev, phone: e.target.value }))}
-                        className="bg-deep-black/50 border-ancient-gold/30 text-silver"
+                        className="bg-deep-black/50 border-[#81ecec]/30 text-silver"
                         placeholder="+1 (555) 123-4567"
                         data-testid="input-phone"
                       />
@@ -368,7 +368,7 @@ export default function QUESTionaire() {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto"
             >
-              <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/40">
+              <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10">
                 <CardContent className="p-8">
                   <h2 className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold mb-6 text-center leading-tight">
                     {currentQuestion.title}
@@ -394,8 +394,8 @@ export default function QUESTionaire() {
                           transition={{ delay: index * 0.1 }}
                           className={`border-2 rounded-lg p-4 cursor-pointer transition-all duration-300 hover:border-mystical-teal/60 hover:bg-mystical-teal/10 ${
                             currentQuestion.type === "radio" 
-                              ? (responses[currentQuestion.id] === option ? 'border-ancient-gold bg-ancient-gold/20' : 'border-silver/30')
-                              : (responses[currentQuestion.id]?.includes(option) ? 'border-ancient-gold bg-ancient-gold/20' : 'border-silver/30')
+                              ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]/20' : 'border-silver/30')
+                              : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]/20' : 'border-silver/30')
                           }`}
                           onClick={() => {
                             if (currentQuestion.type === "radio") {
@@ -413,8 +413,8 @@ export default function QUESTionaire() {
                           <div className="flex items-start space-x-3">
                             <div className={`w-4 h-4 rounded-full border-2 mt-1 ${
                               currentQuestion.type === "radio" 
-                                ? (responses[currentQuestion.id] === option ? 'border-ancient-gold bg-ancient-gold' : 'border-silver')
-                                : (responses[currentQuestion.id]?.includes(option) ? 'border-ancient-gold bg-ancient-gold' : 'border-silver')
+                                ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
+                                : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                             }`} />
                             <span className="font-game text-silver leading-relaxed">{option}</span>
                           </div>

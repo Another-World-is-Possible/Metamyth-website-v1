@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 
-export default function VideoSection() {
+interface VideoSectionProps {
+  setActiveTab?: (tab: string) => void;
+}
+
+export default function VideoSection({ setActiveTab }: VideoSectionProps) {
   return (
     <section className="relative py-20 overflow-hidden">
       {/* Overlay for readability */}
