@@ -35,7 +35,9 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
   ];
 
   const handleNavClick = (tabId: string) => {
-    setActiveTab(activeTab === tabId ? null : tabId);
+    if (activeTab !== tabId) {
+      setActiveTab(tabId);
+    }
     setIsOpen(false);
   };
 
