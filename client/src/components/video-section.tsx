@@ -25,7 +25,7 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
         </motion.h2>
         
         <motion.p 
-          className="text-lg text-center mb-8 max-w-4xl mx-auto font-alice leading-relaxed"
+          className="text-lg text-center mb-8 max-w-4xl mx-auto font-veiran leading-relaxed"
           style={{
             color: '#ffffff',
             textShadow: '0 0 8px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.5)'
@@ -86,7 +86,7 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="italic font-alice" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="italic font-veiran" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             "If we imagined this nightmare, we can imagine our way out."
           </p>
         </motion.div>

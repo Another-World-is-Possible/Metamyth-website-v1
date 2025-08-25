@@ -218,7 +218,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           </motion.h1>
           
           <motion.p 
-            className="font-game text-xl md:text-2xl mb-4"
+            className="font-veiran text-xl md:text-2xl mb-4"
             style={{ 
               color: '#f0f0f0', 
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' 
@@ -231,7 +231,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           </motion.p>
           
           <motion.p 
-            className="font-game text-lg md:text-xl mb-6"
+            className="font-veiran text-lg md:text-xl mb-6"
             style={{ 
               color: '#f0f0f0', 
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' 
@@ -268,12 +268,12 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="font-veiran text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             The same consciousness that authored every system destroying our planet can author every system that could heal it.
           </p>
           
           <div className="border-l-3 border-ancient-gold pl-6 mb-8">
-            <p className="font-game text-xl md:text-2xl mb-4" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+            <p className="font-veiran text-xl md:text-2xl mb-4" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               Story built civilization. Story can rebuild it.
             </p>
           </div>
@@ -292,7 +292,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
       >
         <div className="max-w-4xl mx-auto relative z-20">
           <motion.p 
-            className="font-game text-xl md:text-2xl text-center mb-8"
+            className="font-veiran text-xl md:text-2xl text-center mb-8"
             style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -317,7 +317,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 <div className="relative">
                   <span className="font-bold text-ancient-gold text-xl">{audience.title}</span>
                   <br />
-                  <span className="text-silver/90 text-lg leading-relaxed">{audience.description}</span>
+                  <span className="text-silver/90 text-lg leading-relaxed font-veiran">{audience.description}</span>
                   <div className="absolute -right-12 top-1/2 w-8 h-px bg-gradient-to-r from-ancient-gold/50 to-transparent"></div>
                 </div>
               </motion.div>

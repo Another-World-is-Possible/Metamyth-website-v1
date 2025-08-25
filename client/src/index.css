@@ -49,6 +49,16 @@
   text-rendering: optimizeLegibility;
 }
 
+@font-face {
+  font-family: 'Veiran2025';
+  src: url('/attached_assets/Veiran-Regular_1756162440459.ttf?v=2025') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 0, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
 /* Font class declarations with new names */
 .font-angle {
   font-family: 'AngleFairy2024', serif !important;
@@ -66,6 +76,11 @@
 /* Ensure all body fonts use thornelia (Thornelia2024) */
 .font-alice {
   font-family: 'Thornelia2024', serif !important;
+}
+
+/* Veiran font for dense body text and text boxes */
+.font-veiran {
+  font-family: 'Veiran2025', 'Georgia', serif !important;
 }
 
 @tailwind base;
@@ -204,6 +219,13 @@
   /* Ensure Glocs font for body text */
   .font-alice, p, blockquote {
     font-family: 'Thornelia2024', 'Georgia', serif !important;
+  }
+  
+  /* Veiran font for dense text sections and text boxes */
+  .font-veiran {
+    font-family: 'Veiran2025', 'Georgia', serif !important;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
   }
 
   /* Scroll-triggered fade animations */
