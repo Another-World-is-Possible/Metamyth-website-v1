@@ -292,7 +292,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
       >
         <div className="max-w-4xl mx-auto relative z-20">
           <motion.p 
-            className="font-khaft text-xl md:text-2xl text-center mb-8"
+            className="font-game text-xl md:text-2xl text-center mb-8"
             style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -460,7 +460,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             <h2 className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold mb-3" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               The Science Behind Story as Evolutionary Technology
             </h2>
-            <p className="font-khaft text-base" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+            <p className="font-game text-base" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               How consciousness actually works:
             </p>
           </motion.div>
@@ -527,7 +527,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           </p>
           
           <div 
-            className="text-xl md:text-2xl font-bold mb-8"
+            className="font-game text-xl md:text-2xl font-bold mb-8"
             style={{ 
               background: 'linear-gradient(45deg, #d4af37, #e6f3ff)',
               WebkitBackgroundClip: 'text',
