@@ -50,9 +50,9 @@
 }
 
 @font-face {
-  font-family: 'Veiran2025';
-  src: url('/attached_assets/Veiran-Regular_1756162440459.ttf?v=2025') format('truetype');
-  font-weight: normal;
+  font-family: 'Khaft2024';
+  src: url('/attached_assets/sE—Khaft-Medium_1756162098840.otf?v=2024') format('opentype');
+  font-weight: medium;
   font-style: normal;
   font-display: swap;
   font-feature-settings: "liga" 0, "kern" 1;
@@ -68,19 +68,8 @@
   font-family: 'Thornelia2024', serif !important;
 }
 
-/* Ensure all title fonts use fairy (AngleFairy2024) */
-.font-edensor {
-  font-family: 'AngleFairy2024', serif !important;
-}
-
-/* Ensure all body fonts use thornelia (Thornelia2024) */
-.font-alice {
-  font-family: 'Thornelia2024', serif !important;
-}
-
-/* Veiran font for dense body text and text boxes */
-.font-veiran {
-  font-family: 'Veiran2025', 'Georgia', serif !important;
+.font-khaft {
+  font-family: 'Khaft2024', sans-serif !important;
 }
 
 @tailwind base;
@@ -198,7 +187,7 @@
       0 0 30px rgba(212, 175, 55, 0.2);
   }
   
-  /* Ensure font-edensor class uses fairy fonts with enhanced glow */
+  /* Ensure font-edensor class uses new fonts with enhanced glow */
   .font-edensor {
     font-family: 'AngleFairy2024', serif !important;
     text-shadow: 
@@ -218,14 +207,7 @@
   
   /* Ensure Glocs font for body text */
   .font-alice, p, blockquote {
-    font-family: 'Thornelia2024', 'Georgia', serif !important;
-  }
-  
-  /* Veiran font for dense text sections and text boxes */
-  .font-veiran {
-    font-family: 'Veiran2025', 'Georgia', serif !important;
-    line-height: 1.6;
-    letter-spacing: 0.01em;
+    font-family: 'Glocs2024', 'Georgia', serif !important;
   }
 
   /* Scroll-triggered fade animations */
