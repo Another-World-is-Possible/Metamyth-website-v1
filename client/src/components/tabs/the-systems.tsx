@@ -310,7 +310,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 Building the New Operating System: MythOS
               </h4>
               
-              <p className="font-game text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
+              <p className="font-khaft text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
                 We're creating a world that works for all, where work is an adventure, through a new operating 
                 system—MythOS—that makes the process of doing meaningful work into the adventure it deserves. 
                 This AI-first platform brings stories to life, guides people along their authentic paths, and 

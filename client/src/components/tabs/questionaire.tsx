@@ -177,7 +177,7 @@ export default function QUESTionaire() {
               <h2 className="font-angle text-3xl font-bold text-ancient-gold mb-6">
                 Your QUESTionaire Journey Complete
               </h2>
-              <p className="font-game text-lg text-silver mb-8 leading-relaxed">
+              <p className="font-khaft text-lg text-silver mb-8 leading-relaxed">
                 Your responses reveal exactly where you stand in this great authorship. 
                 We'll reach out within 48 hours with resources, community, or collaboration 
                 designed for your specific role in writing what comes next.
@@ -219,7 +219,7 @@ export default function QUESTionaire() {
                 </div>
               )}
               
-              <p className="font-game text-silver/80 text-sm mt-6 italic">
+              <p className="font-khaft text-silver/80 text-sm mt-6 italic">
                 The future isn't waiting for heroes to save it. It's waiting for authors to write it.
               </p>
             </CardContent>
@@ -274,7 +274,7 @@ export default function QUESTionaire() {
               <h2 className="font-game text-2xl md:text-3xl text-mystical-teal mb-6 italic">
                 "The 7-Question Journey That Reveals Who's Really Writing Your Life"
               </h2>
-              <p className="font-game text-lg text-silver mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="font-khaft text-lg text-silver mb-8 max-w-3xl mx-auto leading-relaxed">
                 Right now, our civilization is writing its final chapters. Systems designed for scarcity are destroying abundance. 
                 Stories built on separation are fragmenting communities. But here's what the breakdown reveals: we're living through 
                 the greatest transformation in human history.
@@ -307,7 +307,7 @@ export default function QUESTionaire() {
                   <h2 className="font-angle text-3xl font-bold text-ancient-gold text-center mb-6">
                     Your Journey Begins
                   </h2>
-                  <p className="font-game text-center text-silver mb-8">
+                  <p className="font-khaft text-center text-silver mb-8">
                     First, let's connect so we can share your results and next steps.
                   </p>
                   
@@ -379,7 +379,7 @@ export default function QUESTionaire() {
                       <Textarea
                         value={responses[currentQuestion.id] || ""}
                         onChange={(e) => handleResponse(currentQuestion.id, e.target.value)}
-                        className="bg-deep-black/50 border-mystical-teal/30 text-silver min-h-32 font-game"
+                        className="bg-deep-black/50 border-mystical-teal/30 text-silver min-h-32 font-khaft"
                         placeholder={currentQuestion.placeholder}
                         data-testid={`textarea-question-${currentQuestion.id}`}
                       />
@@ -416,14 +416,14 @@ export default function QUESTionaire() {
                                 ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                                 : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                             }`} />
-                            <span className="font-game text-silver leading-relaxed">{option}</span>
+                            <span className="font-khaft text-silver leading-relaxed">{option}</span>
                           </div>
                         </motion.div>
                       ))}
                     </div>
                   )}
                   
-                  <p className="font-game text-mystical-teal/80 text-sm text-center mt-6 italic">
+                  <p className="font-khaft text-mystical-teal/80 text-sm text-center mt-6 italic">
                     {currentQuestion.subtitle}
                   </p>
                   
