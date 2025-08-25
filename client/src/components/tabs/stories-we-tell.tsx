@@ -268,9 +268,11 @@ export default function StoriesWeTell() {
                   Whether you're an individual visionary, purpose-driven entrepreneur, or transforming organization, 
                   we meet you where you are and help architect the story that unlocks your authentic power.
                 </p>
-                <Button className="bg-mystical-teal text-deep-black font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-colors duration-300">
-                  Discover Your Story Architecture
-                </Button>
+                <a href="https://zcal.co/i/kEqudqJ1" target="_blank" rel="noopener noreferrer">
+                  <Button className="bg-mystical-teal text-deep-black font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-colors duration-300">
+                    Discover Your Story Architecture
+                  </Button>
+                </a>
               </div>
             </CardContent>
           </Card>

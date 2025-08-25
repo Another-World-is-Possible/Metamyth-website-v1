@@ -60,22 +60,26 @@ export default function HeroSection() {
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.4 : 0, duration: 0.8, ease: "easeOut" }}
           >
-            <Button 
-              className="bg-ancient-gold text-deep-black hover:bg-ancient-gold/80 font-angle font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 shadow-lg hover:shadow-ancient-gold/50 border-2 border-ancient-gold hover:shadow-2xl"
-              style={{
-                boxShadow: '0 0 30px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.4), inset 0 0 20px rgba(212, 175, 55, 0.2), 0 0 10px rgba(212, 175, 55, 0.9)'
-              }}
-            >
-              <span className="title-glow">REGENERATE YOUR STORY</span>
-            </Button>
-            <Button 
-              className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 shadow-lg hover:shadow-mystical-teal/50 border-2 border-mystical-teal hover:shadow-2xl"
-              style={{
-                boxShadow: '0 0 30px rgba(20, 184, 166, 0.7), 0 0 60px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(20, 184, 166, 0.2), 0 0 10px rgba(20, 184, 166, 0.9)'
-              }}
-            >
-              <span className="title-glow">JOIN THE QUEST</span>
-            </Button>
+            <a href="https://zcal.co/i/kEqudqJ1" target="_blank" rel="noopener noreferrer">
+              <Button 
+                className="bg-ancient-gold text-deep-black hover:bg-ancient-gold/80 font-angle font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 shadow-lg hover:shadow-ancient-gold/50 border-2 border-ancient-gold hover:shadow-2xl"
+                style={{
+                  boxShadow: '0 0 30px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.4), inset 0 0 20px rgba(212, 175, 55, 0.2), 0 0 10px rgba(212, 175, 55, 0.9)'
+                }}
+              >
+                <span className="title-glow">REGENERATE YOUR STORY</span>
+              </Button>
+            </a>
+            <a href="https://zcal.co/i/kEqudqJ1" target="_blank" rel="noopener noreferrer">
+              <Button 
+                className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 shadow-lg hover:shadow-mystical-teal/50 border-2 border-mystical-teal hover:shadow-2xl"
+                style={{
+                  boxShadow: '0 0 30px rgba(20, 184, 166, 0.7), 0 0 60px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(20, 184, 166, 0.2), 0 0 10px rgba(20, 184, 166, 0.9)'
+                }}
+              >
+                <span className="title-glow">JOIN THE QUEST</span>
+              </Button>
+            </a>
           </motion.div>
         </div>
       </section>
