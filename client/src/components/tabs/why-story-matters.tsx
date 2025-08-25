@@ -527,7 +527,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           </p>
           
           <div 
-            className="text-xl md:text-2xl font-bold mb-8"
+            className="font-game text-xl md:text-2xl font-bold mb-8"
             style={{ 
               background: 'linear-gradient(45deg, #d4af37, #e6f3ff)',
               WebkitBackgroundClip: 'text',
