@@ -114,10 +114,10 @@ export default function TheQuest() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <p className="font-alice text-2xl italic text-ancient-gold mb-6">
+          <p className="font-game text-2xl italic text-ancient-gold mb-6">
             "We are on a journey to change the human story<br />and transform along the way."
           </p>
-          <p className="font-alice text-lg leading-loose">
+          <p className="font-game text-lg leading-loose">
             Our quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence. This is how we change the human story—one authentic narrative at a time.
           </p>
         </motion.div>
@@ -153,14 +153,14 @@ export default function TheQuest() {
                       >
                         {horizon.title}
                       </h3>
-                      <h4 className="font-alice text-lg italic" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.6), 0 0 12px rgba(212, 175, 55, 0.3), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+                      <h4 className="font-game text-lg italic" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.6), 0 0 12px rgba(212, 175, 55, 0.3), 2px 2px 4px rgba(0,0,0,0.8)' }}>
                         {horizon.subtitle}
                       </h4>
                     </div>
                   </div>
                   
                   <p 
-                    className="font-alice text-lg leading-loose mb-6"
+                    className="font-game text-lg leading-loose mb-6"
                     style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                   >
                     {horizon.description}
@@ -175,7 +175,7 @@ export default function TheQuest() {
                         {horizon.items.map((item, itemIndex) => (
                           <motion.li 
                             key={itemIndex} 
-                            className="flex items-start font-alice"
+                            className="flex items-start font-game"
                             style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                             initial={{ x: -20, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
@@ -194,7 +194,7 @@ export default function TheQuest() {
                         STATUS
                       </h5>
                       <p 
-                        className={`font-alice text-${horizon.color} italic`}
+                        className={`font-game text-${horizon.color} italic`}
                         style={{
                           textShadow: '0 0 2px rgba(0, 0, 0, 0.7)'
                         }}
