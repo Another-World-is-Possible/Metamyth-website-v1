@@ -45,14 +45,16 @@ export default function CallToAction() {
                 >
                   Transform your organization through story
                 </p>
-                <Button 
-                  className="bg-ancient-gold text-deep-black font-angle font-bold py-3 px-8 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                  style={{
-                    boxShadow: '0 0 30px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.5), 0 4px 20px rgba(212, 175, 55, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  <span className="font-bold">WORK WITH US</span>
-                </Button>
+                <a href="https://zcal.co/i/kEqudqJ1" target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    className="bg-ancient-gold text-deep-black font-angle font-bold py-3 px-8 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    style={{
+                      boxShadow: '0 0 30px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.5), 0 4px 20px rgba(212, 175, 55, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2)'
+                    }}
+                  >
+                    <span className="font-bold">WORK WITH US</span>
+                  </Button>
+                </a>
               </CardContent>
             </Card>
           </div>
@@ -74,14 +76,16 @@ export default function CallToAction() {
                 >
                   Build the new world with us
                 </p>
-                <Button 
-                  className="bg-mystical-teal text-deep-black font-angle font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                  style={{
-                    boxShadow: '0 0 30px rgba(20, 184, 166, 0.8), 0 0 60px rgba(20, 184, 166, 0.5), 0 4px 20px rgba(20, 184, 166, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2)'
-                  }}
-                >
-                  <span className="font-bold">BECOME A STORYTELLER</span>
-                </Button>
+                <a href="https://zcal.co/i/kEqudqJ1" target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    className="bg-mystical-teal text-deep-black font-angle font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    style={{
+                      boxShadow: '0 0 30px rgba(20, 184, 166, 0.8), 0 0 60px rgba(20, 184, 166, 0.5), 0 4px 20px rgba(20, 184, 166, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2)'
+                    }}
+                  >
+                    <span className="font-bold">BECOME A STORYTELLER</span>
+                  </Button>
+                </a>
               </CardContent>
             </Card>
           </div>
