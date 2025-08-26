@@ -176,6 +176,16 @@ export default function QUESTionaire() {
     } else if (currentStep <= questions.length + 1) {
       setCurrentStep(prev => prev + 1);
     }
+    // Scroll to top when transitioning to next question
+    window.scrollTo(0, 0);
+  };
+
+  const handleBack = () => {
+    if (currentStep > 0) {
+      setCurrentStep(prev => prev - 1);
+      // Scroll to top when transitioning to previous question
+      window.scrollTo(0, 0);
+    }
   };
 
   const handleSubmit = () => {
@@ -478,7 +488,7 @@ export default function QUESTionaire() {
                   
                   <div className="flex justify-between items-center mt-8">
                     <Button
-                      onClick={() => setCurrentStep(prev => prev - 1)}
+                      onClick={handleBack}
                       variant="ghost"
                       className="text-cream-white hover:text-ancient-gold typography-body"
                       data-testid="button-back"

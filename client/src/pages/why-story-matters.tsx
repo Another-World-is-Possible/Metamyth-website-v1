@@ -13,7 +13,9 @@ export default function WhyStoryMattersPage() {
     } else if (tab === null) {
       navigate('/');
     }
-    // Add other navigation cases as needed
+    
+    // Scroll to top when navigating between pages
+    window.scrollTo(0, 0);
   };
 
   return (

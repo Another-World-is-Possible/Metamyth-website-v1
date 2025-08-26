@@ -33,6 +33,8 @@ export default function SharedNavigation() {
   const handleNavClick = (path: string) => {
     navigate(path);
     setIsOpen(false);
+    // Scroll to top when navigating to new page
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -40,7 +42,10 @@ export default function SharedNavigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <button 
-            onClick={() => navigate('/')}
+            onClick={() => {
+              navigate('/');
+              window.scrollTo(0, 0);
+            }}
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300"
           >
             <Shield className="text-ancient-gold animate-spin-slow h-6 w-6" />

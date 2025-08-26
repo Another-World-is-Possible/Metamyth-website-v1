@@ -25,7 +25,11 @@ export default function Home() {
     } else if (tab === 'federation') {
       navigate('/federation');
     }
-    // If tab is null, stay on home page
+    
+    // Scroll to top when navigating from home page
+    if (tab !== null) {
+      window.scrollTo(0, 0);
+    }
   };
 
   useEffect(() => {
