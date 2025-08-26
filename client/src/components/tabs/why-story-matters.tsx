@@ -265,7 +265,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             </p>
           </div>
           
-          <p className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>
             Whoever tells the best story wins.
           </p>
         </motion.div>
@@ -303,7 +303,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 <div className="relative">
                   <span className="font-bold text-ancient-gold text-xl">{audience.title}</span>
                   <br />
-                  <span className="font-kardige text-cream-white/90 text-lg leading-relaxed">{audience.description}</span>
+                  <span className="font-kardige text-cream-white/90 text-lg leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.description}</span>
                   <div className="absolute -right-12 top-1/2 w-8 h-px bg-gradient-to-r from-ancient-gold/50 to-transparent"></div>
                 </div>
               </motion.div>
@@ -388,7 +388,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 1.5, delay: index * 0.3 }}
               >
-                <span className="font-kardige text-cream-white text-xl flex-shrink-0 min-w-0" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                <span className="font-kardige text-cream-white text-xl flex-shrink-0 min-w-0" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                   {transform.from}
                 </span>
                 
@@ -405,9 +405,9 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 </motion.div>
                 
                 <div className="flex-shrink-0 min-w-0">
-                  <span className="font-bold text-ancient-gold text-xl" style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>{transform.to}</span>
+                  <span className="font-bold text-ancient-gold text-xl" style={{ textShadow: '0 0 8px currentColor, 0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>{transform.to}</span>
                   <br />
-                  <span className="font-kardige text-cream-white text-lg leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>{transform.description}</span>
+                  <span className="font-kardige text-cream-white text-lg leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{transform.description}</span>
                 </div>
               </motion.div>
             ))}
@@ -471,7 +471,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                       <h3 className={`typography-h4 font-bold mb-2 tracking-wider text-glow-gold ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         {concept.title}
                       </h3>
-                      <p className="font-kardige text-lg text-cream-white leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                      <p className="font-kardige text-lg text-cream-white leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                         {concept.description}
                       </p>
                     </CardContent>

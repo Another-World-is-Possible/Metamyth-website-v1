@@ -91,7 +91,7 @@ export default function InteractiveTimeline() {
                            timelineData[selectedHorizon - 1]?.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                   Horizon {selectedHorizon} Details
                 </h3>
-                <p className="text-cream-white">
+                <p className="text-cream-white" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                   Detailed information about this horizon would go here...
                 </p>
               </CardContent>

@@ -110,7 +110,7 @@ export default function TheQuest() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <h2 className="typography-h2 text-ancient-gold font-bold mb-6" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 16px rgba(0, 0, 0, 0.5)' }}>
+          <h2 className="typography-h2 text-ancient-gold font-bold mb-6" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>
             We are on a journey to change the human story and transform along the way.
           </h2>
           <p className="typography-lead text-cream-white text-glow-gold leading-relaxed">
@@ -148,11 +148,11 @@ export default function TheQuest() {
                     <div>
                       <h3 
                         className="font-angle text-2xl md:text-3xl font-bold mb-2"
-                        style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                        style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}
                       >
                         {horizon.title}
                       </h3>
-                      <h4 className="font-game text-lg italic" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.6), 0 0 12px rgba(212, 175, 55, 0.3), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+                      <h4 className="font-game text-lg italic" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                         {horizon.subtitle}
                       </h4>
                     </div>
@@ -160,7 +160,7 @@ export default function TheQuest() {
                   
                   <p 
                     className="font-game text-lg leading-loose mb-6"
-                    style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                    style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}
                   >
                     {horizon.description}
                   </p>
@@ -175,7 +175,7 @@ export default function TheQuest() {
                           <motion.li 
                             key={itemIndex} 
                             className="flex items-start font-game"
-                            style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                            style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}
                             initial={{ x: -20, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
                             transition={{ duration: 0.4, delay: index * 0.3 + itemIndex * 0.1 }}
@@ -195,7 +195,7 @@ export default function TheQuest() {
                       <p 
                         className={`typography-body italic ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}
                         style={{
-                          textShadow: '0 0 2px rgba(0, 0, 0, 0.7)'
+                          textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)'
                         }}
                       >
                         {horizon.status}
