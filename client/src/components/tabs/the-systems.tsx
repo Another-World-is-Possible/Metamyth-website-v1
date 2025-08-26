@@ -169,7 +169,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 Most organizations operate from scattered narratives written by market forces, investor expectations, 
                 and cultural programming rather than their authentic purpose. We connect their deepest mission to a 
                 larger planetary story, raising the stakes of what they're doing and connecting people to their 
-                highest self while helping them navigate the distance between here and there.
+                highest self while helping them navigate the distance between here&nbsp;and&nbsp;there.
               </p>
             </CardContent>
           </Card>
