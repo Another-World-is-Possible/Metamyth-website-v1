@@ -62,7 +62,7 @@ export default function SharedNavigation() {
                 variant="ghost"
                 onClick={() => handleNavClick(item.path)}
                 className={`typography-body text-cream-white hover:text-ancient-gold transition-all duration-300 hover:bg-mystical-teal/20 ${
-                  location === item.path ? 'text-ancient-gold bg-mystical-teal/10' : ''
+                  location === item.path ? 'text-mystical-teal bg-mystical-teal/10' : ''
                 }`}
               >
                 {item.label}
@@ -92,7 +92,7 @@ export default function SharedNavigation() {
                     variant="ghost"
                     onClick={() => handleNavClick(item.path)}
                     className={`justify-start typography-body text-cream-white hover:text-ancient-gold hover:bg-mystical-teal/20 transition-all duration-300 ${
-                      location === item.path ? 'text-ancient-gold bg-mystical-teal/10' : ''
+                      location === item.path ? 'text-mystical-teal bg-mystical-teal/10' : ''
                     }`}
                   >
                     {item.label}
