@@ -70,9 +70,9 @@
 }
 
 @font-face {
-  font-family: 'Nomoda2024';
-  src: url('/attached_assets/Nomoda-Regular_1756185108783.otf?v=2024') format('opentype');
-  font-weight: normal;
+  font-family: 'Wildborn2024';
+  src: url('/attached_assets/wildborn Bold_1756185505462.ttf?v=2024') format('truetype');
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
   font-feature-settings: "liga" 0, "kern" 1;
@@ -96,8 +96,8 @@
   font-family: 'KingSans2024', sans-serif !important;
 }
 
-.font-nomoda {
-  font-family: 'Nomoda2024', sans-serif !important;
+.font-wildborn {
+  font-family: 'Wildborn2024', sans-serif !important;
 }
 
 @tailwind base;
