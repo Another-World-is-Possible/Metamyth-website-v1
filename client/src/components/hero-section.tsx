@@ -54,7 +54,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.1 : 0, duration: 0.8, ease: "easeOut" }}
           >
-            We wield the most ancient technology powered by modern magic: Write your reality, play it like the ultimate game, film it into cinema to attract people into your quest.
+            We wield the most ancient technology powered by modern magic:<br />Write your reality, play it like the ultimate game, film it into cinema<br />to attract people into your quest.
           </motion.p>
           
           <motion.div 
