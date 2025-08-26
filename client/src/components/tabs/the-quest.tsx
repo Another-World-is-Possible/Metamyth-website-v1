@@ -68,7 +68,7 @@ export default function TheQuest() {
   if (!imageReady) {
     return (
       <div className="relative min-h-screen py-20 pt-32 flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
-        <div className="text-ancient-gold font-angle text-xl">Loading...</div>
+        <div className="text-ancient-gold font-angle">Loading...</div>
       </div>
     );
   }
@@ -96,10 +96,7 @@ export default function TheQuest() {
       <div className="relative z-10">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2 
-          className="typography-h1 text-ancient-gold text-center mb-8"
-          style={{ 
-            textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 0 0 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0,0,0,0.8)'
-          }}
+          className="typography-h1 text-ancient-gold text-center mb-8 text-glow-gold"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -108,16 +105,15 @@ export default function TheQuest() {
         </motion.h2>
         
         <motion.div
-          className="text-center text-xl mb-16 max-w-4xl mx-auto"
-          style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+          className="text-center typography-body mb-16 max-w-4xl mx-auto text-cream-white text-glow-gold"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <p className="font-game text-2xl italic text-ancient-gold mb-6">
+          <p className="typography-h3 italic text-ancient-gold mb-6">
             "We are on a journey to change the human story<br />and transform along the way."
           </p>
-          <p className="font-game text-lg leading-loose">
+          <p className="typography-body leading-loose">
             Our quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built<br />
             a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence.
             <br /><br />

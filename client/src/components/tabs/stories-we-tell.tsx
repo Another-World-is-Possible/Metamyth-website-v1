@@ -116,7 +116,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
       <div className="relative z-10">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-angle text-4xl md:text-6xl font-bold text-mystical-teal text-center mb-16"
+          className="typography-h1 text-mystical-teal text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -144,33 +144,33 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="font-angle text-4xl font-bold text-ancient-gold mb-4">
+                    <h3 className="typography-h2 text-ancient-gold mb-4">
                       {audience.title}
                     </h3>
-                    <p className="font-kardige mb-6 leading-relaxed text-xl" style={{ color: 'hsl(45, 25%, 92%)' }}>
+                    <p className="typography-body mb-6 leading-relaxed text-cream-white">
                       {audience.description}
                     </p>
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-angle text-xl md:text-2xl font-bold text-crimson mb-3 flex items-center">
+                        <h4 className="typography-h3 font-bold text-crimson mb-3 flex items-center">
                           <span className="w-3 h-3 bg-crimson rounded-full mr-3"></span>
                           Common Challenges
                         </h4>
-                        <p className="font-kardige text-lg leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)' }}>{audience.challenges}</p>
+                        <p className="typography-technical leading-relaxed text-cream-white">{audience.challenges}</p>
                       </div>
                       <div>
-                        <h4 className="font-angle text-xl md:text-2xl font-bold text-mystical-teal mb-3 flex items-center">
+                        <h4 className="typography-h3 font-bold text-mystical-teal mb-3 flex items-center">
                           <span className="w-3 h-3 bg-mystical-teal rounded-full mr-3"></span>
                           Our Approach
                         </h4>
-                        <p className="font-kardige text-lg leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)' }}>{audience.transformation}</p>
+                        <p className="typography-technical leading-relaxed text-cream-white">{audience.transformation}</p>
                       </div>
                       <div>
-                        <h4 className="font-angle text-xl md:text-2xl font-bold text-ancient-gold mb-3 flex items-center">
+                        <h4 className="typography-h3 font-bold text-ancient-gold mb-3 flex items-center">
                           <span className="w-3 h-3 bg-ancient-gold rounded-full mr-3"></span>
                           Potential Unlocked
                         </h4>
-                        <p className="font-kardige text-lg leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)' }}>{audience.potential}</p>
+                        <p className="typography-technical leading-relaxed text-cream-white">{audience.potential}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -195,33 +195,33 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="font-angle text-4xl font-bold text-ancient-gold mb-4">
+                  <h3 className="typography-h2 text-ancient-gold mb-4">
                     {audienceTypes[2].title}
                   </h3>
-                  <p className="font-kardige mb-6 leading-relaxed text-xl" style={{ color: 'hsl(45, 25%, 92%)' }}>
+                  <p className="typography-body mb-6 leading-relaxed text-cream-white">
                     {audienceTypes[2].description}
                   </p>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-angle text-xl md:text-2xl font-bold text-crimson mb-3 flex items-center">
+                      <h4 className="typography-h3 font-bold text-crimson mb-3 flex items-center">
                         <span className="w-3 h-3 bg-crimson rounded-full mr-3"></span>
                         Common Challenges
                       </h4>
-                      <p className="font-kardige text-lg leading-relaxed text-cream-white">{audienceTypes[2].challenges}</p>
+                      <p className="typography-technical leading-relaxed text-cream-white">{audienceTypes[2].challenges}</p>
                     </div>
                     <div>
-                      <h4 className="font-angle text-xl md:text-2xl font-bold text-mystical-teal mb-3 flex items-center">
+                      <h4 className="typography-h3 font-bold text-mystical-teal mb-3 flex items-center">
                         <span className="w-3 h-3 bg-mystical-teal rounded-full mr-3"></span>
                         Our Approach
                       </h4>
-                      <p className="font-kardige text-lg leading-relaxed text-cream-white">{audienceTypes[2].transformation}</p>
+                      <p className="typography-technical leading-relaxed text-cream-white">{audienceTypes[2].transformation}</p>
                     </div>
                     <div>
-                      <h4 className="font-angle text-xl md:text-2xl font-bold text-ancient-gold mb-3 flex items-center">
+                      <h4 className="typography-h3 font-bold text-ancient-gold mb-3 flex items-center">
                         <span className="w-3 h-3 bg-ancient-gold rounded-full mr-3"></span>
                         Potential Unlocked
                       </h4>
-                      <p className="font-kardige text-lg leading-relaxed text-cream-white">{audienceTypes[2].potential}</p>
+                      <p className="typography-technical leading-relaxed text-cream-white">{audienceTypes[2].potential}</p>
                     </div>
                   </div>
                 </CardContent>

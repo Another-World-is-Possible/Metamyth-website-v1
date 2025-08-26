@@ -85,16 +85,16 @@ export default function TheFederation() {
             >
               <Card className="bg-deep-black/50 border border-ancient-gold/30 text-center hover-glow">
                 <CardContent className="p-6">
-                  <stat.icon className="text-ancient-gold text-3xl mb-4 mx-auto" />
+                  <stat.icon className="text-ancient-gold mb-4 mx-auto" style={{fontSize: '3rem'}} />
                   <h3 className="font-angle font-bold text-ancient-gold mb-2">
                     {stat.title}
                   </h3>
-                  <p className="text-cream-white/80 text-sm mb-3">
+                  <p className="text-cream-white/80 mb-3">
                     {stat.value}
                   </p>
                   <Button 
                     variant="ghost"
-                    className="text-ancient-gold text-sm hover:text-mystical-teal transition-colors duration-300 p-0"
+                    className="text-ancient-gold hover:text-mystical-teal transition-colors duration-300 p-0"
                   >
                     {stat.action} →
                   </Button>
@@ -113,7 +113,7 @@ export default function TheFederation() {
         >
           <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
             <CardContent className="p-8">
-              <h3 className="font-angle text-2xl font-bold text-ancient-gold text-center mb-8">
+              <h3 className="typography-h3 text-ancient-gold text-center mb-8">
                 Initiation Pathway
               </h3>
               
@@ -121,11 +121,11 @@ export default function TheFederation() {
                 <CardContent className="p-8">
                   <div className="flex flex-col md:flex-row items-center gap-8">
                     <div className="flex-1">
-                      <h4 className="font-angle text-2xl font-bold text-mystical-teal mb-4">
+                      <h4 className="typography-h3 text-mystical-teal mb-4">
                         METAMYTH GUIDE
                       </h4>
-                      <p className="text-ancient-gold font-bold text-2xl mb-4">$497</p>
-                      <ul className="space-y-2 text-cream-white text-sm mb-6">
+                      <p className="text-ancient-gold font-bold typography-h3 mb-4">$497</p>
+                      <ul className="space-y-2 text-cream-white mb-6">
                         <li className="flex items-start">
                           <span className="text-mystical-teal mr-2">✓</span>
                           Complete self-guided story regeneration system
@@ -144,8 +144,8 @@ export default function TheFederation() {
                         </li>
                       </ul>
                       <div className="bg-mystical-teal/10 border border-mystical-teal/30 p-4 rounded">
-                        <p className="text-mystical-teal font-bold text-sm">Outcome:</p>
-                        <p className="text-cream-white/80 text-sm">
+                        <p className="text-mystical-teal font-bold">Outcome:</p>
+                        <p className="text-cream-white/80">
                           Your complete metamyth + community integration
                         </p>
                       </div>
@@ -175,16 +175,16 @@ export default function TheFederation() {
                 className={`bg-deep-black/50 border border-${pathway.color}/30 hover-glow`}
               >
                 <CardContent className="p-6">
-                  <pathway.icon className={`text-${pathway.color} text-2xl mb-4`} />
+                  <pathway.icon className="text-ancient-gold mb-4" style={{fontSize: '2rem'}} />
                   <h4 className={`font-bold text-${pathway.color} mb-3`}>
                     {pathway.title}
                   </h4>
-                  <p className="text-cream-white/80 text-sm mb-4">
+                  <p className="text-cream-white/80 mb-4">
                     {pathway.description}
                   </p>
                   <Button 
                     variant="ghost"
-                    className={`text-${pathway.color} text-sm hover:text-ancient-gold transition-colors duration-300 p-0`}
+                    className="text-ancient-gold hover:text-mystical-teal transition-colors duration-300 p-0"
                   >
                     {index === 0 && "Learn More →"}
                     {index === 1 && "Join Platform →"}

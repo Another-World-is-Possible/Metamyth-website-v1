@@ -108,7 +108,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
   if (!imageReady) {
     return (
       <div className="relative min-h-screen py-20 pt-32 flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
-        <div className="text-ancient-gold font-angle text-xl">Loading...</div>
+        <div className="text-ancient-gold font-angle">Loading...</div>
       </div>
     );
   }
@@ -144,10 +144,10 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           <h2 className="typography-h1 text-mystical-teal mb-6">
             HOW IT WORKS
           </h2>
-          <p className="text-2xl text-mystical-teal font-bold mb-4 font-thornelia">
+          <p className="typography-h3 text-mystical-teal font-bold mb-4">
             Organizational Story Transformation
           </p>
-          <p className="text-2xl text-cream-white max-w-4xl mx-auto leading-relaxed font-kardige">
+          <p className="typography-h3 text-cream-white max-w-4xl mx-auto leading-relaxed font-kardige">
             We give people back control of their stories, 
             transforming scattered narratives into coherent forces of planetary transformation.
           </p>

@@ -205,9 +205,8 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
       >
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <motion.h1 
-            className="font-angle text-4xl md:text-6xl font-bold mb-6"
+            className="typography-h1 mb-6 text-ancient-gold"
             style={{
-              color: '#000000',
               textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
             }}
             initial={{ opacity: 0, y: 20 }}
@@ -268,12 +267,12 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="typography-h3 mb-8 leading-relaxed text-cream-white text-glow-gold">
             The same consciousness that authored every system destroying our planet can author every system that could heal it.
           </p>
           
           <div className="border-l-3 border-ancient-gold pl-6 mb-8">
-            <p className="font-game text-xl md:text-2xl mb-4" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+            <p className="typography-body mb-4 text-cream-white text-glow-gold">
               Story built civilization. Story can rebuild it.
             </p>
           </div>
@@ -293,7 +292,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
         <div className="max-w-4xl mx-auto relative z-20">
           <motion.p 
             className="font-angle text-2xl md:text-3xl font-bold text-center mb-8"
-            style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+            className="text-cream-white text-glow-gold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -522,7 +521,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 1.0 }}
         >
-          <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="typography-h3 mb-8 leading-relaxed text-cream-white text-glow-gold">
             Every thread of human experience is converging now—this generation writes the story that determines Earth's future.
           </p>
           
@@ -584,7 +583,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             Ready to transform scattered narrative into coherent planetary force?
           </h2>
           
-          <p className="font-game text-xl mb-12 font-bold" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="font-game text-xl mb-12 font-bold" className="text-cream-white text-glow-gold">
             Using humanity's oldest technology to serve humanity's greatest need.
           </p>
           
@@ -618,7 +617,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             </motion.div>
           </div>
           
-          <p className="font-game italic mt-8 text-sm" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="font-game italic mt-8 text-sm" className="text-cream-white text-glow-gold">
             Limited availability for organizations ready to serve the story.
           </p>
         </motion.div>

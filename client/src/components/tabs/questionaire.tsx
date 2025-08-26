@@ -246,7 +246,7 @@ export default function QUESTionaire() {
                     rel="noopener noreferrer"
                     className="inline-block"
                   >
-                    <Button className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-4 px-8 text-lg">
+                    <Button className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-4 px-8">
                       <ExternalLink className="w-5 h-5 mr-2" />
                       Join Our Discord Community
                     </Button>
@@ -254,7 +254,7 @@ export default function QUESTionaire() {
                 </div>
               )}
               
-              <p className="font-game text-cream-white/80 text-sm mt-6 italic">
+              <p className="typography-body text-cream-white/80 mt-6 italic">
                 The future isn't waiting for heroes to save it. It's waiting for authors to write it.
               </p>
             </CardContent>
@@ -284,7 +284,7 @@ export default function QUESTionaire() {
       </div>
 
       {/* Question Counter */}
-      <div className="fixed top-6 right-6 z-40 font-angle text-ancient-gold text-sm tracking-wider">
+      <div className="fixed top-6 right-6 z-40 font-angle text-ancient-gold tracking-wider">
         QUESTION {Math.max(0, currentStep - 1)} / {questions.length}
       </div>
 
@@ -300,27 +300,27 @@ export default function QUESTionaire() {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="font-angle text-5xl md:text-7xl font-bold text-ancient-gold mb-8"
+              <h1 className="typography-h1 text-ancient-gold mb-8"
                   style={{ 
                     textShadow: '0 0 20px rgba(212, 175, 55, 0.8), 0 0 40px rgba(212, 175, 55, 0.4)'
                   }}>
                 QUESTionaire
               </h1>
-              <h2 className="font-game text-2xl md:text-3xl text-mystical-teal mb-6 italic">
+              <h2 className="typography-h3 text-mystical-teal mb-6 italic">
                 "The 7-Question Journey That Reveals Who's Really Writing Your Life"
               </h2>
-              <h3 className="font-game text-xl md:text-2xl text-ancient-gold mb-6 font-bold">
+              <h3 className="typography-h3 text-ancient-gold mb-6 font-bold">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
-              <p className="font-game text-lg text-cream-white mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="typography-body text-cream-white mb-8 max-w-3xl mx-auto leading-relaxed">
                 The old story is ending. Systems designed for scarcity are destroying abundance. Stories built on separation are fragmenting communities. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth: reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power—before it's too late.
               </p>
-              <p className="font-game text-lg text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="typography-body text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed">
                 The old story is ending. The new one is being written right now. Some people will author the future consciously. Others will simply react to what gets created around them. This journey reveals which one you are—and what becomes possible when you pick up the pen.
               </p>
               <Button
                 onClick={handleNext}
-                className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8 text-xl"
+                className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8"
               >
                 Embark on Your QUESTionaire
                 <ChevronRight className="w-6 h-6 ml-2" />

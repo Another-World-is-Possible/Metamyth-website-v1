@@ -62,7 +62,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           >
             <Button 
               onClick={() => setActiveTab?.('questionaire')}
-              className="bg-ancient-gold text-deep-black hover:bg-ancient-gold/80 font-angle font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 shadow-lg hover:shadow-ancient-gold/50 border-2 border-ancient-gold hover:shadow-2xl cursor-pointer"
+              className="bg-ancient-gold text-deep-black hover:bg-ancient-gold/80 font-angle font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-ancient-gold/50 border-2 border-ancient-gold hover:shadow-2xl cursor-pointer"
               style={{
                 boxShadow: '0 0 30px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.4), inset 0 0 20px rgba(212, 175, 55, 0.2), 0 0 10px rgba(212, 175, 55, 0.9)'
               }}
@@ -71,7 +71,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
             </Button>
             <Button 
               onClick={() => setActiveTab?.('questionaire')}
-              className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 shadow-lg hover:shadow-mystical-teal/50 border-2 border-mystical-teal hover:shadow-2xl cursor-pointer"
+              className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-mystical-teal/50 border-2 border-mystical-teal hover:shadow-2xl cursor-pointer"
               style={{
                 boxShadow: '0 0 30px rgba(20, 184, 166, 0.7), 0 0 60px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(20, 184, 166, 0.2), 0 0 10px rgba(20, 184, 166, 0.9)'
               }}
