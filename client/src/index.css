@@ -270,6 +270,19 @@
   .backdrop-blur-lg {
     will-change: backdrop-filter;
     transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Additional backup approach - force backdrop filter with !important */
+  .backdrop-blur-lg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    pointer-events: none;
+    z-index: -1;
   }
 
   /* Scroll-triggered fade animations */
