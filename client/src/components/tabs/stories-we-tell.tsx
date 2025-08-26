@@ -152,22 +152,22 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                     </p>
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-bold text-crimson mb-2 flex items-center text-xl">
-                          <span className="w-2 h-2 bg-crimson rounded-full mr-2"></span>
+                        <h4 className="font-angle text-3xl md:text-4xl font-bold text-crimson mb-3 flex items-center">
+                          <span className="w-3 h-3 bg-crimson rounded-full mr-3"></span>
                           Common Challenges
                         </h4>
                         <p className="font-kardige text-lg leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)' }}>{audience.challenges}</p>
                       </div>
                       <div>
-                        <h4 className="font-bold text-mystical-teal mb-2 flex items-center text-xl">
-                          <span className="w-2 h-2 bg-mystical-teal rounded-full mr-2"></span>
+                        <h4 className="font-angle text-3xl md:text-4xl font-bold text-mystical-teal mb-3 flex items-center">
+                          <span className="w-3 h-3 bg-mystical-teal rounded-full mr-3"></span>
                           Our Approach
                         </h4>
                         <p className="font-kardige text-lg leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)' }}>{audience.transformation}</p>
                       </div>
                       <div>
-                        <h4 className="font-bold text-ancient-gold mb-2 flex items-center text-xl">
-                          <span className="w-2 h-2 bg-ancient-gold rounded-full mr-2"></span>
+                        <h4 className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold mb-3 flex items-center">
+                          <span className="w-3 h-3 bg-ancient-gold rounded-full mr-3"></span>
                           Potential Unlocked
                         </h4>
                         <p className="font-kardige text-lg leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)' }}>{audience.potential}</p>
@@ -203,22 +203,22 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                   </p>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-bold text-crimson mb-2 flex items-center text-xl">
-                        <span className="w-2 h-2 bg-crimson rounded-full mr-2"></span>
+                      <h4 className="font-angle text-3xl md:text-4xl font-bold text-crimson mb-3 flex items-center">
+                        <span className="w-3 h-3 bg-crimson rounded-full mr-3"></span>
                         Common Challenges
                       </h4>
                       <p className="font-kardige text-lg leading-relaxed text-cream-white">{audienceTypes[2].challenges}</p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-mystical-teal mb-2 flex items-center text-xl">
-                        <span className="w-2 h-2 bg-mystical-teal rounded-full mr-2"></span>
+                      <h4 className="font-angle text-3xl md:text-4xl font-bold text-mystical-teal mb-3 flex items-center">
+                        <span className="w-3 h-3 bg-mystical-teal rounded-full mr-3"></span>
                         Our Approach
                       </h4>
                       <p className="font-kardige text-lg leading-relaxed text-cream-white">{audienceTypes[2].transformation}</p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-ancient-gold mb-2 flex items-center text-xl">
-                        <span className="w-2 h-2 bg-ancient-gold rounded-full mr-2"></span>
+                      <h4 className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold mb-3 flex items-center">
+                        <span className="w-3 h-3 bg-ancient-gold rounded-full mr-3"></span>
                         Potential Unlocked
                       </h4>
                       <p className="font-kardige text-lg leading-relaxed text-cream-white">{audienceTypes[2].potential}</p>
