@@ -142,7 +142,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-angle text-4xl md:text-6xl font-bold text-mystical-teal mb-6">
-            THE METAMYTH SYSTEM
+            HOW IT WORKS
           </h2>
           <p className="text-2xl text-mystical-teal font-bold mb-4 font-thornelia">
             Organizational Story Transformation
