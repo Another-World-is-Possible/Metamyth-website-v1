@@ -44,7 +44,9 @@ export default function InteractiveTimeline() {
             {timelineData.map((point, index) => (
               <motion.div
                 key={point.id}
-                className={`bg-${point.color} rounded-full w-4 h-4 transform -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300`}
+                className={`rounded-full w-4 h-4 transform -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 ${point.color === 'crimson' ? 'bg-crimson' : 
+                           point.color === 'mystical-teal' ? 'bg-mystical-teal' : 
+                           point.color === 'ancient-gold' ? 'bg-ancient-gold' : 'bg-white'}`}
                 style={{ left: point.position }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -59,7 +61,9 @@ export default function InteractiveTimeline() {
         <div className="flex justify-between mb-8">
           {timelineData.map((point) => (
             <div key={point.id} className="text-center flex-1">
-              <h4 className={`font-bold text-${point.color} text-sm`}>
+              <h4 className={`font-bold text-sm ${point.color === 'crimson' ? 'text-crimson' : 
+                           point.color === 'mystical-teal' ? 'text-mystical-teal' : 
+                           point.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
                 {point.title}
               </h4>
               <p className="text-cream-white/60 text-xs">
@@ -78,9 +82,13 @@ export default function InteractiveTimeline() {
             transition={{ duration: 0.3 }}
             className="mt-8"
           >
-            <Card className={`border border-${timelineData[selectedHorizon - 1]?.color}/30`}>
+            <Card className={`border ${timelineData[selectedHorizon - 1]?.color === 'crimson' ? 'border-crimson/30' : 
+                           timelineData[selectedHorizon - 1]?.color === 'mystical-teal' ? 'border-mystical-teal/30' : 
+                           timelineData[selectedHorizon - 1]?.color === 'ancient-gold' ? 'border-ancient-gold/30' : 'border-white/30'}`}>
               <CardContent className="p-6">
-                <h3 className={`font-angle text-xl font-bold text-${timelineData[selectedHorizon - 1]?.color} mb-4`}>
+                <h3 className={`font-angle text-xl font-bold mb-4 ${timelineData[selectedHorizon - 1]?.color === 'crimson' ? 'text-crimson' : 
+                           timelineData[selectedHorizon - 1]?.color === 'mystical-teal' ? 'text-mystical-teal' : 
+                           timelineData[selectedHorizon - 1]?.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
                   Horizon {selectedHorizon} Details
                 </h3>
                 <p className="text-cream-white">

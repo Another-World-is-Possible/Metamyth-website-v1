@@ -8,7 +8,7 @@ export default function AnimatedLogo() {
         animate={{ rotate: 360 }}
         transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
       >
-        <Shield className="text-ancient-gold text-9xl" />
+        <Shield className="text-ancient-gold" style={{ fontSize: '8rem' }} />
       </motion.div>
       <motion.div
         className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
@@ -18,7 +18,7 @@ export default function AnimatedLogo() {
         }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <Sword className="text-mystical-teal text-6xl" />
+        <Sword className="text-mystical-teal" style={{ fontSize: '4rem' }} />
       </motion.div>
     </div>
   );

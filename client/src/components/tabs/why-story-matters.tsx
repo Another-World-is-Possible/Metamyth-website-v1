@@ -170,7 +170,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
   if (!imageReady) {
     return (
       <div className="relative flex items-center justify-center" style={{ minHeight: '100vh', backgroundColor: 'hsl(120, 80%, 2%)' }}>
-        <div className="text-ancient-gold font-angle text-xl">Loading...</div>
+        <div className="typography-body font-angle text-ancient-gold">Loading...</div>
       </div>
     );
   }
@@ -205,10 +205,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
       >
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <motion.h1 
-            className="typography-h1 mb-6 text-ancient-gold"
-            style={{
-              textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
-            }}
+            className="typography-h1 mb-6 text-ancient-gold text-glow-gold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
@@ -217,11 +214,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           </motion.h1>
           
           <motion.p 
-            className="font-game text-xl md:text-2xl mb-4"
-            style={{ 
-              color: 'hsl(45, 25%, 92%)', 
-              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' 
-            }}
+            className="typography-body mb-4 text-cream-white text-glow-gold"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
@@ -230,11 +223,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           </motion.p>
           
           <motion.p 
-            className="font-game text-lg md:text-xl mb-6"
-            style={{ 
-              color: 'hsl(45, 25%, 92%)', 
-              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' 
-            }}
+            className="typography-body mb-6 text-cream-white text-glow-gold"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
@@ -243,8 +232,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           </motion.p>
           
           <motion.p 
-            className="font-angle text-xl md:text-3xl font-bold text-ancient-gold"
-            style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+            className="typography-h3 font-bold text-ancient-gold text-glow-gold"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 1.2, ease: "easeOut" }}
@@ -291,8 +279,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
       >
         <div className="max-w-4xl mx-auto relative z-20">
           <motion.p 
-            className="font-angle text-2xl md:text-3xl font-bold text-center mb-8"
-            className="text-cream-white text-glow-gold"
+            className="typography-h3 font-bold text-center mb-8 text-ancient-gold text-glow-gold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -583,7 +570,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             Ready to transform scattered narrative into coherent planetary force?
           </h2>
           
-          <p className="font-game text-xl mb-12 font-bold" className="text-cream-white text-glow-gold">
+          <p className="typography-body mb-12 font-bold text-cream-white text-glow-gold">
             Using humanity's oldest technology to serve humanity's greatest need.
           </p>
           
@@ -617,7 +604,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             </motion.div>
           </div>
           
-          <p className="font-game italic mt-8 text-sm" className="text-cream-white text-glow-gold">
+          <p className="font-game italic mt-8 text-cream-white text-glow-gold">
             Limited availability for organizations ready to serve the story.
           </p>
         </motion.div>
