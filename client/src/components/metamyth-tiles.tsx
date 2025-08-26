@@ -42,7 +42,7 @@ const tiles = [
     id: 3,
     title: "THE VISION OF WHAT IS POSSIBLE",
     quote: "A world that works for all where work becomes adventure, where authentic authority commands cosmic resources, and where the future belongs to those who remember they're writing it.",
-    description: "Everything becomes possible when we regain control of the story—reality architects turning extraction into creation, competition into collaboration, busyness into purpose-driven adventure.We transform background characters in a broken story into heroes in the myth of the future by casting ourselves into the world we're here to create—proving another world works by living it.",
+    description: "Everything becomes possible when we regain control of the story.<br/>We become reality architects turning breakdown into breakthrough, extraction into regeneration, pointless busyness into purpose-driven adventure.<br/><br/>The Metamyth transform background characters in a broken story into heroes in the myth of the future we're here to LIVE.",
     bgImage: visionImg,
     animation: "flash",
     gradient: "from-dark-wine to-forest-green",
