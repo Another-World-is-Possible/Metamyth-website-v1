@@ -147,7 +147,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           <p className="text-2xl text-mystical-teal font-bold mb-4">
             Organizational Story Transformation
           </p>
-          <p className="text-xl text-silver max-w-4xl mx-auto leading-relaxed font-wildborn">
+          <p className="text-xl text-silver max-w-4xl mx-auto leading-relaxed font-csrecant">
             The radical process of reality authorship. We give people back control of their stories, 
             transforming scattered narratives into coherent forces of planetary transformation.
           </p>
@@ -160,12 +160,12 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
+          <Card className="bg-[#81ecec]/10 backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4 text-center">
                 THE RADICAL PROCESS OF REALITY AUTHORSHIP
               </h3>
-              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto font-wildborn">
+              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto font-csrecant">
                 Most organizations operate from scattered narratives written by market forces, investor expectations, 
                 and cultural programming rather than their authentic purpose. We connect their deepest mission to a 
                 larger planetary story, raising the stakes of what they're doing and connecting people to their 
@@ -189,7 +189,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
+                <Card className="bg-[#81ecec]/10 backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-6">
                       <div className="p-4 rounded-lg bg-ancient-gold/20 border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/30">
@@ -243,12 +243,12 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
+          <Card className="bg-[#81ecec]/10 backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="font-edensor text-2xl font-bold text-mystical-teal mb-4 text-center">
                 WHO WE SERVE
               </h3>
-              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto font-wildborn">
+              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto font-csrecant">
                 Purpose-driven organizations ready to stop playing by someone else's rules and start authoring 
                 their own reality. These include conscious entrepreneurs, B-Corp founders, nonprofit leaders, 
                 and mission-driven companies who know their work matters but struggle to communicate why in 
@@ -294,7 +294,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
         >
-          <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
+          <Card className="bg-[#81ecec]/10 backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
               <div className="flex items-center justify-center mb-6">
                 <Globe className="text-mystical-teal text-4xl mr-4" />
@@ -310,7 +310,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 Building the New Operating System: MythOS
               </h4>
               
-              <p className="font-wildborn text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
+              <p className="font-csrecant text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
                 We're creating a world that works for all, where work is an adventure, through a new operating 
                 system—MythOS—that makes the process of doing meaningful work into the adventure it deserves. 
                 This AI-first platform brings stories to life, guides people along their authentic paths, and 

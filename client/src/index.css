@@ -70,9 +70,9 @@
 }
 
 @font-face {
-  font-family: 'Wildborn2024';
-  src: url('/attached_assets/wildborn Black_1756185575008.ttf?v=2024') format('truetype');
-  font-weight: 900;
+  font-family: 'CSRecant2024';
+  src: url('/attached_assets/CSRecant-Regular_1756186050175.otf?v=2024') format('opentype');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
   font-feature-settings: "liga" 0, "kern" 1;
@@ -96,8 +96,8 @@
   font-family: 'KingSans2024', sans-serif !important;
 }
 
-.font-wildborn {
-  font-family: 'Wildborn2024', sans-serif !important;
+.font-csrecant {
+  font-family: 'CSRecant2024', serif !important;
 }
 
 @tailwind base;

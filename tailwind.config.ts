@@ -65,7 +65,7 @@ export default {
         angle: ["AngleFairy2024", "serif"],
         game: ["Mugient2024", "serif"],
         king: ["KingSans2024", "sans-serif"],
-        wildborn: ["Wildborn2024", "sans-serif"],
+        csrecant: ["CSRecant2024", "serif"],
         sans: ["Mugient2024", "serif"],
         serif: ["AngleFairy2024", "serif"],
       },
