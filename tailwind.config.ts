@@ -65,7 +65,7 @@ export default {
         angle: ["AngleFairy2024", "serif"],
         game: ["Mugient2024", "serif"],
         king: ["KingSans2024", "sans-serif"],
-        chavirs: ["Chavirs2024", "sans-serif"],
+        emerland: ["Emerland2024", "serif"],
         sans: ["Mugient2024", "serif"],
         serif: ["AngleFairy2024", "serif"],
       },

@@ -70,8 +70,8 @@
 }
 
 @font-face {
-  font-family: 'Chavirs2024';
-  src: url('/attached_assets/Chavirs-Regular_1756186408673.ttf?v=2024') format('truetype');
+  font-family: 'Emerland2024';
+  src: url('/attached_assets/Emerland_1756186655326.ttf?v=2024') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -96,8 +96,8 @@
   font-family: 'KingSans2024', sans-serif !important;
 }
 
-.font-chavirs {
-  font-family: 'Chavirs2024', sans-serif !important;
+.font-emerland {
+  font-family: 'Emerland2024', serif !important;
 }
 
 @tailwind base;

@@ -147,7 +147,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           <p className="text-2xl text-mystical-teal font-bold mb-4">
             Organizational Story Transformation
           </p>
-          <p className="text-xl text-silver max-w-4xl mx-auto leading-relaxed font-chavirs">
+          <p className="text-xl text-silver max-w-4xl mx-auto leading-relaxed font-emerland">
             The radical process of reality authorship. We give people back control of their stories, 
             transforming scattered narratives into coherent forces of planetary transformation.
           </p>
@@ -165,7 +165,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4 text-center">
                 THE RADICAL PROCESS OF REALITY AUTHORSHIP
               </h3>
-              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto font-chavirs">
+              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto font-emerland">
                 Most organizations operate from scattered narratives written by market forces, investor expectations, 
                 and cultural programming rather than their authentic purpose. We connect their deepest mission to a 
                 larger planetary story, raising the stakes of what they're doing and connecting people to their 
@@ -248,7 +248,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <h3 className="font-edensor text-2xl font-bold text-mystical-teal mb-4 text-center">
                 WHO WE SERVE
               </h3>
-              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto font-chavirs">
+              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto font-emerland">
                 Purpose-driven organizations ready to stop playing by someone else's rules and start authoring 
                 their own reality. These include conscious entrepreneurs, B-Corp founders, nonprofit leaders, 
                 and mission-driven companies who know their work matters but struggle to communicate why in 
@@ -310,7 +310,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 Building the New Operating System: MythOS
               </h4>
               
-              <p className="font-chavirs text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
+              <p className="font-emerland text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
                 We're creating a world that works for all, where work is an adventure, through a new operating 
                 system—MythOS—that makes the process of doing meaningful work into the adventure it deserves. 
                 This AI-first platform brings stories to life, guides people along their authentic paths, and 
