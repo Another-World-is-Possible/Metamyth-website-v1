@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: 'CookConthic2024';
-  src: url('/attached_assets/CookConthic_1756251471513.ttf?v=2024') format('truetype');
+  src: url('/attached_assets/CookConthic_1755912629836.ttf?v=2024') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -97,7 +97,7 @@
 }
 
 .font-kardige {
-  font-family: 'CookConthic2024', sans-serif !important;
+  font-family: 'Kardige2024', sans-serif !important;
   color: hsl(45, 35%, 83%) !important;
 }
 
