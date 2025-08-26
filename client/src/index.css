@@ -105,6 +105,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force text-cream-white class since Tailwind isn't generating it properly */
+.text-cream-white {
+  color: hsl(45, 25%, 92%) !important;
+}
+
 :root {
   --background: hsl(0 0% 100%);
   --foreground: hsl(210 25% 7.8431%);
@@ -348,9 +353,6 @@
     color: var(--dark-wine);
   }
   
-  .text-cream-white {
-    color: hsl(45 25% 92%) !important;
-  }
   
   .border-mystical-teal {
     border-color: var(--mystical-teal);
