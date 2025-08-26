@@ -172,11 +172,19 @@ export default function TheFederation() {
             {advancedPathways.map((pathway, index) => (
               <Card 
                 key={index}
-                className={`bg-deep-black/50 border border-${pathway.color}/30 hover-glow`}
+                className={`bg-deep-black/50 border hover-glow ${
+                  pathway.color === 'crimson' ? 'border-crimson/30' :
+                  pathway.color === 'mystical-teal' ? 'border-mystical-teal/30' :
+                  pathway.color === 'ancient-gold' ? 'border-ancient-gold/30' : 'border-white/30'
+                }`}
               >
                 <CardContent className="p-6">
                   <pathway.icon className="text-ancient-gold mb-4" style={{fontSize: '2rem'}} />
-                  <h4 className={`font-bold text-${pathway.color} mb-3`}>
+                  <h4 className={`font-bold mb-3 ${
+                    pathway.color === 'crimson' ? 'text-crimson' :
+                    pathway.color === 'mystical-teal' ? 'text-mystical-teal' :
+                    pathway.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'
+                  }`}>
                     {pathway.title}
                   </h4>
                   <p className="text-cream-white/80 mb-4">

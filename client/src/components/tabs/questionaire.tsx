@@ -339,7 +339,7 @@ export default function QUESTionaire() {
             >
               <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-mystical-teal/60 shadow-lg shadow-mystical-teal/40">
                 <CardContent className="p-8">
-                  <h2 className="font-angle text-3xl font-bold text-ancient-gold text-center mb-6">
+                  <h2 className="typography-h2 font-bold text-ancient-gold text-center mb-6">
                     Your Journey Begins
                   </h2>
                   <p className="typography-body text-center text-cream-white mb-8">
@@ -405,7 +405,7 @@ export default function QUESTionaire() {
             >
               <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10">
                 <CardContent className="p-8">
-                  <h2 className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold mb-6 text-center leading-tight">
+                  <h2 className="typography-h3 font-bold text-ancient-gold mb-6 text-center leading-tight">
                     {currentQuestion.title}
                   </h2>
                   
@@ -442,7 +442,7 @@ export default function QUESTionaire() {
                                   ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                                   : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                               }`} />
-                              <span className="font-game text-cream-white leading-relaxed">{option}</span>
+                              <span className="typography-body text-cream-white leading-relaxed">{option}</span>
                             </div>
                           </motion.div>
                         ))}
@@ -451,28 +451,28 @@ export default function QUESTionaire() {
                     
                     {/* Personal response text area for all questions */}
                     <div className="mt-6">
-                      <label className="block font-game text-mystical-teal font-bold mb-3">
+                      <label className="block typography-body text-mystical-teal font-bold mb-3">
                         Your personal response:
                       </label>
                       <Textarea
                         value={textResponses[currentQuestion.id] || ""}
                         onChange={(e) => handleTextResponse(currentQuestion.id, e.target.value)}
-                        className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 font-game"
+                        className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body"
                         placeholder={currentQuestion.placeholder || "Share your thoughts..."}
                         data-testid={`textarea-question-${currentQuestion.id}`}
                       />
                       {currentQuestion.examples && (
                         <div className="mt-3">
-                          <p className="font-game text-mystical-teal/70 text-sm mb-2">Examples:</p>
+                          <p className="typography-technical text-mystical-teal/70 mb-2">Examples:</p>
                           {currentQuestion.examples.map((example, index) => (
-                            <p key={index} className="font-game text-cream-white/60 text-sm italic">- "{example}"</p>
+                            <p key={index} className="typography-technical text-cream-white/60 italic">- "{example}"</p>
                           ))}
                         </div>
                       )}
                     </div>
                   </div>
                   
-                  <p className="font-game text-mystical-teal/80 text-sm text-center mt-6 italic">
+                  <p className="typography-technical text-mystical-teal/80 text-center mt-6 italic">
                     {currentQuestion.subtitle}
                   </p>
                   
@@ -480,7 +480,7 @@ export default function QUESTionaire() {
                     <Button
                       onClick={() => setCurrentStep(prev => prev - 1)}
                       variant="ghost"
-                      className="text-cream-white hover:text-ancient-gold font-game"
+                      className="text-cream-white hover:text-ancient-gold typography-body"
                       data-testid="button-back"
                     >
                       <ChevronLeft className="w-4 h-4 mr-2" />

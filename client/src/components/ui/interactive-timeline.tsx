@@ -61,12 +61,12 @@ export default function InteractiveTimeline() {
         <div className="flex justify-between mb-8">
           {timelineData.map((point) => (
             <div key={point.id} className="text-center flex-1">
-              <h4 className={`font-bold text-sm ${point.color === 'crimson' ? 'text-crimson' : 
+              <h4 className={`font-bold typography-technical ${point.color === 'crimson' ? 'text-crimson' : 
                            point.color === 'mystical-teal' ? 'text-mystical-teal' : 
                            point.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
                 {point.title}
               </h4>
-              <p className="text-cream-white/60 text-xs">
+              <p className="text-cream-white/60 typography-technical">
                 {point.year}
               </p>
             </div>
@@ -86,7 +86,7 @@ export default function InteractiveTimeline() {
                            timelineData[selectedHorizon - 1]?.color === 'mystical-teal' ? 'border-mystical-teal/30' : 
                            timelineData[selectedHorizon - 1]?.color === 'ancient-gold' ? 'border-ancient-gold/30' : 'border-white/30'}`}>
               <CardContent className="p-6">
-                <h3 className={`font-angle text-xl font-bold mb-4 ${timelineData[selectedHorizon - 1]?.color === 'crimson' ? 'text-crimson' : 
+                <h3 className={`typography-h3 font-bold mb-4 ${timelineData[selectedHorizon - 1]?.color === 'crimson' ? 'text-crimson' : 
                            timelineData[selectedHorizon - 1]?.color === 'mystical-teal' ? 'text-mystical-teal' : 
                            timelineData[selectedHorizon - 1]?.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
                   Horizon {selectedHorizon} Details

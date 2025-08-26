@@ -162,10 +162,10 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
         >
           <Card className="bg-[#81ecec]/10 backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
-              <h3 className="font-angle text-2xl font-bold text-ancient-gold mb-4 text-center">
+              <h3 className="typography-h3 font-bold text-ancient-gold mb-4 text-center">
                 THE RADICAL PROCESS OF REALITY AUTHORSHIP
               </h3>
-              <p className="text-xl text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-kardige">
+              <p className="typography-body text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-kardige">
                 Most organizations operate from scattered narratives written by market forces, investor expectations, 
                 and cultural programming rather than their authentic purpose. We connect their deepest mission to a 
                 larger planetary story, raising the stakes of what they're doing and connecting people to their 
@@ -177,7 +177,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
 
         {/* Three Phases */}
         <div className="mb-16">
-          <h3 className="font-angle text-3xl font-bold text-center text-mystical-teal mb-12">
+          <h3 className="typography-h2 font-bold text-center text-mystical-teal mb-12">
             HOW THE SYSTEM WORKS
           </h3>
           
@@ -248,7 +248,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <h3 className="font-angle text-4xl font-bold text-mystical-teal mb-4 text-center">
                 WHO WE SERVE
               </h3>
-              <p className="text-xl text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-kardige">
+              <p className="typography-body text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-kardige">
                 Purpose-driven organizations ready to stop playing by someone else's rules and start authoring 
                 their own reality. These include conscious entrepreneurs, B-Corp founders, nonprofit leaders, 
                 and mission-driven companies who know their work matters but struggle to communicate why in 

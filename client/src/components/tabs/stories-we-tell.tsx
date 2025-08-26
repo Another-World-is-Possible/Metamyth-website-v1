@@ -247,10 +247,10 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                   const IconComponent = step.icon;
                   return (
                     <div key={index} className="text-center">
-                      <div className={`mx-auto w-16 h-16 rounded-full bg-${step.color}/20 flex items-center justify-center mb-4 mystical-glow`}>
-                        <IconComponent className={`w-8 h-8 text-${step.color}`} />
+                      <div className={`mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 mystical-glow ${step.color === 'crimson' ? 'bg-crimson/20' : step.color === 'mystical-teal' ? 'bg-mystical-teal/20' : step.color === 'ancient-gold' ? 'bg-ancient-gold/20' : 'bg-white/20'}`}>
+                        <IconComponent className={`w-8 h-8 ${step.color === 'crimson' ? 'text-crimson' : step.color === 'mystical-teal' ? 'text-mystical-teal' : step.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`} />
                       </div>
-                      <h4 className={`font-angle text-2xl font-bold text-${step.color} mb-2`}>
+                      <h4 className={`typography-h3 font-bold mb-2 ${step.color === 'crimson' ? 'text-crimson' : step.color === 'mystical-teal' ? 'text-mystical-teal' : step.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
                         {step.title}
                       </h4>
                       <p className="font-kardige text-lg" style={{ color: 'hsl(45, 25%, 92%)' }}>

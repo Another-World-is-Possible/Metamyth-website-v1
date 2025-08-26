@@ -140,8 +140,8 @@ export default function TheQuest() {
                   viewport={{ once: true }}
                 >
                   <div className="flex items-center mb-6">
-                    <div className={`w-12 h-12 rounded-full bg-${horizon.color}/20 border-2 border-${horizon.color} flex items-center justify-center mr-6`}>
-                      <span className={`text-${horizon.color} font-bold text-xl`}>
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center mr-6 border-2 ${horizon.color === 'crimson' ? 'bg-crimson/20 border-crimson' : horizon.color === 'mystical-teal' ? 'bg-mystical-teal/20 border-mystical-teal' : horizon.color === 'ancient-gold' ? 'bg-ancient-gold/20 border-ancient-gold' : 'bg-white/20 border-white'}`}>
+                      <span className={`font-bold text-xl ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
                         {horizon.id}
                       </span>
                     </div>
@@ -167,7 +167,7 @@ export default function TheQuest() {
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h5 className={`font-angle text-lg font-bold text-${horizon.color} mb-4`}>
+                      <h5 className={`typography-body font-bold mb-4 ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
                         OBJECTIVES
                       </h5>
                       <ul className="space-y-3">
@@ -189,11 +189,11 @@ export default function TheQuest() {
                     </div>
                     
                     <div>
-                      <h5 className={`font-angle text-lg font-bold text-${horizon.color} mb-4`}>
+                      <h5 className={`typography-body font-bold mb-4 ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
                         STATUS
                       </h5>
                       <p 
-                        className={`font-game text-${horizon.color} italic`}
+                        className={`typography-body italic ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}
                         style={{
                           textShadow: '0 0 2px rgba(0, 0, 0, 0.7)'
                         }}

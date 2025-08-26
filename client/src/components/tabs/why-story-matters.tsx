@@ -465,10 +465,10 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 >
                   <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 h-full hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
                     <CardContent className="p-3 text-center">
-                      <div className={`w-12 h-12 mx-auto mb-2 rounded-full bg-${concept.color}/20 flex items-center justify-center border border-${concept.color}/30`}>
-                        <IconComponent className={`w-6 h-6 text-${concept.color}`} />
+                      <div className={`w-12 h-12 mx-auto mb-2 rounded-full flex items-center justify-center border ${concept.color === 'crimson' ? 'bg-crimson/20 border-crimson/30' : concept.color === 'mystical-teal' ? 'bg-mystical-teal/20 border-mystical-teal/30' : concept.color === 'ancient-gold' ? 'bg-ancient-gold/20 border-ancient-gold/30' : 'bg-white/20 border-white/30'}`}>
+                        <IconComponent className={`w-6 h-6 ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`} />
                       </div>
-                      <h3 className={`font-angle text-lg md:text-xl font-bold text-${concept.color} mb-2 tracking-wider`} style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
+                      <h3 className={`typography-h4 font-bold mb-2 tracking-wider text-glow-gold ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
                         {concept.title}
                       </h3>
                       <p className="font-kardige text-lg text-cream-white leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
