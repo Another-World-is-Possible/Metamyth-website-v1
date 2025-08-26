@@ -122,7 +122,7 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
       
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
         <div className="max-w-2xl">
-          <h2 className="font-angle text-4xl md:text-6xl font-bold mb-8 text-cream-white" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)' }}>
+          <h2 className="font-angle text-3xl md:text-5xl font-bold mb-8 text-cream-white leading-tight" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)' }}>
             {tile.title}
           </h2>
           
