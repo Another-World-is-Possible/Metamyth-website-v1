@@ -492,7 +492,7 @@ export default function QUESTionaire() {
                       <Button
                         onClick={handleSubmit}
                         disabled={submitMutation.isPending}
-                        className="bg-crimson hover:bg-crimson/80 text-white font-angle font-bold py-3 px-6"
+                        className="bg-crimson hover:bg-crimson/80 text-cream-white font-angle font-bold py-3 px-6"
                         data-testid="button-submit"
                       >
                         {submitMutation.isPending ? "Submitting..." : "Complete QUESTionaire"}

@@ -46,9 +46,8 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           </motion.h2>
           
           <motion.p 
-            className="font-game text-xl md:text-2xl mb-12 leading-relaxed max-w-4xl mx-auto"
+            className="font-game text-xl md:text-2xl mb-12 leading-relaxed max-w-4xl mx-auto text-cream-white"
             style={{
-              color: '#f0f0f0',
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
             }}
             initial={{ opacity: 0, y: 20 }}

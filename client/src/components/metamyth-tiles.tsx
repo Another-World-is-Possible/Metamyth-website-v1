@@ -122,23 +122,21 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
       
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
         <div className="max-w-2xl">
-          <h2 className="font-angle text-4xl md:text-6xl font-bold mb-8" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)' }}>
+          <h2 className="font-angle text-4xl md:text-6xl font-bold mb-8 text-cream-white" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)' }}>
             {tile.title}
           </h2>
           
           <blockquote 
-            className="font-game text-2xl md:text-3xl font-light mb-8 italic"
+            className="font-game text-2xl md:text-3xl font-light mb-8 italic text-cream-white"
             style={{
-              color: '#f0f0f0',
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
             }}
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
           
           <p 
-            className="font-game text-xl md:text-2xl leading-loose"
+            className="font-game text-xl md:text-2xl leading-loose text-cream-white"
             style={{
-              color: '#f0f0f0',
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
             }}
             dangerouslySetInnerHTML={{ __html: tile.description }}
@@ -146,9 +144,8 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
           
           {tile.callToAction && (
             <p 
-              className="font-angle text-3xl md:text-5xl font-bold mt-8"
+              className="font-angle text-3xl md:text-5xl font-bold mt-8 text-cream-white"
               style={{
-                color: '#f0f0f0',
                 textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
               }}
             >
