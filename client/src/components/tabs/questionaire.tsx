@@ -205,7 +205,7 @@ export default function QUESTionaire() {
           animate={{ opacity: 1, scale: 1 }}
           className="max-w-2xl mx-auto text-center"
         >
-          <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 p-8">
+          <Card className="bg-[#81ecec]/10 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 p-8">
             <CardContent>
               <h2 className="typography-h2 text-ancient-gold mb-6">
                 Your QUESTionaire Journey Complete
@@ -337,7 +337,7 @@ export default function QUESTionaire() {
               transition={{ duration: 0.6 }}
               className="max-w-2xl mx-auto"
             >
-              <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-mystical-teal/60 shadow-lg shadow-mystical-teal/40">
+              <Card className="bg-[#81ecec]/10 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
                   <h2 className="typography-h2 font-bold text-ancient-gold text-center mb-6">
                     Your Journey Begins
@@ -403,7 +403,7 @@ export default function QUESTionaire() {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto"
             >
-              <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10">
+              <Card className="bg-[#81ecec]/10 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
                   <h2 className="typography-h3 font-bold text-ancient-gold mb-6 text-center leading-tight">
                     {currentQuestion.title}
