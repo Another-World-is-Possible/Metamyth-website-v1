@@ -82,7 +82,7 @@ export default function Home() {
               backgroundAttachment: 'scroll'
             }}
           >
-            <CallToAction />
+            <CallToAction setActiveTab={handleNavigation} />
             <VideoSection />
           </div>
         </div>

@@ -88,14 +88,14 @@ export default function MetamythTiles({ setActiveTab }: MetamythTilesProps) {
       {/* Content layer */}
       {tiles.map((tile, index) => (
         <div key={tile.id} className="relative">
-          <TileComponent tile={tile} index={index} />
+          <TileComponent tile={tile} index={index} setActiveTab={setActiveTab} />
         </div>
       ))}
     </section>
   );
 }
 
-function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction?: string }, index: number }) {
+function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & { callToAction?: string }, index: number, setActiveTab?: (tab: string) => void }) {
   const getTextAlignment = () => {
     switch (tile.textAlign) {
       case "left":
@@ -137,11 +137,22 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
           ></p>
           
           {tile.callToAction && (
-            <p 
-              className="typography-h2 mt-8 text-cream-white text-glow-gold"
-            >
-              {tile.callToAction}
-            </p>
+            <div className="mt-8">
+              <p 
+                className="typography-h2 mb-6 text-cream-white text-glow-gold"
+              >
+                {tile.callToAction}
+              </p>
+              <Button 
+                onClick={() => setActiveTab?.('questionaire')}
+                className="bg-ancient-gold text-deep-black font-angle font-bold py-4 px-8 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
+                style={{
+                  boxShadow: '0 0 30px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.5), 0 4px 20px rgba(212, 175, 55, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2)'
+                }}
+              >
+                <span className="title-glow">BEGIN YOUR QUEST</span>
+              </Button>
+            </div>
           )}
         </div>
       </div>

@@ -6,7 +6,9 @@ export default function SystemsPage() {
   const [, navigate] = useLocation();
   
   const handleNavigation = (tab: string | null) => {
-    if (tab === 'why-story') {
+    if (tab === 'questionaire') {
+      navigate('/questionaire');
+    } else if (tab === 'why-story') {
       navigate('/why-story-matters');
     } else if (tab === 'stories') {
       navigate('/stories');

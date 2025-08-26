@@ -6,7 +6,9 @@ export default function WhyStoryMattersPage() {
   const [, navigate] = useLocation();
   
   const handleNavigation = (tab: string | null) => {
-    if (tab === 'systems') {
+    if (tab === 'questionaire') {
+      navigate('/questionaire');
+    } else if (tab === 'systems') {
       navigate('/systems');
     } else if (tab === 'stories') {
       navigate('/stories');
