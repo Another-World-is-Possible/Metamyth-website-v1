@@ -45,7 +45,7 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
                 </h3>
                 <p 
                   className="font-game mb-6"
-                  style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                  style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                 >
                   Transform your organization through story
                 </p>
@@ -75,7 +75,7 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
                 </h3>
                 <p 
                   className="font-game mb-6"
-                  style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+                  style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                 >
                   Build the new world with us
                 </p>

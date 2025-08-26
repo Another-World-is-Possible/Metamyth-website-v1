@@ -62,7 +62,7 @@ export default function InteractiveTimeline() {
               <h4 className={`font-bold text-${point.color} text-sm`}>
                 {point.title}
               </h4>
-              <p className="text-silver/60 text-xs">
+              <p className="text-cream-white/60 text-xs">
                 {point.year}
               </p>
             </div>
@@ -83,7 +83,7 @@ export default function InteractiveTimeline() {
                 <h3 className={`font-edensor text-xl font-bold text-${timelineData[selectedHorizon - 1]?.color} mb-4`}>
                   Horizon {selectedHorizon} Details
                 </h3>
-                <p className="text-silver">
+                <p className="text-cream-white">
                   Detailed information about this horizon would go here...
                 </p>
               </CardContent>

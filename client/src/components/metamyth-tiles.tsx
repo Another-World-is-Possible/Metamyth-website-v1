@@ -75,11 +75,11 @@ const tiles = [
 ];
 
 const titleColors = [
-  "text-white",
-  "text-white",
-  "text-white", 
-  "text-white",
-  "text-white"
+  "text-cream-white",
+  "text-cream-white",
+  "text-cream-white", 
+  "text-cream-white",
+  "text-cream-white"
 ];
 
 export default function MetamythTiles({ setActiveTab }: MetamythTilesProps) {

@@ -89,7 +89,7 @@ export default function TheFederation() {
                   <h3 className={`font-bold text-${stat.color} mb-2`}>
                     {stat.title}
                   </h3>
-                  <p className="text-silver/80 text-sm mb-3">
+                  <p className="text-cream-white/80 text-sm mb-3">
                     {stat.value}
                   </p>
                   <Button 
@@ -125,7 +125,7 @@ export default function TheFederation() {
                         METAMYTH GUIDE
                       </h4>
                       <p className="text-ancient-gold font-bold text-2xl mb-4">$497</p>
-                      <ul className="space-y-2 text-silver text-sm mb-6">
+                      <ul className="space-y-2 text-cream-white text-sm mb-6">
                         <li className="flex items-start">
                           <span className="text-mystical-teal mr-2">✓</span>
                           Complete self-guided story regeneration system
@@ -145,7 +145,7 @@ export default function TheFederation() {
                       </ul>
                       <div className="bg-mystical-teal/10 border border-mystical-teal/30 p-4 rounded">
                         <p className="text-mystical-teal font-bold text-sm">Outcome:</p>
-                        <p className="text-silver/80 text-sm">
+                        <p className="text-cream-white/80 text-sm">
                           Your complete metamyth + community integration
                         </p>
                       </div>
@@ -179,7 +179,7 @@ export default function TheFederation() {
                   <h4 className={`font-bold text-${pathway.color} mb-3`}>
                     {pathway.title}
                   </h4>
-                  <p className="text-silver/80 text-sm mb-4">
+                  <p className="text-cream-white/80 text-sm mb-4">
                     {pathway.description}
                   </p>
                   <Button 

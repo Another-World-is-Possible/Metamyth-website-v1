@@ -220,7 +220,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           <motion.p 
             className="font-game text-xl md:text-2xl mb-4"
             style={{ 
-              color: '#f0f0f0', 
+              color: 'hsl(45, 25%, 92%)', 
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' 
             }}
             initial={{ opacity: 0, y: 15 }}
@@ -233,7 +233,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           <motion.p 
             className="font-game text-lg md:text-xl mb-6"
             style={{ 
-              color: '#f0f0f0', 
+              color: 'hsl(45, 25%, 92%)', 
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' 
             }}
             initial={{ opacity: 0, y: 15 }}
@@ -268,12 +268,12 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             The same consciousness that authored every system destroying our planet can author every system that could heal it.
           </p>
           
           <div className="border-l-3 border-ancient-gold pl-6 mb-8">
-            <p className="font-game text-xl md:text-2xl mb-4" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+            <p className="font-game text-xl md:text-2xl mb-4" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               Story built civilization. Story can rebuild it.
             </p>
           </div>
@@ -293,7 +293,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
         <div className="max-w-4xl mx-auto relative z-20">
           <motion.p 
             className="font-khaft text-xl md:text-2xl text-center mb-8"
-            style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
+            style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -317,7 +317,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 <div className="relative">
                   <span className="font-bold text-ancient-gold text-xl">{audience.title}</span>
                   <br />
-                  <span className="text-silver/90 text-lg leading-relaxed">{audience.description}</span>
+                  <span className="text-cream-white/90 text-lg leading-relaxed">{audience.description}</span>
                   <div className="absolute -right-12 top-1/2 w-8 h-px bg-gradient-to-r from-ancient-gold/50 to-transparent"></div>
                 </div>
               </motion.div>
@@ -402,7 +402,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 1.5, delay: index * 0.3 }}
               >
-                <span className="text-silver text-xl flex-shrink-0 min-w-0" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                <span className="text-cream-white text-xl flex-shrink-0 min-w-0" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                   {transform.from}
                 </span>
                 
@@ -421,7 +421,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 <div className="flex-shrink-0 min-w-0">
                   <span className="font-bold text-ancient-gold text-xl" style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>{transform.to}</span>
                   <br />
-                  <span className="text-silver text-base" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>{transform.description}</span>
+                  <span className="text-cream-white text-base" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>{transform.description}</span>
                 </div>
               </motion.div>
             ))}
@@ -460,7 +460,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             <h2 className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold mb-3" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               The Science Behind Story as Evolutionary Technology
             </h2>
-            <p className="font-khaft text-base" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+            <p className="font-khaft text-base" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               How consciousness actually works:
             </p>
           </motion.div>
@@ -485,7 +485,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                       <h3 className={`font-edensor text-sm font-bold text-${concept.color} mb-2 tracking-wider`} style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
                         {concept.title}
                       </h3>
-                      <p className="text-silver text-sm leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                      <p className="text-cream-white text-sm leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                         {concept.description}
                       </p>
                     </CardContent>
@@ -522,7 +522,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 1.0 }}
         >
-          <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="font-game text-2xl md:text-3xl mb-8 leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             Every thread of human experience is converging now—this generation writes the story that determines Earth's future.
           </p>
           
@@ -584,7 +584,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             Ready to transform scattered narrative into coherent planetary force?
           </h2>
           
-          <p className="font-game text-xl mb-12 font-bold" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="font-game text-xl mb-12 font-bold" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             Using humanity's oldest technology to serve humanity's greatest need.
           </p>
           
@@ -618,7 +618,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             </motion.div>
           </div>
           
-          <p className="font-game italic mt-8 text-sm" style={{ color: '#f0f0f0', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="font-game italic mt-8 text-sm" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
             Limited availability for organizations ready to serve the story.
           </p>
         </motion.div>

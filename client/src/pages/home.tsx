@@ -91,7 +91,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-deep-black text-silver overflow-x-hidden">
+    <div className="min-h-screen bg-deep-black text-cream-white overflow-x-hidden">
       <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="relative">
         {renderTabContent()}
@@ -103,7 +103,7 @@ export default function Home() {
           <div className="flex items-center justify-center mb-6">
             <span className="font-angle text-2xl font-bold text-ancient-gold">Another World is Possible</span>
           </div>
-          <p className="font-game text-silver/60 mb-8">
+          <p className="font-game text-cream-white/60 mb-8">
             The world is made of stories, take back your story to change the world.
           </p>
           <div className="flex justify-center space-x-6 mb-8">
@@ -123,7 +123,7 @@ export default function Home() {
               </svg>
             </a>
           </div>
-          <p className="font-game text-silver/40 text-sm">
+          <p className="font-game text-cream-white/40 text-sm">
             © 2024 Another World is Possible. All rights reserved. | We serve the story, not profit.
           </p>
         </div>
