@@ -192,7 +192,7 @@
   }
 
   body {
-    @apply bg-deep-black text-silver antialiased overflow-x-hidden;
+    @apply bg-deep-black text-cream-white antialiased overflow-x-hidden;
     font-family: 'Glocs2024', serif;
     font-weight: normal;
     /* Cursor will be set by SwordCursor component */
@@ -342,6 +342,10 @@
   
   .text-dark-wine {
     color: var(--dark-wine);
+  }
+  
+  .text-cream-white {
+    color: var(--cream-white);
   }
   
   .border-mystical-teal {
