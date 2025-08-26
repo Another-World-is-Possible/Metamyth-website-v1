@@ -60,8 +60,8 @@
 }
 
 @font-face {
-  font-family: 'Elmond2024';
-  src: url('/attached_assets/Elmond_1756184596945.ttf?v=2024') format('truetype');
+  font-family: 'KingSans2024';
+  src: url('/attached_assets/KingSans_1756184213726.otf?v=2024') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -82,8 +82,8 @@
   font-family: 'Khaft2024', sans-serif !important;
 }
 
-.font-elmond {
-  font-family: 'Elmond2024', serif !important;
+.font-king {
+  font-family: 'KingSans2024', sans-serif !important;
 }
 
 @tailwind base;
