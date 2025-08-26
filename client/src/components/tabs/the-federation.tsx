@@ -83,7 +83,7 @@ export default function TheFederation() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className="backdrop-blur-lg bg-mystical-teal/5 border border-mystical-teal/20 shadow-2xl shadow-mystical-teal/20 hover:bg-mystical-teal/10 hover:border-mystical-teal/30 hover:shadow-mystical-teal/30 transition-all duration-300 text-center hover-glow">
+              <Card className="backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 text-center hover-glow">
                 <CardContent className="p-6">
                   <stat.icon className="text-ancient-gold mb-4 mx-auto" style={{fontSize: '3rem'}} />
                   <h3 className="font-angle font-bold text-ancient-gold mb-2">
@@ -111,13 +111,13 @@ export default function TheFederation() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mb-16"
         >
-          <Card className="backdrop-blur-lg bg-mystical-teal/5 border border-mystical-teal/20 shadow-2xl shadow-mystical-teal/20 hover:bg-mystical-teal/10 hover:border-mystical-teal/30 hover:shadow-mystical-teal/30 transition-all duration-300">
+          <Card className="backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="typography-h3 text-ancient-gold text-center mb-8">
                 Initiation Pathway
               </h3>
               
-              <Card className="backdrop-blur-lg bg-mystical-teal/5 border border-mystical-teal/20 shadow-2xl shadow-mystical-teal/20 hover:bg-mystical-teal/10 hover:border-mystical-teal/30 hover:shadow-mystical-teal/30 transition-all duration-300">
+              <Card className="backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="flex flex-col md:flex-row items-center gap-8">
                     <div className="flex-1">
@@ -172,7 +172,7 @@ export default function TheFederation() {
             {advancedPathways.map((pathway, index) => (
               <Card 
                 key={index}
-                className={`backdrop-blur-lg bg-mystical-teal/5 border border-mystical-teal/20 shadow-2xl shadow-mystical-teal/20 hover:bg-mystical-teal/10 hover:border-mystical-teal/30 hover:shadow-mystical-teal/30 transition-all duration-300 hover-glow ${
+                className={`backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow ${
                   pathway.color === 'crimson' ? 'border-crimson/30' :
                   pathway.color === 'mystical-teal' ? 'border-mystical-teal/30' :
                   pathway.color === 'ancient-gold' ? 'border-ancient-gold/30' : 'border-cream-white/30'
