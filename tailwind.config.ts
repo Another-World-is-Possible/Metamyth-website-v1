@@ -20,6 +20,7 @@ export default {
         'mystical-teal': "var(--mystical-teal)",
         'crimson': "var(--crimson)",
         'dark-wine': "var(--dark-wine)",
+        'cream-white': "var(--cream-white)",
         card: {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",

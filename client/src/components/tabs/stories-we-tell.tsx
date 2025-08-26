@@ -116,7 +116,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
       <div className="relative z-10">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-16"
+          className="font-edensor text-4xl md:text-6xl font-bold text-mystical-teal text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -147,7 +147,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                     <h3 className="font-edensor text-4xl font-bold text-ancient-gold mb-4">
                       {audience.title}
                     </h3>
-                    <p className="font-kardige mb-6 leading-relaxed text-xl" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
+                    <p className="font-kardige mb-6 leading-relaxed text-xl text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
                       {audience.description}
                     </p>
                     <div className="space-y-4">
@@ -159,21 +159,21 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                           <span className="w-2 h-2 bg-crimson rounded-full mr-2"></span>
                           Common Challenges
                         </h4>
-                        <p className="font-kardige text-lg leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.challenges}</p>
+                        <p className="font-kardige text-lg leading-relaxed text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.challenges}</p>
                       </div>
                       <div>
                         <h4 className="font-bold text-mystical-teal mb-2 flex items-center text-xl">
                           <span className="w-2 h-2 bg-mystical-teal rounded-full mr-2"></span>
                           Our Approach
                         </h4>
-                        <p className="font-kardige text-lg leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.transformation}</p>
+                        <p className="font-kardige text-lg leading-relaxed text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.transformation}</p>
                       </div>
                       <div>
                         <h4 className="font-bold text-ancient-gold mb-2 flex items-center text-xl">
                           <span className="w-2 h-2 bg-ancient-gold rounded-full mr-2"></span>
                           Potential Unlocked
                         </h4>
-                        <p className="font-kardige text-lg leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.potential}</p>
+                        <p className="font-kardige text-lg leading-relaxed text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audience.potential}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -201,33 +201,33 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                   <h3 className="font-edensor text-4xl font-bold text-ancient-gold mb-4">
                     {audienceTypes[2].title}
                   </h3>
-                  <p className="font-kardige mb-6 leading-relaxed text-xl" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
+                  <p className="font-kardige mb-6 leading-relaxed text-xl text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
                     {audienceTypes[2].description}
                   </p>
                   <div className="space-y-4">
                     <div>
                       <h4 
-                        className="font-bold text-crimson mb-2 flex items-center"
+                        className="font-bold text-crimson mb-2 flex items-center text-xl"
                         style={{ textShadow: '0 0 8px rgba(129, 236, 236, 0.8), 0 0 16px rgba(129, 236, 236, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                       >
                         <span className="w-2 h-2 bg-crimson rounded-full mr-2"></span>
                         Common Challenges
                       </h4>
-                      <p className="font-kardige text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audienceTypes[2].challenges}</p>
+                      <p className="font-kardige text-lg leading-relaxed text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audienceTypes[2].challenges}</p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-mystical-teal mb-2 flex items-center">
+                      <h4 className="font-bold text-mystical-teal mb-2 flex items-center text-xl">
                         <span className="w-2 h-2 bg-mystical-teal rounded-full mr-2"></span>
                         Our Approach
                       </h4>
-                      <p className="font-kardige text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audienceTypes[2].transformation}</p>
+                      <p className="font-kardige text-lg leading-relaxed text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audienceTypes[2].transformation}</p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-ancient-gold mb-2 flex items-center">
+                      <h4 className="font-bold text-ancient-gold mb-2 flex items-center text-xl">
                         <span className="w-2 h-2 bg-ancient-gold rounded-full mr-2"></span>
                         Potential Unlocked
                       </h4>
-                      <p className="font-kardige text-sm leading-relaxed" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audienceTypes[2].potential}</p>
+                      <p className="font-kardige text-lg leading-relaxed text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>{audienceTypes[2].potential}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -259,7 +259,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                       <h4 className={`font-edensor text-2xl font-bold text-${step.color} mb-2`}>
                         {step.title}
                       </h4>
-                      <p className="font-kardige text-lg" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
+                      <p className="font-kardige text-lg text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
                         {step.description}
                       </p>
                     </div>
@@ -268,7 +268,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
               </div>
               
               <div className="text-center mt-8">
-                <p className="font-kardige mb-6 max-w-2xl mx-auto text-xl" style={{ color: '#f0f0f0', textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
+                <p className="font-kardige mb-6 max-w-2xl mx-auto text-xl text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
                   Whether you're an individual visionary, purpose-driven entrepreneur, or transforming organization, 
                   we meet you where you are and help architect the story that unlocks your authentic power.
                 </p>
