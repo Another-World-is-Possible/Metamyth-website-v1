@@ -98,6 +98,7 @@
 
 .font-kardige {
   font-family: 'Kardige2024', sans-serif !important;
+  color: var(--cream-white) !important;
 }
 
 @tailwind base;
@@ -237,6 +238,7 @@
   /* Ensure Glocs font for body text */
   .font-alice, p, blockquote {
     font-family: 'Glocs2024', 'Georgia', serif !important;
+    color: inherit !important;
   }
 
   /* Scroll-triggered fade animations */
@@ -345,7 +347,7 @@
   }
   
   .text-cream-white {
-    color: var(--cream-white);
+    color: var(--cream-white) !important;
   }
   
   .border-mystical-teal {

@@ -144,7 +144,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="font-edensor text-5xl md:text-6xl font-bold text-ancient-gold mb-4">
+                    <h3 className="font-edensor text-4xl font-bold text-ancient-gold mb-4">
                       {audience.title}
                     </h3>
                     <p className="font-kardige mb-6 leading-relaxed text-xl text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
@@ -198,7 +198,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="font-edensor text-5xl md:text-6xl font-bold text-ancient-gold mb-4">
+                  <h3 className="font-edensor text-4xl font-bold text-ancient-gold mb-4">
                     {audienceTypes[2].title}
                   </h3>
                   <p className="font-kardige mb-6 leading-relaxed text-xl text-cream-white" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)' }}>
