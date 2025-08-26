@@ -209,7 +209,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                         
                         <div className="grid md:grid-cols-2 gap-4 mb-4">
                           <div>
-                            <h5 className="text-xl text-ancient-gold font-bold mb-2">Key Elements:</h5>
+                            <h5 className="text-xl text-ancient-gold font-bold mb-2 font-kardige">Key Elements:</h5>
                             <ul className="space-y-1">
                               {phase.movements.map((movement, idx) => (
                                 <li key={idx} className="text-cream-white/90 text-lg flex items-start gap-2 font-kardige">
@@ -221,7 +221,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                           </div>
                           
                           <div className="bg-deep-black/60 border-2 border-ancient-gold rounded-lg p-4 shadow-lg shadow-ancient-gold/50">
-                            <h5 className="text-ancient-gold font-bold mb-3 text-xl" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
+                            <h5 className="text-ancient-gold font-bold mb-3 text-xl font-kardige" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
                             <p className="text-cream-white text-lg font-medium leading-relaxed font-kardige" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                               {phase.outcome}
                             </p>
@@ -328,7 +328,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                   onClick={() => setActiveTab?.('questionaire')}
                   className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8 rounded-lg transition-colors duration-300 text-lg cursor-pointer"
                 >
-                  BEGIN YOUR METAMYTH JOURNEY <ArrowRight className="ml-2" />
+                  BEGIN YOUR METAMYTH JOURNEY <ArrowRight className="ml-2 text-deep-black" />
                 </Button>
               </div>
             </CardContent>

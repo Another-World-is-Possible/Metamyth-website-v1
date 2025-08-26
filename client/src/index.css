@@ -230,6 +230,12 @@
     color: hsl(45 25% 92%) !important;
   }
 
+  /* Ensure thornelia font for rhetorical text */
+  .font-thornelia {
+    font-family: 'Thornelia2024', serif !important;
+    color: hsl(45 25% 92%) !important;
+  }
+
   /* Scroll-triggered fade animations */
   .scroll-fade-in {
     opacity: 0;
