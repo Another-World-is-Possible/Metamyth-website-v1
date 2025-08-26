@@ -141,7 +141,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-angle text-4xl md:text-6xl font-bold text-mystical-teal mb-6">
+          <h2 className="typography-h1 text-mystical-teal mb-6">
             HOW IT WORKS
           </h2>
           <p className="text-2xl text-mystical-teal font-bold mb-4 font-thornelia">

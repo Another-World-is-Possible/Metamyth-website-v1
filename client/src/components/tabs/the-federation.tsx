@@ -66,7 +66,7 @@ export default function TheFederation() {
     <div className="bg-forest-green py-20 pt-32">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-angle text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-16"
+          className="typography-h1 text-ancient-gold text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -83,10 +83,10 @@ export default function TheFederation() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <Card className={`bg-deep-black/50 border border-${stat.color}/30 text-center hover-glow`}>
+              <Card className="bg-deep-black/50 border border-ancient-gold/30 text-center hover-glow">
                 <CardContent className="p-6">
-                  <stat.icon className={`text-${stat.color} text-3xl mb-4 mx-auto`} />
-                  <h3 className={`font-bold text-${stat.color} mb-2`}>
+                  <stat.icon className="text-ancient-gold text-3xl mb-4 mx-auto" />
+                  <h3 className="font-angle font-bold text-ancient-gold mb-2">
                     {stat.title}
                   </h3>
                   <p className="text-cream-white/80 text-sm mb-3">
@@ -94,7 +94,7 @@ export default function TheFederation() {
                   </p>
                   <Button 
                     variant="ghost"
-                    className={`text-${stat.color} text-sm hover:text-ancient-gold transition-colors duration-300 p-0`}
+                    className="text-ancient-gold text-sm hover:text-mystical-teal transition-colors duration-300 p-0"
                   >
                     {stat.action} →
                   </Button>

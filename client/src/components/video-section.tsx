@@ -11,9 +11,9 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
       <div className="absolute inset-0 bg-deep-black/60"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-angle text-4xl md:text-5xl font-bold text-center mb-4"
+          className="typography-h2 text-center mb-4 text-ancient-gold"
           style={{
-            color: '#000000',
+
             textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
           }}
           initial={{ opacity: 0, y: 30 }}
@@ -38,9 +38,9 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
         </motion.p>
         
         <motion.h3 
-          className="font-angle text-3xl md:text-4xl text-center mb-12 max-w-4xl mx-auto font-bold"
+          className="typography-h3 text-center mb-12 max-w-4xl mx-auto text-ancient-gold"
           style={{
-            color: '#000000',
+
             textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
           }}
           initial={{ opacity: 0, y: 20 }}

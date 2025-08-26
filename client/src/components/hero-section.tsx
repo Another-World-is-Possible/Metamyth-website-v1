@@ -28,7 +28,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
         <div className="absolute inset-0 bg-deep-black/40 z-10" />
         <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
           <motion.h1 
-            className="font-angle text-5xl md:text-7xl font-bold text-gradient-gold mb-8"
+            className="typography-h1 text-gradient-gold mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: backgroundLoaded ? 0.5 : 0 }}
@@ -37,7 +37,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           </motion.h1>
           
           <motion.h2 
-            className="font-angle text-3xl md:text-4xl text-ancient-gold mb-6"
+            className="typography-h2 text-ancient-gold mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 0.8 : 0, duration: 0.8, ease: "easeOut" }}
@@ -46,10 +46,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           </motion.h2>
           
           <motion.p 
-            className="font-game text-xl md:text-2xl mb-12 leading-relaxed max-w-4xl mx-auto text-cream-white"
-            style={{
-              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
-            }}
+            className="typography-lead mb-12 max-w-4xl mx-auto text-cream-white text-glow-gold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.1 : 0, duration: 0.8, ease: "easeOut" }}
