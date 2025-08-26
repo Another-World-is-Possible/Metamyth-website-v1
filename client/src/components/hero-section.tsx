@@ -29,6 +29,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
         <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
           <motion.h1 
             className="typography-h1 text-gradient-gold mb-8"
+            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6), 0 0 12px rgba(0, 0, 0, 0.4)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: backgroundLoaded ? 0.5 : 0 }}
@@ -38,6 +39,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           
           <motion.h2 
             className="typography-h2 text-ancient-gold mb-6"
+            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 16px rgba(0, 0, 0, 0.5)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 0.8 : 0, duration: 0.8, ease: "easeOut" }}
@@ -47,6 +49,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           
           <motion.p 
             className="typography-lead mb-12 max-w-4xl mx-auto text-cream-white text-glow-gold"
+            style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.1 : 0, duration: 0.8, ease: "easeOut" }}
