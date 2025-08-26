@@ -297,9 +297,9 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
             <CardContent className="p-8">
               <div className="flex items-center justify-center mb-6">
-                <Globe className="text-crimson text-4xl mr-4" />
+                <Globe className="text-mystical-teal text-4xl mr-4" />
                 <h3 
-                  className="font-edensor text-3xl font-bold text-crimson"
+                  className="font-edensor text-3xl font-bold text-mystical-teal"
                   style={{ textShadow: '0 0 8px rgba(129, 236, 236, 0.8), 0 0 16px rgba(129, 236, 236, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                 >
                   THE LARGER VISION
@@ -326,7 +326,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <div className="mt-8">
                 <Button 
                   onClick={() => setActiveTab?.('questionaire')}
-                  className="bg-crimson hover:bg-crimson/80 text-white font-angle font-bold py-4 px-8 rounded-lg transition-colors duration-300 text-lg cursor-pointer"
+                  className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8 rounded-lg transition-colors duration-300 text-lg cursor-pointer"
                 >
                   BEGIN YOUR METAMYTH JOURNEY <ArrowRight className="ml-2" />
                 </Button>
