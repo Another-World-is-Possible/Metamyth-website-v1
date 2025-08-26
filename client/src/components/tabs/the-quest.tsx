@@ -118,7 +118,10 @@ export default function TheQuest() {
             "We are on a journey to change the human story<br />and transform along the way."
           </p>
           <p className="font-game text-lg leading-loose">
-            Our quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence. This is how we change the human story—one authentic narrative at a time.
+            Our quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built<br />
+            a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence.
+            <br /><br />
+            This is how we change the human story—one authentic narrative at a time.
           </p>
         </motion.div>
 

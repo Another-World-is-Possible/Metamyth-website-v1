@@ -220,7 +220,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                             </ul>
                           </div>
                           
-                          <div className="bg-deep-black/60 border-2 border-ancient-gold/60 rounded-lg p-4 shadow-lg shadow-ancient-gold/30">
+                          <div className="bg-deep-black/60 border-2 border-ancient-gold rounded-lg p-4 shadow-lg shadow-ancient-gold/50">
                             <h5 className="text-ancient-gold font-bold mb-3 text-xl" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
                             <p className="text-cream-white text-lg font-medium leading-relaxed font-kardige" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                               {phase.outcome}
