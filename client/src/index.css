@@ -71,8 +71,8 @@
 
 @font-face {
   font-family: 'Wildborn2024';
-  src: url('/attached_assets/wildborn Bold_1756185505462.ttf?v=2024') format('truetype');
-  font-weight: bold;
+  src: url('/attached_assets/wildborn Black_1756185575008.ttf?v=2024') format('truetype');
+  font-weight: 900;
   font-style: normal;
   font-display: swap;
   font-feature-settings: "liga" 0, "kern" 1;
