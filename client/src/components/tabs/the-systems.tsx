@@ -141,13 +141,13 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="typography-h1 text-mystical-teal mb-6">
+          <h2 className="typography-h1 text-gradient-gold mb-6">
             HOW IT WORKS
           </h2>
-          <p className="typography-h3 text-mystical-teal font-bold mb-4">
+          <p className="typography-h2 text-ancient-gold font-bold mb-4" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 16px rgba(0, 0, 0, 0.5)' }}>
             Organizational Story Transformation
           </p>
-          <p className="typography-h3 text-cream-white max-w-4xl mx-auto leading-relaxed font-kardige">
+          <p className="typography-lead text-cream-white text-glow-gold max-w-4xl mx-auto leading-relaxed">
             We give people back control of their stories, 
             transforming scattered narratives into coherent forces of planetary transformation.
           </p>
