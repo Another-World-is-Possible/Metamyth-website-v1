@@ -98,7 +98,7 @@
 
 .font-kardige {
   font-family: 'Kardige2024', sans-serif !important;
-  color: var(--cream-white) !important;
+  color: hsl(45 25% 92%) !important;
 }
 
 @tailwind base;
@@ -175,6 +175,7 @@
     @apply border-border;
     text-decoration: none;
     text-decoration-line: none;
+    color: inherit;
   }
   
   /* Remove square text selection, keep only glow */
@@ -193,9 +194,10 @@
   }
 
   body {
-    @apply bg-deep-black text-cream-white antialiased overflow-x-hidden;
+    @apply bg-deep-black antialiased overflow-x-hidden;
     font-family: 'Glocs2024', serif;
     font-weight: normal;
+    color: hsl(45 25% 92%) !important;
     /* Cursor will be set by SwordCursor component */
   }
 
@@ -238,7 +240,7 @@
   /* Ensure Glocs font for body text */
   .font-alice, p, blockquote {
     font-family: 'Glocs2024', 'Georgia', serif !important;
-    color: inherit !important;
+    color: hsl(45 25% 92%) !important;
   }
 
   /* Scroll-triggered fade animations */
@@ -347,7 +349,7 @@
   }
   
   .text-cream-white {
-    color: var(--cream-white) !important;
+    color: hsl(45 25% 92%) !important;
   }
   
   .border-mystical-teal {
