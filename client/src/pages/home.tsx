@@ -1,20 +1,32 @@
-import { useState, useEffect } from "react";
-import Navigation from "@/components/navigation";
+import { useEffect } from "react";
+import { useLocation } from "wouter";
+import SharedNavigation from "@/components/shared-navigation";
 import HeroSection from "@/components/hero-section";
 import MetamythTiles from "@/components/metamyth-tiles";
 import CallToAction from "@/components/call-to-action";
 import VideoSection from "@/components/video-section";
-import OurMetamyth from "@/components/tabs/our-metamyth";
-import TheQuest from "@/components/tabs/the-quest";
-import StoriesWeTell from "@/components/tabs/stories-we-tell";
-import WhyStoryMatters from "@/components/tabs/why-story-matters";
-import TheSystems from "@/components/tabs/the-systems";
-import TheFederation from "@/components/tabs/the-federation";
-import QUESTionaire from "@/components/tabs/questionaire";
-
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<string | null>(null);
+  const [, navigate] = useLocation();
+
+  const handleNavigation = (tab: string | null) => {
+    if (tab === 'questionaire') {
+      navigate('/questionaire');
+    } else if (tab === 'metamyth') {
+      navigate('/metamyth');
+    } else if (tab === 'quest') {
+      navigate('/quest');
+    } else if (tab === 'stories') {
+      navigate('/stories');
+    } else if (tab === 'why-story') {
+      navigate('/why-story-matters');
+    } else if (tab === 'systems') {
+      navigate('/systems');
+    } else if (tab === 'federation') {
+      navigate('/federation');
+    }
+    // If tab is null, stay on home page
+  };
 
   useEffect(() => {
     // Enhanced Intersection Observer for immersive scroll animations
@@ -34,7 +46,7 @@ export default function Home() {
       });
     }, observerOptions);
 
-    // Small delay to ensure DOM is updated after tab change
+    // Small delay to ensure DOM is updated
     const timeoutId = setTimeout(() => {
       // Observe all scroll-triggered elements
       const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in, .metamyth-section');
@@ -46,55 +58,30 @@ export default function Home() {
       const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in, .metamyth-section');
       scrollElements.forEach(el => observer.unobserve(el));
     };
-  }, [activeTab]);
-
-  const renderTabContent = () => {
-    switch (activeTab) {
-      case 'questionaire':
-        return <QUESTionaire />;
-      case 'metamyth':
-        return <OurMetamyth />;
-      case 'quest':
-        return <TheQuest />;
-      case 'stories':
-        return <StoriesWeTell setActiveTab={setActiveTab} />;
-      case 'why-story':
-        return <WhyStoryMatters setActiveTab={setActiveTab} />;
-      case 'systems':
-        return <TheSystems setActiveTab={setActiveTab} />;
-      case 'federation':
-        return <TheFederation />;
-      default:
-        return (
-          <>
-            <HeroSection setActiveTab={setActiveTab} />
-            <div className="section-fade-in">
-              <MetamythTiles setActiveTab={setActiveTab} />
-            </div>
-            <div className="section-fade-in">
-              <div 
-                className="relative"
-                style={{
-                  backgroundImage: `url(/attached_assets/_zln01ad4mec8v0qmtav0_0_1755899727372.png)`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundAttachment: 'scroll' // Fixed doesn't work on mobile
-                }}
-              >
-                <CallToAction setActiveTab={setActiveTab} />
-                <VideoSection setActiveTab={setActiveTab} />
-              </div>
-            </div>
-          </>
-        );
-    }
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-deep-black text-cream-white overflow-x-hidden">
-      <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+      <SharedNavigation />
       <main className="relative">
-        {renderTabContent()}
+        <HeroSection setActiveTab={handleNavigation} />
+        <div className="section-fade-in">
+          <MetamythTiles setActiveTab={handleNavigation} />
+        </div>
+        <div className="section-fade-in">
+          <div 
+            className="relative"
+            style={{
+              backgroundImage: `url(/attached_assets/_zln01ad4mec8v0qmtav0_0_1755899727372.png)`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'scroll'
+            }}
+          >
+            <CallToAction />
+            <VideoSection />
+          </div>
+        </div>
       </main>
       
       {/* Footer */}
