@@ -95,14 +95,14 @@ export default function TheQuest() {
       {/* Content */}
       <div className="relative z-10">
       <div className="max-w-7xl mx-auto px-4">
-        <motion.h2 
-          className="typography-h1 text-ancient-gold text-center mb-8 text-glow-gold"
+        <motion.h1 
+          className="typography-h1 text-gradient-gold text-center mb-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           THE QUEST
-        </motion.h2>
+        </motion.h1>
         
         <motion.div
           className="text-center typography-body mb-16 max-w-4xl mx-auto text-cream-white text-glow-gold"
@@ -110,10 +110,10 @@ export default function TheQuest() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <p className="typography-h3 italic text-ancient-gold mb-6">
-            "We are on a journey to change the human story<br />and transform along the way."
-          </p>
-          <p className="typography-body leading-loose">
+          <h2 className="typography-h2 text-ancient-gold font-bold mb-6" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 16px rgba(0, 0, 0, 0.5)' }}>
+            We are on a journey to change the human story and transform along the way.
+          </h2>
+          <p className="typography-lead text-cream-white text-glow-gold leading-relaxed">
             Our quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built<br />
             a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence.
             <br /><br />
