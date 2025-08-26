@@ -317,7 +317,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 <div className="relative">
                   <span className="font-bold text-ancient-gold text-xl">{audience.title}</span>
                   <br />
-                  <span className="text-cream-white/90 text-lg leading-relaxed">{audience.description}</span>
+                  <span className="font-kardige text-cream-white/90 text-lg leading-relaxed">{audience.description}</span>
                   <div className="absolute -right-12 top-1/2 w-8 h-px bg-gradient-to-r from-ancient-gold/50 to-transparent"></div>
                 </div>
               </motion.div>
@@ -402,7 +402,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 1.5, delay: index * 0.3 }}
               >
-                <span className="text-cream-white text-xl flex-shrink-0 min-w-0" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                <span className="font-kardige text-cream-white text-xl flex-shrink-0 min-w-0" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                   {transform.from}
                 </span>
                 
@@ -421,7 +421,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 <div className="flex-shrink-0 min-w-0">
                   <span className="font-bold text-ancient-gold text-xl" style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>{transform.to}</span>
                   <br />
-                  <span className="text-cream-white text-base" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>{transform.description}</span>
+                  <span className="font-kardige text-cream-white text-lg leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>{transform.description}</span>
                 </div>
               </motion.div>
             ))}
@@ -485,7 +485,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                       <h3 className={`font-angle text-lg md:text-xl font-bold text-${concept.color} mb-2 tracking-wider`} style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
                         {concept.title}
                       </h3>
-                      <p className="font-game text-base md:text-lg text-cream-white leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                      <p className="font-kardige text-lg text-cream-white leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                         {concept.description}
                       </p>
                     </CardContent>
