@@ -147,7 +147,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           <p className="text-2xl text-mystical-teal font-bold mb-4">
             Organizational Story Transformation
           </p>
-          <p className="text-xl text-silver max-w-4xl mx-auto leading-relaxed font-king">
+          <p className="text-xl text-silver max-w-4xl mx-auto leading-relaxed">
             The radical process of reality authorship. We give people back control of their stories, 
             transforming scattered narratives into coherent forces of planetary transformation.
           </p>
@@ -165,7 +165,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4 text-center">
                 THE RADICAL PROCESS OF REALITY AUTHORSHIP
               </h3>
-              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto font-king">
+              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto">
                 Most organizations operate from scattered narratives written by market forces, investor expectations, 
                 and cultural programming rather than their authentic purpose. We connect their deepest mission to a 
                 larger planetary story, raising the stakes of what they're doing and connecting people to their 
@@ -200,10 +200,10 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                         <h4 className={`font-edensor text-2xl font-bold text-${phase.color} mb-2`}>
                           {phase.title}
                         </h4>
-                        <p className="text-xl text-silver/80 mb-2 italic font-king">
+                        <p className="text-xl text-silver/80 mb-2 italic">
                           {phase.subtitle}
                         </p>
-                        <p className="text-ancient-gold font-bold mb-4 font-king">
+                        <p className="text-ancient-gold font-bold mb-4">
                           {phase.duration}
                         </p>
                         
@@ -212,7 +212,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                             <h5 className="text-ancient-gold font-bold mb-2">Key Elements:</h5>
                             <ul className="space-y-1">
                               {phase.movements.map((movement, idx) => (
-                                <li key={idx} className="text-silver/90 text-sm flex items-start gap-2 font-king">
+                                <li key={idx} className="text-silver/90 text-sm flex items-start gap-2">
                                   <CheckCircle className="text-ancient-gold text-xs mt-1 flex-shrink-0" size={16} />
                                   {movement}
                                 </li>
@@ -222,7 +222,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                           
                           <div className="bg-deep-black/60 border-2 border-ancient-gold/60 rounded-lg p-4 shadow-lg shadow-ancient-gold/30">
                             <h5 className="text-ancient-gold font-bold mb-3 text-lg" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
-                            <p className="text-silver text-base font-medium leading-relaxed font-king" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                            <p className="text-silver text-base font-medium leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                               {phase.outcome}
                             </p>
                           </div>
@@ -248,7 +248,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <h3 className="font-edensor text-2xl font-bold text-mystical-teal mb-4 text-center">
                 WHO WE SERVE
               </h3>
-              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto font-king">
+              <p className="text-silver leading-relaxed text-center max-w-4xl mx-auto">
                 Purpose-driven organizations ready to stop playing by someone else's rules and start authoring 
                 their own reality. These include conscious entrepreneurs, B-Corp founders, nonprofit leaders, 
                 and mission-driven companies who know their work matters but struggle to communicate why in 
@@ -277,7 +277,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                     <h4 className="font-bold text-ancient-gold mb-3" style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
                       {result.title}
                     </h4>
-                    <p className="text-silver text-sm font-king" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                    <p className="text-silver text-sm" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                       {result.description}
                     </p>
                   </CardContent>
@@ -297,9 +297,9 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300">
             <CardContent className="p-8">
               <div className="flex items-center justify-center mb-6">
-                <Globe className="text-mystical-teal text-4xl mr-4" />
+                <Globe className="text-crimson text-4xl mr-4" />
                 <h3 
-                  className="font-edensor text-3xl font-bold text-mystical-teal"
+                  className="font-edensor text-3xl font-bold text-crimson"
                   style={{ textShadow: '0 0 8px rgba(129, 236, 236, 0.8), 0 0 16px rgba(129, 236, 236, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                 >
                   THE LARGER VISION
@@ -310,7 +310,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 Building the New Operating System: MythOS
               </h4>
               
-              <p className="font-king text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
+              <p className="font-khaft text-silver leading-relaxed mb-6 max-w-4xl mx-auto">
                 We're creating a world that works for all, where work is an adventure, through a new operating 
                 system—MythOS—that makes the process of doing meaningful work into the adventure it deserves. 
                 This AI-first platform brings stories to life, guides people along their authentic paths, and 
@@ -326,7 +326,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <div className="mt-8">
                 <Button 
                   onClick={() => setActiveTab?.('questionaire')}
-                  className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8 rounded-lg transition-colors duration-300 text-lg cursor-pointer"
+                  className="bg-crimson hover:bg-crimson/80 text-white font-angle font-bold py-4 px-8 rounded-lg transition-colors duration-300 text-lg cursor-pointer"
                 >
                   BEGIN YOUR METAMYTH JOURNEY <ArrowRight className="ml-2" />
                 </Button>
