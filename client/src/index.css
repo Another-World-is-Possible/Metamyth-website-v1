@@ -59,6 +59,16 @@
   text-rendering: optimizeLegibility;
 }
 
+@font-face {
+  font-family: 'Elmond2024';
+  src: url('/attached_assets/Elmond_1756184596945.ttf?v=2024') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 0, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
 /* Font class declarations with new names */
 .font-angle {
   font-family: 'AngleFairy2024', serif !important;
@@ -70,6 +80,10 @@
 
 .font-khaft {
   font-family: 'Khaft2024', sans-serif !important;
+}
+
+.font-elmond {
+  font-family: 'Elmond2024', serif !important;
 }
 
 @tailwind base;
