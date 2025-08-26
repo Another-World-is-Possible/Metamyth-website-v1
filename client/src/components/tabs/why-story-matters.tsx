@@ -240,7 +240,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
           >
-            ...most organizations waste their voice on meaningless metrics instead of meaningful transformation.
+            ...most organizations waste their voice on meaningless metrics<br />instead of meaningful transformation.
           </motion.p>
           
           <motion.p 
@@ -460,7 +460,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             <h2 className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold mb-3" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               The Science Behind Story as Evolutionary Technology
             </h2>
-            <p className="font-khaft text-base" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+            <p className="font-angle text-xl md:text-2xl font-bold text-ancient-gold" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
               How consciousness actually works:
             </p>
           </motion.div>
@@ -482,10 +482,10 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                       <div className={`w-12 h-12 mx-auto mb-2 rounded-full bg-${concept.color}/20 flex items-center justify-center border border-${concept.color}/30`}>
                         <IconComponent className={`w-6 h-6 text-${concept.color}`} />
                       </div>
-                      <h3 className={`font-edensor text-sm font-bold text-${concept.color} mb-2 tracking-wider`} style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
+                      <h3 className={`font-angle text-lg md:text-xl font-bold text-${concept.color} mb-2 tracking-wider`} style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
                         {concept.title}
                       </h3>
-                      <p className="text-cream-white text-sm leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
+                      <p className="font-game text-base md:text-lg text-cream-white leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
                         {concept.description}
                       </p>
                     </CardContent>
@@ -548,7 +548,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
             }}
           >
-            The choice is simple: Author the world your heart knows is possible.
+            The choice is simple:<br />Author the world your heart knows is possible.
           </p>
         </motion.div>
       </section>
