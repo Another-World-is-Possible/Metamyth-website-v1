@@ -116,7 +116,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
       <div className="relative z-10">
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-6xl font-bold text-mystical-teal text-center mb-16"
+          className="font-angle text-4xl md:text-6xl font-bold text-mystical-teal text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -144,7 +144,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="font-edensor text-4xl font-bold text-ancient-gold mb-4">
+                    <h3 className="font-angle text-4xl font-bold text-ancient-gold mb-4">
                       {audience.title}
                     </h3>
                     <p className="font-kardige mb-6 leading-relaxed text-xl" style={{ color: 'hsl(45, 25%, 92%)' }}>
@@ -152,21 +152,21 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                     </p>
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-angle text-3xl md:text-4xl font-bold text-crimson mb-3 flex items-center">
+                        <h4 className="font-angle text-xl md:text-2xl font-bold text-crimson mb-3 flex items-center">
                           <span className="w-3 h-3 bg-crimson rounded-full mr-3"></span>
                           Common Challenges
                         </h4>
                         <p className="font-kardige text-lg leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)' }}>{audience.challenges}</p>
                       </div>
                       <div>
-                        <h4 className="font-angle text-3xl md:text-4xl font-bold text-mystical-teal mb-3 flex items-center">
+                        <h4 className="font-angle text-xl md:text-2xl font-bold text-mystical-teal mb-3 flex items-center">
                           <span className="w-3 h-3 bg-mystical-teal rounded-full mr-3"></span>
                           Our Approach
                         </h4>
                         <p className="font-kardige text-lg leading-relaxed" style={{ color: 'hsl(45, 25%, 92%)' }}>{audience.transformation}</p>
                       </div>
                       <div>
-                        <h4 className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold mb-3 flex items-center">
+                        <h4 className="font-angle text-xl md:text-2xl font-bold text-ancient-gold mb-3 flex items-center">
                           <span className="w-3 h-3 bg-ancient-gold rounded-full mr-3"></span>
                           Potential Unlocked
                         </h4>
@@ -195,7 +195,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                   <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                 </div>
                 <CardContent className="p-6">
-                  <h3 className="font-edensor text-4xl font-bold text-ancient-gold mb-4">
+                  <h3 className="font-angle text-4xl font-bold text-ancient-gold mb-4">
                     {audienceTypes[2].title}
                   </h3>
                   <p className="font-kardige mb-6 leading-relaxed text-xl" style={{ color: 'hsl(45, 25%, 92%)' }}>
@@ -203,21 +203,21 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                   </p>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-angle text-3xl md:text-4xl font-bold text-crimson mb-3 flex items-center">
+                      <h4 className="font-angle text-xl md:text-2xl font-bold text-crimson mb-3 flex items-center">
                         <span className="w-3 h-3 bg-crimson rounded-full mr-3"></span>
                         Common Challenges
                       </h4>
                       <p className="font-kardige text-lg leading-relaxed text-cream-white">{audienceTypes[2].challenges}</p>
                     </div>
                     <div>
-                      <h4 className="font-angle text-3xl md:text-4xl font-bold text-mystical-teal mb-3 flex items-center">
+                      <h4 className="font-angle text-xl md:text-2xl font-bold text-mystical-teal mb-3 flex items-center">
                         <span className="w-3 h-3 bg-mystical-teal rounded-full mr-3"></span>
                         Our Approach
                       </h4>
                       <p className="font-kardige text-lg leading-relaxed text-cream-white">{audienceTypes[2].transformation}</p>
                     </div>
                     <div>
-                      <h4 className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold mb-3 flex items-center">
+                      <h4 className="font-angle text-xl md:text-2xl font-bold text-ancient-gold mb-3 flex items-center">
                         <span className="w-3 h-3 bg-ancient-gold rounded-full mr-3"></span>
                         Potential Unlocked
                       </h4>
@@ -239,7 +239,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
         >
           <Card className="bg-[#81ecec]/10 backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
-              <h3 className="font-edensor text-4xl font-bold text-ancient-gold text-center mb-8">
+              <h3 className="font-angle text-4xl font-bold text-ancient-gold text-center mb-8">
                 Our Process: From Story to System
               </h3>
               <div className="grid md:grid-cols-4 gap-6">
@@ -250,7 +250,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                       <div className={`mx-auto w-16 h-16 rounded-full bg-${step.color}/20 flex items-center justify-center mb-4 mystical-glow`}>
                         <IconComponent className={`w-8 h-8 text-${step.color}`} />
                       </div>
-                      <h4 className={`font-edensor text-2xl font-bold text-${step.color} mb-2`}>
+                      <h4 className={`font-angle text-2xl font-bold text-${step.color} mb-2`}>
                         {step.title}
                       </h4>
                       <p className="font-kardige text-lg" style={{ color: 'hsl(45, 25%, 92%)' }}>

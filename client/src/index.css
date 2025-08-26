@@ -146,7 +146,6 @@
   --dark-wine: hsl(345 45% 30%);
   --cream-white: hsl(45 25% 92%);
   
-  --font-edensor: 'Edensor', serif;
   --font-alice: 'Alice', serif;
   --font-angle: 'Angle', serif;
   --font-game: 'Game', serif;
@@ -224,23 +223,6 @@
       0 0 30px rgba(212, 175, 55, 0.2);
   }
   
-  /* Ensure font-edensor class uses new fonts with enhanced glow */
-  .font-edensor {
-    font-family: 'AngleFairy2024', serif !important;
-    text-shadow: 
-      0 0 12px rgba(212, 175, 55, 0.8),
-      0 0 24px rgba(212, 175, 55, 0.5),
-      0 0 36px rgba(212, 175, 55, 0.3),
-      0 0 48px rgba(212, 175, 55, 0.1);
-    font-weight: normal !important;
-    text-decoration: none !important;
-    text-decoration-line: none !important;
-    text-underline-offset: unset !important;
-    -webkit-text-decoration: none !important;
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
-    text-rendering: optimizeLegibility !important;
-  }
   
   /* Ensure Glocs font for body text */
   .font-alice, p, blockquote {
@@ -445,9 +427,6 @@
     animation: soft-pulse 3s ease-in-out infinite;
   }
 
-  .font-edensor {
-    font-family: var(--font-edensor);
-  }
 
   /* Enhanced title glow classes for different intensities */
   .title-glow {

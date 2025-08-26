@@ -11,7 +11,7 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
       <div className="absolute inset-0 bg-deep-black/60"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-5xl font-bold text-center mb-4"
+          className="font-angle text-4xl md:text-5xl font-bold text-center mb-4"
           style={{
             color: '#000000',
             textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'

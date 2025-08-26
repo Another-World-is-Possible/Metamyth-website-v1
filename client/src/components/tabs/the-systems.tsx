@@ -141,10 +141,10 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-edensor text-4xl md:text-6xl font-bold text-mystical-teal mb-6">
+          <h2 className="font-angle text-4xl md:text-6xl font-bold text-mystical-teal mb-6">
             THE METAMYTH SYSTEM
           </h2>
-          <p className="text-2xl text-mystical-teal font-bold mb-4">
+          <p className="text-2xl text-mystical-teal font-bold mb-4 font-thornelia">
             Organizational Story Transformation
           </p>
           <p className="text-2xl text-cream-white max-w-4xl mx-auto leading-relaxed font-kardige">
@@ -162,7 +162,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
         >
           <Card className="bg-[#81ecec]/10 backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
-              <h3 className="font-edensor text-2xl font-bold text-ancient-gold mb-4 text-center">
+              <h3 className="font-angle text-2xl font-bold text-ancient-gold mb-4 text-center">
                 THE RADICAL PROCESS OF REALITY AUTHORSHIP
               </h3>
               <p className="text-xl text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-kardige">
@@ -177,7 +177,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
 
         {/* Three Phases */}
         <div className="mb-16">
-          <h3 className="font-edensor text-3xl font-bold text-center text-mystical-teal mb-12">
+          <h3 className="font-angle text-3xl font-bold text-center text-mystical-teal mb-12">
             HOW THE SYSTEM WORKS
           </h3>
           
@@ -197,7 +197,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                       </div>
                       
                       <div className="flex-1">
-                        <h4 className={`font-edensor text-2xl font-bold text-${phase.color} mb-2`}>
+                        <h4 className={`font-angle text-2xl font-bold text-${phase.color} mb-2`}>
                           {phase.title}
                         </h4>
                         <p className="text-2xl text-cream-white/80 mb-2 italic font-kardige">
@@ -245,7 +245,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
         >
           <Card className="bg-[#81ecec]/10 backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
-              <h3 className="font-edensor text-4xl font-bold text-mystical-teal mb-4 text-center">
+              <h3 className="font-angle text-4xl font-bold text-mystical-teal mb-4 text-center">
                 WHO WE SERVE
               </h3>
               <p className="text-xl text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-kardige">
@@ -260,7 +260,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
 
         {/* Transformation Results */}
         <div className="mb-16">
-          <h3 className="font-edensor text-3xl font-bold text-center text-ancient-gold mb-12">
+          <h3 className="font-angle text-3xl font-bold text-center text-ancient-gold mb-12">
             THE TRANSFORMATION
           </h3>
           
@@ -299,7 +299,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <div className="flex items-center justify-center mb-6">
                 <Globe className="text-mystical-teal text-4xl mr-4" />
                 <h3 
-                  className="font-edensor text-4xl font-bold text-mystical-teal"
+                  className="font-angle text-4xl font-bold text-mystical-teal"
                   style={{ textShadow: '0 0 8px rgba(129, 236, 236, 0.8), 0 0 16px rgba(129, 236, 236, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                 >
                   THE LARGER VISION

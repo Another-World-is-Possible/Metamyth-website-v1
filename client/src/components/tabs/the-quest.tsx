@@ -96,7 +96,7 @@ export default function TheQuest() {
       <div className="relative z-10">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2 
-          className="font-edensor text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-8"
+          className="font-angle text-4xl md:text-6xl font-bold text-ancient-gold text-center mb-8"
           style={{ 
             textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 0 0 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0,0,0,0.8)'
           }}
@@ -151,7 +151,7 @@ export default function TheQuest() {
                     </div>
                     <div>
                       <h3 
-                        className="font-edensor text-2xl md:text-3xl font-bold mb-2"
+                        className="font-angle text-2xl md:text-3xl font-bold mb-2"
                         style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                       >
                         {horizon.title}
@@ -171,7 +171,7 @@ export default function TheQuest() {
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h5 className={`font-edensor text-lg font-bold text-${horizon.color} mb-4`}>
+                      <h5 className={`font-angle text-lg font-bold text-${horizon.color} mb-4`}>
                         OBJECTIVES
                       </h5>
                       <ul className="space-y-3">
@@ -193,7 +193,7 @@ export default function TheQuest() {
                     </div>
                     
                     <div>
-                      <h5 className={`font-edensor text-lg font-bold text-${horizon.color} mb-4`}>
+                      <h5 className={`font-angle text-lg font-bold text-${horizon.color} mb-4`}>
                         STATUS
                       </h5>
                       <p 

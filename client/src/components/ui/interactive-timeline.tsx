@@ -80,7 +80,7 @@ export default function InteractiveTimeline() {
           >
             <Card className={`border border-${timelineData[selectedHorizon - 1]?.color}/30`}>
               <CardContent className="p-6">
-                <h3 className={`font-edensor text-xl font-bold text-${timelineData[selectedHorizon - 1]?.color} mb-4`}>
+                <h3 className={`font-angle text-xl font-bold text-${timelineData[selectedHorizon - 1]?.color} mb-4`}>
                   Horizon {selectedHorizon} Details
                 </h3>
                 <p className="text-cream-white">
