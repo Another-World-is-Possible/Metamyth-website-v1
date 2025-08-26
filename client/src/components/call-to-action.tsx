@@ -25,7 +25,7 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="scroll-fade-in">
-            <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
+            <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
               <CardContent className="p-8 text-center">
                 <h3 
                   className="typography-h3 text-ancient-gold mb-4"
@@ -51,7 +51,7 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
           </div>
           
           <div className="scroll-fade-in">
-            <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
+            <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
               <CardContent className="p-8 text-center">
                 <h3 
                   className="typography-h3 text-mystical-teal mb-4"

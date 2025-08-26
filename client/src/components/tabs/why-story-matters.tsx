@@ -288,7 +288,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           </motion.p>
           
           {/* Opaque frame for bulleted section */}
-          <div className="max-w-4xl mx-auto backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 rounded-lg p-6">
+          <div className="max-w-4xl mx-auto backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 rounded-lg p-6">
             <div className="grid gap-6 max-w-3xl mx-auto">
             {audienceTypes.map((audience, index) => (
               <motion.div
@@ -366,7 +366,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
       >
         <div className="max-w-5xl mx-auto relative z-20">
           {/* Opaque frame for transformation section */}
-          <div className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 rounded-lg p-8">
+          <div className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 rounded-lg p-8">
             <motion.h2 
               className="font-angle text-4xl md:text-5xl font-bold text-ancient-gold text-center mb-12"
               style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
@@ -463,7 +463,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -5, transition: { duration: 0.3 } }}
                 >
-                  <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 h-full hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+                  <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 h-full hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                     <CardContent className="p-3 text-center">
                       <div className={`w-12 h-12 mx-auto mb-2 rounded-full flex items-center justify-center border ${concept.color === 'crimson' ? 'bg-crimson/20 border-crimson/30' : concept.color === 'mystical-teal' ? 'bg-mystical-teal/20 border-mystical-teal/30' : concept.color === 'ancient-gold' ? 'bg-ancient-gold/20 border-ancient-gold/30' : 'bg-cream-white/20 border-cream-white/30'}`}>
                         <IconComponent className={`w-6 h-6 ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`} />

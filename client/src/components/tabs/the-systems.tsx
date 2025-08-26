@@ -160,7 +160,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+          <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="typography-h3 font-bold text-ancient-gold mb-4 text-center">
                 THE RADICAL PROCESS OF REALITY AUTHORSHIP
@@ -189,7 +189,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+                <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-6">
                       <div className="p-4 rounded-lg bg-ancient-gold/20 border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/30">
@@ -243,7 +243,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+          <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="font-angle text-4xl font-bold text-mystical-teal mb-4 text-center">
                 WHO WE SERVE
@@ -272,7 +272,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 h-full">
+                <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 h-full">
                   <CardContent className="p-6">
                     <h4 className="font-bold text-ancient-gold mb-3 text-2xl" style={{ textShadow: '0 0 8px currentColor, 0 0 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.75), 0 0 16px rgba(0,0,0,0.7), 0 0 24px rgba(0,0,0,0.65), 0 0 32px rgba(0,0,0,0.6)' }}>
                       {result.title}
@@ -294,7 +294,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0 }}
         >
-          <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+          <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
               <div className="flex items-center justify-center mb-6">
                 <Globe className="text-mystical-teal text-4xl mr-4" />
