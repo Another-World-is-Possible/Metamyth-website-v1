@@ -148,7 +148,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
             Organizational Story Transformation
           </p>
           <p className="text-2xl text-silver max-w-4xl mx-auto leading-relaxed font-kardige">
-            The radical process of reality authorship. We give people back control of their stories, 
+            We give people back control of their stories, 
             transforming scattered narratives into coherent forces of planetary transformation.
           </p>
         </motion.div>
@@ -245,7 +245,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
         >
           <Card className="bg-[#81ecec]/10 backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
-              <h3 className="font-edensor text-2xl font-bold text-mystical-teal mb-4 text-center">
+              <h3 className="font-edensor text-4xl font-bold text-mystical-teal mb-4 text-center">
                 WHO WE SERVE
               </h3>
               <p className="text-xl text-silver leading-relaxed text-center max-w-4xl mx-auto font-kardige">
@@ -274,7 +274,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               >
                 <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 hover:border-[#81ecec]/80 hover:shadow-[#81ecec]/60 transition-all duration-300 h-full">
                   <CardContent className="p-6">
-                    <h4 className="font-bold text-ancient-gold mb-3" style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
+                    <h4 className="font-bold text-ancient-gold mb-3 text-2xl" style={{ textShadow: '0 0 8px currentColor, 2px 2px 4px rgba(0,0,0,0.8)' }}>
                       {result.title}
                     </h4>
                     <p className="text-silver text-lg font-kardige" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
@@ -299,7 +299,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <div className="flex items-center justify-center mb-6">
                 <Globe className="text-mystical-teal text-4xl mr-4" />
                 <h3 
-                  className="font-edensor text-3xl font-bold text-mystical-teal"
+                  className="font-edensor text-4xl font-bold text-mystical-teal"
                   style={{ textShadow: '0 0 8px rgba(129, 236, 236, 0.8), 0 0 16px rgba(129, 236, 236, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}
                 >
                   THE LARGER VISION
