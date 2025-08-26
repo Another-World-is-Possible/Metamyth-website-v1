@@ -144,33 +144,33 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-deep-black/60 via-deep-black/10 to-transparent" />
                   </div>
                   <CardContent className="p-6">
-                    <h3 className="typography-h2 text-ancient-gold mb-4">
+                    <h3 className="typography-h3 font-bold text-ancient-gold mb-4">
                       {audience.title}
                     </h3>
-                    <p className="typography-body mb-6 leading-relaxed text-cream-white" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                    <p className="typography-body mb-6 leading-relaxed text-cream-white font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                       {audience.description}
                     </p>
                     <div className="space-y-4">
                       <div>
-                        <h4 className="typography-h3 font-bold text-crimson mb-3 flex items-center">
+                        <h4 className="text-xl font-bold text-crimson mb-3 flex items-center font-kardige">
                           <span className="w-3 h-3 bg-crimson rounded-full mr-3"></span>
                           Common Challenges
                         </h4>
-                        <p className="typography-technical leading-relaxed text-cream-white" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.challenges}</p>
+                        <p className="text-lg leading-relaxed text-cream-white font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.challenges}</p>
                       </div>
                       <div>
-                        <h4 className="typography-h3 font-bold text-mystical-teal mb-3 flex items-center">
+                        <h4 className="text-xl font-bold text-mystical-teal mb-3 flex items-center font-kardige">
                           <span className="w-3 h-3 bg-mystical-teal rounded-full mr-3"></span>
                           Our Approach
                         </h4>
-                        <p className="typography-technical leading-relaxed text-cream-white" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.transformation}</p>
+                        <p className="text-lg leading-relaxed text-cream-white font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.transformation}</p>
                       </div>
                       <div>
-                        <h4 className="typography-h3 font-bold text-ancient-gold mb-3 flex items-center">
+                        <h4 className="text-xl font-bold text-ancient-gold mb-3 flex items-center font-kardige">
                           <span className="w-3 h-3 bg-ancient-gold rounded-full mr-3"></span>
                           Potential Unlocked
                         </h4>
-                        <p className="typography-technical leading-relaxed text-cream-white" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.potential}</p>
+                        <p className="text-lg leading-relaxed text-cream-white font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.potential}</p>
                       </div>
                     </div>
                   </CardContent>

@@ -146,36 +146,30 @@ export default function TheQuest() {
                       </span>
                     </div>
                     <div>
-                      <h3 
-                        className="font-angle text-2xl md:text-3xl font-bold mb-2"
-                        style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}
-                      >
+                      <h3 className="typography-h3 font-bold text-ancient-gold mb-2" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                         {horizon.title}
                       </h3>
-                      <h4 className="font-game text-lg italic" style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                      <h4 className="text-2xl text-cream-white/80 italic font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                         {horizon.subtitle}
                       </h4>
                     </div>
                   </div>
                   
-                  <p 
-                    className="font-game text-lg leading-loose mb-6"
-                    style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}
-                  >
+                  <p className="typography-body text-cream-white leading-relaxed mb-6 font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {horizon.description}
                   </p>
                   
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h5 className={`typography-body font-bold mb-4 ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
+                      <h5 className={`text-xl font-bold mb-4 font-kardige ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         OBJECTIVES
                       </h5>
                       <ul className="space-y-3">
                         {horizon.items.map((item, itemIndex) => (
                           <motion.li 
                             key={itemIndex} 
-                            className="flex items-start font-game"
-                            style={{ color: 'hsl(45, 25%, 92%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}
+                            className="flex items-start text-cream-white/90 text-lg font-kardige"
+                            style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}
                             initial={{ x: -20, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
                             transition={{ duration: 0.4, delay: index * 0.3 + itemIndex * 0.1 }}
@@ -189,11 +183,11 @@ export default function TheQuest() {
                     </div>
                     
                     <div>
-                      <h5 className={`typography-body font-bold mb-4 ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
+                      <h5 className={`text-xl font-bold mb-4 font-kardige ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         STATUS
                       </h5>
                       <p 
-                        className={`typography-body italic ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}
+                        className={`text-lg italic font-kardige ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}
                         style={{
                           textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)'
                         }}

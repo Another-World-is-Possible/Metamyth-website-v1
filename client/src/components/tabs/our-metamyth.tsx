@@ -168,11 +168,8 @@ className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl sh
                   <div className="space-y-6">
                     {item.isNarrative ? (
                       <motion.p 
-                        className="font-game text-lg leading-relaxed"
-                        style={{
-                          color: 'hsl(45, 25%, 92%)',
-                          textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
-                        }}
+                        className="typography-body text-cream-white leading-relaxed font-kardige"
+                        style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
@@ -183,7 +180,7 @@ className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl sh
                       <>
                         {item.sectionTitle && (
                           <motion.h4 
-                            className="font-angle text-2xl font-bold text-ancient-gold"
+                            className="typography-h3 font-bold text-ancient-gold"
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3 }}
@@ -193,7 +190,7 @@ className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl sh
                         )}
                         {item.quote && (
                           <motion.blockquote 
-                            className="font-game text-xl font-semibold text-mystical-teal italic border-l-4 border-ancient-gold pl-6 py-2"
+                            className="text-2xl text-cream-white/80 italic font-kardige border-l-4 border-ancient-gold pl-6 py-2"
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.4, delay: 0.1 }}
@@ -206,11 +203,8 @@ className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl sh
                             {item.items.map((text, itemIndex) => (
                               <motion.p 
                                 key={itemIndex}
-                                className="font-game flex items-start"
-                                style={{
-                                  color: 'hsl(45, 25%, 92%)',
-                                  textShadow: '0 0 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.5)'
-                                }}
+                                className="text-lg text-cream-white/90 flex items-start font-kardige"
+                                style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.3, delay: itemIndex * 0.1 + 0.2 }}
