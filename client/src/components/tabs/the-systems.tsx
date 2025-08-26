@@ -144,7 +144,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           <h2 className="typography-h1 text-gradient-gold mb-6">
             HOW IT WORKS
           </h2>
-          <h2 className="typography-h2 text-ancient-gold font-bold mb-4" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.6), 0 0 16px rgba(0, 0, 0, 0.5), 0 0 32px rgba(0, 0, 0, 0.4), 0 0 64px rgba(0, 0, 0, 0.3)' }}>
+          <h2 className="typography-h2 text-ancient-gold font-bold mb-4" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 0, 0, 0.9), 0 0 32px rgba(0, 0, 0, 0.8), 0 0 64px rgba(0, 0, 0, 0.7), 0 0 96px rgba(0, 0, 0, 0.6)' }}>
             Organizational Story Transformation
           </h2>
           <p className="typography-lead text-cream-white text-glow-gold max-w-4xl mx-auto leading-relaxed">
@@ -222,7 +222,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                           
                           <div className="bg-deep-black/60 border-2 border-ancient-gold rounded-lg p-4 shadow-lg shadow-ancient-gold/50">
                             <h5 className="text-ancient-gold font-bold mb-3 text-xl font-kardige" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
-                            <p className="text-cream-white text-lg font-medium leading-relaxed font-kardige" style={{ textShadow: '0 0 6px rgba(0,0,0,0.6), 0 0 12px rgba(0,0,0,0.5), 0 0 24px rgba(0,0,0,0.4), 0 0 48px rgba(0,0,0,0.3)' }}>
+                            <p className="text-cream-white text-lg font-medium leading-relaxed font-kardige" style={{ textShadow: '0 0 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.9), 0 0 24px rgba(0,0,0,0.8), 0 0 48px rgba(0,0,0,0.7), 0 0 72px rgba(0,0,0,0.6)' }}>
                               {phase.outcome}
                             </p>
                           </div>
@@ -274,10 +274,10 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               >
                 <Card className="bg-[#81ecec]/10 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 h-full">
                   <CardContent className="p-6">
-                    <h4 className="font-bold text-ancient-gold mb-3 text-2xl" style={{ textShadow: '0 0 8px currentColor, 0 0 6px rgba(0,0,0,0.6), 0 0 12px rgba(0,0,0,0.5), 0 0 24px rgba(0,0,0,0.4), 0 0 48px rgba(0,0,0,0.3)' }}>
+                    <h4 className="font-bold text-ancient-gold mb-3 text-2xl" style={{ textShadow: '0 0 8px currentColor, 0 0 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.9), 0 0 24px rgba(0,0,0,0.8), 0 0 48px rgba(0,0,0,0.7), 0 0 72px rgba(0,0,0,0.6)' }}>
                       {result.title}
                     </h4>
-                    <p className="text-cream-white text-lg font-kardige" style={{ textShadow: '0 0 6px rgba(0,0,0,0.6), 0 0 12px rgba(0,0,0,0.5), 0 0 24px rgba(0,0,0,0.4), 0 0 48px rgba(0,0,0,0.3)' }}>
+                    <p className="text-cream-white text-lg font-kardige" style={{ textShadow: '0 0 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.9), 0 0 24px rgba(0,0,0,0.8), 0 0 48px rgba(0,0,0,0.7), 0 0 72px rgba(0,0,0,0.6)' }}>
                       {result.description}
                     </p>
                   </CardContent>
@@ -300,7 +300,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 <Globe className="text-mystical-teal text-4xl mr-4" />
                 <h3 
                   className="font-angle text-4xl font-bold text-mystical-teal"
-                  style={{ textShadow: '0 0 8px rgba(129, 236, 236, 0.8), 0 0 16px rgba(129, 236, 236, 0.4), 0 0 6px rgba(0,0,0,0.6), 0 0 12px rgba(0,0,0,0.5), 0 0 24px rgba(0,0,0,0.4), 0 0 48px rgba(0,0,0,0.3)' }}
+                  style={{ textShadow: '0 0 8px rgba(129, 236, 236, 0.8), 0 0 16px rgba(129, 236, 236, 0.4), 0 0 6px rgba(0,0,0,0.9), 0 0 12px rgba(0,0,0,0.9), 0 0 24px rgba(0,0,0,0.8), 0 0 48px rgba(0,0,0,0.7), 0 0 72px rgba(0,0,0,0.6)' }}
                 >
                   THE LARGER VISION
                 </h3>
