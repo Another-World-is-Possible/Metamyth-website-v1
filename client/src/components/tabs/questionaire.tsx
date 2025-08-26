@@ -179,11 +179,13 @@ export default function QUESTionaire() {
   };
 
   const handleSubmit = () => {
+    // Merge text responses into main responses object
+    const combinedResponses = { ...responses, ...textResponses };
+    
     submitMutation.mutate({
       email: contactInfo.email,
       phone: contactInfo.phone,
-      responses: responses,
-      textResponses: textResponses,
+      responses: combinedResponses,
     });
   };
 
@@ -237,7 +239,7 @@ export default function QUESTionaire() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <p className="font-game text-ancient-gold font-bold">
+                  <p className="typography-body text-ancient-gold font-bold">
                     Join our community of conscious story architects:
                   </p>
                   <a 
@@ -300,10 +302,7 @@ export default function QUESTionaire() {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="typography-h1 text-ancient-gold mb-8"
-                  style={{ 
-                    textShadow: '0 0 20px rgba(212, 175, 55, 0.8), 0 0 40px rgba(212, 175, 55, 0.4)'
-                  }}>
+              <h1 className="typography-h1 text-ancient-gold mb-8 text-glow-gold">
                 QUESTionaire
               </h1>
               <h2 className="typography-h3 text-mystical-teal mb-6 italic">
@@ -343,13 +342,13 @@ export default function QUESTionaire() {
                   <h2 className="font-angle text-3xl font-bold text-ancient-gold text-center mb-6">
                     Your Journey Begins
                   </h2>
-                  <p className="font-game text-center text-cream-white mb-8">
+                  <p className="typography-body text-center text-cream-white mb-8">
                     First, let's connect so we can share your results and next steps.
                   </p>
                   
                   <div className="space-y-6">
                     <div>
-                      <label className="block font-game text-mystical-teal font-bold mb-2">
+                      <label className="block typography-body text-mystical-teal font-bold mb-2">
                         <Mail className="w-4 h-4 inline mr-2" />
                         Email Address *
                       </label>
@@ -364,7 +363,7 @@ export default function QUESTionaire() {
                     </div>
                     
                     <div>
-                      <label className="block font-game text-mystical-teal font-bold mb-2">
+                      <label className="block typography-body text-mystical-teal font-bold mb-2">
                         <Phone className="w-4 h-4 inline mr-2" />
                         Phone Number (Optional)
                       </label>
