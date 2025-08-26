@@ -12,13 +12,13 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
       <div className="absolute inset-0 bg-deep-black/50"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <h2 
-          className="scroll-fade-in typography-h2 text-center mb-4 text-ancient-gold text-glow-gold"
+          className="scroll-fade-in typography-h2 font-angle text-center mb-4 text-ancient-gold text-glow-gold"
         >
           THE INVITATION
         </h2>
         
         <h3 
-          className="scroll-fade-in typography-h3 text-center mb-12 text-ancient-gold text-glow-gold"
+          className="scroll-fade-in typography-h3 font-game text-center mb-12 text-ancient-gold text-glow-gold"
         >
           Ready to stop being trapped in someone else's story<br />and start writing your own?
         </h3>
@@ -28,12 +28,12 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
             <Card className="backdrop-blur-sm bg-mystical-teal/3 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
               <CardContent className="p-8 text-center">
                 <h3 
-                  className="typography-h3 text-ancient-gold mb-4"
+                  className="typography-h3 font-angle text-ancient-gold mb-4"
                 >
                   REGENERATE YOUR STORY
                 </h3>
                 <p 
-                  className="typography-body mb-6 text-cream-white text-glow-gold"
+                  className="typography-body font-kardige mb-6 text-cream-white text-glow-gold"
                 >
                   Transform your organization through story
                 </p>
@@ -54,12 +54,12 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
             <Card className="backdrop-blur-sm bg-mystical-teal/3 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
               <CardContent className="p-8 text-center">
                 <h3 
-                  className="typography-h3 text-mystical-teal mb-4"
+                  className="typography-h3 font-angle text-mystical-teal mb-4"
                 >
                   JOIN THE QUEST
                 </h3>
                 <p 
-                  className="typography-body mb-6 text-cream-white text-glow-gold"
+                  className="typography-body font-kardige mb-6 text-cream-white text-glow-gold"
                 >
                   Build the new world with us
                 </p>

@@ -122,24 +122,24 @@ function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & 
       
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
         <div className="max-w-2xl">
-          <h2 className="typography-h2 mb-8 text-cream-white leading-tight text-glow-gold">
+          <h2 className="typography-h2 font-angle mb-8 text-cream-white leading-tight text-glow-gold">
             {tile.title}
           </h2>
           
           <blockquote 
-            className="typography-h3 font-light mb-8 italic text-cream-white text-glow-gold"
+            className="typography-h3 font-game mb-8 italic text-cream-white text-glow-gold"
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
           
           <p 
-            className="typography-body leading-loose text-cream-white text-glow-gold"
+            className="typography-body font-kardige leading-loose text-cream-white text-glow-gold"
             dangerouslySetInnerHTML={{ __html: tile.description }}
           ></p>
           
           {tile.callToAction && (
             <div className="mt-8">
               <p 
-                className="typography-h2 mb-6 text-cream-white text-glow-gold"
+                className="typography-h2 font-game mb-6 text-cream-white text-glow-gold"
               >
                 {tile.callToAction}
               </p>

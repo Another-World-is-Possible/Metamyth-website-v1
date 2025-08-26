@@ -279,7 +279,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
       >
         <div className="max-w-4xl mx-auto relative z-20">
           <motion.p 
-            className="typography-h3 font-bold text-center mb-8 text-ancient-gold text-glow-gold"
+            className="typography-h3 font-game text-center mb-8 text-ancient-gold text-glow-gold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -405,7 +405,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 </motion.div>
                 
                 <div className="flex-shrink-0 min-w-0">
-                  <span className="font-bold text-ancient-gold text-xl" style={{ textShadow: '0 0 8px currentColor, 0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>{transform.to}</span>
+                  <span className="font-game font-bold text-ancient-gold text-xl" style={{ textShadow: '0 0 8px currentColor, 0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>{transform.to}</span>
                   <br />
                   <span className="font-kardige text-cream-white text-lg leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{transform.description}</span>
                 </div>
