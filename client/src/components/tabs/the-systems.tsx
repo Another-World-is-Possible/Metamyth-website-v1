@@ -318,7 +318,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               </p>
               
               <div className="border-t border-ancient-gold/30 pt-6">
-                <p className="font-angle text-2xl font-bold text-ancient-gold">
+                <p className="font-angle text-2xl font-bold text-ancient-gold" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                   The Metamyth System scales from organizational evolution to civilizational transformation, one story at a time.
                 </p>
               </div>

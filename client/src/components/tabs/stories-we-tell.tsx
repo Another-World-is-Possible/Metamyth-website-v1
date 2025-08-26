@@ -253,7 +253,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                       <h4 className={`typography-h3 font-bold mb-2 ${step.color === 'crimson' ? 'text-crimson' : step.color === 'mystical-teal' ? 'text-mystical-teal' : step.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         {step.title}
                       </h4>
-                      <p className="font-kardige text-lg" style={{ color: 'hsl(45, 35%, 83%)' }}>
+                      <p className="font-kardige text-lg" style={{ color: 'hsl(45, 35%, 83%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                         {step.description}
                       </p>
                     </div>
@@ -262,7 +262,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
               </div>
               
               <div className="text-center mt-8">
-                <p className="font-kardige mb-6 max-w-2xl mx-auto text-xl" style={{ color: 'hsl(45, 35%, 83%)' }}>
+                <p className="font-kardige mb-6 max-w-2xl mx-auto text-xl" style={{ color: 'hsl(45, 35%, 83%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                   Whether you're an individual visionary, purpose-driven entrepreneur, or transforming organization, 
                   we meet you where you are and help architect the story that unlocks your authentic power.
                 </p>
