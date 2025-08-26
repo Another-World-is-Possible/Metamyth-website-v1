@@ -70,8 +70,8 @@
 }
 
 @font-face {
-  font-family: 'Emerland2024';
-  src: url('/attached_assets/Emerland_1756186655326.ttf?v=2024') format('truetype');
+  font-family: 'Kardige2024';
+  src: url('/attached_assets/Kardige_1756186739231.ttf?v=2024') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -96,8 +96,8 @@
   font-family: 'KingSans2024', sans-serif !important;
 }
 
-.font-emerland {
-  font-family: 'Emerland2024', serif !important;
+.font-kardige {
+  font-family: 'Kardige2024', sans-serif !important;
 }
 
 @tailwind base;
