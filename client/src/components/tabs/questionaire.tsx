@@ -9,22 +9,34 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
+interface Question {
+  id: number;
+  title: string;
+  type: "radio" | "checkbox" | "text";
+  options?: string[];
+  placeholder?: string;
+  subtitle: string;
+  hasTextInput?: boolean;
+  examples?: string[];
+}
+
 const questions = [
   {
     id: 1,
-    title: "In the middle of civilizational collapse and rebirth, are you writing your own story or just reacting to everyone else's chaos?",
+    title: "In the middle of this great transition, are you writing your own story or just reacting to everyone else's chaos?",
     type: "radio",
     options: [
       "I'm actively writing my story—I know what I'm building and why it matters",
-      "I'm mostly in control of my path but ready to go way deeper into conscious creation", 
+      "I'm mostly in control of my path but ready to go way deeper into conscious creation",
       "I'm breaking free from others' expectations but still discovering what's actually mine to write",
       "I feel completely stuck in stories other people wrote and I desperately want out"
     ],
-    subtitle: "Most people discover they're not as much in control as they thought. The awakening can be uncomfortable—and liberating."
+    subtitle: "Most people discover they're not as much in control as they thought. The awakening can be uncomfortable—and liberating.",
+    hasTextInput: true
   },
   {
     id: 2,
-    title: "We're living through the collapse of the old world and the birth of something entirely different. When you imagine stepping fully into who you could become in this emerging reality, what happens in your body?",
+    title: "We're living through the end of one world and the birth of something entirely different. When you imagine stepping fully into who you could become in this emerging reality, what happens in your body?",
     type: "radio",
     options: [
       "I feel electric—I can see my role in what's coming and I'm actively moving toward it",
@@ -32,11 +44,12 @@ const questions = [
       "I feel it calling but invisible walls keep stopping me from breaking through",
       "I'm so buried under everyone else's crises I can barely imagine my own transformation"
     ],
-    subtitle: "Your body knows the truth before your mind does. What it's telling you matters more than you realize."
+    subtitle: "Your body knows the truth before your mind does. What it's telling you matters more than you realize.",
+    hasTextInput: true
   },
   {
     id: 3,
-    title: "The old economy is dying. But some people are building what comes next. What have you learned or created that could actually serve the world we're trying to birth?",
+    title: "The old story is changing. But some people are building what comes next. What have you learned or created that could actually serve the world we're trying to birth?",
     type: "checkbox",
     options: [
       "I understand broken systems and I see pathways to rebuild them regeneratively",
@@ -48,11 +61,12 @@ const questions = [
       "I've cultivated networks that could connect game-changers for world-shifting collaboration",
       "When something genuinely matters, I show up with everything I have"
     ],
-    subtitle: "Every person carries medicine the world desperately needs. Most haven't learned to see their gifts clearly yet."
+    subtitle: "Every person carries medicine the world desperately needs. Most haven't learned to see their gifts clearly yet.",
+    hasTextInput: true
   },
   {
     id: 4,
-    title: "Every person building something meaningful hits the same core challenge that either stops them or becomes rocket fuel. What's the biggest gap between your potential and your current reality—and what happens if nothing changes in the next 12 months?",
+    title: "Every person building something meaningful faces dragons—challenges that either defeat us or forge us into who we need to become. What's your dragon? What's the biggest obstacle between your potential and your current reality, and what happens if you don't slay it in the next 12 months?",
     type: "radio",
     options: [
       "I'm not clear on my unique contribution and I'm wasting precious time on work that isn't mine—years slip away",
@@ -61,49 +75,61 @@ const questions = [
       "I know exactly what needs to exist but I can't crack the code on making it financially viable—I might surrender",
       "I'm scattered across too many directions and nothing gains real momentum—I'm spinning wheels while the world burns"
     ],
-    subtitle: "The thing that stops most people isn't external circumstances. It's internal clarity. This gap is either your prison or your laboratory."
+    subtitle: "The dragon that stops most people isn't external circumstances. It's internal clarity. This challenge is either your prison or your forge.",
+    hasTextInput: true
   },
   {
     id: 5,
-    title: "Building the new world requires vision, commitment, and resources. If you found the right strategic alliance to accelerate what you're here to create, what's genuinely realistic for your investment over the next 6-12 months?",
+    title: "Transforming your story—stepping into who you're actually meant to be—requires investment in that process. If you found the right support to help you author your most authentic path, what feels realistic for investing in that transformation over the next year?",
     type: "radio",
     options: [
-      "$15K-50K+ annually—I command substantial resources and have authority to deploy them strategically",
-      "$5K-15K—I have meaningful capacity and will invest significantly in authentic transformation",
-      "$1K-5K—I'm strategic with resources but will commit to the right guidance and community",
-      "$500-1K—I'm building capacity while investing primarily energy and attention in aligned work",
-      "Exploring exchange—I need to understand what's possible before knowing what commitment makes sense"
+      "$15K-50K+ annually—Planetary impact: My story serves global transformation and deserves maximum investment",
+      "$5K-15K—Community impact: My work affects many lives and merits significant commitment",
+      "$1K-5K—Personal transformation: I'm focused on my own story development with strategic investment",
+      "$500-1K—I'm building capacity while investing what I have in my authentic becoming",
+      "Exploring possibilities—I need to understand what's available before committing resources"
     ],
-    subtitle: "Most people either underestimate or overestimate their real capacity. Accurate assessment is the foundation of effective action."
+    subtitle: "Your investment reflects both your capacity and your conviction about the transformation you're seeking. Resources follow commitment to authentic change.",
+    hasTextInput: true
   },
   {
     id: 6,
-    title: "The emerging economy runs on collaboration, not extraction. Beyond what you might receive, how do you see yourself contributing to a community of people consciously authoring the future?",
-    type: "radio",
+    title: "The old story says only those who can pay in money deserve transformation. We're writing a different story—one that recognizes many forms of wealth. If you're not rich in cash, what are you rich in? How would you contribute to a community creating the new story of our time?",
+    type: "checkbox",
     options: [
-      "Systems innovation—I redesign structures, processes, and agreements that embed new values",
-      "Technology development—I build platforms, tools, and digital solutions for conscious collaboration",
-      "Economic transformation—I work with finance, investment, and resource circulation in regenerative ways",
-      "Creative expression—I use art, design, and media to communicate visions that inspire transformation",
-      "Community cultivation—I create spaces where authentic connection and mutual support flourish",
-      "Story amplification—I help articulate and spread narratives that shift consciousness",
-      "Network weaving—I connect souls and facilitate relationships that create collaborative magic",
-      "Learning integration—I'm developing capacity to contribute more meaningfully as I grow"
+      "Systems design—I rebuild structures and processes that embed regenerative values",
+      "Technology creation—I build digital tools and platforms for conscious collaboration",
+      "Resource circulation—I understand finance and economic flows in service of life",
+      "Creative expression—I use art and media to make new realities visible and compelling",
+      "Community cultivation—I create spaces where authentic connection and mutual aid flourish",
+      "Story amplification—I help articulate narratives that shift how people see what's possible",
+      "Network weaving—I connect the right people for collaborative breakthroughs",
+      "Time and presence—I show up consistently with energy and commitment to collective transformation"
     ],
-    subtitle: "Communities that change the world are built by people who show up to give, not just get. Your contribution style reveals everything."
+    subtitle: "Transformation shouldn't be pay-to-play. The new economy recognizes that everyone brings unique forms of wealth. Your contribution determines your role in co-creating what's next.",
+    hasTextInput: true
   },
   {
     id: 7,
-    title: "Every transformation has a single point of maximum leverage—the one shift that unlocks everything else. Complete this sentence: \"If I could change one thing that would transform my entire trajectory, it would be...\"",
+    title: "Every transformation has a single point of maximum leverage—the one shift that unlocks everything else. What's yours? What one change would transform your entire trajectory?",
     type: "text",
     placeholder: "Getting crystal clarity on what I'm actually meant to build in this lifetime...",
-    subtitle: "The thing you're most afraid to admit you need is usually the thing that would change everything."
+    subtitle: "The thing you're most afraid to admit you need is usually the thing that would change everything.",
+    hasTextInput: true,
+    examples: [
+      "Getting crystal clarity on what I'm actually meant to build in this lifetime...",
+      "Finding genuine collaborators who share the vision and can help birth it...",
+      "Cracking the code on sustainable economics for meaningful work...",
+      "Breaking free from others' expectations and fully trusting my authentic path...",
+      "Developing the courage to step into the leadership role this work demands..."
+    ]
   }
 ];
 
 export default function QUESTionaire() {
   const [currentStep, setCurrentStep] = useState(0); // 0 = intro, 1 = contact, 2+ = questions
   const [responses, setResponses] = useState<Record<number, any>>({});
+  const [textResponses, setTextResponses] = useState<Record<number, string>>({});
   const [contactInfo, setContactInfo] = useState({ email: "", phone: "" });
   const [showResult, setShowResult] = useState(false);
   const [qualification, setQualification] = useState<"calendar" | "discord">("discord");
@@ -130,6 +156,10 @@ export default function QUESTionaire() {
     setResponses(prev => ({ ...prev, [questionId]: value }));
   };
 
+  const handleTextResponse = (questionId: number, value: string) => {
+    setTextResponses(prev => ({ ...prev, [questionId]: value }));
+  };
+
   const handleNext = () => {
     if (currentStep === 0) {
       setCurrentStep(1);
@@ -153,6 +183,7 @@ export default function QUESTionaire() {
       email: contactInfo.email,
       phone: contactInfo.phone,
       responses: responses,
+      textResponses: textResponses,
     });
   };
 
@@ -178,9 +209,13 @@ export default function QUESTionaire() {
                 Your QUESTionaire Journey Complete
               </h2>
               <p className="font-khaft text-lg text-silver mb-8 leading-relaxed">
-                Your responses reveal exactly where you stand in this great authorship. 
-                We'll reach out within 48 hours with resources, community, or collaboration 
-                designed for your specific role in writing what comes next.
+                This is it. We are standing at the threshold of something monumental. The old story that built our world is ending, and the new one is being written by people who remember they are the authors of reality itself. They're not waiting for permission or perfect conditions. They're picking up the pen and writing the future into existence—regenerative economies, collaborative communities, technology that serves life, governance that honors the whole.
+              </p>
+              <p className="font-khaft text-lg text-silver mb-8 leading-relaxed">
+                This could be the moment that changes everything for you. Your responses reveal exactly where you stand in this great authorship—and what specific support could accelerate your role in what's emerging. We'll reach out within 48 hours with resources, community, or strategic alliance opportunities designed for your unique position in the shift.
+              </p>
+              <p className="font-khaft text-lg text-silver mb-8 leading-relaxed">
+                But understand this: we don't write your story for you—we help you LIVE it. As with all real magic, the more you believe, the realer it becomes. This work requires commitment, courage, and the willingness to step into the unknown. The pen is in your hand. The future is waiting. What story will you write?
               </p>
               
               {qualification === "calendar" ? (
@@ -274,13 +309,14 @@ export default function QUESTionaire() {
               <h2 className="font-game text-2xl md:text-3xl text-mystical-teal mb-6 italic">
                 "The 7-Question Journey That Reveals Who's Really Writing Your Life"
               </h2>
+              <h3 className="font-game text-xl md:text-2xl text-ancient-gold mb-6 font-bold">
+                "Are You the Hero of Your Story or a Background Character in Someone Else's?"
+              </h3>
               <p className="font-khaft text-lg text-silver mb-8 max-w-3xl mx-auto leading-relaxed">
-                Right now, our civilization is writing its final chapters. Systems designed for scarcity are destroying abundance. 
-                Stories built on separation are fragmenting communities. But here's what the breakdown reveals: we're living through 
-                the greatest transformation in human history.
+                The old story is ending. Systems designed for scarcity are destroying abundance. Stories built on separation are fragmenting communities. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth: reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power—before it's too late.
               </p>
-              <p className="font-game text-lg text-ancient-gold mb-12 font-bold">
-                Are You the Hero of Your Story or a Background Character in Someone Else's?
+              <p className="font-khaft text-lg text-silver mb-12 max-w-3xl mx-auto leading-relaxed">
+                The old story is ending. The new one is being written right now. Some people will author the future consciously. Others will simply react to what gets created around them. This journey reveals which one you are—and what becomes possible when you pick up the pen.
               </p>
               <Button
                 onClick={handleNext}
@@ -374,54 +410,68 @@ export default function QUESTionaire() {
                     {currentQuestion.title}
                   </h2>
                   
-                  {currentQuestion.type === "text" ? (
-                    <div className="space-y-6">
+                  <div className="space-y-6">
+                    {currentQuestion.type !== "text" && (
+                      <div className="space-y-4">
+                        {currentQuestion.options?.map((option, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            className={`border-2 rounded-lg p-4 cursor-pointer transition-all duration-300 hover:border-mystical-teal/60 hover:bg-mystical-teal/10 ${
+                              currentQuestion.type === "radio" 
+                                ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]/20' : 'border-silver/30')
+                                : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]/20' : 'border-silver/30')
+                            }`}
+                            onClick={() => {
+                              if (currentQuestion.type === "radio") {
+                                handleResponse(currentQuestion.id, option);
+                              } else {
+                                const current = responses[currentQuestion.id] || [];
+                                const updated = current.includes(option) 
+                                  ? current.filter((item: string) => item !== option)
+                                  : [...current, option];
+                                handleResponse(currentQuestion.id, updated);
+                              }
+                            }}
+                            data-testid={`option-${currentQuestion.id}-${index}`}
+                          >
+                            <div className="flex items-start space-x-3">
+                              <div className={`w-4 h-4 rounded-full border-2 mt-1 ${
+                                currentQuestion.type === "radio" 
+                                  ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
+                                  : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
+                              }`} />
+                              <span className="font-khaft text-silver leading-relaxed">{option}</span>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {/* Personal response text area for all questions */}
+                    <div className="mt-6">
+                      <label className="block font-game text-mystical-teal font-bold mb-3">
+                        Your personal response:
+                      </label>
                       <Textarea
-                        value={responses[currentQuestion.id] || ""}
-                        onChange={(e) => handleResponse(currentQuestion.id, e.target.value)}
+                        value={textResponses[currentQuestion.id] || ""}
+                        onChange={(e) => handleTextResponse(currentQuestion.id, e.target.value)}
                         className="bg-deep-black/50 border-mystical-teal/30 text-silver min-h-32 font-khaft"
-                        placeholder={currentQuestion.placeholder}
+                        placeholder={currentQuestion.placeholder || "Share your thoughts..."}
                         data-testid={`textarea-question-${currentQuestion.id}`}
                       />
+                      {currentQuestion.examples && (
+                        <div className="mt-3">
+                          <p className="font-khaft text-mystical-teal/70 text-sm mb-2">Examples:</p>
+                          {currentQuestion.examples.map((example, index) => (
+                            <p key={index} className="font-khaft text-silver/60 text-sm italic">- "{example}"</p>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                  ) : (
-                    <div className="space-y-4">
-                      {currentQuestion.options?.map((option, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          className={`border-2 rounded-lg p-4 cursor-pointer transition-all duration-300 hover:border-mystical-teal/60 hover:bg-mystical-teal/10 ${
-                            currentQuestion.type === "radio" 
-                              ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]/20' : 'border-silver/30')
-                              : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]/20' : 'border-silver/30')
-                          }`}
-                          onClick={() => {
-                            if (currentQuestion.type === "radio") {
-                              handleResponse(currentQuestion.id, option);
-                            } else {
-                              const current = responses[currentQuestion.id] || [];
-                              const updated = current.includes(option) 
-                                ? current.filter((item: string) => item !== option)
-                                : [...current, option];
-                              handleResponse(currentQuestion.id, updated);
-                            }
-                          }}
-                          data-testid={`option-${currentQuestion.id}-${index}`}
-                        >
-                          <div className="flex items-start space-x-3">
-                            <div className={`w-4 h-4 rounded-full border-2 mt-1 ${
-                              currentQuestion.type === "radio" 
-                                ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
-                                : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
-                            }`} />
-                            <span className="font-khaft text-silver leading-relaxed">{option}</span>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
+                  </div>
                   
                   <p className="font-khaft text-mystical-teal/80 text-sm text-center mt-6 italic">
                     {currentQuestion.subtitle}
@@ -453,8 +503,8 @@ export default function QUESTionaire() {
                         onClick={handleNext}
                         disabled={
                           currentQuestion.type === "text" 
-                            ? !responses[currentQuestion.id]?.trim()
-                            : !responses[currentQuestion.id]
+                            ? !textResponses[currentQuestion.id]?.trim()
+                            : false
                         }
                         className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-3 px-6"
                         data-testid="button-next"
