@@ -11,11 +11,7 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
       <div className="absolute inset-0 bg-deep-black/60"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="typography-h2 text-center mb-4 text-ancient-gold"
-          style={{
-
-            textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
-          }}
+          className="typography-h2 text-center mb-4 text-ancient-gold text-glow-gold"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -25,10 +21,7 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
         </motion.h2>
         
         <motion.p 
-          className="text-lg text-center mb-8 max-w-4xl mx-auto font-alice leading-relaxed text-cream-white"
-          style={{
-            textShadow: '0 0 8px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.5)'
-          }}
+          className="typography-body text-center mb-8 max-w-4xl mx-auto leading-relaxed text-cream-white text-glow-dark"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -38,11 +31,7 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
         </motion.p>
         
         <motion.h3 
-          className="typography-h3 text-center mb-12 max-w-4xl mx-auto text-ancient-gold"
-          style={{
-
-            textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)'
-          }}
+          className="typography-h3 text-center mb-12 max-w-4xl mx-auto text-ancient-gold text-glow-gold"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -85,7 +74,7 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="italic font-alice text-cream-white" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+          <p className="italic font-game text-cream-white text-glow-gold">
             "If we imagined this nightmare, we can imagine our way out."
           </p>
         </motion.div>

@@ -50,7 +50,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300"
           >
             <Shield className="text-ancient-gold animate-spin-slow h-6 w-6" />
-            <span className="font-angle text-xl font-bold text-ancient-gold select-none">
+            <span className="typography-h3 text-ancient-gold select-none">
               Metamyth
             </span>
           </button>
@@ -86,7 +86,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                   <button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className={`text-left text-cream-white hover:text-ancient-gold transition-colors duration-300 text-lg ${
+                    className={`text-left text-cream-white hover:text-ancient-gold transition-colors duration-300 typography-body ${
                       activeTab === item.id ? 'text-ancient-gold' : ''
                     }`}
                   >

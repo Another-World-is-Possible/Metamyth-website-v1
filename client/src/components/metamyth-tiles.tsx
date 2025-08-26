@@ -122,32 +122,23 @@ function TileComponent({ tile, index }: { tile: typeof tiles[0] & { callToAction
       
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
         <div className="max-w-2xl">
-          <h2 className="font-angle text-3xl md:text-5xl font-bold mb-8 text-cream-white leading-tight" style={{ textShadow: '0 0 8px rgba(212, 175, 55, 0.9), 0 0 16px rgba(212, 175, 55, 0.7), 0 0 24px rgba(212, 175, 55, 0.5)' }}>
+          <h2 className="typography-h2 mb-8 text-cream-white leading-tight text-glow-gold">
             {tile.title}
           </h2>
           
           <blockquote 
-            className="font-game text-2xl md:text-3xl font-light mb-8 italic text-cream-white"
-            style={{
-              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
-            }}
+            className="typography-h3 font-light mb-8 italic text-cream-white text-glow-gold"
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
           
           <p 
-            className="font-game text-xl md:text-2xl leading-loose text-cream-white"
-            style={{
-              textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
-            }}
+            className="typography-body leading-loose text-cream-white text-glow-gold"
             dangerouslySetInnerHTML={{ __html: tile.description }}
           ></p>
           
           {tile.callToAction && (
             <p 
-              className="font-angle text-3xl md:text-5xl font-bold mt-8 text-cream-white"
-              style={{
-                textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
-              }}
+              className="typography-h2 mt-8 text-cream-white text-glow-gold"
             >
               {tile.callToAction}
             </p>

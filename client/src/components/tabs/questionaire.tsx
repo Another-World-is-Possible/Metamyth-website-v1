@@ -205,22 +205,22 @@ export default function QUESTionaire() {
         >
           <Card className="bg-deep-black/90 backdrop-blur-sm border-2 border-[#81ecec]/60 shadow-lg shadow-[#81ecec]/40 ring-2 ring-[#81ecec]/30 bg-gradient-to-br from-deep-black/95 via-deep-black/90 to-[#81ecec]/10 p-8">
             <CardContent>
-              <h2 className="font-angle text-3xl font-bold text-ancient-gold mb-6">
+              <h2 className="typography-h2 text-ancient-gold mb-6">
                 Your QUESTionaire Journey Complete
               </h2>
-              <p className="font-khaft text-lg text-cream-white mb-8 leading-relaxed">
+              <p className="typography-body text-cream-white mb-8 leading-relaxed">
                 This is it. We are standing at the threshold of something monumental. The old story that built our world is ending, and the new one is being written by people who remember they are the authors of reality itself. They're not waiting for permission or perfect conditions. They're picking up the pen and writing the future into existence—regenerative economies, collaborative communities, technology that serves life, governance that honors the whole.
               </p>
-              <p className="font-khaft text-lg text-cream-white mb-8 leading-relaxed">
+              <p className="typography-body text-cream-white mb-8 leading-relaxed">
                 This could be the moment that changes everything for you. Your responses reveal exactly where you stand in this great authorship—and what specific support could accelerate your role in what's emerging. We'll reach out within 48 hours with resources, community, or strategic alliance opportunities designed for your unique position in the shift.
               </p>
-              <p className="font-khaft text-lg text-cream-white mb-8 leading-relaxed">
+              <p className="typography-body text-cream-white mb-8 leading-relaxed">
                 But understand this: we don't write your story for you—we help you LIVE it. As with all real magic, the more you believe, the realer it becomes. This work requires commitment, courage, and the willingness to step into the unknown. The pen is in your hand. The future is waiting. What story will you write?
               </p>
               
               {qualification === "calendar" ? (
                 <div className="space-y-4">
-                  <p className="font-game text-mystical-teal font-bold">
+                  <p className="typography-body text-mystical-teal font-bold">
                     You qualify for intensive story work! Schedule your deep dive session:
                   </p>
                   <a 
@@ -229,7 +229,7 @@ export default function QUESTionaire() {
                     rel="noopener noreferrer"
                     className="inline-block"
                   >
-                    <Button className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8 text-lg">
+                    <Button className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8">
                       <ExternalLink className="w-5 h-5 mr-2" />
                       Book Your Story Architecture Session
                     </Button>
@@ -254,7 +254,7 @@ export default function QUESTionaire() {
                 </div>
               )}
               
-              <p className="font-khaft text-cream-white/80 text-sm mt-6 italic">
+              <p className="font-game text-cream-white/80 text-sm mt-6 italic">
                 The future isn't waiting for heroes to save it. It's waiting for authors to write it.
               </p>
             </CardContent>
@@ -312,10 +312,10 @@ export default function QUESTionaire() {
               <h3 className="font-game text-xl md:text-2xl text-ancient-gold mb-6 font-bold">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
-              <p className="font-khaft text-lg text-cream-white mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="font-game text-lg text-cream-white mb-8 max-w-3xl mx-auto leading-relaxed">
                 The old story is ending. Systems designed for scarcity are destroying abundance. Stories built on separation are fragmenting communities. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth: reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power—before it's too late.
               </p>
-              <p className="font-khaft text-lg text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="font-game text-lg text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed">
                 The old story is ending. The new one is being written right now. Some people will author the future consciously. Others will simply react to what gets created around them. This journey reveals which one you are—and what becomes possible when you pick up the pen.
               </p>
               <Button
@@ -343,7 +343,7 @@ export default function QUESTionaire() {
                   <h2 className="font-angle text-3xl font-bold text-ancient-gold text-center mb-6">
                     Your Journey Begins
                   </h2>
-                  <p className="font-khaft text-center text-cream-white mb-8">
+                  <p className="font-game text-center text-cream-white mb-8">
                     First, let's connect so we can share your results and next steps.
                   </p>
                   
@@ -443,7 +443,7 @@ export default function QUESTionaire() {
                                   ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                                   : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                               }`} />
-                              <span className="font-khaft text-cream-white leading-relaxed">{option}</span>
+                              <span className="font-game text-cream-white leading-relaxed">{option}</span>
                             </div>
                           </motion.div>
                         ))}
@@ -458,22 +458,22 @@ export default function QUESTionaire() {
                       <Textarea
                         value={textResponses[currentQuestion.id] || ""}
                         onChange={(e) => handleTextResponse(currentQuestion.id, e.target.value)}
-                        className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 font-khaft"
+                        className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 font-game"
                         placeholder={currentQuestion.placeholder || "Share your thoughts..."}
                         data-testid={`textarea-question-${currentQuestion.id}`}
                       />
                       {currentQuestion.examples && (
                         <div className="mt-3">
-                          <p className="font-khaft text-mystical-teal/70 text-sm mb-2">Examples:</p>
+                          <p className="font-game text-mystical-teal/70 text-sm mb-2">Examples:</p>
                           {currentQuestion.examples.map((example, index) => (
-                            <p key={index} className="font-khaft text-cream-white/60 text-sm italic">- "{example}"</p>
+                            <p key={index} className="font-game text-cream-white/60 text-sm italic">- "{example}"</p>
                           ))}
                         </div>
                       )}
                     </div>
                   </div>
                   
-                  <p className="font-khaft text-mystical-teal/80 text-sm text-center mt-6 italic">
+                  <p className="font-game text-mystical-teal/80 text-sm text-center mt-6 italic">
                     {currentQuestion.subtitle}
                   </p>
                   

@@ -197,7 +197,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                       </div>
                       
                       <div className="flex-1">
-                        <h4 className={`font-angle text-2xl font-bold text-${phase.color} mb-2`}>
+                        <h4 className="typography-h3 text-ancient-gold mb-2">
                           {phase.title}
                         </h4>
                         <p className="text-2xl text-cream-white/80 mb-2 italic font-kardige">
