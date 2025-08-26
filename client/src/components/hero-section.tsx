@@ -47,7 +47,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           </motion.h2>
           
           <motion.p 
-            className="typography-lead mb-12 max-w-4xl mx-auto text-cream-white text-glow-gold"
+            className="typography-lead mb-12 max-w-4xl mx-auto text-cream-white text-glow-gold font-thornelia"
             style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
