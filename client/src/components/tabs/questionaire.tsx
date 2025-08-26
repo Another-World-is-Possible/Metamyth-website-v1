@@ -356,7 +356,7 @@ export default function QUESTionaire() {
                         type="email"
                         value={contactInfo.email}
                         onChange={(e) => setContactInfo(prev => ({ ...prev, email: e.target.value }))}
-                        className="bg-deep-black/50 border-[#81ecec]/30 text-cream-white"
+                        className="bg-[#81ecec]/10 border-[#81ecec]/50 text-cream-white focus:border-[#81ecec]/80 focus:ring-1 focus:ring-[#81ecec]/30"
                         placeholder="your@email.com"
                         data-testid="input-email"
                       />
@@ -371,7 +371,7 @@ export default function QUESTionaire() {
                         type="tel"
                         value={contactInfo.phone}
                         onChange={(e) => setContactInfo(prev => ({ ...prev, phone: e.target.value }))}
-                        className="bg-deep-black/50 border-[#81ecec]/30 text-cream-white"
+                        className="bg-[#81ecec]/10 border-[#81ecec]/50 text-cream-white focus:border-[#81ecec]/80 focus:ring-1 focus:ring-[#81ecec]/30"
                         placeholder="+1 (555) 123-4567"
                         data-testid="input-phone"
                       />
