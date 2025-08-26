@@ -11,7 +11,8 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
       <div className="absolute inset-0 bg-deep-black/60"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         <motion.h2 
-          className="typography-h2 text-center mb-4 text-ancient-gold text-glow-gold"
+          className="typography-h2 text-center mb-4 text-deep-black"
+          style={{ textShadow: '0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.6), 0 0 30px rgba(212, 175, 55, 0.4)' }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -21,7 +22,8 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
         </motion.h2>
         
         <motion.p 
-          className="typography-body text-center mb-8 max-w-4xl mx-auto leading-relaxed text-cream-white text-glow-dark"
+          className="typography-body text-center mb-8 max-w-4xl mx-auto leading-relaxed text-cream-white"
+          style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6)' }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
