@@ -98,7 +98,7 @@
 
 .font-kardige {
   font-family: 'Kardige2024', sans-serif !important;
-  color: hsl(45 25% 92%) !important;
+  color: hsl(45, 35%, 83%) !important;
 }
 
 @tailwind base;
@@ -107,7 +107,7 @@
 
 /* Force text-cream-white class since Tailwind isn't generating it properly */
 .text-cream-white {
-  color: hsl(45, 25%, 92%) !important;
+  color: hsl(45, 35%, 83%) !important;
 }
 
 :root {
@@ -144,7 +144,7 @@
   --mystical-teal: hsl(178 65% 45%);
   --crimson: hsl(0 100% 27%);
   --dark-wine: hsl(345 45% 30%);
-  --cream-white: hsl(45 25% 92%);
+  --cream-white: hsl(45 35% 83%);
   
   --font-alice: 'Alice', serif;
   --font-angle: 'Angle', serif;
@@ -201,7 +201,7 @@
     @apply bg-deep-black antialiased overflow-x-hidden;
     font-family: 'Glocs2024', serif;
     font-weight: normal;
-    color: hsl(45 25% 92%) !important;
+    color: hsl(45, 35%, 83%) !important;
     /* Cursor will be set by SwordCursor component */
   }
 
@@ -227,13 +227,13 @@
   /* Ensure Glocs font for body text */
   .font-alice, p, blockquote {
     font-family: 'Glocs2024', 'Georgia', serif !important;
-    color: hsl(45 25% 92%) !important;
+    color: hsl(45, 35%, 83%) !important;
   }
 
   /* Ensure thornelia font for rhetorical text */
   .font-thornelia {
     font-family: 'Thornelia2024', serif !important;
-    color: hsl(45 25% 92%) !important;
+    color: hsl(45, 35%, 83%) !important;
   }
 
   /* Typography Tokens - Based on Hero Section Standards */

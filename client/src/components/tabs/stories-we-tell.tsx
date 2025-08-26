@@ -247,13 +247,13 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                   const IconComponent = step.icon;
                   return (
                     <div key={index} className="text-center">
-                      <div className={`mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 mystical-glow ${step.color === 'crimson' ? 'bg-crimson/20' : step.color === 'mystical-teal' ? 'bg-mystical-teal/20' : step.color === 'ancient-gold' ? 'bg-ancient-gold/20' : 'bg-white/20'}`}>
-                        <IconComponent className={`w-8 h-8 ${step.color === 'crimson' ? 'text-crimson' : step.color === 'mystical-teal' ? 'text-mystical-teal' : step.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`} />
+                      <div className={`mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-4 mystical-glow ${step.color === 'crimson' ? 'bg-crimson/20' : step.color === 'mystical-teal' ? 'bg-mystical-teal/20' : step.color === 'ancient-gold' ? 'bg-ancient-gold/20' : 'bg-cream-white/20'}`}>
+                        <IconComponent className={`w-8 h-8 ${step.color === 'crimson' ? 'text-crimson' : step.color === 'mystical-teal' ? 'text-mystical-teal' : step.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`} />
                       </div>
-                      <h4 className={`typography-h3 font-bold mb-2 ${step.color === 'crimson' ? 'text-crimson' : step.color === 'mystical-teal' ? 'text-mystical-teal' : step.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
+                      <h4 className={`typography-h3 font-bold mb-2 ${step.color === 'crimson' ? 'text-crimson' : step.color === 'mystical-teal' ? 'text-mystical-teal' : step.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         {step.title}
                       </h4>
-                      <p className="font-kardige text-lg" style={{ color: 'hsl(45, 25%, 92%)' }}>
+                      <p className="font-kardige text-lg" style={{ color: 'hsl(45, 35%, 83%)' }}>
                         {step.description}
                       </p>
                     </div>
@@ -262,7 +262,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
               </div>
               
               <div className="text-center mt-8">
-                <p className="font-kardige mb-6 max-w-2xl mx-auto text-xl" style={{ color: 'hsl(45, 25%, 92%)' }}>
+                <p className="font-kardige mb-6 max-w-2xl mx-auto text-xl" style={{ color: 'hsl(45, 35%, 83%)' }}>
                   Whether you're an individual visionary, purpose-driven entrepreneur, or transforming organization, 
                   we meet you where you are and help architect the story that unlocks your authentic power.
                 </p>

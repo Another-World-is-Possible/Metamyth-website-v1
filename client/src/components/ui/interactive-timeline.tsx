@@ -46,7 +46,7 @@ export default function InteractiveTimeline() {
                 key={point.id}
                 className={`rounded-full w-4 h-4 transform -translate-y-1/2 cursor-pointer hover:scale-110 transition-transform duration-300 ${point.color === 'crimson' ? 'bg-crimson' : 
                            point.color === 'mystical-teal' ? 'bg-mystical-teal' : 
-                           point.color === 'ancient-gold' ? 'bg-ancient-gold' : 'bg-white'}`}
+                           point.color === 'ancient-gold' ? 'bg-ancient-gold' : 'bg-cream-white'}`}
                 style={{ left: point.position }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -63,7 +63,7 @@ export default function InteractiveTimeline() {
             <div key={point.id} className="text-center flex-1">
               <h4 className={`font-bold typography-technical ${point.color === 'crimson' ? 'text-crimson' : 
                            point.color === 'mystical-teal' ? 'text-mystical-teal' : 
-                           point.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
+                           point.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                 {point.title}
               </h4>
               <p className="text-cream-white/60 typography-technical">
@@ -84,11 +84,11 @@ export default function InteractiveTimeline() {
           >
             <Card className={`bg-[#81ecec]/10 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 ${timelineData[selectedHorizon - 1]?.color === 'crimson' ? 'border-crimson/30' : 
                            timelineData[selectedHorizon - 1]?.color === 'mystical-teal' ? 'border-mystical-teal/30' : 
-                           timelineData[selectedHorizon - 1]?.color === 'ancient-gold' ? 'border-ancient-gold/30' : 'border-white/30'}`}>
+                           timelineData[selectedHorizon - 1]?.color === 'ancient-gold' ? 'border-ancient-gold/30' : 'border-cream-white/30'}`}>
               <CardContent className="p-6">
                 <h3 className={`typography-h3 font-bold mb-4 ${timelineData[selectedHorizon - 1]?.color === 'crimson' ? 'text-crimson' : 
                            timelineData[selectedHorizon - 1]?.color === 'mystical-teal' ? 'text-mystical-teal' : 
-                           timelineData[selectedHorizon - 1]?.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
+                           timelineData[selectedHorizon - 1]?.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                   Horizon {selectedHorizon} Details
                 </h3>
                 <p className="text-cream-white">

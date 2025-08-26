@@ -175,7 +175,7 @@ export default function TheFederation() {
                 className={`bg-[#81ecec]/10 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow ${
                   pathway.color === 'crimson' ? 'border-crimson/30' :
                   pathway.color === 'mystical-teal' ? 'border-mystical-teal/30' :
-                  pathway.color === 'ancient-gold' ? 'border-ancient-gold/30' : 'border-white/30'
+                  pathway.color === 'ancient-gold' ? 'border-ancient-gold/30' : 'border-cream-white/30'
                 }`}
               >
                 <CardContent className="p-6">
@@ -183,7 +183,7 @@ export default function TheFederation() {
                   <h4 className={`font-bold mb-3 ${
                     pathway.color === 'crimson' ? 'text-crimson' :
                     pathway.color === 'mystical-teal' ? 'text-mystical-teal' :
-                    pathway.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'
+                    pathway.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'
                   }`}>
                     {pathway.title}
                   </h4>

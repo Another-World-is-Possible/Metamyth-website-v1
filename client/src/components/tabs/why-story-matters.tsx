@@ -465,10 +465,10 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 >
                   <Card className="bg-[#81ecec]/10 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 h-full hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                     <CardContent className="p-3 text-center">
-                      <div className={`w-12 h-12 mx-auto mb-2 rounded-full flex items-center justify-center border ${concept.color === 'crimson' ? 'bg-crimson/20 border-crimson/30' : concept.color === 'mystical-teal' ? 'bg-mystical-teal/20 border-mystical-teal/30' : concept.color === 'ancient-gold' ? 'bg-ancient-gold/20 border-ancient-gold/30' : 'bg-white/20 border-white/30'}`}>
-                        <IconComponent className={`w-6 h-6 ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`} />
+                      <div className={`w-12 h-12 mx-auto mb-2 rounded-full flex items-center justify-center border ${concept.color === 'crimson' ? 'bg-crimson/20 border-crimson/30' : concept.color === 'mystical-teal' ? 'bg-mystical-teal/20 border-mystical-teal/30' : concept.color === 'ancient-gold' ? 'bg-ancient-gold/20 border-ancient-gold/30' : 'bg-cream-white/20 border-cream-white/30'}`}>
+                        <IconComponent className={`w-6 h-6 ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`} />
                       </div>
-                      <h3 className={`typography-h4 font-bold mb-2 tracking-wider text-glow-gold ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-white'}`}>
+                      <h3 className={`typography-h4 font-bold mb-2 tracking-wider text-glow-gold ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         {concept.title}
                       </h3>
                       <p className="font-kardige text-lg text-cream-white leading-relaxed" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>
