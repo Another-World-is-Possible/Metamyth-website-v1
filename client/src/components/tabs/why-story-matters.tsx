@@ -265,7 +265,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             </p>
           </div>
           
-          <p className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>
+          <p className="font-angle text-2xl md:text-3xl font-bold text-ancient-gold text-glow-gold">
             Whoever tells the best story wins.
           </p>
         </motion.div>
