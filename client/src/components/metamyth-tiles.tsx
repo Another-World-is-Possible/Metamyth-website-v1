@@ -18,7 +18,7 @@ const tiles = [
   {
     id: 1,
     title: "THE CALL TO ADVENTURE",
-    quote: "We're living through the climax of the human story—all threads converging in crisis determining fate on Earth.",
+    quote: "We're living through the climax of the human story—all threads converging in crisis determining our future.",
     description: "We are stuck in a broken story of extraction chasing meaningless metrics, burnt out, struggling to express why what we do matters, forgetting we write the story.",
     bgImage: callToAdventureImg,
     animation: "burn",
