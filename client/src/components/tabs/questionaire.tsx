@@ -213,10 +213,10 @@ export default function QUESTionaire() {
               <p className="typography-body text-cream-white mb-8 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                 This is it. We are standing at the threshold of something monumental. The old story that built our world is ending, and the new one is being written by people who remember they are the authors of reality itself. They're not waiting for permission or perfect conditions. They're picking up the pen and writing the future into existence—regenerative economies, collaborative communities, technology that serves life, governance that honors the whole.
               </p>
-              <p className="typography-body text-cream-white mb-8 leading-relaxed">
+              <p className="typography-body text-cream-white mb-8 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                 This could be the moment that changes everything for you. Your responses reveal exactly where you stand in this great authorship—and what specific support could accelerate your role in what's emerging. We'll reach out within 48 hours with resources, community, or strategic alliance opportunities designed for your unique position in the shift.
               </p>
-              <p className="typography-body text-cream-white mb-8 leading-relaxed">
+              <p className="typography-body text-cream-white mb-8 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                 But understand this: we don't write your story for you—we help you LIVE it. As with all real magic, the more you believe, the realer it becomes. This work requires commitment, courage, and the willingness to step into the unknown. The pen is in your hand. The future is waiting. What story will you write?
               </p>
               
@@ -256,7 +256,7 @@ export default function QUESTionaire() {
                 </div>
               )}
               
-              <p className="typography-body text-cream-white/80 mt-6 italic">
+              <p className="typography-body text-cream-white/80 mt-6 italic" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                 The future isn't waiting for heroes to save it. It's waiting for authors to write it.
               </p>
             </CardContent>
@@ -442,7 +442,7 @@ export default function QUESTionaire() {
                                   ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                                   : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                               }`} />
-                              <span className="typography-body text-cream-white leading-relaxed">{option}</span>
+                              <span className="typography-body text-cream-white leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{option}</span>
                             </div>
                           </motion.div>
                         ))}
@@ -465,7 +465,7 @@ export default function QUESTionaire() {
                         <div className="mt-3">
                           <p className="typography-technical text-mystical-teal/70 mb-2">Examples:</p>
                           {currentQuestion.examples.map((example, index) => (
-                            <p key={index} className="typography-technical text-cream-white/60 italic">- "{example}"</p>
+                            <p key={index} className="typography-technical text-cream-white/60 italic" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>- "{example}"</p>
                           ))}
                         </div>
                       )}

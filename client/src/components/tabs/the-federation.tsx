@@ -89,7 +89,7 @@ export default function TheFederation() {
                   <h3 className="font-angle font-bold text-ancient-gold mb-2">
                     {stat.title}
                   </h3>
-                  <p className="text-cream-white/80 mb-3">
+                  <p className="text-cream-white/80 mb-3" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {stat.value}
                   </p>
                   <Button 
@@ -125,7 +125,7 @@ export default function TheFederation() {
                         METAMYTH GUIDE
                       </h4>
                       <p className="text-ancient-gold font-bold typography-h3 mb-4">$497</p>
-                      <ul className="space-y-2 text-cream-white mb-6">
+                      <ul className="space-y-2 text-cream-white mb-6" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                         <li className="flex items-start">
                           <span className="text-mystical-teal mr-2">✓</span>
                           Complete self-guided story regeneration system
@@ -187,7 +187,7 @@ export default function TheFederation() {
                   }`}>
                     {pathway.title}
                   </h4>
-                  <p className="text-cream-white/80 mb-4">
+                  <p className="text-cream-white/80 mb-4" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {pathway.description}
                   </p>
                   <Button 

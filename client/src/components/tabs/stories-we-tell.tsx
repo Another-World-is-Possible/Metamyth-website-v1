@@ -198,7 +198,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                   <h3 className="typography-h2 text-ancient-gold mb-4">
                     {audienceTypes[2].title}
                   </h3>
-                  <p className="typography-body mb-6 leading-relaxed text-cream-white">
+                  <p className="typography-body mb-6 leading-relaxed text-cream-white" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {audienceTypes[2].description}
                   </p>
                   <div className="space-y-4">
@@ -207,21 +207,21 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                         <span className="w-3 h-3 bg-crimson rounded-full mr-3"></span>
                         Common Challenges
                       </h4>
-                      <p className="typography-technical leading-relaxed text-cream-white">{audienceTypes[2].challenges}</p>
+                      <p className="typography-technical leading-relaxed text-cream-white" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audienceTypes[2].challenges}</p>
                     </div>
                     <div>
                       <h4 className="typography-h3 font-bold text-mystical-teal mb-3 flex items-center">
                         <span className="w-3 h-3 bg-mystical-teal rounded-full mr-3"></span>
                         Our Approach
                       </h4>
-                      <p className="typography-technical leading-relaxed text-cream-white">{audienceTypes[2].transformation}</p>
+                      <p className="typography-technical leading-relaxed text-cream-white" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audienceTypes[2].transformation}</p>
                     </div>
                     <div>
                       <h4 className="typography-h3 font-bold text-ancient-gold mb-3 flex items-center">
                         <span className="w-3 h-3 bg-ancient-gold rounded-full mr-3"></span>
                         Potential Unlocked
                       </h4>
-                      <p className="typography-technical leading-relaxed text-cream-white">{audienceTypes[2].potential}</p>
+                      <p className="typography-technical leading-relaxed text-cream-white" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audienceTypes[2].potential}</p>
                     </div>
                   </div>
                 </CardContent>
