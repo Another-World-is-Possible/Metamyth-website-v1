@@ -136,7 +136,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 overflow-hidden hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+                <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 overflow-hidden hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                   <div 
                     className="h-56 bg-cover bg-center relative"
                     style={{ backgroundImage: `url(${audience.bgImage})` }}
@@ -187,7 +187,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Card className="backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 overflow-hidden hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+              <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 overflow-hidden hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <div 
                   className="h-56 bg-cover bg-center relative"
                   style={{ backgroundImage: `url(${audienceTypes[2].bgImage})` }}
@@ -237,7 +237,7 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Card className="backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+          <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="font-angle text-4xl font-bold text-ancient-gold text-center mb-8">
                 Our Process: From Story to System

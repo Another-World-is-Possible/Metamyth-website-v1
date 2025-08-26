@@ -154,7 +154,7 @@ export default function OurMetamyth() {
               <AccordionItem 
                 key={item.id}
                 value={item.id}
-className="backdrop-blur-lg border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 bg-gradient-to-br from-[#81ecec]/15 via-deep-black/80 to-[#81ecec]/20 rounded-lg overflow-hidden hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300"
+className="backdrop-blur-lg bg-white/5 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 rounded-lg overflow-hidden hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300"
               >
                 <AccordionTrigger className="hover:bg-mystical-teal/10 transition-colors duration-300 p-6">
                   <div className="flex items-center space-x-4">
