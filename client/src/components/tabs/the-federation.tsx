@@ -180,14 +180,14 @@ export default function TheFederation() {
               >
                 <CardContent className="p-6">
                   <pathway.icon className="text-ancient-gold mb-4" style={{fontSize: '2rem'}} />
-                  <h4 className={`typography-h3 font-bold mb-3 font-kardige ${
+                  <h4 className={`typography-h3 font-bold mb-3 font-emerland ${
                     pathway.color === 'crimson' ? 'text-crimson' :
                     pathway.color === 'mystical-teal' ? 'text-mystical-teal' :
                     pathway.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'
                   }`}>
                     {pathway.title}
                   </h4>
-                  <p className="typography-body text-cream-white mb-4 leading-relaxed font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="typography-body text-cream-white mb-4 leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {pathway.description}
                   </p>
                   <Button 

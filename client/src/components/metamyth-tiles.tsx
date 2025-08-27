@@ -131,8 +131,8 @@ function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & 
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
           
-          <p 
-            className="typography-body font-kardige leading-loose text-cream-white text-glow-gold"
+          <p
+            className="typography-body font-emerland leading-loose text-cream-white text-glow-gold"
             dangerouslySetInnerHTML={{ __html: tile.description }}
           ></p>
           

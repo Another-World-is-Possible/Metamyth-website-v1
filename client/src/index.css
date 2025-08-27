@@ -1,7 +1,9 @@
-/* Force new font names to bypass all browser caching */
+/* Clean Font Hierarchy - 4 Fonts Only */
+
+/* 1. ANGLE & FAIRY - Titles and Headers */
 @font-face {
   font-family: 'AngleFairy2024';
-  src: url('/attached_assets/angle_fairy.ttf?v=2024') format('truetype');
+  src: url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -9,36 +11,7 @@
   text-rendering: optimizeLegibility;
 }
 
-
-
-@font-face {
-  font-family: 'Mugient2024';
-  src: url('/attached_assets/Mugient_1755896961492.ttf?v=2024') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'CookConthic2024';
-  src: url('/attached_assets/CookConthic_1755912629836.ttf?v=2024') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  font-feature-settings: "liga" 0, "kern" 1;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: 'Glocs2024';
-  src: url('/attached_assets/Glocs_1755915736427.otf?v=2024') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  font-feature-settings: "liga" 0, "kern" 1;
-  text-rendering: optimizeLegibility;
-}
-
+/* 2. THORNELIA - Special Body Text (not in text boxes) */
 @font-face {
   font-family: 'Thornelia2024';
   src: url('/attached_assets/Thornelia-Regular_1755924349754.ttf?v=2024') format('truetype');
@@ -49,19 +22,10 @@
   text-rendering: optimizeLegibility;
 }
 
+/* 3. GAME & REALITY - Reserved for Future Use */
 @font-face {
-  font-family: 'Khaft2024';
-  src: url('/attached_assets/sE—Khaft-Medium_1756162098840.otf?v=2024') format('opentype');
-  font-weight: medium;
-  font-style: normal;
-  font-display: swap;
-  font-feature-settings: "liga" 0, "kern" 1;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: 'KingSans2024';
-  src: url('/attached_assets/KingSans_1756184213726.otf?v=2024') format('opentype');
+  font-family: 'GameReality2024';
+  src: url('/attached_assets/Game & Reality_1755895129972.otf?v=2024') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -69,9 +33,10 @@
   text-rendering: optimizeLegibility;
 }
 
+/* 4. EMERLAND - Main Body Text for Text Boxes and Large Text Blocks */
 @font-face {
-  font-family: 'Kardige2024';
-  src: url('/attached_assets/Kardige_1756186739231.ttf?v=2024') format('truetype');
+  font-family: 'Emerland2024';
+  src: url('/attached_assets/Emerland.otf?v=2024') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -79,25 +44,39 @@
   text-rendering: optimizeLegibility;
 }
 
-/* Font class declarations with new names */
+/* Font Class Hierarchy */
 .font-angle {
   font-family: 'AngleFairy2024', serif !important;
 }
 
-.font-game {
+.font-thornelia {
   font-family: 'Thornelia2024', serif !important;
+  color: hsl(45, 35%, 83%) !important;
+}
+
+.font-game {
+  font-family: 'GameReality2024', serif !important;
+  color: hsl(45, 35%, 83%) !important;
+}
+
+.font-emerland {
+  font-family: 'Emerland2024', serif !important;
+  color: hsl(45, 35%, 83%) !important;
+}
+
+/* Legacy font classes for backward compatibility - redirect to new hierarchy */
+.font-kardige {
+  font-family: 'Emerland2024', serif !important;
+  color: hsl(45, 35%, 83%) !important;
 }
 
 .font-khaft {
-  font-family: 'Khaft2024', sans-serif !important;
+  font-family: 'Thornelia2024', serif !important;
+  color: hsl(45, 35%, 83%) !important;
 }
 
 .font-king {
-  font-family: 'KingSans2024', sans-serif !important;
-}
-
-.font-kardige {
-  font-family: 'Kardige2024', sans-serif !important;
+  font-family: 'Thornelia2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
 }
 
@@ -146,7 +125,6 @@
   --dark-wine: hsl(345 45% 30%);
   --cream-white: hsl(45 35% 83%);
   
-  --font-alice: 'Alice', serif;
   --font-angle: 'Angle', serif;
   --font-game: 'Game', serif;
   --radius: 0.5rem;
@@ -225,7 +203,7 @@
   
   
   /* Ensure Glocs font for body text */
-  .font-alice, p, blockquote {
+  p, blockquote {
     font-family: 'Glocs2024', 'Georgia', serif !important;
     color: hsl(45, 35%, 83%) !important;
   }
@@ -508,9 +486,6 @@
       0 0 100px rgba(212, 175, 55, 0.1);
   }
   
-  .font-alice {
-    font-family: var(--font-alice);
-  }
 }
 
 

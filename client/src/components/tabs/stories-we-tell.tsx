@@ -147,30 +147,30 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                     <h3 className="typography-h3 font-bold text-ancient-gold mb-4">
                       {audience.title}
                     </h3>
-                    <p className="typography-body mb-6 leading-relaxed text-cream-white font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                    <p className="typography-body mb-6 leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                       {audience.description}
                     </p>
                     <div className="space-y-4">
                       <div>
-                        <h4 className="text-xl font-bold text-crimson mb-3 flex items-center font-kardige">
+                        <h4 className="text-xl font-bold text-crimson mb-3 flex items-center font-emerland">
                           <span className="w-3 h-3 bg-crimson rounded-full mr-3"></span>
                           Common Challenges
                         </h4>
-                        <p className="text-lg leading-relaxed text-cream-white font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.challenges}</p>
+                        <p className="text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.challenges}</p>
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-mystical-teal mb-3 flex items-center font-kardige">
+                        <h4 className="text-xl font-bold text-mystical-teal mb-3 flex items-center font-emerland">
                           <span className="w-3 h-3 bg-mystical-teal rounded-full mr-3"></span>
                           Our Approach
                         </h4>
-                        <p className="text-lg leading-relaxed text-cream-white font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.transformation}</p>
+                        <p className="text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.transformation}</p>
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-ancient-gold mb-3 flex items-center font-kardige">
+                        <h4 className="text-xl font-bold text-ancient-gold mb-3 flex items-center font-emerland">
                           <span className="w-3 h-3 bg-ancient-gold rounded-full mr-3"></span>
                           Potential Unlocked
                         </h4>
-                        <p className="text-lg leading-relaxed text-cream-white font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.potential}</p>
+                        <p className="text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.potential}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -253,20 +253,20 @@ export default function StoriesWeTell({ setActiveTab }: StoriesWeTellProps) {
                       <h4 className={`typography-h3 font-bold mb-2 ${step.color === 'crimson' ? 'text-crimson' : step.color === 'mystical-teal' ? 'text-mystical-teal' : step.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         {step.title}
                       </h4>
-                      <p className="font-kardige text-lg" style={{ color: 'hsl(45, 35%, 83%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                      <p className="font-emerland text-lg" style={{ color: 'hsl(45, 35%, 83%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                         {step.description}
                       </p>
                     </div>
                   );
                 })}
               </div>
-              
+
               <div className="text-center mt-8">
-                <p className="font-kardige mb-6 max-w-2xl mx-auto text-xl" style={{ color: 'hsl(45, 35%, 83%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                  Whether you're an individual visionary, purpose-driven entrepreneur, or transforming organization, 
+                <p className="font-emerland mb-6 max-w-2xl mx-auto text-xl" style={{ color: 'hsl(45, 35%, 83%)', textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  Whether you're an individual visionary, purpose-driven entrepreneur, or transforming organization,
                   we meet you where you are and help architect the story that unlocks your authentic power.
                 </p>
-                <Button 
+                <Button
                   onClick={() => setActiveTab?.('questionaire')}
                   className="bg-mystical-teal text-deep-black font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-colors duration-300 cursor-pointer"
                 >

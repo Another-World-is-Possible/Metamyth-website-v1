@@ -9,6 +9,10 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
+// Note: For static deployment, the questionnaire submission is handled client-side
+// For production with backend, replace the submitMutation logic with actual API calls
+// Consider integrating with services like Netlify Forms, Formspree, or similar for form handling
+
 interface Question {
   id: number;
   title: string;
@@ -137,7 +141,23 @@ export default function QUESTionaire() {
 
   const submitMutation = useMutation({
     mutationFn: async (data: any) => {
-      return apiRequest("/api/questionnaire/submit", "POST", data);
+      // For static deployment, we'll simulate the API call
+      // In a real deployment, you might want to integrate with a service like Netlify Forms, Formspree, or similar
+      console.log("Questionnaire submission (static mode):", data);
+
+      // Simulate processing time
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Simple qualification logic based on responses
+      // You can customize this logic based on your needs
+      const hasHighEngagement = Object.values(data.responses || {}).some((response: any) =>
+        Array.isArray(response) ? response.length > 2 : typeof response === "string" ? response.length > 30 : response > 3
+      );
+
+      return {
+        qualified: hasHighEngagement ? "calendar" : "discord",
+        message: "Thank you for your submission!"
+      };
     },
     onSuccess: (data: any) => {
       setQualification(data.qualified);
@@ -321,7 +341,7 @@ export default function QUESTionaire() {
               <h3 className="typography-h3 text-ancient-gold mb-6 font-bold">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
-              <p className="typography-body text-cream-white mb-8 max-w-3xl mx-auto leading-relaxed font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+              <p className="typography-body text-cream-white mb-8 max-w-3xl mx-auto leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                 The old story is ending. Systems designed for scarcity are destroying abundance. Stories built on separation are fragmenting communities. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth: reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power—before it's too late.
               </p>
               <p className="typography-body text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -352,7 +372,7 @@ export default function QUESTionaire() {
                   <h2 className="typography-h3 font-bold text-ancient-gold text-center mb-6">
                     Your Journey Begins
                   </h2>
-                  <p className="typography-body text-center text-cream-white mb-8 font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="typography-body text-center text-cream-white mb-8 font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     First, let's connect so we can share your results and next steps.
                   </p>
                   

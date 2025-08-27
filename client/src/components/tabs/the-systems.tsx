@@ -165,10 +165,10 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <h3 className="typography-h3 font-bold text-ancient-gold mb-4 text-center">
                 THE RADICAL PROCESS OF REALITY AUTHORSHIP
               </h3>
-              <p className="typography-body text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                Most organizations operate from scattered narratives written by market forces, investor expectations, 
-                and cultural programming rather than their authentic purpose. We connect their deepest mission to a 
-                larger planetary story, raising the stakes of what they're doing and connecting people to their 
+              <p className="typography-body text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                Most organizations operate from scattered narratives written by market forces, investor expectations,
+                and cultural programming rather than their authentic purpose. We connect their deepest mission to a
+                larger planetary story, raising the stakes of what they're doing and connecting people to their
                 highest self while helping them navigate the distance between here&nbsp;and&nbsp;there.
               </p>
             </CardContent>
@@ -200,29 +200,29 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                         <h4 className="typography-h3 text-ancient-gold mb-2">
                           {phase.title}
                         </h4>
-                        <p className="text-2xl text-cream-white/80 mb-2 italic font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                        <p className="text-2xl text-cream-white/80 mb-2 italic font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                           {phase.subtitle}
                         </p>
-                        <p className="text-xl text-ancient-gold font-bold mb-4 font-kardige">
+                        <p className="text-xl text-ancient-gold font-bold mb-4 font-emerland">
                           {phase.duration}
                         </p>
-                        
+
                         <div className="grid md:grid-cols-2 gap-4 mb-4">
                           <div>
-                            <h5 className="text-xl text-ancient-gold font-bold mb-2 font-kardige">Key Elements:</h5>
+                            <h5 className="text-xl text-ancient-gold font-bold mb-2 font-emerland">Key Elements:</h5>
                             <ul className="space-y-1">
                               {phase.movements.map((movement, idx) => (
-                                <li key={idx} className="text-cream-white/90 text-lg flex items-start gap-2 font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                                <li key={idx} className="text-cream-white/90 text-lg flex items-start gap-2 font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                                   <CheckCircle className="text-ancient-gold text-xs mt-1 flex-shrink-0" size={16} />
                                   {movement}
                                 </li>
                               ))}
                             </ul>
                           </div>
-                          
+
                           <div className="bg-deep-black/60 border-2 border-ancient-gold rounded-lg p-4 shadow-lg shadow-ancient-gold/50">
-                            <h5 className="text-ancient-gold font-bold mb-3 text-xl font-kardige" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
-                            <p className="text-cream-white text-lg font-medium leading-relaxed font-kardige" style={{ textShadow: '0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.75), 0 0 12px rgba(0,0,0,0.7), 0 0 18px rgba(0,0,0,0.65), 0 0 24px rgba(0,0,0,0.6)' }}>
+                            <h5 className="text-ancient-gold font-bold mb-3 text-xl font-emerland" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
+                            <p className="text-cream-white text-lg font-medium leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.75), 0 0 12px rgba(0,0,0,0.7), 0 0 18px rgba(0,0,0,0.65), 0 0 24px rgba(0,0,0,0.6)' }}>
                               {phase.outcome}
                             </p>
                           </div>
@@ -248,10 +248,10 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
               <h3 className="font-angle text-4xl font-bold text-mystical-teal mb-4 text-center">
                 WHO WE SERVE
               </h3>
-              <p className="typography-body text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                Purpose-driven organizations ready to stop playing by someone else's rules and start authoring 
-                their own reality. These include conscious entrepreneurs, B-Corp founders, nonprofit leaders, 
-                and mission-driven companies who know their work matters but struggle to communicate why in 
+              <p className="typography-body text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                Purpose-driven organizations ready to stop playing by someone else's rules and start authoring
+                their own reality. These include conscious entrepreneurs, B-Corp founders, nonprofit leaders,
+                and mission-driven companies who know their work matters but struggle to communicate why in
                 ways that create the response they need.
               </p>
             </CardContent>
@@ -277,7 +277,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                     <h4 className="font-bold text-ancient-gold mb-3 text-2xl" style={{ textShadow: '0 0 8px currentColor, 0 0 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.75), 0 0 16px rgba(0,0,0,0.7), 0 0 24px rgba(0,0,0,0.65), 0 0 32px rgba(0,0,0,0.6)' }}>
                       {result.title}
                     </h4>
-                    <p className="text-cream-white text-lg font-kardige" style={{ textShadow: '0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.75), 0 0 12px rgba(0,0,0,0.7), 0 0 18px rgba(0,0,0,0.65), 0 0 24px rgba(0,0,0,0.6)' }}>
+                    <p className="text-cream-white text-lg font-emerland" style={{ textShadow: '0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.75), 0 0 12px rgba(0,0,0,0.7), 0 0 18px rgba(0,0,0,0.65), 0 0 24px rgba(0,0,0,0.6)' }}>
                       {result.description}
                     </p>
                   </CardContent>
@@ -310,10 +310,10 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 Building the New Operating System: MythOS
               </h4>
               
-              <p className="font-kardige text-xl text-cream-white leading-relaxed mb-6 max-w-4xl mx-auto" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                We're creating a world that works for all, where work is an adventure, through a new operating 
-                system—MythOS—that makes the process of doing meaningful work into the adventure it deserves. 
-                This AI-first platform brings stories to life, guides people along their authentic paths, and 
+              <p className="font-emerland text-xl text-cream-white leading-relaxed mb-6 max-w-4xl mx-auto" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                We're creating a world that works for all, where work is an adventure, through a new operating
+                system—MythOS—that makes the process of doing meaningful work into the adventure it deserves.
+                This AI-first platform brings stories to life, guides people along their authentic paths, and
                 enables interconnection with compatible stories.
               </p>
               

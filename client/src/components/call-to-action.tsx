@@ -32,8 +32,8 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
                 >
                   REGENERATE YOUR STORY
                 </h3>
-                <p 
-                  className="typography-body font-kardige mb-6 text-cream-white text-glow-gold"
+                <p
+                  className="typography-body font-emerland mb-6 text-cream-white text-glow-gold"
                 >
                   Transform your organization through story
                 </p>
@@ -58,8 +58,8 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
                 >
                   JOIN THE QUEST
                 </h3>
-                <p 
-                  className="typography-body font-kardige mb-6 text-cream-white text-glow-gold"
+                <p
+                  className="typography-body font-emerland mb-6 text-cream-white text-glow-gold"
                 >
                   Build the new world with us
                 </p>

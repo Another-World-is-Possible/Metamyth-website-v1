@@ -1,14 +1,13 @@
 #!/bin/bash
 
-# Build script for production deployment
-echo "Building client and server for production..."
+# Build script for static site deployment (GitHub Pages)
+echo "Building static site for GitHub Pages deployment..."
 
-# Build the client and server
+# Build the client only (static site)
 npm run build
 
-echo "Production build completed successfully!"
-echo "Built server: dist/index.js"
-echo "Built client: dist/public/"
+echo "Static site build completed successfully!"
+echo "Built static site: dist/public/"
 echo ""
-echo "To run in production mode:"
-echo "cd dist && NODE_ENV=production node index.js"
+echo "For server deployment, use: npm run build-for-server"
+echo "For local development, use: npm run dev"

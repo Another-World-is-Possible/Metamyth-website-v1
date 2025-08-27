@@ -167,8 +167,8 @@ className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shad
                 <AccordionContent className="p-6 border-t border-mystical-teal/30">
                   <div className="space-y-6">
                     {item.isNarrative ? (
-                      <motion.p 
-                        className="typography-body text-cream-white leading-relaxed font-kardige"
+                      <motion.p
+                        className="typography-body text-cream-white leading-relaxed font-emerland"
                         style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -189,8 +189,8 @@ className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shad
                           </motion.h4>
                         )}
                         {item.quote && (
-                          <motion.blockquote 
-                            className="text-2xl text-cream-white/80 italic font-kardige border-l-4 border-ancient-gold pl-6 py-2"
+                          <motion.blockquote
+                            className="text-2xl text-cream-white/80 italic font-emerland border-l-4 border-ancient-gold pl-6 py-2"
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.4, delay: 0.1 }}
@@ -201,9 +201,9 @@ className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shad
                         {item.items && (
                           <div className="space-y-4">
                             {item.items.map((text, itemIndex) => (
-                              <motion.p 
+                              <motion.p
                                 key={itemIndex}
-                                className="text-lg text-cream-white/90 flex items-start font-kardige"
+                                className="text-lg text-cream-white/90 flex items-start font-emerland"
                                 style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
