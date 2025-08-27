@@ -61,8 +61,10 @@ export default function SharedNavigation() {
                 key={item.id}
                 variant="ghost"
                 onClick={() => handleNavClick(item.path)}
-                className={`typography-body text-cream-white hover:text-ancient-gold transition-all duration-300 hover:bg-mystical-teal/20 ${
-                  location === item.path ? 'text-mystical-teal bg-mystical-teal/10' : ''
+                className={`typography-body transition-all duration-300 ${
+                  location === item.path
+                    ? 'nav-tab-active'
+                    : 'text-cream-white hover:nav-tab-hover'
                 }`}
               >
                 {item.label}
@@ -91,8 +93,10 @@ export default function SharedNavigation() {
                     key={item.id}
                     variant="ghost"
                     onClick={() => handleNavClick(item.path)}
-                    className={`justify-start typography-body text-cream-white hover:text-ancient-gold hover:bg-mystical-teal/20 transition-all duration-300 ${
-                      location === item.path ? 'text-mystical-teal bg-mystical-teal/10' : ''
+                    className={`justify-start typography-body transition-all duration-300 ${
+                      location === item.path
+                        ? 'nav-tab-active'
+                        : 'text-cream-white hover:nav-tab-hover'
                     }`}
                   >
                     {item.label}

@@ -25,50 +25,44 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
         
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="scroll-fade-in">
-            <Card className="backdrop-blur-sm bg-mystical-teal/3 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
+            <Card className="frosted-glass-subtle border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
               <CardContent className="p-8 text-center">
-                <h3 
-                  className="typography-h3 font-angle text-ancient-gold mb-4"
+                <h3
+                  className="typography-h3 font-angle text-ancient-gold mb-4 text-glow-gold"
                 >
                   REGENERATE YOUR STORY
                 </h3>
                 <p
-                  className="typography-body font-emerland mb-6 text-cream-white text-glow-gold"
+                  className="typography-body font-emerland mb-6 text-cream-white text-glow-cream"
                 >
                   Transform your organization through story
                 </p>
-                <Button 
+                <Button
                   onClick={() => setActiveTab?.('questionaire')}
-                  className="bg-ancient-gold text-deep-black font-angle font-bold py-3 px-8 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
-                  style={{
-                    boxShadow: '0 0 30px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.5), 0 4px 20px rgba(212, 175, 55, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2)'
-                  }}
+                  className="bg-ancient-gold text-deep-black font-angle font-bold py-2 px-6 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer button-glow-gold"
                 >
                   <span className="font-bold">WORK WITH US</span>
                 </Button>
               </CardContent>
             </Card>
           </div>
-          
+
           <div className="scroll-fade-in">
-            <Card className="backdrop-blur-sm bg-mystical-teal/3 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
+            <Card className="frosted-glass-subtle border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 hover-glow">
               <CardContent className="p-8 text-center">
-                <h3 
-                  className="typography-h3 font-angle text-mystical-teal mb-4"
+                <h3
+                  className="typography-h3 font-angle text-mystical-teal mb-4 text-glow-teal"
                 >
                   JOIN THE QUEST
                 </h3>
                 <p
-                  className="typography-body font-emerland mb-6 text-cream-white text-glow-gold"
+                  className="typography-body font-emerland mb-6 text-cream-white text-glow-cream"
                 >
                   Build the new world with us
                 </p>
-                <Button 
+                <Button
                   onClick={() => setActiveTab?.('questionaire')}
-                  className="bg-mystical-teal text-deep-black font-angle font-bold py-3 px-8 rounded-lg hover:bg-mystical-teal/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
-                  style={{
-                    boxShadow: '0 0 30px rgba(20, 184, 166, 0.8), 0 0 60px rgba(20, 184, 166, 0.5), 0 4px 20px rgba(20, 184, 166, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.2)'
-                  }}
+                  className="bg-mystical-teal text-deep-black font-angle font-bold py-2 px-6 rounded-lg hover:bg-mystical-teal/80 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer button-glow-teal"
                 >
                   <span className="font-bold">BECOME A STORYTELLER</span>
                 </Button>

@@ -264,28 +264,83 @@
     font-weight: normal !important;
   }
   
-  /* Consistent text effects */
+  /* Consistent text effects - FIXED: Subtle glows instead of heavy black shadows */
   .text-glow-gold {
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8);
+    text-shadow:
+      0 0 8px rgba(212, 175, 55, 0.6),
+      0 0 16px rgba(212, 175, 55, 0.3),
+      0 0 24px rgba(212, 175, 55, 0.1);
+  }
+
+  .text-glow-cream {
+    text-shadow:
+      0 0 6px rgba(245, 245, 220, 0.4),
+      0 0 12px rgba(245, 245, 220, 0.2),
+      0 0 18px rgba(245, 245, 220, 0.1);
+  }
+
+  .text-glow-teal {
+    text-shadow:
+      0 0 8px rgba(20, 184, 166, 0.6),
+      0 0 16px rgba(20, 184, 166, 0.3),
+      0 0 24px rgba(20, 184, 166, 0.1);
+  }
+
+  .text-glow-crimson {
+    text-shadow:
+      0 0 8px rgba(220, 38, 127, 0.6),
+      0 0 16px rgba(220, 38, 127, 0.3),
+      0 0 24px rgba(220, 38, 127, 0.1);
+  }
+
+  /* Button glow effects */
+  .button-glow-gold {
+    box-shadow:
+      0 0 20px rgba(212, 175, 55, 0.4),
+      0 0 40px rgba(212, 175, 55, 0.2),
+      inset 0 0 10px rgba(212, 175, 55, 0.1);
+  }
+
+  .button-glow-teal {
+    box-shadow:
+      0 0 20px rgba(20, 184, 166, 0.4),
+      0 0 40px rgba(20, 184, 166, 0.2),
+      inset 0 0 10px rgba(20, 184, 166, 0.1);
+  }
+
+  /* Navigation tab styling - smooth teal glow without yellow flash */
+  .nav-tab-active {
+    color: rgb(20, 184, 166) !important;
+    background: rgba(20, 184, 166, 0.1) !important;
+    text-shadow:
+      0 0 8px rgba(20, 184, 166, 0.6),
+      0 0 16px rgba(20, 184, 166, 0.3);
+    transition: all 0.3s ease !important;
+  }
+
+  .nav-tab-hover {
+    color: rgb(212, 175, 55) !important;
+    background: rgba(20, 184, 166, 0.2) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  /* Subtle frosted glass effect - less distracting */
+  .frosted-glass-subtle {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transition: backdrop-filter 0.2s ease !important;
   }
 
   /* Force backdrop blur to render immediately during animations */
   .backdrop-blur-lg {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
     will-change: backdrop-filter;
     transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-  }
-
-  /* Additional backup approach - force backdrop filter with !important */
-  .backdrop-blur-lg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    pointer-events: none;
-    z-index: -1;
   }
 
   /* Scroll-triggered fade animations */

@@ -132,7 +132,7 @@ export default function TheQuest() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 p-8">
+              <div className="frosted-glass-subtle border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 p-8">
                 <motion.div
                   initial={{ y: 20, opacity: 0.5 }}
                   whileInView={{ y: 0, opacity: 1 }}
@@ -146,7 +146,7 @@ export default function TheQuest() {
                       </span>
                     </div>
                     <div>
-                      <h3 className="typography-h3 font-bold text-ancient-gold mb-2" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                      <h3 className="typography-h3 font-bold text-ancient-gold mb-2 text-glow-gold">
                         {horizon.title}
                       </h3>
                       <h4 className="text-2xl text-cream-white/80 italic font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
