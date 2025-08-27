@@ -35,6 +35,7 @@ The application creates an adventure-like progression through five atmospheric s
 - **Drizzle ORM** with PostgreSQL
 - **Neon Database** for cloud PostgreSQL
 - **Session management** with PostgreSQL backing
+- 
 
 ### UI Components
 - **Radix UI** primitives with shadcn/ui styling
