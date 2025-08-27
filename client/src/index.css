@@ -3,7 +3,7 @@
 /* 1. ANGLE & FAIRY - Titles and Headers */
 @font-face {
   font-family: 'AngleFairy2024';
-  src: url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024') format('opentype');
+  src: url('../attached_assets/Angle & Fairy_1755895085623.otf?v=2024') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -14,7 +14,7 @@
 /* 2. THORNELIA - Special Body Text (not in text boxes) */
 @font-face {
   font-family: 'Thornelia2024';
-  src: url('/attached_assets/Thornelia-Regular_1755924349754.ttf?v=2024') format('truetype');
+  src: url('../attached_assets/Thornelia-Regular_1755924349754.ttf?v=2024') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -25,7 +25,7 @@
 /* 3. GAME & REALITY - Reserved for Future Use */
 @font-face {
   font-family: 'GameReality2024';
-  src: url('/attached_assets/Game & Reality_1755895129972.otf?v=2024') format('opentype');
+  src: url('../attached_assets/Game & Reality_1755895129972.otf?v=2024') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -36,7 +36,7 @@
 /* 4. EMERLAND - Main Body Text for Text Boxes and Large Text Blocks */
 @font-face {
   font-family: 'Emerland2024';
-  src: url('/attached_assets/Emerland.otf?v=2024') format('opentype');
+  src: url('../attached_assets/Emerland.otf?v=2024') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
