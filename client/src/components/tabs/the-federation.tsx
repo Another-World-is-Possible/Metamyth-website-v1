@@ -65,8 +65,8 @@ export default function TheFederation() {
   return (
     <div className="bg-forest-green py-20 pt-32">
       <div className="max-w-6xl mx-auto px-4">
-        <motion.h2 
-          className="typography-h1 text-ancient-gold text-center mb-16"
+        <motion.h2
+          className="typography-h1 text-ancient-gold text-center mb-16 font-angle"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -180,7 +180,7 @@ export default function TheFederation() {
               >
                 <CardContent className="p-6">
                   <pathway.icon className="text-ancient-gold mb-4" style={{fontSize: '2rem'}} />
-                  <h4 className={`typography-h3 font-bold mb-3 font-emerland ${
+                  <h4 className={`typography-h3 font-bold mb-3 font-angle ${
                     pathway.color === 'crimson' ? 'text-crimson' :
                     pathway.color === 'mystical-teal' ? 'text-mystical-teal' :
                     pathway.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'

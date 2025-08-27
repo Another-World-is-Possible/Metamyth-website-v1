@@ -141,14 +141,14 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="typography-h1 text-gradient-gold mb-6">
+          <h2 className="typography-h1 text-gradient-gold mb-6 font-angle">
             HOW IT WORKS
           </h2>
-          <h2 className="typography-h2 text-ancient-gold font-bold mb-4" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>
+          <h2 className="typography-h2 text-ancient-gold mb-4 font-angle font-bold" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>
             Organizational Story Transformation
           </h2>
-          <p className="typography-lead text-cream-white text-glow-gold max-w-4xl mx-auto leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-            We give people back control of their stories, 
+          <p className="typography-lead text-cream-white text-glow-gold max-w-4xl mx-auto leading-relaxed font-angle" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+            We give people back control of their stories,
             transforming scattered narratives into coherent forces of planetary transformation.
           </p>
         </motion.div>
@@ -177,7 +177,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
 
         {/* Three Phases */}
         <div className="mb-16">
-          <h3 className="typography-h2 font-bold text-center text-mystical-teal mb-12">
+          <h3 className="typography-h2 font-bold text-center text-mystical-teal mb-12 font-angle">
             HOW THE SYSTEM WORKS
           </h3>
           
@@ -203,13 +203,13 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                         <p className="text-2xl text-cream-white/80 mb-2 italic font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                           {phase.subtitle}
                         </p>
-                        <p className="text-xl text-ancient-gold font-bold mb-4 font-emerland">
+                        <p className="text-xl text-ancient-gold font-bold mb-4 font-angle">
                           {phase.duration}
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-4 mb-4">
                           <div>
-                            <h5 className="text-xl text-ancient-gold font-bold mb-2 font-emerland">Key Elements:</h5>
+                            <h5 className="text-xl text-ancient-gold font-bold mb-2 font-angle">Key Elements:</h5>
                             <ul className="space-y-1">
                               {phase.movements.map((movement, idx) => (
                                 <li key={idx} className="text-cream-white/90 text-lg flex items-start gap-2 font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -221,7 +221,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                           </div>
 
                           <div className="bg-deep-black/60 border-2 border-ancient-gold rounded-lg p-4 shadow-lg shadow-ancient-gold/50">
-                            <h5 className="text-ancient-gold font-bold mb-3 text-xl font-emerland" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
+                            <h5 className="text-ancient-gold font-bold mb-3 text-xl font-angle" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
                             <p className="text-cream-white text-lg font-medium leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.75), 0 0 12px rgba(0,0,0,0.7), 0 0 18px rgba(0,0,0,0.65), 0 0 24px rgba(0,0,0,0.6)' }}>
                               {phase.outcome}
                             </p>

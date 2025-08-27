@@ -62,10 +62,10 @@ export default {
       },
       fontFamily: {
         angle: ["AngleFairy2024", "serif"],
-        game: ["Thornelia2024", "serif"],
-        king: ["KingSans2024", "sans-serif"],
-        kardige: ["Kardige2024", "sans-serif"],
-        sans: ["Mugient2024", "serif"],
+        thornelia: ["Thornelia2024", "serif"],
+        game: ["GameReality2024", "serif"],
+        emerland: ["Emerland2024", "serif"],
+        sans: ["AngleFairy2024", "serif"],
         serif: ["AngleFairy2024", "serif"],
       },
       animation: {

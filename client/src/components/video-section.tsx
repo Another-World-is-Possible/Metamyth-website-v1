@@ -32,8 +32,8 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
           Speaking to conscious leaders and visionary changemakers, founder <span className="text-mystical-teal font-bold">Zachary Marlow</span> drops a mind-bending truth: we're destroying the world for stories. But if we imagined this nightmare, we can imagine our way out. This talk unveils the Metamyth System—five questions that transform crisis into compelling quest. Marlow shows how ancient storytelling technology can liberate organizations from extractive paradigms.
         </motion.p>
         
-        <motion.h3 
-          className="typography-h3 font-game text-center mb-12 max-w-4xl mx-auto text-ancient-gold text-glow-gold"
+        <motion.h3
+          className="typography-h3 font-angle text-center mb-12 max-w-4xl mx-auto text-ancient-gold text-glow-gold"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -76,7 +76,7 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="italic font-game text-cream-white text-glow-gold">
+          <p className="italic font-thornelia text-cream-white text-glow-gold">
             "If we imagined this nightmare, we can imagine our way out."
           </p>
         </motion.div>

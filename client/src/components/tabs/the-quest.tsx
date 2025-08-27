@@ -95,8 +95,8 @@ export default function TheQuest() {
       {/* Content */}
       <div className="relative z-10">
       <div className="max-w-7xl mx-auto px-4">
-        <motion.h1 
-          className="typography-h1 text-gradient-gold text-center mb-8"
+        <motion.h1
+          className="typography-h1 text-gradient-gold text-center mb-8 font-angle"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -110,7 +110,7 @@ export default function TheQuest() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <h2 className="typography-h2 text-ancient-gold font-bold mb-6" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>
+          <h2 className="typography-h2 text-ancient-gold font-bold mb-6 font-angle" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>
             We are on a journey to change the human story and transform along the way.
           </h2>
           <p className="typography-lead text-cream-white text-glow-gold leading-relaxed">
@@ -161,7 +161,7 @@ export default function TheQuest() {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <h5 className={`text-xl font-bold mb-4 font-emerland ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
+                      <h5 className={`text-xl font-bold mb-4 font-angle ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         OBJECTIVES
                       </h5>
                       <ul className="space-y-3">
@@ -183,7 +183,7 @@ export default function TheQuest() {
                     </div>
 
                     <div>
-                      <h5 className={`text-xl font-bold mb-4 font-emerland ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
+                      <h5 className={`text-xl font-bold mb-4 font-angle ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         STATUS
                       </h5>
                       <p

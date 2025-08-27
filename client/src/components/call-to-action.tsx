@@ -18,7 +18,7 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
         </h2>
         
         <h3 
-          className="scroll-fade-in typography-h3 font-game text-center mb-12 text-ancient-gold text-glow-gold"
+          className="scroll-fade-in typography-h3 font-angle text-center mb-12 text-ancient-gold text-glow-gold"
         >
           Ready to stop being trapped in someone else's story<br />and start writing your own?
         </h3>

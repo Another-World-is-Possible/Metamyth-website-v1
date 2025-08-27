@@ -204,8 +204,8 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
         className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
       >
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-          <motion.h1 
-            className="typography-h1 mb-6 text-ancient-gold text-glow-gold"
+          <motion.h1
+            className="typography-h1 mb-6 text-ancient-gold text-glow-gold font-angle"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
@@ -278,8 +278,8 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
         className="min-h-screen flex items-center justify-center px-4"
       >
         <div className="max-w-4xl mx-auto relative z-20">
-          <motion.p 
-            className="typography-h3 font-game text-center mb-8 text-ancient-gold text-glow-gold"
+          <motion.p
+            className="typography-h3 font-angle text-center mb-8 text-ancient-gold text-glow-gold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
@@ -405,7 +405,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 </motion.div>
                 
                 <div className="flex-shrink-0 min-w-0">
-                  <span className="font-game font-bold text-ancient-gold text-xl" style={{ textShadow: '0 0 8px currentColor, 0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>{transform.to}</span>
+                  <span className="font-angle font-bold text-ancient-gold text-xl" style={{ textShadow: '0 0 8px currentColor, 0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>{transform.to}</span>
                   <br />
                   <span className="font-emerland text-cream-white text-lg leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{transform.description}</span>
                 </div>
@@ -468,7 +468,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                       <div className={`w-12 h-12 mx-auto mb-2 rounded-full flex items-center justify-center border ${concept.color === 'crimson' ? 'bg-crimson/20 border-crimson/30' : concept.color === 'mystical-teal' ? 'bg-mystical-teal/20 border-mystical-teal/30' : concept.color === 'ancient-gold' ? 'bg-ancient-gold/20 border-ancient-gold/30' : 'bg-cream-white/20 border-cream-white/30'}`}>
                         <IconComponent className={`w-6 h-6 ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`} />
                       </div>
-                      <h3 className={`text-xl font-bold mb-2 tracking-wider font-emerland ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
+                      <h3 className={`text-xl font-bold mb-2 tracking-wider font-angle ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         {concept.title}
                       </h3>
                       <p className="text-lg text-cream-white leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -604,7 +604,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             </motion.div>
           </div>
           
-          <p className="font-game italic mt-8 text-cream-white text-glow-gold">
+          <p className="font-thornelia italic mt-8 text-cream-white text-glow-gold">
             Limited availability for organizations ready to serve the story.
           </p>
         </motion.div>

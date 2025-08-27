@@ -135,8 +135,8 @@ export default function OurMetamyth() {
       {/* Dark overlay to make text readable */}
       <div className="absolute inset-0 bg-deep-black/50" />
       <div className="relative z-10 max-w-6xl mx-auto px-4">
-        <motion.h2 
-          className="typography-h1 shimmer-text text-center mb-16"
+        <motion.h2
+          className="typography-h1 shimmer-text text-center mb-16 font-angle"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

@@ -66,7 +66,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                 }`}
 
               >
-                <span className="select-none font-game">
+                <span className="select-none font-angle">
                   {item.label}
                 </span>
               </button>

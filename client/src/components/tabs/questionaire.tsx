@@ -237,7 +237,7 @@ export default function QUESTionaire() {
         >
           <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 p-8">
             <CardContent>
-              <h2 className="typography-h2 text-ancient-gold mb-6">
+              <h2 className="typography-h2 text-ancient-gold mb-6 font-angle">
                 Your QUESTionaire Journey Complete
               </h2>
               <p className="typography-body text-cream-white mb-8 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -332,7 +332,7 @@ export default function QUESTionaire() {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="typography-h1 text-ancient-gold mb-8 text-glow-gold">
+              <h1 className="typography-h1 text-ancient-gold mb-8 text-glow-gold font-angle">
                 QUESTionaire
               </h1>
               <h2 className="typography-h3 text-mystical-teal mb-6 italic">
