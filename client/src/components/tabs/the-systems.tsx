@@ -160,12 +160,12 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+          <Card className="frosted-glass-subtle border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/30 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/50 transition-all duration-300">
             <CardContent className="p-8">
-              <h3 className="typography-h3 font-bold text-ancient-gold mb-4 text-center">
+              <h3 className="typography-h3 font-bold text-ancient-gold mb-4 text-center text-glow-gold">
                 THE RADICAL PROCESS OF REALITY AUTHORSHIP
               </h3>
-              <p className="typography-body text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+              <p className="typography-body text-cream-white leading-relaxed text-center max-w-4xl mx-auto font-emerland text-glow-cream">
                 Most organizations operate from scattered narratives written by market forces, investor expectations,
                 and cultural programming rather than their authentic purpose. We connect their deepest mission to a
                 larger planetary story, raising the stakes of what they're doing and connecting people to their
@@ -189,18 +189,18 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+                <Card className="frosted-glass-subtle border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-6">
                       <div className="p-4 rounded-lg bg-ancient-gold/20 border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/30">
                         <phase.icon className="text-ancient-gold text-3xl" style={{ textShadow: '0 0 8px currentColor' }} />
                       </div>
-                      
+
                       <div className="flex-1">
                         <h4 className="typography-h3 text-ancient-gold mb-2">
                           {phase.title}
                         </h4>
-                        <p className="text-2xl text-cream-white/80 mb-2 italic font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                        <p className="text-2xl text-cream-white/80 mb-2 italic font-emerland text-glow-cream">
                           {phase.subtitle}
                         </p>
                         <p className="text-xl text-ancient-gold font-bold mb-4 font-angle">

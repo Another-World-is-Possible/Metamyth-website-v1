@@ -205,37 +205,52 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
       >
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <motion.h1
-            className="typography-h1 mb-6 text-ancient-gold text-glow-gold font-angle"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="typography-h1 mb-6 text-ancient-gold font-angle"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -150px 0px" }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            style={{
+              textShadow: `
+                0 0 15px rgba(255, 0, 0, 0.8),
+                0 0 30px rgba(255, 0, 0, 0.6),
+                0 0 45px rgba(255, 0, 0, 0.4),
+                -3px -3px 0 #000,
+                3px -3px 0 #000,
+                -3px 3px 0 #000,
+                3px 3px 0 #000
+              `
+            }}
           >
             WHY TELL STORIES ON A BURNING PLANET?
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             className="typography-body mb-4 text-cream-white text-glow-gold"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -150px 0px" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           >
             While the world burns...
           </motion.p>
-          
-          <motion.p 
+
+          <motion.p
             className="typography-body mb-6 text-cream-white text-glow-gold"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2, duration: 1.2, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -150px 0px" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           >
             ...most organizations waste their voice on meaningless metrics<br />instead of meaningful transformation.
           </motion.p>
-          
-          <motion.p 
+
+          <motion.p
             className="typography-h3 font-bold text-ancient-gold text-glow-gold"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5, duration: 1.2, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3, margin: "0px 0px -150px 0px" }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.9 }}
           >
             If we aren't writing our own story,<br/>someone else is writing for us.
           </motion.p>
@@ -281,7 +296,8 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           <motion.p
             className="typography-h3 font-angle text-center mb-8 text-ancient-gold text-glow-gold"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
           >
             You feel the urgency but lack the story technology<br/>to create the response you need.
@@ -303,7 +319,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                 <div className="relative">
                   <span className="font-bold text-ancient-gold text-xl">{audience.title}</span>
                   <br />
-                  <span className="font-emerland text-cream-white/90 text-lg leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{audience.description}</span>
+                  <span className="font-emerland text-cream-white/90 text-lg leading-relaxed text-glow-cream">{audience.description}</span>
                   <div className="absolute -right-12 top-1/2 w-8 h-px bg-gradient-to-r from-ancient-gold/50 to-transparent"></div>
                 </div>
               </motion.div>
@@ -451,7 +467,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 gap-3">
+          <div className="grid md:grid-cols-2 gap-6">
             {scienceConcepts.map((concept, index) => {
               const IconComponent = concept.icon;
               return (
@@ -464,14 +480,14 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
                   whileHover={{ y: -5, transition: { duration: 0.3 } }}
                 >
                   <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 h-full hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
-                    <CardContent className="p-3 text-center">
-                      <div className={`w-12 h-12 mx-auto mb-2 rounded-full flex items-center justify-center border ${concept.color === 'crimson' ? 'bg-crimson/20 border-crimson/30' : concept.color === 'mystical-teal' ? 'bg-mystical-teal/20 border-mystical-teal/30' : concept.color === 'ancient-gold' ? 'bg-ancient-gold/20 border-ancient-gold/30' : 'bg-cream-white/20 border-cream-white/30'}`}>
-                        <IconComponent className={`w-6 h-6 ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`} />
+                    <CardContent className="p-6 text-center">
+                      <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center border ${concept.color === 'crimson' ? 'bg-crimson/20 border-crimson/30' : concept.color === 'mystical-teal' ? 'bg-mystical-teal/20 border-mystical-teal/30' : concept.color === 'ancient-gold' ? 'bg-ancient-gold/20 border-ancient-gold/30' : 'bg-cream-white/20 border-cream-white/30'}`}>
+                        <IconComponent className={`w-8 h-8 ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`} />
                       </div>
-                      <h3 className={`text-xl font-bold mb-2 tracking-wider font-angle ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
+                      <h3 className={`text-2xl font-bold mb-3 tracking-wider font-angle ${concept.color === 'crimson' ? 'text-crimson' : concept.color === 'mystical-teal' ? 'text-mystical-teal' : concept.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
                         {concept.title}
                       </h3>
-                      <p className="text-lg text-cream-white leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                      <p className="text-xl text-cream-white leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                         {concept.description}
                       </p>
                     </CardContent>
@@ -554,31 +570,31 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
 
       {/* The Call to Adventure */}
       <section className="min-h-screen flex items-center justify-center px-4 relative">
-        <motion.div 
+        <motion.div
           className="max-w-4xl mx-auto text-center relative z-20"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2, margin: "0px 0px -100px 0px" }}
           transition={{ duration: 1.5 }}
         >
-          <h2 
+          <h2
             className="font-angle text-3xl md:text-4xl font-bold text-ancient-gold mb-4"
-            style={{ 
+            style={{
               textShadow: '0 0 8px rgba(212, 175, 55, 0.8), 0 0 16px rgba(212, 175, 55, 0.4), 2px 2px 4px rgba(0,0,0,0.8)'
             }}
           >
             Ready to transform scattered narrative into coherent planetary force?
           </h2>
-          
+
           <p className="typography-body mb-12 font-bold text-cream-white text-glow-gold">
             Using humanity's oldest technology to serve humanity's greatest need.
           </p>
-          
+
           <div className="flex flex-col md:flex-row gap-6 justify-center max-w-2xl mx-auto">
-            <Button 
+            <Button
               onClick={() => setActiveTab?.('questionaire')}
               className="bg-gradient-to-r from-ancient-gold to-mystical-teal text-deep-black hover:from-ancient-gold/80 hover:to-mystical-teal/80 font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 cursor-pointer"
-              style={{ 
+              style={{
                 border: '2px solid transparent',
                 backgroundClip: 'padding-box'
               }}
@@ -586,7 +602,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
               DISCOVER YOUR METAMYTH
             </Button>
             <motion.div
-              animate={{ 
+              animate={{
                 boxShadow: [
                   '0 0 0 rgba(212, 175, 55, 0.4)',
                   '0 0 20px rgba(212, 175, 55, 0.6)',
@@ -595,7 +611,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
               }}
               transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
             >
-              <Button 
+              <Button
                 onClick={() => setActiveTab?.('questionaire')}
                 className="bg-mystical-teal text-deep-black hover:bg-mystical-teal/80 font-bold py-4 px-8 rounded-lg transition-all duration-300 text-lg transform hover:-translate-y-1 cursor-pointer"
               >
@@ -603,7 +619,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
               </Button>
             </motion.div>
           </div>
-          
+
           <p className="font-thornelia italic mt-8 text-cream-white text-glow-gold">
             Limited availability for organizations ready to serve the story.
           </p>

@@ -495,17 +495,17 @@ export default function QUESTionaire() {
                         <div className="mt-3">
                           <p className="typography-technical text-mystical-teal/70 mb-2">Examples:</p>
                           {currentQuestion.examples.map((example, index) => (
-                            <p key={index} className="typography-technical text-cream-white/60 italic" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>- "{example}"</p>
+                            <p key={index} className="typography-technical text-cream-white/60 italic text-glow-cream">- "{example}"</p>
                           ))}
                         </div>
                       )}
                     </div>
                   </div>
-                  
-                  <p className="typography-technical text-mystical-teal/80 text-center mt-6 italic">
+
+                  <p className="typography-technical text-mystical-teal/80 text-center mt-6 italic text-glow-teal">
                     {currentQuestion.subtitle}
                   </p>
-                  
+
                   <div className="flex justify-between items-center mt-8">
                     <Button
                       onClick={handleBack}
@@ -516,7 +516,7 @@ export default function QUESTionaire() {
                       <ChevronLeft className="w-4 h-4 mr-2" />
                       Back
                     </Button>
-                    
+
                     {currentStep === questions.length + 1 ? (
                       <Button
                         onClick={handleSubmit}

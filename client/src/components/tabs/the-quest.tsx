@@ -110,7 +110,7 @@ export default function TheQuest() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <h2 className="typography-h2 text-ancient-gold font-bold mb-6 font-angle" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>
+          <h2 className="typography-h2 text-ancient-gold font-bold mb-6 font-angle text-glow-gold">
             We are on a journey to change the human story and transform along the way.
           </h2>
           <p className="typography-lead text-cream-white text-glow-gold leading-relaxed">
@@ -141,7 +141,7 @@ export default function TheQuest() {
                 >
                   <div className="flex items-center mb-6">
                     <div className={`w-12 h-12 rounded-full flex items-center justify-center mr-6 border-2 ${horizon.color === 'crimson' ? 'bg-crimson/20 border-crimson' : horizon.color === 'mystical-teal' ? 'bg-mystical-teal/20 border-mystical-teal' : horizon.color === 'ancient-gold' ? 'bg-ancient-gold/20 border-ancient-gold' : 'bg-cream-white/20 border-cream-white'}`}>
-                      <span className={`font-bold text-xl ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}>
+                      <span className={`font-bold text-xl ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'} text-glow-gold`}>
                         {horizon.id}
                       </span>
                     </div>
@@ -149,9 +149,9 @@ export default function TheQuest() {
                       <h3 className="typography-h3 font-bold text-ancient-gold mb-2 text-glow-gold">
                         {horizon.title}
                       </h3>
-                      <h4 className="text-2xl text-cream-white/80 italic font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                        {horizon.subtitle}
-                      </h4>
+                      <p className="typography-body font-emerland text-cream-white text-glow-cream">
+                        {horizon.description}
+                      </p>
                     </div>
                   </div>
 

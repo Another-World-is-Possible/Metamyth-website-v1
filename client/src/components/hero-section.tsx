@@ -62,13 +62,13 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           >
             <Button
               onClick={() => setActiveTab?.('questionaire')}
-              className="bg-ancient-gold text-deep-black hover:bg-ancient-gold/80 font-angle font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 border-2 border-ancient-gold hover:shadow-2xl cursor-pointer button-glow-gold"
+              className="bg-ancient-gold text-deep-black font-angle font-bold py-2 px-6 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer button-glow-gold"
             >
               <span className="text-glow-gold">REGENERATE YOUR STORY</span>
             </Button>
             <Button
               onClick={() => setActiveTab?.('questionaire')}
-              className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 border-2 border-mystical-teal hover:shadow-2xl cursor-pointer button-glow-teal"
+              className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-2 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer button-glow-teal"
             >
               <span className="text-glow-teal">JOIN THE QUEST</span>
             </Button>
