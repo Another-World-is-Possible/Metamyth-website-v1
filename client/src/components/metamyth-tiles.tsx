@@ -31,7 +31,7 @@ const tiles = [
     id: 2,
     title: "THE QUEST",
     quote: "Story is the oldest technology on Earth.<br/>The original operating system that turns vision into reality.",
-    description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real.<br/><br/>Your story becomes the foundation for everything that follows.",
+    description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real.<br /><br />Your story becomes the foundation for everything that follows.",
     bgImage: questImg,
     animation: "thread",
     gradient: "from-deep-black to-dark-wine",
@@ -42,7 +42,7 @@ const tiles = [
     id: 3,
     title: "THE VISION OF WHAT IS POSSIBLE",
     quote: "A world that works for all where work becomes adventure, where authentic authority commands cosmic resources, and where the future belongs to those who remember they're writing it.",
-    description: "Everything becomes possible when we regain control of the story. We become reality architects turning breakdown into breakthrough, extraction into regeneration, pointless busyness into purpose-driven adventure.<br/><br/>The Metamyth transform background characters in a broken story into heroes in the myth of the future we're here to LIVE.",
+    description: "Through story, the impossible becomes inevitable. We transform breakdown into breakthrough, extraction into regeneration, marketing into movements, branding into worldbuilding, business into easiness.<br/><br/>The Metamyth transforms background characters in a broken story into heroes in the myth of the future we're here to LIVE.",
     bgImage: visionImg,
     animation: "flash",
     gradient: "from-dark-wine to-forest-green",
@@ -53,7 +53,7 @@ const tiles = [
     id: 4,
     title: "THE JOURNEY",
     quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.",
-    description: "From individual story regeneration to organizational transformation to planetary coordination—one integrated system that scales from personal to cosmic.",
+    description: "From individual story regeneration to organizational transformation to planetary coordination, bringing stories to life through AI systems, cinematic media, and organizational infrastructure—one integrated system that scales from personal to cosmic.",
     bgImage: journeyImg,
     animation: "crash",
     gradient: "from-forest-green to-deep-black",
@@ -64,7 +64,7 @@ const tiles = [
     id: 5,
     title: "THE RE-QUEST",
     quote: "Calling the next generation of storytellers ready to stop being characters in someone else's extraction story and start authoring the regenerative reality your heart knows is possible.",
-    description: "The time for waiting is over. The world needs your story now.",
+    description: "The time for waiting is over. The world needs your story now. ",
     callToAction: "Will you answer the call?",
     bgImage: requestImg,
     animation: "flicker",
@@ -112,40 +112,41 @@ function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & 
     <div className={`metamyth-section min-h-screen flex items-center relative overflow-hidden`}>
       {/* Background Image - simple fade in, no movement */}
       <div className="absolute inset-0">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat metamyth-bg-fade"
           style={{ backgroundImage: `url(${tile.bgImage})` }}
         />
         {/* Subtle overlay to ensure text readability */}
         <div className={`absolute inset-0 bg-gradient-to-br ${tile.gradient} opacity-25`} />
       </div>
-      
+
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <h2 className="typography-h2 font-angle mb-8 text-cream-white leading-tight text-glow-gold">
             {tile.title}
           </h2>
 
           <blockquote
-            className="typography-h3 font-angle mb-8 italic text-cream-white text-glow-gold"
+            className="typography-h3 font-angle mb-8 italic text-cream-white text-glow-gold leading-relaxed"
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
 
           <p
             className="typography-body font-emerland leading-loose text-cream-white text-glow-gold"
             dangerouslySetInnerHTML={{ __html: tile.description }}
+            style={{ lineHeight: '1.8' }}
           ></p>
 
           {tile.callToAction && (
-            <div className="mt-8">
+            <div className="mt-12">
               <p
-                className="typography-h2 font-angle mb-6 text-cream-white text-glow-gold"
+                className="typography-h2 font-angle mb-8 text-cream-white text-glow-gold leading-relaxed"
               >
                 {tile.callToAction}
               </p>
 
               <button
-                className="bg-ancient-gold text-deep-black font-angle font-bold py-4 px-8 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
+                className="bg-ancient-gold text-deep-black font-angle font-bold py-4 px-8 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer text-2xl"
                 onClick={() => setActiveTab?.('questionaire')}
               >
                 START YOUR JOURNEY

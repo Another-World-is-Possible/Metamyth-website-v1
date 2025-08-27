@@ -37,7 +37,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           </motion.h1>
           
           <motion.h2
-            className="typography-h2 font-angle text-ancient-gold mb-6 text-glow-gold"
+            className="typography-h2 font-angle text-cream-white mb-6 text-glow-gold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 0.8 : 0, duration: 0.8, ease: "easeOut" }}
@@ -46,10 +46,11 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           </motion.h2>
 
           <motion.p
-            className="typography-lead mb-12 max-w-4xl mx-auto text-cream-white text-glow-cream font-thornelia"
+            className="typography-lead mb-16 max-w-4xl mx-auto text-cream-white text-glow-cream font-thornelia"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.1 : 0, duration: 0.8, ease: "easeOut" }}
+            style={{ lineHeight: '1.8' }}
           >
             We wield the most ancient technology powered by modern magic:<br />Write your reality, play it like the ultimate game, film it into cinema<br />to attract people into your quest.
           </motion.p>
@@ -62,15 +63,15 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           >
             <Button
               onClick={() => setActiveTab?.('questionaire')}
-              className="bg-ancient-gold text-deep-black font-angle font-bold py-2 px-6 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer button-glow-gold"
+              className="bg-ancient-gold text-deep-black font-angle font-bold py-4 px-8 rounded-full hover:bg-ancient-gold/80 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer shadow-lg shadow-ancient-gold/50 border-0"
             >
-              <span className="text-glow-gold">REGENERATE YOUR STORY</span>
+              <span className="text-glow-gold text-xl">REGENERATE YOUR STORY</span>
             </Button>
             <Button
               onClick={() => setActiveTab?.('questionaire')}
-              className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-2 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer button-glow-teal"
+              className="bg-mystical-teal text-deep-black font-angle font-bold py-4 px-8 rounded-full hover:bg-mystical-teal/80 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer shadow-lg shadow-mystical-teal/50 border-0"
             >
-              <span className="text-glow-teal">JOIN THE QUEST</span>
+              <span className="text-glow-teal text-xl">JOIN THE QUEST</span>
             </Button>
           </motion.div>
         </div>

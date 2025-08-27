@@ -246,7 +246,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
           </motion.p>
 
           <motion.p
-            className="typography-h3 font-bold text-ancient-gold text-glow-gold"
+            className="typography-h2 font-bold text-ancient-gold text-glow-gold"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3, margin: "0px 0px -150px 0px" }}

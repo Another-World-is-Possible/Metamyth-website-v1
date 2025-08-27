@@ -35,8 +35,8 @@ export default function Home() {
   useEffect(() => {
     // Enhanced Intersection Observer for immersive scroll animations
     const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -53,13 +53,28 @@ export default function Home() {
     // Small delay to ensure DOM is updated
     const timeoutId = setTimeout(() => {
       // Observe all scroll-triggered elements
-      const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in, .metamyth-section');
+      const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in, .metamyth-section, .call-to-action-section');
       scrollElements.forEach(el => observer.observe(el));
+
+      // Special handling for CallToAction section to load more promptly
+      const callToActionSection = document.querySelector('.call-to-action-section');
+      if (callToActionSection) {
+        // Check if it's already in viewport
+        const rect = callToActionSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        // If the section is within 100px of the viewport, trigger it immediately
+        if (rect.top <= windowHeight + 100) {
+          setTimeout(() => {
+            callToActionSection.classList.add('visible');
+          }, 100);
+        }
+      }
     }, 100);
 
     return () => {
       clearTimeout(timeoutId);
-      const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in, .metamyth-section');
+      const scrollElements = document.querySelectorAll('.scroll-fade-in, .section-fade-in, .metamyth-section, .call-to-action-section');
       scrollElements.forEach(el => observer.unobserve(el));
     };
   }, []);
