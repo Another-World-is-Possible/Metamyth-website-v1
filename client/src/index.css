@@ -79,6 +79,16 @@
   text-rendering: optimizeLegibility;
 }
 
+@font-face {
+  font-family: 'NorthRoland2024';
+  src: url('/attached_assets/North Roland_1756260498910.ttf?v=2024') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 0, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
 /* Font class declarations with new names */
 .font-angle {
   font-family: 'AngleFairy2024', serif !important;
@@ -99,6 +109,10 @@
 .font-kardige {
   font-family: 'Kardige2024', sans-serif !important;
   color: hsl(45, 35%, 83%) !important;
+}
+
+.font-north {
+  font-family: 'NorthRoland2024', serif !important;
 }
 
 @tailwind base;

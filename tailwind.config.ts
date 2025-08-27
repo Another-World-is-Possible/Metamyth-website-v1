@@ -65,6 +65,7 @@ export default {
         alice: ["Alice", "serif"],
         angle: ["AngleFairy2024", "serif"],
         game: ["Thornelia2024", "serif"],
+        north: ["NorthRoland2024", "serif"],
         king: ["KingSans2024", "sans-serif"],
         kardige: ["Kardige2024", "sans-serif"],
         sans: ["Mugient2024", "serif"],

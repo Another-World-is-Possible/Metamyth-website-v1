@@ -127,7 +127,7 @@ function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & 
           </h2>
           
           <blockquote 
-            className="typography-h3 font-game mb-8 italic text-cream-white text-glow-gold"
+            className="typography-h3 font-north mb-8 italic text-cream-white text-glow-gold"
             dangerouslySetInnerHTML={{ __html: `"${tile.quote}"` }}
           />
           
