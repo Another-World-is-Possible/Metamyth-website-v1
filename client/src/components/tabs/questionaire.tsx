@@ -355,13 +355,13 @@ export default function QUESTionaire() {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="text-4xl text-ancient-gold mb-6 text-glow-gold font-qurova">
+              <h1 className="text-4xl text-ancient-gold mb-6 text-glow-gold font-angle">
                 The QUESTionaire: The Complete Call to Adventure
               </h1>
-              <h2 className="text-2xl text-mystical-teal mb-4 italic font-qurova">
+              <h2 className="text-2xl text-mystical-teal mb-4 italic font-angle">
                 "The 7-Question Journey That Reveals Who's Really Writing Your Life"
               </h2>
-              <h3 className="text-xl text-ancient-gold mb-6 font-qurova">
+              <h3 className="text-xl text-ancient-gold mb-6 font-angle">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
               <p className="text-sm text-cream-white mb-8 max-w-2xl mx-auto leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -389,7 +389,7 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="text-3xl font-qurova text-ancient-gold text-center mb-4">
+                  <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     Your Journey Begins
                   </h2>
                   <p className="text-sm text-center text-cream-white mb-6 font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -455,7 +455,7 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="text-3xl font-qurova text-ancient-gold text-center mb-4">
+                  <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     The Origin of Your Quest
                   </h2>
                   <p className="typography-body font-game text-center text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -507,11 +507,11 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="text-3xl font-qurova text-ancient-gold mb-4 text-center leading-tight">
+                  <h2 className="text-3xl font-angle text-ancient-gold mb-4 text-center leading-tight">
                     {currentQuestion.title}
                   </h2>
                   
-                  <p className="text-lg text-mystical-teal/80 text-center mb-6 italic font-qurova leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-lg text-mystical-teal/80 text-center mb-6 italic font-moryson leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {currentQuestion.subtitle}
                   </p>
                   
@@ -548,7 +548,7 @@ export default function QUESTionaire() {
                                   ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                                   : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                               }`} />
-                              <span className="text-sm text-cream-white leading-relaxed font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{option}</span>
+                              <span className="text-sm text-cream-white leading-relaxed font-qurova" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{option}</span>
                             </div>
                           </motion.div>
                         ))}
@@ -626,7 +626,7 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="text-3xl font-qurova text-ancient-gold text-center mb-4">
+                  <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     Your Legacy Prophecy
                   </h2>
                   <p className="typography-body font-game text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>

@@ -44,11 +44,22 @@
   text-rendering: optimizeLegibility;
 }
 
-/* 5. QUROVA - Premium Question Typography */
+/* 5. QUROVA - Answer Options Typography */
 @font-face {
   font-family: 'Qurova2024';
   src: url('/attached_assets/Qurova-VF_1756503070056.ttf?v=2024') format('truetype');
   font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* 6. MORYSON - Question Text Typography */
+@font-face {
+  font-family: 'Moryson2024';
+  src: url('/attached_assets/Moryson_1756503460226.otf?v=2024') format('opentype');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
   font-feature-settings: "liga" 1, "kern" 1;
@@ -81,6 +92,13 @@
 
 .font-qurova {
   font-family: 'Qurova2024', serif !important;
+  color: hsl(45, 35%, 83%) !important;
+  text-wrap: pretty;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.font-moryson {
+  font-family: 'Moryson2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
   font-feature-settings: "liga" 1, "kern" 1;
