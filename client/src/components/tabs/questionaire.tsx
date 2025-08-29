@@ -270,7 +270,7 @@ export default function QUESTionaire() {
               
               {qualification === "calendar" ? (
                 <div className="space-y-4">
-                  <p className="typography-body text-mystical-teal font-kardige">
+                  <p className="text-sm text-mystical-teal font-kardige">
                     You qualify for intensive story work! Schedule your deep dive session:
                   </p>
                   <a 
@@ -287,7 +287,7 @@ export default function QUESTionaire() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <p className="typography-body text-ancient-gold font-kardige">
+                  <p className="text-sm text-ancient-gold font-kardige">
                     Join our community of conscious story architects:
                   </p>
                   <a 
@@ -315,9 +315,10 @@ export default function QUESTionaire() {
   }
 
   return (
-    <div className="min-h-screen bg-deep-black overflow-hidden" 
+    <div className="min-h-screen overflow-hidden" 
          style={{
-           backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.9), rgba(20,40,60,0.8)), 
+           backgroundColor: '#1D4241',
+           backgroundImage: `linear-gradient(45deg, rgba(29,66,65,0.9), rgba(29,66,65,0.8)), 
                             radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
                             radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
                             url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23129f9f" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>')`,
@@ -354,16 +355,16 @@ export default function QUESTionaire() {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="typography-h1 text-ancient-gold mb-8 text-glow-gold font-angle">
+              <h1 className="text-3xl text-ancient-gold mb-6 text-glow-gold font-angle">
                 The QUESTionaire: The Complete Call to Adventure
               </h1>
-              <h2 className="typography-h2 text-mystical-teal mb-6 italic font-game">
+              <h2 className="text-xl text-mystical-teal mb-4 italic font-game">
                 "The 7-Question Journey That Reveals Who's Really Writing Your Life"
               </h2>
-              <h3 className="typography-h2 text-ancient-gold mb-6 font-game">
+              <h3 className="text-lg text-ancient-gold mb-6 font-game">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
-              <p className="typography-body text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+              <p className="text-sm text-cream-white mb-8 max-w-2xl mx-auto leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                 The old story is ending—systems designed for scarcity destroying abundance, narratives built on separation fragmenting communities, economic myths optimized for extraction devouring the living world. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth that reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power before it's too late. This could be your moment of awakening.
               </p>
               <Button
@@ -388,16 +389,16 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="typography-h2 font-angle text-ancient-gold text-center mb-6">
+                  <h2 className="text-2xl font-angle text-ancient-gold text-center mb-4">
                     Your Journey Begins
                   </h2>
-                  <p className="typography-body text-center text-cream-white mb-8 font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-sm text-center text-cream-white mb-6 font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     First, let's connect so we can share your results and next steps.
                   </p>
                   
                   <div className="space-y-6">
                     <div>
-                      <label className="block typography-body text-mystical-teal font-kardige mb-2">
+                      <label className="block text-sm text-mystical-teal font-kardige mb-2">
                         <Mail className="w-4 h-4 inline mr-2" />
                         Email Address *
                       </label>
@@ -412,7 +413,7 @@ export default function QUESTionaire() {
                     </div>
                     
                     <div>
-                      <label className="block typography-body text-mystical-teal font-kardige mb-2">
+                      <label className="block text-sm text-mystical-teal font-kardige mb-2">
                         <Phone className="w-4 h-4 inline mr-2" />
                         Phone Number (Optional)
                       </label>
@@ -454,7 +455,7 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="typography-h2 font-angle text-ancient-gold text-center mb-6">
+                  <h2 className="text-2xl font-angle text-ancient-gold text-center mb-4">
                     The Origin of Your Quest
                   </h2>
                   <p className="typography-body font-game text-center text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -467,7 +468,7 @@ export default function QUESTionaire() {
                   <Textarea
                     value={originStory}
                     onChange={(e) => setOriginStory(e.target.value)}
-                    className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body font-kardige"
+                    className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-20 text-sm font-kardige"
                     placeholder="Share the story that brought you here..."
                     data-testid="textarea-origin-story"
                   />
@@ -506,11 +507,11 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="typography-h2 font-angle text-ancient-gold mb-6 text-center leading-tight">
+                  <h2 className="text-xl font-angle text-ancient-gold mb-4 text-center leading-tight">
                     {currentQuestion.title}
                   </h2>
                   
-                  <p className="typography-body text-mystical-teal/80 text-center mb-8 italic font-game leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-sm text-mystical-teal/80 text-center mb-6 italic font-game leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {currentQuestion.subtitle}
                   </p>
                   
@@ -547,7 +548,7 @@ export default function QUESTionaire() {
                                   ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                                   : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                               }`} />
-                              <span className="typography-body text-cream-white leading-relaxed font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{option}</span>
+                              <span className="text-sm text-cream-white leading-relaxed font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{option}</span>
                             </div>
                           </motion.div>
                         ))}
@@ -557,13 +558,13 @@ export default function QUESTionaire() {
                     {/* Personal response text area ONLY for questions with hasTextInput: true */}
                     {currentQuestion.hasTextInput && (
                       <div className="mt-6">
-                        <label className="block typography-body text-mystical-teal font-kardige mb-3">
+                        <label className="block text-sm text-mystical-teal font-kardige mb-3">
                           Write in your unique field:
                         </label>
                         <Textarea
                           value={textResponses[currentQuestion.id] || ""}
                           onChange={(e) => handleTextResponse(currentQuestion.id, e.target.value)}
-                          className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body font-kardige"
+                          className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-20 text-sm font-kardige"
                           placeholder={currentQuestion.textPlaceholder || "Share your thoughts..."}
                           data-testid={`textarea-question-${currentQuestion.id}`}
                         />
@@ -571,7 +572,7 @@ export default function QUESTionaire() {
                     )}
                   </div>
 
-                  <p className="typography-body text-cream-white/80 text-center mt-6 italic font-game leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-xs text-cream-white/80 text-center mt-4 italic font-game leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {currentQuestion.description}
                   </p>
 
@@ -638,7 +639,7 @@ export default function QUESTionaire() {
                   <Textarea
                     value={legacyVision}
                     onChange={(e) => setLegacyVision(e.target.value)}
-                    className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body font-kardige"
+                    className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-20 text-sm font-kardige"
                     placeholder="Your legacy prophecy..."
                     data-testid="textarea-legacy-vision"
                   />
