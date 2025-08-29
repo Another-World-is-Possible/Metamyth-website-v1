@@ -364,9 +364,7 @@ export default function QUESTionaire() {
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
               <p className="typography-body text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                The old story is ending—systems designed for scarcity destroying abundance, narratives built on separation fragmenting communities, economic myths optimized for extraction devouring the living world. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth that reality is made of stories, and whoever controls the narrative controls the future. 
-                <br /><br />
-                The old story is ending whether we like it or not, and we have a very narrow window to create the future we want. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable through those brave enough to live them.
+                The old story is ending. The new one is being written right now. Some people will author the future consciously. Others will simply react to what gets created around them. This journey reveals which one you are—and what becomes possible when you pick up the pen.
               </p>
               <Button
                 onClick={handleNext}
@@ -552,19 +550,21 @@ export default function QUESTionaire() {
                       </div>
                     )}
                     
-                    {/* Personal response text area for all questions */}
-                    <div className="mt-6">
-                      <label className="block typography-body text-mystical-teal font-kardige mb-3">
-                        Your personal response:
-                      </label>
-                      <Textarea
-                        value={textResponses[currentQuestion.id] || ""}
-                        onChange={(e) => handleTextResponse(currentQuestion.id, e.target.value)}
-                        className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body font-kardige"
-                        placeholder={currentQuestion.textPlaceholder || "Share your thoughts..."}
-                        data-testid={`textarea-question-${currentQuestion.id}`}
-                      />
-                    </div>
+                    {/* Personal response text area ONLY for questions with hasTextInput: true */}
+                    {currentQuestion.hasTextInput && (
+                      <div className="mt-6">
+                        <label className="block typography-body text-mystical-teal font-kardige mb-3">
+                          Your personal response:
+                        </label>
+                        <Textarea
+                          value={textResponses[currentQuestion.id] || ""}
+                          onChange={(e) => handleTextResponse(currentQuestion.id, e.target.value)}
+                          className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body font-kardige"
+                          placeholder={currentQuestion.textPlaceholder || "Share your thoughts..."}
+                          data-testid={`textarea-question-${currentQuestion.id}`}
+                        />
+                      </div>
+                    )}
                   </div>
 
                   <p className="typography-body text-mystical-teal/80 text-center mt-6 italic text-glow-teal font-game">
@@ -585,11 +585,7 @@ export default function QUESTionaire() {
                     {currentStep === questions.length + 2 ? (
                       <Button
                         onClick={handleNext}
-                        disabled={
-                          currentQuestion.type === "text" 
-                            ? !textResponses[currentQuestion.id]?.trim()
-                            : false
-                        }
+                        disabled={false}
                         className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-3 px-6"
                         data-testid="button-next"
                       >
@@ -599,11 +595,7 @@ export default function QUESTionaire() {
                     ) : (
                       <Button
                         onClick={handleNext}
-                        disabled={
-                          currentQuestion.type === "text" 
-                            ? !textResponses[currentQuestion.id]?.trim()
-                            : false
-                        }
+                        disabled={false}
                         className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-3 px-6"
                         data-testid="button-next"
                       >
