@@ -55,16 +55,6 @@
   text-rendering: optimizeLegibility;
 }
 
-/* 6. RODELUXET - Question Text Typography */
-@font-face {
-  font-family: 'Rodeluxet2024';
-  src: url('/attached_assets/Rodeluxet_1756503715192.ttf?v=2024') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  font-feature-settings: "liga" 1, "kern" 1;
-  text-rendering: optimizeLegibility;
-}
 
 /* Font Class Hierarchy */
 .font-angle {
@@ -97,12 +87,6 @@
   font-feature-settings: "liga" 1, "kern" 1;
 }
 
-.font-rodeluxet {
-  font-family: 'Rodeluxet2024', serif !important;
-  color: hsl(45, 35%, 83%) !important;
-  text-wrap: pretty;
-  font-feature-settings: "liga" 1, "kern" 1;
-}
 
 /* Legacy font classes for backward compatibility - redirect to new hierarchy */
 .font-kardige {

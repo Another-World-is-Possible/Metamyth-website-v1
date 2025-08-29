@@ -511,7 +511,7 @@ export default function QUESTionaire() {
                     {currentQuestion.title}
                   </h2>
                   
-                  <p className="text-lg text-mystical-teal/80 text-center mb-6 italic font-rodeluxet leading-relaxed">
+                  <p className="text-lg text-mystical-teal/80 text-center mb-6 italic font-game leading-relaxed">
                     {currentQuestion.subtitle}
                   </p>
                   
