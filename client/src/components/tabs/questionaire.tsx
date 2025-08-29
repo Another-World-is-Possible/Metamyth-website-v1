@@ -358,10 +358,10 @@ export default function QUESTionaire() {
               <h1 className="text-4xl text-ancient-gold mb-6 text-glow-gold font-angle">
                 The QUESTionaire: The Complete Call to Adventure
               </h1>
-              <h2 className="text-2xl text-mystical-teal mb-4 italic font-angle">
+              <h2 className="text-2xl text-mystical-teal mb-4 italic font-thornelia">
                 "The 7-Question Journey That Reveals Who's Really Writing Your Life"
               </h2>
-              <h3 className="text-xl text-ancient-gold mb-6 font-angle">
+              <h3 className="text-xl text-ancient-gold mb-6 font-thornelia">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
               <p className="text-sm text-cream-white mb-8 max-w-2xl mx-auto leading-relaxed font-north-roland">
