@@ -114,7 +114,7 @@ export default function TheQuest() {
           <h2 className="typography-h2 text-ancient-gold font-bold mb-6 font-angle text-glow-gold" style={{ textShadow: '0 0 16px rgba(0, 0, 0, 0.8), 0 0 32px rgba(0, 0, 0, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.9)' }}>
             We are on a journey to change the human story<br />and transform along the way.
           </h2>
-          <p className="typography-lead text-cream-white leading-relaxed font-grillages" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.9)' }}>
+          <p className="typography-lead text-cream-white leading-relaxed" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.9)' }}>
             Our quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence.
             <br /><br />
             This is how we change the human story—one authentic narrative at a time.
@@ -168,7 +168,7 @@ export default function TheQuest() {
                         {horizon.items.map((item, itemIndex) => (
                           <motion.li
                             key={itemIndex}
-                            className="flex items-start text-cream-white/90 text-lg font-emerland"
+                            className="flex items-start text-cream-white/90 text-lg font-grillages"
                             style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}
                             initial={{ x: -20, opacity: 0 }}
                             whileInView={{ x: 0, opacity: 1 }}
