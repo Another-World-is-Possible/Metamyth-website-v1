@@ -44,11 +44,11 @@
   text-rendering: optimizeLegibility;
 }
 
-/* 5. QUROVA - Answer Options Typography */
+/* 5. NORTH ROLAND - Questions and Answers Typography */
 @font-face {
-  font-family: 'Qurova2024';
-  src: url('/attached_assets/Qurova-VF_1756503070056.ttf?v=2024') format('truetype');
-  font-weight: 100 900;
+  font-family: 'NorthRoland2024';
+  src: url('/attached_assets/North Roland_1756505838081.ttf?v=2024') format('truetype');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
   font-feature-settings: "liga" 1, "kern" 1;
@@ -80,8 +80,8 @@
   text-wrap: pretty;
 }
 
-.font-qurova {
-  font-family: 'Qurova2024', serif !important;
+.font-north-roland {
+  font-family: 'NorthRoland2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
   font-feature-settings: "liga" 1, "kern" 1;

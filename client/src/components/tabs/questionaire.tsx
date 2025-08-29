@@ -511,7 +511,7 @@ export default function QUESTionaire() {
                     {currentQuestion.title}
                   </h2>
                   
-                  <p className="text-lg text-mystical-teal/80 text-center mb-6 font-game leading-relaxed">
+                  <p className="text-lg text-mystical-teal/80 text-center mb-6 font-north-roland leading-relaxed">
                     {currentQuestion.subtitle}
                   </p>
                   
@@ -548,7 +548,7 @@ export default function QUESTionaire() {
                                   ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                                   : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                               }`} />
-                              <span className="text-sm text-cream-white leading-relaxed font-qurova">{option}</span>
+                              <span className="text-sm text-cream-white leading-relaxed font-north-roland">{option}</span>
                             </div>
                           </motion.div>
                         ))}
