@@ -66,6 +66,17 @@
   text-rendering: optimizeLegibility;
 }
 
+/* 7. NORTH ROLAND V2 - Main Page Typography */
+@font-face {
+  font-family: 'NorthRolandV2';
+  src: url('/attached_assets/North Roland_1756507335618.ttf?v=2024') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
 
 /* Font Class Hierarchy */
 .font-angle {
@@ -100,6 +111,13 @@
 
 .font-reusco {
   font-family: 'ReuscoDisplay2024', serif !important;
+  color: hsl(45, 35%, 83%) !important;
+  text-wrap: pretty;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.font-north-roland-v2 {
+  font-family: 'NorthRolandV2', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
   font-feature-settings: "liga" 1, "kern" 1;
@@ -282,8 +300,8 @@
   }
 
   .typography-lead {
-    @apply font-thornelia text-xl md:text-2xl leading-relaxed;
-    font-family: 'Thornelia2024', 'Times New Roman', serif !important;
+    @apply font-north-roland-v2 text-xl md:text-2xl leading-relaxed;
+    font-family: 'NorthRolandV2', 'Times New Roman', serif !important;
     font-weight: normal !important;
     text-wrap: pretty;
   }
