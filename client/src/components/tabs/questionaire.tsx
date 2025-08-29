@@ -21,120 +21,136 @@ interface Question {
   placeholder?: string;
   subtitle: string;
   hasTextInput?: boolean;
+  textPlaceholder?: string;
   examples?: string[];
+  description?: string;
 }
 
 const questions = [
   {
     id: 1,
-    title: "In the middle of this great transition, are you writing your own story or just reacting to everyone else's chaos?",
+    title: "Your Authorship in the Great Story",
+    subtitle: "Reality is authored by those who remember they hold the pen. In this great transition between worlds, some people discover they're writing their own story while others remain trapped in scripts they never chose. Where do you stand in claiming authorship of your destiny?",
     type: "radio",
     options: [
-      "I'm actively writing my story—I know what I'm building and why it matters",
-      "I'm mostly in control of my path but ready to go way deeper into conscious creation",
-      "I'm breaking free from others' expectations but still discovering what's actually mine to write",
-      "I feel completely stuck in stories other people wrote and I desperately want out"
+      "I actively author reality—leading an organization and shaping our narrative and direction",
+      "I'm consciously building my story—creating a venture and controlling how it unfolds",
+      "I have significant influence—helping write the story within a larger organization",
+      "I'm authoring my voice—developing authentic personal or professional expression",
+      "I'm awakening as an author—discovering my story while breaking free from others' expectations",
+      "I feel like a character—stuck performing roles others wrote, desperately wanting to hold the pen"
     ],
-    subtitle: "Most people discover they're not as much in control as they thought. The awakening can be uncomfortable—and liberating.",
-    hasTextInput: true
+    hasTextInput: false,
+    description: "The first step to transformation is recognizing where you stand. Authors create worlds. Characters simply inhabit them."
   },
   {
     id: 2,
-    title: "We're living through the end of one world and the birth of something entirely different. When you imagine stepping fully into who you could become in this emerging reality, what happens in your body?",
-    type: "radio",
+    title: "Your Vision of Victory",
+    subtitle: "When your story reaches its triumphant conclusion—when you've authored the reality you came here to create—what victories do you see? What transformations become possible when your authentic narrative is fully expressed?",
+    type: "checkbox",
     options: [
-      "I feel electric—I can see my role in what's coming and I'm actively moving toward it",
-      "Something in me wakes up and hungers to explore this possibility deeper",
-      "I feel it calling but invisible walls keep stopping me from breaking through",
-      "I'm so buried under everyone else's crises I can barely imagine my own transformation"
+      "Crystal clarity—I know exactly who I am, what I offer, and why it matters deeply",
+      "Magnetic attraction—The right people, opportunities, and resources flow to me naturally",
+      "Thriving community—I'm surrounded by engaged allies who champion the work and each other",
+      "Purposeful prosperity—My work generates abundant resources while serving what I care about most",
+      "Authentic influence—My voice shapes conversations and decisions that create positive change",
+      "Sustainable impact—My efforts compound over time, creating lasting transformation beyond myself",
+      "Aligned organization—My team or company operates from shared values and unified vision",
+      "Legacy worth leaving—Future generations inherit a more beautiful world because of my story"
     ],
-    subtitle: "Your body knows the truth before your mind does. What it's telling you matters more than you realize.",
-    hasTextInput: true
+    hasTextInput: false,
+    description: "Victory isn't just personal success—it's the transformation that ripples out when authentic stories are lived fully."
   },
   {
     id: 3,
-    title: "The old story is changing. But some people are building what comes next. What have you learned or created that could actually serve the world we're trying to birth?",
+    title: "Your Story Challenges and Dragons",
+    subtitle: "Every meaningful quest involves both discovering your unique gifts and facing what blocks your path. Heroes don't avoid dragons—they learn what treasures the dragons guard. What story challenges are you currently navigating?",
     type: "checkbox",
     options: [
-      "I understand broken systems and I see pathways to rebuild them regeneratively",
-      "I build with technology but I want to create solutions that heal rather than extract",
-      "I craft communication that helps people see through the illusions holding us back",
-      "I naturally gather people around what matters most and watch communities come alive",
-      "I spot opportunities and solutions that remain invisible to others",
-      "I create meaningful work but I'm still learning how to make it economically sustainable",
-      "I've cultivated networks that could connect game-changers for world-shifting collaboration",
-      "When something genuinely matters, I show up with everything I have"
+      "Clarity—I need to understand my unique narrative and contribution clearly",
+      "Message—I struggle to communicate my value or vision with power and consistency",
+      "Attraction—I'm not magnetizing the right people, funding, or opportunities to my cause",
+      "Focus—I'm scattered across directions without coherent momentum or storyline",
+      "Community—I need to cultivate engaged audiences, stakeholders, or deeper team alignment",
+      "Authenticity—My external success doesn't reflect my internal values or fulfill my soul",
+      "Vision—I have ideas but struggle turning them into sustainable, scalable reality",
+      "Alliance—I'm building this story alone when I desperately need aligned collaborators"
     ],
-    subtitle: "Every person carries medicine the world desperately needs. Most haven't learned to see their gifts clearly yet.",
-    hasTextInput: true
+    hasTextInput: false,
+    description: "Dragons aren't obstacles—they're guardians of the exact treasure you need. Your challenges reveal your destiny."
   },
   {
     id: 4,
-    title: "Every person building something meaningful faces dragons—challenges that either defeat us or forge us into who we need to become. What's your dragon? What's the biggest obstacle between your potential and your current reality, and what happens if you don't slay it in the next 12 months?",
+    title: "The Scale of Your Quest",
+    subtitle: "In the stories that matter most, heroes aren't measured by what they hoard but by what they're willing to risk for transformation. What magnitude of change are you here to author, and what is that story worth to your soul?",
     type: "radio",
     options: [
-      "I'm not clear on my unique contribution and I'm wasting precious time on work that isn't mine—years slip away",
-      "I keep getting pulled into opportunities that drain me instead of feeding my real mission—burnout is inevitable",
-      "I'm succeeding at things I don't care about while my soul's work gets no resources—I'm dying inside",
-      "I know exactly what needs to exist but I can't crack the code on making it financially viable—I might surrender",
-      "I'm scattered across too many directions and nothing gains real momentum—I'm spinning wheels while the world burns"
+      "$15K-50K+ annually—Planetary transformation: My story serves global healing and deserves maximum commitment",
+      "$5K-15K—Regional influence: My narrative reshapes industries, communities, and countless lives",
+      "$1K-5K—Personal mastery: I'm investing strategically in becoming who I'm destined to be",
+      "$500-1K—Apprentice path: I'm building capacity while proving my dedication to the quest",
+      "Exploring scale—I'm still discovering what magnitude of story my soul is called to tell"
     ],
-    subtitle: "The dragon that stops most people isn't external circumstances. It's internal clarity. This challenge is either your prison or your forge.",
-    hasTextInput: true
+    hasTextInput: false,
+    description: "The universe provides resources in proportion to the transformation you're brave enough to create."
   },
   {
     id: 5,
-    title: "Transforming your story—stepping into who you're actually meant to be—requires investment in that process. If you found the right support to help you author your most authentic path, what feels realistic for investing in that transformation over the next year?",
-    type: "radio",
+    title: "Your Wealth Beyond Gold",
+    subtitle: "The old story says only those who can pay in money deserve transformation. We're writing a different story—one that recognizes the many forms of wealth that build new worlds. Beyond financial power, what riches do you bring to the fellowship of reality authors?",
+    type: "checkbox",
     options: [
-      "$15K-50K+ annually—Planetary impact: My story serves global transformation and deserves maximum investment",
-      "$5K-15K—Community impact: My work affects many lives and merits significant commitment",
-      "$1K-5K—Personal transformation: I'm focused on my own story development with strategic investment",
-      "$500-1K—I'm building capacity while investing what I have in my authentic becoming",
-      "Exploring possibilities—I need to understand what's available before committing resources"
+      "Systems—I redesign organizational structures and processes that regenerate rather than extract",
+      "Technology—I build digital platforms and tools that connect consciousness and serve collaboration",
+      "Economics—I work with money, investment, and resource flows in ways that heal rather than harm",
+      "Creative—I use art, media, and storytelling to make impossible realities feel inevitable",
+      "Community—I create spaces where authentic souls find each other and collective magic happens",
+      "Narrative—I help articulate and spread stories that shift how people see what's possible",
+      "Network—I connect the right people and resources at the perfect moments for breakthrough",
+      "Presence—I offer consistent energy, attention, and unwavering commitment to what matters most"
     ],
-    subtitle: "Your investment reflects both your capacity and your conviction about the transformation you're seeking. Resources follow commitment to authentic change.",
-    hasTextInput: true
+    hasTextInput: true,
+    textPlaceholder: "Write in your unique gifts...",
+    description: "True wealth isn't what you own—it's what you create, connect, and contribute to the healing of our world."
   },
   {
     id: 6,
-    title: "The old story says only those who can pay in money deserve transformation. We're writing a different story—one that recognizes many forms of wealth. If you're not rich in cash, what are you rich in? How would you contribute to a community creating the new story of our time?",
-    type: "checkbox",
+    title: "Your Moment of Readiness",
+    subtitle: "Every hero's journey reaches the moment when destiny calls and the soul must answer. When you imagine stepping fully into your most authentic story—the vision that makes your heart race with possibility—what happens in your body, and when does that transformation begin?",
+    type: "radio",
     options: [
-      "Systems design—I rebuild structures and processes that embed regenerative values",
-      "Technology creation—I build digital tools and platforms for conscious collaboration",
-      "Resource circulation—I understand finance and economic flows in service of life",
-      "Creative expression—I use art and media to make new realities visible and compelling",
-      "Community cultivation—I create spaces where authentic connection and mutual aid flourish",
-      "Story amplification—I help articulate narratives that shift how people see what's possible",
-      "Network weaving—I connect the right people for collaborative breakthroughs",
-      "Time and presence—I show up consistently with energy and commitment to collective transformation"
+      "Lightning strikes now—I feel electricity in my veins and I'm ready to embark on this quest immediately",
+      "Thunder rolls within three moons—Something powerful is awakening and I'm actively seeking the right guides",
+      "Storm clouds gather this cycle—I sense the perfect moment approaching and I'm preparing for the journey",
+      "Still reading the signs—I feel the calling but I'm listening carefully for divine timing"
     ],
-    subtitle: "Transformation shouldn't be pay-to-play. The new economy recognizes that everyone brings unique forms of wealth. Your contribution determines your role in co-creating what's next.",
-    hasTextInput: true
+    hasTextInput: false,
+    description: "The call to adventure doesn't wait for perfect conditions. It comes when your soul is ready to claim its destiny."
   },
   {
     id: 7,
-    title: "Every transformation has a single point of maximum leverage—the one shift that unlocks everything else. What's yours? What one change would transform your entire trajectory?",
-    type: "text",
-    placeholder: "Getting crystal clarity on what I'm actually meant to build in this lifetime...",
-    subtitle: "The thing you're most afraid to admit you need is usually the thing that would change everything.",
-    hasTextInput: true,
-    examples: [
-      "Getting crystal clarity on what I'm actually meant to build in this lifetime...",
-      "Finding genuine collaborators who share the vision and can help birth it...",
-      "Cracking the code on sustainable economics for meaningful work...",
-      "Breaking free from others' expectations and fully trusting my authentic path...",
-      "Developing the courage to step into the leadership role this work demands..."
-    ]
+    title: "Your Authority to Act",
+    subtitle: "In the stories that change everything, heroes have the power to make decisions that matter. What authority do you command in writing the next chapters?",
+    type: "radio",
+    options: [
+      "I decide for myself and others—I can commit resources and make strategic choices autonomously",
+      "I influence major decisions—My voice carries significant weight in important choices",
+      "I need to build consensus—I can advocate strongly but require others' agreement for major commitments",
+      "I'm preparing for authority—I'm developing the capacity to make autonomous decisions",
+      "I'm exploring my power—I'm discovering what authority I have and how to use it wisely"
+    ],
+    hasTextInput: false,
+    description: "True power isn't dominion over others—it's the authority to author your authentic story into reality."
   }
 ];
 
 export default function QUESTionaire() {
-  const [currentStep, setCurrentStep] = useState(0); // 0 = intro, 1 = contact, 2+ = questions
+  const [currentStep, setCurrentStep] = useState(0); // 0 = intro, 1 = contact, 2 = origin, 3+ = questions, last = legacy
   const [responses, setResponses] = useState<Record<number, any>>({});
   const [textResponses, setTextResponses] = useState<Record<number, string>>({});
   const [contactInfo, setContactInfo] = useState({ email: "", phone: "" });
+  const [originStory, setOriginStory] = useState("");
+  const [legacyVision, setLegacyVision] = useState("");
   const [showResult, setShowResult] = useState(false);
   const [qualification, setQualification] = useState<"calendar" | "discord">("discord");
   const { toast } = useToast();
@@ -193,7 +209,7 @@ export default function QUESTionaire() {
         return;
       }
       setCurrentStep(2);
-    } else if (currentStep <= questions.length + 1) {
+    } else if (currentStep <= questions.length + 3) { // +3 for origin, questions, and legacy
       setCurrentStep(prev => prev + 1);
     }
     // Scroll to top when transitioning to next question
@@ -215,12 +231,14 @@ export default function QUESTionaire() {
     submitMutation.mutate({
       email: contactInfo.email,
       phone: contactInfo.phone,
+      originStory,
+      legacyVision,
       responses: combinedResponses,
     });
   };
 
-  const progress = showResult ? 100 : Math.max(0, ((currentStep - 1) / (questions.length + 1)) * 100);
-  const currentQuestion = questions[currentStep - 2];
+  const progress = showResult ? 100 : Math.max(0, ((currentStep - 1) / (questions.length + 3)) * 100);
+  const currentQuestion = questions[currentStep - 3]; // Adjust for origin section
 
   if (showResult) {
     return (
@@ -317,7 +335,11 @@ export default function QUESTionaire() {
 
       {/* Question Counter */}
       <div className="fixed top-6 right-6 z-40 font-angle text-ancient-gold tracking-wider">
-        QUESTION {Math.max(0, currentStep - 1)} / {questions.length}
+        {currentStep === 0 && "INTRODUCTION"}
+        {currentStep === 1 && "CONTACT INFO"}
+        {currentStep === 2 && "YOUR ORIGIN"}
+        {currentStep >= 3 && currentStep <= questions.length + 2 && `QUESTION ${currentStep - 2} / ${questions.length}`}
+        {currentStep === questions.length + 3 && "LEGACY PROPHECY"}
       </div>
 
       <div className="flex items-center justify-center min-h-screen p-4 pt-24">
@@ -333,19 +355,18 @@ export default function QUESTionaire() {
               className="max-w-4xl mx-auto text-center"
             >
               <h1 className="typography-h1 text-ancient-gold mb-8 text-glow-gold font-angle">
-                QUESTionaire
+                The QUESTionaire: The Complete Call to Adventure
               </h1>
-              <h2 className="typography-h3 text-mystical-teal mb-6 italic">
+              <h2 className="typography-h3 text-mystical-teal mb-6 italic font-game">
                 "The 7-Question Journey That Reveals Who's Really Writing Your Life"
               </h2>
-              <h3 className="typography-h3 text-ancient-gold mb-6 font-bold">
+              <h3 className="typography-h3 text-ancient-gold mb-6 font-game">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
-              <p className="typography-body text-cream-white mb-8 max-w-3xl mx-auto leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                The old story is ending. Systems designed for scarcity are destroying abundance. Stories built on separation are fragmenting communities. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth: reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power—before it's too late.
-              </p>
-              <p className="typography-body text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                The old story is ending. The new one is being written right now. Some people will author the future consciously. Others will simply react to what gets created around them. This journey reveals which one you are—and what becomes possible when you pick up the pen.
+              <p className="typography-body text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                The old story is ending—systems designed for scarcity destroying abundance, narratives built on separation fragmenting communities, economic myths optimized for extraction devouring the living world. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth that reality is made of stories, and whoever controls the narrative controls the future. 
+                <br /><br />
+                The old story is ending whether we like it or not, and we have a very narrow window to create the future we want. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable through those brave enough to live them.
               </p>
               <Button
                 onClick={handleNext}
@@ -423,8 +444,60 @@ export default function QUESTionaire() {
             </motion.div>
           )}
 
+          {/* Origin of Your Quest */}
+          {currentStep === 2 && (
+            <motion.div
+              key="origin"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl mx-auto"
+            >
+              <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+                <CardContent className="p-8">
+                  <h2 className="typography-h2 font-angle text-ancient-gold text-center mb-6">
+                    The Origin of Your Quest
+                  </h2>
+                  <p className="typography-body font-game text-center text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                    Every hero's journey begins with what came before—the experiences that forged you, the struggles that strengthened you, the commitments that shaped you. Tell us your story:
+                  </p>
+                  <p className="typography-body font-game text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                    What brought you to this moment? What have you already tried to move your life or work forward? What have you invested—time, money, energy, heart—in transformation, growth, or building something meaningful?
+                  </p>
+                  
+                  <Textarea
+                    value={originStory}
+                    onChange={(e) => setOriginStory(e.target.value)}
+                    className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body font-kardige"
+                    placeholder="Share the story that brought you here..."
+                    data-testid="textarea-origin-story"
+                  />
+                  
+                  <div className="flex justify-between items-center mt-8">
+                    <Button
+                      onClick={handleBack}
+                      variant="ghost"
+                      className="text-cream-white hover:text-ancient-gold typography-body"
+                    >
+                      <ChevronLeft className="w-4 h-4 mr-2" />
+                      Back
+                    </Button>
+                    <Button
+                      onClick={handleNext}
+                      className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-3 px-6"
+                    >
+                      Continue Your Quest
+                      <ChevronRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          )}
+
           {/* Questions */}
-          {currentStep >= 2 && currentStep <= questions.length + 1 && currentQuestion && (
+          {currentStep >= 3 && currentStep <= questions.length + 2 && currentQuestion && (
             <motion.div
               key={`question-${currentQuestion.id}`}
               initial={{ opacity: 0, x: 100 }}
@@ -488,17 +561,9 @@ export default function QUESTionaire() {
                         value={textResponses[currentQuestion.id] || ""}
                         onChange={(e) => handleTextResponse(currentQuestion.id, e.target.value)}
                         className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body"
-                        placeholder={currentQuestion.placeholder || "Share your thoughts..."}
+                        placeholder={currentQuestion.textPlaceholder || "Share your thoughts..."}
                         data-testid={`textarea-question-${currentQuestion.id}`}
                       />
-                      {currentQuestion.examples && (
-                        <div className="mt-3">
-                          <p className="typography-technical text-mystical-teal/70 mb-2">Examples:</p>
-                          {currentQuestion.examples.map((example, index) => (
-                            <p key={index} className="typography-technical text-cream-white/60 italic text-glow-cream">- "{example}"</p>
-                          ))}
-                        </div>
-                      )}
                     </div>
                   </div>
 
@@ -517,14 +582,18 @@ export default function QUESTionaire() {
                       Back
                     </Button>
 
-                    {currentStep === questions.length + 1 ? (
+                    {currentStep === questions.length + 2 ? (
                       <Button
-                        onClick={handleSubmit}
-                        disabled={submitMutation.isPending}
-                        className="bg-crimson hover:bg-crimson/80 text-cream-white font-angle font-bold py-3 px-6"
-                        data-testid="button-submit"
+                        onClick={handleNext}
+                        disabled={
+                          currentQuestion.type === "text" 
+                            ? !textResponses[currentQuestion.id]?.trim()
+                            : false
+                        }
+                        className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-3 px-6"
+                        data-testid="button-next"
                       >
-                        {submitMutation.isPending ? "Submitting..." : "Complete QUESTionaire"}
+                        Your Final Prophecy
                         <ChevronRight className="w-5 h-5 ml-2" />
                       </Button>
                     ) : (
@@ -542,6 +611,60 @@ export default function QUESTionaire() {
                         <ChevronRight className="w-5 h-5 ml-2" />
                       </Button>
                     )}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          )}
+
+          {/* Legacy Prophecy */}
+          {currentStep === questions.length + 3 && (
+            <motion.div
+              key="legacy"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl mx-auto"
+            >
+              <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+                <CardContent className="p-8">
+                  <h2 className="typography-h2 font-angle text-ancient-gold text-center mb-6">
+                    Your Legacy Prophecy
+                  </h2>
+                  <p className="typography-body font-game text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                    Every great story reaches the moment when the hero glimpses their ultimate destiny—the legacy they're called to create, the change they're meant to author into reality.
+                  </p>
+                  <p className="typography-body font-game text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                    If you could author reality itself—if your vision could reshape the world—what would you create? What specific transformation would you bring to life? What legacy would you leave that heals the damage and regenerates abundance? Paint the picture of the world you're called to create:
+                  </p>
+                  
+                  <Textarea
+                    value={legacyVision}
+                    onChange={(e) => setLegacyVision(e.target.value)}
+                    className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body font-kardige"
+                    placeholder="Envision your legacy and the world you will create..."
+                    data-testid="textarea-legacy-vision"
+                  />
+                  
+                  <div className="flex justify-between items-center mt-8">
+                    <Button
+                      onClick={handleBack}
+                      variant="ghost"
+                      className="text-cream-white hover:text-ancient-gold typography-body"
+                    >
+                      <ChevronLeft className="w-4 h-4 mr-2" />
+                      Back
+                    </Button>
+                    <Button
+                      onClick={handleSubmit}
+                      disabled={submitMutation.isPending}
+                      className="bg-crimson hover:bg-crimson/80 text-cream-white font-angle font-bold py-3 px-6"
+                      data-testid="button-submit"
+                    >
+                      {submitMutation.isPending ? "Submitting..." : "Complete QUESTionaire"}
+                      <ChevronRight className="w-5 h-5 ml-2" />
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
