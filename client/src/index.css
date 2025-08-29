@@ -66,6 +66,17 @@
   text-rendering: optimizeLegibility;
 }
 
+/* 7. GRILLAGES SEMIBOLD - Quest Body Typography */
+@font-face {
+  font-family: 'GrillagesSemibold2024';
+  src: url('/attached_assets/GrillagesSemibold_1756508797173.ttf?v=2024') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
 
 /* Font Class Hierarchy */
 .font-angle {
@@ -102,6 +113,14 @@
   font-family: 'ReuscoDisplay2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.font-grillages {
+  font-family: 'GrillagesSemibold2024', serif !important;
+  color: hsl(45, 35%, 83%) !important;
+  text-wrap: pretty;
+  font-weight: 600;
   font-feature-settings: "liga" 1, "kern" 1;
 }
 
