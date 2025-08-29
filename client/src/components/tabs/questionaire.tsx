@@ -511,7 +511,7 @@ export default function QUESTionaire() {
                     {currentQuestion.title}
                   </h2>
                   
-                  <p className="text-lg text-mystical-teal/80 text-center mb-6 italic font-game leading-relaxed">
+                  <p className="text-lg text-mystical-teal/80 text-center mb-6 font-game leading-relaxed">
                     {currentQuestion.subtitle}
                   </p>
                   
@@ -572,7 +572,7 @@ export default function QUESTionaire() {
                     )}
                   </div>
 
-                  <p className="text-xs text-cream-white/80 text-center mt-4 italic font-game leading-relaxed">
+                  <p className="text-sm text-cream-white/80 text-center mt-4 italic font-game leading-relaxed">
                     {currentQuestion.description}
                   </p>
 
