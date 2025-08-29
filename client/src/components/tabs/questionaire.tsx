@@ -355,13 +355,13 @@ export default function QUESTionaire() {
               transition={{ duration: 0.6 }}
               className="max-w-4xl mx-auto text-center"
             >
-              <h1 className="text-3xl text-ancient-gold mb-6 text-glow-gold font-angle">
+              <h1 className="text-4xl text-ancient-gold mb-6 text-glow-gold font-angle">
                 The QUESTionaire: The Complete Call to Adventure
               </h1>
-              <h2 className="text-xl text-mystical-teal mb-4 italic font-game">
+              <h2 className="text-2xl text-mystical-teal mb-4 italic font-game">
                 "The 7-Question Journey That Reveals Who's Really Writing Your Life"
               </h2>
-              <h3 className="text-lg text-ancient-gold mb-6 font-game">
+              <h3 className="text-xl text-ancient-gold mb-6 font-game">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
               <p className="text-sm text-cream-white mb-8 max-w-2xl mx-auto leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -389,7 +389,7 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="text-2xl font-angle text-ancient-gold text-center mb-4">
+                  <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     Your Journey Begins
                   </h2>
                   <p className="text-sm text-center text-cream-white mb-6 font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -455,7 +455,7 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="text-2xl font-angle text-ancient-gold text-center mb-4">
+                  <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     The Origin of Your Quest
                   </h2>
                   <p className="typography-body font-game text-center text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -507,11 +507,11 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="text-xl font-angle text-ancient-gold mb-4 text-center leading-tight">
+                  <h2 className="text-3xl font-angle text-ancient-gold mb-4 text-center leading-tight">
                     {currentQuestion.title}
                   </h2>
                   
-                  <p className="text-sm text-mystical-teal/80 text-center mb-6 italic font-game leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-lg text-mystical-teal/80 text-center mb-6 italic font-game leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {currentQuestion.subtitle}
                   </p>
                   
