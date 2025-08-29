@@ -55,6 +55,17 @@
   text-rendering: optimizeLegibility;
 }
 
+/* 6. REUSCO DISPLAY - Main Landing Page Body Typography */
+@font-face {
+  font-family: 'ReuscoDisplay2024';
+  src: url('/attached_assets/Reusco Display_1756506190509.otf?v=2024') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
 
 /* Font Class Hierarchy */
 .font-angle {
@@ -82,6 +93,13 @@
 
 .font-north-roland {
   font-family: 'NorthRoland2024', serif !important;
+  color: hsl(45, 35%, 83%) !important;
+  text-wrap: pretty;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.font-reusco {
+  font-family: 'ReuscoDisplay2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
   font-feature-settings: "liga" 1, "kern" 1;
