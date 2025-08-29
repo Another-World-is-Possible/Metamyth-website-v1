@@ -353,27 +353,31 @@ export default function QUESTionaire() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.6 }}
-              className="max-w-4xl mx-auto text-center"
+              className="max-w-4xl mx-auto"
             >
-              <h1 className="text-4xl text-ancient-gold mb-6 text-glow-gold font-angle">
-                The QUESTionaire: The Complete Call to Adventure
-              </h1>
-              <h2 className="text-2xl text-mystical-teal mb-4 italic font-thornelia">
-                "The 7-Question Journey That Reveals Who's Really Writing Your Life"
-              </h2>
-              <h3 className="text-xl text-ancient-gold mb-6 font-thornelia">
-                "Are You the Hero of Your Story or a Background Character in Someone Else's?"
-              </h3>
-              <p className="text-sm text-cream-white mb-8 max-w-2xl mx-auto leading-relaxed font-north-roland">
-                The old story is ending—systems designed for scarcity destroying abundance, narratives built on separation fragmenting communities, economic myths optimized for extraction devouring the living world. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth that reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power before it's too late. This could be your moment of awakening.
-              </p>
-              <Button
-                onClick={handleNext}
-                className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8"
-              >
-                Embark on Your QUESTionaire
-                <ChevronRight className="w-6 h-6 ml-2" />
-              </Button>
+              <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+                <CardContent className="p-8 text-center">
+                  <h1 className="text-4xl text-ancient-gold mb-6 text-glow-gold font-angle">
+                    The QUESTionaire: The Complete Call to Adventure
+                  </h1>
+                  <h2 className="text-2xl text-mystical-teal mb-4 italic font-thornelia">
+                    "The 7-Question Journey That Reveals Who's Really Writing Your Life"
+                  </h2>
+                  <h3 className="text-xl text-ancient-gold mb-6 font-thornelia">
+                    "Are You the Hero of Your Story or a Background Character in Someone Else's?"
+                  </h3>
+                  <p className="text-sm text-cream-white mb-8 max-w-2xl mx-auto leading-relaxed font-north-roland">
+                    The old story is ending—systems designed for scarcity destroying abundance, narratives built on separation fragmenting communities, economic myths optimized for extraction devouring the living world. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth that reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power before it's too late. This could be your moment of awakening.
+                  </p>
+                  <Button
+                    onClick={handleNext}
+                    className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8"
+                  >
+                    Embark on Your QUESTionaire
+                    <ChevronRight className="w-6 h-6 ml-2" />
+                  </Button>
+                </CardContent>
+              </Card>
             </motion.div>
           )}
 
