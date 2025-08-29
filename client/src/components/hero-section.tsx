@@ -46,7 +46,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           </motion.h2>
 
           <motion.p
-            className="typography-lead mb-16 max-w-4xl mx-auto text-cream-white text-glow-cream"
+            className="typography-lead mb-16 max-w-4xl mx-auto text-cream-white text-glow-cream font-thornelia"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.1 : 0, duration: 0.8, ease: "easeOut" }}
