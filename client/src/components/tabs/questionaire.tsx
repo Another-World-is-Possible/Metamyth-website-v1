@@ -511,7 +511,7 @@ export default function QUESTionaire() {
                     {currentQuestion.title}
                   </h2>
                   
-                  <p className="text-lg text-mystical-teal/80 text-center mb-6 italic font-moryson leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-lg text-mystical-teal/80 text-center mb-6 italic font-rodeluxet leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {currentQuestion.subtitle}
                   </p>
                   
