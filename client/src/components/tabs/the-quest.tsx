@@ -97,6 +97,7 @@ export default function TheQuest() {
       <div className="max-w-7xl mx-auto px-4">
         <motion.h1
           className="typography-h1 text-ancient-gold text-center mb-8 font-angle text-glow-gold"
+          style={{ textShadow: '0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.6), 1px 1px 3px rgba(0, 0, 0, 0.9)' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -110,7 +111,7 @@ export default function TheQuest() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          <h2 className="typography-h2 text-ancient-gold font-bold mb-6 font-angle text-glow-gold">
+          <h2 className="typography-h2 text-ancient-gold font-bold mb-6 font-angle text-glow-gold" style={{ textShadow: '0 0 16px rgba(0, 0, 0, 0.8), 0 0 32px rgba(0, 0, 0, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.9)' }}>
             We are on a journey to change the human story<br />and transform along the way.
           </h2>
           <p className="typography-lead text-cream-white leading-relaxed" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.9)' }}>
