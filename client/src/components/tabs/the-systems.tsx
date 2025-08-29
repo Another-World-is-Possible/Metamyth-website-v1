@@ -141,7 +141,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="typography-h1 text-gradient-gold mb-6 font-angle">
+          <h2 className="typography-h1 text-ancient-gold mb-6 font-angle" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 0, 0, 0.7), 0 0 32px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.9)' }}>
             HOW IT WORKS
           </h2>
           <h2 className="typography-h2 text-ancient-gold mb-4 font-angle font-bold" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.65), 0 0 32px rgba(0, 0, 0, 0.6)' }}>
@@ -160,7 +160,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card className="frosted-glass-subtle border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/30 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/50 transition-all duration-300">
+          <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
             <CardContent className="p-8">
               <h3 className="typography-h3 font-bold text-ancient-gold mb-4 text-center text-glow-gold">
                 THE RADICAL PROCESS OF REALITY AUTHORSHIP
@@ -189,7 +189,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <Card className="frosted-glass-subtle border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
+                <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-6">
                       <div className="p-4 rounded-lg bg-ancient-gold/20 border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/30">

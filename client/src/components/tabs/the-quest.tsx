@@ -90,13 +90,14 @@ export default function TheQuest() {
       />
       
       {/* Dark overlay to make text readable */}
-      <div className="absolute inset-0 bg-deep-black/5" />
+      <div className="absolute inset-0 bg-deep-black/30" />
       
       {/* Content */}
       <div className="relative z-10">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h1
-          className="typography-h1 text-gradient-gold text-center mb-8 font-angle"
+          className="typography-h1 text-ancient-gold text-center mb-8 font-angle"
+          style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 0, 0, 0.7), 0 0 32px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.9)' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
