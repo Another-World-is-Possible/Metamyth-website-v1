@@ -46,7 +46,7 @@ const questions = [
   {
     id: 2,
     title: "Your Vision of Victory",
-    subtitle: "When your story reaches its triumphant conclusion—when you've authored the reality you came here to create—what victories do you see? What transformations become possible when your authentic narrative is fully expressed?",
+    subtitle: "When your story reaches its triumphant conclusion—when you've authored the reality you came here to create—what victories do you see? What transformations become possible when your authentic narrative is fully expressed? (Select all that resonate)",
     type: "checkbox",
     options: [
       "Crystal clarity—I know exactly who I am, what I offer, and why it matters deeply",
@@ -64,7 +64,7 @@ const questions = [
   {
     id: 3,
     title: "Your Story Challenges and Dragons",
-    subtitle: "Every meaningful quest involves both discovering your unique gifts and facing what blocks your path. Heroes don't avoid dragons—they learn what treasures the dragons guard. What story challenges are you currently navigating?",
+    subtitle: "Every meaningful quest involves both discovering your unique gifts and facing what blocks your path. Heroes don't avoid dragons—they learn what treasures the dragons guard. What story challenges are you currently navigating? (Select all that apply)",
     type: "checkbox",
     options: [
       "Clarity—I need to understand my unique narrative and contribution clearly",
@@ -110,7 +110,7 @@ const questions = [
       "Presence—I offer consistent energy, attention, and unwavering commitment to what matters most"
     ],
     hasTextInput: true,
-    textPlaceholder: "Write in your unique gifts...",
+    textPlaceholder: "Write in your unique field...",
     description: "True wealth isn't what you own—it's what you create, connect, and contribute to the healing of our world."
   },
   {
@@ -119,10 +119,10 @@ const questions = [
     subtitle: "Every hero's journey reaches the moment when destiny calls and the soul must answer. When you imagine stepping fully into your most authentic story—the vision that makes your heart race with possibility—what happens in your body, and when does that transformation begin?",
     type: "radio",
     options: [
-      "Lightning strikes now—I feel electricity in my veins and I'm ready to embark on this quest immediately",
-      "Thunder rolls within three moons—Something powerful is awakening and I'm actively seeking the right guides",
-      "Storm clouds gather this cycle—I sense the perfect moment approaching and I'm preparing for the journey",
-      "Still reading the signs—I feel the calling but I'm listening carefully for divine timing"
+      "I'm ready to start right now.",
+      "I'm actively preparing to start soon.",
+      "I'm getting ready to start this year.",
+      "I'm still exploring my options."
     ],
     hasTextInput: false,
     description: "The call to adventure doesn't wait for perfect conditions. It comes when your soul is ready to claim its destiny."
@@ -259,13 +259,13 @@ export default function QUESTionaire() {
                 Your QUESTionaire Journey Complete
               </h2>
               <p className="typography-body text-cream-white mb-8 leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                Your quest is complete, and the revelations are profound. You've identified your calling in the great transformation happening now—the shift from stories of scarcity to abundance, from separation to collaboration, from extraction to regeneration. Your responses reveal exactly where you stand in this great authorship and what specific support could accelerate your role in what's emerging.
+                The old story is ending whether we like it or not, and we have a very narrow window to create the future we want. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable through those brave enough to live them. Your journey has brought you this far, revealing your position in this great transformation and illuminated the specific support that could accelerate your role in what's emerging.
               </p>
               <p className="typography-body text-cream-white mb-8 leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                We'll reach out within 48 hours with resources, community connections, or strategic alliance opportunities designed specifically for your unique position in this transformation. The old story is ending, and you're among those writing the new one.
+                This is how legends begin: with a single choice to step into the story you came here to tell. Within 48 hours, we'll reach out with the alliance, resources, or community designed to help you craft the narrative that transforms not just your world, but the reality itself. The pen of destiny awaits your grasp. The page of possibility lies before you. What happens next is entirely determined by our commitment to change WITH the world.
               </p>
               <p className="typography-body text-cream-white mb-8 leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                Remember: we don't write your story for you—we help you LIVE it. The pen is in your hand. The future is waiting. What story will you write?
+                The future we want is one story away. What reality will you create?
               </p>
               
               {qualification === "calendar" ? (
@@ -364,7 +364,9 @@ export default function QUESTionaire() {
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
               <p className="typography-body text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                The old story is ending. The new one is being written right now. Some people will author the future consciously. Others will simply react to what gets created around them. This journey reveals which one you are—and what becomes possible when you pick up the pen.
+                The old story is ending—systems designed for scarcity destroying abundance, narratives built on separation fragmenting communities, economic myths optimized for extraction devouring the living world. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth that reality is made of stories, and whoever controls the narrative controls the future. 
+                <br /><br />
+                The old story is ending whether we like it or not, and we have a very narrow window to create the future we want. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable through those brave enough to live them.
               </p>
               <Button
                 onClick={handleNext}
@@ -554,7 +556,7 @@ export default function QUESTionaire() {
                     {currentQuestion.hasTextInput && (
                       <div className="mt-6">
                         <label className="block typography-body text-mystical-teal font-kardige mb-3">
-                          Your personal response:
+                          Write in your unique field:
                         </label>
                         <Textarea
                           value={textResponses[currentQuestion.id] || ""}
@@ -628,14 +630,14 @@ export default function QUESTionaire() {
                     Every great story reaches the moment when the hero glimpses their ultimate destiny—the legacy they're called to create, the change they're meant to author into reality.
                   </p>
                   <p className="typography-body font-game text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                    If you could author reality itself—if your vision could reshape the world—what would you create? What specific transformation would you bring to life? What legacy would you leave that heals the damage and regenerates abundance? Paint the picture of the world you're called to create:
+                    Close your eyes and travel to the future. You're looking back at the extraordinary transformation we created together—the story we authored, the reality we built, the world we healed. What are you most proud of? What legacy did your authentic story create? What became possible because you remembered you were the author?
                   </p>
                   
                   <Textarea
                     value={legacyVision}
                     onChange={(e) => setLegacyVision(e.target.value)}
                     className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body font-kardige"
-                    placeholder="Envision your legacy and the world you will create..."
+                    placeholder="Your legacy prophecy..."
                     data-testid="textarea-legacy-vision"
                   />
                   
