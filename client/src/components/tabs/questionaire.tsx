@@ -258,13 +258,13 @@ export default function QUESTionaire() {
               <h2 className="typography-h2 text-ancient-gold mb-6 font-angle">
                 Your QUESTionaire Journey Complete
               </h2>
-              <p className="typography-body text-cream-white mb-8 leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+              <p className="text-sm text-cream-white mb-8 leading-relaxed font-game">
                 The old story is ending whether we like it or not, and we have a very narrow window to create the future we want. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable through those brave enough to live them. Your journey has brought you this far, revealing your position in this great transformation and illuminated the specific support that could accelerate your role in what's emerging.
               </p>
-              <p className="typography-body text-cream-white mb-8 leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+              <p className="text-sm text-cream-white mb-8 leading-relaxed font-game">
                 This is how legends begin: with a single choice to step into the story you came here to tell. Within 48 hours, we'll reach out with the alliance, resources, or community designed to help you craft the narrative that transforms not just your world, but the reality itself. The pen of destiny awaits your grasp. The page of possibility lies before you. What happens next is entirely determined by our commitment to change WITH the world.
               </p>
-              <p className="typography-body text-cream-white mb-8 leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+              <p className="text-sm text-cream-white mb-8 leading-relaxed font-game">
                 The future we want is one story away. What reality will you create?
               </p>
               
@@ -304,7 +304,7 @@ export default function QUESTionaire() {
                 </div>
               )}
               
-              <p className="typography-body text-cream-white/80 mt-6 italic font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+              <p className="text-xs text-cream-white/80 mt-6 italic font-game">
                 The future isn't waiting for heroes to save it. It's waiting for authors to write it.
               </p>
             </CardContent>
@@ -364,7 +364,7 @@ export default function QUESTionaire() {
               <h3 className="text-xl text-ancient-gold mb-6 font-angle">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
-              <p className="text-sm text-cream-white mb-8 max-w-2xl mx-auto leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+              <p className="text-sm text-cream-white mb-8 max-w-2xl mx-auto leading-relaxed font-game">
                 The old story is ending—systems designed for scarcity destroying abundance, narratives built on separation fragmenting communities, economic myths optimized for extraction devouring the living world. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth that reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power before it's too late. This could be your moment of awakening.
               </p>
               <Button
@@ -392,7 +392,7 @@ export default function QUESTionaire() {
                   <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     Your Journey Begins
                   </h2>
-                  <p className="text-sm text-center text-cream-white mb-6 font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-sm text-center text-cream-white mb-6 font-game">
                     First, let's connect so we can share your results and next steps.
                   </p>
                   
@@ -458,10 +458,10 @@ export default function QUESTionaire() {
                   <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     The Origin of Your Quest
                   </h2>
-                  <p className="typography-body font-game text-center text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-sm font-game text-center text-cream-white mb-6 leading-relaxed">
                     Every hero's journey begins with what came before—the experiences that forged you, the struggles that strengthened you, the commitments that shaped you. Tell us your story:
                   </p>
-                  <p className="typography-body font-game text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-sm font-game text-cream-white mb-6 leading-relaxed">
                     What brought you to this moment? What have you already tried to move your life or work forward? What have you invested—time, money, energy, heart—in transformation, growth, or building something meaningful?
                   </p>
                   
@@ -572,7 +572,7 @@ export default function QUESTionaire() {
                     )}
                   </div>
 
-                  <p className="text-xs text-cream-white/80 text-center mt-4 italic font-game leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-xs text-cream-white/80 text-center mt-4 italic font-game leading-relaxed">
                     {currentQuestion.description}
                   </p>
 
@@ -629,10 +629,10 @@ export default function QUESTionaire() {
                   <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     Your Legacy Prophecy
                   </h2>
-                  <p className="typography-body font-game text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-sm font-game text-cream-white mb-6 leading-relaxed">
                     Every great story reaches the moment when the hero glimpses their ultimate destiny—the legacy they're called to create, the change they're meant to author into reality.
                   </p>
-                  <p className="typography-body font-game text-cream-white mb-6 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="text-sm font-game text-cream-white mb-6 leading-relaxed">
                     Close your eyes and travel to the future. You're looking back at the extraordinary transformation we created together—the story we authored, the reality we built, the world we healed. What are you most proud of? What legacy did your authentic story create? What became possible because you remembered you were the author?
                   </p>
                   
