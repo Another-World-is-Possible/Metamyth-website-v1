@@ -258,19 +258,19 @@ export default function QUESTionaire() {
               <h2 className="typography-h2 text-ancient-gold mb-6 font-angle">
                 Your QUESTionaire Journey Complete
               </h2>
-              <p className="typography-body text-cream-white mb-8 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                This is it. We are standing at the threshold of something monumental. The old story that built our world is ending, and the new one is being written by people who remember they are the authors of reality itself. They're not waiting for permission or perfect conditions. They're picking up the pen and writing the future into existence—regenerative economies, collaborative communities, technology that serves life, governance that honors the whole.
+              <p className="typography-body text-cream-white mb-8 leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                Your quest is complete, and the revelations are profound. You've identified your calling in the great transformation happening now—the shift from stories of scarcity to abundance, from separation to collaboration, from extraction to regeneration. Your responses reveal exactly where you stand in this great authorship and what specific support could accelerate your role in what's emerging.
               </p>
-              <p className="typography-body text-cream-white mb-8 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                This could be the moment that changes everything for you. Your responses reveal exactly where you stand in this great authorship—and what specific support could accelerate your role in what's emerging. We'll reach out within 48 hours with resources, community, or strategic alliance opportunities designed for your unique position in the shift.
+              <p className="typography-body text-cream-white mb-8 leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                We'll reach out within 48 hours with resources, community connections, or strategic alliance opportunities designed specifically for your unique position in this transformation. The old story is ending, and you're among those writing the new one.
               </p>
-              <p className="typography-body text-cream-white mb-8 leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
-                But understand this: we don't write your story for you—we help you LIVE it. As with all real magic, the more you believe, the realer it becomes. This work requires commitment, courage, and the willingness to step into the unknown. The pen is in your hand. The future is waiting. What story will you write?
+              <p className="typography-body text-cream-white mb-8 leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                Remember: we don't write your story for you—we help you LIVE it. The pen is in your hand. The future is waiting. What story will you write?
               </p>
               
               {qualification === "calendar" ? (
                 <div className="space-y-4">
-                  <p className="typography-body text-mystical-teal font-bold">
+                  <p className="typography-body text-mystical-teal font-kardige">
                     You qualify for intensive story work! Schedule your deep dive session:
                   </p>
                   <a 
@@ -287,7 +287,7 @@ export default function QUESTionaire() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <p className="typography-body text-ancient-gold font-bold">
+                  <p className="typography-body text-ancient-gold font-kardige">
                     Join our community of conscious story architects:
                   </p>
                   <a 
@@ -304,7 +304,7 @@ export default function QUESTionaire() {
                 </div>
               )}
               
-              <p className="typography-body text-cream-white/80 mt-6 italic" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+              <p className="typography-body text-cream-white/80 mt-6 italic font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                 The future isn't waiting for heroes to save it. It's waiting for authors to write it.
               </p>
             </CardContent>
@@ -357,10 +357,10 @@ export default function QUESTionaire() {
               <h1 className="typography-h1 text-ancient-gold mb-8 text-glow-gold font-angle">
                 The QUESTionaire: The Complete Call to Adventure
               </h1>
-              <h2 className="typography-h3 text-mystical-teal mb-6 italic font-game">
+              <h2 className="typography-h2 text-mystical-teal mb-6 italic font-game">
                 "The 7-Question Journey That Reveals Who's Really Writing Your Life"
               </h2>
-              <h3 className="typography-h3 text-ancient-gold mb-6 font-game">
+              <h3 className="typography-h2 text-ancient-gold mb-6 font-game">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
               <p className="typography-body text-cream-white mb-12 max-w-3xl mx-auto leading-relaxed font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
@@ -390,16 +390,16 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="typography-h3 font-bold text-ancient-gold text-center mb-6">
+                  <h2 className="typography-h2 font-angle text-ancient-gold text-center mb-6">
                     Your Journey Begins
                   </h2>
-                  <p className="typography-body text-center text-cream-white mb-8 font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="typography-body text-center text-cream-white mb-8 font-game" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     First, let's connect so we can share your results and next steps.
                   </p>
                   
                   <div className="space-y-6">
                     <div>
-                      <label className="block typography-body text-mystical-teal font-bold mb-2">
+                      <label className="block typography-body text-mystical-teal font-kardige mb-2">
                         <Mail className="w-4 h-4 inline mr-2" />
                         Email Address *
                       </label>
@@ -414,7 +414,7 @@ export default function QUESTionaire() {
                     </div>
                     
                     <div>
-                      <label className="block typography-body text-mystical-teal font-bold mb-2">
+                      <label className="block typography-body text-mystical-teal font-kardige mb-2">
                         <Phone className="w-4 h-4 inline mr-2" />
                         Phone Number (Optional)
                       </label>
@@ -508,7 +508,7 @@ export default function QUESTionaire() {
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
                 <CardContent className="p-8">
-                  <h2 className="typography-h3 font-bold text-ancient-gold mb-6 text-center leading-tight">
+                  <h2 className="typography-h2 font-angle text-ancient-gold mb-6 text-center leading-tight">
                     {currentQuestion.title}
                   </h2>
                   
@@ -545,7 +545,7 @@ export default function QUESTionaire() {
                                   ? (responses[currentQuestion.id] === option ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                                   : (responses[currentQuestion.id]?.includes(option) ? 'border-[#81ecec] bg-[#81ecec]' : 'border-silver')
                               }`} />
-                              <span className="typography-body text-cream-white leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{option}</span>
+                              <span className="typography-body text-cream-white leading-relaxed font-kardige" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>{option}</span>
                             </div>
                           </motion.div>
                         ))}
@@ -554,20 +554,20 @@ export default function QUESTionaire() {
                     
                     {/* Personal response text area for all questions */}
                     <div className="mt-6">
-                      <label className="block typography-body text-mystical-teal font-bold mb-3">
+                      <label className="block typography-body text-mystical-teal font-kardige mb-3">
                         Your personal response:
                       </label>
                       <Textarea
                         value={textResponses[currentQuestion.id] || ""}
                         onChange={(e) => handleTextResponse(currentQuestion.id, e.target.value)}
-                        className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body"
+                        className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-32 typography-body font-kardige"
                         placeholder={currentQuestion.textPlaceholder || "Share your thoughts..."}
                         data-testid={`textarea-question-${currentQuestion.id}`}
                       />
                     </div>
                   </div>
 
-                  <p className="typography-technical text-mystical-teal/80 text-center mt-6 italic text-glow-teal">
+                  <p className="typography-body text-mystical-teal/80 text-center mt-6 italic text-glow-teal font-game">
                     {currentQuestion.subtitle}
                   </p>
 
