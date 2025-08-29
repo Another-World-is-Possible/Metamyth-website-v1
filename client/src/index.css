@@ -282,8 +282,8 @@
   }
 
   .typography-lead {
-    @apply font-reusco text-xl md:text-2xl leading-relaxed;
-    font-family: 'ReuscoDisplay2024', 'Times New Roman', serif !important;
+    @apply font-thornelia text-xl md:text-2xl leading-relaxed;
+    font-family: 'Thornelia2024', 'Times New Roman', serif !important;
     font-weight: normal !important;
     text-wrap: pretty;
   }
