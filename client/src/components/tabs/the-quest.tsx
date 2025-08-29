@@ -90,14 +90,13 @@ export default function TheQuest() {
       />
       
       {/* Dark overlay to make text readable */}
-      <div className="absolute inset-0 bg-deep-black/30" />
+      <div className="absolute inset-0 bg-deep-black/50" />
       
       {/* Content */}
       <div className="relative z-10">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h1
-          className="typography-h1 text-ancient-gold text-center mb-8 font-angle"
-          style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 0, 0, 0.7), 0 0 32px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.9)' }}
+          className="typography-h1 text-ancient-gold text-center mb-8 font-angle text-glow-gold"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -112,11 +111,10 @@ export default function TheQuest() {
           transition={{ delay: 0.3, duration: 0.8 }}
         >
           <h2 className="typography-h2 text-ancient-gold font-bold mb-6 font-angle text-glow-gold">
-            We are on a journey to change the human story and transform along the way.
+            We are on a journey to change the human story<br />and transform along the way.
           </h2>
-          <p className="typography-lead text-cream-white text-glow-gold leading-relaxed">
-            Our quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built<br />
-            a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence.
+          <p className="typography-lead text-cream-white leading-relaxed" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.6), 1px 1px 2px rgba(0, 0, 0, 0.9)' }}>
+            Our quest is to shift humanity from extraction to regeneration through the power of authentic story. We've built a full end-to-beginning story system that helps organizations discover their cosmic purpose, evolve through each chapter of transformation, and write the new world into existence.
             <br /><br />
             This is how we change the human story—one authentic narrative at a time.
           </p>
