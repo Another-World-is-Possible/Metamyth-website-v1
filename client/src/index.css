@@ -85,9 +85,10 @@
 }
 
 .font-thornelia {
-  font-family: 'Thornelia2024', serif !important;
+  font-family: 'GrillagesSemibold2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
+  font-weight: 600;
 }
 
 .font-game {
@@ -97,9 +98,10 @@
 }
 
 .font-emerland {
-  font-family: 'Emerland2024', serif !important;
+  font-family: 'GrillagesSemibold2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
+  font-weight: 600;
 }
 
 .font-north-roland {
@@ -271,11 +273,12 @@
     text-wrap: pretty;
   }
 
-  /* Ensure thornelia font for rhetorical text */
+  /* Ensure grillages font for rhetorical text */
   .font-thornelia {
-    font-family: 'Thornelia2024', serif !important;
+    font-family: 'GrillagesSemibold2024', serif !important;
     color: hsl(45, 35%, 83%) !important;
     text-wrap: pretty;
+    font-weight: 600;
   }
 
   /* Typography Tokens - Based on Hero Section Standards */
@@ -329,18 +332,6 @@
     text-wrap: pretty;
   }
 
-  /* Additional body text sizes for flexibility */
-  .typography-body-large {
-    @apply font-emerland text-2xl md:text-3xl leading-relaxed;
-    font-family: 'Emerland2024', 'Times New Roman', serif !important;
-    font-weight: normal !important;
-  }
-
-  .typography-body-small {
-    @apply font-emerland text-lg md:text-xl leading-relaxed;
-    font-family: 'Emerland2024', 'Times New Roman', serif !important;
-    font-weight: normal !important;
-  }
   
   /* Consistent text effects - FIXED: Subtle glows instead of heavy black shadows */
   .text-glow-gold {
