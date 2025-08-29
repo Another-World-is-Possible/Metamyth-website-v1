@@ -44,6 +44,17 @@
   text-rendering: optimizeLegibility;
 }
 
+/* 5. QUROVA - Premium Question Typography */
+@font-face {
+  font-family: 'Qurova2024';
+  src: url('/attached_assets/Qurova-VF_1756503070056.ttf?v=2024') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+}
+
 /* Font Class Hierarchy */
 .font-angle {
   font-family: 'AngleFairy2024', serif !important;
@@ -66,6 +77,13 @@
   font-family: 'Emerland2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
+}
+
+.font-qurova {
+  font-family: 'Qurova2024', serif !important;
+  color: hsl(45, 35%, 83%) !important;
+  text-wrap: pretty;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 /* Legacy font classes for backward compatibility - redirect to new hierarchy */
