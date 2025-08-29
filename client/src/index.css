@@ -301,9 +301,9 @@
   }
 
   .typography-lead {
-    @apply font-grillages text-xl md:text-2xl leading-relaxed;
-    font-family: 'GrillagesSemibold2024', 'Times New Roman', serif !important;
-    font-weight: 600 !important;
+    @apply font-thornelia text-xl md:text-2xl leading-relaxed;
+    font-family: 'Thornelia2024', 'Times New Roman', serif !important;
+    font-weight: normal !important;
     text-wrap: pretty;
   }
 
