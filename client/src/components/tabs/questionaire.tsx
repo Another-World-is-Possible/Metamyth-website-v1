@@ -34,7 +34,7 @@ const questions = [
     type: "radio",
     options: [
       "I actively author reality—leading an organization and shaping our narrative and direction",
-      "I'm consciously building my story—creating a venture and controlling how it unfolds",
+      "I'm consciously building my story—creating an organization and controlling how it unfolds",
       "I have significant influence—helping write the story within a larger organization",
       "I'm authoring my voice—developing authentic personal or professional expression",
       "I'm awakening as an author—discovering my story while breaking free from others' expectations",
@@ -258,19 +258,19 @@ export default function QUESTionaire() {
               <h2 className="typography-h2 text-ancient-gold mb-6 font-angle">
                 Your QUESTionaire Journey Complete
               </h2>
-              <p className="text-sm text-cream-white mb-8 leading-relaxed font-game">
+              <p className="text-sm text-cream-white mb-8 leading-relaxed font-north-roland">
                 The old story is ending whether we like it or not, and we have a very narrow window to create the future we want. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable through those brave enough to live them. Your journey has brought you this far, revealing your position in this great transformation and illuminated the specific support that could accelerate your role in what's emerging.
               </p>
-              <p className="text-sm text-cream-white mb-8 leading-relaxed font-game">
+              <p className="text-sm text-cream-white mb-8 leading-relaxed font-north-roland">
                 This is how legends begin: with a single choice to step into the story you came here to tell. Within 48 hours, we'll reach out with the alliance, resources, or community designed to help you craft the narrative that transforms not just your world, but the reality itself. The pen of destiny awaits your grasp. The page of possibility lies before you. What happens next is entirely determined by our commitment to change WITH the world.
               </p>
-              <p className="text-sm text-cream-white mb-8 leading-relaxed font-game">
+              <p className="text-sm text-cream-white mb-8 leading-relaxed font-north-roland">
                 The future we want is one story away. What reality will you create?
               </p>
               
               {qualification === "calendar" ? (
                 <div className="space-y-4">
-                  <p className="text-sm text-mystical-teal font-kardige">
+                  <p className="text-sm text-mystical-teal font-north-roland">
                     You qualify for intensive story work! Schedule your deep dive session:
                   </p>
                   <a 
@@ -287,7 +287,7 @@ export default function QUESTionaire() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <p className="text-sm text-ancient-gold font-kardige">
+                  <p className="text-sm text-ancient-gold font-north-roland">
                     Join our community of conscious story architects:
                   </p>
                   <a 
@@ -304,7 +304,7 @@ export default function QUESTionaire() {
                 </div>
               )}
               
-              <p className="text-xs text-cream-white/80 mt-6 italic font-game">
+              <p className="text-xs text-cream-white/80 mt-6 italic font-north-roland">
                 The future isn't waiting for heroes to save it. It's waiting for authors to write it.
               </p>
             </CardContent>
@@ -364,7 +364,7 @@ export default function QUESTionaire() {
               <h3 className="text-xl text-ancient-gold mb-6 font-angle">
                 "Are You the Hero of Your Story or a Background Character in Someone Else's?"
               </h3>
-              <p className="text-sm text-cream-white mb-8 max-w-2xl mx-auto leading-relaxed font-game">
+              <p className="text-sm text-cream-white mb-8 max-w-2xl mx-auto leading-relaxed font-north-roland">
                 The old story is ending—systems designed for scarcity destroying abundance, narratives built on separation fragmenting communities, economic myths optimized for extraction devouring the living world. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth that reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power before it's too late. This could be your moment of awakening.
               </p>
               <Button
@@ -392,13 +392,13 @@ export default function QUESTionaire() {
                   <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     Your Journey Begins
                   </h2>
-                  <p className="text-sm text-center text-cream-white mb-6 font-game">
+                  <p className="text-sm text-center text-cream-white mb-6 font-north-roland">
                     First, let's connect so we can share your results and next steps.
                   </p>
                   
                   <div className="space-y-6">
                     <div>
-                      <label className="block text-sm text-mystical-teal font-kardige mb-2">
+                      <label className="block text-sm text-mystical-teal font-north-roland mb-2">
                         <Mail className="w-4 h-4 inline mr-2" />
                         Email Address *
                       </label>
@@ -413,7 +413,7 @@ export default function QUESTionaire() {
                     </div>
                     
                     <div>
-                      <label className="block text-sm text-mystical-teal font-kardige mb-2">
+                      <label className="block text-sm text-mystical-teal font-north-roland mb-2">
                         <Phone className="w-4 h-4 inline mr-2" />
                         Phone Number (Optional)
                       </label>
@@ -458,17 +458,17 @@ export default function QUESTionaire() {
                   <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     The Origin of Your Quest
                   </h2>
-                  <p className="text-sm font-game text-center text-cream-white mb-6 leading-relaxed">
+                  <p className="text-sm font-north-roland text-center text-cream-white mb-6 leading-relaxed">
                     Every hero's journey begins with what came before—the experiences that forged you, the struggles that strengthened you, the commitments that shaped you. Tell us your story:
                   </p>
-                  <p className="text-sm font-game text-cream-white mb-6 leading-relaxed">
+                  <p className="text-sm font-north-roland text-cream-white mb-6 leading-relaxed">
                     What brought you to this moment? What have you already tried to move your life or work forward? What have you invested—time, money, energy, heart—in transformation, growth, or building something meaningful?
                   </p>
                   
                   <Textarea
                     value={originStory}
                     onChange={(e) => setOriginStory(e.target.value)}
-                    className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-20 text-sm font-kardige"
+                    className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-20 text-sm font-north-roland"
                     placeholder="Share the story that brought you here..."
                     data-testid="textarea-origin-story"
                   />
@@ -558,13 +558,13 @@ export default function QUESTionaire() {
                     {/* Personal response text area ONLY for questions with hasTextInput: true */}
                     {currentQuestion.hasTextInput && (
                       <div className="mt-6">
-                        <label className="block text-sm text-mystical-teal font-kardige mb-3">
+                        <label className="block text-sm text-mystical-teal font-north-roland mb-3">
                           Write in your unique field:
                         </label>
                         <Textarea
                           value={textResponses[currentQuestion.id] || ""}
                           onChange={(e) => handleTextResponse(currentQuestion.id, e.target.value)}
-                          className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-20 text-sm font-kardige"
+                          className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-20 text-sm font-north-roland"
                           placeholder={currentQuestion.textPlaceholder || "Share your thoughts..."}
                           data-testid={`textarea-question-${currentQuestion.id}`}
                         />
@@ -572,7 +572,7 @@ export default function QUESTionaire() {
                     )}
                   </div>
 
-                  <p className="text-sm text-cream-white/80 text-center mt-4 italic font-game leading-relaxed">
+                  <p className="text-sm text-cream-white/80 text-center mt-4 italic font-north-roland leading-relaxed">
                     {currentQuestion.description}
                   </p>
 
@@ -629,17 +629,17 @@ export default function QUESTionaire() {
                   <h2 className="text-3xl font-angle text-ancient-gold text-center mb-4">
                     Your Legacy Prophecy
                   </h2>
-                  <p className="text-sm font-game text-cream-white mb-6 leading-relaxed">
+                  <p className="text-sm font-north-roland text-cream-white mb-6 leading-relaxed">
                     Every great story reaches the moment when the hero glimpses their ultimate destiny—the legacy they're called to create, the change they're meant to author into reality.
                   </p>
-                  <p className="text-sm font-game text-cream-white mb-6 leading-relaxed">
+                  <p className="text-sm font-north-roland text-cream-white mb-6 leading-relaxed">
                     Close your eyes and travel to the future. You're looking back at the extraordinary transformation we created together—the story we authored, the reality we built, the world we healed. What are you most proud of? What legacy did your authentic story create? What became possible because you remembered you were the author?
                   </p>
                   
                   <Textarea
                     value={legacyVision}
                     onChange={(e) => setLegacyVision(e.target.value)}
-                    className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-20 text-sm font-kardige"
+                    className="bg-deep-black/50 border-mystical-teal/30 text-cream-white min-h-20 text-sm font-north-roland"
                     placeholder="Your legacy prophecy..."
                     data-testid="textarea-legacy-vision"
                   />
