@@ -92,9 +92,10 @@
 }
 
 .font-game {
-  font-family: 'GameReality2024', serif !important;
+  font-family: 'GrillagesBold2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
+  font-weight: 700;
 }
 
 .font-emerland {
@@ -112,10 +113,10 @@
 }
 
 .font-reusco {
-  font-family: 'ReuscoDisplay2024', serif !important;
+  font-family: 'GrillagesBold2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
-  font-feature-settings: "liga" 1, "kern" 1;
+  font-weight: 700;
 }
 
 .font-grillages {
@@ -129,18 +130,21 @@
 
 /* Legacy font classes for backward compatibility - redirect to new hierarchy */
 .font-kardige {
-  font-family: 'Emerland2024', serif !important;
+  font-family: 'GrillagesBold2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
+  font-weight: 700;
 }
 
 .font-khaft {
-  font-family: 'Thornelia2024', serif !important;
+  font-family: 'GrillagesBold2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
+  font-weight: 700;
 }
 
 .font-king {
-  font-family: 'Thornelia2024', serif !important;
+  font-family: 'GrillagesBold2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
+  font-weight: 700;
 }
 
 @tailwind base;
@@ -240,8 +244,8 @@
 
   body {
     @apply bg-deep-black antialiased overflow-x-hidden;
-    font-family: 'Glocs2024', serif;
-    font-weight: normal;
+    font-family: 'GrillagesBold2024', serif;
+    font-weight: 700;
     color: hsl(45, 35%, 83%) !important;
     /* Cursor will be set by SwordCursor component */
   }
