@@ -432,14 +432,14 @@ export default function QUESTionaire() {
                   </div>
                   
                   <div className="flex justify-center mt-8">
-                    <Button
+                    <button
                       onClick={handleNext}
-                      className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-3 px-6"
+                      className="cta-button-base cta-button-gold"
                       data-testid="button-continue"
                     >
                       Continue to Questions
                       <ChevronRight className="w-5 h-5 ml-2" />
-                    </Button>
+                    </button>
                   </div>
                 </CardContent>
               </Card>
@@ -485,13 +485,13 @@ export default function QUESTionaire() {
                       <ChevronLeft className="w-4 h-4 mr-2" />
                       Back
                     </Button>
-                    <Button
+                    <button
                       onClick={handleNext}
-                      className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-3 px-6"
+                      className="cta-button-base cta-button-gold"
                     >
                       Continue Your Quest
                       <ChevronRight className="w-5 h-5 ml-2" />
-                    </Button>
+                    </button>
                   </div>
                 </CardContent>
               </Card>
@@ -591,25 +591,25 @@ export default function QUESTionaire() {
                     </Button>
 
                     {currentStep === questions.length + 2 ? (
-                      <Button
+                      <button
                         onClick={handleNext}
                         disabled={false}
-                        className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-3 px-6"
+                        className="cta-button-base cta-button-gold"
                         data-testid="button-next"
                       >
                         Your Final Prophecy
                         <ChevronRight className="w-5 h-5 ml-2" />
-                      </Button>
+                      </button>
                     ) : (
-                      <Button
+                      <button
                         onClick={handleNext}
                         disabled={false}
-                        className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-3 px-6"
+                        className="cta-button-base cta-button-teal"
                         data-testid="button-next"
                       >
                         Next Question
                         <ChevronRight className="w-5 h-5 ml-2" />
-                      </Button>
+                      </button>
                     )}
                   </div>
                 </CardContent>
@@ -656,15 +656,15 @@ export default function QUESTionaire() {
                       <ChevronLeft className="w-4 h-4 mr-2" />
                       Back
                     </Button>
-                    <Button
+                    <button
                       onClick={handleSubmit}
                       disabled={submitMutation.isPending}
-                      className="bg-crimson hover:bg-crimson/80 text-cream-white font-angle font-bold py-3 px-6"
+                      className="cta-button-base cta-button-crimson"
                       data-testid="button-submit"
                     >
                       {submitMutation.isPending ? "Submitting..." : "Complete QUESTionaire"}
                       <ChevronRight className="w-5 h-5 ml-2" />
-                    </Button>
+                    </button>
                   </div>
                 </CardContent>
               </Card>

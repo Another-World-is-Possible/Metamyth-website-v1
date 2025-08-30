@@ -146,8 +146,9 @@ function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & 
               </p>
 
               <button
-                className="bg-ancient-gold text-deep-black font-angle font-bold py-4 px-8 rounded-lg hover:bg-ancient-gold/80 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer text-2xl"
+                className="cta-button-base cta-button-gold"
                 onClick={() => setActiveTab?.('questionaire')}
+                data-testid="button-start-journey"
               >
                 START YOUR JOURNEY
               </button>

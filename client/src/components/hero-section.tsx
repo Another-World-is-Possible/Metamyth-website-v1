@@ -61,18 +61,20 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.4 : 0, duration: 0.8, ease: "easeOut" }}
           >
-            <Button
+            <button
               onClick={() => setActiveTab?.('questionaire')}
-              className="bg-ancient-gold text-deep-black font-angle font-bold py-4 px-8 rounded-full hover:bg-ancient-gold/80 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer shadow-lg shadow-ancient-gold/50 border-0"
+              className="cta-button-base cta-button-gold"
+              data-testid="button-regenerate-story"
             >
-              <span className="text-glow-gold text-xl">REGENERATE YOUR STORY</span>
-            </Button>
-            <Button
+              REGENERATE YOUR STORY
+            </button>
+            <button
               onClick={() => setActiveTab?.('questionaire')}
-              className="bg-mystical-teal text-deep-black font-angle font-bold py-4 px-8 rounded-full hover:bg-mystical-teal/80 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer shadow-lg shadow-mystical-teal/50 border-0"
+              className="cta-button-base cta-button-teal"
+              data-testid="button-join-quest"
             >
-              <span className="text-glow-teal text-xl">JOIN THE QUEST</span>
-            </Button>
+              JOIN THE QUEST
+            </button>
           </motion.div>
         </div>
       </section>

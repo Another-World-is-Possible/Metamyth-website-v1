@@ -355,19 +355,74 @@
       0 0 36px rgba(20, 184, 166, 0.3);
   }
 
-  /* Button glow effects */
-  .button-glow-gold {
+  /* Glowing Angled CTA Button Styles */
+  .cta-button-base {
+    position: relative;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, var(--button-bg-start), var(--button-bg-end));
+    color: var(--button-text-color);
+    font-family: 'AngleFairy2024', serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+    
+    /* Angled cut-off shape */
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 100%, 20px 100%);
+    
+    /* Neon glow outline */
     box-shadow:
-      0 0 30px rgba(212, 175, 55, 0.6),
-      0 0 60px rgba(212, 175, 55, 0.4),
-      inset 0 0 15px rgba(212, 175, 55, 0.2);
+      0 0 20px var(--button-glow-color),
+      0 0 40px var(--button-glow-color),
+      0 0 60px var(--button-glow-color),
+      inset 0 0 20px rgba(255, 255, 255, 0.1);
+    
+    /* Glowing text */
+    text-shadow:
+      0 0 10px var(--button-text-glow),
+      0 0 20px var(--button-text-glow),
+      0 0 30px var(--button-text-glow);
   }
-
-  .button-glow-teal {
+  
+  .cta-button-base:hover {
+    transform: translateY(-2px) scale(1.02);
     box-shadow:
-      0 0 30px rgba(20, 184, 166, 0.6),
-      0 0 60px rgba(20, 184, 166, 0.4),
-      inset 0 0 15px rgba(20, 184, 166, 0.2);
+      0 0 30px var(--button-glow-color),
+      0 0 60px var(--button-glow-color),
+      0 0 90px var(--button-glow-color),
+      inset 0 0 30px rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Gold variant */
+  .cta-button-gold {
+    --button-bg-start: hsl(45, 85%, 45%);
+    --button-bg-end: hsl(35, 75%, 55%);
+    --button-text-color: hsl(0, 0%, 8%);
+    --button-glow-color: rgba(212, 175, 55, 0.6);
+    --button-text-glow: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Teal variant */
+  .cta-button-teal {
+    --button-bg-start: hsl(174, 83%, 41%);
+    --button-bg-end: hsl(174, 73%, 51%);
+    --button-text-color: hsl(0, 0%, 8%);
+    --button-glow-color: rgba(20, 184, 166, 0.6);
+    --button-text-glow: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Crimson variant */
+  .cta-button-crimson {
+    --button-bg-start: hsl(0, 70%, 45%);
+    --button-bg-end: hsl(0, 60%, 55%);
+    --button-text-color: hsl(0, 0%, 95%);
+    --button-glow-color: rgba(220, 38, 127, 0.6);
+    --button-text-glow: rgba(255, 255, 255, 0.9);
   }
 
   /* Navigation tab styling - smooth teal glow without yellow flash */

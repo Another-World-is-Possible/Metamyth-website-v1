@@ -43,18 +43,20 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
         </h3>
 
         <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto justify-center">
-          <Button
+          <button
             onClick={() => setActiveTab?.('questionaire')}
-            className="bg-ancient-gold text-deep-black font-angle font-bold py-4 px-8 rounded-full hover:bg-ancient-gold/80 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer shadow-lg shadow-ancient-gold/50 border-0 mx-4 mb-6"
+            className="cta-button-base cta-button-gold mx-4 mb-6"
+            data-testid="button-begin-journey"
           >
-            <span className="text-glow-gold text-xl">BEGIN YOUR JOURNEY</span>
-          </Button>
-          <Button
+            BEGIN YOUR JOURNEY
+          </button>
+          <button
             onClick={() => setActiveTab?.('questionaire')}
-            className="bg-mystical-teal text-deep-black font-angle font-bold py-4 px-8 rounded-full hover:bg-mystical-teal/80 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer shadow-lg shadow-mystical-teal/50 border-0 mx-4 mb-6"
+            className="cta-button-base cta-button-teal mx-4 mb-6"
+            data-testid="button-join-quest-cta"
           >
-            <span className="text-glow-teal text-xl">JOIN THE QUEST</span>
-          </Button>
+            JOIN THE QUEST
+          </button>
         </div>
       </div>
     </section>
