@@ -361,7 +361,7 @@ export default function QUESTionaire() {
               
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 mb-8">
                 <CardContent className="p-8 text-center">
-                  <h2 className="text-2xl text-mystical-teal mb-6 italic font-thornelia">
+                  <h2 className="text-2xl text-mystical-teal mb-6 italic typography-body">
                     "The 7-Question Journey That Reveals Who's Really Writing Your Life: Are You the Hero of Your Story or a Background Character in Someone Else's?"
                   </h2>
                   <p className="text-sm text-cream-white mb-0 max-w-2xl mx-auto leading-relaxed font-north-roland">

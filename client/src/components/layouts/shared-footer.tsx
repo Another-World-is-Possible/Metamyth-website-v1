@@ -5,7 +5,7 @@ export default function SharedFooter() {
         <div className="flex items-center justify-center mb-6">
           <span className="typography-h3 text-ancient-gold">Another World is Possible</span>
         </div>
-        <p className="font-thornelia text-cream-white/60 mb-8">
+        <p className="typography-body text-cream-white/60 mb-8">
           The world is made of stories, take back your story to change the world.
         </p>
         <div className="flex justify-center space-x-6 mb-8">

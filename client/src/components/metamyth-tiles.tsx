@@ -132,7 +132,7 @@ function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & 
           />
 
           <p
-            className="typography-body font-emerland leading-loose text-cream-white text-glow-gold"
+            className="typography-body leading-loose text-cream-white text-glow-gold"
             dangerouslySetInnerHTML={{ __html: tile.description }}
             style={{ lineHeight: '1.8' }}
           ></p>

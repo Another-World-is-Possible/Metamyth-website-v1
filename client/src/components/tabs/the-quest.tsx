@@ -149,13 +149,13 @@ export default function TheQuest() {
                       <h3 className="typography-h3 font-bold text-ancient-gold mb-2 text-glow-gold">
                         {horizon.title}
                       </h3>
-                      <p className="typography-body font-emerland text-cream-white text-glow-cream">
+                      <p className="typography-body text-cream-white text-glow-cream">
                         {horizon.description}
                       </p>
                     </div>
                   </div>
 
-                  <p className="typography-body text-cream-white leading-relaxed mb-6 font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
+                  <p className="typography-body text-cream-white leading-relaxed mb-6" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)' }}>
                     {horizon.description}
                   </p>
 
@@ -187,7 +187,7 @@ export default function TheQuest() {
                         STATUS
                       </h5>
                       <p
-                        className={`text-lg italic font-emerland ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}
+                        className={`text-lg italic typography-body-small ${horizon.color === 'crimson' ? 'text-crimson' : horizon.color === 'mystical-teal' ? 'text-mystical-teal' : horizon.color === 'ancient-gold' ? 'text-ancient-gold' : 'text-cream-white'}`}
                         style={{
                           textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7), 0 0 18px rgba(0, 0, 0, 0.65), 0 0 24px rgba(0, 0, 0, 0.6)'
                         }}

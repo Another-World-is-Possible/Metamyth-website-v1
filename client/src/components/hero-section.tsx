@@ -42,11 +42,11 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 0.8 : 0, duration: 0.8, ease: "easeOut" }}
           >
-            Take Back Your Story to Change the World.
+            Take Back Your Story<br />to Change the World.
           </motion.h2>
 
           <motion.p
-            className="typography-lead mb-16 max-w-4xl mx-auto text-cream-white text-glow-cream font-thornelia"
+            className="typography-lead mb-16 max-w-4xl mx-auto text-cream-white text-glow-cream"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.1 : 0, duration: 0.8, ease: "easeOut" }}

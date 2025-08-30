@@ -22,7 +22,7 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
         </motion.h2>
         
         <motion.p
-          className="typography-body font-thornelia text-center mb-12 max-w-4xl mx-auto leading-relaxed text-cream-white"
+          className="typography-body text-center mb-12 max-w-4xl mx-auto leading-relaxed text-cream-white"
           style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6)' }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
