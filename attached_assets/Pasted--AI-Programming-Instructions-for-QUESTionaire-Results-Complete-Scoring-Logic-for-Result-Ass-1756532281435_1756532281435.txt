@@ -1,0 +1,105 @@
+# AI Programming Instructions for QUESTionaire Results - Complete
+
+## **Scoring Logic for Result Assignment:**
+
+### **Primary Qualification Criteria:**
+**Question 4 (Investment Scale):**
+- $1K+ options = Advanced Track eligible
+- Under $1K or "exploring scale" = Community Track
+
+**Question 7 (Authority to Act):**
+- "I decide for myself and others" = High authority (4 points)
+- "I influence major decisions" = Medium-high authority (3 points)  
+- "I need to build consensus" = Medium authority (2 points)
+- "I'm preparing for authority" = Low authority (1 point)
+- "I'm exploring my power" = Minimal authority (1 point)
+
+**Question 6 (Readiness Timeline):**
+- "Lightning strikes now" = Immediate (4 points)
+- "Thunder rolls within three moons" = Short-term (3 points)
+- "Storm clouds gather this cycle" = Medium-term (2 points)
+- "Still reading the signs" = Long-term (1 point)
+
+### **Scoring Algorithm:**
+```
+Advanced Track IF:
+- Question 4 >= $1K AND
+- Question 7 >= 3 points AND  
+- Question 6 >= 3 points
+
+Community Track IF:
+- Question 4 < $1K OR
+- Question 7 < 3 points OR
+- Question 6 < 3 points
+```
+
+### **Edge Case Handling:**
+- If Question 4 = $1K-5K but authority/readiness scores are low → Community Track
+- If Question 4 = "exploring scale" regardless of other scores → Community Track
+- If any qualification data is missing → Default to Community Track
+
+---
+
+## **Result Page A: Advanced Track**
+
+**Headline:** "The Next Chapter of Your Story Awaits"
+
+**Body Text:**
+*Your responses reveal someone who has already begun consciously crafting reality and is ready for the deeper work of transformation. You operate with the resources and authority to make meaningful change happen, and you sense there's something even greater wanting to emerge through your story.*
+
+*The path forward is strategic alliance with guides who understand the magnitude of change you're here to create and can help you unlock the full potential of your narrative.*
+
+**CTA Button:** "Schedule Your Story Strategy Session"
+**Link:** [Insert your Calendly/booking link]
+
+**Supporting Text:**
+*In this strategic conversation, we'll map exactly where you are in your journey and reveal the specific support that could accelerate your transformation into the reality you're meant to author.*
+
+---
+
+## **Result Page B: Community Track**
+
+**Headline:** "Your Story Journey Begins in Community"
+
+**Body Text:**
+*Your story is calling you toward transformation, and the wisest way to answer that call is alongside fellow travelers who understand the path you're walking. Every epic begins with gathering the right companions and resources for the adventure ahead.*
+
+*You're positioned perfectly to develop your narrative through community connection, story-building tools, and the support of others who are also stepping into their authentic power.*
+
+**Primary CTA:** "Join the Community Quest"
+**Link:** [Insert your Discord link]
+
+**Secondary CTA:** "Get Early Access to MetaMyth System"  
+**Link:** [Insert your waitlist link]
+
+**Supporting Text:**
+*Connect with other story-builders, access transformation resources, and experience our revolutionary MetaMyth system as it develops. Your evolution accelerates in community.*
+
+---
+
+## **Technical Implementation:**
+
+### **Data Capture Requirements:**
+- Email address (required before showing results)
+- All question responses stored with timestamps
+- Result track assignment logged
+- CRM tagging based on track assignment
+
+### **Follow-up Automation Triggers:**
+**Advanced Track:**
+- Tag: "High-Qualifier-Strategy"
+- Trigger personalized outreach within 24 hours
+- Reference specific responses in follow-up
+
+**Community Track:**
+- Tag: "Community-Member"
+- Trigger welcome sequence for Discord/waitlist
+- Weekly nurture sequence with story development content
+
+### **Analytics Tracking:**
+- Conversion rate by qualification track
+- Drop-off points during assessment
+- Time to complete assessment
+- Click-through rates on result page CTAs
+
+This system ensures qualified prospects receive immediate strategic attention while community members enter appropriate nurture sequences for future conversion.

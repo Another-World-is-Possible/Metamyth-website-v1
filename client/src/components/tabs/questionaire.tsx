@@ -119,10 +119,10 @@ const questions = [
     subtitle: "Every hero's journey reaches the moment when destiny calls and the soul must answer. When you imagine stepping fully into your most authentic story—the vision that makes your heart race with possibility—what happens in your body, and when does that transformation begin?",
     type: "radio",
     options: [
-      "I'm ready to start right now.",
-      "I'm actively preparing to start soon.",
-      "I'm getting ready to start this year.",
-      "I'm still exploring my options."
+      "Lightning strikes now—I'm ready to begin this transformation immediately",
+      "Thunder rolls within three moons—I'm prepared to start within the next few months",
+      "Storm clouds gather this cycle—I'm building toward action within this year",
+      "Still reading the signs—I'm exploring when the timing will be right"
     ],
     hasTextInput: false,
     description: "The call to adventure doesn't wait for perfect conditions. It comes when your soul is ready to claim its destiny."
@@ -152,7 +152,7 @@ export default function QUESTionaire() {
   const [originStory, setOriginStory] = useState("");
   const [legacyVision, setLegacyVision] = useState("");
   const [showResult, setShowResult] = useState(false);
-  const [qualification, setQualification] = useState<"calendar" | "discord">("discord");
+  const [qualification, setQualification] = useState<"advanced" | "community">("community");
   const { toast } = useToast();
 
   const submitMutation = useMutation({
@@ -164,14 +164,49 @@ export default function QUESTionaire() {
       // Simulate processing time
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Simple qualification logic based on responses
-      // You can customize this logic based on your needs
-      const hasHighEngagement = Object.values(data.responses || {}).some((response: any) =>
-        Array.isArray(response) ? response.length > 2 : typeof response === "string" ? response.length > 30 : response > 3
-      );
+      // Qualification logic based on Questions 4, 6, and 7
+      const responses = data.responses || {};
+      
+      // Question 4: Investment Scale
+      const investmentResponse = responses[4] || "";
+      const hasHighInvestment = investmentResponse.includes("$1K") || 
+                               investmentResponse.includes("$5K") || 
+                               investmentResponse.includes("$15K");
+      
+      // Question 7: Authority to Act (scoring system)
+      const authorityResponse = responses[7] || "";
+      let authorityScore = 1;
+      if (authorityResponse.includes("I decide for myself and others")) {
+        authorityScore = 4;
+      } else if (authorityResponse.includes("I influence major decisions")) {
+        authorityScore = 3;
+      } else if (authorityResponse.includes("I need to build consensus")) {
+        authorityScore = 2;
+      } else if (authorityResponse.includes("I'm preparing for authority") || 
+                 authorityResponse.includes("I'm exploring my power")) {
+        authorityScore = 1;
+      }
+      
+      // Question 6: Readiness Timeline (scoring system)
+      const readinessResponse = responses[6] || "";
+      let readinessScore = 1;
+      if (readinessResponse.includes("Lightning strikes now")) {
+        readinessScore = 4;
+      } else if (readinessResponse.includes("Thunder rolls within three moons")) {
+        readinessScore = 3;
+      } else if (readinessResponse.includes("Storm clouds gather this cycle")) {
+        readinessScore = 2;
+      } else if (readinessResponse.includes("Still reading the signs")) {
+        readinessScore = 1;
+      }
+      
+      // Advanced Track qualification criteria
+      const qualifiesForAdvanced = hasHighInvestment && 
+                                  authorityScore >= 3 && 
+                                  readinessScore >= 3;
 
       return {
-        qualified: hasHighEngagement ? "calendar" : "discord",
+        qualified: qualifiesForAdvanced ? "advanced" : "community",
         message: "Thank you for your submission!"
       };
     },
@@ -268,39 +303,51 @@ export default function QUESTionaire() {
                 The future we want is one story away. What reality will you create?
               </p>
               
-              {qualification === "calendar" ? (
+              {qualification === "advanced" ? (
                 <div className="space-y-4">
                   <p className="text-base text-mystical-teal font-grillages">
-                    You qualify for intensive story work! Schedule your deep dive session:
+                    Your responses reveal someone who has already begun consciously crafting reality and is ready for the deeper work of transformation. You operate with the resources and authority to make meaningful change happen, and you sense there's something even greater wanting to emerge through your story.
+                  </p>
+                  <p className="text-base text-mystical-teal font-grillages mb-6">
+                    The path forward is strategic alliance with guides who understand the magnitude of change you're here to create and can help you unlock the full potential of your narrative.
                   </p>
                   <a 
-                    href="https://zcal.co/i/kEqudqJ1" 
+                    href="https://zcal.co/i/nIEsikdu" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-block"
                   >
                     <Button className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8">
                       <ExternalLink className="w-5 h-5 mr-2" />
-                      Book Your Story Architecture Session
+                      Schedule Your Story Strategy Session
                     </Button>
                   </a>
+                  <p className="text-sm text-cream-white/80 mt-4 font-grillages italic">
+                    In this strategic conversation, we'll map exactly where you are in your journey and reveal the specific support that could accelerate your transformation into the reality you're meant to author.
+                  </p>
                 </div>
               ) : (
                 <div className="space-y-4">
                   <p className="text-base text-ancient-gold font-grillages">
-                    Join our community of conscious story architects:
+                    Your story is calling you toward transformation, and the wisest way to answer that call is alongside fellow travelers who understand the path you're walking. Every epic begins with gathering the right companions and resources for the adventure ahead.
+                  </p>
+                  <p className="text-base text-ancient-gold font-grillages mb-6">
+                    You're positioned perfectly to develop your narrative through community connection, story-building tools, and the support of others who are also stepping into their authentic power.
                   </p>
                   <a 
-                    href="https://discord.gg/XttnT2fX" 
+                    href="https://luma.com/u7vz8286" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-block"
+                    className="inline-block mb-4"
                   >
                     <Button className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-4 px-8">
                       <ExternalLink className="w-5 h-5 mr-2" />
-                      Join Our Discord Community
+                      Join the Community Quest Call
                     </Button>
                   </a>
+                  <p className="text-sm text-cream-white/80 mt-4 font-grillages italic">
+                    Connect with other story-builders, access transformation resources, and experience our revolutionary MetaMyth system as it develops. Your evolution accelerates in community.
+                  </p>
                 </div>
               )}
               
