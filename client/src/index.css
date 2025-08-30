@@ -66,11 +66,11 @@
   text-rendering: optimizeLegibility;
 }
 
-/* 7. GRILLAGES SEMIBOLD - Quest Body Typography */
+/* 7. GRILLAGES BOLD - System-wide Body Typography */
 @font-face {
-  font-family: 'GrillagesSemibold2024';
-  src: url('/attached_assets/GrillagesSemibold_1756508797173.ttf?v=2024') format('truetype');
-  font-weight: 600;
+  font-family: 'GrillagesBold2024';
+  src: url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024') format('truetype');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
   font-feature-settings: "liga" 1, "kern" 1;
@@ -85,10 +85,10 @@
 }
 
 .font-thornelia {
-  font-family: 'GrillagesSemibold2024', serif !important;
+  font-family: 'GrillagesBold2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .font-game {
@@ -98,10 +98,10 @@
 }
 
 .font-emerland {
-  font-family: 'GrillagesSemibold2024', serif !important;
+  font-family: 'GrillagesBold2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .font-north-roland {
@@ -119,10 +119,10 @@
 }
 
 .font-grillages {
-  font-family: 'GrillagesSemibold2024', serif !important;
+  font-family: 'GrillagesBold2024', serif !important;
   color: hsl(45, 35%, 83%) !important;
   text-wrap: pretty;
-  font-weight: 600;
+  font-weight: 700;
   font-feature-settings: "liga" 1, "kern" 1;
 }
 
@@ -275,10 +275,10 @@
 
   /* Ensure grillages font for rhetorical text */
   .font-thornelia {
-    font-family: 'GrillagesSemibold2024', serif !important;
+    font-family: 'GrillagesBold2024', serif !important;
     color: hsl(45, 35%, 83%) !important;
     text-wrap: pretty;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   /* Typography Tokens - Based on Hero Section Standards */
@@ -305,30 +305,30 @@
 
   .typography-lead {
     @apply font-grillages text-xl md:text-2xl leading-relaxed;
-    font-family: 'GrillagesSemibold2024', 'Times New Roman', serif !important;
-    font-weight: 600 !important;
+    font-family: 'GrillagesBold2024', 'Times New Roman', serif !important;
+    font-weight: 700 !important;
     text-wrap: pretty;
   }
 
   .typography-body {
     @apply font-grillages text-xl md:text-2xl leading-relaxed;
-    font-family: 'GrillagesSemibold2024', 'Times New Roman', serif !important;
-    font-weight: 600 !important;
+    font-family: 'GrillagesBold2024', 'Times New Roman', serif !important;
+    font-weight: 700 !important;
     text-wrap: pretty;
   }
 
   /* Additional body text sizes for flexibility */
   .typography-body-large {
     @apply font-grillages text-2xl md:text-3xl leading-relaxed;
-    font-family: 'GrillagesSemibold2024', 'Times New Roman', serif !important;
-    font-weight: 600 !important;
+    font-family: 'GrillagesBold2024', 'Times New Roman', serif !important;
+    font-weight: 700 !important;
     text-wrap: pretty;
   }
 
   .typography-body-small {
     @apply font-grillages text-lg md:text-xl leading-relaxed;
-    font-family: 'GrillagesSemibold2024', 'Times New Roman', serif !important;
-    font-weight: 600 !important;
+    font-family: 'GrillagesBold2024', 'Times New Roman', serif !important;
+    font-weight: 700 !important;
     text-wrap: pretty;
   }
 
