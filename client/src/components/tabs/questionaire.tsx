@@ -152,6 +152,7 @@ export default function QUESTionaire() {
   const [originStory, setOriginStory] = useState("");
   const [legacyVision, setLegacyVision] = useState("");
   const [showResult, setShowResult] = useState(false);
+  const [showSpecificResult, setShowSpecificResult] = useState(false);
   const [qualification, setQualification] = useState<"advanced" | "community">("community");
   const { toast } = useToast();
 
@@ -166,6 +167,9 @@ export default function QUESTionaire() {
 
       // Qualification logic based on Questions 4, 6, and 7
       const responses = data.responses || {};
+      
+      // Debug logging to see what responses we have
+      console.log("All responses received:", responses);
       
       // Question 4: Investment Scale
       const investmentResponse = responses[4] || "";
@@ -199,6 +203,15 @@ export default function QUESTionaire() {
       } else if (readinessResponse.includes("Still reading the signs")) {
         readinessScore = 1;
       }
+      
+      console.log("Scoring breakdown:", {
+        hasHighInvestment,
+        authorityScore,
+        readinessScore,
+        investmentResponse,
+        authorityResponse,
+        readinessResponse
+      });
       
       // Advanced Track qualification criteria
       const qualifiesForAdvanced = hasHighInvestment && 
@@ -275,7 +288,7 @@ export default function QUESTionaire() {
   const progress = showResult ? 100 : Math.max(0, ((currentStep - 1) / (questions.length + 3)) * 100);
   const currentQuestion = questions[currentStep - 3]; // Adjust for origin section
 
-  if (showResult) {
+  if (showResult && !showSpecificResult) {
     return (
       <div className="min-h-screen bg-deep-black flex items-center justify-center p-4" 
            style={{
@@ -294,14 +307,50 @@ export default function QUESTionaire() {
                 Your QUESTionaire Journey Complete
               </h2>
               <p className="text-base text-cream-white mb-8 leading-relaxed font-grillages">
-                The old story is ending whether we like it or not, and we have a very narrow window to create the future we want. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable through those brave enough to live them. Your journey has brought you this far, revealing your position in this great transformation and illuminated the specific support that could accelerate your role in what's emerging.
+                The old story is ending whether we like it or not, and we have a very narrow window to create the future we want. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable through those brave enough to live them. This is how legends begin: with a single choice to step into the story you came here to tell. Within 48 hours, we'll reach out with the alliance, resources, or community designed to help you craft the narrative that transforms not just your world, but the reality itself.
               </p>
               <p className="text-base text-cream-white mb-8 leading-relaxed font-grillages">
-                This is how legends begin: with a single choice to step into the story you came here to tell. Within 48 hours, we'll reach out with the alliance, resources, or community designed to help you craft the narrative that transforms not just your world, but the reality itself. The pen of destiny awaits your grasp. The page of possibility lies before you. What happens next is entirely determined by our commitment to change WITH the world.
+                Your journey has brought you this far, revealing your position in this great transformation and illuminated the specific support that could accelerate your role in what's emerging. The pen of destiny awaits your grasp. The page of possibility lies before you. What happens next is entirely determined by our commitment to change WITH the world.
               </p>
               <p className="text-base text-cream-white mb-8 leading-relaxed font-grillages">
                 The future we want is one story away. What reality will you create?
               </p>
+              
+              <Button 
+                onClick={() => setShowSpecificResult(true)}
+                className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-4 px-8 mb-6"
+              >
+                YOUR RESULTS
+              </Button>
+              
+              <p className="text-xs text-cream-white/80 mt-6 italic font-grillages">
+                The future isn't waiting for heroes to save it. It's waiting for authors to write it.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    );
+  }
+
+  if (showResult && showSpecificResult) {
+    return (
+      <div className="min-h-screen bg-deep-black flex items-center justify-center p-4" 
+           style={{
+             backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.9), rgba(20,40,60,0.8)), 
+                              radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
+           }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="max-w-2xl mx-auto text-center"
+        >
+          <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 p-8">
+            <CardContent>
+              <h2 className="typography-h2 text-ancient-gold mb-6 font-angle">
+                {qualification === "advanced" ? "The Next Chapter of Your Story Awaits" : "Your Story Journey Begins in Community"}
+              </h2>
               
               {qualification === "advanced" ? (
                 <div className="space-y-4">
