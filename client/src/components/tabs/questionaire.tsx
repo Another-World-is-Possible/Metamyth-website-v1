@@ -282,19 +282,21 @@ export default function QUESTionaire() {
 
   if (showResult && !showSpecificResult) {
     return (
-      <div className="min-h-screen bg-deep-black py-8 px-4 overflow-y-auto" 
+      <div className="min-h-screen overflow-y-auto" 
            style={{
-             backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.9), rgba(20,40,60,0.8)), 
+             backgroundColor: '#1D4241',
+             backgroundImage: `radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%),
+                              linear-gradient(45deg, rgba(29,66,65,0.9), rgba(29,66,65,0.8)), 
                               radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
                               radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
            }}>
-        <div className="flex items-center justify-center min-h-full">
+        <div className="pt-24 pb-8 px-4 min-h-screen flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-2xl mx-auto text-center w-full"
           >
-          <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 p-8">
+          <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-8">
             <CardContent>
               <h2 className="typography-h2 text-ancient-gold mb-6 font-angle">
                 Your QUESTionaire Journey Complete
@@ -326,19 +328,21 @@ export default function QUESTionaire() {
 
   if (showResult && showSpecificResult) {
     return (
-      <div className="min-h-screen bg-deep-black py-8 px-4 overflow-y-auto" 
+      <div className="min-h-screen overflow-y-auto" 
            style={{
-             backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.9), rgba(20,40,60,0.8)), 
+             backgroundColor: '#1D4241',
+             backgroundImage: `radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%),
+                              linear-gradient(45deg, rgba(29,66,65,0.9), rgba(29,66,65,0.8)), 
                               radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
                               radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
            }}>
-        <div className="flex items-center justify-center min-h-full">
+        <div className="pt-24 pb-8 px-4 min-h-screen flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-2xl mx-auto text-center w-full"
           >
-          <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 p-8">
+          <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-8">
             <CardContent>
               <h2 className="typography-h2 text-ancient-gold mb-6 font-angle">
                 {qualification === "advanced" ? "The Next Chapter of Your Story Awaits" : "Your Story Journey Begins in Community"}
@@ -346,10 +350,10 @@ export default function QUESTionaire() {
               
               {qualification === "advanced" ? (
                 <div className="space-y-4">
-                  <p className="text-base text-mystical-teal font-grillages">
+                  <p className="text-base text-[#F0E2B6] font-grillages">
                     Your responses reveal someone who has already begun consciously crafting reality and is ready for the deeper work of transformation. You operate with the resources and authority to make meaningful change happen, and you sense there's something even greater wanting to emerge through your story.
                   </p>
-                  <p className="text-base text-mystical-teal font-grillages mb-6">
+                  <p className="text-base text-[#F0E2B6] font-grillages mb-6">
                     The path forward is strategic alliance with guides who understand the magnitude of change you're here to create and can help you unlock the full potential of your narrative.
                   </p>
                   <a 
@@ -358,7 +362,7 @@ export default function QUESTionaire() {
                     rel="noopener noreferrer"
                     className="inline-block"
                   >
-                    <Button className="bg-mystical-teal hover:bg-mystical-teal/80 text-deep-black font-angle font-bold py-4 px-8">
+                    <Button className="bg-[#F0E2B6] hover:bg-[#F0E2B6]/80 text-[#1D4241] font-angle font-bold py-4 px-8">
                       <ExternalLink className="w-5 h-5 mr-2" />
                       Schedule Your Story Strategy Session
                     </Button>
@@ -369,10 +373,10 @@ export default function QUESTionaire() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <p className="text-base text-ancient-gold font-grillages">
+                  <p className="text-base text-[#F0E2B6] font-grillages">
                     Your story is calling you toward transformation, and the wisest way to answer that call is alongside fellow travelers who understand the path you're walking. Every epic begins with gathering the right companions and resources for the adventure ahead.
                   </p>
-                  <p className="text-base text-ancient-gold font-grillages mb-6">
+                  <p className="text-base text-[#F0E2B6] font-grillages mb-6">
                     You're positioned perfectly to develop your narrative through community connection, story-building tools, and the support of others who are also stepping into their authentic power.
                   </p>
                   <a 
@@ -381,7 +385,7 @@ export default function QUESTionaire() {
                     rel="noopener noreferrer"
                     className="inline-block mb-4"
                   >
-                    <Button className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold py-4 px-8">
+                    <Button className="bg-[#F0E2B6] hover:bg-[#F0E2B6]/80 text-[#1D4241] font-angle font-bold py-4 px-8">
                       <ExternalLink className="w-5 h-5 mr-2" />
                       Join the Community Quest Call
                     </Button>
