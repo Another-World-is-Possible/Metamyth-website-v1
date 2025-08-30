@@ -57,10 +57,11 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           </motion.p>
 
           <motion.div
-            className="flex flex-col md:flex-row gap-4 justify-center absolute bottom-32"
+            className="flex flex-col md:flex-row gap-6 justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.4 : 0, duration: 0.8, ease: "easeOut" }}
+            style={{ transform: 'translateY(-40px)' }}
           >
             <button
               onClick={() => setActiveTab?.('questionaire')}
