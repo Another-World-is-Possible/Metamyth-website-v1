@@ -362,12 +362,12 @@
   /* Ribbon Banner CTA Button Styles */
   .cta-button-base {
     position: relative;
-    padding: 12px 24px;
+    padding: 10px 20px;
     background: var(--button-gradient);
     color: var(--button-text-color);
     font-family: 'AngleFairy2024', serif;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border: none;
