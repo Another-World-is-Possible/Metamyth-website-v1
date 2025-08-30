@@ -96,6 +96,28 @@ export default function MetamythTiles({ setActiveTab }: MetamythTilesProps) {
 }
 
 function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & { callToAction?: string }, index: number, setActiveTab?: (tab: string) => void }) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setImageLoaded(true);
+      console.log(`Successfully loaded image for ${tile.title}: ${tile.bgImage}`);
+    };
+    img.onerror = () => {
+      setImageError(true);
+      console.error(`Failed to load image for ${tile.title}: ${tile.bgImage}`);
+    };
+    img.src = tile.bgImage;
+    
+    // Also try direct loading as fallback
+    return () => {
+      img.onload = null;
+      img.onerror = null;
+    };
+  }, [tile.bgImage, tile.title]);
+
   const getTextAlignment = () => {
     switch (tile.textAlign) {
       case "left":
@@ -113,9 +135,15 @@ function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & 
       {/* Background Image - simple fade in, no movement */}
       <div className="absolute inset-0">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat metamyth-bg-fade"
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+            imageLoaded ? 'opacity-100 metamyth-bg-fade' : 'opacity-0'
+          }`}
           style={{ backgroundImage: `url(${tile.bgImage})` }}
         />
+        {/* Fallback background while image loads */}
+        {!imageLoaded && !imageError && (
+          <div className="absolute inset-0 bg-deep-black animate-pulse" />
+        )}
         {/* Subtle overlay to ensure text readability */}
         <div className={`absolute inset-0 bg-gradient-to-br ${tile.gradient} opacity-25`} />
       </div>
