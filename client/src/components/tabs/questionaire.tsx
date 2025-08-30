@@ -8,7 +8,6 @@ import { ChevronRight, ChevronLeft, Mail, Phone, ExternalLink } from "lucide-rea
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import questBackgroundImage from '@assets/fKT0iBoZGZBCVegbkPwWP_1756531167591.png';
 
 // Note: For static deployment, the questionnaire submission is handled client-side
 // For production with backend, replace the submitMutation logic with actual API calls
@@ -318,11 +317,12 @@ export default function QUESTionaire() {
   return (
     <div className="min-h-screen overflow-hidden" 
          style={{
+           backgroundColor: '#1D4241',
            backgroundImage: `radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%),
-                            url(${questBackgroundImage})`,
-           backgroundSize: 'cover',
-           backgroundPosition: 'center',
-           backgroundRepeat: 'no-repeat'
+                            linear-gradient(45deg, rgba(29,66,65,0.9), rgba(29,66,65,0.8)), 
+                            radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                            url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23129f9f" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>')`,
          }}>
       
       {/* Progress Bar */}
