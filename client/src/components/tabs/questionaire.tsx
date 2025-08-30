@@ -306,30 +306,28 @@ export default function QUESTionaire() {
 
   if (showResult && !showSpecificResult) {
     return (
-      <div className="min-h-screen bg-deep-black flex items-center justify-center p-4" 
+      <div className="min-h-screen bg-deep-black py-8 px-4 overflow-y-auto" 
            style={{
              backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.9), rgba(20,40,60,0.8)), 
                               radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
                               radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
            }}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="max-w-2xl mx-auto text-center"
-        >
+        <div className="flex items-center justify-center min-h-full">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="max-w-2xl mx-auto text-center w-full"
+          >
           <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 p-8">
             <CardContent>
               <h2 className="typography-h2 text-ancient-gold mb-6 font-angle">
                 Your QUESTionaire Journey Complete
               </h2>
-              <p className="text-base text-cream-white mb-8 leading-relaxed font-grillages">
-                The old story is ending whether we like it or not, and we have a very narrow window to create the future we want. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable through those brave enough to live them. This is how legends begin: with a single choice to step into the story you came here to tell. Within 48 hours, we'll reach out with the alliance, resources, or community designed to help you craft the narrative that transforms not just your world, but the reality itself.
+              <p className="text-base text-cream-white mb-6 leading-relaxed font-grillages">
+                The old story is ending whether we like it or not, and we have a narrow window to create the future we want. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable. This is how legends begin: with a single choice to step into the story you came here to tell. Your responses have revealed your position in this transformation and illuminated the specific support that could accelerate your role in what's emerging. Within 48 hours, we'll reach out with the alliance, resources, or community designed to help you craft the narrative that transforms not just your world, but reality itself.
               </p>
-              <p className="text-base text-cream-white mb-8 leading-relaxed font-grillages">
-                Your journey has brought you this far, revealing your position in this great transformation and illuminated the specific support that could accelerate your role in what's emerging. The pen of destiny awaits your grasp. The page of possibility lies before you. What happens next is entirely determined by our commitment to change WITH the world.
-              </p>
-              <p className="text-base text-cream-white mb-8 leading-relaxed font-grillages">
-                The future we want is one story away. What reality will you create?
+              <p className="text-base text-cream-white mb-6 leading-relaxed font-grillages">
+                What reality will you create?
               </p>
               
               <Button 
@@ -344,24 +342,26 @@ export default function QUESTionaire() {
               </p>
             </CardContent>
           </Card>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     );
   }
 
   if (showResult && showSpecificResult) {
     return (
-      <div className="min-h-screen bg-deep-black flex items-center justify-center p-4" 
+      <div className="min-h-screen bg-deep-black py-8 px-4 overflow-y-auto" 
            style={{
              backgroundImage: `linear-gradient(45deg, rgba(0,0,0,0.9), rgba(20,40,60,0.8)), 
                               radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
                               radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
            }}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="max-w-2xl mx-auto text-center"
-        >
+        <div className="flex items-center justify-center min-h-full">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="max-w-2xl mx-auto text-center w-full"
+          >
           <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 p-8">
             <CardContent>
               <h2 className="typography-h2 text-ancient-gold mb-6 font-angle">
@@ -421,7 +421,8 @@ export default function QUESTionaire() {
               </p>
             </CardContent>
           </Card>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     );
   }
