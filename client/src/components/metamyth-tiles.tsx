@@ -18,7 +18,7 @@ const tiles = [
   {
     id: 1,
     title: "THE CALL TO ADVENTURE",
-    quote: "We're living through the climax of the human story—all threads converging in crisis determining our future.",
+    quote: "We're living through the climax of the human story—all threads converging in crisis determining our<br/>future.",
     description: "We are stuck in a broken story of extraction chasing meaningless metrics, burnt out, struggling to express why what we do matters, forgetting we write the story.",
     bgImage: callToAdventureImg,
     animation: "burn",
@@ -30,7 +30,7 @@ const tiles = [
   {
     id: 2,
     title: "THE QUEST",
-    quote: "Story is the oldest technology on Earth.<br/>The original operating system that turns vision into reality.",
+    quote: "Story is the oldest technology on Earth.<br/>The original operating system that turns vision into<br/>reality.",
     description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real.<br /><br />Your story becomes the foundation for everything that follows.",
     bgImage: questImg,
     animation: "thread",
@@ -52,7 +52,7 @@ const tiles = [
   {
     id: 4,
     title: "THE JOURNEY",
-    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.",
+    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary<br/>challenges.",
     description: "From individual story regeneration to organizational transformation to planetary coordination, bringing stories to life through AI systems, cinematic media, and organizational infrastructure—one integrated system that scales from personal to cosmic.",
     bgImage: journeyImg,
     animation: "crash",

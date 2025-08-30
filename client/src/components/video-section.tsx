@@ -22,25 +22,15 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
         </motion.h2>
         
         <motion.p
-          className="typography-body font-thornelia text-center mb-8 max-w-4xl mx-auto leading-relaxed text-cream-white"
+          className="typography-body font-thornelia text-center mb-12 max-w-4xl mx-auto leading-relaxed text-cream-white"
           style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.6)' }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          Speaking to conscious leaders and visionary changemakers, founder <span className="text-mystical-teal font-bold">Zachary Marlow</span> drops a mind-bending truth: we're destroying the world for stories. But if we imagined this nightmare, we can imagine our way out. This talk unveils the Metamyth System—five questions that transform crisis into compelling quest. Marlow shows how ancient storytelling technology can liberate organizations from extractive paradigms.
+          Speaking to conscious leaders and visionary changemakers, founder <span className="text-mystical-teal font-bold">Zachary Marlow</span> unveils the Metamyth System—five questions that transform crisis into compelling quest.
         </motion.p>
-        
-        <motion.h3
-          className="typography-h3 font-angle text-center mb-12 max-w-4xl mx-auto text-ancient-gold text-glow-gold"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          "The future we want is one story away."
-        </motion.h3>
 
         <motion.div
           className="relative max-w-4xl mx-auto"
@@ -69,17 +59,16 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
           </div>
         </motion.div>
 
-        <motion.div
-          className="text-center mt-8"
+        <motion.h3
+          className="typography-h2 font-angle text-center mt-12 max-w-4xl mx-auto text-ancient-gold"
+          style={{ textShadow: '0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.6), 1px 1px 3px rgba(0, 0, 0, 0.9)' }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <p className="italic font-thornelia text-cream-white text-glow-gold">
-            "If we imagined this nightmare, we can imagine our way out."
-          </p>
-        </motion.div>
+          "The future we want is one story away."
+        </motion.h3>
       </div>
     </section>
   );
