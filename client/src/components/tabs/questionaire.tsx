@@ -129,18 +129,19 @@ const questions = [
   },
   {
     id: 7,
-    title: "Your Authority to Act",
-    subtitle: "In the stories that change everything, heroes have the power to make decisions that matter. What authority do you command in writing the next chapters?",
+    title: "The Cost of the Unchanged Story",
+    subtitle: "Every hero faces this choice: transform or remain trapped. If you stay exactly where you are now—living the same story, facing the same challenges, following the same patterns—what does your reality look like 12 months from now?",
     type: "radio",
     options: [
-      "I decide for myself and others—I can commit resources and make strategic choices autonomously",
-      "I influence major decisions—My voice carries significant weight in important choices",
-      "I need to build consensus—I can advocate strongly but require others' agreement for major commitments",
-      "I'm preparing for authority—I'm developing the capacity to make autonomous decisions",
-      "I'm exploring my power—I'm discovering what authority I have and how to use it wisely"
+      "The slow death—My potential withers while I perform in stories that drain my soul",
+      "The grinding wheel—I'll be exhausted from spinning in circles without real progress",
+      "The fading dream—The vision that calls to me grows dimmer until I stop believing it's possible",
+      "The missed moment—This window for transformation closes and I'm left wondering what could have been",
+      "The same prison—Nothing changes and I remain stuck in patterns that no longer serve anyone",
+      "The wasted gifts—My unique contributions never reach the people who desperately need them"
     ],
     hasTextInput: false,
-    description: "True power isn't dominion over others—it's the authority to author your authentic story into reality."
+    description: "The price of an unchanged story is always higher than the cost of transformation. Time doesn't wait for anyone."
   }
 ];
 
@@ -165,58 +166,33 @@ export default function QUESTionaire() {
       // Simulate processing time
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Qualification logic based on Questions 4, 6, and 7
+      // Qualification logic - simplified to OR logic for financial qualification or authorship level
       const responses = data.responses || {};
       
       // Debug logging to see what responses we have
       console.log("All responses received:", responses);
       
-      // Question 4: Investment Scale
+      // Question 4: Investment Scale - $1K+ qualifies for strategy calls
       const investmentResponse = responses[4] || "";
       const hasHighInvestment = investmentResponse.includes("$1K") || 
                                investmentResponse.includes("$5K") || 
                                investmentResponse.includes("$15K");
       
-      // Question 7: Authority to Act (scoring system)
-      const authorityResponse = responses[7] || "";
-      let authorityScore = 1;
-      if (authorityResponse.includes("I decide for myself and others")) {
-        authorityScore = 4;
-      } else if (authorityResponse.includes("I influence major decisions")) {
-        authorityScore = 3;
-      } else if (authorityResponse.includes("I need to build consensus")) {
-        authorityScore = 2;
-      } else if (authorityResponse.includes("I'm preparing for authority") || 
-                 authorityResponse.includes("I'm exploring my power")) {
-        authorityScore = 1;
-      }
-      
-      // Question 6: Readiness Timeline (scoring system)
-      const readinessResponse = responses[6] || "";
-      let readinessScore = 1;
-      if (readinessResponse.includes("Lightning strikes now")) {
-        readinessScore = 4;
-      } else if (readinessResponse.includes("Thunder rolls within three moons")) {
-        readinessScore = 3;
-      } else if (readinessResponse.includes("Storm clouds gather this cycle")) {
-        readinessScore = 2;
-      } else if (readinessResponse.includes("Still reading the signs")) {
-        readinessScore = 1;
-      }
+      // Question 1: Authorship Level - higher authority levels qualify for strategy calls
+      const authorshipResponse = responses[1] || "";
+      const hasHighAuthorship = authorshipResponse.includes("I actively author reality—leading an organization") ||
+                                authorshipResponse.includes("I'm consciously building my story—creating an organization") ||
+                                authorshipResponse.includes("I have significant influence—helping write the story");
       
       console.log("Scoring breakdown:", {
         hasHighInvestment,
-        authorityScore,
-        readinessScore,
+        hasHighAuthorship,
         investmentResponse,
-        authorityResponse,
-        readinessResponse
+        authorshipResponse
       });
       
-      // Advanced Track qualification criteria
-      const qualifiesForAdvanced = hasHighInvestment && 
-                                  authorityScore >= 3 && 
-                                  readinessScore >= 3;
+      // Advanced Track qualification criteria - OR logic: either high investment OR high authorship
+      const qualifiesForAdvanced = hasHighInvestment || hasHighAuthorship;
 
       return {
         qualified: qualifiesForAdvanced ? "advanced" : "community",
