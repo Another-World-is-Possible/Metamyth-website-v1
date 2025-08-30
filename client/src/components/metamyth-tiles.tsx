@@ -19,7 +19,7 @@ const tiles = [
     id: 1,
     title: "THE CALL TO ADVENTURE",
     quote: "We're living through the climax of the human story—all threads converging in crisis determining our<br/>future.",
-    description: "We are stuck in a broken story of extraction chasing meaningless metrics, burnt out, struggling to express why what we do matters, forgetting we write the story.",
+    description: "We are stuck in a broken story of extraction chasing meaningless metrics, burnt out, struggling to express why what we do matters.<br/><br/><span class='typography-h3 font-angle text-glow-gold'>Forgetting we write the story.</span>",
     bgImage: callToAdventureImg,
     animation: "burn",
     gradient: "from-forest-green to-deep-black",
@@ -31,7 +31,7 @@ const tiles = [
     id: 2,
     title: "THE QUEST",
     quote: "Story is the oldest technology on Earth.<br/>The original operating system that turns vision into<br/>reality.",
-    description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real.<br /><br />Your story becomes the foundation for everything that follows.",
+    description: "We reveal the authentic story already alive within your organization and plot your evolution on purpose. Through our Metamyth System, we rediscover your cosmic purpose, expand your vision, and create the practical mission that makes it real.<br/><br/><span class='typography-h3 font-angle text-glow-gold'>Your story becomes the foundation for everything that follows.</span>",
     bgImage: questImg,
     animation: "thread",
     gradient: "from-deep-black to-dark-wine",
@@ -42,7 +42,7 @@ const tiles = [
     id: 3,
     title: "THE VISION OF WHAT IS POSSIBLE",
     quote: "A world that works for all where work becomes adventure, where authentic authority commands cosmic resources, and where the future belongs to those who remember they're writing it.",
-    description: "Through story, the impossible becomes inevitable. We transform breakdown into breakthrough, extraction into regeneration, marketing into movements, branding into worldbuilding, business into easiness.<br/><br/>The Metamyth transforms background characters in a broken story into heroes in the myth of the future we're here to LIVE.",
+    description: "Through story, the impossible becomes inevitable. We transform breakdown into breakthrough, extraction into regeneration, marketing into movements, branding into worldbuilding, business into easiness.<br/><br/><span class='typography-h3 font-angle text-glow-gold'>The Metamyth transforms background characters in a broken story into heroes in the myth of the future we're here to LIVE.</span>",
     bgImage: visionImg,
     animation: "flash",
     gradient: "from-dark-wine to-forest-green",
@@ -52,8 +52,8 @@ const tiles = [
   {
     id: 4,
     title: "THE JOURNEY",
-    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary<br/>challenges.",
-    description: "From individual story regeneration to organizational transformation to planetary coordination, bringing stories to life through AI systems, cinematic media, and organizational infrastructure—one integrated system that scales from personal to cosmic.",
+    quote: "We build the complete story system that helps purpose-driven visionaries discover their authentic narrative, sequence it into functional tools, and federate with aligned stories to solve planetary challenges.",
+    description: "From individual story regeneration to organizational transformation to planetary coordination, bringing stories to life through AI systems, cinematic media, and organizational infrastructure.<br/><br/><span class='typography-h3 font-angle text-glow-gold'>One integrated system that scales from personal to cosmic.</span>",
     bgImage: journeyImg,
     animation: "crash",
     gradient: "from-forest-green to-deep-black",
@@ -64,7 +64,7 @@ const tiles = [
     id: 5,
     title: "THE RE-QUEST",
     quote: "Calling the next generation of storytellers ready to stop being characters in someone else's extraction story and start authoring the regenerative reality your heart knows is possible.",
-    description: "The time for waiting is over. The world needs your story now. ",
+    description: "The time for waiting is over, your community is out there, the world is waiting for us to live the new story.",
     callToAction: "Will you answer the call?",
     bgImage: requestImg,
     animation: "flicker",
@@ -121,7 +121,7 @@ function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & 
       </div>
 
       <div className={`relative z-10 w-full px-8 flex ${getTextAlignment()}`}>
-        <div className="max-w-3xl">
+        <div className={tile.id === 4 ? "max-w-4xl" : "max-w-3xl"}>
           <h2 className="typography-h2 font-angle mb-8 text-cream-white leading-tight text-glow-gold">
             {tile.title}
           </h2>
@@ -138,7 +138,7 @@ function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & 
           ></p>
 
           {tile.callToAction && (
-            <div className="mt-12">
+            <div className="mt-20">
               <p
                 className="typography-h2 font-angle text-cream-white text-glow-gold leading-relaxed"
               >
