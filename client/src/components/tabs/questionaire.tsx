@@ -434,7 +434,7 @@ export default function QUESTionaire() {
                   <div className="flex justify-center mt-8">
                     <button
                       onClick={handleNext}
-                      className="cta-button-base cta-button-gold"
+                      className="cta-button-base cta-button-gold questionnaire-button"
                       data-testid="button-continue"
                     >
                       Continue to Questions
@@ -487,7 +487,7 @@ export default function QUESTionaire() {
                     </Button>
                     <button
                       onClick={handleNext}
-                      className="cta-button-base cta-button-gold"
+                      className="cta-button-base cta-button-gold questionnaire-button"
                     >
                       Continue Your Quest
                       <ChevronRight className="w-5 h-5 ml-2" />
@@ -594,7 +594,7 @@ export default function QUESTionaire() {
                       <button
                         onClick={handleNext}
                         disabled={false}
-                        className="cta-button-base cta-button-gold"
+                        className="cta-button-base cta-button-gold questionnaire-button"
                         data-testid="button-next"
                       >
                         Your Final Prophecy
@@ -604,7 +604,7 @@ export default function QUESTionaire() {
                       <button
                         onClick={handleNext}
                         disabled={false}
-                        className="cta-button-base cta-button-teal"
+                        className="cta-button-base cta-button-teal questionnaire-button"
                         data-testid="button-next"
                       >
                         Next Question
@@ -659,7 +659,7 @@ export default function QUESTionaire() {
                     <button
                       onClick={handleSubmit}
                       disabled={submitMutation.isPending}
-                      className="cta-button-base cta-button-crimson"
+                      className="cta-button-base cta-button-crimson questionnaire-button"
                       data-testid="button-submit"
                     >
                       {submitMutation.isPending ? "Submitting..." : "Complete QUESTionaire"}

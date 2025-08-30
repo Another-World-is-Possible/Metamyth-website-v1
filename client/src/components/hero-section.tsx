@@ -26,7 +26,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-deep-black/40 z-10" />
-        <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
+        <div className="relative z-10 text-center max-w-6xl mx-auto px-4" style={{ transform: 'translateY(20px)' }}>
           <motion.h1 
             className="typography-h1 font-angle text-gradient-gold mb-8"
             initial={{ opacity: 0, y: 20 }}
