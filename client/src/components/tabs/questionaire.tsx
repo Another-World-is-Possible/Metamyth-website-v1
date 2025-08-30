@@ -257,7 +257,23 @@ export default function QUESTionaire() {
         return;
       }
       setCurrentStep(2);
-    } else if (currentStep <= questions.length + 3) { // +3 for origin, questions, and legacy
+    } else if (currentStep >= 3 && currentStep <= questions.length + 2) {
+      // Check if current question is answered
+      const questionIndex = currentStep - 3;
+      const currentQuestionId = questions[questionIndex]?.id;
+      
+      if (!responses[currentQuestionId] || 
+          (Array.isArray(responses[currentQuestionId]) && responses[currentQuestionId].length === 0)) {
+        toast({
+          title: "Answer Required",
+          description: "Please answer this question to continue.",
+          variant: "destructive",
+        });
+        return;
+      }
+      
+      setCurrentStep(prev => prev + 1);
+    } else if (currentStep <= questions.length + 3) {
       setCurrentStep(prev => prev + 1);
     }
     // Scroll to top when transitioning to next question
@@ -459,9 +475,9 @@ export default function QUESTionaire() {
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 mb-8">
                 <CardContent className="p-8 text-center">
                   <h2 className="text-2xl text-mystical-teal mb-6 italic typography-body">
-                    "The 7-Question Journey That Reveals Who's Really Writing Your Life: Are You the Hero of Your Story or a Background Character in Someone Else's?"
+                    "The 7-Question Journey That Reveals Who's Really Writing Your Life: Are You the Hero of Your Story<br />or a Background Character in Someone Else's?"
                   </h2>
-                  <p className="text-base text-cream-white mb-0 max-w-2xl mx-auto leading-relaxed font-grillages">
+                  <p className="text-lg text-cream-white mb-0 max-w-2xl mx-auto leading-relaxed font-grillages">
                     The old story is ending—systems designed for scarcity destroying abundance, narratives built on separation fragmenting communities, economic myths optimized for extraction devouring the living world. But here's what the breakdown reveals: we're living through the greatest transformation in human history. All around the world, people are awakening to their power as reality authors. They've remembered the fundamental truth that reality is made of stories, and whoever controls the narrative controls the future. The fate of our species may depend on how many people remember they hold this power before it's too late. This could be your moment of awakening.
                   </p>
                 </CardContent>
