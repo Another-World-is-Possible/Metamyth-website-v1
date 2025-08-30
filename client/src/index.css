@@ -362,21 +362,22 @@
   /* Ribbon Banner CTA Button Styles */
   .cta-button-base {
     position: relative;
-    padding: 12px 28px 12px 20px;
+    padding: 8px 20px 8px 16px;
     background: var(--button-gradient);
     color: var(--button-text-color);
     font-family: 'AngleFairy2024', serif;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border: none;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 8px;
     
     /* Perfect ribbon shape - straight rectangle with angled right cut only */
-    clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+    clip-path: polygon(0% 0%, calc(100% - 18px) 0%, 100% 50%, calc(100% - 18px) 100%, 0% 100%);
     
     /* Strong glowing outline */
     box-shadow: 
