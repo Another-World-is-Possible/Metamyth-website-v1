@@ -371,13 +371,22 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border: none;
-    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 8px;
     
-    /* Perfect ribbon shape - straight rectangle with angled right cut only */
-    clip-path: polygon(0% 0%, calc(100% - 18px) 0%, 100% 50%, calc(100% - 18px) 100%, 0% 100%);
+    /* Rounded ribbon shape - rectangle with rounded corners and angled right cut */
+    clip-path: polygon(
+      6px 0%, 
+      calc(100% - 18px) 0%, 
+      calc(100% - 6px) 6px, 
+      100% 50%, 
+      calc(100% - 6px) calc(100% - 6px), 
+      calc(100% - 18px) 100%, 
+      6px 100%, 
+      0% calc(100% - 6px), 
+      0% 6px
+    );
     
     /* Strong glowing outline */
     box-shadow: 

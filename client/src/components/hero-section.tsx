@@ -41,7 +41,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 0.8 : 0, duration: 0.8, ease: "easeOut" }}
-            style={{ transform: 'translateY(-10px)' }}
+            style={{ transform: 'translateY(10px)' }}
           >
             Take Back Your Story<br />to Change the World.
           </motion.h2>
@@ -61,7 +61,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.4 : 0, duration: 0.8, ease: "easeOut" }}
-            style={{ transform: 'translateY(-80px)' }}
+            style={{ transform: 'translateY(-60px)' }}
           >
             <button
               onClick={() => setActiveTab?.('questionaire')}
