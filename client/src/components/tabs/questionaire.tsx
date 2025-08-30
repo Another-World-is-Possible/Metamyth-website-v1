@@ -437,8 +437,7 @@ export default function QUESTionaire() {
                       className="cta-button-base cta-button-gold questionnaire-button"
                       data-testid="button-continue"
                     >
-                      Continue to Questions
-                      <ChevronRight className="w-5 h-5 ml-2" />
+                      Continue to Questions <ChevronRight className="w-4 h-4 ml-1" />
                     </button>
                   </div>
                 </CardContent>
@@ -489,8 +488,7 @@ export default function QUESTionaire() {
                       onClick={handleNext}
                       className="cta-button-base cta-button-gold questionnaire-button"
                     >
-                      Continue Your Quest
-                      <ChevronRight className="w-5 h-5 ml-2" />
+                      Continue Your Quest <ChevronRight className="w-4 h-4 ml-1" />
                     </button>
                   </div>
                 </CardContent>
@@ -597,8 +595,7 @@ export default function QUESTionaire() {
                         className="cta-button-base cta-button-gold questionnaire-button"
                         data-testid="button-next"
                       >
-                        Your Final Prophecy
-                        <ChevronRight className="w-5 h-5 ml-2" />
+                        Your Final Prophecy <ChevronRight className="w-4 h-4 ml-1" />
                       </button>
                     ) : (
                       <button
@@ -607,8 +604,7 @@ export default function QUESTionaire() {
                         className="cta-button-base cta-button-teal questionnaire-button"
                         data-testid="button-next"
                       >
-                        Next Question
-                        <ChevronRight className="w-5 h-5 ml-2" />
+                        Next Question <ChevronRight className="w-4 h-4 ml-1" />
                       </button>
                     )}
                   </div>
@@ -662,8 +658,7 @@ export default function QUESTionaire() {
                       className="cta-button-base cta-button-crimson questionnaire-button"
                       data-testid="button-submit"
                     >
-                      {submitMutation.isPending ? "Submitting..." : "Complete QUESTionaire"}
-                      <ChevronRight className="w-5 h-5 ml-2" />
+                      {submitMutation.isPending ? "Submitting..." : "Complete QUESTionaire"} <ChevronRight className="w-4 h-4 ml-1" />
                     </button>
                   </div>
                 </CardContent>

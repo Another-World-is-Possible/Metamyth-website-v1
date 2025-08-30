@@ -430,9 +430,26 @@
 
   /* Smaller questionnaire buttons */
   .questionnaire-button {
-    padding: 8px 16px !important;
-    font-size: 0.75rem !important;
+    padding: 8px 24px !important;
+    font-size: 0.7rem !important;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    
+    /* Much reduced glow for questionnaire */
+    box-shadow: 
+      0 0 4px var(--button-glow-color),
+      0 0 8px var(--button-glow-color),
+      inset 0 0 5px rgba(255, 255, 255, 0.05) !important;
+  }
+  
+  .questionnaire-button:hover {
+    box-shadow: 
+      0 0 6px var(--button-glow-color),
+      0 0 12px var(--button-glow-color),
+      inset 0 0 8px rgba(255, 255, 255, 0.1) !important;
   }
 
   /* Navigation tab styling - smooth teal glow without yellow flash */
