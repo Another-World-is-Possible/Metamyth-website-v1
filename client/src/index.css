@@ -362,70 +362,71 @@
   /* Ribbon Banner CTA Button Styles */
   .cta-button-base {
     position: relative;
-    padding: 12px 28px 12px 20px;
+    padding: 14px 32px 14px 24px;
     background: var(--button-gradient);
     color: var(--button-text-color);
     font-family: 'AngleFairy2024', serif;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 8px;
+    transition: all 0.4s ease;
     
-    /* Perfect ribbon shape - straight rectangle with angled right cut only */
-    clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+    /* Clean ribbon shape exactly like reference - rectangular with angled right cut */
+    clip-path: polygon(0% 0%, calc(100% - 24px) 0%, 100% 50%, calc(100% - 24px) 100%, 0% 100%);
     
-    /* Strong glowing outline */
+    /* Illuminated glow outline */
     box-shadow: 
-      0 0 20px var(--button-glow-color),
-      0 0 40px var(--button-glow-color),
-      0 0 60px var(--button-glow-color),
-      inset 0 0 20px rgba(255, 255, 255, 0.1);
+      0 0 30px var(--button-glow-color),
+      0 0 50px var(--button-glow-color),
+      0 0 80px var(--button-glow-color),
+      0 4px 20px rgba(0, 0, 0, 0.3);
     
     /* Glowing text */
     text-shadow: var(--button-text-glow);
   }
   
-  .cta-button-base:hover {
-    transform: translateY(-2px);
+  .cta-button-base:hover,
+  .cta-button-base:focus,
+  .cta-button-base.active {
+    transform: translateY(-3px) scale(1.02);
     box-shadow: 
-      0 0 30px var(--button-glow-color),
-      0 0 60px var(--button-glow-color),
-      0 0 90px var(--button-glow-color),
-      inset 0 0 30px rgba(255, 255, 255, 0.2);
+      0 0 40px var(--button-glow-color),
+      0 0 70px var(--button-glow-color),
+      0 0 120px var(--button-glow-color),
+      0 6px 30px rgba(0, 0, 0, 0.4);
   }
   
-  /* Gold variant - warm gradient */
+  /* Gold variant */
   .cta-button-gold {
-    --button-gradient: linear-gradient(90deg, #f39c12, #f1c40f, #f4d03f);
+    --button-gradient: linear-gradient(135deg, #f1c40f, #f39c12, #e67e22);
     --button-text-color: #2c3e50;
-    --button-glow-color: rgba(241, 196, 15, 0.8);
+    --button-glow-color: rgba(241, 196, 15, 0.9);
     --button-text-glow: 
-      0 0 8px rgba(255, 255, 255, 0.9),
-      0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Teal variant - cool gradient */
-  .cta-button-teal {
-    --button-gradient: linear-gradient(90deg, #16a085, #1abc9c, #48c9b0);
-    --button-text-color: #2c3e50;
-    --button-glow-color: rgba(26, 188, 156, 0.8);
-    --button-text-glow:
-      0 0 8px rgba(255, 255, 255, 0.9),
-      0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Crimson variant - warm to cool */
-  .cta-button-crimson {
-    --button-gradient: linear-gradient(90deg, #e74c3c, #ec4899, #be185d);
-    --button-text-color: #f8fafc;
-    --button-glow-color: rgba(231, 76, 60, 0.8);
-    --button-text-glow:
-      0 0 8px rgba(255, 255, 255, 1.0),
+      0 0 10px rgba(255, 255, 255, 1.0),
       0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Teal variant */
+  .cta-button-teal {
+    --button-gradient: linear-gradient(135deg, #1abc9c, #16a085, #0d7377);
+    --button-text-color: #2c3e50;
+    --button-glow-color: rgba(26, 188, 156, 0.9);
+    --button-text-glow:
+      0 0 10px rgba(255, 255, 255, 1.0),
+      0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Crimson variant */
+  .cta-button-crimson {
+    --button-gradient: linear-gradient(135deg, #e74c3c, #c0392b, #922b21);
+    --button-text-color: #f8fafc;
+    --button-glow-color: rgba(231, 76, 60, 0.9);
+    --button-text-glow:
+      0 0 10px rgba(255, 255, 255, 1.0),
+      0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   /* Navigation tab styling - smooth teal glow without yellow flash */
