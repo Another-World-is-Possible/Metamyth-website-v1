@@ -47,7 +47,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
           </motion.h2>
 
           <motion.p
-            className="typography-lead mb-8 max-w-4xl mx-auto text-cream-white text-glow-cream"
+            className="typography-lead mb-4 max-w-4xl mx-auto text-cream-white text-glow-cream"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.1 : 0, duration: 0.8, ease: "easeOut" }}
@@ -61,7 +61,7 @@ export default function HeroSection({ setActiveTab }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: backgroundLoaded ? 1 : 0, y: backgroundLoaded ? 0 : 20 }}
             transition={{ delay: backgroundLoaded ? 1.4 : 0, duration: 0.8, ease: "easeOut" }}
-            style={{ transform: 'translateY(0px)' }}
+            style={{ transform: 'translateY(-10px)' }}
           >
             <button
               onClick={() => setActiveTab?.('questionaire')}

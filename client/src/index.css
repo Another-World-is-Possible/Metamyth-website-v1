@@ -362,12 +362,12 @@
   /* Ribbon Banner CTA Button Styles */
   .cta-button-base {
     position: relative;
-    padding: 10px 20px;
+    padding: 12px 24px;
     background: var(--button-gradient);
     color: var(--button-text-color);
     font-family: 'AngleFairy2024', serif;
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border: none;
@@ -378,11 +378,8 @@
     /* Regular rounded button */
     border-radius: 16px;
     
-    /* Strong glowing outline */
+    /* No default glow - only on hover */
     box-shadow: 
-      0 0 20px var(--button-glow-color),
-      0 0 40px var(--button-glow-color),
-      0 0 60px var(--button-glow-color),
       inset 0 0 20px rgba(255, 255, 255, 0.1);
     
     /* Glowing text */
