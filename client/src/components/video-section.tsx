@@ -29,7 +29,7 @@ export default function VideoSection({ setActiveTab }: VideoSectionProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          Speaking to conscious leaders and visionary changemakers, founder <span className="text-mystical-teal font-bold">Zachary Marlow</span> unveils the Metamyth System—five questions that transform crisis into compelling quest.
+          Speaking to conscious leaders and visionary changemakers, founder <span className="text-mystical-teal font-bold">Zachary Marlow</span> drops a mind-bending truth: we're destroying the world for stories. But if we imagined this nightmare, we can imagine our way out. This talk unveils the Metamyth System—five questions that transform crisis into compelling quest.
         </motion.p>
 
         <motion.div

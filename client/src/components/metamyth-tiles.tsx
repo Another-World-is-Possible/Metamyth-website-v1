@@ -140,18 +140,10 @@ function TileComponent({ tile, index, setActiveTab }: { tile: typeof tiles[0] & 
           {tile.callToAction && (
             <div className="mt-12">
               <p
-                className="typography-h2 font-angle mb-8 text-cream-white text-glow-gold leading-relaxed"
+                className="typography-h2 font-angle text-cream-white text-glow-gold leading-relaxed"
               >
                 {tile.callToAction}
               </p>
-
-              <button
-                className="cta-button-base cta-button-gold"
-                onClick={() => setActiveTab?.('questionaire')}
-                data-testid="button-start-journey"
-              >
-                START YOUR JOURNEY
-              </button>
             </div>
           )}
         </div>
