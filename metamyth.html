@@ -1353,6 +1353,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div><label class="font-semibold text-lg text-white block mb-2">What is the ultimate treasure or wisdom you've discovered within yourself?</label><textarea id="${stage.id}_treasure" rows="4"></textarea></div>
                         <div><label class="font-semibold text-lg text-white block mb-2">How has this journey revealed your authentic self?</label><textarea id="${stage.id}_authentic" rows="4"></textarea></div>
                         <div><label class="font-semibold text-lg text-white block mb-2">What is your unique gift to offer the world?</label><textarea id="${stage.id}_unique_gift" rows="4"></textarea></div>
+                        <div class="synthesis-box border border-gold mt-6">
+                            <label class="font-semibold text-lg text-gold block mb-2">SYNTHESIS - My Grail:</label>
+                            <p class="text-sm mb-3">Synthesize your ultimate treasure, authentic self, and unique gift into one powerful statement of what you've discovered within yourself.</p>
+                            <textarea id="${stage.id}_synthesis" rows="4" placeholder="Describe your Grail - the ultimate treasure you've discovered within yourself..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             initiation: `
@@ -1367,6 +1372,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div><label class="font-semibold text-lg text-white block mb-2">What commitment are you ready to make to your highest purpose?</label><textarea id="${stage.id}_commitment" rows="4"></textarea></div>
                         <div><label class="font-semibold text-lg text-white block mb-2">How will you step fully into your role as a leader and guide?</label><textarea id="${stage.id}_leadership" rows="4"></textarea></div>
                         <div><label class="font-semibold text-lg text-white block mb-2">What vow or pledge do you make to serve something greater than yourself?</label><textarea id="${stage.id}_vow" rows="4"></textarea></div>
+                        <div class="synthesis-box border border-gold mt-6">
+                            <label class="font-semibold text-lg text-gold block mb-2">SYNTHESIS - My Initiation:</label>
+                            <p class="text-sm mb-3">Combine your commitment, leadership role, and vow into a powerful initiation statement.</p>
+                            <textarea id="${stage.id}_synthesis" rows="4" placeholder="Write your initiation statement - your commitment to serve something greater..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             campfire: `
@@ -1381,6 +1391,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div><label class="font-semibold text-lg text-white block mb-2">How will you create gathering spaces for your community?</label><textarea id="${stage.id}_gathering" rows="4"></textarea></div>
                         <div><label class="font-semibold text-lg text-white block mb-2">What stories need to be shared and preserved?</label><textarea id="${stage.id}_stories" rows="4"></textarea></div>
                         <div><label class="font-semibold text-lg text-white block mb-2">How will you build lasting community around your mission?</label><textarea id="${stage.id}_community" rows="4"></textarea></div>
+                        <div class="synthesis-box border border-gold mt-6">
+                            <label class="font-semibold text-lg text-gold block mb-2">SYNTHESIS - My Campfire:</label>
+                            <p class="text-sm mb-3">Weave together your gathering spaces, stories, and community building into a unified vision for your campfire.</p>
+                            <textarea id="${stage.id}_synthesis" rows="4" placeholder="Describe your campfire - how you'll build lasting community..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             message: `
@@ -1429,6 +1444,11 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <textarea id="message_participation_action" rows="3" placeholder="Your participation call to action..."></textarea>
                             </div>
                         </div>
+                        <div class="synthesis-box border border-gold mt-6">
+                            <label class="font-semibold text-lg text-gold block mb-2">SYNTHESIS - My Message:</label>
+                            <p class="text-sm mb-3">Distill your core message, how you'll reach people, and your call to action into one powerful communication strategy.</p>
+                            <textarea id="message_synthesis" rows="4" placeholder="Synthesize your complete message strategy..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             legacy: `
@@ -1443,6 +1463,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div><label class="font-semibold text-lg text-white block mb-2">What lasting impact do you want your life and work to have?</label><textarea id="${stage.id}_impact" rows="4"></textarea></div>
                         <div><label class="font-semibold text-lg text-white block mb-2">How do you want to be remembered by those whose lives you touch?</label><textarea id="${stage.id}_remembered" rows="4"></textarea></div>
                         <div><label class="font-semibold text-lg text-white block mb-2">What will you leave behind that will continue to serve others after you're gone?</label><textarea id="${stage.id}_continuation" rows="4"></textarea></div>
+                        <div class="synthesis-box border border-gold mt-6">
+                            <label class="font-semibold text-lg text-gold block mb-2">SYNTHESIS - My Legacy:</label>
+                            <p class="text-sm mb-3">Combine your lasting impact, how you want to be remembered, and what you'll leave behind into a powerful legacy statement.</p>
+                            <textarea id="${stage.id}_synthesis" rows="4" placeholder="Write your legacy synthesis - the lasting impact you'll have on the world..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             kindred_synthesis: `
@@ -1610,95 +1635,114 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     window.generateCompleteStory = function() {
-        // Collect all form data
+        // Collect synthesis data (prioritize synthesis fields over individual questions)
         const storyData = {};
         
-        // Origin story inputs
-        const originInputs = ['origin_early_revelation', 'origin_possible_person', 'origin_first_wound', 'origin_coreprogramming'];
-        originInputs.forEach(id => {
-            const el = document.getElementById(id);
-            if (el && el.value) storyData[id] = el.value;
+        // Origin synthesis
+        const originSynthesis = document.getElementById('origin_synthesis');
+        if (originSynthesis && originSynthesis.value) {
+            storyData.origin_synthesis = originSynthesis.value;
+        }
+        
+        // Major artifact syntheses
+        const artifactSyntheses = [
+            { id: 'calling_synthesis_complete', title: 'The Calling', description: 'What awakened my quest' },
+            { id: 'quest_synthesis_complete', title: 'The Quest', description: 'My mission and purpose' },
+            { id: 'vision_synthesis_complete', title: 'The Vision', description: 'What I see as possible' },
+            { id: 'mission_synthesis_complete', title: 'The Journey', description: 'How I will create change' },
+            { id: 'kindred_synthesis_complete', title: 'The Request', description: 'My invitation to others' }
+        ];
+        
+        artifactSyntheses.forEach(artifact => {
+            const el = document.getElementById(artifact.id);
+            if (el && el.value) {
+                storyData[artifact.id] = el.value;
+            }
         });
         
-        // Collect compass data
+        // Individual stage syntheses
+        const stageSyntheses = [
+            { id: 'dragon_synthesis', title: 'The Dragon I Face', stage: 'dragon' },
+            { id: 'grail_synthesis', title: 'My Grail', stage: 'grail' },
+            { id: 'initiation_synthesis', title: 'My Initiation', stage: 'initiation' },
+            { id: 'campfire_synthesis', title: 'My Campfire', stage: 'campfire' },
+            { id: 'message_synthesis', title: 'My Message', stage: 'message' },
+            { id: 'legacy_synthesis', title: 'My Legacy', stage: 'legacy' }
+        ];
+        
+        stageSyntheses.forEach(stage => {
+            const el = document.getElementById(stage.id);
+            if (el && el.value) {
+                storyData[stage.id] = el.value;
+            }
+        });
+        
+        // Compass values (keep this for assessment data)
         ['Purpose Governance', 'Visionary Strategy', 'Truthful Expression', 'Community Well-being', 'Structural Integrity', 'Creative Attraction', 'Ecological Economics', 'Quest Alignment'].forEach((point, index) => {
             const el = document.getElementById(`compass-${index}`);
             if (el) storyData[`compass_${point.replace(/\s+/g, '_').toLowerCase()}`] = el.value;
         });
         
-        // Collect all other textarea inputs from individual stages
-        stages.forEach(stage => {
-            const stageInputs = document.querySelectorAll(`[id^="${stage.id}_"]`);
-            stageInputs.forEach(input => {
-                if (input.value && input.type !== 'range') {
-                    storyData[input.id] = input.value;
-                }
-            });
-        });
-        
-        // Generate the story narrative
+        // Generate the story narrative focused on syntheses
         let storyHtml = '<div class="compiled-metamyth-story">';
         storyHtml += '<h3 class="text-2xl font-bold mb-6 text-gold">My Complete Metamyth</h3>';
+        storyHtml += '<p class="mb-6 text-lg italic">This is my story of transformation from wound to world-builder, from victim to author of reality.</p>';
         
         // Origin Foundation
-        if (storyData.origin_early_revelation || storyData.origin_possible_person || storyData.origin_first_wound) {
-            storyHtml += '<h4 class="text-xl font-semibold mb-4 text-teal">The Origin: Where It All Began</h4>';
-            if (storyData.origin_early_revelation) {
-                storyHtml += '<p class="mb-4"><strong>Early Revelation:</strong> ' + storyData.origin_early_revelation + '</p>';
-            }
-            if (storyData.origin_possible_person) {
-                storyHtml += '<p class="mb-4"><strong>Who Showed Possibility:</strong> ' + storyData.origin_possible_person + '</p>';
-            }
-            if (storyData.origin_first_wound) {
-                storyHtml += '<p class="mb-6"><strong>The First Wound:</strong> ' + storyData.origin_first_wound + '</p>';
-            }
+        if (storyData.origin_synthesis) {
+            storyHtml += '<h4 class="text-xl font-semibold mb-4 text-teal">🌱 The Origin: Where It All Began</h4>';
+            storyHtml += `<p class="mb-6 bg-black bg-opacity-30 border-l-4 border-teal-400 pl-4 py-3">${storyData.origin_synthesis}</p>`;
         }
         
-        // Synthesis sections from artifacts
-        const artifactSections = [
-            { id: 'calling_synthesis', title: 'The Calling', description: 'The call that awakened my quest' },
-            { id: 'quest_synthesis', title: 'The Quest', description: 'The mission that drives me forward' },
-            { id: 'vision_synthesis', title: 'The Vision', description: 'What I see as possible' },
-            { id: 'mission_synthesis', title: 'The Journey', description: 'How I will create change' },
-            { id: 'kindred_synthesis', title: 'The Request', description: 'My invitation to others' }
-        ];
+        // Major Artifacts (The Five Great Syntheses)
+        storyHtml += '<h4 class="text-xl font-semibold mb-4 text-teal">🏆 The Five Great Artifacts</h4>';
         
-        artifactSections.forEach(section => {
-            const synthData = storyData[section.id + '_content'] || storyData[section.id];
-            if (synthData) {
-                storyHtml += `<h4 class="text-xl font-semibold mb-4 text-teal">${section.title}</h4>`;
-                storyHtml += `<p class="mb-6">${synthData}</p>`;
+        artifactSyntheses.forEach(artifact => {
+            if (storyData[artifact.id]) {
+                storyHtml += `<div class="mb-6">`;
+                storyHtml += `<h5 class="text-lg font-semibold mb-2 text-gold">${artifact.title}</h5>`;
+                storyHtml += `<p class="bg-black bg-opacity-30 border-l-4 border-gold pl-4 py-3">${storyData[artifact.id]}</p>`;
+                storyHtml += `</div>`;
             }
         });
         
-        // Compass values
-        storyHtml += '<h4 class="text-xl font-semibold mb-4 text-teal">Current Alignment Compass</h4>';
-        storyHtml += '<p class="mb-4">My current state across the eight dimensions of purposeful living:</p>';
-        storyHtml += '<div class="grid grid-cols-2 gap-4 mb-6">';
-        ['Purpose Governance', 'Visionary Strategy', 'Truthful Expression', 'Community Well-being', 'Structural Integrity', 'Creative Attraction', 'Ecological Economics', 'Quest Alignment'].forEach((point, index) => {
-            const value = storyData[`compass_${point.replace(/\s+/g, '_').toLowerCase()}`] || '5';
-            storyHtml += `<div class="text-sm"><strong>${point}:</strong> ${value}/10</div>`;
-        });
-        storyHtml += '</div>';
-        
-        // Collect other significant responses
-        const otherResponses = Object.keys(storyData).filter(key => 
-            !key.startsWith('origin_') && 
-            !key.startsWith('compass_') && 
-            !artifactSections.some(s => key.startsWith(s.id)) &&
-            storyData[key].length > 50 // Only include substantial responses
-        );
-        
-        if (otherResponses.length > 0) {
-            storyHtml += '<h4 class="text-xl font-semibold mb-4 text-teal">Journey Insights</h4>';
-            otherResponses.forEach(key => {
-                const cleanKey = key.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
-                storyHtml += `<p class="mb-4"><strong>${cleanKey}:</strong> ${storyData[key]}</p>`;
+        // Individual Stage Insights
+        const completedStages = stageSyntheses.filter(stage => storyData[stage.id]);
+        if (completedStages.length > 0) {
+            storyHtml += '<h4 class="text-xl font-semibold mb-4 text-teal">⚔️ Individual Stages of Transformation</h4>';
+            completedStages.forEach(stage => {
+                storyHtml += `<div class="mb-4">`;
+                storyHtml += `<h5 class="text-md font-semibold mb-2 text-gold">${stage.title}</h5>`;
+                storyHtml += `<p class="bg-black bg-opacity-20 border-l-2 border-teal-400 pl-3 py-2 text-sm">${storyData[stage.id]}</p>`;
+                storyHtml += `</div>`;
             });
         }
         
-        storyHtml += '<div class="mt-8 p-4 border border-gold rounded-lg">';
-        storyHtml += '<p class="text-center text-gold font-semibold">This is my metamyth - the story of my transformation from wound to world-builder, from victim to author of reality.</p>';
+        // Compass Assessment
+        const compassValues = ['Purpose Governance', 'Visionary Strategy', 'Truthful Expression', 'Community Well-being', 'Structural Integrity', 'Creative Attraction', 'Ecological Economics', 'Quest Alignment'];
+        const hasCompassData = compassValues.some((point, index) => {
+            const value = storyData[`compass_${point.replace(/\s+/g, '_').toLowerCase()}`];
+            return value && value !== '5';
+        });
+        
+        if (hasCompassData) {
+            storyHtml += '<h4 class="text-xl font-semibold mb-4 text-teal">🧭 Current Alignment Assessment</h4>';
+            storyHtml += '<div class="grid grid-cols-2 gap-3 mb-6 bg-black bg-opacity-20 p-4 rounded-lg">';
+            compassValues.forEach((point, index) => {
+                const value = storyData[`compass_${point.replace(/\s+/g, '_').toLowerCase()}`] || '5';
+                const percentage = (value / 10) * 100;
+                storyHtml += `<div class="text-sm">`;
+                storyHtml += `<div class="flex justify-between mb-1"><span>${point}</span><span>${value}/10</span></div>`;
+                storyHtml += `<div class="w-full bg-gray-700 rounded-full h-2"><div class="bg-teal-400 h-2 rounded-full" style="width: ${percentage}%"></div></div>`;
+                storyHtml += `</div>`;
+            });
+            storyHtml += '</div>';
+        }
+        
+        // Closing statement
+        storyHtml += '<div class="mt-8 p-6 border-2 border-gold rounded-lg bg-gradient-to-r from-black to-gray-900">';
+        storyHtml += '<p class="text-center text-gold font-semibold text-lg mb-2">This is my metamyth.</p>';
+        storyHtml += '<p class="text-center text-gray-300">I have authored my transformation and now I write the world anew.</p>';
         storyHtml += '</div>';
         
         storyHtml += '</div>';
