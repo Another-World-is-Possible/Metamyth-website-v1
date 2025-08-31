@@ -924,31 +924,49 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`,
             map: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🗺️</span><h2 class="text-4xl font-bold">The Map</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🗺️</span><h2 class="text-4xl font-bold">Stage 12: The Map</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p class="text-lg font-semibold">Soul Level: The Pathway from Here to There</p>
+                        <p class="text-lg font-semibold text-gold">Personal Level: Breaking Down What It Would Actually Take</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg block mb-2">What must happen for humanity to evolve from where we are to where we need to be?</label>
-                            <p class="text-sm mb-3">The stages of collective transformation required to address our planetary crisis and birth a regenerative civilization.</p>
-                            <textarea id="map_humanity_evolve" rows="4" placeholder="What must happen for humanity to evolve..."></textarea>
+                            <label class="font-semibold text-lg block mb-2">Working backward from your vision, what would really have to change for it to be realized?</label>
+                            <p class="text-sm mb-3">The systemic shifts, consciousness changes, and structural transformations required for your future world.</p>
+                            <textarea id="map_really_change" rows="4" placeholder="What would really have to change..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg block mb-2">What role does your work play in that larger transformation sequence?</label>
-                            <p class="text-sm mb-3">Where your specific contribution fits in the grand arc of human development and planetary healing.</p>
-                            <textarea id="map_role_transformation" rows="4" placeholder="Your role in the larger transformation sequence..."></textarea>
+                            <label class="font-semibold text-lg block mb-2">What are the dominoes that must fall in sequence for your vision to become reality?</label>
+                            <p class="text-sm mb-3">The chain of causation—how each breakthrough enables the next one, building toward your ultimate vision.</p>
+                            <textarea id="map_dominoes" rows="4" placeholder="The dominoes that must fall in sequence..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg block mb-2">What conditions must be created for the next stage of transformation to emerge?</label>
-                            <p class="text-sm mb-3">The prerequisites, infrastructure, or consciousness shifts needed before the next level becomes possible.</p>
-                            <textarea id="map_conditions_next_stage" rows="4" placeholder="Conditions needed for the next stage to emerge..."></textarea>
+                            <label class="font-semibold text-lg block mb-2">What are the different scales of impact you must create—personal, community, organizational, societal?</label>
+                            <p class="text-sm mb-3">Map the progression from individual change to collective transformation required for your vision.</p>
+                            <textarea id="map_scales" rows="4" placeholder="Different scales of impact you must create..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg block mb-2">How do you pace your work with the timing of collective readiness?</label>
-                            <p class="text-sm mb-3">Balancing being ahead of the curve while remaining accessible to where people currently are.</p>
-                            <textarea id="map_pace_collective_readiness" rows="4" placeholder="How you pace with collective readiness..."></textarea>
+                            <label class="font-semibold text-lg block mb-2">What is the clear line from the future you envision back to this moment right now?</label>
+                            <p class="text-sm mb-3">The thread connecting your current action to your ultimate vision—what you must do today that leads there.</p>
+                            <textarea id="map_line" rows="4" placeholder="The line from future vision to this moment..."></textarea>
+                        </div>
+                        <div class="space-y-4 mt-8">
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">What Would Really Have to Change:</label>
+                                <textarea id="map_what_change" rows="3" placeholder="Summarize what would really have to change..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">The Dominoes That Must Fall in Sequence:</label>
+                                <textarea id="map_dominoes_sequence" rows="3" placeholder="List the dominoes that must fall..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">The Different Scales of Impact I Must Create:</label>
+                                <textarea id="map_impact_scales" rows="3" placeholder="Map your scales of impact..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">The Line from Future Vision to This Moment Now:</label>
+                                <textarea id="map_vision_line" rows="3" placeholder="Connect your vision to today..."></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>`,
@@ -1010,16 +1028,154 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`,
             ethos: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">📜</span><h2 class="text-4xl font-bold">The Ethos</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📜</span><h2 class="text-4xl font-bold">Stage 14: The Ethos</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Ethos is your moral framework—the ethical principles that guide your decisions and actions. It's what you stand for and what you won't compromise on, even under pressure. Your Ethos is your integrity made visible.</p>
-                        <p>A strong Ethos provides clarity in difficult decisions and builds trust with others. It's the foundation of authentic leadership and meaningful relationships. Your Ethos is tested not in easy times, but when doing the right thing is costly.</p>
+                        <p class="text-lg font-semibold text-gold">Community/Organizational Level: Our Word Becomes Law</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What ethical principles guide your decisions and actions?</label><textarea id="${stage.id}_principles" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What standards do you hold yourself to, even when no one is watching?</label><textarea id="${stage.id}_standards" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How do you maintain integrity when facing pressure or temptation?</label><textarea id="${stage.id}_integrity" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">What principles would you never compromise, even under extreme pressure?</label>
+                            <p class="text-sm mb-3">The non-negotiable values that define who you are, regardless of consequences.</p>
+                            <textarea id="ethos_never_compromise" rows="4" placeholder="Principles you would never compromise..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">What agreements hold people accountable to actually doing what they say they will do?</label>
+                            <p class="text-sm mb-3">The mutual commitments that ensure words translate into consistent action within your community.</p>
+                            <textarea id="ethos_agreements" rows="4" placeholder="Agreements that hold people accountable..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">How do you maintain tension between people and the mission they've committed to?</label>
+                            <p class="text-sm mb-3">The structures that keep everyone aligned with the quest even when it gets difficult or uncomfortable.</p>
+                            <textarea id="ethos_mission_tension" rows="4" placeholder="How you maintain mission tension..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">What stitches your words to your actions, ensuring integrity between what you say and what you do?</label>
+                            <p class="text-sm mb-3">The systems and practices that make your ethos operational rather than just aspirational.</p>
+                            <textarea id="ethos_words_actions" rows="4" placeholder="What stitches words to actions..."></textarea>
+                        </div>
+                        <div class="space-y-4 mt-8">
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">My Never-Compromise Principles:</label>
+                                <textarea id="ethos_my_principles" rows="3" placeholder="List your never-compromise principles..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">Agreements That Hold People to Their Word:</label>
+                                <textarea id="ethos_accountability_agreements" rows="3" placeholder="Agreements that hold people accountable..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">How I Maintain Mission Tension:</label>
+                                <textarea id="ethos_maintain_tension" rows="3" placeholder="How you maintain mission tension..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">What Stitches My Words to Actions:</label>
+                                <textarea id="ethos_stitch_words" rows="3" placeholder="What stitches your words to actions..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>`,
+            plot: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📊</span><h2 class="text-4xl font-bold">Stage 15: The Plot</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p class="text-lg font-semibold text-gold">Personal Level: Mission Broken Into Trials That Build Character</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">What specific challenges must you overcome to complete your mission?</label>
+                            <p class="text-sm mb-3">The actual obstacles, skills to develop, and capacities to build on your journey.</p>
+                            <textarea id="plot_challenges" rows="4" placeholder="Specific challenges you must overcome..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">How does each challenge develop exactly the character traits you need?</label>
+                            <p class="text-sm mb-3">What does each trial teach you? How does overcoming it prepare you for what comes next?</p>
+                            <textarea id="plot_character_development" rows="4" placeholder="How each challenge builds character..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">Who do you need to become to handle each of these trials successfully?</label>
+                            <p class="text-sm mb-3">The character development that happens through facing each specific challenge.</p>
+                            <textarea id="plot_who_become" rows="4" placeholder="Who you need to become for each trial..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">Which trial are you currently facing, and how is it changing you?</label>
+                            <p class="text-sm mb-3">Your present challenge and what it's teaching you about yourself and your capabilities.</p>
+                            <textarea id="plot_current_trial" rows="4" placeholder="Your current trial and how it's changing you..."></textarea>
+                        </div>
+                        <div class="space-y-4 mt-8">
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">Specific Challenges I Must Overcome:</label>
+                                <textarea id="plot_challenges_list" rows="3" placeholder="List your specific challenges..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">How Each Challenge Builds Needed Character:</label>
+                                <textarea id="plot_character_building" rows="3" placeholder="How challenges build character..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">Who I Must Become for Each Trial:</label>
+                                <textarea id="plot_become_trials" rows="3" placeholder="Who you must become..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">My Current Trial and How It's Changing Me:</label>
+                                <textarea id="plot_current_change" rows="3" placeholder="Your current trial and changes..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>`,
+            compass: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🧭</span><h2 class="text-4xl font-bold">Stage 16: The Compass</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p class="text-lg font-semibold text-gold">Soul Level: Eight-Pointed Navigation Questions</p>
+                        <p>These are the questions you return to regularly for navigation and course correction:</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">PURPOSE (Why) - Mission alignment and meaning-making</label>
+                            <p class="text-sm mb-3">Am I living in alignment with my deepest calling, or have I drifted from what truly matters?</p>
+                            <textarea id="compass_purpose" rows="3" placeholder="Your purpose alignment assessment..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">VISION (Where) - Future orientation and strategic foresight</label>
+                            <p class="text-sm mb-3">Is my vision still clear and compelling, or do I need to reconnect with where I'm heading?</p>
+                            <textarea id="compass_vision" rows="3" placeholder="Your vision clarity assessment..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">TRUTH (How) - Communication and transparency protocols</label>
+                            <p class="text-sm mb-3">Am I being honest with myself and others, or are there truths I'm avoiding?</p>
+                            <textarea id="compass_truth" rows="3" placeholder="Your truth and transparency assessment..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">CREATIVITY (What) - Innovation and authentic expression</label>
+                            <p class="text-sm mb-3">Am I expressing my unique gifts fully, or am I playing it safe and holding back?</p>
+                            <textarea id="compass_creativity" rows="3" placeholder="Your creative expression assessment..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">COMMUNITY (Who) - Relationship and belonging cultivation</label>
+                            <p class="text-sm mb-3">Are my relationships nourishing my mission, or am I isolated from the support I need?</p>
+                            <textarea id="compass_community" rows="3" placeholder="Your community and relationships assessment..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">SYSTEMS (Integrity) - Structure and process operations</label>
+                            <p class="text-sm mb-3">Are my daily systems supporting my highest aspirations, or are they pulling me toward mediocrity?</p>
+                            <textarea id="compass_systems" rows="3" placeholder="Your systems and processes assessment..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">RESOURCES (Sustainability) - Resource circulation and sustainability</label>
+                            <p class="text-sm mb-3">Is my relationship with money and resources generative, or am I stuck in scarcity patterns?</p>
+                            <textarea id="compass_resources" rows="3" placeholder="Your resources and sustainability assessment..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">STORY (Coherence) - Holistic coherence across all dimensions</label>
+                            <p class="text-sm mb-3">Does my life feel like one coherent story, or am I fragmented across competing narratives?</p>
+                            <textarea id="compass_story" rows="3" placeholder="Your story coherence assessment..."></textarea>
+                        </div>
+                        <div class="bg-black bg-opacity-20 border border-orange-600 rounded-lg p-4 mt-6">
+                            <label class="font-semibold text-lg text-orange-400 block mb-2">COMPASS SYNTHESIS - The Navigation Questions</label>
+                            <p class="text-sm mb-3">Identify in one statement which dimensions need most attention and your strategy for staying aligned with your values across all aspects of your quest—the questions that guide you when landmarks disappear.</p>
+                            <textarea id="compass_synthesis" rows="3" placeholder="Your navigation strategy and focus areas..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             road: `
@@ -1038,16 +1194,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`,
             mission_synthesis: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🎯</span><h2 class="text-4xl font-bold">The Mission</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🎯</span><h2 class="text-4xl font-bold">Artifact IV: The Journey</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Mission synthesizes your Journey approach, your Fountain of renewal, your Ethos of integrity, your Compass of values, and your Road of daily practice. This is your complete operational framework for pursuing your quest with wisdom, sustainability, and alignment.</p>
-                        <p>Your Mission Statement describes not just what you will achieve, but how you will achieve it—with what spirit, according to what principles, and through what methods. It's your code of conduct for the path ahead.</p>
+                        <p class="text-lg font-semibold text-gold">The Mission Synthesis</p>
+                        <p>Vision without action is hallucination. Now you ground your magnificent vision in practical reality, translating "what is possible" into "what we must do."</p>
                     </div>
                     <div class="ornamental-divider"></div>
-                    <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">Write your Mission Statement: How will you pursue your quest with integrity and wisdom?</label><textarea id="${stage.id}_statement" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What commitments are you making about how you will walk this path?</label><textarea id="${stage.id}_commitments" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How will you stay accountable to these principles and practices?</label><textarea id="${stage.id}_accountability" rows="4"></textarea></div>
+                    <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-lg p-6">
+                        <label class="font-semibold text-lg text-yellow-400 block mb-2">THE MISSION SYNTHESIS - The Practical Plan</label>
+                        <p class="text-sm text-slate-400 mb-3">Combine your Fountain, Ethos, Plot, and Compass into a grounded mission statement that shows how you'll actually accomplish your vision. This should balance inspiration with practical steps people can follow.</p>
+                        <textarea id="mission_synthesis_complete" rows="6" placeholder="Write your complete Mission synthesis - the practical plan that shows how you'll accomplish your vision..."></textarea>
                     </div>
                 </div>`,
             // Arc V - The Request
@@ -1107,18 +1263,52 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div><label class="font-semibold text-lg text-white block mb-2">How will you build lasting community around your mission?</label><textarea id="${stage.id}_community" rows="4"></textarea></div>
                     </div>
                 </div>`,
-            messages: `
+            message: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">📢</span><h2 class="text-4xl font-bold">The Messages</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📢</span><h2 class="text-4xl font-bold">Stage 20: The Message</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>The Messages are the key insights, teachings, and wisdom you want to share with the world. They're the distilled essence of your journey, packaged in ways that can guide and inspire others. Your Messages are your contribution to the collective wisdom of humanity.</p>
-                        <p>Great Messages are both timeless and timely—they speak to universal truths while addressing current needs. They're memorable, actionable, and transformative. Your Messages become seeds that can grow into new realities in the minds and hearts of others.</p>
+                        <p class="text-lg font-semibold text-gold">Soul Level: How You Communicate and Reach People</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What are the key insights or teachings you want to share with the world?</label><textarea id="${stage.id}_insights" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How will you communicate these messages in compelling and memorable ways?</label><textarea id="${stage.id}_communication" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What wisdom from your journey could help others on theirs?</label><textarea id="${stage.id}_wisdom" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">How will you tell this story to reach the people who need to hear it?</label>
+                            <p class="text-sm mb-3">Your communication channels and methods—media, content, events, conversations, platforms you'll use.</p>
+                            <textarea id="message_tell_story" rows="4" placeholder="How you'll tell your story to reach people..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">What is your message that cuts through the noise to reach people's hearts?</label>
+                            <p class="text-sm mb-3">The core communication that breaks through distraction and speaks directly to those meant for your quest.</p>
+                            <textarea id="message_cuts_noise" rows="4" placeholder="Your message that cuts through the noise..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">How will you consistently share this story to build awareness and connection?</label>
+                            <p class="text-sm mb-3">Your regular practices for broadcasting your message and staying connected with your community.</p>
+                            <textarea id="message_consistently_share" rows="4" placeholder="How you'll consistently share this story..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg block mb-2">What specific call to action will move people from interest to participation?</label>
+                            <p class="text-sm mb-3">The clear, immediate step someone can take today to begin joining your story rather than just consuming it.</p>
+                            <textarea id="message_call_action" rows="4" placeholder="Your call to action from interest to participation..."></textarea>
+                        </div>
+                        <div class="space-y-4 mt-8">
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">How I Will Tell This Story to Reach My People:</label>
+                                <textarea id="message_reach_people" rows="3" placeholder="How you'll reach your people..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">My Message That Cuts Through the Noise:</label>
+                                <textarea id="message_core_message" rows="3" placeholder="Your core message..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">How I Will Consistently Share This Story:</label>
+                                <textarea id="message_share_consistently" rows="3" placeholder="Your consistent sharing practices..."></textarea>
+                            </div>
+                            <div>
+                                <label class="font-semibold text-lg block mb-2">My Call to Action from Interest to Participation:</label>
+                                <textarea id="message_participation_action" rows="3" placeholder="Your participation call to action..."></textarea>
+                            </div>
+                        </div>
                     </div>
                 </div>`,
             legacy: `
@@ -1137,16 +1327,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`,
             kindred_synthesis: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🤝</span><h2 class="text-4xl font-bold">Kindred Quest</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌟</span><h2 class="text-4xl font-bold">Artifact V: The Request</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Kindred Quest synthesizes your Grail (ultimate treasure), Initiation (sacred commitment), Campfire (community building), Messages (wisdom sharing), and Legacy (lasting impact). This is your invitation to others to join their own transformation and to create collective change.</p>
-                        <p>The Kindred Quest recognizes that individual transformation, while necessary, is not sufficient. We need collective transformation. Your personal metamyth becomes part of a larger metamyth—the story of humanity awakening to its full potential.</p>
+                        <p class="text-lg font-semibold text-gold">The Call to Kindred Quest Synthesis</p>
+                        <p>The hero's journey is a circle. Having found your vision, you return to invite others into collective quest, transforming individual story into shared reality.</p>
                     </div>
                     <div class="ornamental-divider"></div>
-                    <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">How will you invite others into their own transformation journey?</label><textarea id="${stage.id}_invitation" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What collective change do you want to be part of creating?</label><textarea id="${stage.id}_collective" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How does your personal metamyth contribute to humanity's larger awakening?</label><textarea id="${stage.id}_humanity" rows="4"></textarea></div>
+                    <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-lg p-6">
+                        <label class="font-semibold text-lg text-yellow-400 block mb-2">THE CALL TO KINDRED QUEST SYNTHESIS - The Complete Invitation</label>
+                        <p class="text-sm text-slate-400 mb-3">Weave your Grail, Initiation, Campfire, and Message into a compelling invitation that calls your people and shows them exactly how to join your story. This should feel like a rallying cry that makes people want to drop everything and help.</p>
+                        <textarea id="kindred_synthesis_complete" rows="6" placeholder="Write your complete Request synthesis - the invitation that calls your people to join your story..."></textarea>
                     </div>
                 </div>`,
             // Conclusion
