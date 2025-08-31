@@ -124,9 +124,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
                 0 0 90px rgba(241, 196, 15, 0.8),
                 inset 0 0 30px rgba(255, 255, 255, 0.2);
         }
+        
+        body.crimson-portal {
+            background: linear-gradient(135deg, #1e293b 0%, #7f1d1d 25%, #991b1b 50%, #7f1d1d 75%, #1e293b 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
+<body class="crimson-portal">
     <div class="frosted-glass p-8 max-w-md w-full mx-4">
         <h1 class="text-3xl font-bold text-center mb-6">METAMYTH Portal</h1>
         <h2 class="text-lg text-center mb-8 text-gray-300">Access Required</h2>
