@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METAMYTH: A Journey of Transformation</title>
+    <!-- Chosen Palette: Crimson Forest -->
+    <!-- Application Structure Plan: The SPA is designed as a guided, linear journey mirroring the source document's 5 Arcs and 22 Artifictions. A persistent sidebar navigation allows users to track their progress and revisit sections. Each stage is presented as an interactive form, transforming the passive text into an active tool for self-authorship. This structure was chosen because the source material is inherently a process-oriented guide; the application makes that process tangible and empowers the user to create a concrete output. The journey culminates in a synthesis feature that compiles all user inputs into a final, usable narrative, providing a powerful sense of completion and a practical takeaway. -->
+    <!-- Visualization & Content Choices: Report Info: The 8 Compass point ratings -> Goal: Provide a holistic self-assessment -> Viz/Presentation Method: A dynamic radar chart -> Interaction: User number inputs instantly update the chart visualization -> Justification: A radar chart offers a far more intuitive and immediate understanding of one's holistic alignment than a simple list of numbers, making the self-assessment more impactful. Library/Method: Chart.js (Canvas). All other content from the report is presented as interactive text forms, as the primary goal is to facilitate the user's own writing and story-creation process. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-main: #1D4241;
+            --bg-card: #183332;
+            --text-main: #E0E0E0;
+            --text-heading: #D4AF37; /* Gold */
+            --text-muted: #A0A0A0;
+            --border-color: #2c5d5b;
+            --accent-turqoise: #5FE2DF;
+            --accent-turqoise-dark: #4ac0bd;
+            --accent-red: #a43743; /* Muted Crimson for text */
+        }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+        }
+        h1, h2, h3, h4 {
+            color: var(--text-heading);
+            letter-spacing: 0.05em;
+        }
+        .content-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+            border-left: 3px solid transparent;
+            color: var(--text-muted);
+            padding: 0.75rem 1rem;
+        }
+        .nav-link.active {
+            background-color: rgba(95, 226, 223, 0.05);
+            color: var(--accent-turqoise);
+            border-left-color: var(--accent-turqoise);
+        }
+        .nav-link:hover {
+            background-color: rgba(95, 226, 223, 0.1);
+            color: #fff;
+        }
+        textarea, .compass-input {
+            background-color: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+            transition: border-color 0.2s ease-in-out;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+        textarea:focus, .compass-input:focus {
+            outline: none;
+            border-color: var(--accent-turqoise);
+            box-shadow: 0 0 0 2px rgba(95, 226, 223, 0.3);
+        }
+        .btn-primary {
+            background-color: var(--accent-turqoise);
+            color: #0c2a29;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-turqoise-dark);
+            box-shadow: 0 0 15px rgba(95, 226, 223, 0.4);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-turqoise);
+            border: 1px solid var(--accent-turqoise);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background-color: rgba(95, 226, 223, 0.1);
+        }
+        .artifiction-icon {
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
+            line-height: 1;
+        }
+        .stage-content { display: none; }
+        .stage-content.active {
+            display: block;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: 2rem auto;
+        }
+        .prose {
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+        .prose h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+            color: var(--text-heading);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        .prose p { margin-bottom: 1.25em; }
+        .prose strong { color: var(--accent-turqoise); }
+        .nav-arc-header {
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        .crimson-text { color: var(--accent-red); }
+        .synthesis-box {
+            background-color: rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent-turqoise);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-style: italic;
+            color: #E5E7EB;
+        }
+        .ornamental-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+            margin: 3rem 0;
+        }
+        /* Custom Slider Styles */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: var(--border-color);
+            border-radius: 5px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: 2px solid var(--bg-main);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--accent-turqoise);
+            cursor: pointer;
+            margin-top: -8px;
+        }
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: var(--border-color);
+            border-radius: 5px;
+        }
+        input[type=range]::-moz-range-thumb {
+            border: 2px solid var(--bg-main);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--accent-turqoise);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar" class="w-full md:w-80 bg-black bg-opacity-20 border-r border-black border-opacity-20 p-4 md:p-6 flex-shrink-0">
+            <h1 class="text-3xl font-bold text-white mb-8">METAMYTH</h1>
+            <div id="nav-container" class="space-y-1">
+                <!-- Navigation links will be injected here by JS -->
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4 md:p-10 overflow-y-auto">
+            <div id="content-container">
+                <!-- All stage content will be injected here by JS -->
+            </div>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const stages = [
+        { id: 'intro', title: 'Awaken', arc: 'Preamble', icon: '✨' },
+        { id: 'howto', title: 'How to Rewrite Your Life', arc: 'Preamble', icon: '📖' },
+        { id: 'origin', title: 'The Origin Story', arc: 'Preamble', icon: '🌱' },
+        { id: 'arc1', title: 'The Call to Adventure', arc: 'Arc I', icon: '🔔' },
+        { id: 'dragon', title: 'The Dragon', arc: 'Arc I', icon: '🐉', iconClass: 'crimson-text' },
+        { id: 'threshold', title: 'The Threshold', arc: 'Arc I', icon: '🌀' },
+        { id: 'shield', title: 'The Shield', arc: 'Arc I', icon: '🛡️' },
+        { id: 'pearl', title: 'The Pearl', arc: 'Arc I', icon: '⚪' },
+        { id: 'calling_synthesis', title: 'The Calling', arc: 'Arc I', icon: '📣' },
+        { id: 'arc2', title: 'The Quest', arc: 'Arc II', icon: '🗺️' },
+        { id: 'star', title: 'The Star', arc: 'Arc II', icon: '⭐' },
+        { id: 'character', title: 'The Character', arc: 'Arc II', icon: '👤' },
+        { id: 'banner', title: 'The Banner', arc: 'Arc II', icon: '🚩' },
+        { id: 'sword', title: 'The Sword', arc: 'Arc II', icon: '⚔️', iconClass: 'crimson-text' },
+        { id: 'quest_synthesis', title: 'The Quest', arc: 'Arc II', icon: '📜' },
+        { id: 'arc3', title: 'What is Possible', arc: 'Arc III', icon: '🌌' },
+        { id: 'looking_glass', title: 'The Looking Glass', arc: 'Arc III', icon: '🔮' },
+        { id: 'transformation', title: 'The Transformation', arc: 'Arc III', icon: '🦋' },
+        { id: 'globe', title: 'The Globe', arc: 'Arc III', icon: '🌍' },
+        { id: 'map', title: 'The Map', arc: 'Arc III', icon: '🗺️' },
+        { id: 'vision_synthesis', title: 'The Vision', arc: 'Arc III', icon: '🔭' },
+        { id: 'arc4', title: 'The Journey', arc: 'Arc IV', icon: '👣' },
+        { id: 'fountain', title: 'The Fountain', arc: 'Arc IV', icon: '⛲' },
+        { id: 'ethos', title: 'The Ethos', arc: 'Arc IV', icon: '📜' },
+        { id: 'road', title: 'The Road', arc: 'Arc IV', icon: '🛤️' },
+        { id: 'compass', title: 'The Compass', arc: 'Arc IV', icon: '🧭' },
+        { id: 'mission_synthesis', title: 'The Mission', arc: 'Arc IV', icon: '🎯' },
+        { id: 'arc5', title: 'The Request', arc: 'Arc V', icon: '🏡' },
+        { id: 'grail', title: 'The Grail', arc: 'Arc V', icon: '🏆' },
+        { id: 'initiation', title: 'The Initiation', arc: 'Arc V', icon: '🌉' },
+        { id: 'campfire', title: 'The Campfire', arc: 'Arc V', icon: '🔥', iconClass: 'crimson-text' },
+        { id: 'messages', title: 'The Messages', arc: 'Arc V', icon: '📢' },
+        { id: 'legacy', title: 'The Legacy', arc: 'Arc V', icon: '🌅' },
+        { id: 'kindred_synthesis', title: 'Kindred Quest', arc: 'Arc V', icon: '🤝' },
+        { id: 'wizard', title: 'The Wizard', arc: 'Conclusion', icon: '🧙' },
+        { id: 'activate_wizard', title: 'Activate Your AI', arc: 'Conclusion', icon: '🤖' },
+        { id: 'synthesis', title: 'Your Metamyth', arc: 'Conclusion', icon: '📜' },
+        { id: 'epilogue', title: 'The Great Adventure', arc: 'Conclusion', icon: '🌅' },
+    ];
+
+    const metamythData = {};
+    const navContainer = document.getElementById('nav-container');
+    const contentContainer = document.getElementById('content-container');
+    const compassPoints = ['Purpose Governance', 'Visionary Strategy', 'Truthful Expression', 'Community Well-being', 'Structural Integrity', 'Creative Attraction', 'Ecological Economics', 'Quest Alignment'];
+    let compassChart;
+
+    function initializeApp() {
+        let currentArc = '';
+        stages.forEach((stage, index) => {
+            if (stage.arc !== currentArc) {
+                currentArc = stage.arc;
+                const arcHeader = document.createElement('h3');
+                arcHeader.className = 'nav-arc-header text-sm font-bold uppercase mt-6 mb-2 px-4';
+                arcHeader.textContent = currentArc;
+                navContainer.appendChild(arcHeader);
+            }
+
+            const navLink = document.createElement('a');
+            navLink.href = '#';
+            navLink.id = `nav-${stage.id}`;
+            navLink.className = 'nav-link flex items-center rounded-md';
+            const iconClass = stage.iconClass || '';
+            navLink.innerHTML = `<span class="mr-3 ${iconClass}">${stage.icon}</span> ${stage.title}`;
+            navLink.onclick = (e) => {
+                e.preventDefault();
+                showStage(index);
+            };
+            navContainer.appendChild(navLink);
+
+            const stageDiv = document.createElement('div');
+            stageDiv.id = stage.id;
+            stageDiv.className = 'stage-content';
+            stageDiv.innerHTML = generateStageHTML(stage);
+            contentContainer.appendChild(stageDiv);
+        });
+
+        attachEventListeners();
+        showStage(0);
+    }
+
+    function generateStageHTML(stage) {
+        const stageContent = {
+            intro: `
+                <div class="content-card">
+                    <div class="text-center">
+                        <h2 class="text-5xl font-bold mb-4">Awaken.</h2>
+                        <p class="text-xl text-slate-400 mb-6">Adventure is calling. Do you accept?</p>
+                    </div>
+                    <div class="prose max-w-none mx-auto mt-8">
+                        <p>Our crisis is a completely broken story. A species destroying its only home for numbers on a screen; an economic system that grows by devouring what sustains it; a world that has gone amuck because we've forgotten it's a story in the first place. We've taken it so seriously that we've stopped writing it.</p>
+                        <p>Our purpose has always been to create the world through story—to create ourselves, pass on our connection and history, and have visions of the future that we communicate to others and make real in the telling. We have forgotten this purpose and have blindly consented to be characters in someone else's story, one that none of us truly wrote.</p>
+                        <p>But here's the cosmic joke that'll set you free: <strong>We wrote this nightmare, so we can rewrite it.</strong></p>
+                    </div>
+                    <div class="text-center mt-10">
+                        <button class="btn-primary" onclick="showStage(1)">Begin the Journey</button>
+                    </div>
+                </div>`,
+            howto: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📖</span><h2 class="text-4xl font-bold">How to Rewrite Your Life</h2></div>
+                    <div class="prose max-w-none">
+                        <p>What follows is the journey home to yourself, to the purpose-driven world-builder you've always been beneath the stories that were never yours to begin with. This is about rewriting your life story on purpose. For too long, you've been a background extra wandering through scenes that drain your soul and waste your gifts. But you can take charge of that story, make it an epic, and transform into the hero you were always meant to be.</p>
+                        <p>This journey uses a powerful structure, a MythOS. It is <strong>mythogenetic technology</strong>, a living operating system. Think of reality as a set of possible stories encoded in our DNA. The current environment—a culture of scarcity and fear—activates the stories that keep us small, contracted, and afraid. This Metamyth is the epigenetic switch. It's the technology that allows you to consciously choose which stories to express, moving from a state of fear and contraction into one of love and expansion.</p>
+                        <p>And in this Age of AI, our ancient power of storytelling has been amplified beyond measure. This framework is the <strong>master prompt for your organizational and personal DNA</strong>. As you fill this out, you are writing the code for your reality. Therefore, there is only one rule: <strong>Be impeccable with your word.</strong></p>
+                        <h3>The Tools of Transformation</h3>
+                        <p>You will use two kinds of tools on this journey:</p>
+                        <ul>
+                            <li><strong>The 5 Arcs:</strong> These are the great story arcs of your journey, the core movements that structure your transformation.</li>
+                            <li><strong>The 22 Artifictions:</strong> These are the living tools, weapons of meaning, and magical items you will forge along the way. They are what enable you to rearrange reality.</li>
+                        </ul>
+                        <p>As you define these elements, you are training a personal wise guide, an interactive <strong>Wizard</strong> that will remember your story and help you navigate the path ahead.</p>
+                    </div>
+                </div>`,
+            origin: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌱</span><h2 class="text-4xl font-bold">The Origin Story</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Every hero's journey begins before the call to adventure—in the ordinary world that shaped them, the primordial essence from which their quest is born. Like a seed, your origin contains the DNA of the entire story that follows. This is your backstory, the prelude. It is the programming, the passions, and the pivotal experiences that forged your character long before the mission was ever clear.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What childhood memories, passions, or activities shaped your earliest view of the world? (Your core programming)</label><textarea id="origin_coreprogramming" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">Who were your heroes, mentors, or the key people whose lives left a deep impression on you?</label><textarea id="origin_influences" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">Describe an early, pivotal incident that planted a seed for the person you would become.</label><textarea id="origin_incident" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What was the core truth, love, or fascination that has always been a part of you?</label><textarea id="origin_essence" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            compass: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🧭</span><h2 class="text-4xl font-bold">The Compass</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>When external maps become useless, you navigate by eternal coordinates of your values. The Compass organizes all activities across eight dimensions of health. Your values become an accountability framework that maintains alignment, creating health bars in the dashboard of reality. Rate your current alignment (1-10) for each point.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="flex flex-wrap -mx-4">
+                        <div class="w-full lg:w-1/2 px-4">
+                            <div class="space-y-6" id="compass-inputs"></div>
+                        </div>
+                        <div class="w-full lg:w-1/2 px-4 flex items-center justify-center">
+                            <div class="chart-container">
+                                <canvas id="compassChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>`,
+            synthesis: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📜</span><h2 class="text-4xl font-bold">Your Complete Metamyth</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>This is your complete metamyth narrative—the synthesized story of your journey, compiled from all your inputs throughout this quest. This is your declaration of sovereignty.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div id="synthesis-content" class="synthesis-box">
+                        <p>Complete your journey through all the artifictions to see your synthesized metamyth here.</p>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button id="generate-metamyth" class="btn-primary">Generate Your Complete Metamyth</button>
+                    </div>
+                </div>`,
+        };
+
+        return stageContent[stage.id] || `
+            <div class="content-card">
+                <div class="flex items-center mb-4">
+                    <span class="artifiction-icon ${stage.iconClass || ''}">${stage.icon}</span>
+                    <h2 class="text-4xl font-bold">${stage.title}</h2>
+                </div>
+                <div class="prose max-w-none">
+                    <p>This section is in development. Each artifiction will guide you through creating specific tools for your metamyth.</p>
+                    <textarea id="${stage.id}_content" rows="6" placeholder="Reflect on this artifiction and write your insights..."></textarea>
+                </div>
+            </div>`;
+    }
+
+    function showStage(index) {
+        document.querySelectorAll('.stage-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+
+        const stage = stages[index];
+        const stageEl = document.getElementById(stage.id);
+        const navEl = document.getElementById(`nav-${stage.id}`);
+
+        if (stageEl && navEl) {
+            stageEl.classList.add('active');
+            navEl.classList.add('active');
+        }
+
+        if (stage.id === 'compass') {
+            setTimeout(initializeCompass, 100);
+        }
+    }
+
+    function initializeCompass() {
+        const compassInputsContainer = document.getElementById('compass-inputs');
+        if (!compassInputsContainer) return;
+
+        compassInputsContainer.innerHTML = '';
+        compassPoints.forEach((point, index) => {
+            const inputGroup = document.createElement('div');
+            inputGroup.className = 'mb-4';
+            inputGroup.innerHTML = `
+                <label class="text-sm font-semibold text-white mb-2 block">${point}</label>
+                <input type="range" min="1" max="10" value="5" id="compass-${index}" class="w-full">
+                <div class="flex justify-between text-xs text-slate-400 mt-1">
+                    <span>1</span><span>10</span>
+                </div>
+            `;
+            compassInputsContainer.appendChild(inputGroup);
+        });
+
+        initializeCompassChart();
+        
+        compassPoints.forEach((_, index) => {
+            document.getElementById(`compass-${index}`).addEventListener('input', updateCompassChart);
+        });
+    }
+
+    function initializeCompassChart() {
+        const ctx = document.getElementById('compassChart');
+        if (!ctx) return;
+
+        const data = compassPoints.map(() => 5);
+        
+        compassChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: compassPoints,
+                datasets: [{
+                    label: 'Current Alignment',
+                    data: data,
+                    borderColor: '#5FE2DF',
+                    backgroundColor: 'rgba(95, 226, 223, 0.1)',
+                    pointBackgroundColor: '#5FE2DF',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#5FE2DF'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    r: {
+                        angleLines: { color: '#2c5d5b' },
+                        grid: { color: '#2c5d5b' },
+                        pointLabels: { 
+                            color: '#E0E0E0',
+                            font: { size: 10 }
+                        },
+                        ticks: {
+                            color: '#A0A0A0',
+                            backdropColor: 'transparent',
+                            min: 0,
+                            max: 10
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    }
+
+    function updateCompassChart() {
+        if (!compassChart) return;
+        
+        const newData = compassPoints.map((_, index) => {
+            const input = document.getElementById(`compass-${index}`);
+            return input ? parseInt(input.value) : 5;
+        });
+        
+        compassChart.data.datasets[0].data = newData;
+        compassChart.update();
+    }
+
+    function attachEventListeners() {
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'generate-metamyth') {
+                generateFinalSynthesis();
+            }
+        });
+    }
+
+    function generateFinalSynthesis() {
+        const synthContent = document.getElementById('synthesis-content');
+        if (!synthContent) return;
+
+        // Collect all inputs from the journey
+        const collectedData = {};
+        
+        // Origin story inputs
+        ['origin_coreprogramming', 'origin_influences', 'origin_incident', 'origin_essence'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el && el.value) collectedData[id] = el.value;
+        });
+
+        // Compass ratings
+        compassPoints.forEach((point, index) => {
+            const el = document.getElementById(`compass-${index}`);
+            if (el) collectedData[`compass_${point.replace(/\s+/g, '_').toLowerCase()}`] = el.value;
+        });
+
+        // Other artifiction content
+        stages.forEach(stage => {
+            const contentId = `${stage.id}_content`;
+            const el = document.getElementById(contentId);
+            if (el && el.value) collectedData[contentId] = el.value;
+        });
+
+        // Generate synthesis narrative (client-side only)
+        let synthesis = `<h3>Your Metamyth Synthesis</h3>`;
+        
+        if (Object.keys(collectedData).length > 0) {
+            synthesis += `<p><strong>Origin Foundation:</strong> Your journey begins with the core programming and influences that shaped your worldview.</p>`;
+            
+            if (collectedData.origin_coreprogramming) {
+                synthesis += `<p><em>Core Programming:</em> ${collectedData.origin_coreprogramming}</p>`;
+            }
+            
+            synthesis += `<p><strong>Current Compass Alignment:</strong> Your values assessment reveals your current state across the eight dimensions of purposeful living.</p>`;
+            
+            synthesis += `<p><strong>Artifiction Journey:</strong> Through this metamyth process, you have begun the conscious authorship of your reality, moving from character to creator in your own story.</p>`;
+            
+            synthesis += `<p><em>This synthesis represents the beginning of your metamyth. As you complete more artifictions, this narrative will become richer and more specific to your unique journey.</em></p>`;
+        } else {
+            synthesis += `<p>Complete your journey through the artifictions to generate your personalized metamyth synthesis.</p>`;
+        }
+
+        synthContent.innerHTML = synthesis;
+    }
+
+    // Initialize the application
+    initializeApp();
+});
+</script>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import path from "path";
 import { storage } from "./storage";
 import { insertQuestionnaireResponseSchema } from "@shared/schema";
 import { z } from "zod";
@@ -38,6 +39,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // use storage to perform CRUD operations on the storage interface
   // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
+
+  // Serves the METAMYTH Interactive Portal
+  app.get('/begin', (req, res) => {
+    res.sendFile(path.join(process.cwd(), 'metamyth.html'));
+  });
 
   // Questionnaire submission endpoint
   app.post('/api/questionnaire/submit', async (req, res) => {

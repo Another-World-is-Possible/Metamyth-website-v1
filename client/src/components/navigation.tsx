@@ -56,7 +56,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
           </button>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -71,6 +71,14 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                 </span>
               </button>
             ))}
+            
+            {/* METAMYTH Portal CTA */}
+            <a
+              href="/begin"
+              className="px-6 py-2 bg-ancient-gold/90 hover:bg-ancient-gold text-forest-green font-bold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-ancient-gold/30 hover:scale-105"
+            >
+              <span className="select-none font-angle">BEGIN YOUR METAMYTH</span>
+            </a>
           </div>
 
           {/* Mobile Navigation */}
@@ -93,6 +101,17 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                     <span className="select-none">{item.label}</span>
                   </button>
                 ))}
+                
+                {/* METAMYTH Portal CTA */}
+                <div className="border-t border-mystical-teal/30 pt-6 mt-6">
+                  <a
+                    href="/begin"
+                    className="block w-full px-6 py-3 bg-ancient-gold/90 hover:bg-ancient-gold text-forest-green font-bold rounded-lg transition-all duration-300 text-center"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span className="select-none font-angle">BEGIN YOUR METAMYTH</span>
+                  </a>
+                </div>
               </div>
             </SheetContent>
           </Sheet>

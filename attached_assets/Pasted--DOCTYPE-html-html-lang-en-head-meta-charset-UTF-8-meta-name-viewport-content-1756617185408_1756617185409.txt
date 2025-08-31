@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METAMYTH: A Journey of Transformation</title>
+    <!-- Chosen Palette: Crimson Forest -->
+    <!-- Application Structure Plan: The SPA is designed as a guided, linear journey mirroring the source document's 5 Arcs and 22 Artifictions. A persistent sidebar navigation allows users to track their progress and revisit sections. Each stage is presented as an interactive form, transforming the passive text into an active tool for self-authorship. This structure was chosen because the source material is inherently a process-oriented guide; the application makes that process tangible and empowers the user to create a concrete output. The journey culminates in a synthesis feature that compiles all user inputs into a final, usable narrative, providing a powerful sense of completion and a practical takeaway. -->
+    <!-- Visualization & Content Choices: Report Info: The 8 Compass point ratings -> Goal: Provide a holistic self-assessment -> Viz/Presentation Method: A dynamic radar chart -> Interaction: User number inputs instantly update the chart visualization -> Justification: A radar chart offers a far more intuitive and immediate understanding of one's holistic alignment than a simple list of numbers, making the self-assessment more impactful. Library/Method: Chart.js (Canvas). All other content from the report is presented as interactive text forms, as the primary goal is to facilitate the user's own writing and story-creation process. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #1D4241;
+            --bg-card: #183332;
+            --text-main: #E0E0E0;
+            --text-heading: #D4AF37; /* Gold */
+            --text-muted: #A0A0A0;
+            --border-color: #2c5d5b;
+            --accent-turqoise: #5FE2DF;
+            --accent-turqoise-dark: #4ac0bd;
+            --accent-red: #a43743; /* Muted Crimson for text */
+        }
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--text-heading);
+            letter-spacing: 0.05em;
+        }
+        .content-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+            border-left: 3px solid transparent;
+            color: var(--text-muted);
+            padding: 0.75rem 1rem;
+        }
+        .nav-link.active {
+            background-color: rgba(95, 226, 223, 0.05);
+            color: var(--accent-turqoise);
+            border-left-color: var(--accent-turqoise);
+        }
+        .nav-link:hover {
+            background-color: rgba(95, 226, 223, 0.1);
+            color: #fff;
+        }
+        textarea, .compass-input {
+            background-color: rgba(0,0,0,0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+            transition: border-color 0.2s ease-in-out;
+            font-size: 1rem;
+            color: var(--text-main);
+            font-family: 'Lora', serif;
+        }
+        textarea:focus, .compass-input:focus {
+            outline: none;
+            border-color: var(--accent-turqoise);
+            box-shadow: 0 0 0 2px rgba(95, 226, 223, 0.3);
+        }
+        .btn-primary {
+            background-color: var(--accent-turqoise);
+            color: #0c2a29;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-turqoise-dark);
+            box-shadow: 0 0 15px rgba(95, 226, 223, 0.4);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-turqoise);
+            border: 1px solid var(--accent-turqoise);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background-color: rgba(95, 226, 223, 0.1);
+        }
+        .artifiction-icon {
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
+            line-height: 1;
+        }
+        .stage-content { display: none; }
+        .stage-content.active {
+            display: block;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: 2rem auto;
+        }
+        .prose {
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+        .prose h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+            color: var(--text-heading);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        .prose p { margin-bottom: 1.25em; }
+        .prose strong { color: var(--accent-turqoise); }
+        .nav-arc-header {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+        .crimson-text { color: var(--accent-red); }
+        .synthesis-box {
+            background-color: rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent-turqoise);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-family: 'Lora', serif;
+            font-style: italic;
+            color: #E5E7EB;
+        }
+        .ornamental-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+            margin: 3rem 0;
+        }
+        /* Custom Slider Styles */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]:focus {
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: var(--border-color);
+            border-radius: 5px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: 2px solid var(--bg-main);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--accent-turqoise);
+            cursor: pointer;
+            margin-top: -8px;
+        }
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: var(--border-color);
+            border-radius: 5px;
+        }
+        input[type=range]::-moz-range-thumb {
+            border: 2px solid var(--bg-main);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--accent-turqoise);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar" class="w-full md:w-80 bg-black bg-opacity-20 border-r border-black border-opacity-20 p-4 md:p-6 flex-shrink-0">
+            <h1 class="text-3xl font-bold text-white mb-8">METAMYTH</h1>
+            <div id="nav-container" class="space-y-1">
+                <!-- Navigation links will be injected here by JS -->
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4 md:p-10 overflow-y-auto">
+            <div id="content-container">
+                <!-- All stage content will be injected here by JS -->
+            </div>
+        </main>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const stages = [
+        { id: 'intro', title: 'Awaken', arc: 'Preamble', icon: '✨' },
+        { id: 'howto', title: 'How to Rewrite Your Life', arc: 'Preamble', icon: '📖' },
+        { id: 'origin', title: 'The Origin Story', arc: 'Preamble', icon: '🌱' },
+        { id: 'arc1', title: 'The Call to Adventure', arc: 'Arc I', icon: '🔔' },
+        { id: 'dragon', title: 'The Dragon', arc: 'Arc I', icon: '🐉', iconClass: 'crimson-text' },
+        { id: 'threshold', title: 'The Threshold', arc: 'Arc I', icon: '🌀' },
+        { id: 'shield', title: 'The Shield', arc: 'Arc I', icon: '🛡️' },
+        { id: 'pearl', title: 'The Pearl', arc: 'Arc I', icon: '⚪' },
+        { id: 'calling_synthesis', title: 'The Calling', arc: 'Arc I', icon: '📣' },
+        { id: 'arc2', title: 'The Quest', arc: 'Arc II', icon: '🗺️' },
+        { id: 'star', title: 'The Star', arc: 'Arc II', icon: '⭐' },
+        { id: 'character', title: 'The Character', arc: 'Arc II', icon: '👤' },
+        { id: 'banner', title: 'The Banner', arc: 'Arc II', icon: '🚩' },
+        { id: 'sword', title: 'The Sword', arc: 'Arc II', icon: '⚔️', iconClass: 'crimson-text' },
+        { id: 'quest_synthesis', title: 'The Quest', arc: 'Arc II', icon: '📜' },
+        { id: 'arc3', title: 'What is Possible', arc: 'Arc III', icon: '🌌' },
+        { id: 'looking_glass', title: 'The Looking Glass', arc: 'Arc III', icon: '🔮' },
+        { id: 'transformation', title: 'The Transformation', arc: 'Arc III', icon: '🦋' },
+        { id: 'globe', title: 'The Globe', arc: 'Arc III', icon: '🌍' },
+        { id: 'map', title: 'The Map', arc: 'Arc III', icon: '🗺️' },
+        { id: 'vision_synthesis', title: 'The Vision', arc: 'Arc III', icon: '🔭' },
+        { id: 'arc4', title: 'The Journey', arc: 'Arc IV', icon: '👣' },
+        { id: 'fountain', title: 'The Fountain', arc: 'Arc IV', icon: '⛲' },
+        { id: 'ethos', title: 'The Ethos', arc: 'Arc IV', icon: '📜' },
+        { id: 'road', title: 'The Road', arc: 'Arc IV', icon: '🛤️' },
+        { id: 'compass', title: 'The Compass', arc: 'Arc IV', icon: '🧭' },
+        { id: 'mission_synthesis', title: 'The Mission', arc: 'Arc IV', icon: '🎯' },
+        { id: 'arc5', title: 'The Request', arc: 'Arc V', icon: '🏡' },
+        { id: 'grail', title: 'The Grail', arc: 'Arc V', icon: '🏆' },
+        { id: 'initiation', title: 'The Initiation', arc: 'Arc V', icon: '🌉' },
+        { id: 'campfire', title: 'The Campfire', arc: 'Arc V', icon: '🔥', iconClass: 'crimson-text' },
+        { id: 'messages', title: 'The Messages', arc: 'Arc V', icon: '📢' },
+        { id: 'legacy', title: 'The Legacy', arc: 'Arc V', icon: '🌅' },
+        { id: 'kindred_synthesis', title: 'Kindred Quest', arc: 'Arc V', icon: '🤝' },
+        { id: 'wizard', title: 'The Wizard', arc: 'Conclusion', icon: '🧙' },
+        { id: 'activate_wizard', title: 'Activate Your AI', arc: 'Conclusion', icon: '🤖' },
+        { id: 'synthesis', title: 'Your Metamyth', arc: 'Conclusion', icon: '📜' },
+        { id: 'epilogue', title: 'The Great Adventure', arc: 'Conclusion', icon: '🌅' },
+    ];
+
+    const metamythData = {};
+    const navContainer = document.getElementById('nav-container');
+    const contentContainer = document.getElementById('content-container');
+    const compassPoints = ['Purpose Governance', 'Visionary Strategy', 'Truthful Expression', 'Community Well-being', 'Structural Integrity', 'Creative Attraction', 'Ecological Economics', 'Quest Alignment'];
+    let compassChart;
+
+    function initializeApp() {
+        let currentArc = '';
+        stages.forEach((stage, index) => {
+            if (stage.arc !== currentArc) {
+                currentArc = stage.arc;
+                const arcHeader = document.createElement('h3');
+                arcHeader.className = 'nav-arc-header text-sm font-bold uppercase mt-6 mb-2 px-4';
+                arcHeader.textContent = currentArc;
+                navContainer.appendChild(arcHeader);
+            }
+
+            const navLink = document.createElement('a');
+            navLink.href = '#';
+            navLink.id = `nav-${stage.id}`;
+            navLink.className = 'nav-link flex items-center rounded-md';
+            const iconClass = stage.iconClass || '';
+            navLink.innerHTML = `<span class="mr-3 ${iconClass}">${stage.icon}</span> ${stage.title}`;
+            navLink.onclick = (e) => {
+                e.preventDefault();
+                showStage(index);
+            };
+            navContainer.appendChild(navLink);
+
+            const stageDiv = document.createElement('div');
+            stageDiv.id = stage.id;
+            stageDiv.className = 'stage-content';
+            stageDiv.innerHTML = generateStageHTML(stage);
+            contentContainer.appendChild(stageDiv);
+        });
+
+        attachEventListeners();
+        showStage(0);
+    }
+
+    function generateStageHTML(stage) {
+        const stageContent = {
+            intro: `
+                <div class="content-card">
+                    <div class="text-center">
+                        <h2 class="text-5xl font-bold mb-4">Awaken.</h2>
+                        <p class="text-xl text-slate-400 mb-6">Adventure is calling. Do you accept?</p>
+                    </div>
+                    <div class="prose max-w-none mx-auto mt-8">
+                        <p>Our crisis is a completely broken story. A species destroying its only home for numbers on a screen; an economic system that grows by devouring what sustains it; a world that has gone amuck because we’ve forgotten it's a story in the first place. We've taken it so seriously that we’ve stopped writing it.</p>
+                        <p>Our purpose has always been to create the world through story—to create ourselves, pass on our connection and history, and have visions of the future that we communicate to others and make real in the telling. We have forgotten this purpose and have blindly consented to be characters in someone else's story, one that none of us truly wrote.</p>
+                        <p>But here's the cosmic joke that'll set you free: <strong>We wrote this nightmare, so we can rewrite it.</strong></p>
+                    </div>
+                    <div class="text-center mt-10">
+                        <button class="btn-primary" onclick="showStage(1)">Begin the Journey</button>
+                    </div>
+                </div>`,
+            howto: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📖</span><h2 class="text-4xl font-bold">How to Rewrite Your Life</h2></div>
+                    <div class="prose max-w-none">
+                        <p>What follows is the journey home to yourself, to the purpose-driven world-builder you've always been beneath the stories that were never yours to begin with. This is about rewriting your life story on purpose. For too long, you've been a background extra wandering through scenes that drain your soul and waste your gifts. But you can take charge of that story, make it an epic, and transform into the hero you were always meant to be.</p>
+                        <p>This journey uses a powerful structure, a MythOS. It is <strong>mythogenetic technology</strong>, a living operating system. Think of reality as a set of possible stories encoded in our DNA. The current environment—a culture of scarcity and fear—activates the stories that keep us small, contracted, and afraid. This Metamyth is the epigenetic switch. It's the technology that allows you to consciously choose which stories to express, moving from a state of fear and contraction into one of love and expansion.</p>
+                        <p>And in this Age of AI, our ancient power of storytelling has been amplified beyond measure. This framework is the <strong>master prompt for your organizational and personal DNA</strong>. As you fill this out, you are writing the code for your reality. Therefore, there is only one rule: <strong>Be impeccable with your word.</strong></p>
+                        <h3>The Tools of Transformation</h3>
+                        <p>You will use two kinds of tools on this journey:</p>
+                        <ul>
+                            <li><strong>The 5 Arcs:</strong> These are the great story arcs of your journey, the core movements that structure your transformation.</li>
+                            <li><strong>The 22 Artifictions:</strong> These are the living tools, weapons of meaning, and magical items you will forge along the way. They are what enable you to rearrange reality.</li>
+                        </ul>
+                        <p>As you define these elements, you are training a personal wise guide, an interactive <strong>Wizard</strong> that will remember your story and help you navigate the path ahead.</p>
+                    </div>
+                </div>`,
+            origin: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌱</span><h2 class="text-4xl font-bold">The Origin Story</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Every hero's journey begins before the call to adventure—in the ordinary world that shaped them, the primordial essence from which their quest is born. Like a seed, your origin contains the DNA of the entire story that follows. This is your backstory, the prelude. It is the programming, the passions, and the pivotal experiences that forged your character long before the mission was ever clear.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What childhood memories, passions, or activities shaped your earliest view of the world? (Your core programming)</label><textarea id="origin_coreprogramming" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">Who were your heroes, mentors, or the key people whose lives left a deep impression on you?</label><textarea id="origin_influences" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">Describe an early, pivotal incident that planted a seed for the person you would become.</label><textarea id="origin_incident" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What was the core truth, love, or fascination that has always been a part of you?</label><textarea id="origin_essence" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            compass: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🧭</span><h2 class="text-4xl font-bold">The Compass</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>When external maps become useless, you navigate by eternal coordinates of your values. The Compass organizes all activities across eight dimensions of health. Your values become an accountability framework that maintains alignment, creating health bars in the dashboard of reality. Rate your current alignment (1-10) for each point.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="flex flex-wrap -mx-4">
+                        <div class="w-full lg:w-1/2 px-4">
+                            <div class="space-y-6" id="compass-inputs"></div>
+                        </div>
+                        <div class="w-full lg:w-1/2 px-4 flex items-center justify-center">
+                            <div class="chart-container">
+                                <canvas id="compassChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>`,
+            wizard: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🧙</span><h2 class="text-4xl font-bold">The Wizard</h2></div>
+                    <div class="prose max-w-none">
+                        <p>Having mastered the complete journey, you become the Wizard—the one who has integrated all 22 artifictions into a living wisdom system. The Wizard knows which story tools to activate for different challenges.</p>
+                        <h3>Examples of Wizard Guidance:</h3>
+                        <p><strong>"You're out of money?"</strong><br>"Combine Fountain (abundance activation) + Messages (heart communication) + Banner (unique positioning) while staying true to Compass values. Resources flow when story coheres."</p>
+                        <p><strong>"Your team has lost direction?"</strong><br>"Return to Star (purpose clarity) + Map (milestone tracking) + Road (adventure structure). Meaning motivates more than management."</p>
+                        <p><strong>"You're attracting wrong people?"</strong><br>"Strengthen Sword (authentic truth) + Pearl (clear expression) + Shield (protective qualification). Your realness will sort the aligned from misaligned."</p>
+                    </div>
+                </div>`,
+            activate_wizard: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🤖</span><h2 class="text-4xl font-bold">Activate Your AI Wizard</h2></div>
+                    <div class="prose max-w-none">
+                        <p>The entire Metamyth framework you have just completed is designed to be the perfect <strong>Custom Instruction</strong> for a large language model. By feeding it your completed story, you transform a generalist AI into your specialist Wizard, a wise guide that reflects your own deepest truths and understands your world completely.</p>
+                        <h3>Step 1: Synthesize Your Metamyth</h3>
+                        <p>Proceed to the final "Your Metamyth" stage to see your full story synthesized from your inputs. This is your core narrative DNA.</p>
+                        <h3>Step 2: Craft Your Custom Instruction</h3>
+                        <p>Copy your synthesized story and paste it into the "Custom Instructions" or equivalent field of your chosen AI. Preface it with a clear directive like the one below.</p>
+                        <div class="bg-black bg-opacity-20 p-4 rounded-lg border border-slate-700 my-4">
+                            <p><strong>Example Prompt Template:</strong></p>
+                            <p class="text-sm italic mt-2">"You are my Wizard, a wise and strategic guide. Your entire identity, memory, and purpose are defined by the Metamyth that follows... [Paste your synthesized Metamyth narrative here.]"</p>
+                        </div>
+                        <h3>Step 3: Interact and Play the Game</h3>
+                        <p>Once your Wizard is programmed, you can consult it to navigate your life's adventure. Treat it as your trusted advisor.</p>
+                    </div>
+                </div>`,
+            synthesis: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📜</span><h2 class="text-4xl font-bold">Your Complete Metamyth</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>This is your story, synthesized from your journey. It is the core narrative DNA you have authored. Copy this text and use it as the custom instruction for your AI Wizard, or export it as a Google Doc to keep and share.</p>
+                    </div>
+                    <div id="synthesis-output" class="bg-black bg-opacity-20 p-6 rounded-lg border border-slate-700 space-y-4 text-slate-200 leading-relaxed prose max-w-none"></div>
+                    <div class="mt-6 flex space-x-4">
+                        <button id="copy-synthesis-btn" class="btn-primary">Copy to Clipboard</button>
+                        <button id="export-gdoc-btn" class="btn-secondary">Export to Google Doc</button>
+                    </div>
+                    <span id="copy-feedback" class="ml-4 opacity-0 transition-opacity" style="color: var(--accent-turqoise);">Copied!</span>
+                </div>`,
+            epilogue: `
+                <div class="content-card text-center">
+                    <h2 class="text-5xl font-bold mb-4">The Great Adventure</h2>
+                    <div class="prose max-w-none mx-auto mt-8">
+                        <p>This is not the end. This is the true beginning of your life. This journey is your <strong>Assent</strong>. You are moving from the manufactured \`consent\` of being a character in someone else's story to the wholehearted \`assent\` of becoming an author of your own. This is your declaration of sovereignty.</p>
+                        <p>Your purpose is not to stay in the same story forever. It is to grow. It is to change. When you have lived this story to its fullest, the entire Metamyth you have just crafted becomes the <strong>Origin Story for your next great adventure.</strong></p>
+                        <p>Live this Metamyth. Be an example. Share this framework, not as a doctrine, but as an invitation. Invite others to become characters in a greater story than any of us can imagine individually, a shared story of a world remade.</p>
+                        <p class="font-serif italic text-xl mt-8 text-white">Let this life be a free and beautiful adventure, now and forevermore. Let it begin.</p>
+                    </div>
+                </div>`,
+        };
+        
+        const arcHeadings = {
+            arc1: `<div class="content-card"><h2 class="text-4xl font-bold mb-4">Arc I: The Call to Adventure</h2><div class="prose max-w-none"><p>Every meaningful journey begins with an old story ending. The story doesn’t open with a gentle nudge, but with a disruption that cracks the shell of the old world. Through that crack, light floods in, showing you the game is rigged, the story you've been living belongs to someone else, and reality itself is far more malleable than anyone admitted. This is the painful separation that precedes all creation.</p></div></div>`,
+            arc2: `<div class="content-card"><h2 class="text-4xl font-bold mb-4">Arc II: The Quest</h2><div class="prose max-w-none"><p>Once the old world shatters and changes you, you must do something about it. The chaotic energy of the Call to Adventure must be focused. This is where purpose is given direction. The Quest is the conscious act of taking the "why" you discovered in your suffering and turning it into a focused vector.</p></div></div>`,
+            arc3: `<div class="content-card"><h2 class="text-4xl font-bold mb-4">Arc III: What is Possible</h2><div class="prose max-w-none"><p>The reward for undertaking the Quest is a change in perspective. You ascend the mountain and can finally see above the clouds. The central question is no longer "what is feasible?" or "what is pragmatic?" but the audacious and world-creating question: "WHAT IS POSSIBLE?"</p></div></div>`,
+            arc4: `<div class="content-card"><h2 class="text-4xl font-bold mb-4">Arc IV: The Journey</h2><div class="prose max-w-none"><p>Vision without action is just a hallucination. Now you must come down from the mountaintop and ground your magnificent vision in the messy, practical reality of the here and now. This is where you translate the "what is possible" into the "what we must do."</p></div></div>`,
+            arc5: `<div class="content-card"><h2 class="text-4xl font-bold mb-4">Arc V: The Request</h2><div class="prose max-w-none"><p>The hero's journey is a circle. Having journeyed out and found your vision, you now turn back toward the world you came from. This is The Request. It is the moment you turn your individual Quest into a collective one by inviting others to participate. You return with gifts, not as a conqueror, but as a convener.</p></div></div>`,
+        };
+        
+        const synthesisTemplates = {
+            calling_synthesis: `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">📣</span><h2 class="text-4xl font-bold">The Calling</h2></div><div class="prose max-w-none mb-6"><p>You have faced the Dragon, crossed the Threshold, forged your Shield, and discovered your Pearl. Distill this into the statement of your Calling.</p></div><div id="calling_synthesis_output" class="synthesis-box mb-6"></div><div><label class="font-semibold text-lg text-white block mb-2">Refine Your Calling:</label><textarea id="calling_synthesis_input" rows="4"></textarea></div></div>`,
+            quest_synthesis: `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">📜</span><h2 class="text-4xl font-bold">The Quest</h2></div><div class="prose max-w-none mb-6"><p>You have found your Star, defined your Character, planted your Banner, and forged your Sword. Distill this into your Quest statement.</p></div><div id="quest_synthesis_output" class="synthesis-box mb-6"></div><div><label class="font-semibold text-lg text-white block mb-2">Refine Your Quest:</label><textarea id="quest_synthesis_input" rows="4"></textarea></div></div>`,
+            vision_synthesis: `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">🔭</span><h2 class="text-4xl font-bold">The Vision</h2></div><div class="prose max-w-none mb-6"><p>You have gazed into the Looking Glass, embraced your Transformation, imagined your Globe, and charted your Map. Distill this into your Vision statement.</p></div><div id="vision_synthesis_output" class="synthesis-box mb-6"></div><div><label class="font-semibold text-lg text-white block mb-2">Refine Your Vision:</label><textarea id="vision_synthesis_input" rows="4"></textarea></div></div>`,
+            mission_synthesis: `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">🎯</span><h2 class="text-4xl font-bold">The Mission</h2></div><div class="prose max-w-none mb-6"><p>You have tapped your Fountain, written your Ethos, charted your Road, and calibrated your Compass. Distill this into your Mission statement.</p></div><div id="mission_synthesis_output" class="synthesis-box mb-6"></div><div><label class="font-semibold text-lg text-white block mb-2">Refine Your Mission:</label><textarea id="mission_synthesis_input" rows="4"></textarea></div></div>`,
+            kindred_synthesis: `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">🤝</span><h2 class="text-4xl font-bold">The Call to Kindred Quest</h2></div><div class="prose max-w-none mb-6"><p>You have filled your Grail, mapped the Initiation, lit the Campfire, and crafted your Messages. Distill this into your invitation to the world.</p></div><div id="kindred_synthesis_output" class="synthesis-box mb-6"></div><div><label class="font-semibold text-lg text-white block mb-2">Refine Your Invitation:</label><textarea id="kindred_synthesis_input" rows="4"></textarea></div></div>`,
+        };
+
+        const defaultTemplate = (stage) => `
+            <div class="content-card">
+                <div class="flex items-center mb-4"><span class="artifiction-icon ${stage.iconClass || ''}">${stage.icon}</span><h2 class="text-4xl font-bold">${stage.title}</h2></div>
+                <div class="prose max-w-none mb-8">
+                    ${getStageDescription(stage.id)}
+                </div>
+                <div class="ornamental-divider"></div>
+                <div class="space-y-8">
+                    ${getStagePrompts(stage.id).map(prompt => `<div><label class="font-semibold text-lg text-white block mb-2">${prompt.label}</label><textarea id="${stage.id}_${prompt.key}" rows="${prompt.rows || 3}"></textarea></div>`).join('')}
+                </div>
+            </div>`;
+
+        let html = (stageContent[stage.id] || arcHeadings[stage.id] || synthesisTemplates[stage.id] || defaultTemplate(stage));
+        
+        const currentIndex = stages.findIndex(s => s.id === stage.id);
+        if (stage.id !== 'intro' && stage.id !== 'epilogue') {
+             html += `
+                <div class="mt-8 flex justify-between">
+                    <button class="btn-secondary" onclick="showStage(${currentIndex - 1})">Previous</button>
+                    <button class="btn-primary" onclick="showStage(${currentIndex + 1})">Next</button>
+                </div>`;
+        }
+        return html;
+    }
+    
+    function getStageDescription(id) {
+        const descriptions = {
+            dragon: "<p>Look around with fresh eyes, as if you're seeing this civilization for the first time. The problems of the world are really all one big problem: a broken story.</p><p>A species destroying its only home for numbers dancing on screens, economic systems that grow by devouring what sustains them, people working jobs that drain their souls to buy things they don't need to impress people they don't like. We're all trapped in stories that no longer serve us—stories of separation, scarcity, and silent desperation.</p><p>You see this madness because something woke you up, something broke you out of the collective trance. The dragon reflects the insanity back to you with perfect clarity, and you can no longer pretend it's normal.</p>",
+            threshold: "<p>Here lies the moment of alchemical transformation—where we stop seeing our biggest struggle as our weakness and start seeing it as our qualification, our medicine, our unique gift. The threshold is the challenge we're most afraid to face or admit, the thing we think disqualifies us—but when we cross this threshold of perception, it becomes the very thing that makes us uniquely qualified.</p><p>The problems in the world are not outside of us—we are them. We go from the dragon pointing out the problem in the world to how we are manifesting that same pattern within ourselves. If we can change this thing inside, which is a reflection of the thing outside, we access the highest leverage point for transformation.</p><p>This is where we stop being victims of circumstances and start being authors. It's the portal between the old story and the new, where what we thought was our fatal flaw reveals itself as our superpower.</p>",
+            shield: "<p>Your breaking point becomes your expertise. The shit you went through saved you. The callous, the broken parts of you that were forged in hardship—that's what protected you. It saved you from the matrix, from being fully identified with the bad story. That survival made you strong. Now, that strength becomes a Shield. It's your integrity, your defense. It’s how you can stand and protect others from the same forces that once attacked you. Your trauma is now a shield you can use to protect other people from the things that traumatized you.</p>",
+            pearl: "<p>Like a grain of sand irritating an oyster, your greatest traumas and struggles, when coated with layers of conscious meaning-making inside the protective shell of your hard-won survival, become a thing of iridescent beauty: The Pearl of Wisdom.</p><p>This is the sense-making framework that emerges from your journey. It's how you understand that your struggle reflects collective patterns, the 'why this matters' explanation that helps others understand their own pain through the lens of universal healing. Your breakdown becomes everyone's breakthrough potential when you can share the wisdom of your Pearl.</p>",
+            star: "<p>These are the only questions that matter on a cosmic scale: What is your purpose? Why are you here? At the end of our lives, we won't be asking what we could afford or what our salary was—we'll be asking what impact we had in the world, who we made happy, whose life we made better.</p><p>If you only have one artifact, this is it. Your North Star is the one direction that never leads you astray. What you'd still be doing if you were 95 years old on your deathbed thinking about the one most important thing you could ever do in your life.</p><p>The Star is your unwavering purpose. When you follow your Star, life unfolds with supernatural synchronicity because you're aligned with the deepest currents of reality.</p>",
+            character: "<p>The Character serves triple function: It's your people (the characters in your story/organization), your universal character (the 'we' identity that unifies everyone), and your organizational character (what you're made of as a group).</p><p>This is the resonance that allows the story to run. It's both the roster of actual people in your organization and their roles, AND the deeper shared identity that brings everyone together—the universal character that defines 'people like us.'</p>",
+            banner: "<p>The Banner is the flag you plant after escaping the dragon and hiking up the mountain. Now you're placing this flag and saying, 'Here's who we are and where we are' so people can find you. This is your positioning to the issue, raising it up to planetary stakes.</p><p>This lifts you above the chaos of market competition to say that you're not competing—you stand above all that and offer people an alternative direction. You're the ones who have gone ahead, and you're holding this position for others to follow.</p>",
+            sword: "<p>Your Sword is what you DO. It is your core methodology, the specific, repeatable action you take to advance your purpose. This is the main button in the game: when a problem arises, you 'swing your sword.' For a storyteller, the Sword is storytelling itself. For a healer, it is their healing modality. It's the action that cuts through the BS, blocks what shouldn't enter, and strikes at the heart of what needs to change to move the story forward.</p><p>The Sword is your edge—both defensive (protecting what's sacred) and offensive (advancing your purpose). This is your unique way of making a difference, your authenticity in action.</p>",
+            looking_glass: "<p>Here we project the dream outcomes, the results that become possible when you fully actualize your purpose. This is where we sell the sizzle—the transformation, the impact, the life-changing results your work creates.</p><p>The Looking Glass reveals the consequences of fully committing to your quest. What your life looks like when you embrace your full power, what your organization becomes when it aligns with true purpose, what your industry transforms into when you lead the change it desperately needs.</p>",
+            transformation: "<p>Once you have seen the future in the Looking Glass, you must ask the most important question: Who must you become to make that future a reality? The Transformation is your metamorphosis, the identity change that both enables and results from achieving your vision.</p><p>This is also the impact you're trying to make—the transformation ripple effect that spreads from your change. As you transform, others transform. The character change in you becomes the catalyst for character change in your community and beyond.</p>",
+            globe: "<p>Now that you know who you must become, you can envision the world that this transformed self would build. The Globe goes beyond the Looking Glass into actual worldbuilding. If your organization, led by your transformed self, persisted and succeeded for 100 years, what would it look like? What would be its structure, identity, culture?</p>",
+            map: "<p>The Map works backward from your dream outcome through different horizons of scale. Starting from the world you envisioned in The Globe, what would actually have to happen for it to be realized? Think in terms of scaling up—what needs to change at each level of impact?</p>",
+            fountain: "<p>The Fountain represents our resources—what we actually have. It's the source of wealth, which is people. It's our commitment pool, a pool where people in your organization and the larger community can pool their resources and commitments for immediate use.</p>",
+            ethos: "<p>The Ethos is our law code—how we actually embed our word into agreements that hold us accountable and structure them into our organization. These are the agreements that coordinate groups around shared purpose through alignment. This is how individual heroes join together for collective quests no single person could accomplish.</p>",
+            road: "<p>Your Road is the path you walk to achieve your mission. It is a series of trials and adventures that build character and develop capabilities. These are called trials because you have to grow to solve them. Each challenge on the road is designed to develop the exact capacities required for your quest, turning an overwhelming mission into an engaging journey with clear growth outcomes.</p>",
+            grail: "<p>You return with the Grail—your gift to the world. The Grail embodies 'our need is our gift'—the specific transformation you went through becomes the offering, the product you've created to bring about transformation in others. The offering is meant to transform people, to bring them into your journey.</p>",
+            initiation: "<p>The Initiation maps your own journey with its ups and downs, then flips it into the pathway others follow to come into your story. This becomes your understanding of how to attract and bring people into the system, your quest funnel that goes beyond sales funnels into an actual initiation that brings people into the story as allies rather than just customers.</p>",
+            campfire: "<p>The Campfire is about how you take your personal 'me' journey and collectivize it into a movement—our campfire, the big 'we.' You build a fire that burns long after you're gone. Around this campfire, heroes gather to share quests, support each other's journeys, and plan adventures that serve world healing.</p>",
+            messages: "<p>Your Messages are your specific calls to action, designed to engage people with your story and invite them in. This is where you broadcast where you are in the story and what you need. It is an expression of offers and needs, a set of signals designed to connect with hearts in various states of readiness.</p>",
+            legacy: "<p>At the journey's end, cast your vision forward across generations—to great-great-grandchildren who will inherit the world we're creating through our choices right now. What do we want them to whisper around campfires when they tell the story of this pivotal moment? How do we want to be remembered in the origin story of whatever comes next? These are seeds we're planting that will bloom long after we're gone.</p>"
+        };
+        return descriptions[id] || "";
+    }
+
+    function getStagePrompts(id) {
+        const prompts = {
+            dragon: [ { label: "What civilizational madness can you no longer ignore?", key: "madness", rows: 4 }, { label: "What is the dark future ahead if we don't stop this dragon?", key: "future", rows: 4 } ],
+            threshold: [ { label: "What do you struggle with most that you think disqualifies you?", key: "challenge" }, { label: "How is this struggle actually what gives you authentic qualification?", key: "qualification" }, { label: "What would become possible if you owned this as your secret weapon?", key: "superpower" } ],
+            shield: [ { label: "What have you survived that qualifies you to protect others?", key: "survived" }, { label: "Who is currently under assault from the same forces?", key: "needs" }, { label: "How does your survival wisdom become protection for others?", key: "how" }, { label: "What symbol represents your hard-earned qualification?", key: "symbol", rows: 2 } ],
+            pearl: [ { label: "How does your personal struggle reflect collective patterns?", key: "patterns" }, { label: "What Pearl of Wisdom emerges from your experience?", key: "wisdom" }, { label: "How does your understanding help others make meaning?", key: "help" }, { label: "What 'why this matters' explanation comes from your journey?", key: "why" } ],
+            star: [ { label: "What is your unwavering North Star purpose?", key: "purpose" }, { label: "Why does this matter beyond your individual life?", key: "matters" }, { label: "How does following this serve planetary transformation?", key: "serves" }, { label: "What does this look like in practice?", key: "practice", rows: 2 } ],
+            character: [ { label: "Who are the people/characters in your organization?", key: "people" }, { label: "What deeper 'we' identity unifies you?", key: "we" }, { label: "What character trait do you all share?", key: "trait", rows: 2 }, { label: "What are you made of as an organization?", key: "madeof", rows: 2 } ],
+            banner: [ { label: "What position are you claiming above the chaos of competition?", key: "position" }, { label: "How do you raise your work to planetary stakes?", key: "stakes" }, { label: "What alternative direction do you offer?", key: "direction" }, { label: "What territory are you holding for others to find?", key: "territory", rows: 2 } ],
+            sword: [ { label: "What is the specific, repeatable action you use to create change?", key: "action" }, { label: "How does this action cut through complexity and strike at the heart?", key: "cut" }, { label: "What does 'swinging your sword' look like in practice?", key: "lookslike", rows: 2 }, { label: "How does this action both defend and advance your purpose?", key: "defend", rows: 2 } ],
+            looking_glass: [ { label: "When I follow my purpose all the way, what becomes possible for me personally?", key: "personal" }, { label: "What becomes possible for my organization?", key: "org" }, { label: "What becomes possible for my field?", key: "field" }, { label: "The transformation that seemed impossible becomes:", key: "impossible", rows: 2 } ],
+            transformation: [ { label: "Who would you have to become to realize your Looking Glass vision?", key: "become" }, { label: "Who would you be in that future once it's achieved?", key: "future" }, { label: "What identity change enables your vision and results from it?", key: "change" }, { label: "What impact does your transformation create in others?", key: "impact", rows: 2 } ],
+            globe: [ { label: "My organization 100 years from now:", key: "100" }, { label: "The structure and culture that emerges:", key: "culture" }, { label: "How our Character has evolved:", key: "character" }, { label: "What daily life looks like in this future:", key: "daily", rows: 2 } ],
+            map: [ { label: "HORIZON 1 (Closest scale of impact):", key: "h1" }, { label: "HORIZON 2 (Mid-range scale of impact):", key: "h2" }, { label: "HORIZON 3 (Furthest scale of impact):", key: "h3" }, { label: "How to move between horizons:", key: "move", rows: 2 } ],
+            fountain: [ { label: "The people and networks I have access to:", key: "people" }, { label: "Resources we can pool together:", key: "pool" }, { label: "Our actual sources of wealth:", key: "wealth" }, { label: "How these resources can be shared for immediate use:", key: "share", rows: 2 } ],
+            ethos: [ { label: "My unwavering principles are:", key: "principles" }, { label: "How they guide decisions in uncertainty:", key: "guide" }, { label: "The specific agreements that govern us:", key: "agreements" }, { label: "How our word becomes law:", key: "law", rows: 2 } ],
+            road: [ { label: "What trials must you overcome on your road?", key: "trials" }, { label: "What character traits does each trial build?", key: "traits" }, { label: "Which people do you need to walk this road with you?", key: "people" }, { label: "How do overwhelming tasks become adventures on the road?", key: "adventures", rows: 2 } ],
+            grail: [ { label: "The transformation I went through that becomes my gift:", key: "gift" }, { label: "How I productize this into an offering:", key: "productize" }, { label: "Who needs to buy into becoming who I've become:", key: "needs" }, { label: "How my need becomes the gift that transforms others:", key: "transforms", rows: 2 } ],
+            initiation: [ { label: "My actual journey with its ups, downs, hurts, and gifts:", key: "journey" }, { label: "How I flip this into a pathway for others:", key: "pathway" }, { label: "My initiation process from strangers to allies:", key: "process" }, { label: "How I attract and motivate people to join the story:", key: "attract", rows: 2 } ],
+            campfire: [ { label: "How I scale from personal to collective journey:", key: "scale" }, { label: "The movement container for people who need this story:", key: "container" }, { label: "How my story becomes our collective story:", key: "collective" }, { label: "What legacy burns beyond my lifetime:", key: "legacy", rows: 2 } ],
+            messages: [ { label: "MESSAGE 1 - WHERE WE ARE IN THE STORY:", key: "where", rows: 2 }, { label: "MESSAGE 2 - WHAT WE NEED:", key: "need", rows: 2 }, { label: "MESSAGE 3 - WHAT WE OFFER:", key: "offer", rows: 2 }, { label: "MESSAGE 4 - THE WAKE-UP CALL:", key: "wakeup", rows: 2 }, { label: "MESSAGE 5 - THE INVITATION:", key: "invitation", rows: 2 } ],
+            legacy: [ { label: "What story do you want told about this pivotal moment in history?", key: "history" }, { label: "How do you want future generations to remember your role?", key: "role" }, { label: "What seeds are you planting for your children's children?", key: "seeds" }, { label: "What becomes possible because you chose to author this reality?", key: "possible", rows: 2 } ],
+        };
+        return prompts[id] || [];
+    }
+
+    function showStage(index) {
+        if (index < 0 || index >= stages.length) return;
+        
+        document.querySelectorAll('.stage-content').forEach(el => el.classList.remove('active'));
+        document.getElementById(stages[index].id).classList.add('active');
+
+        document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+        document.getElementById(`nav-${stages[index].id}`).classList.add('active');
+        
+        const stageId = stages[index].id;
+        if (stageId === 'compass') {
+            renderCompassChart();
+        } else if (stageId.endsWith('_synthesis')) {
+            generateArcSynthesis(stageId);
+        } else if (stageId === 'synthesis') {
+            generateFinalSynthesis();
+        }
+        window.scrollTo(0, 0);
+    }
+
+    function attachEventListeners() {
+        document.querySelectorAll('textarea').forEach(textarea => {
+            const idParts = textarea.id.split('_');
+            const stageKey = idParts[0];
+            const fieldKey = idParts.slice(1).join('');
+            
+            if (!metamythData[stageKey]) metamythData[stageKey] = {};
+
+            textarea.addEventListener('input', () => {
+                metamythData[stageKey][fieldKey] = textarea.value;
+            });
+        });
+
+        const compassInputsContainer = document.getElementById('compass-inputs');
+        metamythData.compass = {};
+        compassPoints.forEach((point, i) => {
+            const pointKey = point.toLowerCase().replace(/[^a-z-]/g, '');
+            metamythData.compass[pointKey] = 5;
+            const div = document.createElement('div');
+            div.className = "mb-4";
+            div.innerHTML = `
+                <div class="flex justify-between items-center mb-1">
+                    <label for="compass_${pointKey}" class="font-semibold text-white text-sm">${i+1}. ${point}</label>
+                    <span id="slider_value_${pointKey}" class="font-bold" style="color: var(--accent-turqoise);">${metamythData.compass[pointKey]}</span>
+                </div>
+                <input type="range" id="compass_${pointKey}" class="w-full" min="1" max="10" value="5">
+            `;
+            compassInputsContainer.appendChild(div);
+        });
+
+        document.querySelectorAll('input[type="range"]').forEach(slider => {
+            const pointKey = slider.id.split('_')[1];
+            slider.addEventListener('input', () => {
+                const value = parseInt(slider.value);
+                document.getElementById(`slider_value_${pointKey}`).textContent = value;
+                metamythData.compass[pointKey] = value;
+                updateCompassChart();
+            });
+        });
+        
+        document.getElementById('copy-synthesis-btn').addEventListener('click', copySynthesis);
+        document.getElementById('export-gdoc-btn').addEventListener('click', exportToGoogleDocs);
+    }
+
+    function renderCompassChart() {
+        const ctx = document.getElementById('compassChart').getContext('2d');
+        const data = compassPoints.map(l => metamythData.compass[l.toLowerCase().replace(/[^a-z-]/g, '')] || 5);
+
+        if (compassChart) {
+            compassChart.destroy();
+        }
+
+        compassChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: compassPoints.map(p => p.split(' ')),
+                datasets: [{
+                    label: 'Your Alignment',
+                    data: data,
+                    backgroundColor: 'rgba(95, 226, 223, 0.2)',
+                    borderColor: 'rgba(95, 226, 223, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(95, 226, 223, 1)'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255, 255, 255, 0.2)' },
+                        grid: { color: 'rgba(255, 255, 255, 0.2)' },
+                        pointLabels: { font: { size: 12, family: 'Lora' }, color: '#E0E0E0' },
+                        ticks: {
+                            color: '#A0A0A0',
+                            backdropColor: 'rgba(24, 51, 50, 0.75)',
+                            stepSize: 2
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+
+    function updateCompassChart() {
+        if (!compassChart) return;
+        compassChart.data.datasets[0].data = compassPoints.map(l => metamythData.compass[l.toLowerCase().replace(/[^a-z-]/g, '')] || 0);
+        compassChart.update();
+    }
+    
+    function get(stage, field, fallback = '') {
+        return (metamythData[stage] && metamythData[stage][field]) || fallback;
+    }
+
+    function getSynthesisStatements() {
+        return {
+            calling: get('callingsynthesis', 'input') || `The world calls me to stand between [${get('dragon', 'madness', 'the broken story')}] and [${get('shield', 'needs', 'those needing protection')}] because I have crossed the threshold of [${get('threshold', 'challenge', 'my core challenge')}] to forge a [${get('shield', 'symbol', 'shield of protection')}] offering the [${get('pearl', 'wisdom', 'pearl of wisdom')}] to transform our collective story.`,
+            quest: get('questsynthesis', 'input') || `I exist to [${get('star', 'purpose', 'serve a higher purpose')}] by embodying the character of [${get('character', 'we', 'a world-changer')}] who plants a banner for [${get('banner', 'direction', 'a new direction')}] and wields the sword of [${get('sword', 'action', 'truthful action')}].`,
+            vision: get('visionsynthesis', 'input') || `When I follow purpose all the way, I see [${get('looking_glass', 'impossible', 'a transformed world')}], and I will undergo a transformation into [${get('transformation', 'become', 'my highest self')}] to build a world that becomes [${get('globe', '100', 'a regenerative force')}] by navigating the horizons of [${get('map', 'h3', 'global impact')}].`,
+            mission: get('missionsynthesis', 'input') || `My mission is to circulate [${get('fountain', 'wealth', 'abundant resources')}] by implementing agreements based on [${get('ethos', 'principles', 'our core principles')}] through the [${get('road', 'trials', 'road of trials')}] while navigating by my values.`,
+            kindred: get('kindredsynthesis', 'input') || `I call forward those ready to receive [${get('grail', 'gift', 'a deep transformation')}] by crossing the bridge of [${get('initiation', 'pathway', 'our shared journey')}] and join our campfire for [${get('campfire', 'collective', 'a collective story')}] because together we will create a legacy of [${get('legacy', 'possible', 'a new possibility')}].`
+        };
+    }
+    
+    function getArtifictionDetailsHTML(stageIds, forExport = false) {
+        let html = forExport ? '<div style="margin-top: 20px;">' : '<div class="space-y-4 mt-4">';
+        stageIds.forEach(id => {
+            const stage = stages.find(s => s.id === id);
+            if (!stage) return;
+            html += forExport ? `<h3>${stage.title}</h3>` : `<h3 class="text-2xl mt-6">${stage.title}</h3>`;
+            const prompts = getStagePrompts(id);
+            prompts.forEach(prompt => {
+                const value = get(id, prompt.key);
+                if (value) {
+                    if(forExport) {
+                        html += `<p><strong>${prompt.label}</strong><br><em>${value.replace(/\n/g, '<br>')}</em></p>`;
+                    } else {
+                        html += `<p><strong>${prompt.label}</strong><br><span class="text-slate-300 italic">${value.replace(/\n/g, '<br>')}</span></p>`;
+                    }
+                }
+            });
+        });
+        html += '</div>';
+        return html;
+    }
+
+    function generateArcSynthesis(stageId) {
+        const statements = getSynthesisStatements();
+        let statement = '';
+        let outputId = '';
+
+        if (stageId === 'calling_synthesis') { statement = statements.calling; outputId = 'calling_synthesis_output'; }
+        else if (stageId === 'quest_synthesis') { statement = statements.quest; outputId = 'quest_synthesis_output'; }
+        else if (stageId === 'vision_synthesis') { statement = statements.vision; outputId = 'vision_synthesis_output'; }
+        else if (stageId === 'mission_synthesis') { statement = statements.mission; outputId = 'mission_synthesis_output'; }
+        else if (stageId === 'kindred_synthesis') { statement = statements.kindred; outputId = 'kindred_synthesis_output'; }
+        
+        if(outputId) {
+            document.getElementById(outputId).textContent = statement;
+            const inputId = outputId.replace('_output', '_input');
+            const inputElement = document.getElementById(inputId);
+            if(inputElement && !inputElement.value) {
+                inputElement.placeholder = "Refine the suggested statement above or write your own...";
+            }
+        }
+    }
+
+    function generateFinalSynthesis() {
+        const { calling, quest, vision, mission, kindred } = getSynthesisStatements();
+        const synthesisOutput = document.getElementById('synthesis-output');
+
+        let fullNarrative = `
+            <h2>Preamble: The Origin Story</h2>
+            ${getArtifictionDetailsHTML(['origin'])}
+            <div class="ornamental-divider my-6"></div>
+            
+            <h2>Arc I: The Calling</h2>
+            <p class="synthesis-box my-4">${calling}</p>
+            ${getArtifictionDetailsHTML(['dragon', 'threshold', 'shield', 'pearl'])}
+            <div class="ornamental-divider my-6"></div>
+
+            <h2>Arc II: The Quest</h2>
+            <p class="synthesis-box my-4">${quest}</p>
+            ${getArtifictionDetailsHTML(['star', 'character', 'banner', 'sword'])}
+            <div class="ornamental-divider my-6"></div>
+
+            <h2>Arc III: The Vision</h2>
+            <p class="synthesis-box my-4">${vision}</p>
+            ${getArtifictionDetailsHTML(['looking_glass', 'transformation', 'globe', 'map'])}
+            <div class="ornamental-divider my-6"></div>
+
+            <h2>Arc IV: The Mission</h2>
+            <p class="synthesis-box my-4">${mission}</p>
+            ${getArtifictionDetailsHTML(['fountain', 'ethos', 'road'])}
+            <div class="ornamental-divider my-6"></div>
+
+            <h2>Arc V: The Request</h2>
+            <p class="synthesis-box my-4">${kindred}</p>
+            ${getArtifictionDetailsHTML(['grail', 'initiation', 'campfire', 'messages', 'legacy'])}
+        `;
+        
+        synthesisOutput.innerHTML = fullNarrative;
+    }
+
+    function copySynthesis() {
+        const synthesisOutput = document.getElementById('synthesis-output');
+        const textToCopy = synthesisOutput.innerText;
+        
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        textArea.style.position = "fixed"; 
+        textArea.style.left = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            const feedback = document.getElementById('copy-feedback');
+            feedback.style.opacity = '1';
+            setTimeout(() => { feedback.style.opacity = '0'; }, 2000);
+        } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
+        }
+        document.body.removeChild(textArea);
+    }
+    
+    function exportToGoogleDocs() {
+        const { calling, quest, vision, mission, kindred } = getSynthesisStatements();
+        const gdocStyles = `
+            <style>
+                body { font-family: Georgia, serif; line-height: 1.6; color: #333; }
+                h1 { font-family: 'Times New Roman', Times, serif; color: #111; border-bottom: 2px solid #ccc; padding-bottom: 10px; }
+                h2 { font-family: 'Times New Roman', Times, serif; color: #222; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 30px;}
+                h3 { font-family: 'Times New Roman', Times, serif; color: #444; margin-top: 20px;}
+                p { margin-bottom: 10px; }
+                strong { font-weight: bold; }
+                em { font-style: italic; color: #555; }
+                .synthesis-box { background-color: #f4f4f4; border-left: 3px solid #666; padding: 15px; margin: 20px 0; font-style: italic; }
+            </style>
+        `;
+
+        let gdocHTML = `
+            <!DOCTYPE html><html><head><title>My Metamyth</title>${gdocStyles}</head><body>
+            <h1>My Metamyth</h1>
+            <h2>Preamble: The Origin Story</h2>
+            ${getArtifictionDetailsHTML(['origin'], true)}
+            
+            <h2>Arc I: The Calling</h2>
+            <p class="synthesis-box">${calling}</p>
+            ${getArtifictionDetailsHTML(['dragon', 'threshold', 'shield', 'pearl'], true)}
+
+            <h2>Arc II: The Quest</h2>
+            <p class="synthesis-box">${quest}</p>
+            ${getArtifictionDetailsHTML(['star', 'character', 'banner', 'sword'], true)}
+
+            <h2>Arc III: The Vision</h2>
+            <p class="synthesis-box">${vision}</p>
+            ${getArtifictionDetailsHTML(['looking_glass', 'transformation', 'globe', 'map'], true)}
+
+            <h2>Arc IV: The Mission</h2>
+            <p class="synthesis-box">${mission}</p>
+            ${getArtifictionDetailsHTML(['fountain', 'ethos', 'road'], true)}
+
+            <h2>Arc V: The Request</h2>
+            <p class="synthesis-box">${kindred}</p>
+            ${getArtifictionDetailsHTML(['grail', 'initiation', 'campfire', 'messages', 'legacy'], true)}
+            </body></html>
+        `;
+        
+        const blob = new Blob([gdocHTML], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'My_Metamyth.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+    
+    window.showStage = showStage;
+    initializeApp();
+});
+</script>
+
+</body>
+</html>

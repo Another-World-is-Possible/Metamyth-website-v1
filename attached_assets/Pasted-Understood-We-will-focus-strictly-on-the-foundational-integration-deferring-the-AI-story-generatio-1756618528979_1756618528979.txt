@@ -1,0 +1,73 @@
+Understood. We will focus strictly on the foundational integration, deferring the AI story generation for a later step. This is the right way to build: establish a solid structure first, then layer in the advanced functionality.
+
+Here is the revised, streamlined set of instructions for Replit. This prompt focuses only on adding the portal to your existing project, making it accessible, and ensuring it visually matches your site.
+
+-----
+
+### **Replit Integration Prompt: METAMYTH Portal (Foundation Only)**
+
+**Objective:** Integrate the single-file `metamyth.html` application into my existing Node.js/Express Replit project. The integration must be secure, adopt the existing project's styling, and create the necessary web routes. **This phase will NOT include AI backend logic.**
+
+**Context:** My project is a standard Node.js web application. It already has an `index.js` (or similar) server file, serves a main `index.html` homepage, and has my API keys securely stored in Replit Secrets.
+
+-----
+
+**Detailed Instructions for Replit AI:**
+
+Please execute the following steps in order.
+
+**Phase 1: Frontend Setup & Style Integration**
+
+**Goal:** Add the METAMYTH portal as a new HTML file and ensure it inherits the main website's font and base styles for a seamless user experience.
+
+1.  **Create New File:** In the root directory of my project, create a new file named `metamyth.html`.
+
+2.  **Populate the File:** Paste the entire provided HTML code for the "Interactive METAMYTH Portal" into `metamyth.html`.
+
+3.  **Style Adaptation & Unification:** To ensure the portal looks and feels like the rest of my site, perform the following modifications inside `metamyth.html`:
+
+      * **Remove Font Imports:** Find and delete the `<link ... href="https://fonts.googleapis.com/...">` tags for 'Cinzel' and 'Lora'. This will allow the page to inherit the fonts already defined in my main project's CSS.
+      * **Remove Hardcoded Fonts:** Inside the `<style>` block, find all instances of `font-family: 'Cinzel', serif;` and `font-family: 'Lora', serif;`. Remove these lines. The elements will now correctly fall back to the base `sans` or `serif` fonts defined in my site's Tailwind configuration.
+
+**Phase 2: Backend Route Creation**
+
+**Goal:** Create the necessary backend logic to serve the new page.
+
+1.  **Locate and Prepare the Server File:** Open my main backend server file (likely `index.js` or `server.js`).
+
+2.  **Ensure Dependencies:** Check if `path` is required at the top of the file. If `const path = require('path');` is not present, add it.
+
+3.  **Create the Portal Route:** Add the following Express route. This will make the portal accessible at the URL `[my-website-url]/metamyth`.
+
+    ```javascript
+    // Serves the METAMYTH Interactive Portal
+    app.get('/metamyth', (req, res) => {
+      res.sendFile(path.join(__dirname, 'metamyth.html'));
+    });
+    ```
+
+    *Note: No other backend endpoint for AI generation is needed at this stage.*
+
+**Phase 3: Verify Frontend Script**
+
+**Goal:** Ensure the portal's client-side JavaScript is ready for future integration but does not attempt to call a non-existent backend endpoint.
+
+1.  **Inspect the Script:** Open `metamyth.html` again and scroll to the `<script>` tag at the bottom.
+2.  **Confirm Functionality:** Verify that the `generateFinalSynthesis()` function exists. This function is responsible for gathering all the user's inputs and displaying them in the final "Your Metamyth" section. Its logic for collecting text from the form fields is essential and should remain.
+3.  **No `fetch()` Call:** Ensure there are no `fetch()` calls within this `generateFinalSynthesis()` function that attempt to contact an AI endpoint like `/generate-metamyth`. The synthesis should happen entirely in the user's browser for now.
+
+**Phase 4: Final Integration Link**
+
+**Goal:** Add a link from my main website to the new Metamyth portal.
+
+1.  **Locate the Main Homepage:** Open my primary `index.html` file.
+
+2.  **Insert Navigation Link:** Add the following HTML snippet in the appropriate location (e.g., in a navigation bar or a call-to-action section) to create a clear entry point to the portal.
+
+    ```html
+    <a href="/metamyth">Begin Your Metamyth Journey</a>
+    ```
+
+-----
+
+**Final Instruction:** Please apply these changes. After completion, I will restart the server to ensure the new `/metamyth` route is active.
