@@ -92,9 +92,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         .frosted-glass {
             background: rgba(29, 66, 65, 0.3);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(95, 226, 223, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.3);
             border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(220, 38, 38, 0.1);
         }
         
         .cta-button-base {
@@ -126,7 +126,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
     <div class="frosted-glass p-8 max-w-md w-full mx-4">
         <h1 class="text-3xl font-bold text-center mb-6">METAMYTH Portal</h1>
         <h2 class="text-lg text-center mb-8 text-gray-300">Access Required</h2>
