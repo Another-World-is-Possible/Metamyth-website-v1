@@ -498,6 +498,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <button id="export-story-btn" class="btn-secondary" style="display: none;">Export My Story</button>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(27)">Continue to The Legacy →</button>
+                    </div>
                 </div>`,
             intro: `
                 <div class="content-card">
@@ -578,6 +581,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="origin_synthesis" rows="5" placeholder="Write your complete origin synthesis - the seed of your entire story..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(2)">Continue to The Dragon →</button>
+                    </div>
                 </div>`,
             compass: `
                 <div class="content-card">
@@ -596,6 +602,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-gold" onclick="showStage(21)">Continue to Artifact IV: The Journey →</button>
+                    </div>
                 </div>`,
             synthesis: `
                 <div class="content-card">
@@ -609,6 +618,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     </div>
                     <div class="text-center mt-8">
                         <button id="generate-metamyth" class="btn-primary">Generate Your Complete Metamyth</button>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(27)">Continue to The Legacy →</button>
                     </div>
                 </div>`,
         };
@@ -660,6 +672,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="dragon_synthesis" rows="3" placeholder="The broken story that thrust you into action..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(3)">Continue to The Threshold →</button>
+                    </div>
                 </div>`,
             threshold: `
                 <div class="content-card">
@@ -694,6 +709,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <p class="text-sm mb-3">Distill how the dragon's wound in you has become your qualification—a single statement that captures how your deepest struggle transforms into your greatest strength.</p>
                             <textarea id="threshold_synthesis" rows="3" placeholder="How your wound became your qualification..."></textarea>
                         </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(4)">Continue to The Shield →</button>
                     </div>
                 </div>`,
             shield: `
@@ -730,6 +748,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="shield_synthesis" rows="3" placeholder="How your survival wisdom protects others..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(5)">Continue to The Pearl →</button>
+                    </div>
                 </div>`,
             pearl: `
                 <div class="content-card">
@@ -765,6 +786,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="pearl_synthesis" rows="3" placeholder="The wisdom born from your pain..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-gold" onclick="showStage(6)">Continue to Artifact I: The Calling →</button>
+                    </div>
                 </div>`,
             calling_synthesis: `
                 <div class="content-card">
@@ -778,6 +802,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         <label class="font-semibold text-lg text-gold block mb-2">THE CALLING SYNTHESIS - The Sacred Assignment:</label>
                         <p class="text-sm text-slate-400 mb-3">Transform your Call to Adventure into one powerful paragraph that captures your cosmic role—why you specifically stand between the dragon and those needing protection. Make it memorable enough to repeat when people ask what you do.</p>
                         <textarea id="calling_synthesis_complete" rows="6" placeholder="Write your complete Calling synthesis - your sacred assignment..."></textarea>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-gold" onclick="showStage(7)">Continue to The Star →</button>
                     </div>
                 </div>`,
             // Arc II - The Quest
@@ -1359,6 +1386,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="${stage.id}_synthesis" rows="4" placeholder="Describe your Grail - the ultimate treasure you've discovered within yourself..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(23)">Continue to The Initiation →</button>
+                    </div>
                 </div>`,
             initiation: `
                 <div class="content-card">
@@ -1378,6 +1408,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="${stage.id}_synthesis" rows="4" placeholder="Write your initiation statement - your commitment to serve something greater..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(24)">Continue to The Campfire →</button>
+                    </div>
                 </div>`,
             campfire: `
                 <div class="content-card">
@@ -1396,6 +1429,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <p class="text-sm mb-3">Weave together your gathering spaces, stories, and community building into a unified vision for your campfire.</p>
                             <textarea id="${stage.id}_synthesis" rows="4" placeholder="Describe your campfire - how you'll build lasting community..."></textarea>
                         </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(25)">Continue to The Message →</button>
                     </div>
                 </div>`,
             message: `
@@ -1450,6 +1486,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="message_synthesis" rows="4" placeholder="Synthesize your complete message strategy..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-gold" onclick="showStage(26)">Continue to Artifact V: The Request →</button>
+                    </div>
                 </div>`,
             legacy: `
                 <div class="content-card">
@@ -1469,6 +1508,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="${stage.id}_synthesis" rows="4" placeholder="Write your legacy synthesis - the lasting impact you'll have on the world..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(28)">Continue to The Wizard →</button>
+                    </div>
                 </div>`,
             kindred_synthesis: `
                 <div class="content-card">
@@ -1482,6 +1524,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         <label class="font-semibold text-lg text-yellow-400 block mb-2">THE CALL TO KINDRED QUEST SYNTHESIS - The Complete Invitation</label>
                         <p class="text-sm text-slate-400 mb-3">Weave your Grail, Initiation, Campfire, and Message into a compelling invitation that calls your people and shows them exactly how to join your story. This should feel like a rallying cry that makes people want to drop everything and help.</p>
                         <textarea id="kindred_synthesis_complete" rows="6" placeholder="Write your complete Request synthesis - the invitation that calls your people to join your story..."></textarea>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-gold" onclick="showStage(26)">Continue to My Story →</button>
                     </div>
                 </div>`,
             // Conclusion
