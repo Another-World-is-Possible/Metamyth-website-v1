@@ -12,10 +12,10 @@ import StoriesPage from "@/pages/stories";
 import QuestPage from "@/pages/quest";
 import QuestionairePage from "@/pages/questionaire";
 import FederationPage from "@/pages/federation";
+import BeginPortal from "@/pages/begin-portal";
 import SwordCursor from "@/components/sword-cursor";
 import { ImageLoadingProvider } from "@/contexts/ImageLoadingContext";
 import { useEffect } from "react";
-
 
 function Router() {
   const [, navigate] = useLocation();
@@ -40,6 +40,7 @@ function Router() {
       <Route path="/quest" component={QuestPage} />
       <Route path="/questionaire" component={QuestionairePage} />
       <Route path="/federation" component={FederationPage} />
+      <Route path="/begin" component={BeginPortal} />
       <Route component={NotFound} />
     </Switch>
   );

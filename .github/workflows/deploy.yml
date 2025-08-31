@@ -40,6 +40,13 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist # IMPORTANT: Change this to your build output directory
+          
+      - name: Push Supabase DB migrations
+        uses: supabase/actions/cli@v1
+        with:
+          args: db push --project-ref ${{ secrets.SUPABASE_PROJECT_ID }}
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
 
       - name: Get changed Supabase functions
         id: changed-functions

@@ -4,12 +4,11 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development tsx server/index.ts",
-    "build-for-server": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "dev": "vite",
     "build": "vite build",
-    "start": "NODE_ENV=production node dist/index.js",
+    "serve": "ts-node server/static-server.ts",
+    "start": "npm run serve",
     "check": "tsc",
-    "db:push": "NODE_TLS_REJECT_UNAUTHORIZED=0 drizzle-kit push",
     "supabase:start": "supabase start",
     "supabase:status": "supabase status",
     "functions:deploy": "supabase functions deploy"
