@@ -35,6 +35,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
+Metamyth-website-v1.code-workspace
 
 # Logs
 logs/
