@@ -46,7 +46,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     console.log('Password received:', password); // Debug log
     
     // Check password (case insensitive, trim whitespace)
-    if (password && password.toString().trim().toLowerCase() === 'autopoiesis') {
+    if (password && password.toString().trim().toLowerCase() === 'artifiction') {
       res.sendFile(path.join(process.cwd(), 'metamyth.html'));
     } else {
       // Send password-protected page with frosted glass effect
@@ -186,7 +186,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const password = req.body.password;
     console.log('Password received via POST:', password); // Debug log
     
-    if (password && password.toString().trim().toLowerCase() === 'autopoiesis') {
+    if (password && password.toString().trim().toLowerCase() === 'artifiction') {
       res.sendFile(path.join(process.cwd(), 'metamyth.html'));
     } else {
       // Redirect back to GET route to show login form with error
