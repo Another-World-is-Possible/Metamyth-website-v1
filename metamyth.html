@@ -249,42 +249,42 @@
 document.addEventListener('DOMContentLoaded', function () {
     const stages = [
         { id: 'intro', title: 'Awaken', arc: 'Preamble', icon: '✨' },
-        { id: 'howto', title: 'How to Rewrite Your Life', arc: 'Preamble', icon: '📖' },
         { id: 'origin', title: 'The Origin Story', arc: 'Preamble', icon: '🌱' },
-        { id: 'arc1', title: 'The Call to Adventure', arc: 'Arc I', icon: '🔔' },
-        { id: 'dragon', title: 'The Dragon', arc: 'Arc I', icon: '🐉', iconClass: 'crimson-text' },
-        { id: 'threshold', title: 'The Threshold', arc: 'Arc I', icon: '🌀' },
-        { id: 'shield', title: 'The Shield', arc: 'Arc I', icon: '🛡️' },
-        { id: 'pearl', title: 'The Pearl', arc: 'Arc I', icon: '⚪' },
-        { id: 'calling_synthesis', title: 'The Calling', arc: 'Arc I', icon: '📣' },
-        { id: 'arc2', title: 'The Quest', arc: 'Arc II', icon: '🗺️' },
-        { id: 'star', title: 'The Star', arc: 'Arc II', icon: '⭐' },
-        { id: 'character', title: 'The Character', arc: 'Arc II', icon: '👤' },
-        { id: 'banner', title: 'The Banner', arc: 'Arc II', icon: '🚩' },
-        { id: 'sword', title: 'The Sword', arc: 'Arc II', icon: '⚔️', iconClass: 'crimson-text' },
-        { id: 'quest_synthesis', title: 'The Quest', arc: 'Arc II', icon: '📜' },
-        { id: 'arc3', title: 'What is Possible', arc: 'Arc III', icon: '🌌' },
-        { id: 'looking_glass', title: 'The Looking Glass', arc: 'Arc III', icon: '🔮' },
-        { id: 'transformation', title: 'The Transformation', arc: 'Arc III', icon: '🦋' },
-        { id: 'globe', title: 'The Globe', arc: 'Arc III', icon: '🌍' },
-        { id: 'map', title: 'The Map', arc: 'Arc III', icon: '🗺️' },
-        { id: 'vision_synthesis', title: 'The Vision', arc: 'Arc III', icon: '🔭' },
-        { id: 'arc4', title: 'The Journey', arc: 'Arc IV', icon: '👣' },
-        { id: 'fountain', title: 'The Fountain', arc: 'Arc IV', icon: '⛲' },
-        { id: 'ethos', title: 'The Ethos', arc: 'Arc IV', icon: '📜' },
-        { id: 'road', title: 'The Road', arc: 'Arc IV', icon: '🛤️' },
-        { id: 'compass', title: 'The Compass', arc: 'Arc IV', icon: '🧭' },
-        { id: 'mission_synthesis', title: 'The Mission', arc: 'Arc IV', icon: '🎯' },
-        { id: 'arc5', title: 'The Request', arc: 'Arc V', icon: '🏡' },
-        { id: 'grail', title: 'The Grail', arc: 'Arc V', icon: '🏆' },
-        { id: 'initiation', title: 'The Initiation', arc: 'Arc V', icon: '🌉' },
-        { id: 'campfire', title: 'The Campfire', arc: 'Arc V', icon: '🔥', iconClass: 'crimson-text' },
-        { id: 'messages', title: 'The Messages', arc: 'Arc V', icon: '📢' },
-        { id: 'legacy', title: 'The Legacy', arc: 'Arc V', icon: '🌅' },
-        { id: 'kindred_synthesis', title: 'Kindred Quest', arc: 'Arc V', icon: '🤝' },
+        { id: 'arc1', title: 'Artifact I: The Call to Adventure', arc: 'Artifact I', icon: '🔔' },
+        { id: 'dragon', title: 'Stage 1: The Dragon', arc: 'Artifact I', icon: '🐉', iconClass: 'crimson-text' },
+        { id: 'threshold', title: 'Stage 2: The Threshold', arc: 'Artifact I', icon: '🌀' },
+        { id: 'shield', title: 'Stage 3: The Shield', arc: 'Artifact I', icon: '🛡️' },
+        { id: 'pearl', title: 'Stage 4: The Pearl', arc: 'Artifact I', icon: '⚪' },
+        { id: 'calling_synthesis', title: 'The Calling Synthesis', arc: 'Artifact I', icon: '📣' },
+        { id: 'arc2', title: 'Artifact II: The Quest', arc: 'Artifact II', icon: '🗺️' },
+        { id: 'star', title: 'Stage 5: The Star', arc: 'Artifact II', icon: '⭐' },
+        { id: 'character', title: 'Stage 6: The Character', arc: 'Artifact II', icon: '👤' },
+        { id: 'banner', title: 'Stage 7: The Banner', arc: 'Artifact II', icon: '🚩' },
+        { id: 'sword', title: 'Stage 8: The Sword', arc: 'Artifact II', icon: '⚔️', iconClass: 'crimson-text' },
+        { id: 'quest_synthesis', title: 'The Quest Synthesis', arc: 'Artifact II', icon: '📜' },
+        { id: 'arc3', title: 'Artifact III: What is Possible', arc: 'Artifact III', icon: '🌌' },
+        { id: 'looking_glass', title: 'Stage 9: The Looking Glass', arc: 'Artifact III', icon: '🔮' },
+        { id: 'transformation', title: 'Stage 10: The Transformation', arc: 'Artifact III', icon: '🦋' },
+        { id: 'globe', title: 'Stage 11: The Globe', arc: 'Artifact III', icon: '🌍' },
+        { id: 'map', title: 'Stage 12: The Map', arc: 'Artifact III', icon: '🗺️' },
+        { id: 'vision_synthesis', title: 'The Vision Synthesis', arc: 'Artifact III', icon: '🔭' },
+        { id: 'arc4', title: 'Artifact IV: The Journey', arc: 'Artifact IV', icon: '👣' },
+        { id: 'fountain', title: 'Stage 13: The Fountain', arc: 'Artifact IV', icon: '⛲' },
+        { id: 'ethos', title: 'Stage 14: The Ethos', arc: 'Artifact IV', icon: '📜' },
+        { id: 'plot', title: 'Stage 15: The Plot', arc: 'Artifact IV', icon: '📊' },
+        { id: 'compass', title: 'Stage 16: The Compass', arc: 'Artifact IV', icon: '🧭' },
+        { id: 'mission_synthesis', title: 'The Mission Synthesis', arc: 'Artifact IV', icon: '🎯' },
+        { id: 'arc5', title: 'Artifact V: The Request', arc: 'Artifact V', icon: '🏡' },
+        { id: 'grail', title: 'Stage 17: The Grail', arc: 'Artifact V', icon: '🏆' },
+        { id: 'initiation', title: 'Stage 18: The Initiation', arc: 'Artifact V', icon: '🌉' },
+        { id: 'campfire', title: 'Stage 19: The Campfire', arc: 'Artifact V', icon: '🔥', iconClass: 'crimson-text' },
+        { id: 'message', title: 'Stage 20: The Message', arc: 'Artifact V', icon: '📢' },
+        { id: 'legacy', title: 'Stage 21: The Legacy', arc: 'Artifact V', icon: '🌅' },
+        { id: 'kinship', title: 'Stage 22: The Kinship', arc: 'Artifact V', icon: '🤝' },
+        { id: 'kindred_synthesis', title: 'The Kindred Synthesis', arc: 'Artifact V', icon: '🌟' },
         { id: 'wizard', title: 'The Wizard', arc: 'Conclusion', icon: '🧙' },
         { id: 'activate_wizard', title: 'Activate Your AI', arc: 'Conclusion', icon: '🤖' },
-        { id: 'synthesis', title: 'Your Metamyth', arc: 'Conclusion', icon: '📜' },
+        { id: 'synthesis', title: 'Your Complete Metamyth', arc: 'Conclusion', icon: '📜' },
         { id: 'epilogue', title: 'The Great Adventure', arc: 'Conclusion', icon: '🌅' },
     ];
 
@@ -340,6 +340,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p>Our crisis is a completely broken story. A species destroying its only home for numbers on a screen; an economic system that grows by devouring what sustains it; a world that has gone amuck because we've forgotten it's a story in the first place. We've taken it so seriously that we've stopped writing it.</p>
                         <p>Our purpose has always been to create the world through story—to create ourselves, pass on our connection and history, and have visions of the future that we communicate to others and make real in the telling. We have forgotten this purpose and have blindly consented to be characters in someone else's story, one that none of us truly wrote.</p>
                         <p>But here's the cosmic joke that'll set you free: <strong>We wrote this nightmare, so we can rewrite it.</strong></p>
+                        <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-lg p-6 mt-8">
+                            <h3 class="text-2xl font-bold mb-4">HOW TO REWRITE YOUR LIFE</h3>
+                            <p>What follows is the journey home to yourself, to the purpose-driven world-builder you've always been beneath the stories that were never yours to begin with. This is about rewriting your life story on purpose. For too long, you've been a background extra wandering through scenes that drain your soul and waste your gifts. But you can take charge of that story, make it an epic, and transform into the hero you were always meant to be.</p>
+                            <p class="mt-4">This framework is the master prompt for your organizational and personal DNA. As you fill this out, you are writing the code for your reality. Therefore, there is only one rule:</p>
+                            <p class="text-center text-2xl font-bold text-yellow-400 mt-4">Be impeccable with your word</p>
+                            <p class="text-center mt-4 text-lg">Time to remember why you're here.</p>
+                        </div>
                     </div>
                     <div class="text-center mt-10">
                         <button class="btn-primary" onclick="showStage(1)">Begin the Journey</button>
@@ -365,14 +372,36 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="content-card">
                     <div class="flex items-center mb-4"><span class="artifiction-icon">🌱</span><h2 class="text-4xl font-bold">The Origin Story</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Every hero's journey begins before the call to adventure—in the ordinary world that shaped them, the primordial essence from which their quest is born. Like a seed, your origin contains the DNA of the entire story that follows. This is your backstory, the prelude. It is the programming, the passions, and the pivotal experiences that forged your character long before the mission was ever clear.</p>
+                        <p class="text-lg font-semibold">The Foundational Myth That Shapes Everything</p>
+                        <p>Every hero's journey begins before the call to adventure—in the ordinary world that shaped them, the primordial essence from which their quest is born. Like a seed, your origin contains the DNA of the entire story that follows.</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What childhood memories, passions, or activities shaped your earliest view of the world? (Your core programming)</label><textarea id="origin_coreprogramming" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">Who were your heroes, mentors, or the key people whose lives left a deep impression on you?</label><textarea id="origin_influences" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">Describe an early, pivotal incident that planted a seed for the person you would become.</label><textarea id="origin_incident" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What was the core truth, love, or fascination that has always been a part of you?</label><textarea id="origin_essence" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What early experiences taught you how the world really works?</label>
+                            <p class="text-sm text-slate-400 mb-3">Think beyond happy childhood memories to moments that revealed the deeper patterns—times when you saw through adult pretenses, witnessed injustice, or recognized your own power to affect others.</p>
+                            <textarea id="origin_early_revelation" rows="4" placeholder="Write about the early experiences that shaped your understanding of how the world really works..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">Who showed you what was possible in a human life?</label>
+                            <p class="text-sm text-slate-400 mb-3">Not just heroes and mentors, but anyone whose existence expanded your sense of what you could become—rebels, artists, outcasts, wisdom keepers who lived differently than everyone else.</p>
+                            <textarea id="origin_possible_person" rows="4" placeholder="Describe who showed you what was possible in a human life..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">When did you first realize you were different from other people?</label>
+                            <p class="text-sm text-slate-400 mb-3">The moment you recognized you saw things others didn't, cared about things others ignored, or felt called to something that made no practical sense.</p>
+                            <textarea id="origin_different" rows="4" placeholder="Share when you first knew you were different..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What has always felt sacred to you, even when you couldn't explain why?</label>
+                            <p class="text-sm text-slate-400 mb-3">The thread that runs through your entire life—the thing you've always protected, served, or been drawn to, regardless of whether it made sense to others.</p>
+                            <textarea id="origin_sacred" rows="4" placeholder="Describe what has always felt sacred to you..."></textarea>
+                        </div>
+                        <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-lg p-6">
+                            <label class="font-semibold text-lg text-yellow-400 block mb-2">ORIGIN SYNTHESIS - The Seed of Everything</label>
+                            <p class="text-sm text-slate-400 mb-3">Weave your four origin elements into a foundational myth—one paragraph that explains why you, with your specific background and essence, were destined for the quest that called you. This becomes your creation story.</p>
+                            <textarea id="origin_synthesis" rows="5" placeholder="Write your complete origin synthesis - the seed of your entire story..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             compass: `
@@ -409,218 +438,369 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`,
         };
 
-        // Full artifiction content
+        // Enhanced Artifact Content
         const fullStageContent = {
             arc1: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🔔</span><h2 class="text-4xl font-bold">The Call to Adventure</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🔔</span><h2 class="text-4xl font-bold">Artifact I: The Call to Adventure</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Something is stirring. Something is calling you toward a greater version of yourself. Perhaps it began as dissatisfaction, but now it's become undeniable. You feel in your bones that there's more to life than this. This is your Call to Adventure.</p>
-                        <p>The Call is not an external voice but an internal knowing. It's the difference between who you are and who you could become. It's the gap between the impact you're having and the impact you could have. It's the story you've been telling versus the story that wants to be told.</p>
+                        <p class="text-lg font-semibold">When the Old Story Breaks, the True Story Begins</p>
+                        <p>Every meaningful journey begins with a shattering. Something interrupts the normalcy and thrusts you out of the life you knew. Through that crack, light floods in, showing you the game is rigged and reality itself is far more malleable than anyone admitted.</p>
                     </div>
-                    <div class="ornamental-divider"></div>
-                    <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What is stirring in you that refuses to be ignored?</label><textarea id="${stage.id}_stirring" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What gap do you feel between who you are and who you could become?</label><textarea id="${stage.id}_gap" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What call to adventure is pulling at your soul?</label><textarea id="${stage.id}_call" rows="4"></textarea></div>
+                    <div class="text-center mt-8">
+                        <button class="btn-primary" onclick="showStage(3)">Begin Artifact I: The Dragon</button>
                     </div>
                 </div>`,
             dragon: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon crimson-text">🐉</span><h2 class="text-4xl font-bold">The Dragon</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon crimson-text">🐉</span><h2 class="text-4xl font-bold">Stage 1: The Dragon</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Every hero's journey requires a dragon to slay. Your dragon is the constellation of fears, limiting beliefs, and internal obstacles that keep you from answering the call. It's the voice that says you're not ready, not worthy, not capable. It's the old story that holds you back from writing the new one.</p>
-                        <p>The dragon speaks in the language of "what if" and "you can't." It feeds on your doubts and grows stronger with every compromise you make. But here's the secret: the dragon isn't your enemy—it's your teacher. It shows you exactly what you need to overcome to become who you're meant to be.</p>
+                        <p class="text-lg font-semibold">Planetary Level: The Civilizational Madness You Can No Longer Ignore</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What fears or limiting beliefs have held you back from your full potential?</label><textarea id="${stage.id}_fears" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What old story about yourself needs to die for the new one to be born?</label><textarea id="${stage.id}_old_story" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What would you attempt if you knew the dragon was just an illusion?</label><textarea id="${stage.id}_attempt" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What specific insanity in our world makes you physically sick to witness?</label>
+                            <p class="text-sm text-slate-400 mb-3">Not vague problems but the particular manifestation of collective madness that cuts you like a knife when you see it happening.</p>
+                            <textarea id="dragon_specific_madness" rows="4" placeholder="Describe the specific madness that sickens you..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">When did you realize that what everyone calls "normal" is actually completely insane?</label>
+                            <p class="text-sm text-slate-400 mb-3">The moment you saw through the collective trance and recognized that the emperor truly has no clothes.</p>
+                            <textarea id="dragon_normal_lie" rows="4" placeholder="Share when you saw through the 'normal' lie..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What trajectory is humanity on if we change nothing?</label>
+                            <p class="text-sm text-slate-400 mb-3">If current patterns continue exactly as they are, where do we end up? Paint the picture that keeps you awake at night.</p>
+                            <textarea id="dragon_trajectory" rows="4" placeholder="Describe where we're headed if nothing changes..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What becomes possible when this house of cards finally collapses?</label>
+                            <p class="text-sm text-slate-400 mb-3">What new world could emerge from the breakdown of systems that are destroying everything we love?</p>
+                            <textarea id="dragon_emergence" rows="4" placeholder="What could emerge from the collapse..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             threshold: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌀</span><h2 class="text-4xl font-bold">The Threshold</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌀</span><h2 class="text-4xl font-bold">Stage 2: The Threshold</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>The threshold is the point of no return. It's the moment when you step from the familiar world into the unknown. It's where ordinary becomes extraordinary, where comfort becomes courage, where follower becomes leader. This is the moment of commitment to your transformation.</p>
-                        <p>Crossing the threshold requires leaving something behind—an old identity, a limiting belief, a safe but unfulfilling situation. It's both a death and a birth. You cannot carry everything from the old world into the new. What are you willing to sacrifice for who you're becoming?</p>
+                        <p class="text-lg font-semibold">Organizational Level: The Challenge That Transforms Weakness into Superpower</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What threshold are you being called to cross in your life or work?</label><textarea id="${stage.id}_crossing" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What from your old identity or situation must you leave behind?</label><textarea id="${stage.id}_leave_behind" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What commitment are you ready to make to your transformation?</label><textarea id="${stage.id}_commitment" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">Where has the dragon wounded you personally—what pain do you carry from this broken system?</label>
+                            <p class="text-sm text-slate-400 mb-3">How has the civilizational madness you identified left its mark on your own life and psyche?</p>
+                            <textarea id="threshold_wounded" rows="4" placeholder="Describe where the dragon has wounded you personally..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How has wrestling with this wound made you uniquely qualified to serve others?</label>
+                            <p class="text-sm text-slate-400 mb-3">What insights, empathy, or strength have you developed because of—not despite—this personal struggle?</p>
+                            <textarea id="threshold_qualified" rows="4" placeholder="How wrestling with this wound qualifies you..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">Who else is suffering from this same wound that the dragon inflicts?</label>
+                            <p class="text-sm text-slate-400 mb-3">Where do you see this same pattern of damage playing out in others' lives or in society at large?</p>
+                            <textarea id="threshold_others_suffering" rows="4" placeholder="Who else suffers from this same wound..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What superpower emerges when you fully own your wound as sacred qualification?</label>
+                            <p class="text-sm text-slate-400 mb-3">How does integrating rather than hiding this aspect of yourself become your greatest strength?</p>
+                            <textarea id="threshold_superpower" rows="4" placeholder="The superpower hidden in your wound..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             shield: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🛡️</span><h2 class="text-4xl font-bold">The Shield</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🛡️</span><h2 class="text-4xl font-bold">Stage 3: The Shield</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Shield is your protection and empowerment. It's made of your values, your principles, and your non-negotiables. It's what you stand for and what you won't compromise on. Your Shield deflects the criticism of those who would keep you small and amplifies the power of those who support your growth.</p>
-                        <p>The Shield is not defensive—it's declarative. It announces who you are and what you represent. It's your ethical foundation and your energetic boundary. When you're clear about your Shield, you become unshakeable in your mission.</p>
+                        <p class="text-lg font-semibold">Personal Level: Your Survival Wisdom as Protection for Others</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What are your core values and non-negotiable principles?</label><textarea id="${stage.id}_values" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What boundaries do you need to establish to protect your energy and mission?</label><textarea id="${stage.id}_boundaries" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What do you stand for that makes you unshakeable?</label><textarea id="${stage.id}_stand_for" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What have you survived that would have broken most people in your position?</label>
+                            <p class="text-sm text-slate-400 mb-3">The specific trials that forged your strength and taught you what you're truly made of.</p>
+                            <textarea id="shield_survived" rows="4" placeholder="What you've survived that would break others..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">Who is currently being attacked by the same forces that once tried to destroy you?</label>
+                            <p class="text-sm text-slate-400 mb-3">Where do you see the same destructive patterns you survived now threatening others?</p>
+                            <textarea id="shield_who_needs_protection" rows="4" placeholder="Who needs your protection now..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How does your survival wisdom become their protection?</label>
+                            <p class="text-sm text-slate-400 mb-3">What do you know about navigating these dangers that could shield others from the worst harm?</p>
+                            <textarea id="shield_protection_wisdom" rows="4" placeholder="How your survival becomes their shield..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What symbol represents your earned right to stand as protector?</label>
+                            <p class="text-sm text-slate-400 mb-3">If your qualification were a coat of arms, what would it look like? What represents your warrior nature?</p>
+                            <textarea id="shield_symbol" rows="4" placeholder="The symbol of your warrior qualification..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             pearl: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">⚪</span><h2 class="text-4xl font-bold">The Pearl</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">⚪</span><h2 class="text-4xl font-bold">Stage 4: The Pearl</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>The Pearl is the gift hidden within your wound. It's the wisdom, compassion, and strength that emerged from your deepest challenges. Every oyster creates a pearl around an irritant—and so do you. Your greatest suffering has created your greatest gift.</p>
-                        <p>The Pearl is not your trauma—it's your triumph. It's the medicine you developed for yourself that now becomes medicine for others. It's the reason your story matters, because others are walking similar paths and need to know they're not alone.</p>
+                        <p class="text-lg font-semibold">Soul Level: The Wisdom Forged from Trauma</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What challenge or wound in your life has become a source of wisdom or strength?</label><textarea id="${stage.id}_wound_wisdom" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What gift did you develop for yourself that could now serve others?</label><textarea id="${stage.id}_gift" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How does your story of overcoming inspire or guide others?</label><textarea id="${stage.id}_inspire" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How does your personal struggle reflect the broader human condition?</label>
+                            <p class="text-sm text-slate-400 mb-3">In what ways is your individual pain actually universal pain that everyone faces in different forms?</p>
+                            <textarea id="pearl_universal_condition" rows="4" placeholder="How your struggle reflects the universal human condition..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What framework for understanding suffering has emerged from your journey?</label>
+                            <p class="text-sm text-slate-400 mb-3">How do you make sense of why we go through what we go through? What's your theory of meaning-making?</p>
+                            <textarea id="pearl_suffering_framework" rows="4" placeholder="Your framework for understanding suffering..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What can only be taught by someone who has walked through this particular fire?</label>
+                            <p class="text-sm text-slate-400 mb-3">What wisdom do you carry that could only come from having survived your specific struggles?</p>
+                            <textarea id="pearl_unique_teaching" rows="4" placeholder="What can only be taught by someone who survived this..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How does healing your wound heal a wound in the world?</label>
+                            <p class="text-sm text-slate-400 mb-3">When you transform this pattern in yourself, how does that ripple out to serve collective healing?</p>
+                            <textarea id="pearl_world_healing" rows="4" placeholder="How healing your wound heals the world..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             calling_synthesis: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">📣</span><h2 class="text-4xl font-bold">The Calling</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📣</span><h2 class="text-4xl font-bold">The Calling Synthesis</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Calling is the synthesis of your Call, your conquered Dragon, your crossed Threshold, your Shield of values, and your Pearl of wisdom. It's not just what you do—it's who you're becoming and why it matters.</p>
-                        <p>Your Calling is your unique contribution to the world. It's the way your gifts, experiences, and purpose align to create something that only you can offer. It's your answer to the question: "What is mine to do?"</p>
+                        <p class="text-lg font-semibold">The Sacred Assignment</p>
+                        <p>Your Calling synthesizes your Dragon (the madness you can no longer ignore), your Threshold (where you were wounded and became qualified), your Shield (your survival wisdom as protection), and your Pearl (the wisdom forged from trauma). This is your cosmic role—why you specifically stand between the dragon and those needing protection.</p>
                     </div>
                     <div class="ornamental-divider"></div>
-                    <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">Based on your journey so far, what is your unique calling or mission?</label><textarea id="${stage.id}_mission" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How do your gifts, values, and experiences combine to serve something greater?</label><textarea id="${stage.id}_service" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What is yours to do that no one else can do quite the same way?</label><textarea id="${stage.id}_unique" rows="4"></textarea></div>
+                    <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-lg p-6">
+                        <label class="font-semibold text-lg text-yellow-400 block mb-2">THE CALLING SYNTHESIS - The Sacred Assignment</label>
+                        <p class="text-sm text-slate-400 mb-3">Transform your Call to Adventure into one powerful paragraph that captures your cosmic role—why you specifically stand between the dragon and those needing protection. Make it memorable enough to repeat when people ask what you do.</p>
+                        <textarea id="calling_synthesis_complete" rows="6" placeholder="Write your complete Calling synthesis - your sacred assignment..."></textarea>
                     </div>
                 </div>`,
             // Arc II - The Quest
             arc2: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🗺️</span><h2 class="text-4xl font-bold">The Quest</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🗺️</span><h2 class="text-4xl font-bold">Artifact II: The Quest</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Quest is the practical manifestation of your Calling. It's the specific mission you're undertaking to fulfill your purpose. While your Calling is your "why," your Quest is your "what"—the concrete goal or project that channels your gifts toward maximum impact.</p>
-                        <p>A true Quest transforms both you and the world around you. It's ambitious enough to require growth and meaningful enough to sustain you through challenges. It's the bridge between your inner transformation and your outer contribution.</p>
+                        <p class="text-lg font-semibold">Finding Your Unique Role in the Cosmic Story</p>
+                        <p>Once the old world shatters and changes you, you must do something about it. The Quest focuses chaotic energy into purposeful direction—understanding you are here to play a specific role that only you can play in the great transformation.</p>
                     </div>
-                    <div class="ornamental-divider"></div>
-                    <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What specific quest or project embodies your calling?</label><textarea id="${stage.id}_project" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How does this quest serve both your growth and the greater good?</label><textarea id="${stage.id}_service" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What would success look like for this quest?</label><textarea id="${stage.id}_success" rows="4"></textarea></div>
+                    <div class="text-center mt-8">
+                        <button class="btn-primary" onclick="showStage(9)">Begin Artifact II: The Star</button>
                     </div>
                 </div>`,
             star: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">⭐</span><h2 class="text-4xl font-bold">The Star</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">⭐</span><h2 class="text-4xl font-bold">Stage 5: The Star</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Star is your guiding vision—the future you're working toward. It's the North Star that keeps you oriented when the path gets unclear. Your Star is both personal and transpersonal: it represents who you're becoming and the impact you're creating.</p>
-                        <p>The Star is not a destination but a direction. It's not something you achieve but something you align with. When you're following your Star, every step forward feels meaningful, even when the journey is difficult.</p>
+                        <p class="text-lg font-semibold">Planetary Level: Your North Star That Never Leads You Astray</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What is your guiding vision for your life and work?</label><textarea id="${stage.id}_vision" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How do you want to be remembered and what legacy do you want to leave?</label><textarea id="${stage.id}_legacy" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What future are you helping to create?</label><textarea id="${stage.id}_future" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What would you be doing if all jobs were automated and only the work of being human remained?</label>
+                            <p class="text-sm text-slate-400 mb-3">When survival needs are met and you're free to contribute what only you can give to the world.</p>
+                            <textarea id="star_human_work" rows="4" placeholder="What you'd do if only human work remained..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What direction never leads you astray, regardless of circumstances?</label>
+                            <p class="text-sm text-slate-400 mb-3">The internal compass that guides you through any situation, the true north of your existence.</p>
+                            <textarea id="star_true_direction" rows="4" placeholder="Your direction that never leads astray..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What would still matter if you were 95 on your deathbed?</label>
+                            <p class="text-sm text-slate-400 mb-3">When everything else falls away, what would you want to be remembered for? What impact justifies your existence?</p>
+                            <textarea id="star_deathbed_matters" rows="4" placeholder="What would matter at 95 on your deathbed..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How does your purpose serve the healing and evolution of our entire species?</label>
+                            <p class="text-sm text-slate-400 mb-3">How does following your deepest calling contribute to humanity's transformation and Earth's regeneration?</p>
+                            <textarea id="star_species_evolution" rows="4" placeholder="How your purpose serves species evolution..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             character: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">👤</span><h2 class="text-4xl font-bold">The Character</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">👤</span><h2 class="text-4xl font-bold">Stage 6: The Character</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Character is who you're becoming through your quest. It's not your personality but your essence—the qualities, virtues, and strengths you're developing. Your Character is both your method and your message.</p>
-                        <p>Character is forged through choice, especially under pressure. Every challenge is an opportunity to strengthen your Character. Every decision is a chance to align more fully with who you're meant to be.</p>
+                        <p class="text-lg font-semibold">Community/Organizational Level: Your Personal Character and Shared Community</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What qualities and virtues are you developing through your journey?</label><textarea id="${stage.id}_qualities" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How do you want to show up in the world?</label><textarea id="${stage.id}_presence" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What kind of leader/creator/human are you becoming?</label><textarea id="${stage.id}_becoming" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What is the essence of your personal character that draws people to you?</label>
+                            <p class="text-sm text-slate-400 mb-3">The core trait, way of being, or authentic quality that resonates with others and makes them want to work with you.</p>
+                            <textarea id="character_personal_essence" rows="4" placeholder="Your personal character that draws people..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">Who are the actual people currently in your community/organization and what draws them?</label>
+                            <p class="text-sm text-slate-400 mb-3">Map the real humans and what they share beyond surface demographics—the deeper resonance that brings them together.</p>
+                            <textarea id="character_actual_people" rows="4" placeholder="The actual people in your community and what draws them..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What community are you building around this shared purpose?</label>
+                            <p class="text-sm text-slate-400 mb-3">The larger group you're calling into existence—who belongs in this story and what unifies them?</p>
+                            <textarea id="character_building_community" rows="4" placeholder="The community you're building around shared purpose..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What collective character emerges when your people come together?</label>
+                            <p class="text-sm text-slate-400 mb-3">What your community becomes greater than the sum of its parts—the shared identity that enables powerful collaboration.</p>
+                            <textarea id="character_collective" rows="4" placeholder="Your collective character when you come together..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             banner: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🚩</span><h2 class="text-4xl font-bold">The Banner</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🚩</span><h2 class="text-4xl font-bold">Stage 7: The Banner</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Banner is your public declaration—how you communicate your purpose to the world. It's your brand, your message, your rallying cry. Your Banner attracts your tribe and repels those who aren't aligned with your mission.</p>
-                        <p>A powerful Banner is clear, compelling, and authentic. It doesn't try to appeal to everyone—it speaks directly to those who share your values and vision. Your Banner is how you plant your flag and declare: "This is what I stand for."</p>
+                        <p class="text-lg font-semibold">Personal Level: Your Position and Role in the Transformation</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">How do you communicate your purpose and values to the world?</label><textarea id="${stage.id}_communication" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What is your core message or rallying cry?</label><textarea id="${stage.id}_message" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How do you attract those who share your mission?</label><textarea id="${stage.id}_attract" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What role do you play in addressing the issues you've identified?</label>
+                            <p class="text-sm text-slate-400 mb-3">Are you the voice, the organizer, the builder, the healer, the revolutionary? How do you position yourself in relation to the problem?</p>
+                            <textarea id="banner_role" rows="4" placeholder="Your role in addressing these issues..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">Where do you stand on the issues that matter most to you?</label>
+                            <p class="text-sm text-slate-400 mb-3">Your clear position—not neutral, but taking a definitive stance that others can rally around or oppose.</p>
+                            <textarea id="banner_stand" rows="4" placeholder="Where you stand on what matters most..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How does your individual role serve stakes larger than yourself?</label>
+                            <p class="text-sm text-slate-400 mb-3">What transforms your personal position into something that serves collective transformation and planetary healing?</p>
+                            <textarea id="banner_larger_stakes" rows="4" placeholder="How your role serves stakes larger than yourself..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What unique territory in this space do you claim that others can find you in?</label>
+                            <p class="text-sm text-slate-400 mb-3">The specific ground you occupy that differentiates you from others working on similar issues.</p>
+                            <textarea id="banner_unique_territory" rows="4" placeholder="The unique territory you claim..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             sword: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon crimson-text">⚔️</span><h2 class="text-4xl font-bold">The Sword</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon crimson-text">⚔️</span><h2 class="text-4xl font-bold">Stage 8: The Sword</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Sword is your power to act, to cut through obstacles, and to defend what matters. It's your skills, your resources, your strategy, and your will. The Sword is how you transform vision into reality.</p>
-                        <p>The Sword must be wielded with wisdom. It's not about force but about precision—knowing when to act, how to act, and what to cut away. Your Sword grows sharper with practice and more powerful with purpose.</p>
+                        <p class="text-lg font-semibold">Soul Level: Your Methodology Forged from Pain</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What skills and resources do you bring to your quest?</label><textarea id="${stage.id}_skills" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How do you turn vision into action and results?</label><textarea id="${stage.id}_action" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What obstacles do you need to cut through to achieve your goals?</label><textarea id="${stage.id}_obstacles" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What specific methodology do you use that was forged from your deepest struggles?</label>
+                            <p class="text-sm text-slate-400 mb-3">Your unique approach born from having to solve the exact problems that once nearly destroyed you.</p>
+                            <textarea id="sword_methodology" rows="4" placeholder="Your methodology forged from pain..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How does this methodology serve both healing and transformation?</label>
+                            <p class="text-sm text-slate-400 mb-3">What does your approach heal, and what does it transform? How does it address root causes rather than symptoms?</p>
+                            <textarea id="sword_healing_transformation" rows="4" placeholder="How this serves healing and transformation..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What makes your methodology different from others attempting similar work?</label>
+                            <p class="text-sm text-slate-400 mb-3">The unique elements that come from your specific journey and cannot be replicated by those who haven't walked your path.</p>
+                            <textarea id="sword_unique_methodology" rows="4" placeholder="What makes your methodology unique..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How does wielding this methodology advance your purpose while protecting what's sacred?</label>
+                            <p class="text-sm text-slate-400 mb-3">Your sword as both creative and defensive tool—building what needs building while guarding what needs guarding.</p>
+                            <textarea id="sword_protect_sacred" rows="4" placeholder="How this advances purpose while protecting the sacred..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             quest_synthesis: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">📜</span><h2 class="text-4xl font-bold">The Quest</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📜</span><h2 class="text-4xl font-bold">The Quest Synthesis</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your complete Quest emerges from the integration of your Star (vision), Character (who you're becoming), Banner (how you communicate), and Sword (how you act). This is your mission crystallized into concrete form.</p>
-                        <p>Your Quest Statement is your strategic declaration: the specific, measurable, and meaningful goal that channels all your energy toward maximum impact. It's ambitious enough to transform you and specific enough to guide your daily actions.</p>
+                        <p class="text-lg font-semibold">The Complete Quest Declaration</p>
+                        <p>Your complete Quest emerges from the integration of your Star (your North Star that never leads astray), Character (your personal character and shared community), Banner (your position and role in transformation), and Sword (your methodology forged from pain). This is your unique role in the cosmic story crystallized into concrete form.</p>
                     </div>
                     <div class="ornamental-divider"></div>
-                    <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">Write your complete Quest Statement: What specific mission will you undertake?</label><textarea id="${stage.id}_statement" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What measurable outcomes will demonstrate your success?</label><textarea id="${stage.id}_outcomes" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How will achieving this quest transform both you and the world?</label><textarea id="${stage.id}_transformation" rows="4"></textarea></div>
+                    <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-lg p-6">
+                        <label class="font-semibold text-lg text-yellow-400 block mb-2">THE QUEST SYNTHESIS - The Complete Quest Declaration</label>
+                        <p class="text-sm text-slate-400 mb-3">Combine your Star, Character, Banner, and Sword into one defining statement that captures your unique role in the cosmic story. This should sound like something worth dedicating your life to.</p>
+                        <textarea id="quest_synthesis_complete" rows="6" placeholder="Write your complete Quest declaration - your unique role in the cosmic story..."></textarea>
                     </div>
                 </div>`,
             // Arc III - What is Possible
             arc3: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌌</span><h2 class="text-4xl font-bold">What is Possible</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌌</span><h2 class="text-4xl font-bold">Artifact III: What is Possible</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Having clarified your Quest, you now step into the realm of infinite possibility. This arc is about expanding your vision beyond current limitations and imagining what could be. It's about moving from incremental thinking to transformational thinking.</p>
-                        <p>What is Possible is not just wishful thinking—it's strategic imagination. It's the ability to see beyond current constraints and envision new realities. This is where breakthrough innovations, revolutionary movements, and paradigm shifts are born.</p>
+                        <p class="text-lg font-semibold">Seeing the Future That Wants to Be Born</p>
+                        <p>The reward for undertaking the Quest is elevation. You can now see above the clouds, witnessing both what's dying and what's being born. This is where you architect new worlds by dreaming them into existence.</p>
                     </div>
-                    <div class="ornamental-divider"></div>
-                    <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">If there were no limitations, what would be possible in your field or area of focus?</label><textarea id="${stage.id}_unlimited" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What new reality are you being called to create?</label><textarea id="${stage.id}_reality" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How might your work contribute to a larger transformation of society or the world?</label><textarea id="${stage.id}_contribution" rows="4"></textarea></div>
+                    <div class="text-center mt-8">
+                        <button class="btn-primary" onclick="showStage(15)">Begin Artifact III: The Looking Glass</button>
                     </div>
                 </div>`,
             looking_glass: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🔮</span><h2 class="text-4xl font-bold">The Looking Glass</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🔮</span><h2 class="text-4xl font-bold">Stage 9: The Looking Glass</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>The Looking Glass is your window into what could be. It's your ability to see beyond current reality into emerging possibilities. Through the Looking Glass, you see not just what is, but what wants to emerge.</p>
-                        <p>The Looking Glass requires both visionary thinking and practical wisdom. It's about seeing patterns, trends, and emerging opportunities that others miss. It's your crystal ball, but one grounded in insight rather than fantasy.</p>
+                        <p class="text-lg font-semibold">Planetary Level: Dream Outcomes When Purpose Reaches Full Expression</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What emerging trends or opportunities do you see in your field?</label><textarea id="${stage.id}_trends" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What wants to emerge that doesn't yet exist?</label><textarea id="${stage.id}_emerge" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What future are you uniquely positioned to help create?</label><textarea id="${stage.id}_positioned" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What becomes possible in your life when you stop holding back and embrace your full power?</label>
+                            <p class="text-sm text-slate-400 mb-3">The version of yourself you've been afraid to become—what's possible when you step fully into your gifts?</p>
+                            <textarea id="looking_glass_full_power" rows="4" placeholder="What becomes possible when you embrace full power..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How does your organization transform when every decision aligns perfectly with your deepest values?</label>
+                            <p class="text-sm text-slate-400 mb-3">What emerges when your group operates from complete integrity and authentic purpose?</p>
+                            <textarea id="looking_glass_organization_transform" rows="4" placeholder="How your organization transforms in complete alignment..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What results become inevitable when you follow this path without compromise?</label>
+                            <p class="text-sm text-slate-400 mb-3">The outcomes that must happen when you commit fully to this direction, regardless of obstacles.</p>
+                            <textarea id="looking_glass_inevitable_results" rows="4" placeholder="Results that become inevitable following this path..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What transformation seems impossible now but becomes natural when you succeed?</label>
+                            <p class="text-sm text-slate-400 mb-3">The change that looks like fantasy from here but will seem obvious in retrospect.</p>
+                            <textarea id="looking_glass_impossible_natural" rows="4" placeholder="The impossible that becomes natural..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             transformation: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🦋</span><h2 class="text-4xl font-bold">The Transformation</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🦋</span><h2 class="text-4xl font-bold">Stage 10: The Transformation</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>The Transformation is the metamorphosis at the heart of your work. It's the change you facilitate—in yourself, in others, in systems, in society. Every meaningful quest involves transformation at multiple levels.</p>
-                        <p>Transformation is not just improvement or optimization—it's fundamental change. It's the caterpillar becoming the butterfly, the seed becoming the tree. Understanding the transformation you're enabling helps you design more powerful interventions.</p>
+                        <p class="text-lg font-semibold">Soul Level: Who We Must Become to Get There</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What transformation do you facilitate in others through your work?</label><textarea id="${stage.id}_others" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What systems or structures need to transform for your vision to be realized?</label><textarea id="${stage.id}_systems" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How are you yourself being transformed through this work?</label><textarea id="${stage.id}_self" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">Who would you have to become to create the world you envision?</label>
+                            <p class="text-sm text-slate-400 mb-3">The identity, character, and capabilities required to manifest what you saw in the Looking Glass.</p>
+                            <textarea id="transformation_who_become" rows="4" placeholder="Who you must become to create this world..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What aspects of your current self must die for your future self to be born?</label>
+                            <p class="text-sm text-slate-400 mb-3">The beliefs, habits, and identities that cannot survive the journey to who you're becoming.</p>
+                            <textarea id="transformation_must_die" rows="4" placeholder="What must die for your future self to be born..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">Who would you be if you had already achieved everything you're working toward?</label>
+                            <p class="text-sm text-slate-400 mb-3">The fully realized version of yourself that exists in the future you're creating.</p>
+                            <textarea id="transformation_achieved_everything" rows="4" placeholder="Who you'd be having achieved everything..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How does your transformation give others permission to transform?</label>
+                            <p class="text-sm text-slate-400 mb-3">When you become who you're meant to be, how does that create space for others to do the same?</p>
+                            <textarea id="transformation_give_permission" rows="4" placeholder="How your transformation gives others permission..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             globe: `
@@ -639,59 +819,88 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`,
             map: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🗺️</span><h2 class="text-4xl font-bold">The Map</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🗺️</span><h2 class="text-4xl font-bold">Stage 12: The Map</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>The Map is your strategic framework for navigating toward your vision. It shows the territory you need to traverse, the milestones along the way, and the resources you'll need. Your Map turns vision into strategy.</p>
-                        <p>A good Map is both comprehensive and flexible. It shows the overall terrain while allowing for adaptation as conditions change. It's your GPS for transformation, helping you navigate from where you are to where you want to be.</p>
+                        <p class="text-lg font-semibold">Soul Level: The Pathway from Here to There</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What are the key phases or milestones on your journey toward your vision?</label><textarea id="${stage.id}_phases" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What resources, skills, or partnerships will you need along the way?</label><textarea id="${stage.id}_resources" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What potential obstacles or challenges should you prepare for?</label><textarea id="${stage.id}_obstacles" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What must happen for humanity to evolve from where we are to where we need to be?</label>
+                            <p class="text-sm text-slate-400 mb-3">The stages of collective transformation required to address our planetary crisis and birth a regenerative civilization.</p>
+                            <textarea id="map_humanity_evolve" rows="4" placeholder="What must happen for humanity to evolve..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What role does your work play in that larger transformation sequence?</label>
+                            <p class="text-sm text-slate-400 mb-3">Where your specific contribution fits in the grand arc of human development and planetary healing.</p>
+                            <textarea id="map_role_transformation" rows="4" placeholder="Your role in the larger transformation sequence..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What conditions must be created for the next stage of transformation to emerge?</label>
+                            <p class="text-sm text-slate-400 mb-3">The prerequisites, infrastructure, or consciousness shifts needed before the next level becomes possible.</p>
+                            <textarea id="map_conditions_next_stage" rows="4" placeholder="Conditions needed for the next stage to emerge..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How do you pace your work with the timing of collective readiness?</label>
+                            <p class="text-sm text-slate-400 mb-3">Balancing being ahead of the curve while remaining accessible to where people currently are.</p>
+                            <textarea id="map_pace_collective_readiness" rows="4" placeholder="How you pace with collective readiness..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             vision_synthesis: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🔭</span><h2 class="text-4xl font-bold">The Vision</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🔭</span><h2 class="text-4xl font-bold">The Vision Synthesis</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>Your Vision synthesizes everything you've discovered about what's possible: your Looking Glass insights, the Transformation you enable, your Globe of influence, and your Map for getting there. This is your complete picture of the future you're creating.</p>
-                        <p>A powerful Vision is specific, inspiring, and achievable through sustained effort. It's ambitious enough to require growth and clear enough to guide decisions. Your Vision becomes the North Star for all your work.</p>
+                        <p class="text-lg font-semibold">The Future You're Dreaming Into Existence</p>
+                        <p>Your Vision synthesizes your Looking Glass (dream outcomes), Transformation (who we must become), Globe (integration with what's emerging), and Map (pathway from here to there). This becomes your guiding image of the future you're helping birth.</p>
                     </div>
                     <div class="ornamental-divider"></div>
-                    <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">Write your complete Vision Statement: What future are you creating?</label><textarea id="${stage.id}_statement" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How will you know when this vision is being realized?</label><textarea id="${stage.id}_indicators" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What would achieving this vision mean for you and for the world?</label><textarea id="${stage.id}_meaning" rows="4"></textarea></div>
+                    <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-lg p-6">
+                        <label class="font-semibold text-lg text-yellow-400 block mb-2">THE VISION SYNTHESIS - The Future You're Dreaming Into Existence</label>
+                        <p class="text-sm text-slate-400 mb-3">Combine your Looking Glass, Transformation, Globe, and Map into one inspiring vision that captures the future you're actively creating. Make it vivid enough that others can see it and want to join you in manifesting it.</p>
+                        <textarea id="vision_synthesis_complete" rows="6" placeholder="Write your complete Vision synthesis - the future you're dreaming into existence..."></textarea>
                     </div>
                 </div>`,
             // Arc IV - The Journey  
             arc4: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">👣</span><h2 class="text-4xl font-bold">The Journey</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">👣</span><h2 class="text-4xl font-bold">Artifact IV: The Journey</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>The Journey is about how you walk your path. It's your methodology, your approach, your way of being as you pursue your quest. The Journey is as important as the destination—it's where transformation happens.</p>
-                        <p>Your Journey shapes who you become along the way. It's about aligning your means with your ends, ensuring that how you achieve your goals is consistent with why you're pursuing them in the first place.</p>
+                        <p class="text-lg font-semibold">Operationalizing the Vision into the Great Work</p>
+                        <p>The reward for clarity is responsibility. Now you make it real. The Journey transforms vision into operational strategy—organizing resources, building systems, and creating the actual vehicle through which your purpose expresses itself in the world.</p>
                     </div>
-                    <div class="ornamental-divider"></div>
-                    <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">How do you want to walk your path? What is your approach or methodology?</label><textarea id="${stage.id}_approach" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What principles guide your journey toward your goals?</label><textarea id="${stage.id}_principles" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How do you ensure your means align with your ends?</label><textarea id="${stage.id}_alignment" rows="4"></textarea></div>
+                    <div class="text-center mt-8">
+                        <button class="btn-primary" onclick="showStage(21)">Begin Artifact IV: The Fountain</button>
                     </div>
                 </div>`,
             fountain: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">⛲</span><h2 class="text-4xl font-bold">The Fountain</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">⛲</span><h2 class="text-4xl font-bold">Stage 13: The Fountain</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>The Fountain is your source of renewal and inspiration. It's what you return to when you need to replenish your energy, clarify your purpose, and remember why you started. The Fountain prevents burnout and keeps you connected to your deeper motivation.</p>
-                        <p>Your Fountain might be practices, places, people, or experiences that restore your spirit. It's essential for sustaining long-term commitment to meaningful work. Without a Fountain, even the most passionate quest becomes drudgery.</p>
+                        <p class="text-lg font-semibold">Planetary Level: Resources Required for Full Expression</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What restores your energy and inspiration when you feel depleted?</label><textarea id="${stage.id}_restoration" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">What practices or experiences keep you connected to your deeper purpose?</label><textarea id="${stage.id}_practices" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How do you prevent burnout while pursuing ambitious goals?</label><textarea id="${stage.id}_sustainability" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What resources do you need to fully express your vision without compromise?</label>
+                            <p class="text-sm text-slate-400 mb-3">The complete resource picture—funding, time, people, tools, platform—needed to operate at full capacity.</p>
+                            <textarea id="fountain_resources_needed" rows="4" placeholder="Resources needed for full expression..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">Who are the people whose full engagement would make your vision inevitable?</label>
+                            <p class="text-sm text-slate-400 mb-3">The specific humans whose involvement, skills, networks, or influence would guarantee success.</p>
+                            <textarea id="fountain_key_people" rows="4" placeholder="People whose engagement would make success inevitable..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What systems and infrastructure need to exist to support this work at scale?</label>
+                            <p class="text-sm text-slate-400 mb-3">The organizational, technological, and operational foundation required for sustainable impact.</p>
+                            <textarea id="fountain_systems_infrastructure" rows="4" placeholder="Systems and infrastructure needed at scale..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What would abundant funding unlock that's currently impossible?</label>
+                            <p class="text-sm text-slate-400 mb-3">The full expression of your vision freed from financial constraints—what becomes possible with unlimited resources?</p>
+                            <textarea id="fountain_abundant_funding" rows="4" placeholder="What abundant funding would unlock..."></textarea>
+                        </div>
                     </div>
                 </div>`,
             ethos: `
