@@ -409,14 +409,486 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`,
         };
 
-        return stageContent[stage.id] || `
+        // Full artifiction content
+        const fullStageContent = {
+            arc1: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🔔</span><h2 class="text-4xl font-bold">The Call to Adventure</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Something is stirring. Something is calling you toward a greater version of yourself. Perhaps it began as dissatisfaction, but now it's become undeniable. You feel in your bones that there's more to life than this. This is your Call to Adventure.</p>
+                        <p>The Call is not an external voice but an internal knowing. It's the difference between who you are and who you could become. It's the gap between the impact you're having and the impact you could have. It's the story you've been telling versus the story that wants to be told.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What is stirring in you that refuses to be ignored?</label><textarea id="${stage.id}_stirring" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What gap do you feel between who you are and who you could become?</label><textarea id="${stage.id}_gap" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What call to adventure is pulling at your soul?</label><textarea id="${stage.id}_call" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            dragon: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon crimson-text">🐉</span><h2 class="text-4xl font-bold">The Dragon</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Every hero's journey requires a dragon to slay. Your dragon is the constellation of fears, limiting beliefs, and internal obstacles that keep you from answering the call. It's the voice that says you're not ready, not worthy, not capable. It's the old story that holds you back from writing the new one.</p>
+                        <p>The dragon speaks in the language of "what if" and "you can't." It feeds on your doubts and grows stronger with every compromise you make. But here's the secret: the dragon isn't your enemy—it's your teacher. It shows you exactly what you need to overcome to become who you're meant to be.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What fears or limiting beliefs have held you back from your full potential?</label><textarea id="${stage.id}_fears" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What old story about yourself needs to die for the new one to be born?</label><textarea id="${stage.id}_old_story" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What would you attempt if you knew the dragon was just an illusion?</label><textarea id="${stage.id}_attempt" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            threshold: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌀</span><h2 class="text-4xl font-bold">The Threshold</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The threshold is the point of no return. It's the moment when you step from the familiar world into the unknown. It's where ordinary becomes extraordinary, where comfort becomes courage, where follower becomes leader. This is the moment of commitment to your transformation.</p>
+                        <p>Crossing the threshold requires leaving something behind—an old identity, a limiting belief, a safe but unfulfilling situation. It's both a death and a birth. You cannot carry everything from the old world into the new. What are you willing to sacrifice for who you're becoming?</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What threshold are you being called to cross in your life or work?</label><textarea id="${stage.id}_crossing" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What from your old identity or situation must you leave behind?</label><textarea id="${stage.id}_leave_behind" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What commitment are you ready to make to your transformation?</label><textarea id="${stage.id}_commitment" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            shield: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🛡️</span><h2 class="text-4xl font-bold">The Shield</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Shield is your protection and empowerment. It's made of your values, your principles, and your non-negotiables. It's what you stand for and what you won't compromise on. Your Shield deflects the criticism of those who would keep you small and amplifies the power of those who support your growth.</p>
+                        <p>The Shield is not defensive—it's declarative. It announces who you are and what you represent. It's your ethical foundation and your energetic boundary. When you're clear about your Shield, you become unshakeable in your mission.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What are your core values and non-negotiable principles?</label><textarea id="${stage.id}_values" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What boundaries do you need to establish to protect your energy and mission?</label><textarea id="${stage.id}_boundaries" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What do you stand for that makes you unshakeable?</label><textarea id="${stage.id}_stand_for" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            pearl: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">⚪</span><h2 class="text-4xl font-bold">The Pearl</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Pearl is the gift hidden within your wound. It's the wisdom, compassion, and strength that emerged from your deepest challenges. Every oyster creates a pearl around an irritant—and so do you. Your greatest suffering has created your greatest gift.</p>
+                        <p>The Pearl is not your trauma—it's your triumph. It's the medicine you developed for yourself that now becomes medicine for others. It's the reason your story matters, because others are walking similar paths and need to know they're not alone.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What challenge or wound in your life has become a source of wisdom or strength?</label><textarea id="${stage.id}_wound_wisdom" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What gift did you develop for yourself that could now serve others?</label><textarea id="${stage.id}_gift" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How does your story of overcoming inspire or guide others?</label><textarea id="${stage.id}_inspire" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            calling_synthesis: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📣</span><h2 class="text-4xl font-bold">The Calling</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Calling is the synthesis of your Call, your conquered Dragon, your crossed Threshold, your Shield of values, and your Pearl of wisdom. It's not just what you do—it's who you're becoming and why it matters.</p>
+                        <p>Your Calling is your unique contribution to the world. It's the way your gifts, experiences, and purpose align to create something that only you can offer. It's your answer to the question: "What is mine to do?"</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">Based on your journey so far, what is your unique calling or mission?</label><textarea id="${stage.id}_mission" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do your gifts, values, and experiences combine to serve something greater?</label><textarea id="${stage.id}_service" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What is yours to do that no one else can do quite the same way?</label><textarea id="${stage.id}_unique" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            // Arc II - The Quest
+            arc2: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🗺️</span><h2 class="text-4xl font-bold">The Quest</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Quest is the practical manifestation of your Calling. It's the specific mission you're undertaking to fulfill your purpose. While your Calling is your "why," your Quest is your "what"—the concrete goal or project that channels your gifts toward maximum impact.</p>
+                        <p>A true Quest transforms both you and the world around you. It's ambitious enough to require growth and meaningful enough to sustain you through challenges. It's the bridge between your inner transformation and your outer contribution.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What specific quest or project embodies your calling?</label><textarea id="${stage.id}_project" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How does this quest serve both your growth and the greater good?</label><textarea id="${stage.id}_service" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What would success look like for this quest?</label><textarea id="${stage.id}_success" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            star: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">⭐</span><h2 class="text-4xl font-bold">The Star</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Star is your guiding vision—the future you're working toward. It's the North Star that keeps you oriented when the path gets unclear. Your Star is both personal and transpersonal: it represents who you're becoming and the impact you're creating.</p>
+                        <p>The Star is not a destination but a direction. It's not something you achieve but something you align with. When you're following your Star, every step forward feels meaningful, even when the journey is difficult.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What is your guiding vision for your life and work?</label><textarea id="${stage.id}_vision" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you want to be remembered and what legacy do you want to leave?</label><textarea id="${stage.id}_legacy" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What future are you helping to create?</label><textarea id="${stage.id}_future" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            character: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">👤</span><h2 class="text-4xl font-bold">The Character</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Character is who you're becoming through your quest. It's not your personality but your essence—the qualities, virtues, and strengths you're developing. Your Character is both your method and your message.</p>
+                        <p>Character is forged through choice, especially under pressure. Every challenge is an opportunity to strengthen your Character. Every decision is a chance to align more fully with who you're meant to be.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What qualities and virtues are you developing through your journey?</label><textarea id="${stage.id}_qualities" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you want to show up in the world?</label><textarea id="${stage.id}_presence" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What kind of leader/creator/human are you becoming?</label><textarea id="${stage.id}_becoming" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            banner: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🚩</span><h2 class="text-4xl font-bold">The Banner</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Banner is your public declaration—how you communicate your purpose to the world. It's your brand, your message, your rallying cry. Your Banner attracts your tribe and repels those who aren't aligned with your mission.</p>
+                        <p>A powerful Banner is clear, compelling, and authentic. It doesn't try to appeal to everyone—it speaks directly to those who share your values and vision. Your Banner is how you plant your flag and declare: "This is what I stand for."</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you communicate your purpose and values to the world?</label><textarea id="${stage.id}_communication" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What is your core message or rallying cry?</label><textarea id="${stage.id}_message" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you attract those who share your mission?</label><textarea id="${stage.id}_attract" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            sword: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon crimson-text">⚔️</span><h2 class="text-4xl font-bold">The Sword</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Sword is your power to act, to cut through obstacles, and to defend what matters. It's your skills, your resources, your strategy, and your will. The Sword is how you transform vision into reality.</p>
+                        <p>The Sword must be wielded with wisdom. It's not about force but about precision—knowing when to act, how to act, and what to cut away. Your Sword grows sharper with practice and more powerful with purpose.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What skills and resources do you bring to your quest?</label><textarea id="${stage.id}_skills" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you turn vision into action and results?</label><textarea id="${stage.id}_action" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What obstacles do you need to cut through to achieve your goals?</label><textarea id="${stage.id}_obstacles" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            quest_synthesis: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📜</span><h2 class="text-4xl font-bold">The Quest</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your complete Quest emerges from the integration of your Star (vision), Character (who you're becoming), Banner (how you communicate), and Sword (how you act). This is your mission crystallized into concrete form.</p>
+                        <p>Your Quest Statement is your strategic declaration: the specific, measurable, and meaningful goal that channels all your energy toward maximum impact. It's ambitious enough to transform you and specific enough to guide your daily actions.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">Write your complete Quest Statement: What specific mission will you undertake?</label><textarea id="${stage.id}_statement" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What measurable outcomes will demonstrate your success?</label><textarea id="${stage.id}_outcomes" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will achieving this quest transform both you and the world?</label><textarea id="${stage.id}_transformation" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            // Arc III - What is Possible
+            arc3: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌌</span><h2 class="text-4xl font-bold">What is Possible</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Having clarified your Quest, you now step into the realm of infinite possibility. This arc is about expanding your vision beyond current limitations and imagining what could be. It's about moving from incremental thinking to transformational thinking.</p>
+                        <p>What is Possible is not just wishful thinking—it's strategic imagination. It's the ability to see beyond current constraints and envision new realities. This is where breakthrough innovations, revolutionary movements, and paradigm shifts are born.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">If there were no limitations, what would be possible in your field or area of focus?</label><textarea id="${stage.id}_unlimited" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What new reality are you being called to create?</label><textarea id="${stage.id}_reality" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How might your work contribute to a larger transformation of society or the world?</label><textarea id="${stage.id}_contribution" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            looking_glass: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🔮</span><h2 class="text-4xl font-bold">The Looking Glass</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Looking Glass is your window into what could be. It's your ability to see beyond current reality into emerging possibilities. Through the Looking Glass, you see not just what is, but what wants to emerge.</p>
+                        <p>The Looking Glass requires both visionary thinking and practical wisdom. It's about seeing patterns, trends, and emerging opportunities that others miss. It's your crystal ball, but one grounded in insight rather than fantasy.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What emerging trends or opportunities do you see in your field?</label><textarea id="${stage.id}_trends" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What wants to emerge that doesn't yet exist?</label><textarea id="${stage.id}_emerge" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What future are you uniquely positioned to help create?</label><textarea id="${stage.id}_positioned" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            transformation: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🦋</span><h2 class="text-4xl font-bold">The Transformation</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Transformation is the metamorphosis at the heart of your work. It's the change you facilitate—in yourself, in others, in systems, in society. Every meaningful quest involves transformation at multiple levels.</p>
+                        <p>Transformation is not just improvement or optimization—it's fundamental change. It's the caterpillar becoming the butterfly, the seed becoming the tree. Understanding the transformation you're enabling helps you design more powerful interventions.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What transformation do you facilitate in others through your work?</label><textarea id="${stage.id}_others" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What systems or structures need to transform for your vision to be realized?</label><textarea id="${stage.id}_systems" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How are you yourself being transformed through this work?</label><textarea id="${stage.id}_self" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            globe: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌍</span><h2 class="text-4xl font-bold">The Globe</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Globe represents your sphere of influence and impact. It's not necessarily the entire world, but the domain where your work creates ripples of change. Your Globe might be local or global, but it's always the space where you can make a meaningful difference.</p>
+                        <p>Understanding your Globe helps you focus your energy where it can have maximum impact. It's about knowing your domain of mastery and influence, and how your local efforts connect to larger patterns of change.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What is your current sphere of influence and how could it expand?</label><textarea id="${stage.id}_influence" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">Where can your work have the greatest impact?</label><textarea id="${stage.id}_impact" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How does your local work connect to global transformation?</label><textarea id="${stage.id}_global" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            map: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🗺️</span><h2 class="text-4xl font-bold">The Map</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Map is your strategic framework for navigating toward your vision. It shows the territory you need to traverse, the milestones along the way, and the resources you'll need. Your Map turns vision into strategy.</p>
+                        <p>A good Map is both comprehensive and flexible. It shows the overall terrain while allowing for adaptation as conditions change. It's your GPS for transformation, helping you navigate from where you are to where you want to be.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What are the key phases or milestones on your journey toward your vision?</label><textarea id="${stage.id}_phases" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What resources, skills, or partnerships will you need along the way?</label><textarea id="${stage.id}_resources" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What potential obstacles or challenges should you prepare for?</label><textarea id="${stage.id}_obstacles" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            vision_synthesis: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🔭</span><h2 class="text-4xl font-bold">The Vision</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Vision synthesizes everything you've discovered about what's possible: your Looking Glass insights, the Transformation you enable, your Globe of influence, and your Map for getting there. This is your complete picture of the future you're creating.</p>
+                        <p>A powerful Vision is specific, inspiring, and achievable through sustained effort. It's ambitious enough to require growth and clear enough to guide decisions. Your Vision becomes the North Star for all your work.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">Write your complete Vision Statement: What future are you creating?</label><textarea id="${stage.id}_statement" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will you know when this vision is being realized?</label><textarea id="${stage.id}_indicators" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What would achieving this vision mean for you and for the world?</label><textarea id="${stage.id}_meaning" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            // Arc IV - The Journey  
+            arc4: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">👣</span><h2 class="text-4xl font-bold">The Journey</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Journey is about how you walk your path. It's your methodology, your approach, your way of being as you pursue your quest. The Journey is as important as the destination—it's where transformation happens.</p>
+                        <p>Your Journey shapes who you become along the way. It's about aligning your means with your ends, ensuring that how you achieve your goals is consistent with why you're pursuing them in the first place.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you want to walk your path? What is your approach or methodology?</label><textarea id="${stage.id}_approach" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What principles guide your journey toward your goals?</label><textarea id="${stage.id}_principles" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you ensure your means align with your ends?</label><textarea id="${stage.id}_alignment" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            fountain: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">⛲</span><h2 class="text-4xl font-bold">The Fountain</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Fountain is your source of renewal and inspiration. It's what you return to when you need to replenish your energy, clarify your purpose, and remember why you started. The Fountain prevents burnout and keeps you connected to your deeper motivation.</p>
+                        <p>Your Fountain might be practices, places, people, or experiences that restore your spirit. It's essential for sustaining long-term commitment to meaningful work. Without a Fountain, even the most passionate quest becomes drudgery.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What restores your energy and inspiration when you feel depleted?</label><textarea id="${stage.id}_restoration" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What practices or experiences keep you connected to your deeper purpose?</label><textarea id="${stage.id}_practices" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you prevent burnout while pursuing ambitious goals?</label><textarea id="${stage.id}_sustainability" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            ethos: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📜</span><h2 class="text-4xl font-bold">The Ethos</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Ethos is your moral framework—the ethical principles that guide your decisions and actions. It's what you stand for and what you won't compromise on, even under pressure. Your Ethos is your integrity made visible.</p>
+                        <p>A strong Ethos provides clarity in difficult decisions and builds trust with others. It's the foundation of authentic leadership and meaningful relationships. Your Ethos is tested not in easy times, but when doing the right thing is costly.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What ethical principles guide your decisions and actions?</label><textarea id="${stage.id}_principles" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What standards do you hold yourself to, even when no one is watching?</label><textarea id="${stage.id}_standards" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you maintain integrity when facing pressure or temptation?</label><textarea id="${stage.id}_integrity" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            road: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🛤️</span><h2 class="text-4xl font-bold">The Road</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Road is your path forward—the specific steps, habits, and practices that move you toward your goals. It's the daily discipline that turns vision into reality. The Road is where intention meets action.</p>
+                        <p>A good Road is sustainable, progressive, and aligned with your values. It's not about perfection but about consistency. The Road is built one step at a time, and every step counts, even the small ones.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What daily or weekly practices move you toward your goals?</label><textarea id="${stage.id}_practices" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you maintain consistency and momentum over time?</label><textarea id="${stage.id}_consistency" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What systems or structures support your progress?</label><textarea id="${stage.id}_systems" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            mission_synthesis: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🎯</span><h2 class="text-4xl font-bold">The Mission</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Mission synthesizes your Journey approach, your Fountain of renewal, your Ethos of integrity, your Compass of values, and your Road of daily practice. This is your complete operational framework for pursuing your quest with wisdom, sustainability, and alignment.</p>
+                        <p>Your Mission Statement describes not just what you will achieve, but how you will achieve it—with what spirit, according to what principles, and through what methods. It's your code of conduct for the path ahead.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">Write your Mission Statement: How will you pursue your quest with integrity and wisdom?</label><textarea id="${stage.id}_statement" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What commitments are you making about how you will walk this path?</label><textarea id="${stage.id}_commitments" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will you stay accountable to these principles and practices?</label><textarea id="${stage.id}_accountability" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            // Arc V - The Request
+            arc5: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🏡</span><h2 class="text-4xl font-bold">The Request</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Request is about coming home—to yourself, to your community, to your purpose. It's the return phase of the hero's journey, where you bring the gifts of your transformation back to serve others. The Request is both a homecoming and a new beginning.</p>
+                        <p>This final arc is about integration, legacy, and invitation. You've done the inner work, clarified your quest, envisioned what's possible, and committed to the journey. Now it's time to share these gifts and invite others into their own transformation.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">How have you been transformed through this journey of self-discovery?</label><textarea id="${stage.id}_transformation" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What gifts or wisdom do you now have to offer others?</label><textarea id="${stage.id}_gifts" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will you serve as a guide for others on their own journeys?</label><textarea id="${stage.id}_service" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            grail: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🏆</span><h2 class="text-4xl font-bold">The Grail</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Grail is the ultimate treasure of your quest—not a physical object, but a state of being. It's the integration of all you've learned, the wisdom you've gained, and the person you've become. The Grail is your gift to the world.</p>
+                        <p>Finding your Grail means recognizing that you already possess what you've been seeking. The treasure was always within you, waiting to be awakened. The Grail is your actualized potential, your realized purpose, your authentic self fully expressed.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What is the ultimate treasure or wisdom you've discovered within yourself?</label><textarea id="${stage.id}_treasure" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How has this journey revealed your authentic self?</label><textarea id="${stage.id}_authentic" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What is your unique gift to offer the world?</label><textarea id="${stage.id}_unique_gift" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            initiation: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌉</span><h2 class="text-4xl font-bold">The Initiation</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Initiation is your commitment to use your gifts in service of something greater than yourself. It's the moment you step fully into your role as a leader, creator, and guide. The Initiation marks the transition from student to teacher, from seeker to finder.</p>
+                        <p>This is your sacred commitment to show up fully for your purpose and to help others awaken to theirs. The Initiation is both an ending and a beginning—the completion of one phase of your journey and the start of a new one.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What commitment are you ready to make to your highest purpose?</label><textarea id="${stage.id}_commitment" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will you step fully into your role as a leader and guide?</label><textarea id="${stage.id}_leadership" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What vow or pledge do you make to serve something greater than yourself?</label><textarea id="${stage.id}_vow" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            campfire: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon crimson-text">🔥</span><h2 class="text-4xl font-bold">The Campfire</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Campfire is where stories are shared and community is built. It's your gathering place, your platform, your way of bringing people together around shared purpose. The Campfire is where individual transformation becomes collective transformation.</p>
+                        <p>Around the Campfire, you share your story and invite others to share theirs. You create space for healing, learning, and connection. The Campfire is how you build the community that will carry your mission forward long after you're gone.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will you create gathering spaces for your community?</label><textarea id="${stage.id}_gathering" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What stories need to be shared and preserved?</label><textarea id="${stage.id}_stories" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will you build lasting community around your mission?</label><textarea id="${stage.id}_community" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            messages: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">📢</span><h2 class="text-4xl font-bold">The Messages</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Messages are the key insights, teachings, and wisdom you want to share with the world. They're the distilled essence of your journey, packaged in ways that can guide and inspire others. Your Messages are your contribution to the collective wisdom of humanity.</p>
+                        <p>Great Messages are both timeless and timely—they speak to universal truths while addressing current needs. They're memorable, actionable, and transformative. Your Messages become seeds that can grow into new realities in the minds and hearts of others.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What are the key insights or teachings you want to share with the world?</label><textarea id="${stage.id}_insights" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will you communicate these messages in compelling and memorable ways?</label><textarea id="${stage.id}_communication" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What wisdom from your journey could help others on theirs?</label><textarea id="${stage.id}_wisdom" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            legacy: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌅</span><h2 class="text-4xl font-bold">The Legacy</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Legacy is the lasting impact of your life and work. It's what will remain after you're gone—the changes you catalyzed, the people you influenced, the systems you improved, the beauty you created. Your Legacy is your gift to the future.</p>
+                        <p>A powerful Legacy is intentional, not accidental. It's built through daily choices and sustained effort over time. Your Legacy begins now, with every action you take and every person you touch. The question is not whether you'll leave a legacy, but what kind it will be.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What lasting impact do you want your life and work to have?</label><textarea id="${stage.id}_impact" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How do you want to be remembered by those whose lives you touch?</label><textarea id="${stage.id}_remembered" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What will you leave behind that will continue to serve others after you're gone?</label><textarea id="${stage.id}_continuation" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            kindred_synthesis: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🤝</span><h2 class="text-4xl font-bold">Kindred Quest</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>Your Kindred Quest synthesizes your Grail (ultimate treasure), Initiation (sacred commitment), Campfire (community building), Messages (wisdom sharing), and Legacy (lasting impact). This is your invitation to others to join their own transformation and to create collective change.</p>
+                        <p>The Kindred Quest recognizes that individual transformation, while necessary, is not sufficient. We need collective transformation. Your personal metamyth becomes part of a larger metamyth—the story of humanity awakening to its full potential.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will you invite others into their own transformation journey?</label><textarea id="${stage.id}_invitation" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What collective change do you want to be part of creating?</label><textarea id="${stage.id}_collective" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How does your personal metamyth contribute to humanity's larger awakening?</label><textarea id="${stage.id}_humanity" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            // Conclusion
+            wizard: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🧙</span><h2 class="text-4xl font-bold">The Wizard</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>The Wizard is your inner wisdom, fully awakened and integrated. It's the part of you that has always known your path, that has guided you through challenges, and that will continue to serve as your internal compass. The Wizard is your self-mastery made manifest.</p>
+                        <p>Every hero's journey culminates in becoming the wise guide for others. You have traveled the path, faced the dragons, crossed the thresholds, and found your treasure. Now you are the Wizard—the one who can guide others on their own journeys of transformation.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What wisdom have you gained that you can now share with others?</label><textarea id="${stage.id}_wisdom" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How have you become your own wise guide and inner compass?</label><textarea id="${stage.id}_inner_guide" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">In what ways are you ready to serve as a guide for others on their journeys?</label><textarea id="${stage.id}_guide_others" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            activate_wizard: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🤖</span><h2 class="text-4xl font-bold">Activate Your AI</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>In this age of artificial intelligence, your metamyth becomes the master prompt for your AI companions. Everything you've defined here—your values, vision, mission, and wisdom—can be used to train AI systems that truly understand and support your journey.</p>
+                        <p>Your metamyth is the instruction manual for creating AI assistants that are aligned with your deepest purpose and highest values. This is how we ensure that as we augment human intelligence, we amplify human wisdom.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">How could AI systems better support your mission and values?</label><textarea id="${stage.id}_ai_support" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What aspects of your wisdom would you want an AI assistant to embody?</label><textarea id="${stage.id}_ai_wisdom" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will you ensure AI amplifies your humanity rather than replacing it?</label><textarea id="${stage.id}_ai_humanity" rows="4"></textarea></div>
+                    </div>
+                </div>`,
+            epilogue: `
+                <div class="content-card">
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌅</span><h2 class="text-4xl font-bold">The Great Adventure</h2></div>
+                    <div class="prose max-w-none mb-8">
+                        <p>This is not the end—it's the beginning. You have completed the sacred work of authoring your metamyth, but now the real adventure begins: living it. Every day offers new opportunities to embody your wisdom, express your gifts, and contribute to the great transformation of our time.</p>
+                        <p>Remember that you are not alone in this quest. Across the world, countless others are awakening to their own purpose and power. Together, we are writing a new story for humanity—one of wisdom, compassion, sustainability, and thriving. Your metamyth is a thread in this larger tapestry.</p>
+                        <p>The world needs your gifts. The future is calling for your unique contribution. The story you've written here is not just for you—it's your invitation to participate in the greatest adventure of all: the conscious evolution of human consciousness and the creation of a world that works for all.</p>
+                    </div>
+                    <div class="ornamental-divider"></div>
+                    <div class="space-y-8">
+                        <div><label class="font-semibold text-lg text-white block mb-2">What is your commitment for living your metamyth in daily life?</label><textarea id="${stage.id}_commitment" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">How will you stay connected to this vision and continue growing into it?</label><textarea id="${stage.id}_connection" rows="4"></textarea></div>
+                        <div><label class="font-semibold text-lg text-white block mb-2">What is your message of hope and invitation to others on this great adventure?</label><textarea id="${stage.id}_message" rows="4"></textarea></div>
+                    </div>
+                </div>`
+        };
+
+        return stageContent[stage.id] || fullStageContent[stage.id] || `
             <div class="content-card">
                 <div class="flex items-center mb-4">
                     <span class="artifiction-icon ${stage.iconClass || ''}">${stage.icon}</span>
                     <h2 class="text-4xl font-bold">${stage.title}</h2>
                 </div>
                 <div class="prose max-w-none">
-                    <p>This section is in development. Each artifiction will guide you through creating specific tools for your metamyth.</p>
+                    <p>Each artifiction guides you through creating specific tools for your metamyth. Reflect deeply on these questions and capture your insights.</p>
                     <textarea id="${stage.id}_content" rows="6" placeholder="Reflect on this artifiction and write your insights..."></textarea>
                 </div>
             </div>`;
