@@ -362,11 +362,28 @@
         <!-- Sidebar Navigation -->
         <nav id="sidebar" class="w-full md:w-80 bg-black bg-opacity-20 border-r border-black border-opacity-20 p-4 md:p-6 flex-shrink-0">
             <h1 class="text-3xl font-bold text-white mb-8 glow-title">METAMYTH</h1>
-            <!-- Progress Bar -->
+            
+            <!-- Progress Bar and Current Stage -->
             <div id="progress-container" class="mb-6">
                 <div class="text-xs text-gray-300 mb-2">Progress</div>
-                <div class="w-full bg-gray-800 rounded-full h-2">
+                <div class="w-full bg-gray-800 rounded-full h-2 mb-4">
                     <div id="progress-bar" class="h-2 rounded-full glow-progress transition-all duration-500" style="width: 0%"></div>
+                </div>
+                
+                <!-- Current stage indicator -->
+                <div class="bg-black bg-opacity-60 rounded-lg border border-teal-400 p-3 glow-indicator">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div id="current-artifact-icon" class="text-lg mr-2">✨</div>
+                            <div>
+                                <div id="current-artifact-title" class="text-sm font-semibold text-white">Awaken</div>
+                                <div id="current-progress" class="text-xs text-gray-400">1/27 Complete</div>
+                            </div>
+                        </div>
+                        <button id="view-story-btn" class="bg-transparent border border-gold text-gold text-xs py-1 px-2 rounded hover:bg-gold hover:text-black transition-all duration-300 glow-button">
+                            📖 Story
+                        </button>
+                    </div>
                 </div>
             </div>
             <div id="nav-container" class="space-y-1">
@@ -378,21 +395,6 @@
         <main class="flex-1 p-4 md:p-10 overflow-y-auto">
             <div id="content-container">
                 <!-- All stage content will be injected here by JS -->
-            </div>
-            
-            <!-- Bottom-right artifact indicator -->
-            <div id="artifact-indicator" class="fixed bottom-6 right-6 z-50">
-                <div class="bg-black bg-opacity-80 rounded-lg border border-teal-400 p-4 min-w-48 glow-indicator">
-                    <div class="text-center">
-                        <div class="text-xs text-gray-300 uppercase tracking-wide mb-1">CURRENT</div>
-                        <div id="current-artifact-icon" class="text-2xl mb-1">🛡️</div>
-                        <div id="current-artifact-title" class="text-sm font-semibold text-white mb-2">Shield</div>
-                        <div id="current-progress" class="text-xs text-gray-400 mb-3">0/27 Complete</div>
-                    </div>
-                    <button id="view-story-btn" class="w-full bg-transparent border border-gold text-gold text-xs py-2 px-3 rounded hover:bg-gold hover:text-black transition-all duration-300 glow-button">
-                        📖 View My Story
-                    </button>
-                </div>
             </div>
         </main>
     </div>
@@ -427,6 +429,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { id: 'campfire', title: 'The Campfire', arc: 'ARC V', icon: '🔥', iconClass: 'crimson-text' },
         { id: 'message', title: 'The Message', arc: 'ARC V', icon: '📢' },
         { id: 'kindred_synthesis', title: 'Artifact V: The Request', arc: 'ARC V', icon: '🌟' },
+        { id: 'my_story', title: 'My Story', arc: 'Synthesis', icon: '📖' },
         { id: 'legacy', title: 'The Legacy', arc: 'Legacy', icon: '🌅' },
         { id: 'wizard', title: 'The Wizard', arc: 'Integration', icon: '🧙' },
         { id: 'activate_wizard', title: 'Create Your Personal AI Wizard', arc: 'Integration', icon: '🤖' },
@@ -475,6 +478,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function generateStageHTML(stage) {
         const stageContent = {
+            my_story: `
+                <div class="content-card">
+                    <div class="flex items-center mb-6">
+                        <span class="artifiction-icon">📖</span>
+                        <h2 class="text-4xl font-bold glow-title">My Metamyth Story</h2>
+                    </div>
+                    <div class="prose max-w-none mb-8">
+                        <p>This is your complete metamyth - the synthesis of your journey through all five artifacts. Below is the story you've authored about yourself, compiled from your responses throughout this adventure.</p>
+                    </div>
+                    <div class="space-y-6">
+                        <button id="generate-story-btn" class="cta-button-base cta-button-gold mb-6">Generate My Complete Story</button>
+                        <div id="compiled-story" class="bg-black bg-opacity-30 border border-teal-400 rounded-lg p-6 min-h-96">
+                            <div class="text-center text-gray-400 italic">
+                                Click "Generate My Complete Story" to compile your metamyth from all your responses
+                            </div>
+                        </div>
+                        <div class="text-center mt-6">
+                            <button id="export-story-btn" class="btn-secondary" style="display: none;">Export My Story</button>
+                        </div>
+                    </div>
+                </div>`,
             intro: `
                 <div class="content-card">
                     <div class="text-center">
@@ -1516,6 +1540,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (stage.id === 'compass') {
             setTimeout(initializeCompass, 100);
         }
+        
+        if (stage.id === 'my_story') {
+            setTimeout(initializeStoryGeneration, 100);
+        }
     }
     
     window.updateProgressBar = function(currentIndex) {
@@ -1545,16 +1573,137 @@ document.addEventListener('DOMContentLoaded', function () {
         const viewStoryBtn = document.getElementById('view-story-btn');
         if (viewStoryBtn) {
             viewStoryBtn.addEventListener('click', function() {
-                // Find the last synthesis stage for "View My Story"
-                const synthStages = stages.filter(s => s.title.includes('Artifact'));
-                if (synthStages.length > 0) {
-                    const lastSynthIndex = stages.findIndex(s => s.id === synthStages[synthStages.length - 1].id);
-                    if (lastSynthIndex !== -1) {
-                        showStage(lastSynthIndex);
-                    }
+                // Navigate to the "My Story" synthesis page
+                const storyIndex = stages.findIndex(s => s.id === 'my_story');
+                if (storyIndex !== -1) {
+                    showStage(storyIndex);
                 }
             });
         }
+    }
+    
+    window.initializeStoryGeneration = function() {
+        const generateBtn = document.getElementById('generate-story-btn');
+        const exportBtn = document.getElementById('export-story-btn');
+        const storyContainer = document.getElementById('compiled-story');
+        
+        if (generateBtn) {
+            generateBtn.addEventListener('click', function() {
+                const story = generateCompleteStory();
+                storyContainer.innerHTML = story;
+                exportBtn.style.display = 'inline-block';
+            });
+        }
+        
+        if (exportBtn) {
+            exportBtn.addEventListener('click', function() {
+                const storyText = storyContainer.innerText;
+                const blob = new Blob([storyText], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'my-metamyth-story.txt';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+        }
+    }
+    
+    window.generateCompleteStory = function() {
+        // Collect all form data
+        const storyData = {};
+        
+        // Origin story inputs
+        const originInputs = ['origin_early_revelation', 'origin_possible_person', 'origin_first_wound', 'origin_coreprogramming'];
+        originInputs.forEach(id => {
+            const el = document.getElementById(id);
+            if (el && el.value) storyData[id] = el.value;
+        });
+        
+        // Collect compass data
+        ['Purpose Governance', 'Visionary Strategy', 'Truthful Expression', 'Community Well-being', 'Structural Integrity', 'Creative Attraction', 'Ecological Economics', 'Quest Alignment'].forEach((point, index) => {
+            const el = document.getElementById(`compass-${index}`);
+            if (el) storyData[`compass_${point.replace(/\s+/g, '_').toLowerCase()}`] = el.value;
+        });
+        
+        // Collect all other textarea inputs from individual stages
+        stages.forEach(stage => {
+            const stageInputs = document.querySelectorAll(`[id^="${stage.id}_"]`);
+            stageInputs.forEach(input => {
+                if (input.value && input.type !== 'range') {
+                    storyData[input.id] = input.value;
+                }
+            });
+        });
+        
+        // Generate the story narrative
+        let storyHtml = '<div class="compiled-metamyth-story">';
+        storyHtml += '<h3 class="text-2xl font-bold mb-6 text-gold">My Complete Metamyth</h3>';
+        
+        // Origin Foundation
+        if (storyData.origin_early_revelation || storyData.origin_possible_person || storyData.origin_first_wound) {
+            storyHtml += '<h4 class="text-xl font-semibold mb-4 text-teal">The Origin: Where It All Began</h4>';
+            if (storyData.origin_early_revelation) {
+                storyHtml += '<p class="mb-4"><strong>Early Revelation:</strong> ' + storyData.origin_early_revelation + '</p>';
+            }
+            if (storyData.origin_possible_person) {
+                storyHtml += '<p class="mb-4"><strong>Who Showed Possibility:</strong> ' + storyData.origin_possible_person + '</p>';
+            }
+            if (storyData.origin_first_wound) {
+                storyHtml += '<p class="mb-6"><strong>The First Wound:</strong> ' + storyData.origin_first_wound + '</p>';
+            }
+        }
+        
+        // Synthesis sections from artifacts
+        const artifactSections = [
+            { id: 'calling_synthesis', title: 'The Calling', description: 'The call that awakened my quest' },
+            { id: 'quest_synthesis', title: 'The Quest', description: 'The mission that drives me forward' },
+            { id: 'vision_synthesis', title: 'The Vision', description: 'What I see as possible' },
+            { id: 'mission_synthesis', title: 'The Journey', description: 'How I will create change' },
+            { id: 'kindred_synthesis', title: 'The Request', description: 'My invitation to others' }
+        ];
+        
+        artifactSections.forEach(section => {
+            const synthData = storyData[section.id + '_content'] || storyData[section.id];
+            if (synthData) {
+                storyHtml += `<h4 class="text-xl font-semibold mb-4 text-teal">${section.title}</h4>`;
+                storyHtml += `<p class="mb-6">${synthData}</p>`;
+            }
+        });
+        
+        // Compass values
+        storyHtml += '<h4 class="text-xl font-semibold mb-4 text-teal">Current Alignment Compass</h4>';
+        storyHtml += '<p class="mb-4">My current state across the eight dimensions of purposeful living:</p>';
+        storyHtml += '<div class="grid grid-cols-2 gap-4 mb-6">';
+        ['Purpose Governance', 'Visionary Strategy', 'Truthful Expression', 'Community Well-being', 'Structural Integrity', 'Creative Attraction', 'Ecological Economics', 'Quest Alignment'].forEach((point, index) => {
+            const value = storyData[`compass_${point.replace(/\s+/g, '_').toLowerCase()}`] || '5';
+            storyHtml += `<div class="text-sm"><strong>${point}:</strong> ${value}/10</div>`;
+        });
+        storyHtml += '</div>';
+        
+        // Collect other significant responses
+        const otherResponses = Object.keys(storyData).filter(key => 
+            !key.startsWith('origin_') && 
+            !key.startsWith('compass_') && 
+            !artifactSections.some(s => key.startsWith(s.id)) &&
+            storyData[key].length > 50 // Only include substantial responses
+        );
+        
+        if (otherResponses.length > 0) {
+            storyHtml += '<h4 class="text-xl font-semibold mb-4 text-teal">Journey Insights</h4>';
+            otherResponses.forEach(key => {
+                const cleanKey = key.replace(/_/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2');
+                storyHtml += `<p class="mb-4"><strong>${cleanKey}:</strong> ${storyData[key]}</p>`;
+            });
+        }
+        
+        storyHtml += '<div class="mt-8 p-4 border border-gold rounded-lg">';
+        storyHtml += '<p class="text-center text-gold font-semibold">This is my metamyth - the story of my transformation from wound to world-builder, from victim to author of reality.</p>';
+        storyHtml += '</div>';
+        
+        storyHtml += '</div>';
+        
+        return storyHtml;
     }
 
     window.initializeCompass = function() {
