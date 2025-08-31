@@ -126,7 +126,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
         
         body.crimson-portal {
-            background: linear-gradient(135deg, #2d1b2e 0%, #8B0000 25%, #DC143C 50%, #B22222 75%, #2d1b2e 100%);
+            background: linear-gradient(135deg, #1a0000 0%, #8b0000 25%, #8b0000 50%, #8b0000 75%, #1a0000 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
