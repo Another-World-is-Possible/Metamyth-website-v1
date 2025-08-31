@@ -43,7 +43,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Password-protected METAMYTH Interactive Portal
   app.get('/begin', (req, res) => {
     const password = req.query.password;
-    if (password === 'Autopoiesis') {
+    console.log('Password received:', password); // Debug log
+    
+    // Check password (case insensitive, trim whitespace)
+    if (password && password.toString().trim().toLowerCase() === 'autopoiesis') {
       res.sendFile(path.join(process.cwd(), 'metamyth.html'));
     } else {
       // Send password-protected page with frosted glass effect
@@ -161,6 +164,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
 </body>
 </html>
       `);
+    }
+  });
+
+  // POST route for password submission (more secure)
+  app.post('/begin', (req, res) => {
+    const password = req.body.password;
+    console.log('Password received via POST:', password); // Debug log
+    
+    if (password && password.toString().trim().toLowerCase() === 'autopoiesis') {
+      res.sendFile(path.join(process.cwd(), 'metamyth.html'));
+    } else {
+      // Redirect back to GET route to show login form with error
+      res.redirect('/begin?error=invalid');
     }
   });
 
