@@ -11,6 +11,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        /* Font Loading - Match Main Website */
+        @font-face {
+            font-family: 'AngleFairy2024';
+            src: url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'GrillagesBold2024';
+            src: url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        
         :root {
             --bg-main: #1D4241;
             --bg-card: #183332;
@@ -25,10 +42,14 @@
         body {
             background-color: var(--bg-main);
             color: var(--text-main);
+            font-family: 'GrillagesBold2024', serif;
+            font-weight: 700;
         }
         h1, h2, h3, h4 {
+            font-family: 'AngleFairy2024', serif !important;
             color: var(--text-heading);
             letter-spacing: 0.05em;
+            font-weight: normal !important;
         }
         .content-card {
             background-color: var(--bg-card);
@@ -61,6 +82,8 @@
             transition: border-color 0.2s ease-in-out;
             font-size: 1rem;
             color: var(--text-main);
+            font-family: 'GrillagesBold2024', serif;
+            font-weight: 700;
         }
         textarea:focus, .compass-input:focus {
             outline: none;
@@ -119,22 +142,30 @@
         .prose {
             color: var(--text-main);
             line-height: 1.8;
+            font-family: 'GrillagesBold2024', serif;
+            font-weight: 700;
         }
         .prose h3 {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: normal;
             margin-top: 2em;
             margin-bottom: 0.5em;
             color: var(--text-heading);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
+            font-family: 'AngleFairy2024', serif !important;
         }
-        .prose p { margin-bottom: 1.25em; }
+        .prose p { 
+            margin-bottom: 1.25em;
+            font-family: 'GrillagesBold2024', serif;
+            font-weight: 700;
+        }
         .prose strong { color: var(--accent-turqoise); }
         .nav-arc-header {
             color: #fff;
-            font-weight: 700;
+            font-weight: normal;
             letter-spacing: 0.1em;
+            font-family: 'AngleFairy2024', serif !important;
         }
         .crimson-text { color: var(--accent-red); }
         .synthesis-box {
@@ -144,6 +175,8 @@
             border-radius: 0.5rem;
             font-style: italic;
             color: #E5E7EB;
+            font-family: 'GrillagesBold2024', serif;
+            font-weight: 700;
         }
         .ornamental-divider {
             height: 1px;
