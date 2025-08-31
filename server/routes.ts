@@ -126,12 +126,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
         
         body.crimson-portal {
-            background: linear-gradient(135deg, #1a0000 0%, #8b0000 25%, #8b0000 50%, #8b0000 75%, #1a0000 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, #1a0000 0%, #8b0000 25%, #8b0000 50%, #8b0000 75%, #1a0000 100%) !important;
+            min-height: 100vh !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
         }
+        
+        /* Override any Tailwind purple classes */
+        .bg-gradient-to-br { background: none !important; }
+        .from-slate-900 { background: none !important; }
+        .via-purple-900 { background: none !important; }
+        .to-slate-900 { background: none !important; }
     </style>
 </head>
 <body class="crimson-portal">
