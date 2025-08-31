@@ -31,13 +31,14 @@
         :root {
             --bg-main: #1D4241;
             --bg-card: #183332;
-            --text-main: #E0E0E0;
+            --text-main: #F0E2B6; /* Cream - main text color */
             --text-heading: #D4AF37; /* Gold */
-            --text-muted: #A0A0A0;
+            --text-muted: #F0E2B6; /* Cream for muted text too */
             --border-color: #2c5d5b;
-            --accent-turqoise: #5FE2DF;
-            --accent-turqoise-dark: #4ac0bd;
-            --accent-red: #a43743; /* Muted Crimson for text */
+            --accent-teal: #14B8A6; /* Teal main accent */
+            --accent-teal-dark: #0F766E;
+            --accent-crimson: #DC2626; /* Crimson for negative elements */
+            --accent-gold: #D4AF37; /* Gold accent */
         }
         body {
             background-color: var(--bg-main);
@@ -65,13 +66,13 @@
             padding: 0.75rem 1rem;
         }
         .nav-link.active {
-            background-color: rgba(95, 226, 223, 0.05);
-            color: var(--accent-turqoise);
-            border-left-color: var(--accent-turqoise);
+            background-color: rgba(20, 184, 166, 0.05);
+            color: var(--accent-teal);
+            border-left-color: var(--accent-teal);
         }
         .nav-link:hover {
-            background-color: rgba(95, 226, 223, 0.1);
-            color: #fff;
+            background-color: rgba(20, 184, 166, 0.1);
+            color: var(--accent-gold);
         }
         textarea, .compass-input {
             background-color: rgba(0,0,0,0.2);
@@ -87,8 +88,8 @@
         }
         textarea:focus, .compass-input:focus {
             outline: none;
-            border-color: var(--accent-turqoise);
-            box-shadow: 0 0 0 2px rgba(95, 226, 223, 0.3);
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.3);
         }
         /* CTA Button Styles - Matching Main Site */
         .cta-button-base {
@@ -141,7 +142,7 @@
         
         /* Legacy button support */
         .btn-primary {
-            background-color: var(--accent-turqoise);
+            background-color: var(--accent-teal);
             color: #0c2a29;
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
@@ -152,13 +153,13 @@
             letter-spacing: 0.1em;
         }
         .btn-primary:hover {
-            background-color: var(--accent-turqoise-dark);
-            box-shadow: 0 0 15px rgba(95, 226, 223, 0.4);
+            background-color: var(--accent-teal-dark);
+            box-shadow: 0 0 15px rgba(20, 184, 166, 0.4);
         }
         .btn-secondary {
             background-color: transparent;
-            color: var(--accent-turqoise);
-            border: 1px solid var(--accent-turqoise);
+            color: var(--accent-teal);
+            border: 1px solid var(--accent-teal);
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             font-weight: 700;
@@ -166,7 +167,7 @@
             cursor: pointer;
         }
         .btn-secondary:hover {
-            background-color: rgba(95, 226, 223, 0.1);
+            background-color: rgba(20, 184, 166, 0.1);
         }
         .artifiction-icon {
             font-size: 2.5rem;
@@ -217,14 +218,20 @@
             letter-spacing: 0.1em;
             font-family: 'AngleFairy2024', serif !important;
         }
-        .crimson-text { color: var(--accent-red); }
+        .crimson-text { color: var(--accent-crimson); }
+        .text-gold { color: var(--accent-gold); }
+        .border-gold { border-color: var(--accent-gold); }
+        .text-teal { color: var(--accent-teal); }
+        .border-teal { border-color: var(--accent-teal); }
+        .text-crimson { color: var(--accent-crimson); }
+        .border-crimson { border-color: var(--accent-crimson); }
         .synthesis-box {
             background-color: rgba(0,0,0,0.1);
-            border-left: 4px solid var(--accent-turqoise);
+            border-left: 4px solid var(--accent-teal);
             padding: 1.5rem;
             border-radius: 0.5rem;
             font-style: italic;
-            color: #E5E7EB;
+            color: var(--text-main);
             font-family: 'GrillagesBold2024', serif;
             font-weight: 700;
         }
@@ -311,31 +318,28 @@ document.addEventListener('DOMContentLoaded', function () {
         { id: 'character', title: 'The Character', arc: 'ARC II', icon: '👤' },
         { id: 'banner', title: 'The Banner', arc: 'ARC II', icon: '🚩' },
         { id: 'sword', title: 'The Sword', arc: 'ARC II', icon: '⚔️', iconClass: 'crimson-text' },
-        { id: 'quest_synthesis', title: 'The Quest Synthesis', arc: 'Artifact II', icon: '📜' },
+        { id: 'quest_synthesis', title: 'The Complete Quest Declaration', arc: 'Artifact II', icon: '📜' },
         { id: 'arc3', title: 'Artifact III: What is Possible', arc: 'Artifact III', icon: '🌌' },
         { id: 'looking_glass', title: 'The Looking Glass', arc: 'ARC III', icon: '🔮' },
         { id: 'transformation', title: 'The Transformation', arc: 'ARC III', icon: '🦋' },
         { id: 'globe', title: 'The Globe', arc: 'ARC III', icon: '🌍' },
         { id: 'map', title: 'The Map', arc: 'ARC III', icon: '🗺️' },
-        { id: 'vision_synthesis', title: 'The Vision Synthesis', arc: 'Artifact III', icon: '🔭' },
+        { id: 'vision_synthesis', title: 'The Future Declaration', arc: 'Artifact III', icon: '🔭' },
         { id: 'arc4', title: 'Artifact IV: The Journey', arc: 'Artifact IV', icon: '👣' },
         { id: 'fountain', title: 'The Fountain', arc: 'ARC IV', icon: '⛲' },
         { id: 'ethos', title: 'The Ethos', arc: 'ARC IV', icon: '📜' },
         { id: 'plot', title: 'The Plot', arc: 'ARC IV', icon: '📊' },
         { id: 'compass', title: 'The Compass', arc: 'ARC IV', icon: '🧭' },
-        { id: 'mission_synthesis', title: 'The Mission Synthesis', arc: 'Artifact IV', icon: '🎯' },
+        { id: 'mission_synthesis', title: 'The Practical Plan', arc: 'Artifact IV', icon: '🎯' },
         { id: 'arc5', title: 'Artifact V: The Request', arc: 'Artifact V', icon: '🏡' },
         { id: 'grail', title: 'The Grail', arc: 'ARC V', icon: '🏆' },
         { id: 'initiation', title: 'The Initiation', arc: 'ARC V', icon: '🌉' },
         { id: 'campfire', title: 'The Campfire', arc: 'ARC V', icon: '🔥', iconClass: 'crimson-text' },
         { id: 'message', title: 'The Message', arc: 'ARC V', icon: '📢' },
-        { id: 'legacy', title: 'The Legacy', arc: 'ARC V', icon: '🌅' },
-        { id: 'kinship', title: 'The Kinship', arc: 'ARC V', icon: '🤝' },
-        { id: 'kindred_synthesis', title: 'The Kindred Synthesis', arc: 'Artifact V', icon: '🌟' },
-        { id: 'wizard', title: 'The Wizard', arc: 'Conclusion', icon: '🧙' },
-        { id: 'activate_wizard', title: 'Activate Your AI', arc: 'Conclusion', icon: '🤖' },
-        { id: 'synthesis', title: 'Your Complete Metamyth', arc: 'Conclusion', icon: '📜' },
-        { id: 'epilogue', title: 'The Great Adventure', arc: 'Conclusion', icon: '🌅' },
+        { id: 'kindred_synthesis', title: 'The Call to Kindred Quest Synthesis', arc: 'Artifact V', icon: '🌟' },
+        { id: 'legacy', title: 'The Legacy', arc: 'Legacy', icon: '🌅' },
+        { id: 'wizard', title: 'The Wizard', arc: 'Integration', icon: '🧙' },
+        { id: 'activate_wizard', title: 'Create Your Personal AI Wizard', arc: 'Integration', icon: '🤖' },
     ];
 
     const metamythData = {};
@@ -383,23 +387,28 @@ document.addEventListener('DOMContentLoaded', function () {
             intro: `
                 <div class="content-card">
                     <div class="text-center">
-                        <h2 class="text-5xl font-bold mb-4">Awaken.</h2>
-                        <p class="text-xl text-slate-400 mb-6">Adventure is calling. Do you accept?</p>
+                        <h1 class="text-5xl font-bold mb-2">METAMYTH: CHOOSE YOUR OWN ADVENTURE</h1>
+                        <h2 class="text-2xl mb-4">The Journey from Wound to World-Builder, from Victim to Author of Reality</h2>
+                        <p class="text-lg text-gold mb-2">Enhanced Edition with Synthesis Artifacts</p>
+                        <div class="mt-8">
+                            <h3 class="text-4xl font-bold mb-4">Awaken.</h3>
+                            <p class="text-xl mb-6">Adventure is calling. Do you accept?</p>
+                        </div>
                     </div>
                     <div class="prose max-w-none mx-auto mt-8">
                         <p>Our crisis is a completely broken story. A species destroying its only home for numbers on a screen; an economic system that grows by devouring what sustains it; a world that has gone amuck because we've forgotten it's a story in the first place. We've taken it so seriously that we've stopped writing it.</p>
                         <p>Our purpose has always been to create the world through story—to create ourselves, pass on our connection and history, and have visions of the future that we communicate to others and make real in the telling. We have forgotten this purpose and have blindly consented to be characters in someone else's story, one that none of us truly wrote.</p>
                         <p>But here's the cosmic joke that'll set you free: <strong>We wrote this nightmare, so we can rewrite it.</strong></p>
-                        <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-lg p-6 mt-8">
-                            <h3 class="text-2xl font-bold mb-4">HOW TO REWRITE YOUR LIFE</h3>
+                        <div class="bg-black bg-opacity-30 border border-gold rounded-lg p-6 mt-8">
+                            <h3 class="text-2xl font-bold mb-4 text-gold">HOW TO REWRITE YOUR LIFE</h3>
                             <p>What follows is the journey home to yourself, to the purpose-driven world-builder you've always been beneath the stories that were never yours to begin with. This is about rewriting your life story on purpose. For too long, you've been a background extra wandering through scenes that drain your soul and waste your gifts. But you can take charge of that story, make it an epic, and transform into the hero you were always meant to be.</p>
                             <p class="mt-4">This framework is the master prompt for your organizational and personal DNA. As you fill this out, you are writing the code for your reality. Therefore, there is only one rule:</p>
-                            <p class="text-center text-2xl font-bold text-yellow-400 mt-4">Be impeccable with your word</p>
+                            <p class="text-center text-2xl font-bold text-gold mt-4">Be impeccable with your word</p>
                             <p class="text-center mt-4 text-lg">Time to remember why you're here.</p>
                         </div>
                     </div>
                     <div class="text-center mt-10">
-                        <button class="btn-primary" onclick="showStage(1)">Begin the Journey</button>
+                        <button class="cta-button-base cta-button-gold" onclick="showStage(1)">BEGIN THE JOURNEY</button>
                     </div>
                 </div>`,
             howto: `
@@ -420,36 +429,37 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`,
             origin: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌱</span><h2 class="text-4xl font-bold">The Origin Story</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🌱</span><h2 class="text-4xl font-bold">PREAMBLE: THE ORIGIN STORY</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p class="text-lg font-semibold">The Foundational Myth That Shapes Everything</p>
+                        <p class="text-lg font-semibold text-gold">The Foundational Myth That Shapes Everything</p>
                         <p>Every hero's journey begins before the call to adventure—in the ordinary world that shaped them, the primordial essence from which their quest is born. Like a seed, your origin contains the DNA of the entire story that follows.</p>
+                        <h3 class="text-xl font-bold text-gold mt-6">QUESTIONS THAT REGENERATE THE FOUNDATION:</h3>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What early experiences taught you how the world really works?</label>
-                            <p class="text-sm text-slate-400 mb-3">Think beyond happy childhood memories to moments that revealed the deeper patterns—times when you saw through adult pretenses, witnessed injustice, or recognized your own power to affect others.</p>
+                            <label class="font-semibold text-lg block mb-2">What early experiences taught you how the world really works?</label>
+                            <p class="text-sm mb-3">Think beyond happy childhood memories to moments that revealed the deeper patterns—times when you saw through adult pretenses, witnessed injustice, or recognized your own power to affect others.</p>
                             <textarea id="origin_early_revelation" rows="4" placeholder="Write about the early experiences that shaped your understanding of how the world really works..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">Who showed you what was possible in a human life?</label>
-                            <p class="text-sm text-slate-400 mb-3">Not just heroes and mentors, but anyone whose existence expanded your sense of what you could become—rebels, artists, outcasts, wisdom keepers who lived differently than everyone else.</p>
+                            <label class="font-semibold text-lg block mb-2">Who showed you what was possible in a human life?</label>
+                            <p class="text-sm mb-3">Not just heroes and mentors, but anyone whose existence expanded your sense of what you could become—rebels, artists, outcasts, wisdom keepers who lived differently than everyone else.</p>
                             <textarea id="origin_possible_person" rows="4" placeholder="Describe who showed you what was possible in a human life..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">When did you first realize you were different from other people?</label>
-                            <p class="text-sm text-slate-400 mb-3">The moment you recognized you saw things others didn't, cared about things others ignored, or felt called to something that made no practical sense.</p>
+                            <label class="font-semibold text-lg block mb-2">When did you first realize you were different from other people?</label>
+                            <p class="text-sm mb-3">The moment you recognized you saw things others didn't, cared about things others ignored, or felt called to something that made no practical sense.</p>
                             <textarea id="origin_different" rows="4" placeholder="Share when you first knew you were different..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What has always felt sacred to you, even when you couldn't explain why?</label>
-                            <p class="text-sm text-slate-400 mb-3">The thread that runs through your entire life—the thing you've always protected, served, or been drawn to, regardless of whether it made sense to others.</p>
+                            <label class="font-semibold text-lg block mb-2">What has always felt sacred to you, even when you couldn't explain why?</label>
+                            <p class="text-sm mb-3">The thread that runs through your entire life—the thing you've always protected, served, or been drawn to, regardless of whether it made sense to others.</p>
                             <textarea id="origin_sacred" rows="4" placeholder="Describe what has always felt sacred to you..."></textarea>
                         </div>
-                        <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-lg p-6">
-                            <label class="font-semibold text-lg text-yellow-400 block mb-2">ORIGIN SYNTHESIS - The Seed of Everything</label>
-                            <p class="text-sm text-slate-400 mb-3">Weave your four origin elements into a foundational myth—one paragraph that explains why you, with your specific background and essence, were destined for the quest that called you. This becomes your creation story.</p>
+                        <div class="synthesis-box border border-gold">
+                            <label class="font-semibold text-lg text-gold block mb-2">ORIGIN SYNTHESIS - The Seed of Everything:</label>
+                            <p class="text-sm mb-3">Weave your four origin elements into a foundational myth—one paragraph that explains why you, with your specific background and essence, were destined for the quest that called you. This becomes your creation story.</p>
                             <textarea id="origin_synthesis" rows="5" placeholder="Write your complete origin synthesis - the seed of your entire story..."></textarea>
                         </div>
                     </div>
@@ -510,28 +520,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What specific insanity in our world makes you physically sick to witness?</label>
-                            <p class="text-sm text-slate-400 mb-3">Not vague problems but the particular manifestation of collective madness that cuts you like a knife when you see it happening.</p>
+                            <label class="font-semibold text-lg block mb-2">What specific insanity in our world makes you physically sick to witness?</label>
+                            <p class="text-sm mb-3">Not vague problems but the particular manifestation of collective madness that cuts you like a knife when you see it happening.</p>
                             <textarea id="dragon_specific_madness" rows="4" placeholder="Describe the specific madness that sickens you..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">When did you realize that what everyone calls "normal" is actually completely insane?</label>
-                            <p class="text-sm text-slate-400 mb-3">The moment you saw through the collective trance and recognized that the emperor truly has no clothes.</p>
+                            <label class="font-semibold text-lg block mb-2">When did you realize that what everyone calls "normal" is actually completely insane?</label>
+                            <p class="text-sm mb-3">The moment you saw through the collective trance and recognized that the emperor truly has no clothes.</p>
                             <textarea id="dragon_normal_lie" rows="4" placeholder="Share when you saw through the 'normal' lie..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What trajectory is humanity on if we change nothing?</label>
-                            <p class="text-sm text-slate-400 mb-3">If current patterns continue exactly as they are, where do we end up? Paint the picture that keeps you awake at night.</p>
+                            <label class="font-semibold text-lg block mb-2">What trajectory is humanity on if we change nothing?</label>
+                            <p class="text-sm mb-3">If current patterns continue exactly as they are, where do we end up? Paint the picture that keeps you awake at night.</p>
                             <textarea id="dragon_trajectory" rows="4" placeholder="Describe where we're headed if nothing changes..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What becomes possible when this house of cards finally collapses?</label>
-                            <p class="text-sm text-slate-400 mb-3">What new world could emerge from the breakdown of systems that are destroying everything we love?</p>
+                            <label class="font-semibold text-lg block mb-2">What becomes possible when this house of cards finally collapses?</label>
+                            <p class="text-sm mb-3">What new world could emerge from the breakdown of systems that are destroying everything we love?</p>
                             <textarea id="dragon_emergence" rows="4" placeholder="What could emerge from the collapse..."></textarea>
                         </div>
-                        <div class="bg-black bg-opacity-20 border border-red-600 rounded-lg p-4 mt-6">
-                            <label class="font-semibold text-lg text-red-400 block mb-2">DRAGON SYNTHESIS - The Broken Story</label>
-                            <p class="text-sm text-slate-400 mb-3">Crystallize into one tight statement the specific insanity that broke you out of the collective trance and thrust you into action—the dragon you can no longer ignore.</p>
+                        <div class="synthesis-box border border-crimson">
+                            <label class="font-semibold text-lg text-crimson block mb-2">DRAGON SYNTHESIS - The Broken Story:</label>
+                            <p class="text-sm mb-3">Crystallize into one tight statement the specific insanity that broke you out of the collective trance and thrust you into action—the dragon you can no longer ignore.</p>
                             <textarea id="dragon_synthesis" rows="3" placeholder="The broken story that thrust you into action..."></textarea>
                         </div>
                     </div>
@@ -545,28 +555,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">Where has the dragon wounded you personally—what pain do you carry from this broken system?</label>
-                            <p class="text-sm text-slate-400 mb-3">How has the civilizational madness you identified left its mark on your own life and psyche?</p>
+                            <label class="font-semibold text-lg block mb-2">Where has the dragon wounded you personally—what pain do you carry from this broken system?</label>
+                            <p class="text-sm mb-3">How has the civilizational madness you identified left its mark on your own life and psyche?</p>
                             <textarea id="threshold_wounded" rows="4" placeholder="Describe where the dragon has wounded you personally..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How has wrestling with this wound made you uniquely qualified to serve others?</label>
-                            <p class="text-sm text-slate-400 mb-3">What insights, empathy, or strength have you developed because of—not despite—this personal struggle?</p>
+                            <label class="font-semibold text-lg block mb-2">How has wrestling with this wound made you uniquely qualified to serve others?</label>
+                            <p class="text-sm mb-3">What insights, empathy, or strength have you developed because of—not despite—this personal struggle?</p>
                             <textarea id="threshold_qualified" rows="4" placeholder="How wrestling with this wound qualifies you..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">Who else is suffering from this same wound that the dragon inflicts?</label>
-                            <p class="text-sm text-slate-400 mb-3">Where do you see this same pattern of damage playing out in others' lives or in society at large?</p>
+                            <label class="font-semibold text-lg block mb-2">Who else is suffering from this same wound that the dragon inflicts?</label>
+                            <p class="text-sm mb-3">Where do you see this same pattern of damage playing out in others' lives or in society at large?</p>
                             <textarea id="threshold_others_suffering" rows="4" placeholder="Who else suffers from this same wound..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What superpower emerges when you fully own your wound as sacred qualification?</label>
-                            <p class="text-sm text-slate-400 mb-3">How does integrating rather than hiding this aspect of yourself become your greatest strength?</p>
+                            <label class="font-semibold text-lg block mb-2">What superpower emerges when you fully own your wound as sacred qualification?</label>
+                            <p class="text-sm mb-3">How does integrating rather than hiding this aspect of yourself become your greatest strength?</p>
                             <textarea id="threshold_superpower" rows="4" placeholder="The superpower hidden in your wound..."></textarea>
                         </div>
-                        <div class="bg-black bg-opacity-20 border border-blue-600 rounded-lg p-4 mt-6">
-                            <label class="font-semibold text-lg text-blue-400 block mb-2">THRESHOLD SYNTHESIS - The Sacred Wound</label>
-                            <p class="text-sm text-slate-400 mb-3">Distill how the dragon's wound in you has become your qualification—a single statement that captures how your deepest struggle transforms into your greatest strength.</p>
+                        <div class="synthesis-box border border-teal">
+                            <label class="font-semibold text-lg text-teal block mb-2">THRESHOLD SYNTHESIS - The Sacred Wound:</label>
+                            <p class="text-sm mb-3">Distill how the dragon's wound in you has become your qualification—a single statement that captures how your deepest struggle transforms into your greatest strength.</p>
                             <textarea id="threshold_synthesis" rows="3" placeholder="How your wound became your qualification..."></textarea>
                         </div>
                     </div>
@@ -580,28 +590,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What have you survived that would have broken most people in your position?</label>
-                            <p class="text-sm text-slate-400 mb-3">The specific trials that forged your strength and taught you what you're truly made of.</p>
+                            <label class="font-semibold text-lg block mb-2">What have you survived that would have broken most people in your position?</label>
+                            <p class="text-sm mb-3">The specific trials that forged your strength and taught you what you're truly made of.</p>
                             <textarea id="shield_survived" rows="4" placeholder="What you've survived that would break others..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">Who is currently being attacked by the same forces that once tried to destroy you?</label>
-                            <p class="text-sm text-slate-400 mb-3">Where do you see the same destructive patterns you survived now threatening others?</p>
+                            <label class="font-semibold text-lg block mb-2">Who is currently being attacked by the same forces that once tried to destroy you?</label>
+                            <p class="text-sm mb-3">Where do you see the same destructive patterns you survived now threatening others?</p>
                             <textarea id="shield_who_needs_protection" rows="4" placeholder="Who needs your protection now..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How does your survival wisdom become their protection?</label>
-                            <p class="text-sm text-slate-400 mb-3">What do you know about navigating these dangers that could shield others from the worst harm?</p>
+                            <label class="font-semibold text-lg block mb-2">How does your survival wisdom become their protection?</label>
+                            <p class="text-sm mb-3">What do you know about navigating these dangers that could shield others from the worst harm?</p>
                             <textarea id="shield_protection_wisdom" rows="4" placeholder="How your survival becomes their shield..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What symbol represents your earned right to stand as protector?</label>
-                            <p class="text-sm text-slate-400 mb-3">If your qualification were a coat of arms, what would it look like? What represents your warrior nature?</p>
+                            <label class="font-semibold text-lg block mb-2">What symbol represents your earned right to stand as protector?</label>
+                            <p class="text-sm mb-3">If your qualification were a coat of arms, what would it look like? What represents your warrior nature?</p>
                             <textarea id="shield_symbol" rows="4" placeholder="The symbol of your warrior qualification..."></textarea>
                         </div>
-                        <div class="bg-black bg-opacity-20 border border-gray-500 rounded-lg p-4 mt-6">
-                            <label class="font-semibold text-lg text-gray-300 block mb-2">SHIELD SYNTHESIS - The Protector's Armor</label>
-                            <p class="text-sm text-slate-400 mb-3">Forge into one clear declaration how your survival wisdom becomes protection for others—the armor you've earned through your trials that now shields those facing similar battles.</p>
+                        <div class="synthesis-box border border-teal">
+                            <label class="font-semibold text-lg text-teal block mb-2">SHIELD SYNTHESIS - The Protector's Armor:</label>
+                            <p class="text-sm mb-3">Forge into one clear declaration how your survival wisdom becomes protection for others—the armor you've earned through your trials that now shields those facing similar battles.</p>
                             <textarea id="shield_synthesis" rows="3" placeholder="How your survival wisdom protects others..."></textarea>
                         </div>
                     </div>
@@ -615,28 +625,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How does your personal struggle reflect the broader human condition?</label>
-                            <p class="text-sm text-slate-400 mb-3">In what ways is your individual pain actually universal pain that everyone faces in different forms?</p>
+                            <label class="font-semibold text-lg block mb-2">How does your personal struggle reflect the broader human condition?</label>
+                            <p class="text-sm mb-3">In what ways is your individual pain actually universal pain that everyone faces in different forms?</p>
                             <textarea id="pearl_universal_condition" rows="4" placeholder="How your struggle reflects the universal human condition..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What framework for understanding suffering has emerged from your journey?</label>
-                            <p class="text-sm text-slate-400 mb-3">How do you make sense of why we go through what we go through? What's your theory of meaning-making?</p>
+                            <label class="font-semibold text-lg block mb-2">What framework for understanding suffering has emerged from your journey?</label>
+                            <p class="text-sm mb-3">How do you make sense of why we go through what we go through? What's your theory of meaning-making?</p>
                             <textarea id="pearl_suffering_framework" rows="4" placeholder="Your framework for understanding suffering..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What can only be taught by someone who has walked through this particular fire?</label>
-                            <p class="text-sm text-slate-400 mb-3">What wisdom do you carry that could only come from having survived your specific struggles?</p>
+                            <label class="font-semibold text-lg block mb-2">What can only be taught by someone who has walked through this particular fire?</label>
+                            <p class="text-sm mb-3">What wisdom do you carry that could only come from having survived your specific struggles?</p>
                             <textarea id="pearl_unique_teaching" rows="4" placeholder="What can only be taught by someone who survived this..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How does healing your wound heal a wound in the world?</label>
-                            <p class="text-sm text-slate-400 mb-3">When you transform this pattern in yourself, how does that ripple out to serve collective healing?</p>
+                            <label class="font-semibold text-lg block mb-2">How does healing your wound heal a wound in the world?</label>
+                            <p class="text-sm mb-3">When you transform this pattern in yourself, how does that ripple out to serve collective healing?</p>
                             <textarea id="pearl_world_healing" rows="4" placeholder="How healing your wound heals the world..."></textarea>
                         </div>
-                        <div class="bg-black bg-opacity-20 border border-white rounded-lg p-4 mt-6">
-                            <label class="font-semibold text-lg text-white block mb-2">PEARL SYNTHESIS - The Wisdom Born from Pain</label>
-                            <p class="text-sm text-slate-400 mb-3">Polish into one luminous insight how your individual struggle reflects universal patterns and serves collective healing—the meaning you've made from what nearly broke you.</p>
+                        <div class="synthesis-box border border-teal">
+                            <label class="font-semibold text-lg text-teal block mb-2">PEARL SYNTHESIS - The Wisdom Born from Pain:</label>
+                            <p class="text-sm mb-3">Polish into one luminous insight how your individual struggle reflects universal patterns and serves collective healing—the meaning you've made from what nearly broke you.</p>
                             <textarea id="pearl_synthesis" rows="3" placeholder="The wisdom born from your pain..."></textarea>
                         </div>
                     </div>
@@ -649,8 +659,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p>Your Calling synthesizes your Dragon (the madness you can no longer ignore), your Threshold (where you were wounded and became qualified), your Shield (your survival wisdom as protection), and your Pearl (the wisdom forged from trauma). This is your cosmic role—why you specifically stand between the dragon and those needing protection.</p>
                     </div>
                     <div class="ornamental-divider"></div>
-                    <div class="bg-black bg-opacity-30 border border-yellow-600 rounded-lg p-6">
-                        <label class="font-semibold text-lg text-yellow-400 block mb-2">THE CALLING SYNTHESIS - The Sacred Assignment</label>
+                    <div class="synthesis-box border border-gold">
+                        <label class="font-semibold text-lg text-gold block mb-2">THE CALLING SYNTHESIS - The Sacred Assignment:</label>
                         <p class="text-sm text-slate-400 mb-3">Transform your Call to Adventure into one powerful paragraph that captures your cosmic role—why you specifically stand between the dragon and those needing protection. Make it memorable enough to repeat when people ask what you do.</p>
                         <textarea id="calling_synthesis_complete" rows="6" placeholder="Write your complete Calling synthesis - your sacred assignment..."></textarea>
                     </div>
@@ -676,28 +686,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What would you be doing if all jobs were automated and only the work of being human remained?</label>
-                            <p class="text-sm text-slate-400 mb-3">When survival needs are met and you're free to contribute what only you can give to the world.</p>
+                            <label class="font-semibold text-lg block mb-2">What would you be doing if all jobs were automated and only the work of being human remained?</label>
+                            <p class="text-sm mb-3">When survival needs are met and you're free to contribute what only you can give to the world.</p>
                             <textarea id="star_human_work" rows="4" placeholder="What you'd do if only human work remained..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What direction never leads you astray, regardless of circumstances?</label>
-                            <p class="text-sm text-slate-400 mb-3">The internal compass that guides you through any situation, the true north of your existence.</p>
+                            <label class="font-semibold text-lg block mb-2">What direction never leads you astray, regardless of circumstances?</label>
+                            <p class="text-sm mb-3">The internal compass that guides you through any situation, the true north of your existence.</p>
                             <textarea id="star_true_direction" rows="4" placeholder="Your direction that never leads astray..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What would still matter if you were 95 on your deathbed?</label>
-                            <p class="text-sm text-slate-400 mb-3">When everything else falls away, what would you want to be remembered for? What impact justifies your existence?</p>
+                            <label class="font-semibold text-lg block mb-2">What would still matter if you were 95 on your deathbed?</label>
+                            <p class="text-sm mb-3">When everything else falls away, what would you want to be remembered for? What impact justifies your existence?</p>
                             <textarea id="star_deathbed_matters" rows="4" placeholder="What would matter at 95 on your deathbed..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How does your purpose serve the healing and evolution of our entire species?</label>
-                            <p class="text-sm text-slate-400 mb-3">How does following your deepest calling contribute to humanity's transformation and Earth's regeneration?</p>
+                            <label class="font-semibold text-lg block mb-2">How does your purpose serve the healing and evolution of our entire species?</label>
+                            <p class="text-sm mb-3">How does following your deepest calling contribute to humanity's transformation and Earth's regeneration?</p>
                             <textarea id="star_species_evolution" rows="4" placeholder="How your purpose serves species evolution..."></textarea>
                         </div>
                         <div class="bg-black bg-opacity-20 border border-yellow-600 rounded-lg p-4 mt-6">
                             <label class="font-semibold text-lg text-yellow-400 block mb-2">STAR SYNTHESIS - The North Star Declaration</label>
-                            <p class="text-sm text-slate-400 mb-3">Crystallize into one unwavering statement your deepest purpose—the direction that never leads astray and serves planetary transformation. This becomes your cosmic assignment.</p>
+                            <p class="text-sm mb-3">Crystallize into one unwavering statement your deepest purpose—the direction that never leads astray and serves planetary transformation. This becomes your cosmic assignment.</p>
                             <textarea id="star_synthesis" rows="3" placeholder="Your unwavering north star declaration..."></textarea>
                         </div>
                     </div>
@@ -711,28 +721,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What is the essence of your personal character that draws people to you?</label>
-                            <p class="text-sm text-slate-400 mb-3">The core trait, way of being, or authentic quality that resonates with others and makes them want to work with you.</p>
+                            <label class="font-semibold text-lg block mb-2">What is the essence of your personal character that draws people to you?</label>
+                            <p class="text-sm mb-3">The core trait, way of being, or authentic quality that resonates with others and makes them want to work with you.</p>
                             <textarea id="character_personal_essence" rows="4" placeholder="Your personal character that draws people..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">Who are the actual people currently in your community/organization and what draws them?</label>
-                            <p class="text-sm text-slate-400 mb-3">Map the real humans and what they share beyond surface demographics—the deeper resonance that brings them together.</p>
+                            <label class="font-semibold text-lg block mb-2">Who are the actual people currently in your community/organization and what draws them?</label>
+                            <p class="text-sm mb-3">Map the real humans and what they share beyond surface demographics—the deeper resonance that brings them together.</p>
                             <textarea id="character_actual_people" rows="4" placeholder="The actual people in your community and what draws them..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What community are you building around this shared purpose?</label>
-                            <p class="text-sm text-slate-400 mb-3">The larger group you're calling into existence—who belongs in this story and what unifies them?</p>
+                            <label class="font-semibold text-lg block mb-2">What community are you building around this shared purpose?</label>
+                            <p class="text-sm mb-3">The larger group you're calling into existence—who belongs in this story and what unifies them?</p>
                             <textarea id="character_building_community" rows="4" placeholder="The community you're building around shared purpose..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What collective character emerges when your people come together?</label>
-                            <p class="text-sm text-slate-400 mb-3">What your community becomes greater than the sum of its parts—the shared identity that enables powerful collaboration.</p>
+                            <label class="font-semibold text-lg block mb-2">What collective character emerges when your people come together?</label>
+                            <p class="text-sm mb-3">What your community becomes greater than the sum of its parts—the shared identity that enables powerful collaboration.</p>
                             <textarea id="character_collective" rows="4" placeholder="Your collective character when you come together..."></textarea>
                         </div>
                         <div class="bg-black bg-opacity-20 border border-purple-600 rounded-lg p-4 mt-6">
                             <label class="font-semibold text-lg text-purple-400 block mb-2">CHARACTER SYNTHESIS - The Community Identity</label>
-                            <p class="text-sm text-slate-400 mb-3">Distill into one statement the essence that connects you and your people—the shared character that makes your community powerful and distinct.</p>
+                            <p class="text-sm mb-3">Distill into one statement the essence that connects you and your people—the shared character that makes your community powerful and distinct.</p>
                             <textarea id="character_synthesis" rows="3" placeholder="The essence that connects your community..."></textarea>
                         </div>
                     </div>
@@ -746,28 +756,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What role do you play in addressing the issues you've identified?</label>
-                            <p class="text-sm text-slate-400 mb-3">Are you the voice, the organizer, the builder, the healer, the revolutionary? How do you position yourself in relation to the problem?</p>
+                            <label class="font-semibold text-lg block mb-2">What role do you play in addressing the issues you've identified?</label>
+                            <p class="text-sm mb-3">Are you the voice, the organizer, the builder, the healer, the revolutionary? How do you position yourself in relation to the problem?</p>
                             <textarea id="banner_role" rows="4" placeholder="Your role in addressing these issues..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">Where do you stand on the issues that matter most to you?</label>
-                            <p class="text-sm text-slate-400 mb-3">Your clear position—not neutral, but taking a definitive stance that others can rally around or oppose.</p>
+                            <label class="font-semibold text-lg block mb-2">Where do you stand on the issues that matter most to you?</label>
+                            <p class="text-sm mb-3">Your clear position—not neutral, but taking a definitive stance that others can rally around or oppose.</p>
                             <textarea id="banner_stand" rows="4" placeholder="Where you stand on what matters most..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How does your individual role serve stakes larger than yourself?</label>
-                            <p class="text-sm text-slate-400 mb-3">What transforms your personal position into something that serves collective transformation and planetary healing?</p>
+                            <label class="font-semibold text-lg block mb-2">How does your individual role serve stakes larger than yourself?</label>
+                            <p class="text-sm mb-3">What transforms your personal position into something that serves collective transformation and planetary healing?</p>
                             <textarea id="banner_larger_stakes" rows="4" placeholder="How your role serves stakes larger than yourself..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What unique territory in this space do you claim that others can find you in?</label>
-                            <p class="text-sm text-slate-400 mb-3">The specific ground you occupy that differentiates you from others working on similar issues.</p>
+                            <label class="font-semibold text-lg block mb-2">What unique territory in this space do you claim that others can find you in?</label>
+                            <p class="text-sm mb-3">The specific ground you occupy that differentiates you from others working on similar issues.</p>
                             <textarea id="banner_unique_territory" rows="4" placeholder="The unique territory you claim..."></textarea>
                         </div>
                         <div class="bg-black bg-opacity-20 border border-red-500 rounded-lg p-4 mt-6">
                             <label class="font-semibold text-lg text-red-400 block mb-2">BANNER SYNTHESIS - The Position I Claim</label>
-                            <p class="text-sm text-slate-400 mb-3">Declare in one statement your role and stance in addressing the issues that matter—where you stand and how this serves something larger than yourself.</p>
+                            <p class="text-sm mb-3">Declare in one statement your role and stance in addressing the issues that matter—where you stand and how this serves something larger than yourself.</p>
                             <textarea id="banner_synthesis" rows="3" placeholder="The position you claim in the transformation..."></textarea>
                         </div>
                     </div>
@@ -781,28 +791,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What specific methodology do you use that was forged from your deepest struggles?</label>
-                            <p class="text-sm text-slate-400 mb-3">Your unique approach born from having to solve the exact problems that once nearly destroyed you.</p>
+                            <label class="font-semibold text-lg block mb-2">What specific methodology do you use that was forged from your deepest struggles?</label>
+                            <p class="text-sm mb-3">Your unique approach born from having to solve the exact problems that once nearly destroyed you.</p>
                             <textarea id="sword_methodology" rows="4" placeholder="Your methodology forged from pain..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How does this methodology serve both healing and transformation?</label>
-                            <p class="text-sm text-slate-400 mb-3">What does your approach heal, and what does it transform? How does it address root causes rather than symptoms?</p>
+                            <label class="font-semibold text-lg block mb-2">How does this methodology serve both healing and transformation?</label>
+                            <p class="text-sm mb-3">What does your approach heal, and what does it transform? How does it address root causes rather than symptoms?</p>
                             <textarea id="sword_healing_transformation" rows="4" placeholder="How this serves healing and transformation..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What makes your methodology different from others attempting similar work?</label>
-                            <p class="text-sm text-slate-400 mb-3">The unique elements that come from your specific journey and cannot be replicated by those who haven't walked your path.</p>
+                            <label class="font-semibold text-lg block mb-2">What makes your methodology different from others attempting similar work?</label>
+                            <p class="text-sm mb-3">The unique elements that come from your specific journey and cannot be replicated by those who haven't walked your path.</p>
                             <textarea id="sword_unique_methodology" rows="4" placeholder="What makes your methodology unique..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How does wielding this methodology advance your purpose while protecting what's sacred?</label>
-                            <p class="text-sm text-slate-400 mb-3">Your sword as both creative and defensive tool—building what needs building while guarding what needs guarding.</p>
+                            <label class="font-semibold text-lg block mb-2">How does wielding this methodology advance your purpose while protecting what's sacred?</label>
+                            <p class="text-sm mb-3">Your sword as both creative and defensive tool—building what needs building while guarding what needs guarding.</p>
                             <textarea id="sword_protect_sacred" rows="4" placeholder="How this advances purpose while protecting the sacred..."></textarea>
                         </div>
                         <div class="bg-black bg-opacity-20 border border-red-700 rounded-lg p-4 mt-6">
                             <label class="font-semibold text-lg text-red-300 block mb-2">SWORD SYNTHESIS - The Methodology Forged from Pain</label>
-                            <p class="text-sm text-slate-400 mb-3">Define in one statement your unique methodology born from struggle—the specific approach that heals and transforms because it was forged in your own fires.</p>
+                            <p class="text-sm mb-3">Define in one statement your unique methodology born from struggle—the specific approach that heals and transforms because it was forged in your own fires.</p>
                             <textarea id="sword_synthesis" rows="3" placeholder="Your methodology forged from pain..."></textarea>
                         </div>
                     </div>
@@ -842,28 +852,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What becomes possible in your life when you stop holding back and embrace your full power?</label>
-                            <p class="text-sm text-slate-400 mb-3">The version of yourself you've been afraid to become—what's possible when you step fully into your gifts?</p>
+                            <label class="font-semibold text-lg block mb-2">What becomes possible in your life when you stop holding back and embrace your full power?</label>
+                            <p class="text-sm mb-3">The version of yourself you've been afraid to become—what's possible when you step fully into your gifts?</p>
                             <textarea id="looking_glass_full_power" rows="4" placeholder="What becomes possible when you embrace full power..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How does your organization transform when every decision aligns perfectly with your deepest values?</label>
-                            <p class="text-sm text-slate-400 mb-3">What emerges when your group operates from complete integrity and authentic purpose?</p>
+                            <label class="font-semibold text-lg block mb-2">How does your organization transform when every decision aligns perfectly with your deepest values?</label>
+                            <p class="text-sm mb-3">What emerges when your group operates from complete integrity and authentic purpose?</p>
                             <textarea id="looking_glass_organization_transform" rows="4" placeholder="How your organization transforms in complete alignment..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What results become inevitable when you follow this path without compromise?</label>
-                            <p class="text-sm text-slate-400 mb-3">The outcomes that must happen when you commit fully to this direction, regardless of obstacles.</p>
+                            <label class="font-semibold text-lg block mb-2">What results become inevitable when you follow this path without compromise?</label>
+                            <p class="text-sm mb-3">The outcomes that must happen when you commit fully to this direction, regardless of obstacles.</p>
                             <textarea id="looking_glass_inevitable_results" rows="4" placeholder="Results that become inevitable following this path..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What transformation seems impossible now but becomes natural when you succeed?</label>
-                            <p class="text-sm text-slate-400 mb-3">The change that looks like fantasy from here but will seem obvious in retrospect.</p>
+                            <label class="font-semibold text-lg block mb-2">What transformation seems impossible now but becomes natural when you succeed?</label>
+                            <p class="text-sm mb-3">The change that looks like fantasy from here but will seem obvious in retrospect.</p>
                             <textarea id="looking_glass_impossible_natural" rows="4" placeholder="The impossible that becomes natural..."></textarea>
                         </div>
                         <div class="bg-black bg-opacity-20 border border-cyan-600 rounded-lg p-4 mt-6">
                             <label class="font-semibold text-lg text-cyan-400 block mb-2">LOOKING GLASS SYNTHESIS - The Dream Outcomes</label>
-                            <p class="text-sm text-slate-400 mb-3">Capture in one statement what becomes inevitable when you follow your purpose completely—the transformation that makes the impossible feel natural.</p>
+                            <p class="text-sm mb-3">Capture in one statement what becomes inevitable when you follow your purpose completely—the transformation that makes the impossible feel natural.</p>
                             <textarea id="looking_glass_synthesis" rows="3" placeholder="What becomes inevitable when you follow your purpose completely..."></textarea>
                         </div>
                     </div>
@@ -877,28 +887,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">Who would you have to become to create the world you envision?</label>
-                            <p class="text-sm text-slate-400 mb-3">The identity, character, and capabilities required to manifest what you saw in the Looking Glass.</p>
+                            <label class="font-semibold text-lg block mb-2">Who would you have to become to create the world you envision?</label>
+                            <p class="text-sm mb-3">The identity, character, and capabilities required to manifest what you saw in the Looking Glass.</p>
                             <textarea id="transformation_who_become" rows="4" placeholder="Who you must become to create this world..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What aspects of your current self must die for your future self to be born?</label>
-                            <p class="text-sm text-slate-400 mb-3">The beliefs, habits, and identities that cannot survive the journey to who you're becoming.</p>
+                            <label class="font-semibold text-lg block mb-2">What aspects of your current self must die for your future self to be born?</label>
+                            <p class="text-sm mb-3">The beliefs, habits, and identities that cannot survive the journey to who you're becoming.</p>
                             <textarea id="transformation_must_die" rows="4" placeholder="What must die for your future self to be born..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">Who would you be if you had already achieved everything you're working toward?</label>
-                            <p class="text-sm text-slate-400 mb-3">The fully realized version of yourself that exists in the future you're creating.</p>
+                            <label class="font-semibold text-lg block mb-2">Who would you be if you had already achieved everything you're working toward?</label>
+                            <p class="text-sm mb-3">The fully realized version of yourself that exists in the future you're creating.</p>
                             <textarea id="transformation_achieved_everything" rows="4" placeholder="Who you'd be having achieved everything..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How does your transformation give others permission to transform?</label>
-                            <p class="text-sm text-slate-400 mb-3">When you become who you're meant to be, how does that create space for others to do the same?</p>
+                            <label class="font-semibold text-lg block mb-2">How does your transformation give others permission to transform?</label>
+                            <p class="text-sm mb-3">When you become who you're meant to be, how does that create space for others to do the same?</p>
                             <textarea id="transformation_give_permission" rows="4" placeholder="How your transformation gives others permission..."></textarea>
                         </div>
                         <div class="bg-black bg-opacity-20 border border-orange-600 rounded-lg p-4 mt-6">
                             <label class="font-semibold text-lg text-orange-400 block mb-2">TRANSFORMATION SYNTHESIS - The Becoming</label>
-                            <p class="text-sm text-slate-400 mb-3">Crystallize in one statement who you must become to realize your vision—the identity transformation that enables your future and gives others permission to transform too.</p>
+                            <p class="text-sm mb-3">Crystallize in one statement who you must become to realize your vision—the identity transformation that enables your future and gives others permission to transform too.</p>
                             <textarea id="transformation_synthesis" rows="3" placeholder="Who you must become to realize your vision..."></textarea>
                         </div>
                     </div>
@@ -926,23 +936,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What must happen for humanity to evolve from where we are to where we need to be?</label>
-                            <p class="text-sm text-slate-400 mb-3">The stages of collective transformation required to address our planetary crisis and birth a regenerative civilization.</p>
+                            <label class="font-semibold text-lg block mb-2">What must happen for humanity to evolve from where we are to where we need to be?</label>
+                            <p class="text-sm mb-3">The stages of collective transformation required to address our planetary crisis and birth a regenerative civilization.</p>
                             <textarea id="map_humanity_evolve" rows="4" placeholder="What must happen for humanity to evolve..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What role does your work play in that larger transformation sequence?</label>
-                            <p class="text-sm text-slate-400 mb-3">Where your specific contribution fits in the grand arc of human development and planetary healing.</p>
+                            <label class="font-semibold text-lg block mb-2">What role does your work play in that larger transformation sequence?</label>
+                            <p class="text-sm mb-3">Where your specific contribution fits in the grand arc of human development and planetary healing.</p>
                             <textarea id="map_role_transformation" rows="4" placeholder="Your role in the larger transformation sequence..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What conditions must be created for the next stage of transformation to emerge?</label>
-                            <p class="text-sm text-slate-400 mb-3">The prerequisites, infrastructure, or consciousness shifts needed before the next level becomes possible.</p>
+                            <label class="font-semibold text-lg block mb-2">What conditions must be created for the next stage of transformation to emerge?</label>
+                            <p class="text-sm mb-3">The prerequisites, infrastructure, or consciousness shifts needed before the next level becomes possible.</p>
                             <textarea id="map_conditions_next_stage" rows="4" placeholder="Conditions needed for the next stage to emerge..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">How do you pace your work with the timing of collective readiness?</label>
-                            <p class="text-sm text-slate-400 mb-3">Balancing being ahead of the curve while remaining accessible to where people currently are.</p>
+                            <label class="font-semibold text-lg block mb-2">How do you pace your work with the timing of collective readiness?</label>
+                            <p class="text-sm mb-3">Balancing being ahead of the curve while remaining accessible to where people currently are.</p>
                             <textarea id="map_pace_collective_readiness" rows="4" placeholder="How you pace with collective readiness..."></textarea>
                         </div>
                     </div>
@@ -982,23 +992,23 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What resources do you need to fully express your vision without compromise?</label>
-                            <p class="text-sm text-slate-400 mb-3">The complete resource picture—funding, time, people, tools, platform—needed to operate at full capacity.</p>
+                            <label class="font-semibold text-lg block mb-2">What resources do you need to fully express your vision without compromise?</label>
+                            <p class="text-sm mb-3">The complete resource picture—funding, time, people, tools, platform—needed to operate at full capacity.</p>
                             <textarea id="fountain_resources_needed" rows="4" placeholder="Resources needed for full expression..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">Who are the people whose full engagement would make your vision inevitable?</label>
-                            <p class="text-sm text-slate-400 mb-3">The specific humans whose involvement, skills, networks, or influence would guarantee success.</p>
+                            <label class="font-semibold text-lg block mb-2">Who are the people whose full engagement would make your vision inevitable?</label>
+                            <p class="text-sm mb-3">The specific humans whose involvement, skills, networks, or influence would guarantee success.</p>
                             <textarea id="fountain_key_people" rows="4" placeholder="People whose engagement would make success inevitable..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What systems and infrastructure need to exist to support this work at scale?</label>
-                            <p class="text-sm text-slate-400 mb-3">The organizational, technological, and operational foundation required for sustainable impact.</p>
+                            <label class="font-semibold text-lg block mb-2">What systems and infrastructure need to exist to support this work at scale?</label>
+                            <p class="text-sm mb-3">The organizational, technological, and operational foundation required for sustainable impact.</p>
                             <textarea id="fountain_systems_infrastructure" rows="4" placeholder="Systems and infrastructure needed at scale..."></textarea>
                         </div>
                         <div>
-                            <label class="font-semibold text-lg text-white block mb-2">What would abundant funding unlock that's currently impossible?</label>
-                            <p class="text-sm text-slate-400 mb-3">The full expression of your vision freed from financial constraints—what becomes possible with unlimited resources?</p>
+                            <label class="font-semibold text-lg block mb-2">What would abundant funding unlock that's currently impossible?</label>
+                            <p class="text-sm mb-3">The full expression of your vision freed from financial constraints—what becomes possible with unlimited resources?</p>
                             <textarea id="fountain_abundant_funding" rows="4" placeholder="What abundant funding would unlock..."></textarea>
                         </div>
                     </div>
