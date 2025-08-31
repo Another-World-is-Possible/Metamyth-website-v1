@@ -1398,7 +1398,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>`;
     }
 
-    function showStage(index) {
+    window.showStage = function(index) {
         document.querySelectorAll('.stage-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
 
@@ -1416,7 +1416,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function initializeCompass() {
+    window.initializeCompass = function() {
         const compassInputsContainer = document.getElementById('compass-inputs');
         if (!compassInputsContainer) return;
 
@@ -1441,7 +1441,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function initializeCompassChart() {
+    window.initializeCompassChart = function() {
         const ctx = document.getElementById('compassChart');
         if (!ctx) return;
 
@@ -1488,7 +1488,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function updateCompassChart() {
+    window.updateCompassChart = function() {
         if (!compassChart) return;
         
         const newData = compassPoints.map((_, index) => {
