@@ -42,7 +42,7 @@ jobs:
           publish_dir: ./dist # IMPORTANT: Change this to your build output directory
           
       - name: Push Supabase DB migrations
-        uses: supabase/actions/cli@v1
+        uses: supabase/setup-cli@v1
         with:
           args: db push --project-ref ${{ secrets.SUPABASE_PROJECT_ID }}
         env:
@@ -62,7 +62,7 @@ jobs:
 
       - name: Deploy Supabase Edge Functions
         if: steps.changed-functions.outputs.functions != ''
-        uses: supabase/actions/cli@v1
+        uses: supabase/setup-cli@v1
         with:
           args: functions deploy ${{ steps.changed-functions.outputs.functions }} --project-ref ${{ secrets.SUPABASE_PROJECT_ID }} --no-verify-jwt
         env:
