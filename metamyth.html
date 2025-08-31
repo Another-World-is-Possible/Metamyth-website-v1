@@ -90,6 +90,56 @@
             border-color: var(--accent-turqoise);
             box-shadow: 0 0 0 2px rgba(95, 226, 223, 0.3);
         }
+        /* CTA Button Styles - Matching Main Site */
+        .cta-button-base {
+            position: relative;
+            padding: 12px 24px;
+            background: var(--button-gradient);
+            color: var(--button-text-color);
+            font-family: 'AngleFairy2024', serif;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 8px;
+            border-radius: 16px;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+            text-shadow: var(--button-text-glow);
+        }
+        
+        .cta-button-base:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 0 30px var(--button-glow-color),
+                0 0 60px var(--button-glow-color),
+                0 0 90px var(--button-glow-color),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Gold variant - warm gradient */
+        .cta-button-gold {
+            --button-gradient: linear-gradient(90deg, #f39c12, #f1c40f, #f4d03f);
+            --button-text-color: #2c3e50;
+            --button-glow-color: rgba(241, 196, 15, 0.8);
+            --button-text-glow: 
+                0 0 8px rgba(255, 255, 255, 0.9),
+                0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Teal variant - cool gradient */
+        .cta-button-teal {
+            --button-gradient: linear-gradient(90deg, #16a085, #1abc9c, #48c9b0);
+            --button-text-color: #2c3e50;
+            --button-glow-color: rgba(26, 188, 156, 0.8);
+            --button-text-glow:
+                0 0 8px rgba(255, 255, 255, 0.9),
+                0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Legacy button support */
         .btn-primary {
             background-color: var(--accent-turqoise);
             color: #0c2a29;

@@ -40,9 +40,128 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // use storage to perform CRUD operations on the storage interface
   // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
 
-  // Serves the METAMYTH Interactive Portal
+  // Password-protected METAMYTH Interactive Portal
   app.get('/begin', (req, res) => {
-    res.sendFile(path.join(process.cwd(), 'metamyth.html'));
+    const password = req.query.password;
+    if (password === 'Autopoiesis') {
+      res.sendFile(path.join(process.cwd(), 'metamyth.html'));
+    } else {
+      // Send password-protected page with frosted glass effect
+      res.send(`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METAMYTH Portal - Access Required</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: 'AngleFairy2024';
+            src: url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'GrillagesBold2024';
+            src: url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        body {
+            background-color: #1D4241;
+            color: #E0E0E0;
+            font-family: 'GrillagesBold2024', serif;
+            font-weight: 700;
+        }
+        
+        h1, h2 {
+            font-family: 'AngleFairy2024', serif !important;
+            color: #D4AF37;
+            letter-spacing: 0.05em;
+            font-weight: normal !important;
+        }
+        
+        .frosted-glass {
+            background: rgba(29, 66, 65, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(95, 226, 223, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button-base {
+            position: relative;
+            padding: 12px 24px;
+            background: linear-gradient(90deg, #f39c12, #f1c40f, #f4d03f);
+            color: #2c3e50;
+            font-family: 'AngleFairy2024', serif;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 8px;
+            border-radius: 16px;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button-base:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 0 30px rgba(241, 196, 15, 0.8),
+                0 0 60px rgba(241, 196, 15, 0.8),
+                0 0 90px rgba(241, 196, 15, 0.8),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div class="frosted-glass p-8 max-w-md w-full mx-4">
+        <h1 class="text-3xl font-bold text-center mb-6">METAMYTH Portal</h1>
+        <h2 class="text-lg text-center mb-8 text-gray-300">Access Required</h2>
+        
+        <form onsubmit="handleSubmit(event)" class="space-y-6">
+            <div>
+                <label for="password" class="block text-sm font-medium mb-2">Enter Password:</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password"
+                    class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
+                    placeholder="Password required..."
+                    required
+                />
+            </div>
+            
+            <button type="submit" class="cta-button-base w-full">
+                ENTER PORTAL
+            </button>
+        </form>
+        
+        <p class="text-center text-sm text-gray-400 mt-6">
+            This is a private portal for authorized users only.
+        </p>
+    </div>
+    
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            window.location.href = '/begin?password=' + encodeURIComponent(password);
+        }
+    </script>
+</body>
+</html>
+      `);
+    }
   });
 
   // Questionnaire submission endpoint
