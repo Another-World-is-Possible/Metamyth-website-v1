@@ -41,7 +41,7 @@ serve(async (req) => {
     // 4. Send the email with the submission data using MailerSend
     const MAILERSEND_API_KEY = Deno.env.get("MAILERSEND_API_KEY");
     // IMPORTANT: Replace with your own email addresses
-    const fromEmail = "zachary@anotherworld.earth"; // Must be a verified sender in MailerSend
+    const fromEmail = "noreply@test-nrw7gymd0vng2k8e.mlsender.net"; // Using MailerSend test domain
     const toEmail = "zachary@anotherworld.earth";   // Where you want to receive the submissions
 
     if (!MAILERSEND_API_KEY) {
