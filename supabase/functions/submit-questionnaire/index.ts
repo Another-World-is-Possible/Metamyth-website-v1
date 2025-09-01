@@ -42,7 +42,7 @@ serve(async (req) => {
     const MAILERSEND_API_KEY = Deno.env.get("MAILERSEND_API_KEY");
     // IMPORTANT: Replace with your own email addresses
     const fromEmail = "noreply@test-nrw7gymd0vng2k8e.mlsender.net"; // Using MailerSend test domain
-    const toEmail = "zachary@anotherworld.earth";   // Where you want to receive the submissions
+    const toEmail = "nate.sd@gmail.com";   // Where you want to receive the submissions
 
     if (!MAILERSEND_API_KEY) {
       console.error("MAILERSEND_API_KEY is not set. Email will not be sent.");
