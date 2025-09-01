@@ -211,6 +211,16 @@ export default function QUESTionaire() {
         });
         return;
       }
+      // Basic email format validation
+      const emailRegex = /^\S+@\S+\.\S+$/;
+      if (!emailRegex.test(contactInfo.email)) {
+        toast({
+          title: "Invalid Email Format",
+          description: "Please enter a valid email address.",
+          variant: "destructive",
+        });
+        return;
+      }
       setCurrentStep(2);
     } else if (currentStep >= 3 && currentStep <= questions.length + 2) {
       // Check if current question is answered
