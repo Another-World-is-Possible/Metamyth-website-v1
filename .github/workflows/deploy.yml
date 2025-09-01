@@ -42,7 +42,7 @@ jobs:
           upload_directory_path: 'supabase/storage/protected-pages'
           bucket_name: 'protected-pages'
         env:
-          SUPABASE_API_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          SUPABASE_API_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
 
       - name: Push Supabase DB migrations
