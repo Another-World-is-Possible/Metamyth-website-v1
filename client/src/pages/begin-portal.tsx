@@ -14,8 +14,7 @@ export default function BeginPortal() {
     setUnlocked(false);
 
     const { data, error: fnError } = await supabase.functions.invoke("validate-portal-password", {
-      body: { password: input },
-      responseType: 'blob' // Expect a Blob response instead of JSON
+      body: { password: input }
     });
 
     setLoading(false);
@@ -29,7 +28,7 @@ export default function BeginPortal() {
 
     if (data) {
       try {
-        const htmlContent = await data.text();
+        const htmlContent = data; // data is now a string
         const newTab = window.open();
         if (newTab) {
           newTab.document.write(htmlContent);
@@ -40,7 +39,7 @@ export default function BeginPortal() {
         }
       } catch (textError) {
         setError("Failed to process response from server.");
-        console.error("Blob to text conversion error:", textError);
+        console.error("Response processing error:", textError);
       }
     }
   };
