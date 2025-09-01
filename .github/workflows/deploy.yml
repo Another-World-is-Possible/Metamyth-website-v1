@@ -1,4 +1,4 @@
-name: Deploy Site and Supabase Functions
+name: Deploy Site and Supabase DB and Functions
 
 on:
   push:
@@ -33,6 +33,9 @@ jobs:
 
       - name: Build static site
         run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -65,5 +68,10 @@ jobs:
 
       - name: Deploy Supabase Edge Functions
         run: supabase functions deploy --project-ref ${{ secrets.SUPABASE_PROJECT_ID }}
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+      - name: Upload metamyth.html to Storage
+        run: supabase storage cp metamyth.html sb://protected-pages/metamyth.html --project-ref ${{ secrets.SUPABASE_PROJECT_ID }}
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
