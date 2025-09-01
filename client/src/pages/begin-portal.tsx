@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
+// const supabase = createClient(
+//   import.meta.env.VITE_SUPABASE_URL,
+//   import.meta.env.VITE_SUPABASE_ANON_KEY
+// );
 
 export default function BeginPortal() {
   const [input, setInput] = useState("");
@@ -16,20 +16,30 @@ export default function BeginPortal() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    const { data, error: fnError } = await supabase.functions.invoke("validate-portal-password", {
-      body: { password: input }
-    });
-    setLoading(false);
-    if (fnError) {
-      setError("Server error. Please try again.");
-      return;
-    }
-    if (data?.valid) {
+    // TEMP STUB: Simulate password check
+    await new Promise((resolve) => setTimeout(resolve, 500)); // simulate network delay
+    if (input === "testpassword") { // replace with your test password
       setUnlocked(true);
       setError("");
     } else {
       setError("Incorrect password.");
     }
+    setLoading(false);
+    // --- Restore this when ready:
+    // const { data, error: fnError } = await supabase.functions.invoke("validate-portal-password", {
+    //   body: { password: input }
+    // });
+    // setLoading(false);
+    // if (fnError) {
+    //   setError("Server error. Please try again.");
+    //   return;
+    // }
+    // if (data?.valid) {
+    //   setUnlocked(true);
+    //   setError("");
+    // } else {
+    //   setError("Incorrect password.");
+    // }
   };
 
   if (unlocked) {

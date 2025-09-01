@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ChevronRight, ChevronLeft, Mail, Phone, ExternalLink, Loader2 } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/lib/supabase";
+//import { supabase } from "@/lib/supabase";
 
 // Note: For static deployment, the questionnaire submission is handled client-side
 // For production with backend, replace the submitMutation logic with actual API calls
@@ -159,6 +159,15 @@ export default function QUESTionaire() {
 
   const submitMutation = useMutation({
     mutationFn: async (data: any) => {
+      // TEMP STUB: Simulate a successful response
+      await new Promise((resolve) => setTimeout(resolve, 500)); // simulate network delay
+      return {
+        qualified: "community", // or "advanced"
+        message: "Stubbed: Your questionnaire was submitted successfully.",
+      };
+    },
+    /*
+    mutationFn: async (data: any) => {
       // This now calls our Supabase Edge Function
       const { data: functionData, error } = await supabase.functions.invoke(
         "submit-questionnaire",
@@ -174,6 +183,7 @@ export default function QUESTionaire() {
       // The Edge Function will return the qualification status
       return functionData;
     },
+    */
     onSuccess: (data: any) => {
       setQualification(data.qualified);
       setShowResult(true);
