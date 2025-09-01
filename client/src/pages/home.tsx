@@ -91,7 +91,7 @@ export default function Home() {
           <div 
             className="relative"
             style={{
-              backgroundImage: `url(/attached_assets/_zln01ad4mec8v0qmtav0_0_1755899727372.jpg)`,
+              backgroundImage: `url(_zln01ad4mec8v0qmtav0_0_1755899727372.jpg)`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundAttachment: 'scroll'
