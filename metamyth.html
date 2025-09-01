@@ -853,6 +853,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="star_synthesis" rows="3" placeholder="Your unwavering north star declaration..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(8)">Continue to The Character →</button>
+                    </div>
                 </div>`,
             character: `
                 <div class="content-card">
@@ -887,6 +890,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <p class="text-sm mb-3">Distill into one statement the essence that connects you and your people—the shared character that makes your community powerful and distinct.</p>
                             <textarea id="character_synthesis" rows="3" placeholder="The essence that connects your community..."></textarea>
                         </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(9)">Continue to The Banner →</button>
                     </div>
                 </div>`,
             banner: `
@@ -923,6 +929,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="banner_synthesis" rows="3" placeholder="The position you claim in the transformation..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(10)">Continue to The Sword →</button>
+                    </div>
                 </div>`,
             sword: `
                 <div class="content-card">
@@ -958,6 +967,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="sword_synthesis" rows="3" placeholder="Your methodology forged from pain..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-gold" onclick="showStage(11)">Continue to Artifact II: The Quest →</button>
+                    </div>
                 </div>`,
             quest_synthesis: `
                 <div class="content-card">
@@ -971,6 +983,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         <label class="font-semibold text-lg text-yellow-400 block mb-2">THE QUEST SYNTHESIS - The Complete Quest Declaration</label>
                         <p class="text-sm text-slate-400 mb-3">Combine your Star, Character, Banner, and Sword into one defining statement that captures your unique role in the cosmic story. This should sound like something worth dedicating your life to.</p>
                         <textarea id="quest_synthesis_complete" rows="6" placeholder="Write your complete Quest declaration - your unique role in the cosmic story..."></textarea>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-gold" onclick="showStage(12)">Continue to The Looking Glass →</button>
                     </div>
                 </div>`,
             // Arc III - What is Possible
@@ -1019,6 +1034,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="looking_glass_synthesis" rows="3" placeholder="What becomes inevitable when you follow your purpose completely..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(13)">Continue to The Transformation →</button>
+                    </div>
                 </div>`,
             transformation: `
                 <div class="content-card">
@@ -1054,6 +1072,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             <textarea id="transformation_synthesis" rows="3" placeholder="Who you must become to realize your vision..."></textarea>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(14)">Continue to The Globe →</button>
+                    </div>
                 </div>`,
             globe: `
                 <div class="content-card">
@@ -1067,6 +1088,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         <div><label class="font-semibold text-lg text-white block mb-2">What is your current sphere of influence and how could it expand?</label><textarea id="${stage.id}_influence" rows="4"></textarea></div>
                         <div><label class="font-semibold text-lg text-white block mb-2">Where can your work have the greatest impact?</label><textarea id="${stage.id}_impact" rows="4"></textarea></div>
                         <div><label class="font-semibold text-lg text-white block mb-2">How does your local work connect to global transformation?</label><textarea id="${stage.id}_global" rows="4"></textarea></div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(15)">Continue to The Map →</button>
                     </div>
                 </div>`,
             map: `
@@ -1116,6 +1140,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             </div>
                         </div>
                     </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-gold" onclick="showStage(16)">Continue to Artifact III: What is Possible →</button>
+                    </div>
                 </div>`,
             vision_synthesis: `
                 <div class="content-card">
@@ -1129,6 +1156,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         <label class="font-semibold text-lg text-yellow-400 block mb-2">THE VISION SYNTHESIS - The Future You're Dreaming Into Existence</label>
                         <p class="text-sm text-slate-400 mb-3">Combine your Looking Glass, Transformation, Globe, and Map into one inspiring vision that captures the future you're actively creating. Make it vivid enough that others can see it and want to join you in manifesting it.</p>
                         <textarea id="vision_synthesis_complete" rows="6" placeholder="Write your complete Vision synthesis - the future you're dreaming into existence..."></textarea>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-gold" onclick="showStage(17)">Continue to The Fountain →</button>
                     </div>
                 </div>`,
             // Arc IV - The Journey  
