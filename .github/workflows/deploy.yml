@@ -31,18 +31,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build static site
-        run: npm run build
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
         with:
           version: latest
-          access-token: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-          project-id: ${{ secrets.SUPABASE_PROJECT_ID }}
+
+      - name: Upload metamyth.html to Supabase Storage
+        uses: brendenehlers/supabase-storage-upload@v1
+        with:
+          file_path: './metamyth.html'
+          bucket_name: 'protected-pages'
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
 
       - name: Push Supabase DB migrations
         run: supabase db push --db-url ${{ secrets.SUPABASE_DB_SESSION_URL }}
@@ -62,12 +63,11 @@ jobs:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
           SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
 
-      - name: Upload metamyth.html to Storage
-        run: supabase --yes storage cp --experimental ./metamyth.html sb://protected-pages/
+      - name: Build static site
+        run: npm run build
         env:
-          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-          SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
-          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
