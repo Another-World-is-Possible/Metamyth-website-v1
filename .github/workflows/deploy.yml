@@ -41,6 +41,8 @@ jobs:
         uses: supabase/setup-cli@v1
         with:
           version: latest
+          access-token: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          project-id: ${{ secrets.SUPABASE_PROJECT_ID }}
 
       - name: Push Supabase DB migrations
         run: supabase db push --db-url ${{ secrets.SUPABASE_DB_SESSION_URL }}
