@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase"; // Use the shared client
 
 export default function BeginPortal() {
   const [input, setInput] = useState("");
@@ -11,31 +11,39 @@ export default function BeginPortal() {
     e.preventDefault();
     setLoading(true);
     setError("");
+    setUnlocked(false);
+
     const { data, error: fnError } = await supabase.functions.invoke("validate-portal-password", {
-      body: { password: input }
+      body: { password: input },
+      responseType: 'blob' // Expect a Blob response instead of JSON
     });
+
     setLoading(false);
+
     if (fnError) {
-      setError("Server error. Please try again.");
+      // This will catch 401 unauthorized (wrong password) and other server errors
+      setError("Incorrect password or server error.");
+      console.error("Function error:", fnError);
       return;
     }
-    if (data?.valid) {
-      setUnlocked(true);
-      setError("");
-    } else {
-      setError("Incorrect password.");
+
+    if (data) {
+      try {
+        const htmlContent = await data.text();
+        const newTab = window.open();
+        if (newTab) {
+          newTab.document.write(htmlContent);
+          newTab.document.close();
+          setUnlocked(true); // Show success message on the original tab
+        } else {
+          setError("Pop-up blocked. Please allow pop-ups for this site.");
+        }
+      } catch (textError) {
+        setError("Failed to process response from server.");
+        console.error("Blob to text conversion error:", textError);
+      }
     }
   };
-
-  if (unlocked) {
-    return (
-      <div className="bg-white/10 backdrop-blur-md border border-red-800/30 rounded-2xl shadow-lg p-8 max-w-md w-full mx-4 mt-16">
-        <h1 className="text-3xl font-bold text-center mb-6 text-yellow-400 tracking-wide">METAMYTH Portal</h1>
-        <h2 className="text-lg text-center mb-8 text-gray-300">Welcome to the Portal!</h2>
-        {/* Place your protected content here */}
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-red-900 to-black">
@@ -67,7 +75,8 @@ export default function BeginPortal() {
           >
             {loading ? "Checking..." : "ENTER PORTAL"}
           </button>
-          {error && <div className="text-red-500 text-center">{error}</div>}
+          {error && <div className="text-red-500 text-center pt-4">{error}</div>}
+          {unlocked && <div className="text-green-400 text-center pt-4">Success! The portal has opened in a new tab.</div>}
         </form>
         <p className="text-center text-sm text-gray-400 mt-6">
           This is a private portal for authorized users only.
