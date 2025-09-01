@@ -61,9 +61,10 @@ jobs:
           SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
 
       - name: Upload metamyth.html to Storage
-        run: supabase storage cp metamyth.html sb://protected-pages/metamyth.html --project-ref ${{ secrets.SUPABASE_PROJECT_ID }}
+        run: supabase storage cp metamyth.html sb://protected-pages/metamyth.html
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
