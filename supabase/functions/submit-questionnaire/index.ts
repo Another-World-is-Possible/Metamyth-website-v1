@@ -40,30 +40,57 @@ serve(async (req) => {
 
     // 4. Send the email with the submission data using MailerSend
     const MAILERSEND_API_KEY = Deno.env.get("MAILERSEND_API_KEY");
-    // IMPORTANT: Replace with your own email addresses
     const fromEmail = "noreply@test-nrw7gymd0vng2k8e.mlsender.net"; // Using MailerSend test domain
     const toEmail = "nate.sd@gmail.com";   // Where you want to receive the submissions
 
     if (!MAILERSEND_API_KEY) {
       console.error("MAILERSEND_API_KEY is not set. Email will not be sent.");
     } else {
+      const TOTAL_QUESTIONS = 8;
+
+      const formatAnswer = (answer, isHtml) => {
+        const separator = isHtml ? '<br>' : '\n';
+        const value = answer || "N/A";
+        if (typeof value === 'string') {
+          return value.split(',').join(separator);
+        }
+        if (Array.isArray(value)) {
+          return value.join(separator);
+        }
+        return value;
+      };
+
+      const questionsHtml = Array.from({ length: TOTAL_QUESTIONS }, (_, i) => {
+        return `<li style="margin-bottom: 15px;">
+                  <strong>Question ${i + 1}:</strong>
+                  <div style="padding-left: 10px; margin-top: 5px;">${formatAnswer(responses[i], true)}</div>
+                </li>`;
+      }).join('');
+
+      const questionsText = Array.from({ length: TOTAL_QUESTIONS }, (_, i) => {
+        return `Question ${i + 1}:\n${formatAnswer(responses[i], false)}`;
+      }).join('\n\n');
+
       const emailHtml = `
-        <h1>New Questionnaire Submission</h1>
-        <p>A new submission has been received with the following answers:</p>
-        <ul>
-          ${Object.entries(responses).map(([q, a]) => `<li><strong>Question ${parseInt(q) + 1}:</strong> ${a}</li>`).join('')}
-        </ul>
-        <hr>
-        <h2>Qualification Result:</h2>
-        <p>The submission was classified as: <strong>${qualification}</strong></p>
+        <div style="font-family: sans-serif; line-height: 1.6;">
+          <h1>New Questionnaire Submission</h1>
+          <p>A new submission has been received with the following answers:</p>
+          <ul style="list-style-type: none; padding-left: 0;">
+            ${questionsHtml}
+          </ul>
+          <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+          <h2>Qualification Result:</h2>
+          <p>The submission was classified as: <strong>${qualification}</strong></p>
+        </div>
       `;
+      
       const emailText = `
-        New Questionnaire Submission
-        A new submission has been received with the following answers:
-        ${Object.entries(responses).map(([q, a]) => `Question ${parseInt(q) + 1}: ${a}`).join('\
-')}
-        ---
+        New Questionnaire Submission\n\n
+        A new submission has been received with the following answers:\n\n${questionsText}\n\n
+        --------------------
+
         Qualification Result:
+
         The submission was classified as: ${qualification}
       `;
 
@@ -72,7 +99,8 @@ serve(async (req) => {
         headers: {
           'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest',
-          'Authorization': `Bearer ${MAILERSEND_API_KEY}`
+          'Authorization': 
+`Bearer ${MAILERSEND_API_KEY}`
         },
         body: JSON.stringify({
           from: { email: fromEmail },
@@ -86,7 +114,6 @@ serve(async (req) => {
       if (!res.ok) {
         const errorBody = await res.text();
         console.error(`Failed to send email via MailerSend: ${res.status} ${res.statusText}`, errorBody);
-        // Note: We don't throw here, so the client still gets a success response
       }
     }
 
