@@ -36,10 +36,10 @@ jobs:
         with:
           version: latest
 
-      - name: Upload metamyth.html to Supabase Storage
+      - name: Upload protected-pages to Supabase Storage
         uses: brendenehlers/supabase-storage-upload@v1
         with:
-          file_path: './metamyth.html'
+          upload_directory_path: 'supabase/storage/protected-pages'
           bucket_name: 'protected-pages'
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
