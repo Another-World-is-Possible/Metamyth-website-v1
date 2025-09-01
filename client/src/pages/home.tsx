@@ -5,6 +5,7 @@ import HeroSection from "@/components/hero-section";
 import MetamythTiles from "@/components/metamyth-tiles";
 import CallToAction from "@/components/call-to-action";
 import VideoSection from "@/components/video-section";
+import bgImg from "@assets/_zln01ad4mec8v0qmtav0_0_1755899727372.jpg";
 
 export default function Home() {
   const [, navigate] = useLocation();
@@ -91,7 +92,7 @@ export default function Home() {
           <div 
             className="relative"
             style={{
-              backgroundImage: `url(_zln01ad4mec8v0qmtav0_0_1755899727372.jpg)`,
+              backgroundImage: `url(${bgImg})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundAttachment: 'scroll'
