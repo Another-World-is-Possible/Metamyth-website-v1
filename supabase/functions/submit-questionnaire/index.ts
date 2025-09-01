@@ -38,8 +38,57 @@ serve(async (req) => {
     const qualifiesForAdvanced = hasHighInvestment || hasHighAuthorship;
     const qualification = qualifiesForAdvanced ? "advanced" : "community";
 
-    // 4. (Next Step) You can now save the submission to your Supabase database here.
-    // You would first need to create a table e.g., 'questionnaire_submissions' in Supabase.
+    // 4. Send the email with the submission data using MailerSend
+    const MAILERSEND_API_KEY = Deno.env.get("MAILERSEND_API_KEY");
+    // IMPORTANT: Replace with your own email addresses
+    const fromEmail = "zachary@anotherworld.earth"; // Must be a verified sender in MailerSend
+    const toEmail = "zachary@anotherworld.earth";   // Where you want to receive the submissions
+
+    if (!MAILERSEND_API_KEY) {
+      console.error("MAILERSEND_API_KEY is not set. Email will not be sent.");
+    } else {
+      const emailHtml = `
+        <h1>New Questionnaire Submission</h1>
+        <p>A new submission has been received with the following answers:</p>
+        <ul>
+          ${Object.entries(responses).map(([q, a]) => `<li><strong>Question ${parseInt(q) + 1}:</strong> ${a}</li>`).join('')}
+        </ul>
+        <hr>
+        <h2>Qualification Result:</h2>
+        <p>The submission was classified as: <strong>${qualification}</strong></p>
+      `;
+      const emailText = `
+        New Questionnaire Submission
+        A new submission has been received with the following answers:
+        ${Object.entries(responses).map(([q, a]) => `Question ${parseInt(q) + 1}: ${a}`).join('\
+')}
+        ---
+        Qualification Result:
+        The submission was classified as: ${qualification}
+      `;
+
+      const res = await fetch('https://api.mailersend.com/v1/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          'Authorization': `Bearer ${MAILERSEND_API_KEY}`
+        },
+        body: JSON.stringify({
+          from: { email: fromEmail },
+          to: [ { email: toEmail } ],
+          subject: `New Metamyth Questionnaire Submission (${qualification})`,
+          html: emailHtml,
+          text: emailText,
+        })
+      });
+
+      if (!res.ok) {
+        const errorBody = await res.text();
+        console.error(`Failed to send email via MailerSend: ${res.status} ${res.statusText}`, errorBody);
+        // Note: We don't throw here, so the client still gets a success response
+      }
+    }
 
     // 5. Return the result to the client
     const responsePayload = {
