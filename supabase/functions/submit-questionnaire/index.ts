@@ -46,35 +46,82 @@ serve(async (req) => {
     if (!MAILERSEND_API_KEY) {
       console.error("MAILERSEND_API_KEY is not set. Email will not be sent.");
     } else {
-      const TOTAL_QUESTIONS = 8;
+      const QUESTION_TITLES = {
+        1: "Your Authorship in the Great Story",
+        2: "Your Vision of Victory",
+        3: "Your Story Challenges and Dragons",
+        4: "The Scale of Your Quest",
+        5: "Your Wealth Beyond Gold",
+        6: "Your Moment of Readiness",
+        7: "The Cost of the Unchanged Story",
+      };
+
+      const { email, phone, originStory, legacyVision, responses: questionnaireResponses } = submissionData;
 
       const formatAnswer = (answer, isHtml) => {
         const separator = isHtml ? '<br>' : '\n';
         const value = answer || "N/A";
         if (typeof value === 'string') {
-          return value.split(',').join(separator);
+          return value.split(',').map(s => s.trim()).filter(s => s !== '').join(separator); // Trim and filter empty strings
         }
         if (Array.isArray(value)) {
-          return value.join(separator);
+          return value.map(s => s.trim()).filter(s => s !== '').join(separator);
         }
         return value;
       };
 
-      const questionsHtml = Array.from({ length: TOTAL_QUESTIONS }, (_, i) => {
-        return `<li style="margin-bottom: 15px;">
-                  <strong>Question ${i + 1}:</strong>
-                  <div style="padding-left: 10px; margin-top: 5px;">${formatAnswer(responses[i], true)}</div>
-                </li>`;
-      }).join('');
+      let questionsHtml = '';
+      let questionsText = '';
 
-      const questionsText = Array.from({ length: TOTAL_QUESTIONS }, (_, i) => {
-        return `Question ${i + 1}:\n${formatAnswer(responses[i], false)}`;
-      }).join('\n\n');
+      // Iterate over the known question IDs from 1 to 7
+      for (let i = 1; i <= 7; i++) {
+        const questionTitle = QUESTION_TITLES[i] || `Question ${i}`;
+        const answer = questionnaireResponses[i];
+
+        questionsHtml += `<li style="margin-bottom: 15px;">
+                          <strong>${questionTitle}:</strong>
+                          <div style="padding-left: 10px; margin-top: 5px;">${formatAnswer(answer, true) || "N/A"}</div>
+                        </li>`;
+        questionsText += `\nQuestion ${i}: ${questionTitle}\n${formatAnswer(answer, false) || "N/A"}\n`;
+      }
+
+      // Add contact info, origin story, and legacy vision
+      const contactHtml = `
+        <h2 style="margin-top: 30px;">Contact Information:</h2>
+        <p><strong>Email:</strong> ${email || "N/A"}</p>
+        <p><strong>Phone:</strong> ${phone || "N/A"}</p>
+      `;
+      const contactText = `
+Contact Information:
+Email: ${email || "N/A"}
+Phone: ${phone || "N/A"}
+`;
+
+      const originHtml = `
+        <h2 style="margin-top: 30px;">Origin Story:</h2>
+        <p>${originStory || "N/A"}</p>
+      `;
+      const originText = `
+Origin Story:
+${originStory || "N/A"}
+`;
+
+      const legacyHtml = `
+        <h2 style="margin-top: 30px;">Legacy Prophecy:</h2>
+        <p>${legacyVision || "N/A"}</p>
+      `;
+      const legacyText = `
+Legacy Prophecy:
+${legacyVision || "N/A"}
+`;
 
       const emailHtml = `
         <div style="font-family: sans-serif; line-height: 1.6;">
           <h1>New Questionnaire Submission</h1>
-          <p>A new submission has been received with the following answers:</p>
+          ${contactHtml}
+          ${originHtml}
+          ${legacyHtml}
+          <h2 style="margin-top: 30px;">Questionnaire Answers:</h2>
           <ul style="list-style-type: none; padding-left: 0;">
             ${questionsHtml}
           </ul>
@@ -83,29 +130,37 @@ serve(async (req) => {
           <p>The submission was classified as: <strong>${qualification}</strong></p>
         </div>
       `;
-      
+
       const emailText = `
-        New Questionnaire Submission\n\n
-        A new submission has been received with the following answers:\n\n${questionsText}\n\n
-        --------------------
+New Questionnaire Submission
 
-        Qualification Result:
+${contactText}
 
-        The submission was classified as: ${qualification}
-      `;
+${originText}
+
+${legacyText}
+
+Questionnaire Answers:
+${questionsText}
+
+--------------------
+
+Qualification Result:
+The submission was classified as: ${qualification}
+`;
 
       const res = await fetch('https://api.mailersend.com/v1/email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Requested-With': 'XMLHttpRequest',
-          'Authorization': 
-`Bearer ${MAILERSEND_API_KEY}`
+          'Authorization': `Bearer ${MAILERSEND_API_KEY}`
         },
         body: JSON.stringify({
           from: { email: fromEmail },
           to: [ { email: toEmail } ],
-          subject: `New Metamyth Questionnaire Submission (${qualification})`,
+          subject: 
+`New Metamyth Questionnaire Submission (${qualification})`,
           html: emailHtml,
           text: emailText,
         })
