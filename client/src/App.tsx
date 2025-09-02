@@ -17,7 +17,7 @@ import MetamythJourneyPage from "@/pages/metamyth-journey";
 import SwordCursor from "@/components/sword-cursor";
 import { ImageLoadingProvider } from "@/contexts/ImageLoadingContext";
 import { AudioProvider } from "@/contexts/audio-context";
-import audioSrc from "@assets/Akira Ito Mind Music B [5G46AtNG-9I]_1756790164376.mp3";
+import audioSrc from "@assets/background-music.mp3";
 import { useEffect } from "react";
 
 function Router() {
