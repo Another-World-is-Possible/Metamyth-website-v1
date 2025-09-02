@@ -239,10 +239,16 @@
         }
         
         .glow-progress {
-            background: linear-gradient(90deg, var(--accent-teal), var(--accent-turqoise));
+            background: linear-gradient(90deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-turqoise) 25%, 
+                var(--accent-gold) 50%, 
+                #f39c12 75%, 
+                #f1c40f 100%);
             box-shadow: 
-                0 0 10px rgba(20, 184, 166, 0.6),
-                0 0 20px rgba(20, 184, 166, 0.3);
+                0 0 15px rgba(20, 184, 166, 0.6),
+                0 0 30px rgba(212, 175, 55, 0.4),
+                0 0 45px rgba(241, 196, 15, 0.3);
         }
         
         .glow-indicator {
