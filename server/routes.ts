@@ -161,7 +161,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     </style>
 </head>
 <body class="crimson-portal">
-    <div class="frosted-glass p-8 max-w-md w-full mx-4">
+    <div class="frosted-glass p-8 max-w-md w-full mx-4" style="background-color: #4a0000 !important; border: 2px solid #14b8a6 !important; box-shadow: 0 0 15px rgba(20, 184, 166, 0.6), 0 0 30px rgba(20, 184, 166, 0.4) !important;">
         <h1 class="text-3xl font-bold text-center mb-6">METAMYTH Portal</h1>
         <h2 class="text-lg text-center mb-8 text-gray-300">Access Required</h2>
         
@@ -173,7 +173,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
                     id="password" 
                     name="password"
                     class="w-full px-4 py-3 rounded-lg focus:outline-none text-white glow-input"
-                    style="background-color: #4a0000; border: 2px solid #14b8a6;"
+                    style="background-color: rgba(255, 255, 255, 0.1) !important; border: 1px solid rgba(255, 255, 255, 0.3) !important;"
                     placeholder="Password required..."
                     required
                 />
