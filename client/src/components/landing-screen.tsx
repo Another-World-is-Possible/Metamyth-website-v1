@@ -24,7 +24,7 @@ export default function LandingScreen({ onBeginJourney }: LandingScreenProps) {
           setShowButton(true);
         }, 1000);
       }
-    }, 100); // Adjust speed as needed
+    }, 80); // Slower revelation speed
 
     return () => clearInterval(typeInterval);
   }, []);
@@ -55,7 +55,6 @@ export default function LandingScreen({ onBeginJourney }: LandingScreenProps) {
         {/* Typewriter text */}
         <h1 className="typography-h1 font-angle text-gradient-gold mb-12 min-h-[100px] flex items-center justify-center">
           {typewriterText}
-          <span className="ml-1 animate-pulse text-ancient-gold">|</span>
         </h1>
 
         {/* Begin Journey Button */}

@@ -3,15 +3,16 @@ import { useLocation } from "wouter";
 import SharedNavigation from "@/components/shared-navigation";
 import HeroSection from "@/components/hero-section";
 import LandingScreen from "@/components/landing-screen";
-import AudioControls from "@/components/audio-controls";
 import MetamythTiles from "@/components/metamyth-tiles";
 import CallToAction from "@/components/call-to-action";
 import VideoSection from "@/components/video-section";
+import { AudioProvider, useAudio } from "@/contexts/audio-context";
 
-export default function Home() {
+function HomeContent() {
   const [, navigate] = useLocation();
   const [showLanding, setShowLanding] = useState(true);
   const [showHeroContent, setShowHeroContent] = useState(false);
+  const { startMusic } = useAudio();
 
   const handleNavigation = (tab: string | null) => {
     if (tab === 'questionaire') {
@@ -38,6 +39,8 @@ export default function Home() {
 
   const handleBeginJourney = () => {
     setShowLanding(false);
+    // Start the music when the journey begins
+    startMusic();
     // Small delay before showing hero content for smooth transition
     setTimeout(() => {
       setShowHeroContent(true);
@@ -96,11 +99,6 @@ export default function Home() {
       {/* Landing Screen */}
       {showLanding && <LandingScreen onBeginJourney={handleBeginJourney} />}
       
-      {/* Audio Controls */}
-      <AudioControls 
-        audioSrc="/attached_assets/Akira Ito Mind Music B [5G46AtNG-9I]_1756789713229.mp3"
-        autoPlay={!showLanding}
-      />
       
       <SharedNavigation />
       <main className="relative">
@@ -156,5 +154,13 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <AudioProvider audioSrc="/attached_assets/Akira Ito Mind Music B [5G46AtNG-9I]_1756790164376.mp3">
+      <HomeContent />
+    </AudioProvider>
   );
 }

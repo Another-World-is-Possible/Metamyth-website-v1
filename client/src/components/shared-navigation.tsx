@@ -1,12 +1,29 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Shield } from "lucide-react";
+import { Menu, Shield, Volume2, VolumeX } from "lucide-react";
 import { useLocation } from "wouter";
+import { useAudio } from "@/contexts/audio-context";
+import { motion } from "framer-motion";
 
 export default function SharedNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [location, navigate] = useLocation();
+  let audioControls = null;
+  try {
+    audioControls = useAudio();
+  } catch (e) {
+    // Audio context not available, skip audio controls
+  }
+  
+  const { isPlaying, volume, showControls, togglePlay, setVolume, setShowControls } = audioControls || {
+    isPlaying: false,
+    volume: 0.5,
+    showControls: false,
+    togglePlay: () => {},
+    setVolume: () => {},
+    setShowControls: () => {}
+  };
 
   // Clean approach - no forced cursor styles
   useEffect(() => {
@@ -49,10 +66,62 @@ export default function SharedNavigation() {
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300"
           >
             <Shield className="text-ancient-gold animate-spin-slow h-6 w-6" />
-            <span className="typography-h3 text-ancient-gold select-none">
+            <span className="typography-h3 text-ancient-gold select-none text-glow-gold">
               Metamyth
             </span>
           </button>
+
+          {/* Audio Controls */}
+          {audioControls && (
+            <div className="relative">
+              <button
+                onClick={() => setShowControls(!showControls)}
+                className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold hover:bg-ancient-gold/20 transition-all duration-300 mr-4"
+                data-testid="button-audio-toggle"
+              >
+                {isPlaying ? <Volume2 size={18} /> : <VolumeX size={18} />}
+              </button>
+
+              {/* Expanded Controls */}
+              {showControls && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                  className="absolute top-full right-0 mt-2 bg-black/80 backdrop-blur-md border border-ancient-gold/30 rounded-lg p-4 min-w-[200px] z-50"
+                >
+                  {/* Play/Pause Toggle */}
+                  <div className="mb-3">
+                    <button
+                      onClick={togglePlay}
+                      className="w-full bg-ancient-gold/20 hover:bg-ancient-gold/30 text-ancient-gold border border-ancient-gold/30 rounded px-3 py-2 text-sm transition-all duration-200"
+                      data-testid="button-music-play-pause"
+                    >
+                      {isPlaying ? 'Pause Music' : 'Play Music'}
+                    </button>
+                  </div>
+
+                  {/* Volume Slider */}
+                  <div className="space-y-2">
+                    <label className="text-ancient-gold text-sm">Volume</label>
+                    <input
+                      type="range"
+                      min="0"
+                      max="1"
+                      step="0.1"
+                      value={volume}
+                      onChange={(e) => setVolume(parseFloat(e.target.value))}
+                      className="w-full h-2 bg-black/50 rounded-lg appearance-none cursor-pointer slider-thumb"
+                      data-testid="slider-volume"
+                    />
+                    <div className="text-ancient-gold/70 text-xs text-center">
+                      {Math.round(volume * 100)}%
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          )}
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
@@ -83,7 +152,7 @@ export default function SharedNavigation() {
               <div className="flex flex-col space-y-4 mt-8">
                 <div className="flex items-center space-x-2 mb-8">
                   <Shield className="text-ancient-gold animate-spin-slow h-6 w-6" />
-                  <span className="typography-h3 text-ancient-gold">
+                  <span className="typography-h3 text-ancient-gold text-glow-gold">
                     Metamyth
                   </span>
                 </div>

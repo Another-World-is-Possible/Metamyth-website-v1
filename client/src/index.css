@@ -751,6 +751,33 @@
       0 0 100px rgba(212, 175, 55, 0.1);
   }
   
+  /* Audio volume slider styling */
+  .slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  .slider-thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--ancient-gold);
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+  }
+  
+  .slider-thumb::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--ancient-gold);
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+    border: none;
+  }
+  
 }
 
 

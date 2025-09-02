@@ -9,7 +9,7 @@ interface AudioControlsProps {
 
 export default function AudioControls({ audioSrc, autoPlay = false }: AudioControlsProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.3);
+  const [volume, setVolume] = useState(0.5);
   const [showControls, setShowControls] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -20,7 +20,10 @@ export default function AudioControls({ audioSrc, autoPlay = false }: AudioContr
     audio.volume = volume;
     audio.loop = true;
 
-    if (autoPlay && isPlaying) {
+    if (autoPlay && !isPlaying) {
+      setIsPlaying(true);
+      audio.play().catch(console.error);
+    } else if (autoPlay && isPlaying) {
       audio.play().catch(console.error);
     }
   }, [volume, isPlaying, autoPlay]);
