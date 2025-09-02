@@ -29,7 +29,10 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    allowedHosts: ["localhost", "replit.dev"],
+    allowedHosts: [
+      "localhost",
+      "988dd191-0edc-48bc-8b3b-db88eb37e0ed-00-2r2cmwesixa2f.kirk.replit.dev",
+    ],
     fs: {
       strict: true,
       deny: ["**/.*"],
