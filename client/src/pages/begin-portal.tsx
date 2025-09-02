@@ -40,7 +40,7 @@ export default function BeginPortal() {
           clearInterval(intervalId);
           if (callback) callback();
         }
-      }, 60);
+      }, 30);
     };
 
     const runSequence = (index = 0) => {
@@ -49,20 +49,20 @@ export default function BeginPortal() {
       } else {
         timeoutRef.current = setTimeout(() => {
           setElementOpacities(prev => ({ ...prev, cosmicBackground: 0.7, cosmicOverlay: 1 }));
-        }, 800);
+        }, 400);
 
         timeoutRef.current = setTimeout(() => {
           setElementOpacities(prev => ({ ...prev, portal: 1 }));
           setPortalTransform('translateY(0px)');
-        }, 2800);
+        }, 1000);
 
         timeoutRef.current = setTimeout(() => {
           setElementOpacities(prev => ({ ...prev, finalText: 1 }));
-        }, 4300);
+        }, 1400);
       }
     };
 
-    timeoutRef.current = setTimeout(runSequence, 500);
+    timeoutRef.current = setTimeout(runSequence, 200);
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -288,14 +288,14 @@ export default function BeginPortal() {
             height: 2px;
             background: rgba(147, 51, 234, 0.8);
             border-radius: 50%;
-            animation: drift 15s linear infinite;
+            animation: drift 10s linear infinite;
         }
         
         @keyframes drift {
             0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
         }
         
         .error-flicker {
@@ -324,8 +324,8 @@ export default function BeginPortal() {
       <div className="cosmic-overlay" style={{ opacity: elementOpacities.cosmicOverlay }}></div>
       
       <div className="particles">
-        {[...Array(9)].map((_, i) => (
-          <div key={i} className="particle" style={{ left: `${10 + i * 10}%`, animationDelay: `${i * 1.5}s` }}></div>
+        {[...Array(4)].map((_, i) => (
+          <div key={i} className="particle" style={{ left: `${20 + i * 20}%`, animationDelay: `${i * 2}s` }}></div>
         ))}
       </div>
       
