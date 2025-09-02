@@ -421,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { id: 'vision_synthesis', title: 'Artifact III: What is Possible', arc: 'ARC III', icon: '🔭' },
         { id: 'fountain', title: 'The Fountain', arc: 'ARC IV', icon: '⛲' },
         { id: 'ethos', title: 'The Ethos', arc: 'ARC IV', icon: '📜' },
-        { id: 'plot', title: 'The Plot', arc: 'ARC IV', icon: '📊' },
+        { id: 'plot', title: 'The Road', arc: 'ARC IV', icon: '🛤️' },
         { id: 'compass', title: 'The Compass', arc: 'ARC IV', icon: '🧭' },
         { id: 'mission_synthesis', title: 'Artifact IV: The Journey', arc: 'ARC IV', icon: '🎯' },
         { id: 'grail', title: 'The Grail', arc: 'ARC V', icon: '🏆' },
@@ -1253,9 +1253,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>`,
             plot: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">📊</span><h2 class="text-4xl font-bold">Stage 15: The Plot</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🛤️</span><h2 class="text-4xl font-bold">The Road</h2></div>
                     <div class="prose max-w-none mb-8">
                         <p class="text-lg font-semibold text-gold">Personal Level: Mission Broken Into Trials That Build Character</p>
+                        <p>Your Road is the path you walk to achieve your mission. It is a series of trials and adventures that build character and develop capabilities. Here you will define the actual obstacles, skills to develop, and capacities to build. Each challenge is a lesson, preparing you for what comes next by forging the character traits you need to succeed.</p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
@@ -1297,6 +1298,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <textarea id="plot_current_change" rows="3" placeholder="Your current trial and changes..."></textarea>
                             </div>
                         </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(20)">Continue to The Compass →</button>
                     </div>
                 </div>`,
             compass: `
