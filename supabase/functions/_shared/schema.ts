@@ -1,4 +1,4 @@
-import { z } from "https://deno.land/x/zod@v3.22.4/mod.ts";
+import { z } from "zod";
 
 export const insertQuestionnaireResponseSchema = z.object({
   email: z.string().email({ message: "A valid email is required." }),

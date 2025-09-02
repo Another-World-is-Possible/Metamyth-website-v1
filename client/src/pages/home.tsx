@@ -7,7 +7,7 @@ import MetamythTiles from "@/components/metamyth-tiles";
 import CallToAction from "@/components/call-to-action";
 import VideoSection from "@/components/video-section";
 
-import { AudioProvider, useAudio } from "@/contexts/audio-context";
+import { useAudio } from "@/contexts/audio-context";
 
 import bgImg from "@assets/_zln01ad4mec8v0qmtav0_0_1755899727372.jpg";
 
@@ -162,9 +162,5 @@ function HomeContent() {
 }
 
 export default function Home() {
-  return (
-    <AudioProvider audioSrc="/attached_assets/Akira Ito Mind Music B [5G46AtNG-9I]_1756790164376.mp3">
-      <HomeContent />
-    </AudioProvider>
-  );
+  return <HomeContent />;
 }

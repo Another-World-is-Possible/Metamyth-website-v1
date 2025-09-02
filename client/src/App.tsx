@@ -15,6 +15,7 @@ import FederationPage from "@/pages/federation";
 import BeginPortal from "@/pages/begin-portal";
 import SwordCursor from "@/components/sword-cursor";
 import { ImageLoadingProvider } from "@/contexts/ImageLoadingContext";
+import { AudioProvider } from "@/contexts/audio-context";
 import { useEffect } from "react";
 
 function Router() {
@@ -49,15 +50,17 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ImageLoadingProvider>
-        <TooltipProvider>
-          <div className="dark">
-            <SwordCursor />
-            <Toaster />
-            <Router />
-          </div>
-        </TooltipProvider>
-      </ImageLoadingProvider>
+      <AudioProvider audioSrc="/attached_assets/Akira Ito Mind Music B [5G46AtNG-9I]_1756790164376.mp3">
+        <ImageLoadingProvider>
+          <TooltipProvider>
+            <div className="dark">
+              <SwordCursor />
+              <Toaster />
+              <Router />
+            </div>
+          </TooltipProvider>
+        </ImageLoadingProvider>
+      </AudioProvider>
     </QueryClientProvider>
   );
 }
