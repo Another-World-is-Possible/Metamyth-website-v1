@@ -126,7 +126,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
         
         body.crimson-portal {
-            background-image: url('/@fs/home/runner/workspace/attached_assets/_light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold_and_t_32nctb21dgsvksda74nb_3_1756778994953.png') !important;
+            background-image: url('/attached_assets/_light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold_and_t_32nctb21dgsvksda74nb_3_1756779584780.png') !important;
             background-size: cover !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
@@ -144,19 +144,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
         .to-slate-900 { background: none !important; }
         
         .glow-input {
+            background-color: #4a0000 !important;
+            border: 2px solid #14b8a6 !important;
             box-shadow: 
-                0 0 10px rgba(20, 184, 166, 0.5),
-                0 0 20px rgba(20, 184, 166, 0.3),
-                inset 0 0 10px rgba(139, 0, 0, 0.2);
+                0 0 15px rgba(20, 184, 166, 0.6),
+                0 0 30px rgba(20, 184, 166, 0.4),
+                0 0 45px rgba(20, 184, 166, 0.2),
+                inset 0 0 20px rgba(74, 0, 0, 0.8);
             transition: all 0.3s ease;
         }
         
         .glow-input:focus {
+            border: 2px solid #14b8a6 !important;
             box-shadow: 
-                0 0 15px rgba(20, 184, 166, 0.7),
-                0 0 30px rgba(20, 184, 166, 0.5),
-                0 0 45px rgba(20, 184, 166, 0.3),
-                inset 0 0 15px rgba(139, 0, 0, 0.3);
+                0 0 20px rgba(20, 184, 166, 0.8),
+                0 0 40px rgba(20, 184, 166, 0.6),
+                0 0 60px rgba(20, 184, 166, 0.4),
+                0 0 80px rgba(20, 184, 166, 0.2),
+                inset 0 0 25px rgba(74, 0, 0, 0.9);
         }
     </style>
 </head>
@@ -172,7 +177,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
                     type="password" 
                     id="password" 
                     name="password"
-                    class="w-full px-4 py-3 bg-red-900/80 border-2 border-teal-400 rounded-lg focus:outline-none focus:border-teal-300 text-white glow-input"
+                    class="w-full px-4 py-3 rounded-lg focus:outline-none text-white glow-input"
+                    style="background-color: #4a0000; border: 2px solid #14b8a6;"
                     placeholder="Password required..."
                     required
                 />
