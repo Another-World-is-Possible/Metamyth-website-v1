@@ -90,15 +90,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
         
         .frosted-glass {
-            background: #2d0f0f !important;
+            background-color: #4a0000 !important;
             backdrop-filter: blur(10px);
             border: 2px solid #14b8a6 !important;
             border-radius: 16px;
             box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3), 
-                0 0 20px rgba(20, 184, 166, 0.6),
-                0 0 40px rgba(20, 184, 166, 0.4),
-                inset 0 0 30px rgba(45, 15, 15, 0.9) !important;
+                0 0 15px rgba(20, 184, 166, 0.6),
+                0 0 30px rgba(20, 184, 166, 0.4),
+                0 0 45px rgba(20, 184, 166, 0.2),
+                inset 0 0 20px rgba(74, 0, 0, 0.8) !important;
         }
         
         .cta-button-base {
@@ -148,24 +148,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         .to-slate-900 { background: none !important; }
         
         .glow-input {
-            background-color: #4a0000 !important;
-            border: 2px solid #14b8a6 !important;
-            box-shadow: 
-                0 0 15px rgba(20, 184, 166, 0.6),
-                0 0 30px rgba(20, 184, 166, 0.4),
-                0 0 45px rgba(20, 184, 166, 0.2),
-                inset 0 0 20px rgba(74, 0, 0, 0.8);
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
         
         .glow-input:focus {
-            border: 2px solid #14b8a6 !important;
-            box-shadow: 
-                0 0 20px rgba(20, 184, 166, 0.8),
-                0 0 40px rgba(20, 184, 166, 0.6),
-                0 0 60px rgba(20, 184, 166, 0.4),
-                0 0 80px rgba(20, 184, 166, 0.2),
-                inset 0 0 25px rgba(74, 0, 0, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
