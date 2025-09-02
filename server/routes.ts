@@ -90,14 +90,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
         
         .frosted-glass {
-            background: rgba(74, 0, 0, 0.9);
+            background: #2d0f0f !important;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(20, 184, 166, 0.5);
+            border: 2px solid #14b8a6 !important;
             border-radius: 16px;
             box-shadow: 
                 0 8px 32px rgba(0, 0, 0, 0.3), 
-                0 0 30px rgba(20, 184, 166, 0.3),
-                inset 0 0 40px rgba(74, 0, 0, 0.8);
+                0 0 20px rgba(20, 184, 166, 0.6),
+                0 0 40px rgba(20, 184, 166, 0.4),
+                inset 0 0 30px rgba(45, 15, 15, 0.9) !important;
         }
         
         .cta-button-base {
