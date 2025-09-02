@@ -1,13 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import SharedNavigation from "@/components/shared-navigation";
 import HeroSection from "@/components/hero-section";
+import LandingScreen from "@/components/landing-screen";
+import AudioControls from "@/components/audio-controls";
 import MetamythTiles from "@/components/metamyth-tiles";
 import CallToAction from "@/components/call-to-action";
 import VideoSection from "@/components/video-section";
 
 export default function Home() {
   const [, navigate] = useLocation();
+  const [showLanding, setShowLanding] = useState(true);
+  const [showHeroContent, setShowHeroContent] = useState(false);
 
   const handleNavigation = (tab: string | null) => {
     if (tab === 'questionaire') {
@@ -30,6 +34,14 @@ export default function Home() {
     if (tab !== null) {
       window.scrollTo(0, 0);
     }
+  };
+
+  const handleBeginJourney = () => {
+    setShowLanding(false);
+    // Small delay before showing hero content for smooth transition
+    setTimeout(() => {
+      setShowHeroContent(true);
+    }, 500);
   };
 
   useEffect(() => {
@@ -81,9 +93,18 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-deep-black text-cream-white overflow-x-hidden">
+      {/* Landing Screen */}
+      {showLanding && <LandingScreen onBeginJourney={handleBeginJourney} />}
+      
+      {/* Audio Controls */}
+      <AudioControls 
+        audioSrc="/attached_assets/Akira Ito Mind Music B [5G46AtNG-9I]_1756789713229.mp3"
+        autoPlay={!showLanding}
+      />
+      
       <SharedNavigation />
       <main className="relative">
-        <HeroSection setActiveTab={handleNavigation} />
+        <HeroSection setActiveTab={handleNavigation} showContent={showHeroContent} />
         <div className="section-fade-in">
           <MetamythTiles setActiveTab={handleNavigation} />
         </div>
