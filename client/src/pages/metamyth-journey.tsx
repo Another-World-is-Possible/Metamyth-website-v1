@@ -7,6 +7,8 @@ export default function MetamythJourneyPage() {
   const [htmlContent, setHtmlContent] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const [iframeSrc, setIframeSrc] = useState<string | null>(null);
+
   useEffect(() => {
     const storedHtml = sessionStorage.getItem('metamythHTML');
     if (!storedHtml) {
@@ -14,56 +16,38 @@ export default function MetamythJourneyPage() {
       return;
     }
 
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(storedHtml, 'text/html');
-    const bodyContent = doc.body.innerHTML;
-    setHtmlContent(bodyContent);
-  }, [navigate]);
+    // Create a Blob from the HTML content
+    const blob = new Blob([storedHtml], { type: 'text/html' });
+    // Create an object URL for the Blob
+    const url = URL.createObjectURL(blob);
+    setIframeSrc(url);
 
-  useEffect(() => {
-    if (!htmlContent || !containerRef.current) return;
-
-    const container = containerRef.current;
-    const scripts = Array.from(container.querySelectorAll("script"));
-    const loadedScripts: HTMLScriptElement[] = [];
-
-    scripts.forEach(script => {
-      const newScript = document.createElement("script");
-      script.getAttributeNames().forEach(attr => {
-        newScript.setAttribute(attr, script.getAttribute(attr) || '');
-      });
-      newScript.innerHTML = script.innerHTML;
-      document.body.appendChild(newScript);
-      loadedScripts.push(newScript);
-    });
-
+    // Clean up the object URL when the component unmounts or storedHtml changes
     return () => {
-      loadedScripts.forEach(script => {
-        // Check if the script is still in the body before trying to remove it
-        if (script.parentNode === document.body) {
-          document.body.removeChild(script);
-        }
-      });
+      URL.revokeObjectURL(url);
     };
-  }, [htmlContent]);
+  }, [navigate]); // Depend on navigate to ensure it's stable
 
-  if (!htmlContent) {
+  if (!iframeSrc) {
     return (
       <PageLayout>
-        <div className="min-h-screen flex items-center justify-center">
-          {/* Optional: Add a loading spinner here */}
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white">
+          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-500"></div>
+          <p className="mt-4 text-lg">Loading Your Metamyth Journey...</p>
+          <p className="text-sm text-gray-400">Please wait while we prepare your experience.</p>
         </div>
       </PageLayout>
     );
   }
 
-  // 2. Wrap the dynamic content in PageLayout
   return (
     <PageLayout>
-      <div 
-        ref={containerRef}
-        dangerouslySetInnerHTML={{ __html: htmlContent }} 
-      />
+      <iframe
+        src={iframeSrc}
+        title="Metamyth Journey"
+        style={{ width: '100%', height: '100vh', border: 'none' }} // Adjust height as needed
+        sandbox="allow-scripts allow-same-origin allow-forms" // Essential for scripts to run
+      ></iframe>
     </PageLayout>
   );
 }

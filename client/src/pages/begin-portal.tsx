@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+import { supabase } from "@/lib/supabase";
 
 export default function BeginPortal() {
   const [, navigate] = useLocation();
@@ -72,19 +73,32 @@ export default function BeginPortal() {
     return () => clearTimeout(initialTimeout); // Cleanup on unmount
   }, [currentStep]); // Rerun effect when currentStep changes
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const portal = document.getElementById('portal') as HTMLElement;
 
-    if (passwordInput.toLowerCase().trim() === 'artifiction') {
-      setSuccessState(true);
-      setErrorState(false);
-      if (portal) portal.classList.add('success-pulse');
-      setTimeout(() => {
-        // Redirect to the metamyth journey page
-        window.location.href = '/metamyth-journey';
-      }, 2000);
-    } else {
+    try {
+      const { data, error } = await supabase.functions.invoke('validate-portal-password', {
+        body: { password: passwordInput },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (data.htmlContent) {
+        setSuccessState(true);
+        setErrorState(false);
+        sessionStorage.setItem('metamythHTML', data.htmlContent);
+        if (portal) portal.classList.add('success-pulse');
+        setTimeout(() => {
+          // Redirect to the metamyth journey page
+          window.location.href = '/metamyth-journey';
+        }, 2000);
+      } else {
+        throw new Error('Invalid response from server');
+      }
+    } catch (error) {
       setErrorState(true);
       setSuccessState(false);
       setPasswordInput(''); // Clear input on error
@@ -290,12 +304,7 @@ export default function BeginPortal() {
             width: 100%;
             height: 100%;
             top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 3;
-        }
-        
-        .particle {
+            left:.particle {
             position: absolute;
             width: 2px;
             height: 2px;
