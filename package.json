@@ -4,7 +4,7 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 5000",
     "build": "vite build",
     "serve": "ts-node server/static-server.ts",
     "start": "npm run serve",
