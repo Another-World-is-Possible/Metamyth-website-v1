@@ -71,60 +71,62 @@ export default function SharedNavigation() {
             </span>
           </button>
 
-          {/* Audio Controls */}
-          {audioControls && (
-            <div className="relative">
-              <button
-                onClick={() => setShowControls(!showControls)}
-                className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold hover:bg-ancient-gold/20 transition-all duration-300 mr-4"
-                data-testid="button-audio-toggle"
-              >
-                {isPlaying ? <Volume2 size={18} /> : <VolumeX size={18} />}
-              </button>
 
-              {/* Expanded Controls */}
-              {showControls && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: -10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: -10 }}
-                  className="absolute top-full right-0 mt-2 bg-black/80 backdrop-blur-md border border-ancient-gold/30 rounded-lg p-4 min-w-[200px] z-50"
+          {/* Audio Controls + Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-6">
+            {/* Audio Controls */}
+            {audioControls && (
+              <div className="relative">
+                <button
+                  onClick={() => setShowControls(!showControls)}
+                  className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold hover:bg-ancient-gold/20 transition-all duration-300"
+                  data-testid="button-audio-toggle"
                 >
-                  {/* Play/Pause Toggle */}
-                  <div className="mb-3">
-                    <button
-                      onClick={togglePlay}
-                      className="w-full bg-ancient-gold/20 hover:bg-ancient-gold/30 text-ancient-gold border border-ancient-gold/30 rounded px-3 py-2 text-sm transition-all duration-200"
-                      data-testid="button-music-play-pause"
-                    >
-                      {isPlaying ? 'Pause Music' : 'Play Music'}
-                    </button>
-                  </div>
+                  {isPlaying ? <Volume2 size={18} /> : <VolumeX size={18} />}
+                </button>
 
-                  {/* Volume Slider */}
-                  <div className="space-y-2">
-                    <label className="text-ancient-gold text-sm">Volume</label>
-                    <input
-                      type="range"
-                      min="0"
-                      max="1"
-                      step="0.1"
-                      value={volume}
-                      onChange={(e) => setVolume(parseFloat(e.target.value))}
-                      className="w-full h-2 bg-black/50 rounded-lg appearance-none cursor-pointer slider-thumb"
-                      data-testid="slider-volume"
-                    />
-                    <div className="text-ancient-gold/70 text-xs text-center">
-                      {Math.round(volume * 100)}%
+                {/* Expanded Controls */}
+                {showControls && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                    className="absolute top-full left-0 mt-2 bg-black/80 backdrop-blur-md border border-ancient-gold/30 rounded-lg p-4 min-w-[200px] z-50"
+                  >
+                    {/* Play/Pause Toggle */}
+                    <div className="mb-3">
+                      <button
+                        onClick={togglePlay}
+                        className="w-full bg-ancient-gold/20 hover:bg-ancient-gold/30 text-ancient-gold border border-ancient-gold/30 rounded px-3 py-2 text-sm transition-all duration-200"
+                        data-testid="button-music-play-pause"
+                      >
+                        {isPlaying ? 'Pause Music' : 'Play Music'}
+                      </button>
                     </div>
-                  </div>
-                </motion.div>
-              )}
-            </div>
-          )}
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+                    {/* Volume Slider */}
+                    <div className="space-y-2">
+                      <label className="text-ancient-gold text-sm">Volume</label>
+                      <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value={volume}
+                        onChange={(e) => setVolume(parseFloat(e.target.value))}
+                        className="w-full h-2 bg-black/50 rounded-lg appearance-none cursor-pointer slider-thumb"
+                        data-testid="slider-volume"
+                      />
+                      <div className="text-ancient-gold/70 text-xs text-center">
+                        {Math.round(volume * 100)}%
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            )}
+            
+            {/* Navigation Items */}
             {navItems.map((item) => (
               <Button
                 key={item.id}
