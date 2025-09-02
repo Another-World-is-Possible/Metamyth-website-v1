@@ -126,10 +126,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
         
         body.crimson-portal {
-            background-image: url('/attached_assets/_light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold_and_t_32nctb21dgsvksda74nb_3_1756778994953.png') !important;
+            background-image: url('/@fs/home/runner/workspace/attached_assets/_light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold_and_t_32nctb21dgsvksda74nb_3_1756778994953.png') !important;
             background-size: cover !important;
             background-position: center !important;
             background-repeat: no-repeat !important;
+            background-attachment: fixed !important;
             min-height: 100vh !important;
             display: flex !important;
             align-items: center !important;
