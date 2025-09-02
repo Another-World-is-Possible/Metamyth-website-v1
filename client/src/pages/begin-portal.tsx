@@ -86,14 +86,14 @@ export default function BeginPortal() {
         throw error;
       }
 
-      if (data.htmlContent) {
+      if (data) {
         setSuccessState(true);
         setErrorState(false);
-        sessionStorage.setItem('metamythHTML', data.htmlContent);
+        sessionStorage.setItem('metamythHTML', data);
         if (portal) portal.classList.add('success-pulse');
         setTimeout(() => {
           // Redirect to the metamyth journey page
-          window.location.href = '/metamyth-journey';
+          navigate('/metamyth-journey');
         }, 2000);
       } else {
         throw new Error('Invalid response from server');
@@ -154,7 +154,7 @@ export default function BeginPortal() {
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/attached_assets/_light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold_and_t_32nctb21dgsvksda74nb_3_1756779584780.png');
+            background-image: url('/attached_assets/_light_through_gold.png');
             background-size: cover;
             background-position: center;
             opacity: 0;
