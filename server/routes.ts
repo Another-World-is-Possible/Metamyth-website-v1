@@ -161,30 +161,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
     </style>
 </head>
 <body class="crimson-portal">
-    <div style="padding: 2rem; max-width: 28rem; width: 100%; margin: 0 1rem; background-color: #4a0000 !important; border: 2px solid #14b8a6 !important; border-radius: 16px !important; box-shadow: 0 0 15px rgba(20, 184, 166, 0.6), 0 0 30px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(74, 0, 0, 0.8) !important; backdrop-filter: blur(10px) !important;">
-        <h1 class="text-3xl font-bold text-center mb-6">METAMYTH Portal</h1>
-        <h2 class="text-lg text-center mb-8 text-gray-300">Access Required</h2>
+    <div style="padding: 2rem; max-width: 28rem; width: 100%; margin: 0 1rem; background-color: #4a0000; border: 2px solid #14b8a6; border-radius: 16px; box-shadow: 0 0 15px rgba(20, 184, 166, 0.6), 0 0 30px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(74, 0, 0, 0.8); backdrop-filter: blur(10px);">
+        <h1 style="font-size: 1.875rem; font-weight: bold; text-align: center; margin-bottom: 1.5rem; color: #D4AF37; font-family: 'AngleFairy2024', serif;">METAMYTH Portal</h1>
+        <h2 style="font-size: 1.125rem; text-align: center; margin-bottom: 2rem; color: #d1d5db;">Access Required</h2>
         
-        <form onsubmit="handleSubmit(event)" class="space-y-6">
+        <form onsubmit="handleSubmit(event)" style="display: flex; flex-direction: column; gap: 1.5rem;">
             <div>
-                <label for="password" class="block text-sm font-medium mb-2">Enter Password:</label>
+                <label for="password" style="display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.5rem; color: white;">Enter Password:</label>
                 <input 
                     type="password" 
                     id="password" 
                     name="password"
-                    class="w-full px-4 py-3 rounded-lg focus:outline-none text-white glow-input"
-                    style="background-color: rgba(255, 255, 255, 0.1) !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; border-radius: 8px; padding: 0.75rem 1rem; width: 100%; outline: none; color: white; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;"
+                    style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 8px; padding: 0.75rem 1rem; width: 100%; outline: none; color: white; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);"
                     placeholder="Password required..."
                     required
                 />
             </div>
             
-            <button type="submit" class="cta-button-base w-full">
+            <button type="submit" style="position: relative; padding: 12px 24px; background: linear-gradient(90deg, #f39c12, #f1c40f, #f4d03f); color: #2c3e50; font-family: 'AngleFairy2024', serif; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border: none; cursor: pointer; transition: all 0.3s ease; margin: 8px; border-radius: 16px; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1); text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.3); width: 100%;">
                 ENTER PORTAL
             </button>
         </form>
         
-        <p class="text-center text-sm text-gray-400 mt-6">
+        <p style="text-align: center; font-size: 0.875rem; color: #9ca3af; margin-top: 1.5rem;">
             This is a private portal for authorized users only.
         </p>
     </div>
