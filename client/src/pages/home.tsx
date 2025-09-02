@@ -6,7 +6,11 @@ import LandingScreen from "@/components/landing-screen";
 import MetamythTiles from "@/components/metamyth-tiles";
 import CallToAction from "@/components/call-to-action";
 import VideoSection from "@/components/video-section";
+
 import { AudioProvider, useAudio } from "@/contexts/audio-context";
+
+import bgImg from "@assets/_zln01ad4mec8v0qmtav0_0_1755899727372.jpg";
+
 
 function HomeContent() {
   const [, navigate] = useLocation();
@@ -110,7 +114,7 @@ function HomeContent() {
           <div 
             className="relative"
             style={{
-              backgroundImage: `url(/attached_assets/_zln01ad4mec8v0qmtav0_0_1755899727372.png)`,
+              backgroundImage: `url(${bgImg})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundAttachment: 'scroll'

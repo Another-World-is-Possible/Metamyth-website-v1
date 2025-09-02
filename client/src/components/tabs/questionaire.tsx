@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronRight, ChevronLeft, Mail, Phone, ExternalLink } from "lucide-react";
+import { ChevronRight, ChevronLeft, Mail, Phone, ExternalLink, Loader2 } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/lib/supabase";
 
 // Note: For static deployment, the questionnaire submission is handled client-side
 // For production with backend, replace the submitMutation logic with actual API calls
@@ -159,49 +159,28 @@ export default function QUESTionaire() {
 
   const submitMutation = useMutation({
     mutationFn: async (data: any) => {
-      // For static deployment, we'll simulate the API call
-      // In a real deployment, you might want to integrate with a service like Netlify Forms, Formspree, or similar
-      console.log("Questionnaire submission (static mode):", data);
+      // This now calls our Supabase Edge Function
+      const { data: functionData, error } = await supabase.functions.invoke(
+        "submit-questionnaire",
+        {
+          body: data,
+        }
+      );
 
-      // Simulate processing time
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      if (error) {
+        throw new Error(error.message);
+      }
 
-      // Qualification logic - simplified to OR logic for financial qualification or authorship level
-      const responses = data.responses || {};
-      
-      // Debug logging to see what responses we have
-      console.log("All responses received:", responses);
-      
-      // Question 4: Investment Scale - $1K+ qualifies for strategy calls
-      const investmentResponse = responses[4] || "";
-      const hasHighInvestment = investmentResponse.includes("$1K") || 
-                               investmentResponse.includes("$5K") || 
-                               investmentResponse.includes("$15K");
-      
-      // Question 1: Authorship Level - higher authority levels qualify for strategy calls
-      const authorshipResponse = responses[1] || "";
-      const hasHighAuthorship = authorshipResponse.includes("I actively author reality—leading an organization") ||
-                                authorshipResponse.includes("I'm consciously building my story—creating an organization") ||
-                                authorshipResponse.includes("I have significant influence—helping write the story");
-      
-      console.log("Scoring breakdown:", {
-        hasHighInvestment,
-        hasHighAuthorship,
-        investmentResponse,
-        authorshipResponse
-      });
-      
-      // Advanced Track qualification criteria - OR logic: either high investment OR high authorship
-      const qualifiesForAdvanced = hasHighInvestment || hasHighAuthorship;
-
-      return {
-        qualified: qualifiesForAdvanced ? "advanced" : "community",
-        message: "Thank you for your submission!"
-      };
+      // The Edge Function will return the qualification status
+      return functionData;
     },
     onSuccess: (data: any) => {
       setQualification(data.qualified);
       setShowResult(true);
+      toast({
+        title: "Success!",
+        description: data.message,
+      });
     },
     onError: (error) => {
       toast({
@@ -228,6 +207,16 @@ export default function QUESTionaire() {
         toast({
           title: "Email Required",
           description: "Please enter your email address to continue.",
+          variant: "destructive",
+        });
+        return;
+      }
+      // Basic email format validation
+      const emailRegex = /^\S+@\S+\.\S+$/;
+      if (!emailRegex.test(contactInfo.email)) {
+        toast({
+          title: "Invalid Email Format",
+          description: "Please enter a valid email address.",
           variant: "destructive",
         });
         return;
@@ -752,8 +741,14 @@ export default function QUESTionaire() {
                       className="cta-button-base cta-button-crimson questionnaire-button"
                       data-testid="button-submit"
                     >
-                      {submitMutation.isPending ? "Submitting..." : "Complete QUESTionaire"} <ChevronRight className="w-4 h-4 ml-1" />
-                    </button>
+                      {submitMutation.isPending ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Submitting...
+                        </>
+                      ) : "Complete QUESTionaire"}
+                      {!submitMutation.isPending && <ChevronRight className="w-4 h-4 ml-1" />}
+                    </button>                  
                   </div>
                 </CardContent>
               </Card>

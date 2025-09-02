@@ -4,12 +4,14 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development tsx server/index.ts",
-    "build-for-server": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "dev": "vite",
     "build": "vite build",
-    "start": "NODE_ENV=production node dist/index.js",
+    "serve": "ts-node server/static-server.ts",
+    "start": "npm run serve",
     "check": "tsc",
-    "db:push": "NODE_TLS_REJECT_UNAUTHORIZED=0 drizzle-kit push"
+    "supabase:start": "supabase start",
+    "supabase:status": "supabase status",
+    "functions:deploy": "supabase functions deploy"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -42,6 +44,7 @@
     "@radix-ui/react-toggle": "^1.1.3",
     "@radix-ui/react-toggle-group": "^1.1.3",
     "@radix-ui/react-tooltip": "^1.2.0",
+    "@supabase/supabase-js": "^2.56.1",
     "@tanstack/react-query": "^5.60.5",
     "@types/memoizee": "^0.4.12",
     "class-variance-authority": "^0.7.1",
@@ -98,6 +101,7 @@
     "drizzle-kit": "^0.30.4",
     "esbuild": "^0.25.0",
     "postcss": "^8.4.47",
+    "supabase": "^2.39.2",
     "tailwindcss": "^3.4.17",
     "tsx": "^4.19.1",
     "typescript": "5.6.3",
