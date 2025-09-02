@@ -161,7 +161,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     </style>
 </head>
 <body class="crimson-portal">
-    <div class="p-8 max-w-md w-full mx-4" style="background-color: rgba(255, 255, 255, 0.1) !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; border-radius: 16px !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important; backdrop-filter: blur(10px) !important;">
+    <div style="padding: 2rem; max-width: 28rem; width: 100%; margin: 0 1rem; background-color: #4a0000 !important; border: 2px solid #14b8a6 !important; border-radius: 16px !important; box-shadow: 0 0 15px rgba(20, 184, 166, 0.6), 0 0 30px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(74, 0, 0, 0.8) !important; backdrop-filter: blur(10px) !important;">
         <h1 class="text-3xl font-bold text-center mb-6">METAMYTH Portal</h1>
         <h2 class="text-lg text-center mb-8 text-gray-300">Access Required</h2>
         
@@ -173,7 +173,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
                     id="password" 
                     name="password"
                     class="w-full px-4 py-3 rounded-lg focus:outline-none text-white glow-input"
-                    style="background-color: #4a0000 !important; border: 2px solid #14b8a6 !important; box-shadow: 0 0 15px rgba(20, 184, 166, 0.6), 0 0 30px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(74, 0, 0, 0.8) !important;"
+                    style="background-color: rgba(255, 255, 255, 0.1) !important; border: 1px solid rgba(255, 255, 255, 0.3) !important; border-radius: 8px; padding: 0.75rem 1rem; width: 100%; outline: none; color: white; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;"
                     placeholder="Password required..."
                     required
                 />
