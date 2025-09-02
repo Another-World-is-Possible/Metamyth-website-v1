@@ -1,9 +1,9 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import path from "path";
-import { storage } from "./storage";
-import { insertQuestionnaireResponseSchema } from "@shared/schema";
-import { z } from "zod";
+// import { storage } from "./storage";
+// import { insertQuestionnaireResponseSchema } from "@shared/schema";
+// import { z } from "zod";
 
 // Qualification logic based on responses
 function determineQualification(responses: Record<number, any>): "calendar" | "discord" {
@@ -466,7 +466,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Questionnaire submission endpoint
+  // Questionnaire submission endpoint (commented out - requires storage and schema setup)
+  /*
   app.post('/api/questionnaire/submit', async (req, res) => {
     try {
       const body = insertQuestionnaireResponseSchema.parse({
@@ -492,6 +493,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     }
   });
+  */
 
   const httpServer = createServer(app);
 
