@@ -49,6 +49,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     if (password && password.toString().trim().toLowerCase() === 'artifiction') {
       res.sendFile(path.join(process.cwd(), 'metamyth.html'));
     } else {
+      // Prevent caching
+      res.set({
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      });
       // Send password-protected page with frosted glass effect
       res.send(`
 <!DOCTYPE html>
@@ -89,17 +95,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             font-weight: normal !important;
         }
         
-        .frosted-glass {
-            background-color: #4a0000 !important;
-            backdrop-filter: blur(10px);
-            border: 2px solid #14b8a6 !important;
-            border-radius: 16px;
-            box-shadow: 
-                0 0 15px rgba(20, 184, 166, 0.6),
-                0 0 30px rgba(20, 184, 166, 0.4),
-                0 0 45px rgba(20, 184, 166, 0.2),
-                inset 0 0 20px rgba(74, 0, 0, 0.8) !important;
-        }
+        /* Frosted glass styles removed - using inline styles only */
         
         .cta-button-base {
             position: relative;
@@ -162,7 +158,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 </head>
 <body class="crimson-portal">
     <div style="padding: 2rem; max-width: 28rem; width: 100%; margin: 0 1rem; background-color: #4a0000; border: 2px solid #14b8a6; border-radius: 16px; box-shadow: 0 0 15px rgba(20, 184, 166, 0.6), 0 0 30px rgba(20, 184, 166, 0.4), inset 0 0 20px rgba(74, 0, 0, 0.8); backdrop-filter: blur(10px);">
-        <h1 style="font-size: 1.875rem; font-weight: bold; text-align: center; margin-bottom: 1.5rem; color: #D4AF37; font-family: 'AngleFairy2024', serif;">METAMYTH Portal</h1>
+        <h1 style="font-size: 1.875rem; font-weight: bold; text-align: center; margin-bottom: 1.5rem; color: #D4AF37; font-family: 'AngleFairy2024', serif;">METAMYTH Portal [DEBUG: INLINE STYLES ACTIVE]</h1>
         <h2 style="font-size: 1.125rem; text-align: center; margin-bottom: 2rem; color: #d1d5db;">Access Required</h2>
         
         <form onsubmit="handleSubmit(event)" style="display: flex; flex-direction: column; gap: 1.5rem;">
