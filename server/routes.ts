@@ -126,7 +126,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
         
         body.crimson-portal {
-            background: linear-gradient(135deg, #1a0000 0%, #8b0000 25%, #8b0000 50%, #8b0000 75%, #1a0000 100%) !important;
+            background-image: url('/attached_assets/_light_possibility_space-__prompt-_extreme_close-up_inside_pure_light_refracting_through_gold_and_t_32nctb21dgsvksda74nb_3_1756778994953.png') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
             min-height: 100vh !important;
             display: flex !important;
             align-items: center !important;
@@ -138,6 +141,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
         .from-slate-900 { background: none !important; }
         .via-purple-900 { background: none !important; }
         .to-slate-900 { background: none !important; }
+        
+        .glow-input {
+            box-shadow: 
+                0 0 10px rgba(20, 184, 166, 0.5),
+                0 0 20px rgba(20, 184, 166, 0.3),
+                inset 0 0 10px rgba(139, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .glow-input:focus {
+            box-shadow: 
+                0 0 15px rgba(20, 184, 166, 0.7),
+                0 0 30px rgba(20, 184, 166, 0.5),
+                0 0 45px rgba(20, 184, 166, 0.3),
+                inset 0 0 15px rgba(139, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body class="crimson-portal">
@@ -152,7 +171,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
                     type="password" 
                     id="password" 
                     name="password"
-                    class="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white"
+                    class="w-full px-4 py-3 bg-red-900/80 border-2 border-teal-400 rounded-lg focus:outline-none focus:border-teal-300 text-white glow-input"
                     placeholder="Password required..."
                     required
                 />
