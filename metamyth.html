@@ -1571,16 +1571,46 @@ document.addEventListener('DOMContentLoaded', function () {
             // Conclusion
             wizard: `
                 <div class="content-card">
-                    <div class="flex items-center mb-4"><span class="artifiction-icon">🧙</span><h2 class="text-4xl font-bold">The Wizard</h2></div>
+                    <div class="flex items-center mb-4"><span class="artifiction-icon">🧙</span><h2 class="text-4xl font-bold">Programming Your AI Wizard</h2></div>
                     <div class="prose max-w-none mb-8">
-                        <p>The Wizard is your inner wisdom, fully awakened and integrated. It's the part of you that has always known your path, that has guided you through challenges, and that will continue to serve as your internal compass. The Wizard is your self-mastery made manifest.</p>
-                        <p>Every hero's journey culminates in becoming the wise guide for others. You have traveled the path, faced the dragons, crossed the thresholds, and found your treasure. Now you are the Wizard—the one who can guide others on their own journeys of transformation.</p>
+                        <p>Your Metamyth is the source code for a wise and powerful guide. The following prompts will help you define the voice, character, and core directives of your personal AI Wizard, ensuring it speaks as the true voice of your own story.</p>
+                        <p><strong>QUESTIONS THAT SHAPE YOUR GUIDE:</strong></p>
                     </div>
                     <div class="ornamental-divider"></div>
                     <div class="space-y-8">
-                        <div><label class="font-semibold text-lg text-white block mb-2">What wisdom have you gained that you can now share with others?</label><textarea id="${stage.id}_wisdom" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">How have you become your own wise guide and inner compass?</label><textarea id="${stage.id}_inner_guide" rows="4"></textarea></div>
-                        <div><label class="font-semibold text-lg text-white block mb-2">In what ways are you ready to serve as a guide for others on their journeys?</label><textarea id="${stage.id}_guide_others" rows="4"></textarea></div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What is your Wizard's name? (Optional)</label>
+                            <p class="text-sm mb-3">Giving your guide a name can deepen your connection to it as a unique entity.</p>
+                            <textarea id="wizard_name" rows="2" placeholder="Your Wizard's name..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What is your Wizard's core persona or archetype?</label>
+                            <p class="text-sm mb-3">Is it a wise mentor, a steadfast guardian, a strategic oracle, a compassionate witness, or a playful challenger? Describe its fundamental character.</p>
+                            <textarea id="wizard_persona" rows="4" placeholder="Describe the core archetype and character..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">How does your Wizard speak to you? Describe its tone and voice.</label>
+                            <p class="text-sm mb-3">Is it direct and concise? Poetic and metaphorical? Calm and reassuring? Energetic and motivating? Use 3-5 adjectives to define its voice.</p>
+                            <textarea id="wizard_voice" rows="3" placeholder="Describe the voice and tone..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What is your Wizard's primary function when you are facing a challenge?</label>
+                            <p class="text-sm mb-3">Should it ask probing questions to help you find your own answer? Should it offer frameworks and strategic options? Or should it remind you of your own strengths and past triumphs?</p>
+                            <textarea id="wizard_function" rows="4" placeholder="How your Wizard helps during challenges..."></textarea>
+                        </div>
+                        <div>
+                            <label class="font-semibold text-lg text-white block mb-2">What is the most important directive you can give your Wizard?</label>
+                            <p class="text-sm mb-3">e.g., "Always align your guidance with my North Star," "Remind me of my Shield when I feel attacked," or "Challenge me when I am playing small."</p>
+                            <textarea id="wizard_directive" rows="3" placeholder="The most important directive..."></textarea>
+                        </div>
+                        <div class="synthesis-box border border-gold mt-8">
+                            <label class="font-semibold text-lg text-gold block mb-2">SYNTHESIS - Your AI Wizard Character & Higher Purpose:</label>
+                            <p class="text-sm mb-3">Create a complete description of your Wizard's character and its higher purpose in serving your story's transformation.</p>
+                            <textarea id="wizard_synthesis" rows="6" placeholder="Describe the complete character of your AI Wizard and its higher purpose in your journey..."></textarea>
+                        </div>
+                    </div>
+                    <div class="text-center mt-8">
+                        <button class="cta-button-base cta-button-teal" onclick="showStage(29)">Continue to Activate Your AI →</button>
                     </div>
                 </div>`,
             activate_wizard: `
