@@ -20,7 +20,7 @@ interface AudioProviderProps {
 
 export function AudioProvider({ children, audioSrc }: AudioProviderProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolumeState] = useState(0.5);
+  const [volume, setVolumeState] = useState(0.3);
   const [showControls, setShowControls] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
