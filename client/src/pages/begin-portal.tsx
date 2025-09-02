@@ -86,10 +86,10 @@ export default function BeginPortal() {
         throw error;
       }
 
-      if (data) {
+      if (data.htmlContent) {
         setSuccessState(true);
         setErrorState(false);
-        sessionStorage.setItem('metamythHTML', data);
+        sessionStorage.setItem('metamythHTML', data.htmlContent);
         if (portal) portal.classList.add('success-pulse');
         setTimeout(() => {
           // Redirect to the metamyth journey page

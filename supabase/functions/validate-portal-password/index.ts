@@ -58,9 +58,12 @@ serve(async (req) => {
       });
     }
 
-    // Serve the file content as HTML
-    return new Response(fileBlob, {
-      headers: { "Content-Type": "text/html", ...corsHeaders },
+    // Read the blob content into a string
+    const htmlContent = await fileBlob.text();
+
+    // Serve the content as a JSON payload
+    return new Response(JSON.stringify({ htmlContent }), {
+      headers: { "Content-Type": "application/json", ...corsHeaders },
     });
 
   } catch (err) {
