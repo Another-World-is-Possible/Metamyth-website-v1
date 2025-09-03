@@ -11,17 +11,20 @@ interface PageLayoutProps {
 export default function PageLayout({ children, className = "" }: PageLayoutProps) {
   const [location] = useLocation();
 
-  // Scroll to top whenever the location changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
   return (
-    <div className={`min-h-screen bg-deep-black text-cream-white overflow-x-hidden ${className}`}>
+    // This structure creates a flexible column that fills the screen's height
+    <div className={`flex flex-col min-h-screen bg-deep-black text-cream-white overflow-x-hidden ${className}`}>
       <SharedNavigation />
-      <main className="relative">
+      
+      {/* This main section will now grow to fill space and add padding for the nav */}
+      <main className="relative flex-grow pt-16">
         {children}
       </main>
+      
       <SharedFooter />
     </div>
   );
