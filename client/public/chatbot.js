@@ -1,9 +1,6 @@
 // chatbot.js
 
-//
-// --- INITIALIZE CONFIGURATION (Single Source of Truth) ---
-
-// Define the default configuration for the chatbot first.
+// --- CONFIGURATION ---
 const config = {
     model: 'deepseek/deepseek-chat-v3-0324:free',
     botAvatarImg: 'bot.png',
@@ -17,34 +14,29 @@ const config = {
     personaDataId: 'persona-data'
 };
 
-// Find the user-provided config in the HTML and merge/overwrite the defaults.
 const userConfigElement = document.getElementById('chatbot-config');
 if (userConfigElement) {
     try {
         const userConfig = JSON.parse(userConfigElement.textContent);
-        // Object.assign overwrites properties in 'config' with properties from 'userConfig'
         Object.assign(config, userConfig);
     } catch (e) {
         console.error("Could not parse #chatbot-config JSON.", e);
     }
 }
 
-//
-// --- DOM Element and API Constants ---
-
+// --- DOM & API CONSTANTS ---
 const chatView = document.getElementById('chat-view');
 const chatTextbox = document.getElementById('chat-textbox');
 const sendButton = document.getElementById('send-button');
 const audioPlayer = document.getElementById('tts-audio-player');
 
-const API_BASE_URL = 'https://chatproxy.i.rickey.io';
+const API_BASE_URL = 'http://YOUR_SERVER_IP:PORT'; // <-- IMPORTANT: Set this to your server's URL
 const PREPARE_STREAM_ENDPOINT = `${API_BASE_URL}/api/prepare-stream`;
 const CHAT_STREAM_ENDPOINT = `${API_BASE_URL}/api/chat-stream`;
 const TTS_ENDPOINT = `${API_BASE_URL}/api/tts`;
+const VALIDATE_STAGE_ENDPOINT = `${API_BASE_URL}/api/validate-stage`;
 
-//
-// --- State Variables ---
-
+// --- STATE VARIABLES ---
 let conversationLog = [];
 let typingIndicatorElement = null;
 let currentBotMessageContentElement = null;
@@ -56,7 +48,77 @@ let isAudioUnlocked = false;
 const UPDATE_INTERVAL = 20;
 
 //
-// --- Core Functions ---
+// --- NEW & INTEGRATED FUNCTIONS ---
+//
+
+/**
+ * Sends a non-streaming JSON request and expects a JSON response.
+ * This is used by the Metamyth journey logic.
+ * @param {string} endpoint - The full API endpoint URL.
+ * @param {object} payload - The JSON data to send.
+ * @returns {Promise<object>} - The parsed JSON response.
+ */
+async function sendJsonRequest(endpoint, payload) {
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || `Request failed with status ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error(`API Error at ${endpoint}:`, error);
+    throw error;
+  }
+}
+
+// --- METAMYTH HELPER FUNCTIONS (for metamyth-logic.js to call) ---
+function showLoadingOverlay() {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    if (loadingOverlay) loadingOverlay.style.display = 'flex';
+}
+
+function hideLoadingOverlay() {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    if (loadingOverlay) loadingOverlay.style.display = 'none';
+}
+
+function updatePersonaWithTemplate(templateId, context) {
+    try {
+        const personaBaseElement = document.getElementById('persona-base');
+        const systemPromptTemplateElement = document.getElementById(templateId);
+
+        if (!personaBaseElement || !systemPromptTemplateElement) {
+            console.error("Missing persona base or system prompt template element.");
+            return null;
+        }
+
+        const personaObject = JSON.parse(personaBaseElement.textContent);
+        let systemMessageText = systemPromptTemplateElement.textContent.trim();
+
+        for (const key in context) {
+            systemMessageText = systemMessageText.replace(new RegExp(`{{${key}}}`, 'g'), context[key]);
+        }
+        
+        personaObject.system = systemMessageText;
+        return personaObject;
+
+    } catch (error) {
+        console.error("Error in updatePersonaWithTemplate:", error);
+        return null;
+    }
+}
+
+
+//
+// --- RESTORED CORE CHATBOT FUNCTIONS ---
+//
 
 function autoResizeTextarea(element) {
 	element.style.height = 'auto';
@@ -71,7 +133,8 @@ function cleanTextForTTS(text) {
     cleanedText = cleanedText.replace(emojiRegex, '');
     cleanedText = cleanedText.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1');
     cleanedText = cleanedText.replace(/!\[([^\]]*)\]\([^\)]+\)/g, '$1');
-    cleanedText = cleanedText.replace(/^[#]{1,6}\s/gm, '');
+    cleanedText = cleanedText.replace(/[#]{1,6}\s/gm, ' ');
+    cleanedText = cleanedText.replace(/\s*(###)/g, ' ');
     cleanedText = cleanedText.replace(/^[\s]*([*+-]|\d+\.)\s/gm, '');
     cleanedText = cleanedText.replace(/(\*\*|__|\*|_|~~|`)/g, '');
     cleanedText = cleanedText.replace(/[ \t]+/g, ' ');
@@ -154,23 +217,12 @@ async function requestAndPlayAudio(text, indicatorContainer, autoplay = false) {
     }
 }
 
-/**
- * Safely escapes HTML special characters in a string.
- * @param {string} str The string to escape.
- * @returns {string} The escaped string.
- */
 function escapeHTML(str) {
     const p = document.createElement('p');
     p.textContent = str;
     return p.innerHTML;
 }
 
-/**
- * Adds a new message bubble to the chat view, now with multi-line user messages.
- * @param {string} message The content of the message.
- * @param {'user'|'bot'} sender Who sent the message.
- * @param {boolean} makeCurrentBotMessage Flags this as the active streaming message element.
- */
 function addMessageToView(message, sender, makeCurrentBotMessage = false) {
     const messageWrapper = document.createElement('div');
     messageWrapper.classList.add('chat-message-wrapper');
@@ -181,16 +233,11 @@ function addMessageToView(message, sender, makeCurrentBotMessage = false) {
     
     if (sender === 'user') {
         messageWrapper.classList.add('user-message-wrapper');
-        // Add 'markdown-body' class for consistent styling
         messageElement.classList.add('user-message', 'markdown-body'); 
         avatar.src = config.userAvatarImg;
         avatar.alt = 'User';
 		
-		// 1. First, escape the user's text to prevent HTML injection.
         const sanitizedMessage = escapeHTML(message);
-
-        // 2. Then, replace single newlines with double newlines. This tells the
-        //    Markdown parser to create a paragraph break, effectively a new line.
         const messageWithHardBreaks = sanitizedMessage.replace(/\n/g, '\n\n');
         messageElement.innerHTML = marked.parse(messageWithHardBreaks); 
 
@@ -198,7 +245,6 @@ function addMessageToView(message, sender, makeCurrentBotMessage = false) {
         messageWrapper.appendChild(avatar);
     } else { 
         messageWrapper.classList.add('bot-message-wrapper');
-        // Add 'markdown-body' class for consistent styling
         messageElement.classList.add('bot-message', 'markdown-body');
         avatar.src = config.botAvatarImg;
         avatar.alt = config.botName;
@@ -316,24 +362,16 @@ async function sendMessage() {
     const messageText = chatTextbox.value.trim();
     if (messageText === '') return;
 	
-    // On the very first user interaction, we need to "unlock" the audio context.
-    // We do this by playing a tiny, silent audio clip in response to the user's click.
     if (!isAudioUnlocked) {
         console.log("Attempting to unlock audio context for iOS...");
-        // A tiny, silent WAV file encoded as a Data URL.
         const silentAudio = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
         audioPlayer.src = silentAudio;
         
-        // We must call .play() within the user gesture event handler.
-        // We use a .then() to set our flag only after a successful play attempt.
-        // The .catch() is important to prevent console errors if it's blocked.
         audioPlayer.play().then(() => {
             isAudioUnlocked = true;
             console.log("Audio context unlocked.");
         }).catch(e => {
-            // This might still fail on some strict browsers, but the attempt is what matters.
-            console.warn("Audio unlock attempt failed, but continuing. Subsequent plays may require a click.", e);
-            // We can set it to true anyway, as the user has performed a gesture.
+            console.warn("Audio unlock attempt failed, but continuing.", e);
             isAudioUnlocked = true; 
         });
     }
@@ -384,7 +422,6 @@ async function sendMessage() {
             const data = JSON.parse(event.data);
 
             if (currentBotMessageContentElement && !currentBotMessageContentElement.parentNode) {
-                // Element was removed, maybe through error handling, stop processing
                 clearEventSource();
                 return;
             }
@@ -443,26 +480,22 @@ async function sendMessage() {
     }
 }
 
-//
-// Initial Setup
-
-// Set placeholder text with platform-specific hint
-const isDesktop = !('ontouchstart' in window || navigator.maxTouchPoints > 0);
-let placeholderText = config.inputPlaceholder;
-if (isDesktop) {
-	placeholderText += '\n(Shift+Enter for a new line)';
-}
-chatTextbox.placeholder = placeholderText;
-
-// Attach event listeners
-sendButton.addEventListener('click', sendMessage);
-chatTextbox.addEventListener('keydown', function(event) {
-	// Send on Enter
-	if (event.key === 'Enter' && !event.shiftKey) {
-        event.preventDefault();
-        sendMessage();
+// --- Initial Setup ---
+if (chatTextbox && sendButton) {
+    const isDesktop = !('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    let placeholderText = config.inputPlaceholder;
+    if (isDesktop) {
+    	placeholderText += '\n(Shift+Enter for a new line)';
     }
-});
+    chatTextbox.placeholder = placeholderText;
 
-// Run the chat initialization logic
-initializeChat();
+    sendButton.addEventListener('click', sendMessage);
+    chatTextbox.addEventListener('keydown', function(event) {
+    	if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+
+    initializeChat();
+}

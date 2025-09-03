@@ -47,8 +47,8 @@ serve(async (req) => {
 
     // Fetch the file from a private bucket
     const { data: fileBlob, error: downloadError } = await supabase.storage
-      .from("protected-pages") // We'll assume the bucket is named 'protected-pages'
-      .download("metamyth.html");
+      .from("protected-pages") // the bucket name
+      .download("metamyth.html"); // the file name
 
     if (downloadError) {
       console.error("Storage Error:", downloadError);

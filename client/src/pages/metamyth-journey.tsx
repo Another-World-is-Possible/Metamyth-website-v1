@@ -45,7 +45,7 @@ export default function MetamythJourneyPage() {
       <iframe
         src={iframeSrc}
         title="Metamyth Journey"
-        style={{ width: '100%', height: '100vh', border: 'none' }} // Adjust height as needed
+        style={{ width: '100%', height: '80vh', border: 'none' }} // Adjust height as needed
         sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
       ></iframe>
     </PageLayout>

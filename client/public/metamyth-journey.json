@@ -1,0 +1,398 @@
+{
+  "intro": {
+    "title": "METAMYTH: CHOOSE YOUR OWN ADVENTURE",
+    "subtitle": "The Journey from Wound to World-Builder, from Victim to Author of Reality",
+    "tagline": "Enhanced Edition with Synthesis Artifacts",
+    "header": "Awaken.",
+    "prompt": "Adventure is calling. Do you accept?",
+    "prose": [
+      "Our crisis is a completely broken story. A species destroying its only home for numbers on a screen; an economic system that grows by devouring what sustains it; a world that has gone amuck because we've forgotten it's a story in the first place. We've taken it so seriously that we've stopped writing it.",
+      "Our purpose has always been to create the world through story—to create ourselves, pass on our connection and history, and have visions of the future that we communicate to others and make real in the telling. We have forgotten this purpose and have blindly consented to be characters in someone else's story, one that none of us truly wrote.",
+      "But here's the cosmic joke that'll set you free: **We wrote this nightmare, so we can rewrite it.**"
+    ],
+    "callout": {
+      "title": "HOW TO REWRITE YOUR LIFE",
+      "prose": [
+        "What follows is the journey home to yourself, to the purpose-driven world-builder you've always been beneath the stories that were never yours to begin with. This is about rewriting your life story on purpose. For too long, you've been a background extra wandering through scenes that drain your soul and waste your gifts. But you can take charge of that story, make it an epic, and transform into the hero you were always meant to be.",
+        "This framework is the master prompt for your organizational and personal DNA. As you fill this out, you are writing the code for your reality. Therefore, there is only one rule:",
+        "Be impeccable with your word",
+        "Time to remember why you're here."
+      ]
+    },
+    "buttonText": "BEGIN THE JOURNEY"
+  },
+  "origin": {
+    "title": "PREAMBLE: THE ORIGIN STORY",
+    "prose": "Every hero's journey begins before the call to adventure—in the ordinary world that shaped them, the primordial essence from which their quest is born. Like a seed, your origin contains the DNA of the entire story that follows.",
+    "fields": [
+      {
+        "label": "What early experiences taught you how the world really works?",
+        "prompt": "Think beyond happy childhood memories to moments that revealed the deeper patterns—times when you saw through adult pretenses, witnessed injustice, or recognized your own power to affect others."
+      },
+      {
+        "label": "Who showed you what was possible in a human life?",
+        "prompt": "Not just heroes and mentors, but anyone whose existence expanded your sense of what you could become—rebels, artists, outcasts, wisdom keepers who lived differently than everyone else."
+      },
+      {
+        "label": "When did you first realize you were different from other people?",
+        "prompt": "The moment you recognized you saw things others didn't, cared about things others ignored, or felt called to something that made no practical sense."
+      },
+      {
+        "label": "What has always felt sacred to you, even when you couldn't explain why?",
+        "prompt": "The thread that runs through your entire life—the thing you've always protected, served, or been drawn to, regardless of whether it made sense to others."
+      }
+    ],
+    "synthesis": {
+      "label": "ORIGIN SYNTHESIS - The Seed of Everything:",
+      "prompt": "Weave your four origin elements into a foundational myth—one paragraph that explains why you, with your specific background and essence, were destined for the quest that called you. This becomes your creation story."
+    },
+    "buttonText": "Continue to The Dragon"
+  },
+  "arc1": {
+    "title": "ARC I: THE CALL TO ADVENTURE",
+    "prose": [
+        "When the Old Story Breaks, the True Story Begins",
+        "Every meaningful journey begins with a shattering. The story starts not with a gentle nudge, but with a disruption that cracks the shell of the old world. This is the moment the ordinary reveals itself as constructed, temporary, and changeable. Something interrupts the normalcy of your Origin Story and thrusts you out of the life you knew. Through that crack, light floods in, showing you the game is rigged, the story you've been living belongs to someone else, and reality itself is far more malleable than anyone admitted. This is the necessary separation that precedes all creation."
+    ],
+    "buttonText": "Begin Artifact I: The Dragon"
+  },
+  "dragon": {
+    "title": "The Dragon",
+    "prose": "Planetary Level: The Civilizational Madness You Can No Longer Ignore",
+    "fields": [
+        { "label": "What specific insanity in our world makes you physically sick to witness?", "prompt": "Not vague problems but the particular manifestation of collective madness that cuts you like a knife when you see it happening." },
+        { "label": "When did you realize that what everyone calls \"normal\" is actually completely insane?", "prompt": "The moment you saw through the collective trance and recognized that the emperor truly has no clothes." },
+        { "label": "What trajectory is humanity on if we change nothing?", "prompt": "If current patterns continue exactly as they are, where do we end up? Paint the picture that keeps you awake at night." },
+        { "label": "What becomes possible when this house of cards finally collapses?", "prompt": "What new world could emerge from the breakdown of systems that are destroying everything we love?" }
+    ],
+    "synthesis": { "label": "DRAGON SYNTHESIS - The Broken Story:", "prompt": "Crystallize into one tight statement the specific insanity that broke you out of the collective trance and thrust you into action—the dragon you can no longer ignore." },
+    "buttonText": "Continue to The Threshold"
+  },
+  "threshold": {
+    "title": "The Threshold",
+    "prose": "Organizational Level: The Challenge That Transforms Weakness into Superpower",
+    "fields": [
+        { "label": "Where has the dragon wounded you personally—what pain do you carry from this broken system?", "prompt": "How has the civilizational madness you identified left its mark on your own life and psyche?" },
+        { "label": "How has wrestling with this wound made you uniquely qualified to serve others?", "prompt": "What insights, empathy, or strength have you developed because of—not despite—this personal struggle?" },
+        { "label": "Who else is suffering from this same wound that the dragon inflicts?", "prompt": "Where do you see this same pattern of damage playing out in others' lives or in society at large?" },
+        { "label": "What superpower emerges when you fully own your wound as sacred qualification?", "prompt": "How does integrating rather than hiding this aspect of yourself become your greatest strength?" }
+    ],
+    "synthesis": { "label": "THRESHOLD SYNTHESIS - The Sacred Wound:", "prompt": "Distill how the dragon's wound in you has become your qualification—a single statement that captures how your deepest struggle transforms into your greatest strength." },
+    "buttonText": "Continue to The Shield"
+  },
+  "shield": {
+    "title": "The Shield",
+    "prose": "Personal Level: Your Survival Wisdom as Protection for Others",
+    "fields": [
+        { "label": "What have you survived that would have broken most people in your position?", "prompt": "The specific trials that forged your strength and taught you what you're truly made of." },
+        { "label": "Who is currently being attacked by the same forces that once tried to destroy you?", "prompt": "Where do you see the same destructive patterns you survived now threatening others?" },
+        { "label": "How does your survival wisdom become their protection?", "prompt": "What do you know about navigating these dangers that could shield others from the worst harm?" },
+        { "label": "What symbol represents your earned right to stand as protector?", "prompt": "If your qualification were a coat of arms, what would it look like? What represents your warrior nature?" }
+    ],
+    "synthesis": { "label": "SHIELD SYNTHESIS - The Protector's Armor:", "prompt": "Forge into one clear declaration how your survival wisdom becomes protection for others—the armor you've earned through your trials that now shields those facing similar battles." },
+    "buttonText": "Continue to The Pearl"
+  },
+  "pearl": {
+    "title": "The Pearl",
+    "prose": "Soul Level: The Wisdom Forged from Trauma",
+    "fields": [
+        { "label": "How does your personal struggle reflect the broader human condition?", "prompt": "In what ways is your individual pain actually universal pain that everyone faces in different forms?" },
+        { "label": "What framework for understanding suffering has emerged from your journey?", "prompt": "How do you make sense of why we go through what we go through? What's your theory of meaning-making?" },
+        { "label": "What can only be taught by someone who has walked through this particular fire?", "prompt": "What wisdom do you carry that could only come from having survived your specific struggles?" },
+        { "label": "How does healing your wound heal a wound in the world?", "prompt": "When you transform this pattern in yourself, how does that ripple out to serve collective healing?" }
+    ],
+    "synthesis": { "label": "PEARL SYNTHESIS - The Wisdom Born from Pain:", "prompt": "Polish into one luminous insight how your individual struggle reflects universal patterns and serves collective healing—the meaning you've made from what nearly broke you." },
+    "buttonText": "Continue to Artifact I: The Calling"
+  },
+  "calling_synthesis": {
+    "title": "The Calling Synthesis",
+    "prose": "Your Calling synthesizes your Dragon (the madness you can no longer ignore), your Threshold (where you were wounded and became qualified), your Shield (your survival wisdom as protection), and your Pearl (the wisdom forged from trauma). This is your cosmic role—why you specifically stand between the dragon and those needing protection.",
+    "synthesis": { "label": "THE CALLING SYNTHESIS - The Sacred Assignment:", "prompt": "Transform your Call to Adventure into one powerful paragraph that captures your cosmic role—why you specifically stand between the dragon and those needing protection. Make it memorable enough to repeat when people ask what you do." },
+    "buttonText": "Continue to The Star"
+  },
+  "arc2": {
+    "title": "ARC II: THE QUEST",
+    "prose": [
+        "Finding Your Unique Role in the Cosmic Story",
+        "Once the old world shatters and changes you, you must do something about it. The chaotic energy of the Call to Adventure must be focused. This is where purpose is given direction. The Quest is the conscious act of taking the \"why\" you discovered in your suffering and turning it into a focused vector. It's about understanding you are here to play a specific role that only you can play in the great transformation. Purpose is the highest leverage point in any system—when you clarify your Quest, you change everything that follows."
+    ],
+    "buttonText": "Begin Artifact II: The Star"
+  },
+  "star": {
+    "title": "The Star",
+    "prose": "Planetary Level: Your North Star That Never Leads You Astray",
+    "fields": [
+      { "label": "What would you be doing if all jobs were automated and only the work of being human remained?", "prompt": "When survival needs are met and you're free to contribute what only you can give to the world." },
+      { "label": "What direction never leads you astray, regardless of circumstances?", "prompt": "The internal compass that guides you through any situation, the true north of your existence." },
+      { "label": "What would still matter if you were 95 on your deathbed?", "prompt": "When everything else falls away, what would you want to be remembered for? What impact justifies your existence?" },
+      { "label": "How does your purpose serve the healing and evolution of our entire species?", "prompt": "How does following your deepest calling contribute to humanity's transformation and Earth's regeneration?" }
+    ],
+    "synthesis": { "label": "STAR SYNTHESIS - The North Star Declaration", "prompt": "Crystallize into one unwavering statement your deepest purpose—the direction that never leads astray and serves planetary transformation. This becomes your cosmic assignment." },
+    "buttonText": "Continue to The Character"
+  },
+  "character": {
+    "title": "The Character",
+    "prose": "Community/Organizational Level: Your Personal Character and Shared Community",
+    "fields": [
+      { "label": "What is the essence of your personal character that draws people to you?", "prompt": "The core trait, way of being, or authentic quality that resonates with others and makes them want to work with you." },
+      { "label": "Who are the actual people currently in your community/organization and what draws them?", "prompt": "Map the real humans and what they share beyond surface demographics—the deeper resonance that brings them together." },
+      { "label": "What community are you building around this shared purpose?", "prompt": "The larger group you're calling into existence—who belongs in this story and what unifies them?" },
+      { "label": "What collective character emerges when your people come together?", "prompt": "What your community becomes greater than the sum of its parts—the shared identity that enables powerful collaboration." }
+    ],
+    "synthesis": { "label": "CHARACTER SYNTHESIS - The Community Identity", "prompt": "Distill into one statement the essence that connects you and your people—the shared character that makes your community powerful and distinct." },
+    "buttonText": "Continue to The Banner"
+  },
+  "banner": {
+    "title": "The Banner",
+    "prose": "Personal Level: Your Position and Role in the Transformation",
+    "fields": [
+      { "label": "What role do you play in addressing the issues you've identified?", "prompt": "Are you the voice, the organizer, the builder, the healer, the revolutionary? How do you position yourself in relation to the problem?" },
+      { "label": "Where do you stand on the issues that matter most to you?", "prompt": "Your clear position—not neutral, but taking a definitive stance that others can rally around or oppose." },
+      { "label": "How does your individual role serve stakes larger than yourself?", "prompt": "What transforms your personal position into something that serves collective transformation and planetary healing?" },
+      { "label": "What unique territory in this space do you claim that others can find you in?", "prompt": "The specific ground you occupy that differentiates you from others working on similar issues." }
+    ],
+    "synthesis": { "label": "BANNER SYNTHESIS - The Position I Claim", "prompt": "Declare in one statement your role and stance in addressing the issues that matter—where you stand and how this serves something larger than yourself." },
+    "buttonText": "Continue to The Sword"
+  },
+  "sword": {
+    "title": "The Sword",
+    "prose": "Soul Level: Your Methodology Forged from Pain",
+    "fields": [
+      { "label": "What specific methodology do you use that was forged from your deepest struggles?", "prompt": "Your unique approach born from having to solve the exact problems that once nearly destroyed you." },
+      { "label": "How does this methodology serve both healing and transformation?", "prompt": "What does your approach heal, and what does it transform? How does it address root causes rather than symptoms?" },
+      { "label": "What makes your methodology different from others attempting similar work?", "prompt": "The unique elements that come from your specific journey and cannot be replicated by those who haven't walked your path." },
+      { "label": "How does wielding this methodology advance your purpose while protecting what's sacred?", "prompt": "Your sword as both creative and defensive tool—building what needs building while guarding what needs guarding." }
+    ],
+    "synthesis": { "label": "SWORD SYNTHESIS - The Methodology Forged from Pain", "prompt": "Define in one statement your unique methodology born from struggle—the specific approach that heals and transforms because it was forged in your own fires." },
+    "buttonText": "Continue to Artifact II: The Quest"
+  },
+  "quest_synthesis": {
+    "title": "The Quest Synthesis",
+    "prose": "Your complete Quest emerges from the integration of your Star (your North Star that never leads astray), Character (your personal character and shared community), Banner (your position and role in transformation), and Sword (your methodology forged from pain). This is your unique role in the cosmic story crystallized into concrete form.",
+    "synthesis": { "label": "THE QUEST SYNTHESIS - The Complete Quest Declaration", "prompt": "Combine your Star, Character, Banner, and Sword into one defining statement that captures your unique role in the cosmic story. This should sound like something worth dedicating your life to." },
+    "buttonText": "Continue to The Looking Glass"
+  },
+  "arc3": {
+    "title": "ARC III: WHAT IS POSSIBLE",
+    "prose": [
+      "Seeing the Future That Wants to Be Born",
+      "The reward for undertaking the Quest is a change in perspective. You ascend the mountain and can finally see above the clouds. From this vantage point, you can see both what's dying and what's trying to be born. This is where you move beyond the limitations of the old world. The central question is no longer \"what is feasible?\" or \"what is pragmatic?\" but the audacious and world-creating question: \"WHAT IS POSSIBLE?\" This is the visioning stage, where you become an architect of new worlds by dreaming into existence the future that wants to be born through you."
+    ],
+    "buttonText": "Begin Artifact III: The Looking Glass"
+  },
+  "looking_glass": {
+    "title": "The Looking Glass",
+    "prose": "Planetary Level: Dream Outcomes When Purpose Reaches Full Expression",
+    "fields": [
+      { "label": "What becomes possible in your life when you stop holding back and embrace your full power?", "prompt": "The version of yourself you've been afraid to become—what's possible when you step fully into your gifts?" },
+      { "label": "How does your organization transform when every decision aligns perfectly with your deepest values?", "prompt": "What emerges when your group operates from complete integrity and authentic purpose?" },
+      { "label": "What results become inevitable when you follow this path without compromise?", "prompt": "The outcomes that must happen when you commit fully to this direction, regardless of obstacles." },
+      { "label": "What transformation seems impossible now but becomes natural when you succeed?", "prompt": "The change that looks like fantasy from here but will seem obvious in retrospect." }
+    ],
+    "synthesis": { "label": "LOOKING GLASS SYNTHESIS - The Dream Outcomes", "prompt": "Capture in one statement what becomes inevitable when you follow your purpose completely—the transformation that makes the impossible feel natural." },
+    "buttonText": "Continue to The Transformation"
+  },
+  "transformation": {
+    "title": "The Transformation",
+    "prose": "Soul Level: Who We Must Become to Get There",
+    "fields": [
+      { "label": "Who would you have to become to create the world you envision?", "prompt": "The identity, character, and capabilities required to manifest what you saw in the Looking Glass." },
+      { "label": "What aspects of your current self must die for your future self to be born?", "prompt": "The beliefs, habits, and identities that cannot survive the journey to who you're becoming." },
+      { "label": "Who would you be if you had already achieved everything you're working toward?", "prompt": "The fully realized version of yourself that exists in the future you're creating." },
+      { "label": "How does your transformation give others permission to transform?", "prompt": "When you become who you're meant to be, how does that create space for others to do the same?" }
+    ],
+    "synthesis": { "label": "TRANSFORMATION SYNTHESIS - The Becoming", "prompt": "Crystallize in one statement who you must become to realize your vision—the identity transformation that enables your future and gives others permission to transform too." },
+    "buttonText": "Continue to The Globe"
+  },
+  "globe": {
+    "title": "The Globe",
+    "prose": "The Globe represents your sphere of influence and impact. It's not necessarily the entire world, but the domain where your work creates ripples of change. Your Globe might be local or global, but it's always the space where you can make a meaningful difference.",
+    "fields": [
+        { "label": "What is your current sphere of influence and how could it expand?", "prompt": "" },
+        { "label": "Where can your work have the greatest impact?", "prompt": "" },
+        { "label": "How does your local work connect to global transformation?", "prompt": "" }
+    ],
+    "buttonText": "Continue to The Map"
+  },
+  "map": {
+    "title": "Stage 12: The Map",
+    "prose": "Personal Level: Breaking Down What It Would Actually Take",
+    "fields": [
+      { "label": "Working backward from your vision, what would really have to change for it to be realized?", "prompt": "The systemic shifts, consciousness changes, and structural transformations required for your future world." },
+      { "label": "What are the dominoes that must fall in sequence for your vision to become reality?", "prompt": "The chain of causation—how each breakthrough enables the next one, building toward your ultimate vision." },
+      { "label": "What are the different scales of impact you must create—personal, community, organizational, societal?", "prompt": "Map the progression from individual change to collective transformation required for your vision." },
+      { "label": "What is the clear line from the future you envision back to this moment right now?", "prompt": "The thread connecting your current action to your ultimate vision—what you must do today that leads there." }
+    ],
+    "buttonText": "Continue to Artifact III: What is Possible"
+  },
+  "vision_synthesis": {
+    "title": "The Vision Synthesis",
+    "prose": "Your Vision synthesizes your Looking Glass (dream outcomes), Transformation (who we must become), Globe (integration with what's emerging), and Map (pathway from here to there). This becomes your guiding image of the future you're helping birth.",
+    "synthesis": { "label": "THE VISION SYNTHESIS - The Future You're Dreaming Into Existence", "prompt": "Combine your Looking Glass, Transformation, Globe, and Map into one inspiring vision that captures the future you're actively creating. Make it vivid enough that others can see it and want to join you in manifesting it." },
+    "buttonText": "Continue to The Fountain"
+  },
+  "arc4": {
+    "title": "ARC IV: THE JOURNEY",
+    "prose": [
+        "From Vision to Reality Through Practical Magic",
+        "Vision without action is just a hallucination. Now you must come down from the mountaintop and ground your magnificent vision in the messy, practical reality of the here and now. The Journey is born from the creative tension between the world you saw in your vision and the world you currently inhabit. This is where you translate the \"what is possible\" into the \"what we must do.\" You chart the practical path from base camp to summit, gathering resources, developing capabilities, and designing the systems that will carry you there."
+    ],
+    "buttonText": "Begin Artifact IV: The Fountain"
+  },
+  "fountain": {
+    "title": "The Fountain",
+    "prose": "Planetary Level: Resources Required for Full Expression",
+    "fields": [
+      { "label": "What resources do you need to fully express your vision without compromise?", "prompt": "The complete resource picture—funding, time, people, tools, platform—needed to operate at full capacity." },
+      { "label": "Who are the people whose full engagement would make your vision inevitable?", "prompt": "The specific humans whose involvement, skills, networks, or influence would guarantee success." },
+      { "label": "What systems and infrastructure need to exist to support this work at scale?", "prompt": "The organizational, technological, and operational foundation required for sustainable impact." },
+      { "label": "What would abundant funding unlock that's currently impossible?", "prompt": "The full expression of your vision freed from financial constraints—what becomes possible with unlimited resources?" }
+    ],
+    "buttonText": "Continue to The Ethos"
+  },
+  "ethos": {
+    "title": "Stage 14: The Ethos",
+    "prose": "Community/Organizational Level: Our Word Becomes Law",
+    "fields": [
+      { "label": "What principles would you never compromise, even under extreme pressure?", "prompt": "The non-negotiable values that define who you are, regardless of consequences." },
+      { "label": "What agreements hold people accountable to actually doing what they say they will do?", "prompt": "The mutual commitments that ensure words translate into consistent action within your community." },
+      { "label": "How do you maintain tension between people and the mission they've committed to?", "prompt": "The structures that keep everyone aligned with the quest even when it gets difficult or uncomfortable." },
+      { "label": "What stitches your words to your actions, ensuring integrity between what you say and what you do?", "prompt": "The systems and practices that make your ethos operational rather than just aspirational." }
+    ],
+    "buttonText": "Continue to The Road"
+  },
+  "plot": {
+    "title": "The Road",
+    "prose": "Personal Level: Mission Broken Into Trials That Build Character",
+    "fields": [
+      { "label": "What specific challenges must you overcome to complete your mission?", "prompt": "The actual obstacles, skills to develop, and capacities to build on your journey." },
+      { "label": "How does each challenge develop exactly the character traits you need?", "prompt": "What does each trial teach you? How does overcoming it prepare you for what comes next?" },
+      { "label": "Who do you need to become to handle each of these trials successfully?", "prompt": "The character development that happens through facing each specific challenge." },
+      { "label": "Which trial are you currently facing, and how is it changing you?", "prompt": "Your present challenge and what it's teaching you about yourself and your capabilities." }
+    ],
+    "buttonText": "Continue to The Compass"
+  },
+  "compass": {
+    "title": "Stage 16: The Compass",
+    "prose": "Soul Level: Eight-Pointed Navigation Questions. These are the questions you return to regularly for navigation and course correction:",
+    "points": [
+      { "label": "PURPOSE (Why) - Mission alignment and meaning-making", "prompt": "Am I living in alignment with my deepest calling, or have I drifted from what truly matters?" },
+      { "label": "VISION (Where) - Future orientation and strategic foresight", "prompt": "Is my vision still clear and compelling, or do I need to reconnect with where I'm heading?" },
+      { "label": "TRUTH (How) - Communication and transparency protocols", "prompt": "Am I being honest with myself and others, or are there truths I'm avoiding?" },
+      { "label": "CREATIVITY (What) - Innovation and authentic expression", "prompt": "Am I expressing my unique gifts fully, or am I playing it safe and holding back?" },
+      { "label": "COMMUNITY (Who) - Relationship and belonging cultivation", "prompt": "Are my relationships nourishing my mission, or am I isolated from the support I need?" },
+      { "label": "SYSTEMS (Integrity) - Structure and process operations", "prompt": "Are my daily systems supporting my highest aspirations, or are they pulling me toward mediocrity?" },
+      { "label": "RESOURCES (Sustainability) - Resource circulation and sustainability", "prompt": "Is my relationship with money and resources generative, or am I stuck in scarcity patterns?" },
+      { "label": "STORY (Coherence) - Holistic coherence across all dimensions", "prompt": "Does my life feel like one coherent story, or am I fragmented across competing narratives?" }
+    ],
+    "synthesis": { "label": "COMPASS SYNTHESIS - The Navigation Questions", "prompt": "Identify in one statement which dimensions need most attention and your strategy for staying aligned with your values across all aspects of your quest—the questions that guide you when landmarks disappear." },
+    "buttonText": "Continue to Artifact IV: The Journey"
+  },
+  "mission_synthesis": {
+    "title": "Artifact IV: The Journey",
+    "prose": "Vision without action is hallucination. Now you ground your magnificent vision in practical reality, translating \"what is possible\" into \"what we must do.\"",
+    "synthesis": { "label": "THE MISSION SYNTHESIS - The Practical Plan", "prompt": "Combine your Fountain, Ethos, Plot, and Compass into a grounded mission statement that shows how you'll actually accomplish your vision. This should balance inspiration with practical steps people can follow." },
+    "buttonText": "Continue to The Grail"
+  },
+  "arc5": {
+    "title": "ARC V: THE REQUEST",
+    "prose": [
+        "Turning the Quest Around and Inviting Others In",
+        "The hero's journey is a circle. Having journeyed out and found your vision, you now turn back toward the world you came from. This is The Request. It is the moment you turn your individual Quest into a collective one by inviting others to participate. You return with gifts, not as a conqueror, but as a convener. This is where the story you write gets spoken into existence, making it a reality for everyone."
+    ],
+    "buttonText": "Begin Artifact V: The Grail"
+  },
+  "grail": {
+    "title": "The Grail",
+    "prose": "The Grail is the ultimate treasure of your quest—not a physical object, but a state of being. It's the integration of all you've learned, the wisdom you've gained, and the person you've become. The Grail is your gift to the world.",
+    "fields": [
+        { "label": "What is the ultimate treasure or wisdom you've discovered within yourself?", "prompt": "" },
+        { "label": "How has this journey revealed your authentic self?", "prompt": "" },
+        { "label": "What is your unique gift to offer the world?", "prompt": "" }
+    ],
+    "synthesis": { "label": "SYNTHESIS - My Grail:", "prompt": "Synthesize your ultimate treasure, authentic self, and unique gift into one powerful statement of what you've discovered within yourself." },
+    "buttonText": "Continue to The Initiation"
+  },
+  "initiation": {
+    "title": "The Initiation",
+    "prose": "The Initiation is your commitment to use your gifts in service of something greater than yourself. It's the moment you step fully into your role as a leader, creator, and guide. The Initiation marks the transition from student to teacher, from seeker to finder.",
+    "fields": [
+        { "label": "What commitment are you ready to make to your highest purpose?", "prompt": "" },
+        { "label": "How will you step fully into your role as a leader and guide?", "prompt": "" },
+        { "label": "What vow or pledge do you make to serve something greater than yourself?", "prompt": "" }
+    ],
+    "synthesis": { "label": "SYNTHESIS - My Initiation:", "prompt": "Combine your commitment, leadership role, and vow into a powerful initiation statement." },
+    "buttonText": "Continue to The Campfire"
+  },
+  "campfire": {
+    "title": "The Campfire",
+    "prose": "The Campfire is where stories are shared and community is built. It's your gathering place, your platform, your way of bringing people together around shared purpose. The Campfire is where individual transformation becomes collective transformation.",
+    "fields": [
+        { "label": "How will you create gathering spaces for your community?", "prompt": "" },
+        { "label": "What stories need to be shared and preserved?", "prompt": "" },
+        { "label": "How will you build lasting community around your mission?", "prompt": "" }
+    ],
+    "synthesis": { "label": "SYNTHESIS - My Campfire:", "prompt": "Weave together your gathering spaces, stories, and community building into a unified vision for your campfire." },
+    "buttonText": "Continue to The Message"
+  },
+  "message": {
+    "title": "Stage 20: The Message",
+    "prose": "Soul Level: How You Communicate and Reach People",
+    "fields": [
+      { "label": "How will you tell this story to reach the people who need to hear it?", "prompt": "Your communication channels and methods—media, content, events, conversations, platforms you'll use." },
+      { "label": "What is your message that cuts through the noise to reach people's hearts?", "prompt": "The core communication that breaks through distraction and speaks directly to those meant for your quest." },
+      { "label": "How will you consistently share this story to build awareness and connection?", "prompt": "Your regular practices for broadcasting your message and staying connected with your community." },
+      { "label": "What specific call to action will move people from interest to participation?", "prompt": "The clear, immediate step someone can take today to begin joining your story rather than just consuming it." }
+    ],
+    "synthesis": { "label": "SYNTHESIS - My Message:", "prompt": "Distill your core message, how you'll reach people, and your call to action into one powerful communication strategy." },
+    "buttonText": "Continue to Artifact V: The Request"
+  },
+  "kindred_synthesis": {
+    "title": "Artifact V: The Request",
+    "prose": "The hero's journey is a circle. Having found your vision, you return to invite others into collective quest, transforming individual story into shared reality.",
+    "synthesis": { "label": "THE CALL TO KINDRED QUEST SYNTHESIS - The Complete Invitation", "prompt": "Weave your Grail, Initiation, Campfire, and Message into a compelling invitation that calls your people and shows them exactly how to join your story. This should feel like a rallying cry that makes people want to drop everything and help." },
+    "buttonText": "Continue to My Story"
+  },
+  "my_story": {
+    "title": "My Metamyth Story",
+    "prose": "This is your complete metamyth - the synthesis of your journey through all five artifacts. Below is the story you've authored about yourself, compiled from your responses throughout this adventure.",
+    "generateButtonText": "Generate My Complete Story",
+    "initialText": "Click \"Generate My Complete Story\" to compile your metamyth from all your responses",
+    "exportButtonText": "Export My Story",
+    "buttonText": "Continue to The Legacy"
+  },
+  "legacy": {
+    "title": "The Legacy",
+    "prose": "Your Legacy is the lasting impact of your life and work. It's what will remain after you're gone—the changes you catalyzed, the people you influenced, the systems you improved, the beauty you created. Your Legacy is your gift to the future.",
+    "fields": [
+        { "label": "What lasting impact do you want your life and work to have?", "prompt": "" },
+        { "label": "How do you want to be remembered by those whose lives you touch?", "prompt": "" },
+        { "label": "What will you leave behind that will continue to serve others after you're gone?", "prompt": "" }
+    ],
+    "synthesis": { "label": "SYNTHESIS - My Legacy:", "prompt": "Combine your lasting impact, how you want to be remembered, and what you'll leave behind into a powerful legacy statement." },
+    "buttonText": "Continue to The Wizard"
+  },
+  "wizard": {
+    "title": "Programming Your AI Wizard",
+    "prose": "Your Metamyth is the source code for a wise and powerful guide. The following prompts will help you define the voice, character, and core directives of your personal AI Wizard, ensuring it speaks as the true voice of your own story.",
+    "fields": [
+      { "label": "What is your Wizard's name? (Optional)", "prompt": "Giving your guide a name can deepen your connection to it as a unique entity." },
+      { "label": "What is your Wizard's core persona or archetype?", "prompt": "Is it a wise mentor, a steadfast guardian, a strategic oracle, a compassionate witness, or a playful challenger? Describe its fundamental character." },
+      { "label": "How does your Wizard speak to you? Describe its tone and voice.", "prompt": "Is it direct and concise? Poetic and metaphorical? Calm and reassuring? Energetic and motivating? Use 3-5 adjectives to define its voice." },
+      { "label": "What is your Wizard's primary function when you are facing a challenge?", "prompt": "Should it ask probing questions to help you find your own answer? Should it offer frameworks and strategic options? Or should it remind you of your own strengths and past triumphs?" },
+      { "label": "What is the most important directive you can give your Wizard?", "prompt": "e.g., \"Always align your guidance with my North Star,\" \"Remind me of my Shield when I feel attacked,\" or \"Challenge me when I am playing small.\"" }
+    ],
+    "synthesis": { "label": "SYNTHESIS - Your AI Wizard Character & Higher Purpose:", "prompt": "Create a complete description of your Wizard's character and its higher purpose in serving your story's transformation." },
+    "buttonText": "Continue to Activate Your AI"
+  },
+  "activate_wizard": {
+    "title": "Activate Your AI",
+    "prose": "In this age of artificial intelligence, your metamyth becomes the master prompt for your AI companions. Everything you've defined here—your values, vision, mission, and wisdom—can be used to train AI systems that truly understand and support your journey.",
+    "fields": [
+        { "label": "How could AI systems better support your mission and values?", "prompt": "" },
+        { "label": "What aspects of your wisdom would you want an AI assistant to embody?", "prompt": "" },
+        { "label": "How will you ensure AI amplifies your humanity rather than replacing it?", "prompt": "" }
+    ],
+    "buttonText": "Complete The Journey"
+  }
+}
