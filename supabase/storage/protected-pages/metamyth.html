@@ -226,5 +226,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 <script src="chatbot.js"></script>
 <script src="metamyth-journey.js"></script>
 
+<script>
+  const sendHeight = () => {
+    // We use document.documentElement.scrollHeight to get the full height of the content
+    const height = document.documentElement.scrollHeight;
+    // Send a message to the parent window (the React app) with the calculated height
+    window.parent.postMessage({ type: 'iframeResize', height: height }, '*');
+  };
+
+  // Send the height once the initial content is loaded
+  window.addEventListener('load', sendHeight);
+
+  // Use a ResizeObserver to automatically send the new height whenever the content size changes
+  const resizeObserver = new ResizeObserver(sendHeight);
+  resizeObserver.observe(document.body);
+</script>
 </body>
 </html>
