@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function initializeApp() {
         try {
-            const response = await fetch('/metamyth-journey.json');
+            const response = await fetch(`${window.location.origin}/metamyth-journey.json`);
             contentData = await response.json();
         } catch (error) {
             console.error("Fatal Error: Could not load metamyth-journey.json", error);
