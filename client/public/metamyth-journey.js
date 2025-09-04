@@ -1,11 +1,7 @@
 // metamyth-journey.js
 
 // --- GLOBAL STATE VARIABLES ---
-// These hold the user's progress in memory for the current session.
-
-// This object will store the user's validated answers from each stage.
 let journeyData = {};
-// This object will store the latest LLM validation response for each stage.
 let llmResponses = {};
 
 // --- CONSTANTS ---
@@ -14,9 +10,6 @@ const stageIdToTitleMap = new Map(window.stages.map(s => [s.id, s.title]));
 
 // --- LOCAL STORAGE & PROGRESS MANAGEMENT ---
 
-/**
- * Saves the user's entire progress to localStorage.
- */
 function saveProgress() {
     try {
         const activeStage = document.querySelector('.stage-content.active');
@@ -28,7 +21,7 @@ function saveProgress() {
             if (!stageEl) return;
             const stageId = stageEl.id;
             const fieldIndex = textarea.dataset.fieldIndex;
-            const key = `${stageId}-${fieldIndex}`; // Create a unique key for each field
+            const key = `${stageId}-${fieldIndex}`;
             if (textarea.value) {
                 formInputs[key] = textarea.value;
             }
@@ -38,7 +31,7 @@ function saveProgress() {
             lastStageId: lastStageId,
             journeyData: journeyData,
             formInputs: formInputs,
-            llmResponses: llmResponses // Also save the LLM responses
+            llmResponses: llmResponses
         };
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
@@ -47,9 +40,6 @@ function saveProgress() {
     }
 }
 
-/**
- * Loads progress from localStorage and repopulates the page.
- */
 function loadProgress() {
     try {
         const savedProgress = localStorage.getItem(STORAGE_KEY);
@@ -60,17 +50,14 @@ function loadProgress() {
 
         const progress = JSON.parse(savedProgress);
 
-        // Restore validated user answers
         if (progress.journeyData) {
             journeyData = progress.journeyData;
         }
         
-        // Restore LLM feedback
         if (progress.llmResponses) {
             llmResponses = progress.llmResponses;
         }
 
-        // Restore all typed text into fields
         if (progress.formInputs) {
             Object.keys(progress.formInputs).forEach(key => {
                 const [stageId, fieldIndex] = key.split('-');
@@ -81,7 +68,6 @@ function loadProgress() {
             });
         }
 
-        // Go to the last saved stage
         if (progress.lastStageId) {
             const lastStageIndex = window.stages.findIndex(s => s.id === progress.lastStageId);
             if (lastStageIndex !== -1) {
@@ -90,7 +76,7 @@ function loadProgress() {
         }
         
         console.log("Progress successfully restored.");
-        return progress; // Return the loaded progress for further use
+        return progress;
 
     } catch (error) {
         console.error("Failed to load or parse progress from localStorage:", error);
@@ -98,11 +84,6 @@ function loadProgress() {
     }
 }
 
-/**
- * A debounce function to prevent saving on every single keystroke.
- * @param {Function} func The function to debounce.
- * @param {number} delay The delay in milliseconds.
- */
 function debounce(func, delay) {
     let timeout;
     return function(...args) {
@@ -118,10 +99,10 @@ async function handleStageSubmit(event) {
   const button = event.target;
   const stageId = button.dataset.stageId;
 
-  // Check if Developer Mode is active via the global variable
-  //if (window.METAMYTH_USE_LLM === false) {
-  if (true) {
-    console.log(`Auto-continuing from stage "${stageId}"`);
+  // **CORRECTED LOGIC**: By default, the LLM is OFF.
+  // It only runs if the feature flag is explicitly set to `true`.
+  if (window.METAMYTH_USE_LLM !== true) {
+    console.log(`LLM validation feature not enabled. Auto-continuing from stage "${stageId}".`);
     const currentIndex = window.stages.findIndex(s => s.id === stageId);
     if (currentIndex !== -1 && currentIndex < window.stages.length - 1) {
         window.showStage(currentIndex + 1);
@@ -131,6 +112,7 @@ async function handleStageSubmit(event) {
   }
   
   // --- Standard AI Validation Logic ---
+  console.log(`LLM validation feature is ON for stage "${stageId}".`);
   const stageContainer = document.getElementById(stageId);
   if (!stageContainer) return;
 
@@ -157,11 +139,10 @@ async function handleStageSubmit(event) {
   try {
     const result = await sendJsonRequest(VALIDATE_STAGE_ENDPOINT, payload);
     
-    // Store the latest LLM response for this stage
     llmResponses[stageId] = result;
 
     if (result.continue === true) {
-      journeyData[stageId] = responses; // Catalog the validated data
+      journeyData[stageId] = responses;
       const currentIndex = window.stages.findIndex(s => s.id === stageId);
       if (currentIndex !== -1 && currentIndex < window.stages.length - 1) {
         window.showStage(currentIndex + 1);
@@ -176,7 +157,7 @@ async function handleStageSubmit(event) {
   } finally {
     hideLoadingOverlay();
     button.disabled = false;
-    saveProgress(); // Save progress after every attempt (success or failure)
+    saveProgress();
   }
 }
 

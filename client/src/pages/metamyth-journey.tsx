@@ -10,44 +10,65 @@ export default function MetamythJourneyPage() {
   const [iframeHeight, setIframeHeight] = useState<number>(800);
 
   useEffect(() => {
-    const storedHtml = sessionStorage.getItem('metamythHTML');
-    if (!storedHtml) {
-      navigate('/begin', { replace: true });
-      return;
-    }
+    const loadJourneyAssets = async () => {
+      const storedHtml = sessionStorage.getItem('metamythHTML');
+      if (!storedHtml) {
+        navigate('/begin', { replace: true });
+        return;
+      }
 
-    // --- CORRECTED DEV MODE LOGIC ---
-    
-    // 1. Explicitly check if the Vite environment variable is set to 'true'.
-    const isLlmEnabled = import.meta.env.VITE_METAMYTH_USE_LLM === 'true';
-    
-    // 2. Create the script that will be injected into the iframe's HTML.
-    //    This sets the global variable that the journey's JavaScript will check.
-    const featureScript = `<script>window.METAMYTH_USE_LLM = ${isLlmEnabled};</script>`;
-    
-    // 3. Inject this script into the <head> of the HTML string.
-    let finalHtml = storedHtml.replace('</head>', `${featureScript}</head>`);
-    
-    // --- Path rewriting logic remains the same ---
-    const origin = window.location.origin;
-    finalHtml = finalHtml.replace(/(src|href)="\//g, `$1="${origin}/`);
-    finalHtml = finalHtml.replace(/(url\s*\(\s*['"]?)\//g, `$1${origin}/`);
-    
-    // --- Create the Blob URL using the fully modified HTML ---
-    const blob = new Blob([finalHtml], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-    setIframeSrc(url);
+      try {
+        const [
+          chatbotRes, 
+          journeyRes
+        ] = await Promise.all([
+          fetch('/chatbot.js'),
+          fetch('/metamyth-journey.js')
+        ]);
+
+        if (!chatbotRes.ok || !journeyRes.ok) {
+          throw new Error('Failed to fetch required JavaScript assets.');
+        }
+
+        const chatbotJs = await chatbotRes.text();
+        const journeyJs = await journeyRes.text();
+
+        // This logic correctly enables the LLM feature only when the env var is 'true'
+        const isLlmEnabled = import.meta.env.VITE_METAMYTH_USE_LLM === 'true';
+        const featureScript = `window.METAMYTH_USE_LLM = ${isLlmEnabled};`;
+
+        const combinedScripts = `
+          <script>${featureScript}</script>
+          <script>${chatbotJs}</script>
+          <script>${journeyJs}</script>
+        `;
+
+        let finalHtml = storedHtml.replace('</body>', `${combinedScripts}</body>`);
+        
+        const origin = window.location.origin;
+        finalHtml = finalHtml.replace(/(src|href)="\//g, `$1="${origin}/`);
+        finalHtml = finalHtml.replace(/(url\s*\(\s*['"]?)\//g, `$1${origin}/`);
+        
+        const blob = new Blob([finalHtml], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        setIframeSrc(url);
+
+      } catch (error) {
+        console.error("Error preparing Metamyth Journey:", error);
+      }
+    };
+
+    loadJourneyAssets();
 
     const handleMessage = (event: MessageEvent) => {
       if (event.data && event.data.type === 'iframeResize') {
-        // Add a small buffer to prevent scrollbars
         setIframeHeight(event.data.height + 50);
       }
     };
     window.addEventListener('message', handleMessage);
 
     return () => {
-      if (url) URL.revokeObjectURL(url);
+      if (iframeSrc) URL.revokeObjectURL(iframeSrc);
       window.removeEventListener('message', handleMessage);
     };
   }, [navigate]);
@@ -56,7 +77,7 @@ export default function MetamythJourneyPage() {
     return (
       <PageLayout>
         <div className="min-h-screen flex items-center justify-center">
-          <p className="text-lg">Loading Your Metamyth Journey...</p>
+          <p className="text-lg">Assembling Your Metamyth Journey...</p>
         </div>
       </PageLayout>
     );

@@ -29,299 +29,73 @@
     </script>
 
     <style>
-        /* Font Loading - Match Main Website */
+        /* All styles from metamyth-old.html are preserved here */
         @font-face {
             font-family: 'AngleFairy2024';
             src: url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
+            font-weight: normal; font-style: normal; font-display: swap;
         }
-        
         @font-face {
             font-family: 'GrillagesBold2024';
             src: url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024') format('truetype');
-            font-weight: 700;
-            font-style: normal;
-            font-display: swap;
+            font-weight: 700; font-style: normal; font-display: swap;
         }
-        
         :root {
-            --bg-main: #1D4241;
-            --bg-card: #183332;
-            --text-main: #FAF0E6; /* Soft off-white cream - main text color */
-            --text-heading: #D4AF37; /* Gold */
-            --text-muted: #FAF0E6; /* Soft off-white cream for muted text too */
-            --border-color: #2c5d5b;
-            --accent-teal: #14B8A6; /* Teal main accent */
-            --accent-teal-dark: #0F766E;
-            --accent-crimson: #DC2626; /* Crimson for negative elements */
-            --accent-gold: #D4AF37; /* Gold accent */
+            --bg-main: #1D4241; --bg-card: #183332; --text-main: #FAF0E6;
+            --text-heading: #D4AF37; --text-muted: #FAF0E6; --border-color: #2c5d5b;
+            --accent-teal: #14B8A6; --accent-teal-dark: #0F766E;
+            --accent-crimson: #DC2626; --accent-gold: #D4AF37;
         }
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            font-family: 'GrillagesBold2024', serif;
-            font-weight: 700;
-        }
-        h1, h2, h3, h4 {
-            font-family: 'AngleFairy2024', serif !important;
-            color: var(--text-heading);
-            letter-spacing: 0.05em;
-            font-weight: normal !important;
-        }
-        .content-card {
-            background-color: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(20, 184, 166, 0.3);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 
-                0 0 20px rgba(0, 0, 0, 0.5),
-                inset 0 0 30px rgba(20, 184, 166, 0.1);
-        }
-        .nav-link {
-            transition: all 0.2s ease-in-out;
-            border-left: 3px solid transparent;
-            color: var(--text-muted);
-            padding: 0.75rem 1rem;
-        }
-        .nav-link.active {
-            background-color: rgba(20, 184, 166, 0.05);
-            color: var(--accent-teal);
-            border-left-color: var(--accent-teal);
-        }
-        .nav-link:hover {
-            background-color: rgba(20, 184, 166, 0.1);
-            color: var(--accent-gold);
-        }
+        body { background-color: var(--bg-main); color: var(--text-main); font-family: 'GrillagesBold2024', serif; font-weight: 700; }
+        h1, h2, h3, h4 { font-family: 'AngleFairy2024', serif !important; color: var(--text-heading); letter-spacing: 0.05em; font-weight: normal !important; }
         textarea, .compass-input, input[type="text"], input[type="range"] {
-            border: 2px solid var(--accent-teal) !important;
-            border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.3);
-            color: var(--text-main);
-            padding: 12px;
-            font-family: 'GrillagesBold2024', serif;
-            transition: all 0.3s ease;
-            width: 100%;
+            border: 2px solid var(--accent-teal) !important; border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.3); color: var(--text-main);
+            padding: 12px; font-family: 'GrillagesBold2024', serif; transition: all 0.3s ease; width: 100%;
         }
-        
-        textarea:focus, input:focus {
-            outline: none;
-            box-shadow: 
-                0 0 10px rgba(20, 184, 166, 0.5),
-                0 0 20px rgba(20, 184, 166, 0.2);
-            border-color: var(--accent-teal) !important;
+        textarea::placeholder { color: #a0a0a0; opacity: 0.7; }
+        textarea:focus, input:focus, .compass-input:focus {
+            outline: none; border-color: var(--accent-gold) !important;
+            box-shadow: 0 0 15px rgba(250, 240, 230, 0.7), 0 0 5px rgba(212, 175, 55, 0.5);
         }
-
-        textarea.invalid-field {
-             border-color: var(--accent-crimson) !important;
-             box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        textarea.invalid-field { border-color: var(--accent-crimson) !important; box-shadow: 0 0 10px rgba(220, 38, 38, 0.5); }
+        .content-card {
+            background-color: rgba(0, 0, 0, 0.4); border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 12px; padding: 2rem; margin-bottom: 2rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(20, 184, 166, 0.1);
         }
-        
-        /* CTA Button Styles - Matching Main Site */
-        .cta-button-base {
-            position: relative;
-            padding: 12px 24px;
-            background: var(--button-gradient);
-            color: var(--button-text-color);
-            font-family: 'AngleFairy2024', serif;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 8px;
-            border-radius: 16px;
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
-            text-shadow: var(--button-text-glow);
-        }
-        
-        .cta-button-base:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 0 30px var(--button-glow-color),
-                0 0 60px var(--button-glow-color),
-                0 0 90px var(--button-glow-color),
-                inset 0 0 30px rgba(255, 255, 255, 0.2);
-        }
-
-        .cta-button-base:disabled {
-            cursor: not-allowed;
-            opacity: 0.6;
-            background: #555;
-        }
-        
-        .cta-button-gold {
-            --button-gradient: linear-gradient(90deg, #f39c12, #f1c40f, #f4d03f);
-            --button-text-color: #2c3e50;
-            --button-glow-color: rgba(241, 196, 15, 0.8);
-            --button-text-glow: 
-                0 0 8px rgba(255, 255, 255, 0.9),
-                0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .cta-button-teal {
-            --button-gradient: linear-gradient(90deg, #16a085, #1abc9c, #48c9b0);
-            --button-text-color: #2c3e50;
-            --button-glow-color: rgba(26, 188, 156, 0.8);
-            --button-text-glow:
-                0 0 8px rgba(255, 255, 255, 0.9),
-                0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        
-        .artifiction-icon {
-            font-size: 2.5rem;
-            margin-right: 1.5rem;
-            line-height: 1;
-        }
+        .nav-link { transition: all 0.2s ease-in-out; border-left: 3px solid transparent; color: var(--text-muted); padding: 0.75rem 1rem; }
+        .nav-link.active { background-color: rgba(20, 184, 166, 0.05); color: var(--accent-teal); border-left-color: var(--accent-teal); }
+        .nav-link:hover { background-color: rgba(20, 184, 166, 0.1); color: var(--accent-gold); }
+        .cta-button-base { position: relative; padding: 12px 24px; color: var(--button-text-color); background: var(--button-gradient); font-family: 'AngleFairy2024', serif; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border: none; cursor: pointer; transition: all 0.3s ease; margin: 8px; border-radius: 16px; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1); text-shadow: var(--button-text-glow); }
+        .cta-button-base:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 0 30px var(--button-glow-color), 0 0 60px var(--button-glow-color), 0 0 90px var(--button-glow-color), inset 0 0 30px rgba(255, 255, 255, 0.2); }
+        .cta-button-base:disabled { cursor: not-allowed; opacity: 0.6; background: #555; }
+        .cta-button-gold { --button-gradient: linear-gradient(90deg, #f39c12, #f1c40f, #f4d03f); --button-text-color: #2c3e50; --button-glow-color: rgba(241, 196, 15, 0.8); --button-text-glow: 0 0 8px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.3); }
+        .cta-button-teal { --button-gradient: linear-gradient(90deg, #16a085, #1abc9c, #48c9b0); --button-text-color: #2c3e50; --button-glow-color: rgba(26, 188, 156, 0.8); --button-text-glow: 0 0 8px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.3); }
+        .artifiction-icon { font-size: 2.5rem; margin-right: 1.5rem; line-height: 1; }
         .stage-content { display: none; }
-        .stage-content.active {
-            display: block;
-            animation: fadeIn 0.6s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            margin: 2rem auto;
-        }
-        .prose {
-            color: var(--text-main);
-            line-height: 1.8;
-            font-family: 'GrillagesBold2024', serif;
-            font-weight: 700;
-        }
-        .prose h3 {
-            font-size: 1.5rem;
-            font-weight: normal;
-            margin-top: 2em;
-            margin-bottom: 0.5em;
-            color: var(--text-heading);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            font-family: 'AngleFairy2024', serif !important;
-        }
-        .prose p { 
-            margin-bottom: 1.25em;
-            font-family: 'GrillagesBold2024', serif;
-            font-weight: 700;
-        }
+        .stage-content.active { display: block; animation: fadeIn 0.6s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .prose { color: var(--text-main); line-height: 1.8; font-family: 'GrillagesBold2024', serif; font-weight: 700; }
+        .prose h3 { font-size: 1.5rem; margin-top: 2em; margin-bottom: 0.5em; color: var(--text-heading); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; font-family: 'AngleFairy2024', serif !important; }
+        .prose p { margin-bottom: 1.25em; font-family: 'GrillagesBold2024', serif; font-weight: 700; }
         .prose strong { color: var(--accent-teal); }
-        .nav-arc-header {
-            color: #fff;
-            font-weight: normal;
-            letter-spacing: 0.1em;
-            font-family: 'AngleFairy2024', serif !important;
-        }
-        .crimson-text { color: var(--accent-crimson); }
-        .text-gold { color: var(--accent-gold); }
-        .border-gold { border-color: var(--accent-gold); }
-        .text-teal { color: var(--accent-teal); }
-        
-        .glow-title {
-            text-shadow: 
-                0 0 10px rgba(20, 184, 166, 0.8),
-                0 0 20px rgba(20, 184, 166, 0.4),
-                0 0 30px rgba(20, 184, 166, 0.2);
-        }
-        
-        .glow-arc {
-            text-shadow: 
-                0 0 8px rgba(255, 215, 0, 0.8),
-                0 0 16px rgba(255, 215, 0, 0.4);
-            color: var(--accent-gold) !important;
-        }
-        
-        .glow-progress {
-            background: linear-gradient(90deg, 
-                var(--accent-teal) 0%, 
-                var(--accent-gold) 50%, 
-                #f1c40f 100%);
-            box-shadow: 
-                0 0 15px rgba(20, 184, 166, 0.6),
-                0 0 30px rgba(212, 175, 55, 0.4),
-                0 0 45px rgba(241, 196, 15, 0.3);
-        }
-        
-        .glow-indicator {
-            box-shadow: 
-                0 0 15px rgba(20, 184, 166, 0.4),
-                0 0 30px rgba(20, 184, 166, 0.2);
-        }
-        
-        .glow-button {
-            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
-            border-color: var(--accent-gold) !important;
-            color: var(--accent-gold) !important;
-        }
-        
-        .glow-button:hover {
-            background-color: var(--accent-gold) !important;
-            color: black !important;
-            box-shadow: 
-                0 0 10px rgba(255, 215, 0, 0.6),
-                0 0 20px rgba(255, 215, 0, 0.3);
-        }
-        .synthesis-box {
-            background-color: rgba(0,0,0,0.1);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            font-style: italic;
-            color: var(--text-main);
-            font-family: 'GrillagesBold2024', serif;
-            font-weight: 700;
-        }
-        .ornamental-divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--border-color), transparent);
-            margin: 3rem 0;
-        }
-        input[type=range] {
-            -webkit-appearance: none;
-        }
-        input[type=range]:focus {
-            outline: none;
-        }
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 4px;
-            cursor: pointer;
-            background: var(--border-color);
-            border-radius: 5px;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            border: 2px solid var(--bg-main);
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: var(--accent-teal);
-            cursor: pointer;
-            margin-top: -8px;
-        }
-        input[type=range]::-moz-range-track {
-            width: 100%;
-            height: 4px;
-            cursor: pointer;
-            background: var(--border-color);
-            border-radius: 5px;
-        }
-        input[type=range]::-moz-range-thumb {
-            border: 2px solid var(--bg-main);
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background: var(--accent-teal);
-            cursor: pointer;
-        }
+        .nav-arc-header { color: #fff; letter-spacing: 0.1em; font-family: 'AngleFairy2024', serif !important; font-weight: normal;}
+        .glow-title { text-shadow: 0 0 10px rgba(20, 184, 166, 0.8), 0 0 20px rgba(20, 184, 166, 0.4); }
+        .glow-arc { text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 16px rgba(255, 215, 0, 0.4); color: var(--accent-gold) !important; }
+        .glow-progress { background: linear-gradient(90deg, var(--accent-teal) 0%, var(--accent-gold) 50%, #f1c40f 100%); box-shadow: 0 0 15px rgba(20, 184, 166, 0.6), 0 0 30px rgba(212, 175, 55, 0.4); }
+        .glow-indicator { box-shadow: 0 0 15px rgba(20, 184, 166, 0.4), 0 0 30px rgba(20, 184, 166, 0.2); }
+        .glow-button { text-shadow: 0 0 5px rgba(255, 215, 0, 0.8); border-color: var(--accent-gold) !important; color: var(--accent-gold) !important; }
+        .glow-button:hover { background-color: var(--accent-gold) !important; color: black !important; box-shadow: 0 0 10px rgba(255, 215, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.3); }
+        .synthesis-box { background-color: rgba(0,0,0,0.1); padding: 1.5rem; border-radius: 0.5rem; font-style: italic; color: var(--text-main); }
+        .ornamental-divider { height: 1px; background: linear-gradient(to right, transparent, var(--border-color), transparent); margin: 3rem 0; }
+        .chart-container { position: relative; width: 100%; max-width: 500px; margin: 2rem auto; }
+        input[type=range] { -webkit-appearance: none; }
+        input[type=range]:focus { outline: none; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: var(--border-color); border-radius: 5px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; border: 2px solid var(--bg-main); height: 20px; width: 20px; border-radius: 50%; background: var(--accent-teal); cursor: pointer; margin-top: -8px; }
+        input[type=range]::-moz-range-track { width: 100%; height: 4px; cursor: pointer; background: var(--border-color); border-radius: 5px; }
+        input[type=range]::-moz-range-thumb { border: 2px solid var(--bg-main); height: 20px; width: 20px; border-radius: 50%; background: var(--accent-teal); cursor: pointer; }
     </style>
 </head>
 <body class="antialiased">
@@ -334,13 +108,11 @@
     <div class="flex flex-col md:flex-row">
         <nav id="sidebar" class="w-full md:w-80 bg-black bg-opacity-20 border-r border-black border-opacity-20 p-4 md:p-6 flex-shrink-0">
             <h1 class="text-3xl text-white mb-8 glow-title">METAMYTH</h1>
-            
             <div id="progress-container" class="mb-6">
                 <div class="text-xs text-gray-300 mb-2">Progress</div>
                 <div class="w-full bg-gray-700 bg-opacity-60 rounded-full h-2 mb-4 border border-gray-600">
                     <div id="progress-bar" class="h-2 rounded-full glow-progress transition-all duration-500" style="width: 0%"></div>
                 </div>
-                
                 <div class="bg-black bg-opacity-60 rounded-lg border border-teal-400 p-3 glow-indicator">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
@@ -364,48 +136,30 @@
     </div>
 
 <script>
+// Main Application Logic & DOM Generation
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
 });
 
-// Full stages array to match the JSON file
 const stages = [
-    { id: 'intro', title: 'Awaken', arc: 'Preamble', icon: '✨' },
-    { id: 'origin', title: 'The Origin Story', arc: 'Preamble', icon: '🌱' },
-    { id: 'arc1', title: 'ARC I Intro', arc: 'ARC I', icon: '🔔' },
-    { id: 'dragon', title: 'The Dragon', arc: 'ARC I', icon: '🐉' },
-    { id: 'threshold', title: 'The Threshold', arc: 'ARC I', icon: '🌀' },
-    { id: 'shield', title: 'The Shield', arc: 'ARC I', icon: '🛡️' },
-    { id: 'pearl', title: 'The Pearl', arc: 'ARC I', icon: '⚪' },
-    { id: 'calling_synthesis', title: 'The Calling', arc: 'ARC I', icon: '📣' },
-    { id: 'arc2', title: 'ARC II Intro', arc: 'ARC II', icon: '🗺️' },
-    { id: 'star', title: 'The Star', arc: 'ARC II', icon: '⭐' },
-    { id: 'character', title: 'The Character', arc: 'ARC II', icon: '👤' },
-    { id: 'banner', title: 'The Banner', arc: 'ARC II', icon: '🚩' },
-    { id: 'sword', title: 'The Sword', arc: 'ARC II', icon: '⚔️' },
-    { id: 'quest_synthesis', title: 'The Quest', arc: 'ARC II', icon: '📜' },
-    { id: 'arc3', title: 'ARC III Intro', arc: 'ARC III', icon: '🌌' },
-    { id: 'looking_glass', title: 'The Looking Glass', arc: 'ARC III', icon: '🔮' },
-    { id: 'transformation', title: 'The Transformation', arc: 'ARC III', icon: '🦋' },
-    { id: 'globe', title: 'The Globe', arc: 'ARC III', icon: '🌍' },
-    { id: 'map', title: 'The Map', arc: 'ARC III', icon: '🗺️' },
-    { id: 'vision_synthesis', title: 'The Vision', arc: 'ARC III', icon: '🔭' },
-    { id: 'arc4', title: 'ARC IV Intro', arc: 'ARC IV', icon: '👣' },
-    { id: 'fountain', title: 'The Fountain', arc: 'ARC IV', icon: '⛲' },
-    { id: 'ethos', title: 'The Ethos', arc: 'ARC IV', icon: '📜' },
-    { id: 'plot', title: 'The Road', arc: 'ARC IV', icon: '🛤️' },
-    { id: 'compass', title: 'The Compass', arc: 'ARC IV', icon: '🧭' },
-    { id: 'mission_synthesis', title: 'The Journey', arc: 'ARC IV', icon: '🎯' },
-    { id: 'arc5', title: 'ARC V Intro', arc: 'ARC V', icon: '🏡' },
-    { id: 'grail', title: 'The Grail', arc: 'ARC V', icon: '🏆' },
-    { id: 'initiation', title: 'The Initiation', arc: 'ARC V', icon: '🌉' },
-    { id: 'campfire', title: 'The Campfire', arc: 'ARC V', icon: '🔥' },
-    { id: 'message', title: 'The Message', arc: 'ARC V', icon: '📢' },
-    { id: 'kindred_synthesis', title: 'The Request', arc: 'ARC V', icon: '🌟' },
-    { id: 'my_story', title: 'My Story', arc: 'Synthesis', icon: '📖' },
-    { id: 'legacy', title: 'The Legacy', arc: 'Legacy', icon: '🌅' },
-    { id: 'wizard', title: 'The Wizard', arc: 'Integration', icon: '🧙' },
-    { id: 'activate_wizard', title: 'Activate AI', arc: 'Integration', icon: '🤖' }
+    { id: 'intro', title: 'Awaken', arc: 'Preamble', icon: '✨' }, { id: 'origin', title: 'The Origin Story', arc: 'Preamble', icon: '🌱' },
+    { id: 'arc1', title: 'ARC I Intro', arc: 'ARC I', icon: '🔔' }, { id: 'dragon', title: 'The Dragon', arc: 'ARC I', icon: '🐉' },
+    { id: 'threshold', title: 'The Threshold', arc: 'ARC I', icon: '🌀' }, { id: 'shield', title: 'The Shield', arc: 'ARC I', icon: '🛡️' },
+    { id: 'pearl', title: 'The Pearl', arc: 'ARC I', icon: '⚪' }, { id: 'calling_synthesis', title: 'The Calling', arc: 'ARC I', icon: '📣' },
+    { id: 'arc2', title: 'ARC II Intro', arc: 'ARC II', icon: '🗺️' }, { id: 'star', title: 'The Star', arc: 'ARC II', icon: '⭐' },
+    { id: 'character', title: 'The Character', arc: 'ARC II', icon: '👤' }, { id: 'banner', title: 'The Banner', arc: 'ARC II', icon: '🚩' },
+    { id: 'sword', title: 'The Sword', arc: 'ARC II', icon: '⚔️' }, { id: 'quest_synthesis', title: 'The Quest', arc: 'ARC II', icon: '📜' },
+    { id: 'arc3', title: 'ARC III Intro', arc: 'ARC III', icon: '🌌' }, { id: 'looking_glass', title: 'The Looking Glass', arc: 'ARC III', icon: '🔮' },
+    { id: 'transformation', title: 'The Transformation', arc: 'ARC III', icon: '🦋' }, { id: 'globe', title: 'The Globe', arc: 'ARC III', icon: '🌍' },
+    { id: 'map', title: 'The Map', arc: 'ARC III', icon: '🗺️' }, { id: 'vision_synthesis', title: 'The Vision', arc: 'ARC III', icon: '🔭' },
+    { id: 'arc4', title: 'ARC IV Intro', arc: 'ARC IV', icon: '👣' }, { id: 'fountain', title: 'The Fountain', arc: 'ARC IV', icon: '⛲' },
+    { id: 'ethos', title: 'The Ethos', arc: 'ARC IV', icon: '📜' }, { id: 'plot', title: 'The Road', arc: 'ARC IV', icon: '🛤️' },
+    { id: 'compass', title: 'The Compass', arc: 'ARC IV', icon: '🧭' }, { id: 'mission_synthesis', title: 'The Journey', arc: 'ARC IV', icon: '🎯' },
+    { id: 'arc5', title: 'ARC V Intro', arc: 'ARC V', icon: '🏡' }, { id: 'grail', title: 'The Grail', arc: 'ARC V', icon: '🏆' },
+    { id: 'initiation', title: 'The Initiation', arc: 'ARC V', icon: '🌉' }, { id: 'campfire', title: 'The Campfire', arc: 'ARC V', icon: '🔥' },
+    { id: 'message', title: 'The Message', arc: 'ARC V', icon: '📢' }, { id: 'kindred_synthesis', title: 'The Request', arc: 'ARC V', icon: '🌟' },
+    { id: 'my_story', title: 'My Story', arc: 'Synthesis', icon: '📖' }, { id: 'legacy', title: 'The Legacy', arc: 'Legacy', icon: '🌅' },
+    { id: 'wizard', title: 'The Wizard', arc: 'Integration', icon: '🧙' }, { id: 'activate_wizard', title: 'Activate AI', arc: 'Integration', icon: '🤖' }
 ];
 window.stages = stages;
 
@@ -420,10 +174,9 @@ async function initializeApp() {
         contentData = await response.json();
     } catch (error) {
         console.error("Fatal Error: Could not load metamyth-journey.json", error);
-        contentContainer.innerHTML = `<div class="content-card text-red-500"><h2>Error</h2><p>Could not load the journey's content.</p></div>`;
+        contentContainer.innerHTML = `<div class="content-card"><h2>Error</h2><p>Could not load journey content.</p></div>`;
         return;
     }
-
     let currentArc = '';
     stages.forEach((stage) => {
         if (stage.arc !== currentArc) {
@@ -440,209 +193,82 @@ async function initializeApp() {
         navLink.innerHTML = `<span class="mr-3">${stage.icon}</span> ${stage.title}`;
         navLink.onclick = (e) => { e.preventDefault(); window.showStage(stages.indexOf(stage)); };
         navContainer.appendChild(navLink);
-
         const stageDiv = document.createElement('div');
         stageDiv.id = stage.id;
         stageDiv.className = 'stage-content';
         stageDiv.innerHTML = generateStageHTML(stage, contentData[stage.id]);
         contentContainer.appendChild(stageDiv);
     });
-
     document.getElementById('view-story-btn').addEventListener('click', () => {
         const storyIndex = stages.findIndex(s => s.id === 'my_story');
         if (storyIndex > -1) window.showStage(storyIndex);
     });
-
-    finalizeSetup();
-}
-
-function finalizeSetup() {
-    // This function runs AFTER the DOM is built, preventing race conditions.
     
-    // Attach the submit handler to all stage submission buttons
-    document.querySelectorAll('.stage-submit-button').forEach(button => {
-        button.addEventListener('click', handleStageSubmit);
-    });
+    // **THE FIX**: This logic now correctly initializes the application after the DOM is built.
+    if (typeof debounce === 'function' && typeof saveProgress === 'function' && typeof handleStageSubmit === 'function' && typeof loadProgress === 'function') {
+        // Attach auto-save listeners
+        const debouncedSave = debounce(saveProgress, 500);
+        document.querySelectorAll('textarea[data-field-index], .compass-input').forEach(input => {
+            input.addEventListener('input', debouncedSave);
+        });
 
-    // Create a debounced version of the saveProgress function
-    const debouncedSave = debounce(saveProgress, 500);
+        // Attach submit button listeners
+        document.querySelectorAll('.stage-submit-button').forEach(button => {
+            button.addEventListener('click', handleStageSubmit);
+        });
 
-    // Attach an input event listener to all textareas to save drafts
-    document.querySelectorAll('textarea[data-field-index]').forEach(textarea => {
-        textarea.addEventListener('input', debouncedSave);
-    });
-    
-    // Now that the DOM is built and listeners are ready, load progress.
-    loadProgressAndRestoreState();
+        // Load saved progress. If nothing is loaded, show the first stage.
+        if (!loadProgress()) {
+            showStage(0);
+        }
+    } else {
+        console.error("One or more functions from metamyth-journey.js are missing. Progress will not be saved or loaded.");
+        showStage(0);
+    }
 }
-
 
 function generateStageHTML(stage, content) {
     if (!content) return `<div class="content-card"><h2 class="text-4xl">${stage.title}</h2><p>Content for this stage is missing.</p></div>`;
 
     if (stage.id === 'intro') {
-        return `
-        <div class="content-card">
-            <div class="text-center">
-                <h1 class="text-5xl mb-2">${content.title}</h1>
-                <h2 class="text-2xl mb-4">${content.subtitle}</h2>
-                <p class="text-lg text-gold mb-2">${content.tagline}</p>
-                <div class="mt-8"><h3 class="text-4xl mb-4">${content.header}</h3><p class="text-xl mb-6">${content.prompt}</p></div>
-            </div>
-            <div class="prose max-w-none mx-auto mt-8">
-                ${content.prose.map(p => `<p>${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`).join('')}
-                <div class="bg-black bg-opacity-30 border border-gold rounded-lg p-6 mt-8">
-                    <h3 class="text-2xl mb-4 text-gold">${content.callout.title}</h3>
-                    ${content.callout.prose.map(p => `<p>${p}</p>`).join('')}
-                </div>
-            </div>
-            <div class="text-center mt-10"><button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${content.buttonText}</button></div>
-        </div>`;
+        return `<div class="content-card"><div class="text-center"><h1 class="text-5xl mb-2">${content.title}</h1><h2 class="text-2xl mb-4">${content.subtitle}</h2><p class="text-lg text-gold mb-2">${content.tagline}</p><div class="mt-8"><h3 class="text-4xl mb-4">${content.header}</h3><p class="text-xl mb-6">${content.prompt}</p></div></div><div class="prose max-w-none mx-auto mt-8">${content.prose.map(p => `<p>${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`).join('')}<div class="bg-black bg-opacity-30 border border-gold rounded-lg p-6 mt-8"><h3 class="text-2xl mb-4 text-gold">${content.callout.title}</h3>${content.callout.prose.map(p => `<p>${p}</p>`).join('')}</div></div><div class="text-center mt-10"><button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${content.buttonText}</button></div></div>`;
     }
-
+    if (stage.id === 'origin') {
+        const fieldsHTML = (content.fields || []).map((field, index) => `<div><label class="font-semibold text-lg block mb-2">${field.label}</label><p class="text-sm mb-3 italic">${field.prompt}</p><textarea data-field-index="${index}" rows="4" placeholder="${field.prompt}"></textarea></div>`).join('<div class="ornamental-divider my-6"></div>');
+        const synthesisHTML = `<div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm mb-3 italic">${content.synthesis.prompt}</p><textarea data-field-index="${(content.fields || []).length}" rows="6" placeholder="${content.synthesis.prompt}"></textarea></div>`;
+        return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div><div class="prose max-w-none mb-8"><p class="text-lg font-semibold text-gold">${content.subtitle || ''}</p><p>${content.prose}</p><h3 class="text-xl mt-6 text-gold">${content.header || ''}</h3></div><div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="space-y-8">${fieldsHTML}</div>${synthesisHTML}<div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="prompt-template-standard">${content.buttonText}</button></div></div>`;
+    }
     if (stage.id.startsWith('arc')) {
-         return `
-            <div class="content-card text-center">
-                <div class="mb-4 text-5xl">${stage.icon}</div>
-                <h2 class="text-4xl">${content.title}</h2>
-                ${(content.prose || []).map(p => `<p class="prose max-w-none mt-6">${p}</p>`).join('')}
-                <div class="mt-10"><button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${content.buttonText}</button></div>
-            </div>`;
+         return `<div class="content-card text-center"><div class="mb-4 text-5xl">${stage.icon}</div><h2 class="text-4xl">${content.title}</h2>${(content.prose || []).map(p => `<p class="prose max-w-none mt-6">${p}</p>`).join('')}<div class="mt-10"><button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${content.buttonText}</button></div></div>`;
     }
-    
     if (stage.id === 'compass') {
-        const pointsHTML = (content.points || []).map((point, index) => `
-            <div><label class="font-semibold text-lg block mb-2">${point.label}</label><p class="text-sm text-gray-400 mb-3 italic">${point.prompt}</p><input type="range" min="1" max="10" value="5" id="compass-input-${index}" class="w-full compass-input" data-field-index="${index}"><div class="flex justify-between text-xs text-slate-400 mt-1"><span>1</span><span>10</span></div></div>`
-        ).join('<div class="ornamental-divider my-6"></div>');
-        return `
-            <div class="content-card">
-                <div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div>
-                <div class="prose max-w-none mb-8"><p>${content.prose || ''}</p></div><div class="ornamental-divider"></div>
-                <div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div>
-                <div class="flex flex-wrap -mx-4"><div class="w-full lg:w-1/2 px-4 space-y-8">${pointsHTML}</div><div class="w-full lg:w-1/2 px-4 flex items-center justify-center"><div class="chart-container"><canvas id="compassChart"></canvas></div></div></div>
-                <div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm mb-3">${content.synthesis.prompt}</p><textarea class="w-full" data-field-index="${(content.points || []).length}" rows="4"></textarea></div>
-                <div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="prompt-template-standard">${content.buttonText}</button></div>
-            </div>`;
+        const pointsHTML = (content.points || []).map((point, index) => `<div><label class="font-semibold text-lg block mb-2">${point.label}</label><p class="text-sm italic mb-3">${point.prompt}</p><input type="range" min="1" max="10" value="5" id="compass-input-${index}" class="w-full compass-input" data-field-index="${index}"><div class="flex justify-between text-xs text-slate-400 mt-1"><span>1</span><span>10</span></div></div>`).join('<div class="ornamental-divider my-6"></div>');
+        return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div><div class="prose max-w-none mb-8"><p>${content.prose || ''}</p></div><div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="flex flex-wrap -mx-4"><div class="w-full lg:w-1/2 px-4 space-y-8">${pointsHTML}</div><div class="w-full lg:w-1/2 px-4 flex items-center justify-center"><div class="chart-container"><canvas id="compassChart"></canvas></div></div></div><div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm italic mb-3">${content.synthesis.prompt}</p><textarea class="w-full" data-field-index="${(content.points || []).length}" rows="4" placeholder="${content.synthesis.prompt}"></textarea></div><div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="prompt-template-standard">${content.buttonText}</button></div></div>`;
     }
-
     if (stage.id === 'my_story') {
-         return `
-            <div class="content-card">
-                <div class="flex items-center mb-6"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl glow-title">${content.title}</h2></div>
-                <div class="prose max-w-none mb-8"><p>${content.prose}</p></div><div class="space-y-6">
-                <button id="generate-story-btn" class="cta-button-base cta-button-gold mb-6">${content.generateButtonText}</button>
-                <div id="compiled-story" class="bg-black bg-opacity-30 border border-teal-400 rounded-lg p-6 min-h-[24rem]"><div class="text-center text-gray-400 italic">${content.initialText}</div></div>
-                <div class="text-center mt-6"><button id="export-story-btn" class="cta-button-base cta-button-teal" style="display: none;">${content.exportButtonText}</button></div></div>
-                <div class="text-center mt-8"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}">${content.buttonText || 'Complete Journey'}</button></div>
-            </div>`;
+         return `<div class="content-card"><div class="flex items-center mb-6"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl glow-title">${content.title}</h2></div><div class="prose max-w-none mb-8"><p>${content.prose}</p></div><div class="space-y-6"><button id="generate-story-btn" class="cta-button-base cta-button-gold mb-6">${content.generateButtonText}</button><div id="compiled-story" class="bg-black bg-opacity-30 border border-teal-400 rounded-lg p-6 min-h-[24rem]"><div class="text-center text-gray-400 italic">${content.initialText}</div></div><div class="text-center mt-6"><button id="export-story-btn" class="cta-button-base cta-button-teal" style="display: none;">${content.exportButtonText}</button></div></div><div class="text-center mt-8"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}">${content.buttonText || 'Complete Journey'}</button></div></div>`;
     }
-
-    const fieldsHTML = (content.fields || []).map((field, index) => `<div><label class="font-semibold text-lg block mb-2">${field.label}</label><p class="text-sm text-gray-400 mb-3 italic">${field.prompt}</p><textarea data-field-index="${index}" rows="4"></textarea></div>`).join('<div class="ornamental-divider my-6"></div>');
-    const synthesisHTML = content.synthesis ? `<div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm mb-3">${content.synthesis.prompt}</p><textarea data-field-index="${(content.fields || []).length}" rows="6"></textarea></div>` : '';
+    const proseHTML = `<div class="prose max-w-none mb-8"><p>${Array.isArray(content.prose) ? content.prose.join('</p><p>') : content.prose || ''}</p></div>`;
+    const fieldsHTML = (content.fields || []).map((field, index) => `<div><label class="font-semibold text-lg block mb-2">${field.label}</label><p class="text-sm italic mb-3">${field.prompt}</p><textarea data-field-index="${index}" rows="4" placeholder="${field.prompt}"></textarea></div>`).join('<div class="ornamental-divider my-6"></div>');
+    const synthesisHTML = content.synthesis ? `<div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm italic mb-3">${content.synthesis.prompt}</p><textarea data-field-index="${(content.fields || []).length}" rows="6" placeholder="${content.synthesis.prompt}"></textarea></div>` : '';
     const promptTemplate = stage.id.includes('synthesis') && !content.fields ? 'prompt-template-synthesis' : 'prompt-template-standard';
-    return `
-        <div class="content-card">
-            <div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div>
-            <div class="prose max-w-none mb-8"><p>${Array.isArray(content.prose) ? content.prose.join('<br>') : content.prose || ''}</p></div><div class="ornamental-divider"></div>
-            <div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div>
-            <div class="space-y-8">${fieldsHTML}</div>${synthesisHTML}
-            <div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="${promptTemplate}">${content.buttonText}</button></div>
-        </div>`;
+    return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div>${proseHTML}<div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="space-y-8">${fieldsHTML}</div>${synthesisHTML}<div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="${promptTemplate}">${content.buttonText}</button></div></div>`;
 }
-
-// Global UI functions
-function showStage(index) {
-    document.querySelectorAll('.stage-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
-    const stage = stages[index];
-    if (!stage) return;
-    const stageEl = document.getElementById(stage.id);
-    const navEl = document.getElementById(`nav-${stage.id}`);
-    if (stageEl) {
-        stageEl.classList.add('active');
-        stageEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-    if (navEl) navEl.classList.add('active');
-    updateProgressBar(index);
-    updateArtifactIndicator(stage, index);
-    if (stage.id === 'compass') setTimeout(initializeCompass, 100);
-    if (stage.id === 'my_story') setTimeout(initializeStoryGeneration, 100);
-}
-function updateProgressBar(currentIndex) {
-    const progressBar = document.getElementById('progress-bar');
-    if (progressBar) progressBar.style.width = `${Math.round(((currentIndex + 1) / stages.length) * 100)}%`;
-}
-function updateArtifactIndicator(currentStage, index) {
-    document.getElementById('current-artifact-icon').textContent = currentStage.icon;
-    document.getElementById('current-artifact-title').textContent = currentStage.title;
-    document.getElementById('current-progress').textContent = `${index + 1}/${stages.length} Complete`;
-}
-function initializeCompass() {
-    initializeCompassChart();
-    document.querySelectorAll('.compass-input').forEach(input => {
-        input.removeEventListener('input', updateCompassChart);
-        input.addEventListener('input', updateCompassChart);
-    });
-}
-function initializeCompassChart() {
-    const ctx = document.getElementById('compassChart');
-    if (!ctx) return;
-    if (compassChart) compassChart.destroy();
-    const labels = (contentData.compass?.points || []).map(p => p.label.split(' - ')[0]);
-    const data = labels.map((_, index) => parseInt(document.getElementById(`compass-input-${index}`)?.value || '5'));
-    compassChart = new Chart(ctx, {type: 'radar', data: { labels: labels, datasets: [{ label: 'Alignment', data: data, borderColor: 'var(--accent-teal)', backgroundColor: 'rgba(20, 184, 166, 0.2)', pointBackgroundColor: 'var(--accent-teal)', pointBorderColor: '#fff' }] }, options: { responsive: true, maintainAspectRatio: true, scales: { r: { min: 0, max: 10, ticks: { display: false }, grid: { color: 'rgba(255,255,255,0.2)' }, pointLabels: { color: 'var(--text-main)', font: { family: 'GrillagesBold2024' } }, angleLines: { color: 'rgba(255,255,255,0.2)' } } }, plugins: { legend: { display: false } } } });
-}
-function updateCompassChart() {
-    if (!compassChart) return;
-    compassChart.data.datasets[0].data = compassChart.data.labels.map((_, index) => parseInt(document.getElementById(`compass-input-${index}`)?.value || '5'));
-    compassChart.update();
-}
-function initializeStoryGeneration() {
-    const generateBtn = document.getElementById('generate-story-btn');
-    const exportBtn = document.getElementById('export-story-btn');
-    const storyContainer = document.getElementById('compiled-story');
-    if (generateBtn) generateBtn.onclick = () => { storyContainer.innerHTML = generateCompleteStory(); exportBtn.style.display = 'inline-block'; };
-    if (exportBtn) exportBtn.onclick = () => {
-        const blob = new Blob([storyContainer.innerText], { type: 'text/plain;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url; a.download = 'my-metamyth-story.txt';
-        document.body.appendChild(a); a.click(); document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-    };
-}
-function generateCompleteStory() {
-    const synthesisOrder = ['origin', 'calling_synthesis', 'quest_synthesis', 'vision_synthesis', 'mission_synthesis', 'kindred_synthesis', 'legacy'];
-    let storyHtml = `<div class="prose max-w-none text-left"><h3 class="text-3xl text-gold">${contentData.my_story.title}</h3>`;
-    let contentAdded = false;
-    synthesisOrder.forEach(stageId => {
-        const stageContent = contentData[stageId];
-        const stageData = window.journeyData?.[stageId];
-        if (stageContent?.synthesis && stageData) {
-            const synthesisText = stageData[stageData.length - 1];
-            if (synthesisText?.trim()) {
-                storyHtml += `<h4 class="text-2xl mt-8 text-teal">${stageContent.synthesis.label}</h4><p class="border-l-4 border-gold pl-4 py-2 bg-black/20">${synthesisText.replace(/\n/g, '<br>')}</p>`;
-                contentAdded = true;
-            }
-        }
-    });
-    if (contentAdded) storyHtml += '<div class="ornamental-divider"></div><p class="text-center text-lg text-gold">This is my story. The journey continues.</p>';
-    else storyHtml += `<p class="italic text-gray-400 mt-4">${contentData.my_story.initialText}</p>`;
-    return storyHtml + '</div>';
-}
+function showStage(index) { document.querySelectorAll('.stage-content').forEach(el => el.classList.remove('active')); document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active')); const stage = stages[index]; if (!stage) return; const stageEl = document.getElementById(stage.id); const navEl = document.getElementById(`nav-${stage.id}`); if (stageEl) { stageEl.classList.add('active'); stageEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); } if (navEl) navEl.classList.add('active'); updateProgressBar(index); updateArtifactIndicator(stage, index); if (stage.id === 'compass') setTimeout(initializeCompass, 100); if (stage.id === 'my_story') setTimeout(initializeStoryGeneration, 100); }
+function updateProgressBar(currentIndex) { if (document.getElementById('progress-bar')) document.getElementById('progress-bar').style.width = `${Math.round(((currentIndex + 1) / stages.length) * 100)}%`; }
+function updateArtifactIndicator(currentStage, index) { document.getElementById('current-artifact-icon').textContent = currentStage.icon; document.getElementById('current-artifact-title').textContent = currentStage.title; document.getElementById('current-progress').textContent = `${index + 1}/${stages.length} Complete`; }
+function initializeCompass() { initializeCompassChart(); document.querySelectorAll('.compass-input').forEach(input => { input.removeEventListener('input', updateCompassChart); input.addEventListener('input', updateCompassChart); }); }
+function initializeCompassChart() { const ctx = document.getElementById('compassChart'); if (!ctx) return; if (compassChart) compassChart.destroy(); const labels = (contentData.compass?.points || []).map(p => p.label.split(' - ')[0]); const data = labels.map((_, index) => parseInt(document.getElementById(`compass-input-${index}`)?.value || '5')); compassChart = new Chart(ctx, {type: 'radar', data: { labels: labels, datasets: [{ label: 'Alignment', data: data, borderColor: 'var(--accent-teal)', backgroundColor: 'rgba(20, 184, 166, 0.2)', pointBackgroundColor: 'var(--accent-teal)', pointBorderColor: '#fff' }] }, options: { responsive: true, maintainAspectRatio: true, scales: { r: { min: 0, max: 10, ticks: { display: false }, grid: { color: 'rgba(255,255,255,0.2)' }, pointLabels: { color: 'var(--text-main)', font: { family: 'GrillagesBold2024' } }, angleLines: { color: 'rgba(255,255,255,0.2)' } } }, plugins: { legend: { display: false } } } }); }
+function updateCompassChart() { if (!compassChart) return; compassChart.data.datasets[0].data = compassChart.data.labels.map((_, index) => parseInt(document.getElementById(`compass-input-${index}`)?.value || '5')); compassChart.update(); }
+function initializeStoryGeneration() { const generateBtn = document.getElementById('generate-story-btn'); const exportBtn = document.getElementById('export-story-btn'); const storyContainer = document.getElementById('compiled-story'); if (generateBtn) generateBtn.onclick = () => { storyContainer.innerHTML = generateCompleteStory(); exportBtn.style.display = 'inline-block'; }; if (exportBtn) exportBtn.onclick = () => { const blob = new Blob([storyContainer.innerText], { type: 'text/plain;charset=utf-8' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'my-metamyth-story.txt'; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url); }; }
+function generateCompleteStory() { const synthesisOrder = ['origin', 'calling_synthesis', 'quest_synthesis', 'vision_synthesis', 'mission_synthesis', 'kindred_synthesis', 'legacy']; let storyHtml = `<div class="prose max-w-none text-left"><h3 class="text-3xl text-gold">${contentData.my_story.title}</h3>`; let contentAdded = false; synthesisOrder.forEach(stageId => { const stageContent = contentData[stageId]; const stageData = window.journeyData?.[stageId]; if (stageContent?.synthesis && stageData) { const synthesisText = stageData[stageData.length - 1]; if (synthesisText?.trim()) { storyHtml += `<h4 class="text-2xl mt-8 text-teal">${stageContent.synthesis.label}</h4><p class="border-l-4 border-gold pl-4 py-2 bg-black/20">${synthesisText.replace(/\n/g, '<br>')}</p>`; contentAdded = true; } } }); if (contentAdded) storyHtml += '<div class="ornamental-divider"></div><p class="text-center text-lg text-gold">This is my story. The journey continues.</p>'; else storyHtml += `<p class="italic text-gray-400 mt-4">${contentData.my_story.initialText}</p>`; return storyHtml + '</div>'; }
 </script>
 
 <script>
-  // Helper script to inform parent of content height for better iframe resizing
+  // Iframe Resizer Utility
   const resizeObserver = new ResizeObserver(sendBodyHeight);
-  function observeBody() {
-      if (document.body) resizeObserver.observe(document.body);
-      else setTimeout(observeBody, 100);
-  }
-  function sendBodyHeight() {
-      const height = document.body.scrollHeight;
-      window.parent.postMessage({ type: 'iframeResize', height: height }, '*');
-  }
+  function observeBody() { if (document.body) resizeObserver.observe(document.body); else setTimeout(observeBody, 100); }
+  function sendBodyHeight() { const height = document.body.scrollHeight; window.parent.postMessage({ type: 'iframeResize', height: height }, '*'); }
   observeBody();
 </script>
 

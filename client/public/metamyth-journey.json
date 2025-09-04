@@ -23,6 +23,8 @@
   },
   "origin": {
     "title": "PREAMBLE: THE ORIGIN STORY",
+    "subtitle": "The Foundational Myth That Shapes Everything",
+    "header": "QUESTIONS THAT REGENERATE THE FOUNDATION:",
     "prose": "Every hero's journey begins before the call to adventure—in the ordinary world that shaped them, the primordial essence from which their quest is born. Like a seed, your origin contains the DNA of the entire story that follows.",
     "fields": [
       {
@@ -273,17 +275,17 @@
     "buttonText": "Continue to The Compass"
   },
   "compass": {
-    "title": "Stage 16: The Compass",
-    "prose": "Soul Level: Eight-Pointed Navigation Questions. These are the questions you return to regularly for navigation and course correction:",
+    "title": "The Compass",
+    "prose": "Soul Level: Eight-Pointed Navigation Questions. When external maps become useless, you navigate by eternal coordinates of your values. The Compass organizes all activities across eight dimensions of health. Your values become an accountability framework that maintains alignment, creating health bars in the dashboard of reality. Rate your current alignment (1-10) for each point.",
     "points": [
-      { "label": "PURPOSE (Why) - Mission alignment and meaning-making", "prompt": "Am I living in alignment with my deepest calling, or have I drifted from what truly matters?" },
-      { "label": "VISION (Where) - Future orientation and strategic foresight", "prompt": "Is my vision still clear and compelling, or do I need to reconnect with where I'm heading?" },
-      { "label": "TRUTH (How) - Communication and transparency protocols", "prompt": "Am I being honest with myself and others, or are there truths I'm avoiding?" },
-      { "label": "CREATIVITY (What) - Innovation and authentic expression", "prompt": "Am I expressing my unique gifts fully, or am I playing it safe and holding back?" },
-      { "label": "COMMUNITY (Who) - Relationship and belonging cultivation", "prompt": "Are my relationships nourishing my mission, or am I isolated from the support I need?" },
-      { "label": "SYSTEMS (Integrity) - Structure and process operations", "prompt": "Are my daily systems supporting my highest aspirations, or are they pulling me toward mediocrity?" },
-      { "label": "RESOURCES (Sustainability) - Resource circulation and sustainability", "prompt": "Is my relationship with money and resources generative, or am I stuck in scarcity patterns?" },
-      { "label": "STORY (Coherence) - Holistic coherence across all dimensions", "prompt": "Does my life feel like one coherent story, or am I fragmented across competing narratives?" }
+      { "label": "Purpose Governance", "prompt": "Am I living in alignment with my deepest calling, or have I drifted from what truly matters?" },
+      { "label": "Visionary Strategy", "prompt": "Is my vision still clear and compelling, or do I need to reconnect with where I'm heading?" },
+      { "label": "Truthful Expression", "prompt": "Am I being honest with myself and others, or are there truths I'm avoiding?" },
+      { "label": "Community Well-being", "prompt": "Are my relationships nourishing my mission, or am I isolated from the support I need?" },
+      { "label": "Structural Integrity", "prompt": "Are my daily systems supporting my highest aspirations, or are they pulling me toward mediocrity?" },
+      { "label": "Creative Attraction", "prompt": "Am I expressing my unique gifts fully, or am I playing it safe and holding back?" },
+      { "label": "Ecological Economics", "prompt": "Is my relationship with money and resources generative, or am I stuck in scarcity patterns?" },
+      { "label": "Quest Alignment", "prompt": "Does my life feel like one coherent story, or am I fragmented across competing narratives?" }
     ],
     "synthesis": { "label": "COMPASS SYNTHESIS - The Navigation Questions", "prompt": "Identify in one statement which dimensions need most attention and your strategy for staying aligned with your values across all aspects of your quest—the questions that guide you when landmarks disappear." },
     "buttonText": "Continue to Artifact IV: The Journey"
