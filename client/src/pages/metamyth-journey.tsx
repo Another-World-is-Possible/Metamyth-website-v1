@@ -16,13 +16,14 @@ export default function MetamythJourneyPage() {
       return;
     }
 
-    // --- NEW LOGIC: Read env variable and inject it into the HTML ---
+    // --- CORRECTED DEV MODE LOGIC ---
     
-    // 1. Read the environment variable from Vite. Default to 'false' (LLM mode) if not set.
-    const isLlmMode = import.meta.env.VITE_METAMYTH_USE_LLM !== 'true';
-
-    // 2. Create a script string to set a global variable inside the iframe.
-    const featureScript = `<script>window.METAMYTH_USE_LLM = ${isLlmMode};</script>`;
+    // 1. Explicitly check if the Vite environment variable is set to 'true'.
+    const isLlmEnabled = import.meta.env.VITE_METAMYTH_USE_LLM === 'true';
+    
+    // 2. Create the script that will be injected into the iframe's HTML.
+    //    This sets the global variable that the journey's JavaScript will check.
+    const featureScript = `<script>window.METAMYTH_USE_LLM = ${isLlmEnabled};</script>`;
     
     // 3. Inject this script into the <head> of the HTML string.
     let finalHtml = storedHtml.replace('</head>', `${featureScript}</head>`);
@@ -39,7 +40,8 @@ export default function MetamythJourneyPage() {
 
     const handleMessage = (event: MessageEvent) => {
       if (event.data && event.data.type === 'iframeResize') {
-        setIframeHeight(event.data.height + 20);
+        // Add a small buffer to prevent scrollbars
+        setIframeHeight(event.data.height + 50);
       }
     };
     window.addEventListener('message', handleMessage);
