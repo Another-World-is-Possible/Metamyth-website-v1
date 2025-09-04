@@ -16,14 +16,14 @@ function saveProgress() {
         const lastStageId = activeStage ? activeStage.id : 'intro';
         
         const formInputs = {};
-        document.querySelectorAll('textarea[data-field-index]').forEach(textarea => {
-            const stageEl = textarea.closest('.stage-content');
+        document.querySelectorAll('textarea[data-field-index], .compass-input').forEach(input => {
+            const stageEl = input.closest('.stage-content');
             if (!stageEl) return;
             const stageId = stageEl.id;
-            const fieldIndex = textarea.dataset.fieldIndex;
+            const fieldIndex = input.dataset.fieldIndex;
             const key = `${stageId}-${fieldIndex}`;
-            if (textarea.value) {
-                formInputs[key] = textarea.value;
+            if (input.value) {
+                formInputs[key] = input.value;
             }
         });
 
@@ -61,9 +61,9 @@ function loadProgress() {
         if (progress.formInputs) {
             Object.keys(progress.formInputs).forEach(key => {
                 const [stageId, fieldIndex] = key.split('-');
-                const textarea = document.querySelector(`#${stageId} textarea[data-field-index="${fieldIndex}"]`);
-                if (textarea) {
-                    textarea.value = progress.formInputs[key];
+                const input = document.querySelector(`#${stageId} [data-field-index="${fieldIndex}"]`);
+                if (input) {
+                    input.value = progress.formInputs[key];
                 }
             });
         }
@@ -99,8 +99,6 @@ async function handleStageSubmit(event) {
   const button = event.target;
   const stageId = button.dataset.stageId;
 
-  // **CORRECTED LOGIC**: By default, the LLM is OFF.
-  // It only runs if the feature flag is explicitly set to `true`.
   if (window.METAMYTH_USE_LLM !== true) {
     console.log(`LLM validation feature not enabled. Auto-continuing from stage "${stageId}".`);
     const currentIndex = window.stages.findIndex(s => s.id === stageId);
@@ -111,7 +109,6 @@ async function handleStageSubmit(event) {
     return;
   }
   
-  // --- Standard AI Validation Logic ---
   console.log(`LLM validation feature is ON for stage "${stageId}".`);
   const stageContainer = document.getElementById(stageId);
   if (!stageContainer) return;
@@ -121,10 +118,21 @@ async function handleStageSubmit(event) {
   clearPreviousErrors(stageContainer);
 
   const responses = [];
-  stageContainer.querySelectorAll('textarea[data-field-index]').forEach(textarea => {
-    const index = parseInt(textarea.dataset.fieldIndex, 10);
-    responses[index] = textarea.value;
+  document.querySelectorAll(`#${stageId} [data-field-index]`).forEach(input => {
+    const index = parseInt(input.dataset.fieldIndex, 10);
+    responses[index] = input.value;
   });
+
+  if (responses.length === 0) {
+      const currentIndex = window.stages.findIndex(s => s.id === stageId);
+      if (currentIndex !== -1 && currentIndex < window.stages.length - 1) {
+        window.showStage(currentIndex + 1);
+      }
+      hideLoadingOverlay();
+      button.disabled = false;
+      saveProgress();
+      return;
+  }
 
   const promptTemplateId = button.dataset.promptTemplate || 'prompt-template-standard';
   const context = { stageTitle: stageIdToTitleMap.get(stageId) || stageId };
@@ -174,9 +182,9 @@ function displayFailureSummary(stageContainer, summaryMessage) {
 
 function highlightInvalidFields(stageContainer, invalidIndexes = []) {
   invalidIndexes.forEach(index => {
-    const textarea = stageContainer.querySelector(`textarea[data-field-index="${index}"]`);
-    if (textarea) {
-      textarea.classList.add('invalid-field');
+    const input = stageContainer.querySelector(`[data-field-index="${index}"]`);
+    if (input) {
+      input.classList.add('invalid-field');
     }
   });
 }
@@ -190,4 +198,28 @@ function clearPreviousErrors(stageContainer) {
   stageContainer.querySelectorAll('.invalid-field').forEach(el => {
     el.classList.remove('invalid-field');
   });
+}
+
+// --- INITIALIZATION FUNCTION ---
+// This function is called by metamyth.html after the page is built.
+// It connects all the event listeners and loads the user's progress.
+
+function finalizeSetup() {
+    // Attach the submit handler to all stage submission buttons.
+    document.querySelectorAll('.stage-submit-button').forEach(button => {
+        button.addEventListener('click', handleStageSubmit);
+    });
+
+    // Create a debounced version of the saveProgress function.
+    const debouncedSave = debounce(saveProgress, 500);
+
+    // Attach an input event listener to all textareas and inputs to save drafts.
+    document.querySelectorAll('textarea[data-field-index], .compass-input').forEach(input => {
+        input.addEventListener('input', debouncedSave);
+    });
+
+    // Load saved progress. If nothing is loaded (loadProgress returns null), show the first stage.
+    if (!loadProgress()) {
+        window.showStage(0);
+    }
 }
