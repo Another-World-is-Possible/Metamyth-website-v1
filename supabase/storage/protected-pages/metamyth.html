@@ -262,7 +262,10 @@ function showStage(index) {
     if (stageEl) stageEl.classList.add('active');
     if (navEl) navEl.classList.add('active');
     
-    // **SCROLLING FIX**: Scroll the window to the top instantly.
+    // **SCROLLING FIX**: Send a message to the parent to scroll the main page
+    window.parent.postMessage({ type: 'metamythStageChanged' }, '*');
+    
+    // Also scroll the iframe itself, just in case
     window.scrollTo({ top: 0, behavior: 'instant' });
 
     updateProgressBar(index);
@@ -290,3 +293,4 @@ function generateCompleteStory() { const synthesisOrder = ['origin', 'calling_sy
 
 </body>
 </html>
+}

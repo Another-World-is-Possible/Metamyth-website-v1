@@ -33,7 +33,6 @@ export default function MetamythJourneyPage() {
         const chatbotJs = await chatbotRes.text();
         const journeyJs = await journeyRes.text();
 
-        // This logic correctly enables the LLM feature only when the env var is 'true'
         const isLlmEnabled = import.meta.env.VITE_METAMYTH_USE_LLM === 'true';
         const featureScript = `window.METAMYTH_USE_LLM = ${isLlmEnabled};`;
 
@@ -63,6 +62,10 @@ export default function MetamythJourneyPage() {
     const handleMessage = (event: MessageEvent) => {
       if (event.data && event.data.type === 'iframeResize') {
         setIframeHeight(event.data.height + 50);
+      }
+      // **SCROLLING FIX**: Listen for a message from the iframe to scroll the main page
+      if (event.data && event.data.type === 'metamythStageChanged') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
     window.addEventListener('message', handleMessage);
