@@ -1,3 +1,5 @@
+// src/pages/metamyth-journey.tsx
+
 import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import PageLayout from '@/components/layouts/page-layout';
@@ -14,18 +16,24 @@ export default function MetamythJourneyPage() {
       return;
     }
 
-    // --- UPDATED LOGIC: Rewrite ALL relative paths to be absolute ---
-    const origin = window.location.origin; // Gets "http://localhost:5173"
+    // --- NEW LOGIC: Read env variable and inject it into the HTML ---
     
-    // 1. Fix standard HTML attributes like <script src="/..."> and <link href="/...">
-    let rewrittenHtml = storedHtml.replace(/(src|href)="\//g, `$1="${origin}/`);
+    // 1. Read the environment variable from Vite. Default to 'false' (LLM mode) if not set.
+    const isLlmMode = import.meta.env.VITE_METAMYTH_USE_LLM !== 'true';
+
+    // 2. Create a script string to set a global variable inside the iframe.
+    const featureScript = `<script>window.METAMYTH_USE_LLM = ${isLlmMode};</script>`;
     
-    // 2. Fix CSS url() paths like url('/attached_assets/font.otf')
-    // This regex looks for url( followed by an optional quote and a slash
-    rewrittenHtml = rewrittenHtml.replace(/(url\s*\(\s*['"]?)\//g, `$1${origin}/`);
+    // 3. Inject this script into the <head> of the HTML string.
+    let finalHtml = storedHtml.replace('</head>', `${featureScript}</head>`);
     
-    // --- Create the Blob URL using the FULLY REWRITTEN HTML ---
-    const blob = new Blob([rewrittenHtml], { type: 'text/html' });
+    // --- Path rewriting logic remains the same ---
+    const origin = window.location.origin;
+    finalHtml = finalHtml.replace(/(src|href)="\//g, `$1="${origin}/`);
+    finalHtml = finalHtml.replace(/(url\s*\(\s*['"]?)\//g, `$1${origin}/`);
+    
+    // --- Create the Blob URL using the fully modified HTML ---
+    const blob = new Blob([finalHtml], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     setIframeSrc(url);
 
@@ -37,9 +45,7 @@ export default function MetamythJourneyPage() {
     window.addEventListener('message', handleMessage);
 
     return () => {
-      if (url) {
-        URL.revokeObjectURL(url);
-      }
+      if (url) URL.revokeObjectURL(url);
       window.removeEventListener('message', handleMessage);
     };
   }, [navigate]);
