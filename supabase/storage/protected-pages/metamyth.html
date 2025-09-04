@@ -204,25 +204,10 @@ async function initializeApp() {
         if (storyIndex > -1) window.showStage(storyIndex);
     });
     
-    // **THE FIX**: This logic now correctly initializes the application after the DOM is built.
-    if (typeof debounce === 'function' && typeof saveProgress === 'function' && typeof handleStageSubmit === 'function' && typeof loadProgress === 'function') {
-        // Attach auto-save listeners
-        const debouncedSave = debounce(saveProgress, 500);
-        document.querySelectorAll('textarea[data-field-index], .compass-input').forEach(input => {
-            input.addEventListener('input', debouncedSave);
-        });
-
-        // Attach submit button listeners
-        document.querySelectorAll('.stage-submit-button').forEach(button => {
-            button.addEventListener('click', handleStageSubmit);
-        });
-
-        // Load saved progress. If nothing is loaded, show the first stage.
-        if (!loadProgress()) {
-            showStage(0);
-        }
+    if (typeof finalizeSetup === 'function') {
+        finalizeSetup();
     } else {
-        console.error("One or more functions from metamyth-journey.js are missing. Progress will not be saved or loaded.");
+        console.error("finalizeSetup function not found. Ensure metamyth-journey.js is loaded correctly by the parent component.");
         showStage(0);
     }
 }
@@ -230,31 +215,70 @@ async function initializeApp() {
 function generateStageHTML(stage, content) {
     if (!content) return `<div class="content-card"><h2 class="text-4xl">${stage.title}</h2><p>Content for this stage is missing.</p></div>`;
 
+    // --- DYNAMIC BUTTON TEXT ---
+    const currentIndex = window.stages.findIndex(s => s.id === stage.id);
+    const nextStage = window.stages[currentIndex + 1];
+    let buttonText = 'Complete The Journey';
+    if (nextStage) {
+        buttonText = `Continue to ${nextStage.title}`;
+    }
+    // For Arc intros, use their specific button text from JSON
+    if (stage.id.startsWith('arc') && content.buttonText) {
+        buttonText = content.buttonText;
+    }
+    
+    // --- TEMPLATES ---
     if (stage.id === 'intro') {
         return `<div class="content-card"><div class="text-center"><h1 class="text-5xl mb-2">${content.title}</h1><h2 class="text-2xl mb-4">${content.subtitle}</h2><p class="text-lg text-gold mb-2">${content.tagline}</p><div class="mt-8"><h3 class="text-4xl mb-4">${content.header}</h3><p class="text-xl mb-6">${content.prompt}</p></div></div><div class="prose max-w-none mx-auto mt-8">${content.prose.map(p => `<p>${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`).join('')}<div class="bg-black bg-opacity-30 border border-gold rounded-lg p-6 mt-8"><h3 class="text-2xl mb-4 text-gold">${content.callout.title}</h3>${content.callout.prose.map(p => `<p>${p}</p>`).join('')}</div></div><div class="text-center mt-10"><button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${content.buttonText}</button></div></div>`;
     }
     if (stage.id === 'origin') {
         const fieldsHTML = (content.fields || []).map((field, index) => `<div><label class="font-semibold text-lg block mb-2">${field.label}</label><p class="text-sm mb-3 italic">${field.prompt}</p><textarea data-field-index="${index}" rows="4" placeholder="${field.prompt}"></textarea></div>`).join('<div class="ornamental-divider my-6"></div>');
         const synthesisHTML = `<div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm mb-3 italic">${content.synthesis.prompt}</p><textarea data-field-index="${(content.fields || []).length}" rows="6" placeholder="${content.synthesis.prompt}"></textarea></div>`;
-        return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div><div class="prose max-w-none mb-8"><p class="text-lg font-semibold text-gold">${content.subtitle || ''}</p><p>${content.prose}</p><h3 class="text-xl mt-6 text-gold">${content.header || ''}</h3></div><div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="space-y-8">${fieldsHTML}</div>${synthesisHTML}<div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="prompt-template-standard">${content.buttonText}</button></div></div>`;
+        return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div><div class="prose max-w-none mb-8"><p class="text-lg font-semibold text-gold text-center">${content.subtitle || ''}</p><p>${content.prose}</p><h3 class="text-xl mt-6 text-gold">${content.header || ''}</h3></div><div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="space-y-8">${fieldsHTML}</div>${synthesisHTML}<div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="prompt-template-standard">${buttonText}</button></div></div>`;
     }
     if (stage.id.startsWith('arc')) {
-         return `<div class="content-card text-center"><div class="mb-4 text-5xl">${stage.icon}</div><h2 class="text-4xl">${content.title}</h2>${(content.prose || []).map(p => `<p class="prose max-w-none mt-6">${p}</p>`).join('')}<div class="mt-10"><button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${content.buttonText}</button></div></div>`;
+         return `<div class="content-card text-center"><div class="mb-4 text-5xl">${stage.icon}</div><h2 class="text-4xl">${content.title}</h2>${(content.prose || []).map(p => `<p class="prose max-w-none mt-6 text-lg font-semibold text-gold">${p}</p>`).join('')}<div class="mt-10"><button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${buttonText}</button></div></div>`;
     }
     if (stage.id === 'compass') {
         const pointsHTML = (content.points || []).map((point, index) => `<div><label class="font-semibold text-lg block mb-2">${point.label}</label><p class="text-sm italic mb-3">${point.prompt}</p><input type="range" min="1" max="10" value="5" id="compass-input-${index}" class="w-full compass-input" data-field-index="${index}"><div class="flex justify-between text-xs text-slate-400 mt-1"><span>1</span><span>10</span></div></div>`).join('<div class="ornamental-divider my-6"></div>');
-        return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div><div class="prose max-w-none mb-8"><p>${content.prose || ''}</p></div><div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="flex flex-wrap -mx-4"><div class="w-full lg:w-1/2 px-4 space-y-8">${pointsHTML}</div><div class="w-full lg:w-1/2 px-4 flex items-center justify-center"><div class="chart-container"><canvas id="compassChart"></canvas></div></div></div><div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm italic mb-3">${content.synthesis.prompt}</p><textarea class="w-full" data-field-index="${(content.points || []).length}" rows="4" placeholder="${content.synthesis.prompt}"></textarea></div><div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="prompt-template-standard">${content.buttonText}</button></div></div>`;
+        return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div><div class="prose max-w-none mb-8"><p class="text-lg font-semibold text-gold text-center">${content.prose || ''}</p></div><div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="flex flex-wrap -mx-4"><div class="w-full lg:w-1/2 px-4 space-y-8">${pointsHTML}</div><div class="w-full lg:w-1/2 px-4 flex items-center justify-center"><div class="chart-container"><canvas id="compassChart"></canvas></div></div></div><div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm italic mb-3">${content.synthesis.prompt}</p><textarea class="w-full" data-field-index="${(content.points || []).length}" rows="4" placeholder="${content.synthesis.prompt}"></textarea></div><div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="prompt-template-standard">${buttonText}</button></div></div>`;
     }
     if (stage.id === 'my_story') {
-         return `<div class="content-card"><div class="flex items-center mb-6"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl glow-title">${content.title}</h2></div><div class="prose max-w-none mb-8"><p>${content.prose}</p></div><div class="space-y-6"><button id="generate-story-btn" class="cta-button-base cta-button-gold mb-6">${content.generateButtonText}</button><div id="compiled-story" class="bg-black bg-opacity-30 border border-teal-400 rounded-lg p-6 min-h-[24rem]"><div class="text-center text-gray-400 italic">${content.initialText}</div></div><div class="text-center mt-6"><button id="export-story-btn" class="cta-button-base cta-button-teal" style="display: none;">${content.exportButtonText}</button></div></div><div class="text-center mt-8"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}">${content.buttonText || 'Complete Journey'}</button></div></div>`;
+         return `<div class="content-card"><div class="flex items-center mb-6"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl glow-title">${content.title || 'My Metamyth Story'}</h2></div><div class="prose max-w-none mb-8"><p>${content.prose}</p></div><div class="space-y-6"><button id="generate-story-btn" class="cta-button-base cta-button-gold mb-6">${content.generateButtonText}</button><div id="compiled-story" class="bg-black bg-opacity-30 border border-teal-400 rounded-lg p-6 min-h-[24rem]"><div class="text-center text-gray-400 italic">${content.initialText}</div></div><div class="text-center mt-6"><button id="export-story-btn" class="cta-button-base cta-button-teal" style="display: none;">${content.exportButtonText}</button></div></div><div class="text-center mt-8"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}">${buttonText}</button></div></div>`;
     }
-    const proseHTML = `<div class="prose max-w-none mb-8"><p>${Array.isArray(content.prose) ? content.prose.join('</p><p>') : content.prose || ''}</p></div>`;
+    if (stage.id === 'wizard') {
+        const fieldsHTML = (content.fields || []).map((field, index) => `<div><label class="font-semibold text-lg block mb-2">${field.label}</label><p class="text-sm mb-3 italic">${field.prompt}</p><textarea data-field-index="${index}" rows="4" placeholder="${field.prompt}"></textarea></div>`).join('<div class="ornamental-divider my-6"></div>');
+        const synthesisHTML = `<div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm mb-3 italic">${content.synthesis.prompt}</p><textarea data-field-index="${(content.fields || []).length}" rows="6" placeholder="${content.synthesis.prompt}"></textarea></div>`;
+        return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div><div class="prose max-w-none mb-8"><p>${content.prose}</p><p><strong>${content.header || ''}</strong></p></div><div class="ornamental-divider"></div><div class="space-y-8">${fieldsHTML}</div>${synthesisHTML}<div class="text-center mt-8"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}">${buttonText}</button></div></div>`;
+    }
+    
+    // Default Template
+    const proseHTML = `<div class="prose max-w-none mb-8"><p class="text-lg font-semibold text-gold text-center">${Array.isArray(content.prose) ? content.prose.join('</p><p>') : content.prose || ''}</p></div>`;
     const fieldsHTML = (content.fields || []).map((field, index) => `<div><label class="font-semibold text-lg block mb-2">${field.label}</label><p class="text-sm italic mb-3">${field.prompt}</p><textarea data-field-index="${index}" rows="4" placeholder="${field.prompt}"></textarea></div>`).join('<div class="ornamental-divider my-6"></div>');
     const synthesisHTML = content.synthesis ? `<div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm italic mb-3">${content.synthesis.prompt}</p><textarea data-field-index="${(content.fields || []).length}" rows="6" placeholder="${content.synthesis.prompt}"></textarea></div>` : '';
     const promptTemplate = stage.id.includes('synthesis') && !content.fields ? 'prompt-template-synthesis' : 'prompt-template-standard';
-    return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div>${proseHTML}<div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="space-y-8">${fieldsHTML}</div>${synthesisHTML}<div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="${promptTemplate}">${content.buttonText}</button></div></div>`;
+    return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div>${proseHTML}<div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="space-y-8">${fieldsHTML}</div>${synthesisHTML}<div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="${promptTemplate}">${buttonText}</button></div></div>`;
 }
-function showStage(index) { document.querySelectorAll('.stage-content').forEach(el => el.classList.remove('active')); document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active')); const stage = stages[index]; if (!stage) return; const stageEl = document.getElementById(stage.id); const navEl = document.getElementById(`nav-${stage.id}`); if (stageEl) { stageEl.classList.add('active'); stageEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); } if (navEl) navEl.classList.add('active'); updateProgressBar(index); updateArtifactIndicator(stage, index); if (stage.id === 'compass') setTimeout(initializeCompass, 100); if (stage.id === 'my_story') setTimeout(initializeStoryGeneration, 100); }
+
+function showStage(index) {
+    document.querySelectorAll('.stage-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+    const stage = stages[index];
+    if (!stage) return;
+    const stageEl = document.getElementById(stage.id);
+    const navEl = document.getElementById(`nav-${stage.id}`);
+    if (stageEl) stageEl.classList.add('active');
+    if (navEl) navEl.classList.add('active');
+    
+    // **SCROLLING FIX**: Scroll the window to the top smoothly.
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    updateProgressBar(index);
+    updateArtifactIndicator(stage, index);
+    if (stage.id === 'compass') setTimeout(initializeCompass, 100);
+    if (stage.id === 'my_story') setTimeout(initializeStoryGeneration, 100);
+}
+
 function updateProgressBar(currentIndex) { if (document.getElementById('progress-bar')) document.getElementById('progress-bar').style.width = `${Math.round(((currentIndex + 1) / stages.length) * 100)}%`; }
 function updateArtifactIndicator(currentStage, index) { document.getElementById('current-artifact-icon').textContent = currentStage.icon; document.getElementById('current-artifact-title').textContent = currentStage.title; document.getElementById('current-progress').textContent = `${index + 1}/${stages.length} Complete`; }
 function initializeCompass() { initializeCompassChart(); document.querySelectorAll('.compass-input').forEach(input => { input.removeEventListener('input', updateCompassChart); input.addEventListener('input', updateCompassChart); }); }

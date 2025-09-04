@@ -48,7 +48,7 @@
       "label": "ORIGIN SYNTHESIS - The Seed of Everything:",
       "prompt": "Weave your four origin elements into a foundational myth—one paragraph that explains why you, with your specific background and essence, were destined for the quest that called you. This becomes your creation story."
     },
-    "buttonText": "Continue to The Dragon"
+    "buttonText": "Continue to ARC I Intro"
   },
   "arc1": {
     "title": "ARC I: THE CALL TO ADVENTURE",
@@ -104,13 +104,13 @@
         { "label": "How does healing your wound heal a wound in the world?", "prompt": "When you transform this pattern in yourself, how does that ripple out to serve collective healing?" }
     ],
     "synthesis": { "label": "PEARL SYNTHESIS - The Wisdom Born from Pain:", "prompt": "Polish into one luminous insight how your individual struggle reflects universal patterns and serves collective healing—the meaning you've made from what nearly broke you." },
-    "buttonText": "Continue to Artifact I: The Calling"
+    "buttonText": "Continue to The Calling"
   },
   "calling_synthesis": {
     "title": "The Calling Synthesis",
     "prose": "Your Calling synthesizes your Dragon (the madness you can no longer ignore), your Threshold (where you were wounded and became qualified), your Shield (your survival wisdom as protection), and your Pearl (the wisdom forged from trauma). This is your cosmic role—why you specifically stand between the dragon and those needing protection.",
     "synthesis": { "label": "THE CALLING SYNTHESIS - The Sacred Assignment:", "prompt": "Transform your Call to Adventure into one powerful paragraph that captures your cosmic role—why you specifically stand between the dragon and those needing protection. Make it memorable enough to repeat when people ask what you do." },
-    "buttonText": "Continue to The Star"
+    "buttonText": "Continue to ARC II Intro"
   },
   "arc2": {
     "title": "ARC II: THE QUEST",
@@ -166,13 +166,13 @@
       { "label": "How does wielding this methodology advance your purpose while protecting what's sacred?", "prompt": "Your sword as both creative and defensive tool—building what needs building while guarding what needs guarding." }
     ],
     "synthesis": { "label": "SWORD SYNTHESIS - The Methodology Forged from Pain", "prompt": "Define in one statement your unique methodology born from struggle—the specific approach that heals and transforms because it was forged in your own fires." },
-    "buttonText": "Continue to Artifact II: The Quest"
+    "buttonText": "Continue to The Quest"
   },
   "quest_synthesis": {
     "title": "The Quest Synthesis",
     "prose": "Your complete Quest emerges from the integration of your Star (your North Star that never leads astray), Character (your personal character and shared community), Banner (your position and role in transformation), and Sword (your methodology forged from pain). This is your unique role in the cosmic story crystallized into concrete form.",
     "synthesis": { "label": "THE QUEST SYNTHESIS - The Complete Quest Declaration", "prompt": "Combine your Star, Character, Banner, and Sword into one defining statement that captures your unique role in the cosmic story. This should sound like something worth dedicating your life to." },
-    "buttonText": "Continue to The Looking Glass"
+    "buttonText": "Continue to ARC III Intro"
   },
   "arc3": {
     "title": "ARC III: WHAT IS POSSIBLE",
@@ -217,7 +217,7 @@
     "buttonText": "Continue to The Map"
   },
   "map": {
-    "title": "Stage 12: The Map",
+    "title": "The Map",
     "prose": "Personal Level: Breaking Down What It Would Actually Take",
     "fields": [
       { "label": "Working backward from your vision, what would really have to change for it to be realized?", "prompt": "The systemic shifts, consciousness changes, and structural transformations required for your future world." },
@@ -225,13 +225,13 @@
       { "label": "What are the different scales of impact you must create—personal, community, organizational, societal?", "prompt": "Map the progression from individual change to collective transformation required for your vision." },
       { "label": "What is the clear line from the future you envision back to this moment right now?", "prompt": "The thread connecting your current action to your ultimate vision—what you must do today that leads there." }
     ],
-    "buttonText": "Continue to Artifact III: What is Possible"
+    "buttonText": "Continue to The Vision"
   },
   "vision_synthesis": {
     "title": "The Vision Synthesis",
     "prose": "Your Vision synthesizes your Looking Glass (dream outcomes), Transformation (who we must become), Globe (integration with what's emerging), and Map (pathway from here to there). This becomes your guiding image of the future you're helping birth.",
     "synthesis": { "label": "THE VISION SYNTHESIS - The Future You're Dreaming Into Existence", "prompt": "Combine your Looking Glass, Transformation, Globe, and Map into one inspiring vision that captures the future you're actively creating. Make it vivid enough that others can see it and want to join you in manifesting it." },
-    "buttonText": "Continue to The Fountain"
+    "buttonText": "Continue to ARC IV Intro"
   },
   "arc4": {
     "title": "ARC IV: THE JOURNEY",
@@ -253,7 +253,7 @@
     "buttonText": "Continue to The Ethos"
   },
   "ethos": {
-    "title": "Stage 14: The Ethos",
+    "title": "The Ethos",
     "prose": "Community/Organizational Level: Our Word Becomes Law",
     "fields": [
       { "label": "What principles would you never compromise, even under extreme pressure?", "prompt": "The non-negotiable values that define who you are, regardless of consequences." },
@@ -288,13 +288,13 @@
       { "label": "Quest Alignment", "prompt": "Does my life feel like one coherent story, or am I fragmented across competing narratives?" }
     ],
     "synthesis": { "label": "COMPASS SYNTHESIS - The Navigation Questions", "prompt": "Identify in one statement which dimensions need most attention and your strategy for staying aligned with your values across all aspects of your quest—the questions that guide you when landmarks disappear." },
-    "buttonText": "Continue to Artifact IV: The Journey"
+    "buttonText": "Continue to The Journey"
   },
   "mission_synthesis": {
-    "title": "Artifact IV: The Journey",
+    "title": "The Journey Synthesis",
     "prose": "Vision without action is hallucination. Now you ground your magnificent vision in practical reality, translating \"what is possible\" into \"what we must do.\"",
     "synthesis": { "label": "THE MISSION SYNTHESIS - The Practical Plan", "prompt": "Combine your Fountain, Ethos, Plot, and Compass into a grounded mission statement that shows how you'll actually accomplish your vision. This should balance inspiration with practical steps people can follow." },
-    "buttonText": "Continue to The Grail"
+    "buttonText": "Continue to ARC V Intro"
   },
   "arc5": {
     "title": "ARC V: THE REQUEST",
@@ -338,7 +338,7 @@
     "buttonText": "Continue to The Message"
   },
   "message": {
-    "title": "Stage 20: The Message",
+    "title": "The Message",
     "prose": "Soul Level: How You Communicate and Reach People",
     "fields": [
       { "label": "How will you tell this story to reach the people who need to hear it?", "prompt": "Your communication channels and methods—media, content, events, conversations, platforms you'll use." },
@@ -347,16 +347,16 @@
       { "label": "What specific call to action will move people from interest to participation?", "prompt": "The clear, immediate step someone can take today to begin joining your story rather than just consuming it." }
     ],
     "synthesis": { "label": "SYNTHESIS - My Message:", "prompt": "Distill your core message, how you'll reach people, and your call to action into one powerful communication strategy." },
-    "buttonText": "Continue to Artifact V: The Request"
+    "buttonText": "Continue to The Request"
   },
   "kindred_synthesis": {
-    "title": "Artifact V: The Request",
+    "title": "The Request Synthesis",
     "prose": "The hero's journey is a circle. Having found your vision, you return to invite others into collective quest, transforming individual story into shared reality.",
     "synthesis": { "label": "THE CALL TO KINDRED QUEST SYNTHESIS - The Complete Invitation", "prompt": "Weave your Grail, Initiation, Campfire, and Message into a compelling invitation that calls your people and shows them exactly how to join your story. This should feel like a rallying cry that makes people want to drop everything and help." },
     "buttonText": "Continue to My Story"
   },
   "my_story": {
-    "title": "My Metamyth Story",
+    "title": "My Metamyth Story: The Synthesis of Your Journey",
     "prose": "This is your complete metamyth - the synthesis of your journey through all five artifacts. Below is the story you've authored about yourself, compiled from your responses throughout this adventure.",
     "generateButtonText": "Generate My Complete Story",
     "initialText": "Click \"Generate My Complete Story\" to compile your metamyth from all your responses",
@@ -376,6 +376,7 @@
   },
   "wizard": {
     "title": "Programming Your AI Wizard",
+    "header": "QUESTIONS THAT SHAPE YOUR GUIDE:",
     "prose": "Your Metamyth is the source code for a wise and powerful guide. The following prompts will help you define the voice, character, and core directives of your personal AI Wizard, ensuring it speaks as the true voice of your own story.",
     "fields": [
       { "label": "What is your Wizard's name? (Optional)", "prompt": "Giving your guide a name can deepen your connection to it as a unique entity." },
@@ -385,7 +386,7 @@
       { "label": "What is the most important directive you can give your Wizard?", "prompt": "e.g., \"Always align your guidance with my North Star,\" \"Remind me of my Shield when I feel attacked,\" or \"Challenge me when I am playing small.\"" }
     ],
     "synthesis": { "label": "SYNTHESIS - Your AI Wizard Character & Higher Purpose:", "prompt": "Create a complete description of your Wizard's character and its higher purpose in serving your story's transformation." },
-    "buttonText": "Continue to Activate Your AI"
+    "buttonText": "Continue to Activate AI"
   },
   "activate_wizard": {
     "title": "Activate Your AI",
