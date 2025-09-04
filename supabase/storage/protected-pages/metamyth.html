@@ -326,7 +326,7 @@
 </head>
 <body class="antialiased">
 
-    <div id="loading-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 1000; display: flex; color: white; flex-direction: column; justify-content: center; align-items: center; font-family: 'AngleFairy2024', serif; transition: opacity 0.3s ease;">
+    <div id="loading-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 1000; display: none; color: white; flex-direction: column; justify-content: center; align-items: center; font-family: 'AngleFairy2024', serif; transition: opacity 0.3s ease;">
       <div class="text-4xl">Kairos is reflecting...</div>
       <div class="mt-4 text-gold text-6xl animate-spin">🌀</div>
     </div>
@@ -347,7 +347,7 @@
                             <div id="current-artifact-icon" class="text-lg mr-2">✨</div>
                             <div>
                                 <div id="current-artifact-title" class="text-sm font-semibold text-white">Awaken</div>
-                                <div id="current-progress" class="text-xs text-gray-400">1/32 Complete</div>
+                                <div id="current-progress" class="text-xs text-gray-400">1/33 Complete</div>
                             </div>
                         </div>
                         <button id="view-story-btn" class="bg-transparent border border-gold text-gold text-xs py-1 px-2 rounded hover:bg-gold hover:text-black transition-all duration-300 glow-button">
@@ -365,6 +365,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
+    // Corrected stages array from your JSON structure
     const stages = [
         { id: 'intro', title: 'Awaken', arc: 'Preamble', icon: '✨' },
         { id: 'origin', title: 'The Origin Story', arc: 'Preamble', icon: '🌱' },
@@ -398,9 +399,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         { id: 'campfire', title: 'The Campfire', arc: 'ARC V', icon: '🔥' },
         { id: 'message', title: 'The Message', arc: 'ARC V', icon: '📢' },
         { id: 'kindred_synthesis', title: 'The Request', arc: 'ARC V', icon: '🌟' },
-        { id: 'my_story', title: 'My Story', arc: 'Synthesis', icon: '📖' }
+        { id: 'my_story', title: 'My Story', arc: 'Synthesis', icon: '📖' },
+        { id: 'legacy', title: 'The Legacy', arc: 'Legacy', icon: '🌅' },
+        { id: 'wizard', title: 'The Wizard', arc: 'Integration', icon: '🧙' },
+        { id: 'activate_wizard', title: 'Activate AI', arc: 'Integration', icon: '🤖' }
     ];
-    window.stages = stages; // Make globally accessible
+    window.stages = stages;
 
     const navContainer = document.getElementById('nav-container');
     const contentContainer = document.getElementById('content-container');
@@ -409,8 +413,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function initializeApp() {
         try {
-            const response = await fetch(`${window.location.origin}/metamyth-journey.json`);
-            contentData = await response.json();
+            const response = await fetch(`${window.location.origin}/metamyth-journey.json`); //
+            contentData = await response.json(); //
         } catch (error) {
             console.error("Fatal Error: Could not load metamyth-journey.json", error);
             contentContainer.innerHTML = `<div class="content-card text-red-500"><h2>Error</h2><p>Could not load the journey's content. Please check the console.</p></div>`;
@@ -446,7 +450,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (storyIndex > -1) showStage(storyIndex);
         });
 
-        // Load progress after initializing the DOM
         if (typeof loadProgress === 'function') {
             loadProgress();
         } else {
@@ -457,6 +460,45 @@ document.addEventListener('DOMContentLoaded', async () => {
     function generateStageHTML(stage, content) {
         if (!content) return `<div class="content-card"><h2 class="text-4xl">${stage.title}</h2><p>Content for this stage is missing in the JSON file.</p></div>`;
 
+        // SPECIAL CASE: Intro Page
+        if (stage.id === 'intro') {
+            return `
+            <div class="content-card">
+                <div class="text-center">
+                    <h1 class="text-5xl mb-2">${content.title}</h1>
+                    <h2 class="text-2xl mb-4">${content.subtitle}</h2>
+                    <p class="text-lg text-gold mb-2">${content.tagline}</p>
+                    <div class="mt-8">
+                        <h3 class="text-4xl mb-4">${content.header}</h3>
+                        <p class="text-xl mb-6">${content.prompt}</p>
+                    </div>
+                </div>
+                <div class="prose max-w-none mx-auto mt-8">
+                    ${content.prose.map(p => `<p>${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`).join('')}
+                    <div class="bg-black bg-opacity-30 border border-gold rounded-lg p-6 mt-8">
+                        <h3 class="text-2xl mb-4 text-gold">${content.callout.title}</h3>
+                        ${content.callout.prose.map(p => `<p>${p}</p>`).join('')}
+                    </div>
+                </div>
+                <div class="text-center mt-10">
+                    <button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${content.buttonText}</button>
+                </div>
+            </div>`;
+        }
+
+        // SPECIAL CASE: Arc Intro Pages
+        if (stage.id.startsWith('arc')) {
+             return `
+                <div class="content-card text-center">
+                    <div class="mb-4 text-5xl">${stage.icon}</div>
+                    <h2 class="text-4xl">${content.title}</h2>
+                    ${(content.prose || []).map(p => `<p class="prose max-w-none mt-6">${p}</p>`).join('')}
+                    <div class="mt-10">
+                        <button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${content.buttonText}</button>
+                    </div>
+                </div>`;
+        }
+        
         // SPECIAL CASE: The Compass
         if (stage.id === 'compass') {
             const pointsHTML = (content.points || []).map((point, index) => `
@@ -464,9 +506,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <label class="text-sm font-semibold text-white mb-2 block">${point.label}</label>
                     <p class="text-xs text-gray-400 mb-2 italic">${point.prompt}</p>
                     <input type="range" min="1" max="10" value="5" id="compass-input-${index}" class="w-full compass-input" data-field-index="${index}">
-                    <div class="flex justify-between text-xs text-slate-400 mt-1">
-                        <span>1</span><span>10</span>
-                    </div>
+                    <div class="flex justify-between text-xs text-slate-400 mt-1"><span>1</span><span>10</span></div>
                 </div>
             `).join('');
             return `
@@ -513,21 +553,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </div>`;
         }
 
-        // Handle ARC intro cards and other simple prose pages
-        if (!content.fields && !content.synthesis) {
-             return `
-                <div class="content-card text-center">
-                    <div class="mb-4 text-5xl">${stage.icon}</div>
-                    <h2 class="text-4xl">${content.title}</h2>
-                    ${(content.prose || []).map(p => `<p class="prose max-w-none mt-6">${p}</p>`).join('')}
-                    <p class="text-xl my-6">${content.prompt || ''}</p>
-                    <div class="mt-10">
-                        <button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${content.buttonText}</button>
-                    </div>
-                </div>`;
-        }
-
-        // Handle standard stages with fields and/or a synthesis box
+        // DEFAULT TEMPLATE for stages with fields and/or a synthesis box
         const fieldsHTML = (content.fields || []).map((field, index) => `
             <div>
                 <label class="font-semibold text-lg block mb-2">${field.label}</label>
@@ -545,11 +571,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         ` : '';
         
         const promptTemplate = stage.id.includes('synthesis') && !content.fields ? 'prompt-template-synthesis' : 'prompt-template-standard';
+        
+        const proseHTML = Array.isArray(content.prose) ? content.prose.join('<br>') : (content.prose || '');
 
         return `
             <div class="content-card">
                 <div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div>
-                <p class="prose max-w-none my-4">${Array.isArray(content.prose) ? content.prose.join('<br>') : content.prose || ''}</p>
+                <p class="prose max-w-none my-4">${proseHTML}</p>
                 <div class="ornamental-divider"></div>
                 <div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div>
                 <div class="space-y-8">${fieldsHTML}</div>
@@ -660,14 +688,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         const storyContainer = document.getElementById('compiled-story');
         
         if (generateBtn) {
-            generateBtn.addEventListener('click', () => {
+            generateBtn.onclick = () => { // Use onclick to ensure it can be reassigned
                 storyContainer.innerHTML = generateCompleteStory();
                 exportBtn.style.display = 'inline-block';
-            });
+            };
         }
         
         if (exportBtn) {
-            exportBtn.addEventListener('click', () => {
+            exportBtn.onclick = () => { // Use onclick to ensure it can be reassigned
                 const storyText = storyContainer.innerText;
                 const blob = new Blob([storyText], { type: 'text/plain;charset=utf-8' });
                 const url = URL.createObjectURL(blob);
@@ -678,14 +706,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-            });
+            };
         }
     }
 
     function generateCompleteStory() {
         const synthesisOrder = [
             'origin', 'calling_synthesis', 'quest_synthesis', 
-            'vision_synthesis', 'mission_synthesis', 'kindred_synthesis'
+            'vision_synthesis', 'mission_synthesis', 'kindred_synthesis', 'legacy'
         ];
         
         let storyHtml = '<div class="prose max-w-none text-left">';
@@ -696,7 +724,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const stageData = window.journeyData ? window.journeyData[stageId] : null;
 
             if (stageContent && stageContent.synthesis && stageData) {
-                const synthesisText = stageData[stageData.length - 1]; // Synthesis is always last
+                const synthesisText = stageData[stageData.length - 1]; // Synthesis is always last input
                 if (synthesisText && synthesisText.trim()) {
                     storyHtml += `<h4 class="text-2xl mt-8 text-teal">${stageContent.synthesis.label}</h4>`;
                     storyHtml += `<p class="border-l-4 border-gold pl-4 py-2 bg-black/20">${synthesisText.replace(/\n/g, '<br>')}</p>`;
@@ -704,6 +732,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
 
+        if (storyHtml.includes('<h4')) { // Only show closing if content was added
+             storyHtml += '<div class="ornamental-divider"></div><p class="text-center text-lg text-gold">This is my story. The journey continues.</p>';
+        } else {
+             storyHtml += `<p class="italic text-gray-400 mt-4">${contentData.my_story.initialText}</p>`;
+        }
+       
         storyHtml += '</div>';
         return storyHtml;
     }
@@ -722,8 +756,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.parent.postMessage({ type: 'iframeResize', height: height }, '*');
   };
   window.addEventListener('load', sendHeight);
-  const resizeObserver = new ResizeObserver(sendHeight);
-  resizeObserver.observe(document.body);
+  const resizeObserver = new ResizeObserver(sendBodyHeight);
+
+  // We define a new function to observe document.body instead of the whole document.
+  function observeBody() {
+      if (document.body) {
+          resizeObserver.observe(document.body);
+      } else {
+          // If body is not ready, we wait and try again.
+          setTimeout(observeBody, 100);
+      }
+  }
+
+  // The ResizeObserver will now only track changes to the body's dimensions
+  function sendBodyHeight() {
+      // scrollHeight is used to get the height of the actual content, even if it's taller than the viewport.
+      const height = document.body.scrollHeight;
+      window.parent.postMessage({ type: 'iframeResize', height: height }, '*');
+  }
+
+  observeBody();
 </script>
 </body>
 </html>
