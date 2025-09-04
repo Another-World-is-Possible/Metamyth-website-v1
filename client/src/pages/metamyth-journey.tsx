@@ -5,33 +5,41 @@ import PageLayout from '@/components/layouts/page-layout';
 export default function MetamythJourneyPage() {
   const [, navigate] = useLocation();
   const [iframeSrc, setIframeSrc] = useState<string | null>(null);
-  const [iframeHeight, setIframeHeight] = useState<number>(800); // A default starting height
+  const [iframeHeight, setIframeHeight] = useState<number>(800);
 
   useEffect(() => {
-    // --- Create the Blob URL for the iframe source ---
     const storedHtml = sessionStorage.getItem('metamythHTML');
     if (!storedHtml) {
       navigate('/begin', { replace: true });
       return;
     }
-    const blob = new Blob([storedHtml], { type: 'text/html' });
+
+    // --- UPDATED LOGIC: Rewrite ALL relative paths to be absolute ---
+    const origin = window.location.origin; // Gets "http://localhost:5173"
+    
+    // 1. Fix standard HTML attributes like <script src="/..."> and <link href="/...">
+    let rewrittenHtml = storedHtml.replace(/(src|href)="\//g, `$1="${origin}/`);
+    
+    // 2. Fix CSS url() paths like url('/attached_assets/font.otf')
+    // This regex looks for url( followed by an optional quote and a slash
+    rewrittenHtml = rewrittenHtml.replace(/(url\s*\(\s*['"]?)\//g, `$1${origin}/`);
+    
+    // --- Create the Blob URL using the FULLY REWRITTEN HTML ---
+    const blob = new Blob([rewrittenHtml], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     setIframeSrc(url);
 
-    // --- Listen for messages from the iframe ---
     const handleMessage = (event: MessageEvent) => {
-      // We only care about messages of type 'iframeResize' from our iframe
-      if (event.source === window && event.data && event.data.type === 'iframeResize') {
-        // Add a little extra padding to avoid scrollbars appearing unexpectedly
+      if (event.data && event.data.type === 'iframeResize') {
         setIframeHeight(event.data.height + 20);
       }
     };
-
     window.addEventListener('message', handleMessage);
 
-    // --- Cleanup function ---
     return () => {
-      URL.revokeObjectURL(url);
+      if (url) {
+        URL.revokeObjectURL(url);
+      }
       window.removeEventListener('message', handleMessage);
     };
   }, [navigate]);
@@ -39,7 +47,7 @@ export default function MetamythJourneyPage() {
   if (!iframeSrc) {
     return (
       <PageLayout>
-        <div className="min-h-screen flex flex-col items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center">
           <p className="text-lg">Loading Your Metamyth Journey...</p>
         </div>
       </PageLayout>
@@ -51,12 +59,12 @@ export default function MetamythJourneyPage() {
       <iframe
         src={iframeSrc}
         title="Metamyth Journey"
-        scrolling="no" // Disable the iframe's own scrollbar
+        scrolling="no"
         style={{
           width: '100%',
-          height: `${iframeHeight}px`, // Dynamically set the height from state
+          height: `${iframeHeight}px`,
           border: 'none',
-          display: 'block' // Helps prevent extra space below the iframe
+          display: 'block'
         }}
       ></iframe>
     </PageLayout>
