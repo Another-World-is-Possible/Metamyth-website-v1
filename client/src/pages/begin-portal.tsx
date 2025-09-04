@@ -145,7 +145,7 @@ export default function BeginPortal() {
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/attached_assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_9xt8d5ztxhjl6e9myq3b_3_1757022381529.png');
+            background-image: url('/attached_assets/_light_through_gold.png');
             background-size: cover;
             background-position: center;
             z-index: 1;

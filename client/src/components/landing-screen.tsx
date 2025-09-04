@@ -31,24 +31,16 @@ export default function LandingScreen({ onBeginJourney }: LandingScreenProps) {
 
   return (
     <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
-      {/* Stars/space background effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-black">
-        {/* Subtle star field */}
-        <div className="absolute inset-0 opacity-30">
-          {[...Array(100)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-0.5 h-0.5 bg-white rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
-      </div>
+      {/* Starry void background */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url('/attached_assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_9xt8d5ztxhjl6e9myq3b_3_1757022381529.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
