@@ -119,7 +119,8 @@ async function handleStageSubmit(event) {
   const stageId = button.dataset.stageId;
 
   // Check if Developer Mode is active via the global variable
-  if (window.METAMYTH_USE_LLM === false) {
+  //if (window.METAMYTH_USE_LLM === false) {
+  if (true) {
     console.log(`Auto-continuing from stage "${stageId}"`);
     const currentIndex = window.stages.findIndex(s => s.id === stageId);
     if (currentIndex !== -1 && currentIndex < window.stages.length - 1) {
@@ -209,35 +210,3 @@ function clearPreviousErrors(stageContainer) {
     el.classList.remove('invalid-field');
   });
 }
-
-
-// --- INITIAL SETUP & EVENT LISTENERS ---
-document.addEventListener('DOMContentLoaded', () => {
-  // Load any existing progress first
-  const loadedProgress = loadProgress();
-
-  // If there was saved progress, check if the last stage had a validation error and re-display it
-  if (loadedProgress && loadedProgress.lastStageId && loadedProgress.llmResponses) {
-    const lastResponse = loadedProgress.llmResponses[loadedProgress.lastStageId];
-    if (lastResponse && lastResponse.continue === false) {
-        const stageContainer = document.getElementById(loadedProgress.lastStageId);
-        if (stageContainer) {
-            displayFailureSummary(stageContainer, lastResponse.summary);
-            highlightInvalidFields(stageContainer, lastResponse.invalidIndexes);
-        }
-    }
-  }
-
-  // Attach the submit handler to all stage submission buttons
-  document.querySelectorAll('.stage-submit-button').forEach(button => {
-    button.addEventListener('click', handleStageSubmit);
-  });
-
-  // Create a debounced version of the saveProgress function
-  const debouncedSave = debounce(saveProgress, 500); // Save 500ms after user stops typing
-
-  // Attach an input event listener to all textareas to save drafts
-  document.querySelectorAll('textarea[data-field-index]').forEach(textarea => {
-      textarea.addEventListener('input', debouncedSave);
-  });
-});
