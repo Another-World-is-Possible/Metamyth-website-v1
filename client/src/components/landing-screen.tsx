@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_9xt8d5ztxhjl6e9myq3b_3_1757022381529.png";
 
 interface LandingScreenProps {
   onBeginJourney: () => void;
@@ -35,7 +36,7 @@ export default function LandingScreen({ onBeginJourney }: LandingScreenProps) {
       <div 
         className="absolute inset-0"
         style={{
-          backgroundImage: `url('/attached_assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_9xt8d5ztxhjl6e9myq3b_3_1757022381529.png')`,
+          backgroundImage: `url(${starryVoidBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
