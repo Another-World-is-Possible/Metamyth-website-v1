@@ -72,7 +72,11 @@ function loadProgress() {
             const lastStageIndex = window.stages.findIndex(s => s.id === progress.lastStageId);
             if (lastStageIndex !== -1) {
                 window.showStage(lastStageIndex);
+            } else {
+                window.showStage(0);
             }
+        } else {
+            window.showStage(0);
         }
         
         console.log("Progress successfully restored.");
@@ -80,6 +84,7 @@ function loadProgress() {
 
     } catch (error) {
         console.error("Failed to load or parse progress from localStorage:", error);
+        window.showStage(0);
         return null;
     }
 }
@@ -158,7 +163,8 @@ async function handleStageSubmit(event) {
     } else {
       displayFailureSummary(stageContainer, result.summary);
       highlightInvalidFields(stageContainer, result.invalidIndexes);
-      stageContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // **SCROLLING FIX**: Removed the unreliable scrollIntoView call from here.
+      // The main showStage function now handles all scrolling.
     }
   } catch (error) {
     displayFailureSummary(stageContainer, `An unexpected error occurred: ${error.message}`);
@@ -201,24 +207,18 @@ function clearPreviousErrors(stageContainer) {
 }
 
 // --- INITIALIZATION FUNCTION ---
-// This function is called by metamyth.html after the page is built.
-// It connects all the event listeners and loads the user's progress.
 
 function finalizeSetup() {
-    // Attach the submit handler to all stage submission buttons.
     document.querySelectorAll('.stage-submit-button').forEach(button => {
         button.addEventListener('click', handleStageSubmit);
     });
 
-    // Create a debounced version of the saveProgress function.
     const debouncedSave = debounce(saveProgress, 500);
 
-    // Attach an input event listener to all textareas and inputs to save drafts.
     document.querySelectorAll('textarea[data-field-index], .compass-input').forEach(input => {
         input.addEventListener('input', debouncedSave);
     });
 
-    // Load saved progress. If nothing is loaded (loadProgress returns null), show the first stage.
     if (!loadProgress()) {
         window.showStage(0);
     }
