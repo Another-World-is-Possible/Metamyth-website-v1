@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div>
                 <label class="font-semibold text-lg block mb-2">${field.label}</label>
                 <p class="text-sm mb-3">${field.prompt}</p>
-                <textarea data-field-index="${index}" rows="4"></textarea>
+                <textarea class="w-full" data-field-index="${index}" rows="4"></textarea>
             </div>
         `).join('');
 
@@ -401,7 +401,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="synthesis-box border border-gold mt-8">
                 <label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label>
                 <p class="text-sm mb-3">${content.synthesis.prompt}</p>
-                <textarea data-field-index="${(content.fields || []).length}" rows="6"></textarea>
+                <textarea class="w-full" data-field-index="${(content.fields || []).length}" rows="6"></textarea>
             </div>
         ` : '';
         
