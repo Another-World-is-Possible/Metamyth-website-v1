@@ -33,8 +33,11 @@ export default function LandingScreen({ onBeginJourney }: LandingScreenProps) {
   return (
     <div className="fixed inset-0 bg-black z-50 flex items-center justify-center">
       {/* Starry void background */}
-      <div 
+      <motion.div 
         className="absolute inset-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 3, ease: "easeIn" }}
         style={{
           backgroundImage: `url(${starryVoidBg})`,
           backgroundSize: 'cover',
