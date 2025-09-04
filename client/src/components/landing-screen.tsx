@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_9xt8d5ztxhjl6e9myq3b_3_1757022381529.png";
+import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
 
 interface LandingScreenProps {
   onBeginJourney: () => void;
