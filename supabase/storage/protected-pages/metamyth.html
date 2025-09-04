@@ -29,31 +29,249 @@
     </script>
 
     <style>
-        /* Font Loading & Base Styles */
-        @font-face { font-family: 'AngleFairy2024'; src: url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024') format('opentype'); }
-        @font-face { font-family: 'GrillagesBold2024'; src: url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024') format('truetype'); }
+        /* Font Loading - Match Main Website */
+        @font-face {
+            font-family: 'AngleFairy2024';
+            src: url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'GrillagesBold2024';
+            src: url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+        
         :root {
-            --bg-main: #1D4241; --bg-card: #183332; --text-main: #FAF0E6;
-            --text-heading: #D4AF37; --border-color: #2c5d5b; --accent-teal: #14B8A6;
-            --accent-crimson: #DC2626; --accent-gold: #D4AF37;
+            --bg-main: #1D4241;
+            --bg-card: #183332;
+            --text-main: #FAF0E6; /* Soft off-white cream - main text color */
+            --text-heading: #D4AF37; /* Gold */
+            --text-muted: #FAF0E6; /* Soft off-white cream for muted text too */
+            --border-color: #2c5d5b;
+            --accent-teal: #14B8A6; /* Teal main accent */
+            --accent-teal-dark: #0F766E;
+            --accent-crimson: #DC2626; /* Crimson for negative elements */
+            --accent-gold: #D4AF37; /* Gold accent */
         }
-        body { background-color: var(--bg-main); color: var(--text-main); font-family: 'GrillagesBold2024', serif; }
-        h1, h2, h3, h4 { font-family: 'AngleFairy2024', serif !important; color: var(--text-heading); }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'GrillagesBold2024', serif;
+            font-weight: 700;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'AngleFairy2024', serif !important;
+            color: var(--text-heading);
+            letter-spacing: 0.05em;
+            font-weight: normal !important;
+        }
+        .content-card {
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 
+                0 0 20px rgba(0, 0, 0, 0.5),
+                inset 0 0 30px rgba(20, 184, 166, 0.1);
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+            border-left: 3px solid transparent;
+            color: var(--text-muted);
+            padding: 0.75rem 1rem;
+        }
+        .nav-link.active {
+            background-color: rgba(20, 184, 166, 0.05);
+            color: var(--accent-teal);
+            border-left-color: var(--accent-teal);
+        }
+        .nav-link:hover {
+            background-color: rgba(20, 184, 166, 0.1);
+            color: var(--accent-gold);
+        }
+        textarea, .compass-input, input[type="text"], input[type="range"] {
+            border: 2px solid var(--accent-teal) !important;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: var(--text-main);
+            padding: 12px;
+            font-family: 'GrillagesBold2024', serif;
+            transition: all 0.3s ease;
+        }
+        
+        textarea:focus, input:focus {
+            outline: none;
+            box-shadow: 
+                0 0 10px rgba(20, 184, 166, 0.5),
+                0 0 20px rgba(20, 184, 166, 0.2);
+            border-color: var(--accent-teal) !important;
+        }
+        
+        /* CTA Button Styles - Matching Main Site */
+        .cta-button-base {
+            position: relative;
+            padding: 12px 24px;
+            background: var(--button-gradient);
+            color: var(--button-text-color);
+            font-family: 'AngleFairy2024', serif;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 8px;
+            border-radius: 16px;
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+            text-shadow: var(--button-text-glow);
+        }
+        
+        .cta-button-base:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 0 30px var(--button-glow-color),
+                0 0 60px var(--button-glow-color),
+                0 0 90px var(--button-glow-color),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-button-gold {
+            --button-gradient: linear-gradient(90deg, #f39c12, #f1c40f, #f4d03f);
+            --button-text-color: #2c3e50;
+            --button-glow-color: rgba(241, 196, 15, 0.8);
+            --button-text-glow: 
+                0 0 8px rgba(255, 255, 255, 0.9),
+                0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button-teal {
+            --button-gradient: linear-gradient(90deg, #16a085, #1abc9c, #48c9b0);
+            --button-text-color: #2c3e50;
+            --button-glow-color: rgba(26, 188, 156, 0.8);
+            --button-text-glow:
+                0 0 8px rgba(255, 255, 255, 0.9),
+                0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .artifiction-icon {
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
+            line-height: 1;
+        }
         .stage-content { display: none; }
-        .stage-content.active { display: block; animation: fadeIn 0.6s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        textarea {
-            background-color: rgba(0,0,0,0.2); border: 1px solid var(--border-color);
-            border-radius: 0.5rem; padding: 0.75rem; width: 100%;
-            transition: all 0.3s ease; color: var(--text-main);
+        .stage-content.active {
+            display: block;
+            animation: fadeIn 0.6s ease-in-out;
         }
-        textarea:focus { outline: none; border-color: var(--accent-teal); box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.4); }
-        .invalid-field { border-color: var(--accent-crimson) !important; box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.4); }
-        .cta-button-base { padding: 12px 24px; font-family: 'AngleFairy2024', serif; border-radius: 16px; cursor: pointer; transition: all 0.3s ease; }
-        .cta-button-base:disabled { opacity: 0.5; cursor: not-allowed; }
-        .cta-button-gold { background: linear-gradient(90deg, #f39c12, #f1c40f); color: #2c3e50; }
-        .cta-button-teal { background: linear-gradient(90deg, #16a085, #1abc9c); color: #2c3e50; }
-        .nav-link.active { background-color: rgba(20, 184, 166, 0.05); color: var(--accent-teal); border-left: 3px solid var(--accent-teal); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: 2rem auto;
+        }
+        .prose {
+            color: var(--text-main);
+            line-height: 1.8;
+            font-family: 'GrillagesBold2024', serif;
+            font-weight: 700;
+        }
+        .prose h3 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-top: 2em;
+            margin-bottom: 0.5em;
+            color: var(--text-heading);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            font-family: 'AngleFairy2024', serif !important;
+        }
+        .prose p { 
+            margin-bottom: 1.25em;
+            font-family: 'GrillagesBold2024', serif;
+            font-weight: 700;
+        }
+        .prose strong { color: var(--accent-teal); }
+        .nav-arc-header {
+            color: #fff;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+            font-family: 'AngleFairy2024', serif !important;
+        }
+        .crimson-text { color: var(--accent-crimson); }
+        .text-gold { color: var(--accent-gold); }
+        .border-gold { border-color: var(--accent-gold); }
+        .text-teal { color: var(--accent-teal); }
+        
+        .glow-title {
+            text-shadow: 
+                0 0 10px rgba(20, 184, 166, 0.8),
+                0 0 20px rgba(20, 184, 166, 0.4),
+                0 0 30px rgba(20, 184, 166, 0.2);
+        }
+        
+        .glow-arc {
+            text-shadow: 
+                0 0 8px rgba(255, 215, 0, 0.8),
+                0 0 16px rgba(255, 215, 0, 0.4);
+            color: var(--accent-gold) !important;
+        }
+        
+        .glow-progress {
+            background: linear-gradient(90deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-gold) 50%, 
+                #f1c40f 100%);
+            box-shadow: 
+                0 0 15px rgba(20, 184, 166, 0.6),
+                0 0 30px rgba(212, 175, 55, 0.4),
+                0 0 45px rgba(241, 196, 15, 0.3);
+        }
+        
+        .glow-indicator {
+            box-shadow: 
+                0 0 15px rgba(20, 184, 166, 0.4),
+                0 0 30px rgba(20, 184, 166, 0.2);
+        }
+        
+        .glow-button {
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+            border-color: var(--accent-gold) !important;
+            color: var(--accent-gold) !important;
+        }
+        
+        .glow-button:hover {
+            background-color: var(--accent-gold) !important;
+            color: black !important;
+            box-shadow: 
+                0 0 10px rgba(255, 215, 0, 0.6),
+                0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        .synthesis-box {
+            background-color: rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            font-style: italic;
+            color: var(--text-main);
+            font-family: 'GrillagesBold2024', serif;
+            font-weight: 700;
+        }
+        .ornamental-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+            margin: 3rem 0;
+        }
     </style>
 </head>
 <body class="antialiased">
