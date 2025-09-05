@@ -30,7 +30,7 @@ const chatTextbox = document.getElementById('chat-textbox');
 const sendButton = document.getElementById('send-button');
 const audioPlayer = document.getElementById('tts-audio-player');
 
-const API_BASE_URL = 'http://YOUR_SERVER_IP:PORT'; // <-- IMPORTANT: Set this to your server's URL
+const API_BASE_URL = 'https://chatproxy.rickey.io';
 const PREPARE_STREAM_ENDPOINT = `${API_BASE_URL}/api/prepare-stream`;
 const CHAT_STREAM_ENDPOINT = `${API_BASE_URL}/api/chat-stream`;
 const TTS_ENDPOINT = `${API_BASE_URL}/api/tts`;

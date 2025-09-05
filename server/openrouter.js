@@ -152,6 +152,72 @@ app.post('/api/tts', async (req, res) => {
 });
 
 // --- Two-Step Endpoints ---
+
+app.post('/api/validate-stage', async (req, res) => {
+  const { stageId, userInput } = req.body;
+
+  if (!stageId || !userInput) {
+    return res.status(400).json({
+      success: false,
+      message: "Missing 'stageId' or 'userInput' in the request body.",
+    });
+  }
+
+  // Construct a generic prompt for the AI to validate the stage input.
+  // You should customize this prompt based on your actual validation logic.
+  let promptMessages = [
+    {
+      role: "system",
+      content: `You are a validation assistant for the Metamyth journey. Your task is to validate the user's input for a specific stage.
+      The user is currently at stage: ${stageId}.
+      The user has provided the following input: "${userInput}".
+      Based on the stage and input, determine if the input is valid.
+      Respond with a JSON object with two keys: "success" (boolean) and "feedback" (a string explaining your reasoning).
+      For example: {"success": true, "feedback": "The input is a valid response for this stage."}`
+    },
+    {
+      role: "user",
+      content: `Validate my input for stage ${stageId}. My input is: "${userInput}"`
+    }
+  ];
+
+  try {
+    const completion = await openai.chat.completions.create({
+      model: defaultModelName,
+      messages: promptMessages,
+      max_tokens: 150,
+    });
+
+    const aiResponseContent = completion.choices[0].message.content;
+
+    // Attempt to parse the AI's JSON response.
+    let validationResult;
+    try {
+        validationResult = JSON.parse(aiResponseContent);
+    } catch (parseError) {
+        console.error("Error parsing AI validation response:", parseError);
+        // Fallback if the AI doesn't return valid JSON
+        validationResult = {
+            success: false,
+            feedback: "The AI returned an invalid response. Please try again.",
+            rawResponse: aiResponseContent
+        };
+    }
+
+    res.json({
+      ...validationResult,
+      rawAiResponse: completion.choices[0].message // For debugging
+    });
+
+  } catch (error) {
+    console.error("Error validating stage:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to validate stage due to an AI service error.",
+      details: error.message
+    });
+  }
+});
 app.post('/api/generate-metamyth-summary', async (req, res) => {
   const { email, phone, originStory, legacyVision, responses } = req.body;
 
