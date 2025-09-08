@@ -110,14 +110,14 @@ export default function OurMetamyth() {
   // Wait for image to be ready before showing tab
   if (!imageReady) {
     return (
-      <div className="relative py-20 pt-32 min-h-screen flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
+      <div className="relative min-h-screen flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
         <div className="text-ancient-gold font-angle text-xl">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="relative py-20 pt-32 min-h-screen">
+    <div className="relative min-h-screen">
       {/* Background image with filter - fade in on navigate */}
       <div 
         className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
@@ -134,7 +134,7 @@ export default function OurMetamyth() {
       
       {/* Dark overlay to make text readable */}
       <div className="absolute inset-0 bg-deep-black/50" />
-      <div className="relative z-10 max-w-6xl mx-auto px-4">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-10">
         <motion.h2
           className="typography-h1 shimmer-text text-center mb-16 font-angle"
           initial={{ opacity: 0, y: 30 }}

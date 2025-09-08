@@ -1,12 +1,34 @@
-import { defineConfig } from "vite";
+import { defineConfig, Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import fs from "fs";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+
+function serveMetamythHtml(): Plugin {
+  return {
+    name: 'serve-metamyth-html',
+    configureServer(server) {
+      server.middlewares.use('/metamyth.html', async (req, res, next) => {
+        const htmlPath = path.resolve(import.meta.dirname, 'supabase/storage/protected-pages/metamyth.html');
+        try {
+          let html = fs.readFileSync(htmlPath, 'utf-8');
+          html = await server.transformIndexHtml(req.url, html);
+          res.setHeader('Content-Type', 'text/html');
+          res.end(html);
+        } catch (e) {
+          console.error(e);
+          next(e);
+        }
+      });
+    }
+  };
+}
 
 export default defineConfig({
   plugins: [
     react(),
     runtimeErrorOverlay(),
+    serveMetamythHtml(),
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [

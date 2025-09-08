@@ -67,14 +67,14 @@ export default function TheQuest() {
   // Wait for image to be ready before showing tab
   if (!imageReady) {
     return (
-      <div className="relative min-h-screen py-20 pt-32 flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
+      <div className="relative min-h-screen flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
         <div className="text-ancient-gold font-angle">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen py-20 pt-32">
+    <div className="relative min-h-screen">
       {/* Background image with filter - fade in on navigate */}
       <div 
         className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
@@ -94,7 +94,7 @@ export default function TheQuest() {
       
       {/* Content */}
       <div className="relative z-10">
-      <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 py-10">
         <motion.h1
           className="typography-h1 text-ancient-gold text-center mb-8 font-angle text-glow-gold"
           style={{ textShadow: '0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.6), 1px 1px 3px rgba(0, 0, 0, 0.9)' }}

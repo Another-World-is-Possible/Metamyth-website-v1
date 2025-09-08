@@ -201,7 +201,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
       <section 
         ref={sectionRefs[0]}
         data-section="opening" 
-        className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
+        className="min-h-screen flex items-center justify-center relative overflow-hidden"
       >
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <motion.h1
@@ -449,7 +449,7 @@ export default function WhyStoryMatters({ setActiveTab }: WhyStoryMattersProps) 
       <section 
         ref={sectionRefs[4]}
         data-section="science"
-        className="min-h-screen flex items-center justify-center px-4 pt-20"
+        className="min-h-screen flex items-center justify-center px-4 py-16"
       >
         <div className="max-w-4xl mx-auto relative z-20">
           <motion.div 

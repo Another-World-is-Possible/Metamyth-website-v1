@@ -107,14 +107,14 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
   // Wait for image to be ready before showing tab
   if (!imageReady) {
     return (
-      <div className="relative min-h-screen py-20 pt-32 flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
+     <div className="relative min-h-screen flex items-center justify-center" style={{ backgroundColor: 'hsl(120, 80%, 2%)' }}>
         <div className="text-ancient-gold font-angle">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen py-20 pt-32">
+    <div className="relative min-h-screen">
       {/* Background image with filter - fade in on navigate */}
       <div 
         className={`absolute inset-0 transition-opacity duration-1000 ease-out ${
@@ -134,7 +134,7 @@ export default function TheSystems({ setActiveTab }: TheSystemsProps) {
       
       {/* Content */}
       <div className="relative z-10">
-      <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 py-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}

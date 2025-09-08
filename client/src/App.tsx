@@ -1,3 +1,5 @@
+// src/App.tsx
+
 import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -51,6 +53,13 @@ function Router() {
 }
 
 function App() {
+  // Add this useEffect to disable the browser's scroll restoration
+  useEffect(() => {
+    if (window.history.scrollRestoration) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <AudioProvider audioSrc={audioSrc}>

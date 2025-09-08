@@ -12,6 +12,17 @@ export default function LandingScreen({ onBeginJourney }: LandingScreenProps) {
   const [showButton, setShowButton] = useState(false);
   const fullText = "The world is made of stories";
   
+  // This hook manages the scroll lock effect
+  useEffect(() => {
+    // When the component mounts, hide the scrollbar
+    document.body.style.overflow = 'hidden';
+
+    // When the component unmounts (after the button is clicked), restore the scrollbar
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []); // The empty array ensures this effect runs only once on mount and cleanup on unmount
+
   useEffect(() => {
     let currentIndex = 0;
     const typeInterval = setInterval(() => {

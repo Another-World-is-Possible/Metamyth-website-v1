@@ -7,14 +7,31 @@ import PageLayout from '@/components/layouts/page-layout';
 export default function MetamythJourneyPage() {
   const [, navigate] = useLocation();
   const [iframeSrc, setIframeSrc] = useState<string | null>(null);
-  const [iframeHeight, setIframeHeight] = useState<number>(800);
 
   useEffect(() => {
     const loadJourneyAssets = async () => {
-      const storedHtml = sessionStorage.getItem('metamythHTML');
-      if (!storedHtml) {
-        navigate('/begin', { replace: true });
-        return;
+      let storedHtml: string | null;
+
+      if (import.meta.env.DEV) {
+        try {
+          const response = await fetch('/metamyth.html');
+          if (!response.ok) {
+            console.error('Failed to fetch /metamyth.html. Is it being served correctly?');
+            navigate('/begin', { replace: true });
+            return;
+          }
+          storedHtml = await response.text();
+        } catch (error) {
+          console.error("Error fetching /metamyth.html:", error);
+          navigate('/begin', { replace: true });
+          return;
+        }
+      } else {
+        storedHtml = sessionStorage.getItem('metamythHTML');
+        if (!storedHtml) {
+          navigate('/begin', { replace: true });
+          return;
+        }
       }
 
       try {
@@ -42,12 +59,23 @@ export default function MetamythJourneyPage() {
           <script>${journeyJs}</script>
         `;
 
-        let finalHtml = storedHtml.replace('</body>', `${combinedScripts}</body>`);
+        let finalHtml = storedHtml;
+
+        const mainScriptRegex = /(<script>\n\/\/ Main Application Logic[\s\S]*?<\/script>)/;
+        const mainScriptMatch = finalHtml.match(mainScriptRegex);
+
+        if (mainScriptMatch) {
+            const mainScriptHtml = mainScriptMatch[0];
+            finalHtml = finalHtml.replace(mainScriptHtml, '');
+            finalHtml = finalHtml.replace('</body>', `${mainScriptHtml}</body>`);
+        }
+
+        finalHtml = finalHtml.replace('</body>', `${combinedScripts}</body>`);
         
         const origin = window.location.origin;
-        finalHtml = finalHtml.replace(/(src|href)="\//g, `$1="${origin}/`);
-        finalHtml = finalHtml.replace(/(url\s*\(\s*['"]?)\//g, `$1${origin}/`);
-        
+        finalHtml = finalHtml.replace('<head>', `<head><base href="${origin}">`);
+        finalHtml = finalHtml.replace('fetch(\`\${window.location.origin}/metamyth-journey.json\`)', "fetch('/metamyth-journey.json')");
+
         const blob = new Blob([finalHtml], { type: 'text/html' });
         const url = URL.createObjectURL(blob);
         setIframeSrc(url);
@@ -59,20 +87,9 @@ export default function MetamythJourneyPage() {
 
     loadJourneyAssets();
 
-    const handleMessage = (event: MessageEvent) => {
-      if (event.data && event.data.type === 'iframeResize') {
-        setIframeHeight(event.data.height + 50);
-      }
-      // **SCROLLING FIX**: Listen for a message from the iframe to scroll the main page
-      if (event.data && event.data.type === 'metamythStageChanged') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    };
-    window.addEventListener('message', handleMessage);
-
     return () => {
+      // Clean up the blob URL when the component unmounts
       if (iframeSrc) URL.revokeObjectURL(iframeSrc);
-      window.removeEventListener('message', handleMessage);
     };
   }, [navigate]);
 
@@ -87,14 +104,14 @@ export default function MetamythJourneyPage() {
   }
 
   return (
-    <PageLayout>
+    <PageLayout hideFooter>
       <iframe
         src={iframeSrc}
         title="Metamyth Journey"
-        scrolling="no"
+        scrolling="auto"
         style={{
           width: '100%',
-          height: `${iframeHeight}px`,
+          flexGrow: 1,
           border: 'none',
           display: 'block'
         }}

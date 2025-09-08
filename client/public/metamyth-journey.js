@@ -163,8 +163,6 @@ async function handleStageSubmit(event) {
     } else {
       displayFailureSummary(stageContainer, result.summary);
       highlightInvalidFields(stageContainer, result.invalidIndexes);
-      // **SCROLLING FIX**: Removed the unreliable scrollIntoView call from here.
-      // The main showStage function now handles all scrolling.
     }
   } catch (error) {
     displayFailureSummary(stageContainer, `An unexpected error occurred: ${error.message}`);

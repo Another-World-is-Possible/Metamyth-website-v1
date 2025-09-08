@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
     <title>METAMYTH: A Journey of Transformation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -50,6 +50,7 @@
         h1, h2, h3, h4 { font-family: 'AngleFairy2024', serif !important; color: var(--text-heading); letter-spacing: 0.05em; font-weight: normal !important; }
         
         .text-gold { color: var(--accent-gold) !important; }
+        .font-angle { font-family: 'AngleFairy2024', serif !important; }
 
         textarea, .compass-input, input[type="text"], input[type="range"] {
             border: 2px solid var(--accent-teal) !important; border-radius: 8px;
@@ -71,7 +72,9 @@
         .nav-link.active { background-color: rgba(20, 184, 166, 0.05); color: var(--accent-teal); border-left-color: var(--accent-teal); }
         .nav-link:hover { background-color: rgba(20, 184, 166, 0.1); color: var(--accent-gold); }
         .cta-button-base { position: relative; padding: 12px 24px; color: var(--button-text-color); background: var(--button-gradient); font-family: 'AngleFairy2024', serif; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border: none; cursor: pointer; transition: all 0.3s ease; margin: 8px; border-radius: 16px; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1); text-shadow: var(--button-text-glow); }
-        .cta-button-base:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 0 30px var(--button-glow-color), 0 0 60px var(--button-glow-color), 0 0 90px var(--button-glow-color), inset 0 0 30px rgba(255, 255, 255, 0.2); }
+        .cta-button-base:hover:not(:disabled) { 
+            box-shadow: 0 0 30px var(--button-glow-color), 0 0 60px var(--button-glow-color), 0 0 90px var(--button-glow-color), inset 0 0 30px rgba(255, 255, 255, 0.2); 
+        }
         .cta-button-base:disabled { cursor: not-allowed; opacity: 0.6; background: #555; }
         .cta-button-gold { --button-gradient: linear-gradient(90deg, #f39c12, #f1c40f, #f4d03f); --button-text-color: #2c3e50; --button-glow-color: rgba(241, 196, 15, 0.8); --button-text-glow: 0 0 8px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.3); }
         .cta-button-teal { --button-gradient: linear-gradient(90deg, #16a085, #1abc9c, #48c9b0); --button-text-color: #2c3e50; --button-glow-color: rgba(26, 188, 156, 0.8); --button-text-glow: 0 0 8px rgba(255, 255, 255, 0.9), 0 2px 4px rgba(0, 0, 0, 0.3); }
@@ -99,17 +102,19 @@
         input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; border: 2px solid var(--bg-main); height: 20px; width: 20px; border-radius: 50%; background: var(--accent-teal); cursor: pointer; margin-top: -8px; }
         input[type=range]::-moz-range-track { width: 100%; height: 4px; cursor: pointer; background: var(--border-color); border-radius: 5px; }
         input[type=range]::-moz-range-thumb { border: 2px solid var(--bg-main); height: 20px; width: 20px; border-radius: 50%; background: var(--accent-teal); cursor: pointer; }
+        
+        main { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased pb-28 md:pb-0">
 
     <div id="loading-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 1000; display: none; color: white; flex-direction: column; justify-content: center; align-items: center; font-family: 'AngleFairy2024', serif; transition: opacity 0.3s ease;">
       <div class="text-4xl">Kairos is reflecting...</div>
       <div class="mt-4 text-gold text-6xl animate-spin">🌀</div>
     </div>
 
-    <div class="flex flex-col md:flex-row">
-        <nav id="sidebar" class="w-full md:w-80 bg-black bg-opacity-20 border-r border-black border-opacity-20 p-4 md:p-6 flex-shrink-0">
+    <div class="flex flex-col md:flex-row md:h-screen">
+        <nav id="sidebar" class="hidden md:flex md:flex-col w-full md:w-80 bg-black bg-opacity-20 border-r border-black border-opacity-20 p-4 md:p-6 flex-shrink-0 md:overflow-y-auto">
             <h1 class="text-3xl text-white mb-8 glow-title">METAMYTH</h1>
             <div id="progress-container" class="mb-6">
                 <div class="text-xs text-gray-300 mb-2">Progress</div>
@@ -134,7 +139,17 @@
             <div id="nav-container" class="space-y-1"></div>
         </nav>
         <main class="flex-1 p-4 md:p-10 overflow-y-auto">
+            <div id="page-top"></div>
             <div id="content-container"></div>
+            <footer class="mt-16 border-t border-teal-400/30 pt-12 pb-8 text-center">
+                <h3 class="text-2xl text-gold mb-6 font-angle">Another World is Possible</h3>
+                <p class="text-lg text-slate-300 mb-8 max-w-xl mx-auto">
+                    The world is made of stories, take back your story to change the world.
+                </p>
+                <p class="text-sm text-slate-400/60">
+                    © 2025 Another World is Possible. All rights reserved. | We serve the story, not profit.
+                </p>
+            </footer>
         </main>
     </div>
 
@@ -167,13 +182,14 @@ const stages = [
 window.stages = stages;
 
 const navContainer = document.getElementById('nav-container');
+const mobileNavContainer = document.getElementById('mobile-nav-container');
 const contentContainer = document.getElementById('content-container');
 let contentData = {}; 
 let compassChart;
 
 async function initializeApp() {
     try {
-        const response = await fetch(`${window.location.origin}/metamyth-journey.json`);
+        const response = await fetch('/metamyth-journey.json');
         contentData = await response.json();
     } catch (error) {
         console.error("Fatal Error: Could not load metamyth-journey.json", error);
@@ -181,30 +197,57 @@ async function initializeApp() {
         return;
     }
     let currentArc = '';
-    stages.forEach((stage) => {
+
+    const createNavLink = (stage, index, isMobile) => {
+        const navLink = document.createElement('a');
+        navLink.href = '#';
+        navLink.id = isMobile ? `mobile-nav-${stage.id}` : `nav-${stage.id}`;
+        navLink.className = 'nav-link flex items-center rounded-md';
+        navLink.innerHTML = `<span class="mr-3">${stage.icon}</span> ${stage.title}`;
+        navLink.onclick = (e) => { e.preventDefault(); window.showStage(index); };
+        return navLink;
+    };
+
+    stages.forEach((stage, index) => {
         if (stage.arc !== currentArc) {
             currentArc = stage.arc;
             const arcHeader = document.createElement('h3');
             arcHeader.className = 'nav-arc-header text-lg uppercase mt-6 mb-2 px-4 glow-arc';
             arcHeader.textContent = currentArc;
-            navContainer.appendChild(arcHeader);
+            navContainer.appendChild(arcHeader.cloneNode(true));
+            if(mobileNavContainer) mobileNavContainer.appendChild(arcHeader);
         }
-        const navLink = document.createElement('a');
-        navLink.href = '#';
-        navLink.id = `nav-${stage.id}`;
-        navLink.className = 'nav-link flex items-center rounded-md';
-        navLink.innerHTML = `<span class="mr-3">${stage.icon}</span> ${stage.title}`;
-        navLink.onclick = (e) => { e.preventDefault(); window.showStage(stages.indexOf(stage)); };
-        navContainer.appendChild(navLink);
+        
+        navContainer.appendChild(createNavLink(stage, index, false));
+        if(mobileNavContainer) mobileNavContainer.appendChild(createNavLink(stage, index, true));
+
         const stageDiv = document.createElement('div');
         stageDiv.id = stage.id;
         stageDiv.className = 'stage-content';
         stageDiv.innerHTML = generateStageHTML(stage, contentData[stage.id]);
         contentContainer.appendChild(stageDiv);
     });
-    document.getElementById('view-story-btn').addEventListener('click', () => {
+    
+    const storyBtnAction = () => {
         const storyIndex = stages.findIndex(s => s.id === 'my_story');
         if (storyIndex > -1) window.showStage(storyIndex);
+    };
+    document.getElementById('view-story-btn').addEventListener('click', storyBtnAction);
+    document.getElementById('view-story-btn-mobile').addEventListener('click', storyBtnAction);
+
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenuOverlay.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden', 'md:overflow-auto');
+    });
+
+    mobileMenuCloseButton.addEventListener('click', () => {
+        mobileMenuOverlay.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden', 'md:overflow-auto');
     });
     
     if (typeof finalizeSetup === 'function') {
@@ -217,9 +260,7 @@ async function initializeApp() {
 
 function generateStageHTML(stage, content) {
     if (!content) return `<div class="content-card"><h2 class="text-4xl">${stage.title}</h2><p>Content for this stage is missing.</p></div>`;
-
     const buttonText = content.buttonText || 'Complete The Journey';
-    
     if (stage.id === 'intro') {
         return `<div class="content-card"><div class="text-center"><h1 class="text-5xl mb-2">${content.title}</h1><h2 class="text-2xl mb-4">${content.subtitle}</h2><p class="text-lg text-gold mb-2">${content.tagline}</p><div class="mt-8"><h3 class="text-4xl mb-4">${content.header}</h3><p class="text-xl mb-6">${content.prompt}</p></div></div><div class="prose max-w-none mx-auto mt-8">${content.prose.map(p => `<p>${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`).join('')}<div class="bg-black bg-opacity-30 border border-gold rounded-lg p-6 mt-8"><h3 class="text-2xl mb-4 text-gold">${content.callout.title}</h3>${content.callout.prose.map(p => `<p>${p}</p>`).join('')}</div></div><div class="text-center mt-10"><button class="cta-button-base cta-button-gold stage-submit-button" data-stage-id="${stage.id}">${buttonText}</button></div></div>`;
     }
@@ -233,7 +274,7 @@ function generateStageHTML(stage, content) {
     }
     if (stage.id === 'compass') {
         const pointsHTML = (content.points || []).map((point, index) => `<div><label class="font-semibold text-lg block mb-2">${point.label}</label><p class="text-sm italic mb-3">${point.prompt}</p><input type="range" min="1" max="10" value="5" id="compass-input-${index}" class="w-full compass-input" data-field-index="${index}"><div class="flex justify-between text-xs text-slate-400 mt-1"><span>1</span><span>10</span></div></div>`).join('<div class="ornamental-divider my-6"></div>');
-        return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div><div class="prose max-w-none mb-8"><p class="text-lg font-semibold text-gold text-center">${content.prose || ''}</p></div><div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="flex flex-wrap -mx-4"><div class="w-full lg:w-1/2 px-4 space-y-8">${pointsHTML}</div><div class="w-full lg:w-1/2 px-4 flex items-center justify-center"><div class="chart-container"><canvas id="compassChart"></canvas></div></div></div><div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm italic mb-3">${content.synthesis.prompt}</p><textarea class="w-full" data-field-index="${(content.points || []).length}" rows="4" placeholder="${content.synthesis.prompt}"></textarea></div><div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="prompt-template-standard">${buttonText}</button></div></div>`;
+        return `<div class="content-card"><div class="flex items-center mb-4"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl">${content.title}</h2></div><div class="prose max-w-none mb-8"><p class="text-lg font-semibold text-gold text-center">${content.prose || ''}</p></div><div class="ornamental-divider"></div><div class="stage-summary-error bg-red-900/20 border border-red-500/50 text-red-300 p-4 rounded-md my-6" style="display: none;"></div><div class="flex flex-wrap -mx-4"><div class="w-full lg:w-1/2 px-4 space-y-8">${pointsHTML}</div><div class="w-full lg:w-1/2 px-4 flex items-center justify-center"><div class="chart-container"><canvas id="compassChart"></canvas></div></div></div><div class="synthesis-box border border-gold mt-8"><label class="font-semibold text-lg text-gold block mb-2">${content.synthesis.label}</label><p class="text-sm italic mb-3">${content.synthesis.prompt}</p><textarea class="w-full" data-field-index="${(content.fields || []).length}" rows="4" placeholder="${content.synthesis.prompt}"></textarea></div><div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}" data-prompt-template="prompt-template-standard">${buttonText}</button></div></div>`;
     }
     if (stage.id === 'my_story') {
          return `<div class="content-card"><div class="flex items-center mb-6"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl glow-title">${content.title || 'My Metamyth Story'}</h2></div><div class="prose max-w-none mb-8"><p>${content.prose}</p></div><div class="space-y-6"><button id="generate-story-btn" class="cta-button-base cta-button-gold mb-6">${content.generateButtonText}</button><div id="compiled-story" class="bg-black bg-opacity-30 border border-teal-400 rounded-lg p-6 min-h-[24rem]"><div class="text-center text-gray-400 italic">${content.initialText}</div></div><div class="text-center mt-6"><button id="export-story-btn" class="cta-button-base cta-button-teal" style="display: none;">${content.exportButtonText}</button></div></div><div class="text-center mt-8"><button class="cta-button-base cta-button-teal stage-submit-button" data-stage-id="${stage.id}">${buttonText}</button></div></div>`;
@@ -253,29 +294,62 @@ function generateStageHTML(stage, content) {
 }
 
 function showStage(index) {
+    const wasMobileMenuOpen = !document.getElementById('mobile-menu-overlay').classList.contains('hidden');
+    
+    if (wasMobileMenuOpen) {
+      document.getElementById('mobile-menu-overlay').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden', 'md:overflow-auto');
+    }
+
     document.querySelectorAll('.stage-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
     const stage = stages[index];
     if (!stage) return;
     const stageEl = document.getElementById(stage.id);
     const navEl = document.getElementById(`nav-${stage.id}`);
+    const mobileNavEl = document.getElementById(`mobile-nav-${stage.id}`);
     if (stageEl) stageEl.classList.add('active');
     if (navEl) navEl.classList.add('active');
+    if (mobileNavEl) mobileNavEl.classList.add('active');
     
-    // **SCROLLING FIX**: Send a message to the parent to scroll the main page
-    window.parent.postMessage({ type: 'metamythStageChanged' }, '*');
-    
-    // Also scroll the iframe itself, just in case
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    const mainEl = document.querySelector('main');
+    if (!mainEl) return;
 
+    if (wasMobileMenuOpen) {
+        window.location.hash = 'page-top';
+    } else {
+        mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
     updateProgressBar(index);
     updateArtifactIndicator(stage, index);
     if (stage.id === 'compass') setTimeout(initializeCompass, 100);
     if (stage.id === 'my_story') setTimeout(initializeStoryGeneration, 100);
 }
 
-function updateProgressBar(currentIndex) { if (document.getElementById('progress-bar')) document.getElementById('progress-bar').style.width = `${Math.round(((currentIndex + 1) / stages.length) * 100)}%`; }
-function updateArtifactIndicator(currentStage, index) { document.getElementById('current-artifact-icon').textContent = currentStage.icon; document.getElementById('current-artifact-title').textContent = currentStage.title; document.getElementById('current-progress').textContent = `${index + 1}/${stages.length} Complete`; }
+function updateProgressBar(currentIndex) {
+    const progressPercentage = `${Math.round(((currentIndex + 1) / stages.length) * 100)}%`;
+    const desktopBar = document.getElementById('progress-bar');
+    const mobileBar = document.getElementById('progress-bar-mobile');
+    if (desktopBar) desktopBar.style.width = progressPercentage;
+    if (mobileBar) mobileBar.style.width = progressPercentage;
+}
+
+function updateArtifactIndicator(currentStage, index) {
+    const progressText = `${index + 1}/${stages.length} Complete`;
+    // Desktop elements
+    document.getElementById('current-artifact-icon').textContent = currentStage.icon;
+    document.getElementById('current-artifact-title').textContent = currentStage.title;
+    document.getElementById('current-progress').textContent = progressText;
+    // Mobile elements
+    const mobileIcon = document.getElementById('current-artifact-icon-mobile');
+    const mobileTitle = document.getElementById('current-artifact-title-mobile');
+    const mobileProgress = document.getElementById('current-progress-mobile');
+    if (mobileIcon) mobileIcon.textContent = currentStage.icon;
+    if (mobileTitle) mobileTitle.textContent = currentStage.title;
+    if (mobileProgress) mobileProgress.textContent = progressText;
+}
+
 function initializeCompass() { initializeCompassChart(); document.querySelectorAll('.compass-input').forEach(input => { input.removeEventListener('input', updateCompassChart); input.addEventListener('input', updateCompassChart); }); }
 function initializeCompassChart() { const ctx = document.getElementById('compassChart'); if (!ctx) return; if (compassChart) compassChart.destroy(); const labels = (contentData.compass?.points || []).map(p => p.label.split(' - ')[0]); const data = labels.map((_, index) => parseInt(document.getElementById(`compass-input-${index}`)?.value || '5')); compassChart = new Chart(ctx, {type: 'radar', data: { labels: labels, datasets: [{ label: 'Alignment', data: data, borderColor: 'var(--accent-teal)', backgroundColor: 'rgba(20, 184, 166, 0.2)', pointBackgroundColor: 'var(--accent-teal)', pointBorderColor: '#fff' }] }, options: { responsive: true, maintainAspectRatio: true, scales: { r: { min: 0, max: 10, ticks: { display: false }, grid: { color: 'rgba(255,255,255,0.2)' }, pointLabels: { color: 'var(--text-main)', font: { family: 'GrillagesBold2024' } }, angleLines: { color: 'rgba(255,255,255,0.2)' } } }, plugins: { legend: { display: false } } } }); }
 function updateCompassChart() { if (!compassChart) return; compassChart.data.datasets[0].data = compassChart.data.labels.map((_, index) => parseInt(document.getElementById(`compass-input-${index}`)?.value || '5')); compassChart.update(); }
@@ -283,14 +357,36 @@ function initializeStoryGeneration() { const generateBtn = document.getElementBy
 function generateCompleteStory() { const synthesisOrder = ['origin', 'calling_synthesis', 'quest_synthesis', 'vision_synthesis', 'mission_synthesis', 'kindred_synthesis', 'legacy']; let storyHtml = `<div class="prose max-w-none text-left"><h3 class="text-3xl text-gold">${contentData.my_story.title}</h3>`; let contentAdded = false; synthesisOrder.forEach(stageId => { const stageContent = contentData[stageId]; const stageData = window.journeyData?.[stageId]; if (stageContent?.synthesis && stageData) { const synthesisText = stageData[stageData.length - 1]; if (synthesisText?.trim()) { storyHtml += `<h4 class="text-2xl mt-8 text-teal">${stageContent.synthesis.label}</h4><p class="border-l-4 border-gold pl-4 py-2 bg-black/20">${synthesisText.replace(/\n/g, '<br>')}</p>`; contentAdded = true; } } }); if (contentAdded) storyHtml += '<div class="ornamental-divider"></div><p class="text-center text-lg text-gold">This is my story. The journey continues.</p>'; else storyHtml += `<p class="italic text-gray-400 mt-4">${contentData.my_story.initialText}</p>`; return storyHtml + '</div>'; }
 </script>
 
-<script>
-  // Iframe Resizer Utility
-  const resizeObserver = new ResizeObserver(sendBodyHeight);
-  function observeBody() { if (document.body) resizeObserver.observe(document.body); else setTimeout(observeBody, 100); }
-  function sendBodyHeight() { const height = document.body.scrollHeight; window.parent.postMessage({ type: 'iframeResize', height: height }, '*'); }
-  observeBody();
-</script>
+<div id="mobile-bottom-bar" class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-sm border-t border-teal-400/30 px-6 py-2 space-y-2">
+        <div class="w-full bg-gray-700/60 rounded-full h-1.5">
+            <div id="progress-bar-mobile" class="h-1.5 rounded-full glow-progress transition-all duration-500" style="width: 0%"></div>
+        </div>
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div id="current-artifact-icon-mobile" class="text-2xl">✨</div>
+                <div>
+                    <div id="current-artifact-title-mobile" class="text-sm font-semibold text-white">Awaken</div>
+                    <div id="current-progress-mobile" class="text-xs text-gray-400">1/36 Complete</div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-6">
+                <button id="view-story-btn-mobile" class="bg-transparent border border-gold text-gold text-xs py-1 px-3 rounded glow-button">
+                    📖 Story
+                </button>
+                <button id="mobile-menu-button" class="cta-button-base cta-button-teal !py-2 !px-12 !text-sm">
+                    Stages
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu-overlay" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col p-4">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl text-white glow-title">Stages</h2>
+            <button id="mobile-menu-close-button" class="text-white text-3xl">&times;</button>
+        </div>
+        <div id="mobile-nav-container" class="overflow-y-auto pb-24"></div>
+    </div>
 
 </body>
 </html>
-}
