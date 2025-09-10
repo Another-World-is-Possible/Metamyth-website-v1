@@ -7,7 +7,7 @@ export default function BeginPortal() {
   const [passwordInput, setPasswordInput] = useState("");
   const [errorState, setErrorState] = useState(false);
   const [successState, setSuccessState] = useState(false);
-  const [typedText, setTypedText] = useState(["", "", "", ""]);
+  const [typedText, setTypedText] = useState(["", "", "", "", ""]);
   const [elementOpacities, setElementOpacities] = useState({
     cosmicBackground: 0,
     cosmicOverlay: 0,
@@ -15,16 +15,21 @@ export default function BeginPortal() {
     finalText: 0,
   });
   const [portalTransform, setPortalTransform] = useState("translateY(20px)");
+  
+  // --- NEW: Add a ref for the canvas element ---
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const mysticalMessages = [
     "You stand at the threshold between stories...",
     "Beyond this portal lies the most ancient technology—",
     "The conscious rewriting of your life's story...",
-    "Only those committed to becoming authors of reality may proceed.",
+    "Only those committed to becoming",
+    "authors of reality may proceed.",
   ];
 
   const timeoutRef = useRef<NodeJS.Timeout>();
 
+  // Typewriter animation useEffect
   useEffect(() => {
     const typeMessage = (messageIndex: number, callback: () => void) => {
       const text = mysticalMessages[messageIndex];
@@ -66,6 +71,68 @@ export default function BeginPortal() {
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+  
+  // --- NEW: useEffect for the canvas particle animation ---
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let particles: { x: number; y: number; radius: number; speedY: number; opacity: number }[] = [];
+
+    const setCanvasSize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    const createParticles = () => {
+      particles = [];
+      const particleCount = 50;
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5 + 0.5,
+          speedY: Math.random() * 0.5 + 0.2,
+          opacity: Math.random() * 0.5 + 0.2,
+        });
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.y -= p.speedY;
+        if (p.y < 0) {
+          p.y = canvas.height;
+          p.x = Math.random() * canvas.width;
+        }
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(147, 51, 234, ${p.opacity})`;
+        ctx.fill();
+      });
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    
+    const handleResize = () => {
+        setCanvasSize();
+        createParticles();
+    };
+
+    setCanvasSize();
+    createParticles();
+    animate();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
@@ -123,20 +190,20 @@ export default function BeginPortal() {
             background: #000000;
             color: white;
             min-height: 100vh;
-            overflow-x: hidden;
+            overflow-y: auto; 
             position: relative;
         }
         
         .threshold-container {
             position: relative;
-            height: 100vh;
+            min-height: 100vh; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 2rem;
+            justify-content: flex-start; 
+            padding: 1rem;
             background: #000000;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         
         .cosmic-background {
@@ -170,59 +237,69 @@ export default function BeginPortal() {
             position: relative;
             z-index: 10;
             text-align: center;
-            max-width: 600px;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 2rem; 
+        }
+
+        .mystical-text-wrapper {
+            margin-bottom: 2.5rem; 
+            flex-shrink: 0; 
         }
         
         .mystical-text {
-            font-size: 1.5rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
+            font-size: 1.75rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            min-height: 2.5rem; 
             color: #E8E8FF;
             text-shadow: 
                 0 0 10px rgba(232, 232, 255, 0.8),
                 0 0 20px rgba(147, 51, 234, 0.6),
                 0 0 30px rgba(147, 51, 234, 0.4);
             font-family: 'AngleFairy2024', serif, Georgia, 'Times New Roman', serif;
-            min-height: 5.4rem;
+            text-rendering: geometricPrecision; 
         }
         
+        .portal-animation-wrapper {
+            animation: breathing 4s ease-in-out infinite;
+            will-change: transform;
+        }
+
         .portal-interface {
             background: rgba(20, 20, 40, 0.8);
             border: 2px solid #9333EA;
             border-radius: 20px;
-            padding: 2rem;
+            padding: 1rem 1.5rem; 
+            max-width: 320px; 
             backdrop-filter: blur(10px);
             box-shadow: 
                 0 0 30px rgba(147, 51, 234, 0.6),
                 0 0 60px rgba(147, 51, 234, 0.4),
                 inset 0 0 30px rgba(147, 51, 234, 0.1);
-            animation: breathing 4s ease-in-out infinite;
+            flex-shrink: 0;
         }
         
         @keyframes breathing {
-            0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.02) translateY(-2px); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
         }
         
         .portal-input {
             background: rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(147, 51, 234, 0.6);
             border-radius: 12px;
-            padding: 1rem;
+            padding: 0.75rem; 
             width: 100%;
             color: #E8E8FF;
             font-family: 'AngleFairy2024', serif;
-            font-size: 1rem;
+            font-size: 0.9rem; 
             text-align: center;
             outline: none;
             box-shadow: inset 0 0 20px rgba(147, 51, 234, 0.3);
             transition: all 0.3s ease;
-            animation: portalPulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes portalPulse {
-            0%, 100% { box-shadow: inset 0 0 20px rgba(147, 51, 234, 0.3); }
-            50% { box-shadow: inset 0 0 25px rgba(147, 51, 234, 0.5); }
         }
         
         .portal-input:focus {
@@ -236,10 +313,10 @@ export default function BeginPortal() {
             background: linear-gradient(135deg, #9333EA, #7C3AED, #8B5CF6);
             border: none;
             border-radius: 16px;
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.5rem; 
             color: white;
             font-family: 'AngleFairy2024', serif;
-            font-size: 1rem;
+            font-size: 0.9rem; 
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -262,42 +339,29 @@ export default function BeginPortal() {
         }
         
         .final-text {
-            color: #B8B8D4;
-            font-size: 0.9rem;
+            color: #FFD700;
+            font-size: 0.9rem; 
             margin-top: 1.5rem;
-            text-shadow: 0 0 8px rgba(184, 184, 212, 0.6);
+            text-shadow: 0 0 4px black, 0 0 8px #FFD700, 0 0 12px #FFD700;
             animation: gentleGlow 3s ease-in-out infinite;
         }
         
         @keyframes gentleGlow {
-            0%, 100% { text-shadow: 0 0 8px rgba(184, 184, 212, 0.6); }
-            50% { text-shadow: 0 0 15px rgba(184, 184, 212, 0.9); }
+            0%, 100% { text-shadow: 0 0 4px black, 0 0 8px #FFD700; }
+            50% { text-shadow: 0 0 6px black, 0 0 15px #FFD700; }
         }
         
-        .particles {
+        /* --- NEW: CSS for the canvas element --- */
+        .particles-canvas {
             position: absolute;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none; /* Make sure it's not clickable */
         }
 
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(147, 51, 234, 0.8);
-            border-radius: 50%;
-            animation: drift 10s linear infinite;
-        }
-        
-        @keyframes drift {
-            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
-            20% { opacity: 0.6; }
-            80% { opacity: 0.6; }
-            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
-        }
-        
         .error-flicker {
             animation: errorFlicker 1s ease-out;
         }
@@ -323,42 +387,43 @@ export default function BeginPortal() {
       <div className="cosmic-background" style={{ opacity: elementOpacities.cosmicBackground }}></div>
       <div className="cosmic-overlay" style={{ opacity: elementOpacities.cosmicOverlay }}></div>
       
-      <div className="particles">
-        {[...Array(4)].map((_, i) => (
-          <div key={i} className="particle" style={{ left: `${20 + i * 20}%`, animationDelay: `${i * 2}s` }}></div>
-        ))}
-      </div>
+      {/* --- NEW: The canvas element for the new particle effect --- */}
+      <canvas ref={canvasRef} className="particles-canvas"></canvas>
       
       <div className="content">
-        {mysticalMessages.map((_, index) => (
-          <div
-            key={index}
-            className="mystical-text"
-          >
-            {typedText[index]}
-          </div>
-        ))}
+        <div className="mystical-text-wrapper">
+          {mysticalMessages.map((_, index) => (
+            <div
+              key={index}
+              className="mystical-text"
+            >
+              {typedText[index]}
+            </div>
+          ))}
+        </div>
         
-        <div 
-          id="portal" 
-          className={`portal-interface ${errorState ? 'error-flicker' : ''} ${successState ? 'success-pulse' : ''}`}
-          style={{ opacity: elementOpacities.portal, transform: portalTransform }}
-        >
-          <form onSubmit={handleSubmit}>
-            <input 
-              type="password" 
-              id="password" 
-              name="password"
-              className="portal-input"
-              placeholder={errorState ? "The ancient words elude you..." : "Speak the word of power..."}
-              required
-              value={passwordInput}
-              onChange={(e) => setPasswordInput(e.target.value)}
-            />
-            <button type="submit" className="sacred-button">
-              Begin Your Journey
-            </button>
-          </form>
+        <div className="portal-animation-wrapper">
+          <div 
+            id="portal" 
+            className={`portal-interface ${errorState ? 'error-flicker' : ''} ${successState ? 'success-pulse' : ''}`}
+            style={{ opacity: elementOpacities.portal, transform: portalTransform }}
+          >
+            <form onSubmit={handleSubmit}>
+              <input 
+                type="password" 
+                id="password" 
+                name="password"
+                className="portal-input"
+                placeholder={errorState ? "The ancient words elude you..." : "Speak the word of power..."}
+                required
+                value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
+              />
+              <button type="submit" className="sacred-button">
+                Begin Your Journey
+              </button>
+            </form>
+          </div>
         </div>
         
         <div 
