@@ -95,7 +95,7 @@ export default function TransformationJourneysPage() {
                 You've outgrown the story you're living. Whether you're a successful leader questioning your legacy, a conscious entrepreneur struggling to express your vision, a changemaker whose ideas get ignored, or someone who feels completely stuck in meaningless routine—the pattern is the same: you're living someone else's narrative instead of authoring your own.
               </p>
               <p>
-                The symptoms show up everywhere. Your business feels disconnected from your purpose. You can't communicate your vision powerfully enough to attract the resources it deserves. You feel powerless watching the world spiral while your potential stays locked away. Your obstacles define you instead of qualifying you to help others transform.
+                The symptoms show up everywhere. Life feels meaningless, like we are living in a world we didn't choose. Your livelihood feels disconnected from your purpose. You feel powerless—or you know you are capable of more than the story you're in allows. You can't communicate your vision powerfully enough to attract the resources it deserves. You feel powerless watching the world spiral while your potential stays locked away. Your obstacles define you instead of qualifying you to help others transform.
               </p>
             </motion.div>
           </div>
@@ -219,7 +219,7 @@ export default function TransformationJourneysPage() {
                   transformation: "transformed from warning about civilizational collapse to leading innovator at the end of normal. Immediately got 3,000 views on his first video telling his new story with 60 sign-ups to his webinar. The life-changing revelation helped make sense of his messed-up life and reconnected him to his purpose."
                 },
                 {
-                  name: "Jay Friday",
+                  name: "J Friday",
                   transformation: "evolved from struggling entrepreneur to first ever fulfillionaire of the wellbeing economy. Went from living in her car to having a global community and a world-changing mission with millions of views on content and funds raised from her passion—all from remembering that she is the storyteller."
                 },
                 {
@@ -231,8 +231,8 @@ export default function TransformationJourneysPage() {
                   transformation: "moved from successful benevolent cultural disruptor to pollinator of the planetary scale renaissance. Thought he was successful in living his vision, until our session \"blew his mind\" and revealed that his definitions of success were just the beginning—an epic journey lay ahead of him."
                 },
                 {
-                  name: "Zachary Marlowe",
-                  transformation: "originator of Another World Is Possible, turned a failed suicide attempt into the revelation that life is a story and we hold the pen. This became a global adventure across 6 continents with story as his only currency, creating a global network with thousands of friends and collaborators, engaging hundreds of thousands of people through content, attracting his fiancé, and growing an organization with hundreds of volunteers who changed their life's purpose."
+                  name: "Zachary Marlow",
+                  transformation: "originator of Another World Is Possible, turned a failed suicide attempt into the revelation that life is a story and we hold the pen. This became a global adventure across 6 continents with story as his only currency, creating a global network with thousands of friends and collaborators, engaging hundreds of thousands of people through content, attracting the most beautiful and talented fiancé you can imagine, and growing an organization with hundreds of volunteers who changed their life's purpose."
                 }
               ].map((author, index) => (
                 <motion.div 
@@ -253,15 +253,20 @@ export default function TransformationJourneysPage() {
               ))}
             </motion.div>
             
-            <motion.p 
-              className="mt-12 text-lg leading-relaxed font-emerland text-center text-amber-200 font-semibold"
+            <motion.div 
+              className="mt-12 text-center space-y-6"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              Every single person who has gone through this system has experienced something major shifting in their life, if not everything. The transformation is inevitable when you commit to the process and take back your story.
-            </motion.p>
+              <p className="text-lg leading-relaxed font-emerland text-amber-200 font-semibold">
+                Every single person who has gone through this system has experienced something major shifting in their life, if not everything. The transformation is inevitable when you commit to the process and take back your story.
+              </p>
+              <p className="font-angle text-3xl md:text-4xl text-gradient-gold font-bold">
+                Taking back your story can change lives, systems, reality
+              </p>
+            </motion.div>
           </div>
         </section>
 
@@ -288,7 +293,6 @@ export default function TransformationJourneysPage() {
               {[
                 {
                   title: "SEEKERS",
-                  price: "$1,100",
                   subtitle: "Discovering your authentic story",
                   features: [
                     "Weekly community calls",
@@ -300,8 +304,7 @@ export default function TransformationJourneysPage() {
                 },
                 {
                   title: "CHANGEMAKERS",
-                  price: "$2,200", 
-                  subtitle: "Intensive transformation through fellowship",
+                  subtitle: "Intensive transformation",
                   features: [
                     "Everything Seekers receive",
                     "Curated story circles of 4-6 people",
@@ -314,7 +317,6 @@ export default function TransformationJourneysPage() {
                 },
                 {
                   title: "WORLD BUILDERS",
-                  price: "$3,300",
                   subtitle: "Scaling transformation to planetary impact",
                   features: [
                     "Exclusive mastermind for established leaders",
@@ -328,26 +330,27 @@ export default function TransformationJourneysPage() {
               ].map((pathway, index) => (
                 <motion.div 
                   key={pathway.title}
-                  className={`bg-black/50 p-8 rounded-lg border-2 ${pathway.highlight ? 'border-amber-500' : 'border-amber-800/30'} relative`}
+                  className={`bg-black/50 p-8 rounded-lg border-2 ${
+                    pathway.highlight 
+                      ? 'border-mystical-teal shadow-[0_0_20px_rgba(72,196,196,0.4)]' 
+                      : 'border-ancient-gold/30 shadow-[0_0_15px_rgba(255,215,0,0.2)]'
+                  } relative cursor-pointer hover:scale-105 transition-all duration-300`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                 >
                   {pathway.highlight && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-500 text-black px-4 py-1 rounded-full text-sm font-semibold">
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-mystical-teal text-black px-4 py-1 rounded-full text-sm font-semibold">
                       MOST POPULAR
                     </div>
                   )}
                   
                   <div className="text-center mb-6">
-                    <h3 className="font-angle text-2xl md:text-3xl mb-2 text-gradient-gold">
+                    <h3 className="font-angle text-2xl md:text-3xl mb-4 text-gradient-gold">
                       {pathway.title}
                     </h3>
-                    <div className="font-thornelia text-4xl mb-2 text-amber-300">
-                      {pathway.price}
-                    </div>
-                    <p className="font-emerland text-lg text-amber-200 italic">
+                    <p className="font-emerland text-base text-amber-200 italic">
                       {pathway.subtitle}
                     </p>
                   </div>
@@ -355,7 +358,7 @@ export default function TransformationJourneysPage() {
                   <ul className="space-y-3 mb-6 font-emerland">
                     {pathway.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
-                        <span className="text-amber-500 mr-2">✦</span>
+                        <span className={`mr-2 ${pathway.highlight ? 'text-mystical-teal' : 'text-ancient-gold'}`}>✦</span>
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -368,27 +371,17 @@ export default function TransformationJourneysPage() {
                   <Button 
                     className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-300 ${
                       pathway.highlight 
-                        ? 'bg-amber-500 hover:bg-amber-400 text-black' 
-                        : 'bg-amber-800/50 hover:bg-amber-700/50 text-amber-100 border border-amber-600'
+                        ? 'bg-mystical-teal hover:bg-mystical-teal/80 text-black shadow-[0_0_15px_rgba(72,196,196,0.4)]' 
+                        : 'bg-ancient-gold/20 hover:bg-ancient-gold/30 text-ancient-gold border border-ancient-gold/50 shadow-[0_0_10px_rgba(255,215,0,0.2)]'
                     }`}
                     data-testid={`button-select-${pathway.title.toLowerCase()}`}
                   >
-                    SELECT {pathway.title}
+                    EXPLORE {pathway.title}
                   </Button>
                 </motion.div>
               ))}
             </motion.div>
             
-            <motion.div 
-              className="mt-12 text-center space-y-4 font-emerland text-amber-200"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              <p><strong>Payment plans available.</strong> For every $600 above baseline, sponsor someone through our scholarship interview process.</p>
-              <p><strong>Beyond Money:</strong> Everyone possesses valuable currency—skills, time, networks, creative talents. Contribution-based participation available through scholarship interviews for those called to this work who need alternative arrangements.</p>
-            </motion.div>
           </div>
         </section>
 

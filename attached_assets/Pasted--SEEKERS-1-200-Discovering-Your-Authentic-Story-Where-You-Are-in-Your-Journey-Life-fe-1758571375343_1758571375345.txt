@@ -1,0 +1,122 @@
+## SEEKERS - $1,200
+**Discovering Your Authentic Story**
+
+### Where You Are in Your Journey
+
+Life feels like something happening to you rather than something you're creating. You're surviving the story you're living, reacting to circumstances, trying to keep your head above water while the world spins around you.
+
+You sense there's something more—a deeper story wanting to emerge—but you feel trapped by the narrative you were handed. You're tired of being a character in someone else's plot and ready to discover what it means to become the author of your own reality.
+
+### How We Serve You at This Stage
+
+The Seekers experience creates the foundation for taking back authorship of your life. You join the full cohort for weekly Monday community calls where you'll work through each movement of the MetaMyth alongside others who are also remembering their power to rewrite reality.
+
+Your custom app becomes a living system where you build story artifacts week by week, revealing connections between where you've been, where you are, and where you're capable of going. The recorded content library provides flexibility to revisit concepts and work at your own pace. The self-organizing community connects you with fellow travelers who understand what it feels like to outgrow a story that never really fit.
+
+### Your Transformation Foundation Includes
+
+- Weekly Monday community calls with the full cohort
+- Complete MetaMyth app with all seven movements  
+- Recorded content library for self-paced exploration
+- Forum access for ongoing community connection
+- Permanent access to your story artifacts and tools
+
+### The Investment
+
+$1,200 baseline represents your first commitment to authorship over victimhood. Payment plans available: two payments of $650 or three payments of $450. This is where you stop accepting the story you were given and start discovering the story that's actually yours to tell. Pay what your story is worth to you—every $600 above baseline brings another person into the community through our scholarship program.
+
+---
+
+## CHANGEMAKERS - $2,100
+**Intensive Transformation Through Fellowship**
+
+### Where You Are in Your Journey
+
+You've outgrown your old life. You know you're meant for more than what you're currently living. Maybe you climbed the ladder society pointed you toward only to realize it was leaning against the wrong wall. Or you carry a vision burning in your heart—you know exactly why you're here and what you're meant to create, but you struggle to make that vision real in the world.
+
+You're on the threshold between knowing what you want and actually living it. You have the passion but need the systems, support, and strategic clarity to bridge the gap between what is and what could be. You understand that real transformation requires community, accountability, and the courage to be witnessed as you become who you're meant to be.
+
+### How We Serve You at This Level
+
+The Changemaker experience provides intensive support for the leap from knowing to becoming. You're placed in carefully curated story circles of 4-6 people—intimate containers where your vision gets refined and your obstacles transform into assets. These become laboratories for your emerging authentic story.
+
+Your weekly rhythm includes Monday community calls with the full cohort, Friday Q&A sessions for direct support as you navigate transformation, and weekend mixers that create cross-pollination between circles. You receive community facilitation training, developing your capacity to guide others while deepening your own journey.
+
+### Your Breakthrough Journey Includes
+
+- Weekly Monday community calls with the full cohort
+- Complete MetaMyth app with all seven movements
+- Recorded content library for self-paced integration
+- Curated story circles (4-6 people maximum) 
+- Friday Q&A calls for direct transformation support
+- Weekend mixer calls connecting you with the larger movement
+- Priority placement in intimate accountability partnerships
+- Community facilitation training
+- Forum access for ongoing community connection
+
+### The Investment
+
+$2,100 baseline represents your commitment to the leap from knowing to becoming. Payment plans available: two payments of $1,100 or three payments of $750. You're actively stepping into living your larger story. Pay what your story is worth to you—every $600 above baseline brings another person into the community and strengthens the support systems that will carry your transformation forward.
+
+---
+
+## WORLD BUILDERS - $4,200
+**Scaling Transformation to Planetary Impact**
+
+### Where You Are in Your Journey
+
+You're a leader, a legend in the making, a hero already established on your journey and ready to go further. You've built something significant in the world, accumulated influence and resources, yet you know your greatest contribution still lies ahead. You carry a vision that could change everything—an idea, innovation, or way of being that the world desperately needs.
+
+You understand that your personal transformation ripples through everyone you influence. Your story extends beyond your individual life into your work, relationships, platform, and legacy. You're ready to take full authorship of your role in the larger story of human transformation.
+
+### How We Serve You at This Level
+
+The World Builder experience operates as an exclusive mastermind of established leaders building something bigger than themselves. Your container includes peers who navigate the complexities of conscious leadership at scale.
+
+Your weekly rhythm includes Monday community calls, Friday Q&A sessions, and weekend mixers, plus two strategic consultation calls designed to integrate your metamyth directly into your existing platform and future vision. You select a protégé—someone you sponsor into the Changemaker tier, recognizing that transformation scales through relationship and example.
+
+### Your Legacy Architecture Includes
+
+- Weekly Monday community calls with the full cohort
+- Complete MetaMyth app with all seven movements
+- Recorded content library for self-paced integration
+- Exclusive World Builder mastermind format
+- Friday Q&A calls for direct transformation support
+- Weekend mixer calls with the larger community
+- Two strategic consultation calls for integration and implementation
+- Ability to select and sponsor a protégé (Changemaker level)
+- Direct support for scaling transformation into existing work
+- Case study development for movement inspiration
+- Forum access for ongoing community connection
+
+### The Investment
+
+$4,200 baseline represents your commitment to transformation that extends into planetary impact. Payment plans available: two payments of $2,200 or three payments of $1,500. You become someone whose existence gives others permission to claim their own authorship. Pay what your story is worth to you—every $600 above baseline brings another person into the community and strengthens the movement infrastructure that supports transformation at scale.
+
+---
+
+## WEBSITE INTERFACE NAVIGATION INSTRUCTIONS
+
+### Initial Landing Page
+Create three prominent pathway buttons arranged as stations on a visual journey timeline:
+- **SEEKERS** (left station) - "Discovering Your Authentic Story" - $1,200 baseline
+- **CHANGEMAKERS** (center station) - "Intensive Transformation Through Fellowship" - $2,100 baseline  
+- **WORLD BUILDERS** (right station) - "Scaling Transformation to Planetary Impact" - $4,200 baseline
+
+### User Interaction Flow
+1. **Station Selection**: When user clicks any station button, that station expands and becomes highlighted while others remain visible but dimmed
+2. **Information Panel**: Detailed tier information slides in from the right side of screen showing the complete description for selected tier
+3. **Cross-Navigation**: User can click other station buttons to compare options without losing their place
+4. **Commitment Selector**: Within each tier panel, include interactive element asking "What is your story worth to you?" with baseline amount displayed and "+" buttons to add $600 increments
+5. **Scholarship Counter**: Show "Bring [X] others with you" that updates as they increase their investment
+6. **Payment Options**: Display both full payment and plan options (2x or 3x payments) that update based on their selected amount
+7. **Proceed Button**: "Claim Your Author's Seat" button appears once they've selected their tier and investment amount
+
+### Visual Design Elements
+- Journey path connects all three stations horizontally across page
+- Each station has unique icon representing its stage (compass for Seekers, bridge for Changemakers, mountain peak for World Builders)
+- Subtle animations show progression from left to right
+- Clean, scannable layout with expandable sections for details
+- Mobile-responsive design where timeline becomes vertical stack
+
+The interface should feel like selecting your starting position on an epic quest rather than choosing a product package.
