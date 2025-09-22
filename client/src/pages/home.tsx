@@ -20,9 +20,7 @@ function HomeContent() {
   const { startMusic } = useAudio();
 
   const handleNavigation = (tab: string | null) => {
-    if (tab === 'questionaire') {
-      navigate('/questionaire');
-    } else if (tab === 'metamyth') {
+    if (tab === 'metamyth') {
       navigate('/metamyth');
     } else if (tab === 'quest') {
       navigate('/quest');
@@ -34,6 +32,8 @@ function HomeContent() {
       navigate('/systems');
     } else if (tab === 'federation') {
       navigate('/federation');
+    } else if (tab === 'transformation-journeys') {
+      navigate('/transformation-journeys');
     }
     
     // Scroll to top when navigating from home page

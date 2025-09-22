@@ -6,12 +6,12 @@ export default function WhyStoryMattersPage() {
   const [, navigate] = useLocation();
   
   const handleNavigation = (tab: string | null) => {
-    if (tab === 'questionaire') {
-      navigate('/questionaire');
-    } else if (tab === 'systems') {
+    if (tab === 'systems') {
       navigate('/systems');
     } else if (tab === 'stories') {
       navigate('/stories');
+    } else if (tab === 'transformation-journeys') {
+      navigate('/transformation-journeys');
     } else if (tab === null) {
       navigate('/');
     }
