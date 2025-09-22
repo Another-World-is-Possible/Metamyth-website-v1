@@ -572,11 +572,11 @@ export default function JourneySelectionPage() {
                   >
                     {/* Icon Circle - Centered on line */}
                     <motion.div 
-                      className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300"
+                      className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer"
                       style={{
                         backgroundColor: 'rgb(0, 0, 0)',
                         border: `${selectedTier === tier.id ? '3px' : '2px'} solid ${tier.colors.primary}`,
-                        boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}` : '0 0 5px rgba(0,0,0,0.3)',
+                        boxShadow: selectedTier === tier.id ? `0 0 25px ${tier.colors.glow}, 0 0 40px ${tier.colors.glow}, 0 0 60px ${tier.colors.glow}` : '0 0 5px rgba(0,0,0,0.3)',
                         marginTop: '-28px', // Half the height to center on line
                         marginBottom: '8px'
                       }}
