@@ -20,6 +20,10 @@ exposeLocalhost = true
 localPort = 5001
 externalPort = 3000
 
+[[ports]]
+localPort = 36107
+externalPort = 3001
+
 [env]
 PORT = "5000"
 
