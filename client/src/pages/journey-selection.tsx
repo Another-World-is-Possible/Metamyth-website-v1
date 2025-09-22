@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Compass, Zap, Mountain, Plus } from "lucide-react";
+import { Shield, Zap, Globe, Plus } from "lucide-react";
 import { useLocation } from "wouter";
 import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
 
@@ -12,6 +12,13 @@ interface JourneyTier {
   icon: React.ReactNode;
   position: string;
   basePrice: number;
+  colors: {
+    primary: string;
+    secondary: string;
+    border: string;
+    glow: string;
+    background: string;
+  };
   content: {
     whereYouAre: string[];
     howWeServe: string[];
@@ -25,9 +32,16 @@ const journeyTiers: JourneyTier[] = [
     id: "seekers",
     title: "SEEKERS",
     subtitle: "Discovering Your Authentic Story",
-    icon: <Compass className="w-8 h-8" />,
+    icon: <Shield className="w-8 h-8" />,
     position: "left-8",
     basePrice: 1200,
+    colors: {
+      primary: "hsl(0, 70%, 45%)", // Dark red
+      secondary: "hsl(0, 60%, 35%)",
+      border: "hsl(0, 70%, 45%)",
+      glow: "rgba(220, 38, 38, 0.4)",
+      background: "linear-gradient(135deg, hsl(0, 70%, 45%)/10, hsl(0, 50%, 25%)/5)"
+    },
     content: {
       whereYouAre: [
         "Life feels like something happening to you rather than something you're creating. You're surviving the story you're living, reacting to circumstances, trying to keep your head above water while the world spins around you.",
@@ -58,6 +72,13 @@ const journeyTiers: JourneyTier[] = [
     icon: <Zap className="w-8 h-8" />,
     position: "left-1/2 transform -translate-x-1/2",
     basePrice: 2100,
+    colors: {
+      primary: "hsl(45, 85%, 55%)", // Gold
+      secondary: "hsl(45, 75%, 45%)",
+      border: "hsl(45, 85%, 55%)",
+      glow: "rgba(255, 215, 0, 0.4)",
+      background: "linear-gradient(135deg, hsl(45, 85%, 55%)/15, hsl(45, 65%, 35%)/5)"
+    },
     content: {
       whereYouAre: [
         "You've outgrown your old life. You know you're meant for more than what you're currently living. Maybe you climbed the ladder society pointed you toward only to realize it was leaning against the wrong wall. Or you carry a vision burning in your heart—you know exactly why you're here and what you're meant to create, but you struggle to make that vision real in the world.",
@@ -89,9 +110,16 @@ const journeyTiers: JourneyTier[] = [
     id: "worldbuilders",
     title: "WORLD BUILDERS",
     subtitle: "Scaling Transformation to Planetary Impact",
-    icon: <Mountain className="w-8 h-8" />,
+    icon: <Globe className="w-8 h-8" />,
     position: "right-8",
     basePrice: 4200,
+    colors: {
+      primary: "hsl(178, 65%, 45%)", // Teal
+      secondary: "hsl(178, 55%, 35%)",
+      border: "hsl(178, 65%, 45%)",
+      glow: "rgba(72, 196, 196, 0.4)",
+      background: "linear-gradient(135deg, hsl(178, 65%, 45%)/15, hsl(178, 45%, 25%)/5)"
+    },
     content: {
       whereYouAre: [
         "You're a leader, a legend in the making, a hero already established on your journey and ready to go further. You've built something significant in the world, accumulated influence and resources, yet you know your greatest contribution still lies ahead. You carry a vision that could change everything—an idea, innovation, or way of being that the world desperately needs.",
@@ -145,7 +173,7 @@ export default function JourneySelectionPage() {
     : 0;
 
   return (
-    <div className="min-h-screen bg-black text-amber-100">
+    <div className="min-h-screen bg-black text-amber-100 overflow-hidden">
       {/* Starry background */}
       <div 
         className="fixed inset-0 opacity-60"
@@ -158,11 +186,11 @@ export default function JourneySelectionPage() {
       />
       
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 min-h-screen flex flex-col">
         {/* Header */}
-        <header className="text-center py-16 px-4">
+        <header className="text-center py-8 px-4">
           <motion.h1 
-            className="font-angle text-4xl md:text-6xl mb-4 text-gradient-gold"
+            className="font-angle text-3xl md:text-5xl mb-2 text-gradient-gold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -170,204 +198,358 @@ export default function JourneySelectionPage() {
             Choose Your Place in the Journey
           </motion.h1>
           <motion.p 
-            className="font-thornelia text-xl md:text-2xl mb-6 text-amber-200"
+            className="font-emerland text-sm text-[hsl(178,65%,45%)] font-semibold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-          >
-            Where are you in your story transformation?
-          </motion.p>
-          <motion.p 
-            className="font-emerland text-lg text-[hsl(178,65%,45%)] font-semibold"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
           >
             First cohort - 50 spots - Last opportunity this year
           </motion.p>
         </header>
 
-        {/* Main Content Sections */}
-        <div className="max-w-6xl mx-auto px-4 space-y-16 pb-32">
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col justify-center px-4 pb-24">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedTier}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="w-full max-w-6xl mx-auto"
+            >
+              
+              {/* Cinematic Title Section */}
+              <motion.div 
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, delay: 0.3 }}
+              >
+                <div className="flex items-center justify-center mb-6">
+                  <motion.div 
+                    className={`p-4 rounded-full border-4 ${selectedTier === 'seekers' ? 'border-[hsl(0,70%,45%)] bg-[hsl(0,70%,45%)]/10' : selectedTier === 'changemakers' ? 'border-[hsl(45,85%,55%)] bg-[hsl(45,85%,55%)]/10' : 'border-[hsl(178,65%,45%)] bg-[hsl(178,65%,45%)]/10'}`}
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 1, delay: 0.6, type: "spring", bounce: 0.3 }}
+                    style={{
+                      boxShadow: `0 0 30px ${selectedTierData.colors.glow}`
+                    }}
+                  >
+                    <div className={`w-16 h-16 flex items-center justify-center`} style={{ color: selectedTierData.colors.primary }}>
+                      {selectedTierData.icon}
+                    </div>
+                  </motion.div>
+                </div>
+                
+                <motion.h1 
+                  className="font-angle text-5xl md:text-7xl mb-4"
+                  style={{ color: selectedTierData.colors.primary }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1, delay: 0.8 }}
+                >
+                  {selectedTierData.title}
+                </motion.h1>
+                
+                <motion.p 
+                  className="font-emerland text-xl md:text-2xl text-amber-200 italic"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 1.2 }}
+                >
+                  {selectedTierData.subtitle}
+                </motion.p>
+              </motion.div>
+
+              {/* Content Sections Grid */}
+              <div className="grid lg:grid-cols-2 gap-8">
+                
+                {/* Where You Are */}
+                <motion.div
+                  className="space-y-6"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.4 }}
+                >
+                  <div 
+                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-6"
+                    style={{
+                      borderColor: selectedTierData.colors.border,
+                      background: selectedTierData.colors.background,
+                      boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
+                    }}
+                  >
+                    <h3 className="font-angle text-2xl mb-4" style={{ color: selectedTierData.colors.primary }}>
+                      Where You Are in Your Journey
+                    </h3>
+                    <div className="space-y-4">
+                      {selectedTierData.content.whereYouAre.map((paragraph, index) => (
+                        <p key={index} className="font-emerland text-amber-200 leading-relaxed">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* How We Serve */}
+                <motion.div
+                  className="space-y-6"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.6 }}
+                >
+                  <div 
+                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-6"
+                    style={{
+                      borderColor: selectedTierData.colors.border,
+                      background: selectedTierData.colors.background,
+                      boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
+                    }}
+                  >
+                    <h3 className="font-angle text-2xl mb-4" style={{ color: selectedTierData.colors.primary }}>
+                      How We Serve You at This Level
+                    </h3>
+                    <div className="space-y-4">
+                      {selectedTierData.content.howWeServe.map((paragraph, index) => (
+                        <p key={index} className="font-emerland text-amber-200 leading-relaxed">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* What's Included */}
+                <motion.div
+                  className="lg:col-span-2"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.8 }}
+                >
+                  <div 
+                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-6"
+                    style={{
+                      borderColor: selectedTierData.colors.border,
+                      background: selectedTierData.colors.background,
+                      boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
+                    }}
+                  >
+                    <h3 className="font-angle text-2xl mb-6 text-center" style={{ color: selectedTierData.colors.primary }}>
+                      Your Transformation Includes
+                    </h3>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                      {selectedTierData.content.includes.map((item, index) => (
+                        <motion.div 
+                          key={index} 
+                          className="flex items-start bg-black/40 p-3 rounded"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.4, delay: 2 + (index * 0.1) }}
+                        >
+                          <span className="mr-2 mt-1" style={{ color: selectedTierData.colors.primary }}>✦</span>
+                          <span className="font-emerland text-amber-200 text-sm">{item}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Pricing Section */}
+                <motion.div
+                  className="lg:col-span-2"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 2.2 }}
+                >
+                  <div 
+                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-6"
+                    style={{
+                      borderColor: selectedTierData.colors.border,
+                      background: selectedTierData.colors.background,
+                      boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
+                    }}
+                  >
+                    <h3 className="font-angle text-3xl mb-6 text-center text-gradient-gold">
+                      What Is Your Story Worth to You?
+                    </h3>
+
+                    <div className="max-w-2xl mx-auto">
+                      {/* Investment Display */}
+                      <div className="text-center mb-6">
+                        <div className="font-thornelia text-4xl mb-2" style={{ color: selectedTierData.colors.primary }}>
+                          ${totalPrice.toLocaleString()}
+                        </div>
+                        <p className="font-emerland text-amber-200">
+                          Baseline: ${selectedTierData.basePrice.toLocaleString()}
+                          {scholarshipCount > 0 && ` + ${scholarshipCount} scholarship${scholarshipCount > 1 ? 's' : ''}`}
+                        </p>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-6">
+                        {/* Scholarship Controls */}
+                        <div className="space-y-4">
+                          <p className="font-emerland text-amber-200 text-center">Bring others with you:</p>
+                          <div className="flex justify-center items-center space-x-3">
+                            <Button
+                              onClick={() => setScholarshipCount(Math.max(0, scholarshipCount - 1))}
+                              disabled={scholarshipCount === 0}
+                              className="px-3 py-1"
+                              style={{
+                                backgroundColor: `${selectedTierData.colors.primary}20`,
+                                borderColor: selectedTierData.colors.primary,
+                                color: selectedTierData.colors.primary
+                              }}
+                            >
+                              -
+                            </Button>
+                            <span className="font-thornelia text-xl min-w-[2rem] text-center" style={{ color: selectedTierData.colors.primary }}>
+                              {scholarshipCount}
+                            </span>
+                            <Button
+                              onClick={() => setScholarshipCount(scholarshipCount + 1)}
+                              className="px-3 py-1"
+                              style={{
+                                backgroundColor: `${selectedTierData.colors.primary}20`,
+                                borderColor: selectedTierData.colors.primary,
+                                color: selectedTierData.colors.primary
+                              }}
+                            >
+                              <Plus className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        </div>
+
+                        {/* Payment Plans */}
+                        <div className="space-y-3">
+                          <p className="font-emerland text-amber-200 text-center">Payment plans:</p>
+                          {selectedTierData.content.paymentPlans.map((plan, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setSelectedPaymentPlan(index)}
+                              className={`w-full p-2 rounded border-2 transition-all duration-300 text-sm ${
+                                selectedPaymentPlan === index
+                                  ? 'bg-opacity-20'
+                                  : 'border-opacity-30 hover:border-opacity-60'
+                              }`}
+                              style={{
+                                borderColor: selectedTierData.colors.border,
+                                backgroundColor: selectedPaymentPlan === index ? `${selectedTierData.colors.primary}20` : 'transparent'
+                              }}
+                            >
+                              <div className="font-thornelia" style={{ color: selectedTierData.colors.primary }}>
+                                {plan.payments === 1 ? 'Full Payment' : `${plan.payments} Payments`}
+                              </div>
+                              <div className="font-emerland text-amber-200">
+                                ${Math.ceil(paymentAmount).toLocaleString()}{plan.payments > 1 ? ` each` : ''}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* CTA Button */}
+                      <motion.div
+                        className="mt-8"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 2.8 }}
+                      >
+                        <Button 
+                          className="w-full py-4 text-xl font-semibold rounded-lg transition-all duration-300"
+                          style={{
+                            backgroundColor: selectedTierData.colors.primary,
+                            color: selectedTier === 'seekers' ? 'white' : 'black',
+                            boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
+                          }}
+                          data-testid="button-claim-author-seat"
+                        >
+                          CLAIM YOUR AUTHOR'S SEAT
+                        </Button>
+                      </motion.div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Gradient Timeline Navigation at Bottom */}
+        <div className="fixed bottom-0 left-0 right-0 z-50">
+          {/* Gradient Background */}
+          <div className="h-20 bg-gradient-to-r from-[hsl(0,70%,25%)] via-[hsl(45,85%,35%)] to-[hsl(178,65%,25%)] opacity-90"></div>
           
-          {/* Tier Overview */}
-          <motion.section
-            className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(178,65%,45%)] rounded-lg p-8 shadow-[0_0_30px_rgba(72,196,196,0.3)]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="text-center mb-8">
-              <h2 className="font-angle text-3xl md:text-4xl text-gradient-gold mb-4">
-                {selectedTierData.title}
-              </h2>
-              <p className="font-emerland text-xl text-amber-200 italic">
-                {selectedTierData.subtitle}
-              </p>
-            </div>
-          </motion.section>
-
-          {/* Where You Are Section */}
-          <motion.section
-            className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(45,85%,55%)] rounded-lg p-8 shadow-[0_0_30px_rgba(255,215,0,0.3)]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h3 className="font-angle text-2xl md:text-3xl text-[hsl(178,65%,45%)] mb-6 text-center">
-              Where You Are in Your Journey
-            </h3>
-            <div className="space-y-6 max-w-4xl mx-auto">
-              {selectedTierData.content.whereYouAre.map((paragraph, index) => (
-                <p key={index} className="font-emerland text-lg leading-relaxed text-amber-200">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* How We Serve Section */}
-          <motion.section
-            className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(178,65%,45%)] rounded-lg p-8 shadow-[0_0_30px_rgba(72,196,196,0.3)]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <h3 className="font-angle text-2xl md:text-3xl text-[hsl(178,65%,45%)] mb-6 text-center">
-              How We Serve You at This Level
-            </h3>
-            <div className="space-y-6 max-w-4xl mx-auto">
-              {selectedTierData.content.howWeServe.map((paragraph, index) => (
-                <p key={index} className="font-emerland text-lg leading-relaxed text-amber-200">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* What's Included Section */}
-          <motion.section
-            className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(45,85%,55%)] rounded-lg p-8 shadow-[0_0_30px_rgba(255,215,0,0.3)]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <h3 className="font-angle text-2xl md:text-3xl text-[hsl(178,65%,45%)] mb-8 text-center">
-              Your Transformation Includes
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
-              {selectedTierData.content.includes.map((item, index) => (
-                <div key={index} className="flex items-start bg-black/40 p-4 rounded-lg">
-                  <span className="text-[hsl(45,85%,55%)] mr-3 mt-1 text-xl">✦</span>
-                  <span className="font-emerland text-lg text-amber-200">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.section>
-
-          {/* Pricing Section */}
-          <motion.section
-            className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(178,65%,45%)] rounded-lg p-8 shadow-[0_0_30px_rgba(72,196,196,0.3)]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <h3 className="font-angle text-3xl md:text-4xl text-gradient-gold mb-8 text-center">
-              What Is Your Story Worth to You?
-            </h3>
-
-            <div className="max-w-2xl mx-auto">
-              {/* Base Investment */}
-              <div className="text-center mb-8">
-                <div className="font-thornelia text-5xl text-[hsl(45,85%,55%)] mb-4">
-                  ${totalPrice.toLocaleString()}
-                </div>
-                <p className="font-emerland text-lg text-amber-200">
-                  Baseline investment: ${selectedTierData.basePrice.toLocaleString()}
-                  {scholarshipCount > 0 && ` + ${scholarshipCount} scholarship${scholarshipCount > 1 ? 's' : ''} ($${(scholarshipCount * 600).toLocaleString()})`}
-                </p>
-              </div>
-
-              {/* Scholarship Buttons */}
-              <div className="flex justify-center items-center space-x-4 mb-8">
-                <span className="font-emerland text-lg text-amber-200">Bring others with you:</span>
-                <Button
-                  onClick={() => setScholarshipCount(Math.max(0, scholarshipCount - 1))}
-                  disabled={scholarshipCount === 0}
-                  className="bg-[hsl(45,85%,55%)]/20 hover:bg-[hsl(45,85%,55%)]/30 text-[hsl(45,85%,55%)] border border-[hsl(45,85%,55%)]/50 px-4 py-2 text-lg"
-                >
-                  -
-                </Button>
-                <span className="font-thornelia text-2xl text-[hsl(178,65%,45%)] min-w-[3rem] text-center">
-                  {scholarshipCount}
-                </span>
-                <Button
-                  onClick={() => setScholarshipCount(scholarshipCount + 1)}
-                  className="bg-[hsl(45,85%,55%)]/20 hover:bg-[hsl(45,85%,55%)]/30 text-[hsl(45,85%,55%)] border border-[hsl(45,85%,55%)]/50 px-4 py-2 text-lg"
-                >
-                  <Plus className="w-5 h-5" />
-                </Button>
-              </div>
-
-              {/* Payment Plans */}
-              <div className="mb-8">
-                <p className="font-emerland text-lg text-amber-200 mb-4 text-center">Payment plans available:</p>
-                <div className="grid gap-4">
-                  {selectedTierData.content.paymentPlans.map((plan, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedPaymentPlan(index)}
-                      className={`w-full p-4 rounded-lg border-2 transition-all duration-300 ${
-                        selectedPaymentPlan === index
-                          ? 'border-[hsl(178,65%,45%)] bg-[hsl(178,65%,45%)]/10'
-                          : 'border-[hsl(45,85%,55%)]/30 hover:border-[hsl(45,85%,55%)]/60'
-                      }`}
+          {/* Timeline Content */}
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full max-w-4xl mx-auto px-8">
+              {/* Timeline Line */}
+              <div className="relative">
+                <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(0,70%,45%)] via-[hsl(45,85%,55%)] to-[hsl(178,65%,45%)] transform -translate-y-1/2 rounded-full"></div>
+                
+                {/* Timeline Points */}
+                <div className="flex justify-between items-center relative">
+                  {journeyTiers.map((tier, index) => (
+                    <motion.button
+                      key={tier.id}
+                      onClick={() => setSelectedTier(tier.id)}
+                      className="flex flex-col items-center group relative z-10"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
                     >
-                      <div className="font-thornelia text-xl text-[hsl(45,85%,55%)]">
-                        {plan.payments === 1 ? 'Full Payment' : `${plan.payments} Payments`}
-                      </div>
-                      <div className="font-emerland text-lg text-amber-200">
-                        ${Math.ceil(paymentAmount).toLocaleString()}{plan.payments > 1 ? ` each` : ''}
-                      </div>
-                    </button>
+                      {/* Icon Circle */}
+                      <motion.div 
+                        className={`w-16 h-16 rounded-full border-4 flex items-center justify-center mb-2 transition-all duration-500 ${
+                          selectedTier === tier.id 
+                            ? 'bg-white/20 backdrop-blur-sm'
+                            : 'bg-black/40 backdrop-blur-sm border-opacity-60 hover:border-opacity-100'
+                        }`}
+                        style={{
+                          borderColor: tier.colors.primary,
+                          boxShadow: selectedTier === tier.id ? `0 0 20px ${tier.colors.glow}` : 'none'
+                        }}
+                        animate={{
+                          scale: selectedTier === tier.id ? 1.2 : 1,
+                          backgroundColor: selectedTier === tier.id ? `${tier.colors.primary}20` : 'rgba(0,0,0,0.4)'
+                        }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div 
+                          className="w-8 h-8 flex items-center justify-center"
+                          style={{ color: tier.colors.primary }}
+                        >
+                          {tier.icon}
+                        </div>
+                      </motion.div>
+                      
+                      {/* Title */}
+                      <motion.div 
+                        className="text-center"
+                        animate={{
+                          opacity: selectedTier === tier.id ? 1 : 0.7,
+                          y: selectedTier === tier.id ? -2 : 0
+                        }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <div 
+                          className={`font-emerland text-xs font-bold tracking-wider ${
+                            selectedTier === tier.id ? 'text-white' : 'text-amber-200'
+                          }`}
+                          style={{
+                            color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
+                          }}
+                        >
+                          {tier.title}
+                        </div>
+                        <div className="font-emerland text-xs text-amber-200/60 mt-1">
+                          {tier.subtitle.split(' ').slice(0, 2).join(' ')}
+                        </div>
+                      </motion.div>
+                    </motion.button>
                   ))}
                 </div>
               </div>
-
-              {/* Claim Button */}
-              <Button 
-                className="w-full py-6 text-2xl font-semibold rounded-lg bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_30px_rgba(72,196,196,0.5)] transition-all duration-300"
-                data-testid="button-claim-author-seat"
-              >
-                CLAIM YOUR AUTHOR'S SEAT
-              </Button>
-            </div>
-          </motion.section>
-        </div>
-
-        {/* Timeline Navigation at Bottom */}
-        <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-[hsl(178,65%,45%)]/30 py-4">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="flex justify-center space-x-8">
-              {journeyTiers.map((tier) => (
-                <button
-                  key={tier.id}
-                  onClick={() => setSelectedTier(tier.id)}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
-                    selectedTier === tier.id 
-                      ? 'bg-[hsl(178,65%,45%)]/20 border-2 border-[hsl(178,65%,45%)] text-[hsl(178,65%,45%)]'
-                      : 'border-2 border-[hsl(45,85%,55%)]/30 text-amber-200 hover:border-[hsl(45,85%,55%)]/60'
-                  }`}
-                >
-                  <div className="w-6 h-6">{tier.icon}</div>
-                  <span className="font-emerland text-sm font-semibold">{tier.title}</span>
-                </button>
-              ))}
             </div>
           </div>
         </div>
