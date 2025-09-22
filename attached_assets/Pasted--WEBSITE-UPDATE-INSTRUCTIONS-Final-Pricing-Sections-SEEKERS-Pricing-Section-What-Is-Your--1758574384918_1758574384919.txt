@@ -1,0 +1,94 @@
+# WEBSITE UPDATE INSTRUCTIONS: Final Pricing Sections
+
+## SEEKERS Pricing Section
+
+```
+What Is Your Story Worth to You?
+
+How deep are you willing to go?
+
+Baseline investment: $1,200
+
+Choose your investment:
+□ Full commitment: $1,200 + bonus initiation session*
+□ Two payments: $650 each ($1,300 total)
+□ Three payments: $450 each ($1,350 total)
+
+Bring others with you: [- 0 +]
+
+Every $600 above baseline funds another person's transformation. The deeper your commitment to your own story, the more lives you change through this movement.
+
+Current total: $1,200
+Scholarships you're funding: 0
+
+*First 20 people who pay in full receive a personal initiation session before the cohort begins.
+```
+
+## CHANGEMAKERS Pricing Section
+
+```
+What Is Your Story Worth to You?
+
+How deep are you willing to go?
+
+Baseline investment: $2,100
+
+Choose your investment:
+□ Full commitment: $2,100 + bonus initiation session*
+□ Two payments: $1,100 each ($2,200 total)
+□ Three payments: $750 each ($2,250 total)
+
+Bring others with you: [- 0 +]
+
+Every $600 above baseline funds another person's transformation. The deeper your commitment to your own story, the more lives you change through this movement.
+
+Current total: $2,100
+Scholarships you're funding: 0
+
+*First 20 people who pay in full receive a personal initiation session before the cohort begins.
+```
+
+## WORLD BUILDERS Pricing Section
+
+```
+What Is Your Story Worth to You?
+
+How deep are you willing to go?
+
+Baseline investment: $4,200
+
+Choose your investment:
+□ Full commitment: $4,200 + bonus initiation session*
+□ Two payments: $2,200 each ($4,400 total)
+□ Three payments: $1,500 each ($4,500 total)
+
+Bring others with you: [- 0 +]
+
+Every $600 above baseline funds another person's transformation. The deeper your commitment to your own story, the more lives you change through this movement.
+
+Current total: $4,200
+Scholarships you're funding: 0
+
+*First 20 people who pay in full receive a personal initiation session before the cohort begins.
+```
+
+# UPDATE INSTRUCTIONS
+
+## Replace Current Pricing Sections
+1. Locate the "What Is Your Story Worth to You?" section in each tier
+2. Replace the entire section with the corresponding version above
+3. Ensure the baseline investment amount matches the tier ($1,200/$2,100/$4,200)
+
+## Interactive Elements Setup
+- **Payment Selection**: Radio buttons where only one can be selected
+- **Scholarship Counter**: [- +] buttons that increment by 1, adding $600 per increment
+- **Dynamic Totals**: "Current total" and "Scholarships you're funding" update automatically
+- **Scarcity Tracking**: If possible, show "X of 20 initiation sessions remaining"
+
+## Visual Hierarchy
+- Make "Full commitment" option slightly emphasized (bold or highlighted)
+- Add small badge/icon next to bonus session offer
+- Keep payment plans visible but secondary in design
+- Ensure +/- buttons are clearly clickable
+
+The key psychological flow: Challenge their commitment level → Show investment options → Connect individual commitment to collective impact → Create urgency through scarcity.

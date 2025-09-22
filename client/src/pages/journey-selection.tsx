@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Shield, Zap, Globe, Plus } from "lucide-react";
+import { Shield, Sword, Feather, Plus } from "lucide-react";
 import { useLocation } from "wouter";
 import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
 
@@ -69,7 +69,7 @@ const journeyTiers: JourneyTier[] = [
     id: "changemakers",
     title: "CHANGEMAKERS",
     subtitle: "Intensive Transformation Through Fellowship",
-    icon: <Zap className="w-8 h-8" />,
+    icon: <Sword className="w-8 h-8" />,
     position: "left-1/2 transform -translate-x-1/2",
     basePrice: 2100,
     colors: {
@@ -110,7 +110,7 @@ const journeyTiers: JourneyTier[] = [
     id: "worldbuilders",
     title: "WORLD BUILDERS",
     subtitle: "Scaling Transformation to Planetary Impact",
-    icon: <Globe className="w-8 h-8" />,
+    icon: <Feather className="w-8 h-8" />,
     position: "right-8",
     basePrice: 4200,
     colors: {
@@ -476,79 +476,73 @@ export default function JourneySelectionPage() {
           </AnimatePresence>
         </div>
 
-        {/* Gradient Timeline Navigation at Bottom */}
-        <div className="fixed bottom-0 left-0 right-0 z-50">
-          {/* Gradient Background */}
-          <div className="h-20 bg-gradient-to-r from-[hsl(0,70%,25%)] via-[hsl(45,85%,35%)] to-[hsl(178,65%,25%)] opacity-90"></div>
-          
-          {/* Timeline Content */}
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full max-w-4xl mx-auto px-8">
-              {/* Timeline Line */}
-              <div className="relative">
-                <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(0,70%,45%)] via-[hsl(45,85%,55%)] to-[hsl(178,65%,45%)] transform -translate-y-1/2 rounded-full"></div>
-                
-                {/* Timeline Points */}
-                <div className="flex justify-between items-center relative">
-                  {journeyTiers.map((tier, index) => (
-                    <motion.button
-                      key={tier.id}
-                      onClick={() => setSelectedTier(tier.id)}
-                      className="flex flex-col items-center group relative z-10"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
+        {/* Clean Timeline Navigation at Bottom */}
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm py-6">
+          <div className="w-full max-w-4xl mx-auto px-8">
+            {/* Timeline Line with Gradient */}
+            <div className="relative">
+              {/* Gradient Line */}
+              <div 
+                className="absolute top-1/2 left-8 right-8 h-1 transform -translate-y-1/2 rounded-full"
+                style={{
+                  background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%), hsl(178,65%,45%))'
+                }}
+              ></div>
+              
+              {/* Timeline Points */}
+              <div className="flex justify-between items-center relative">
+                {journeyTiers.map((tier, index) => (
+                  <motion.button
+                    key={tier.id}
+                    onClick={() => setSelectedTier(tier.id)}
+                    className="flex flex-col items-center group relative z-10"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {/* Icon Circle */}
+                    <motion.div 
+                      className="w-14 h-14 rounded-full flex items-center justify-center mb-3 transition-all duration-300"
+                      style={{
+                        backgroundColor: 'rgb(0, 0, 0)',
+                        border: `${selectedTier === tier.id ? '3px' : '2px'} solid ${tier.colors.primary}`,
+                        boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}` : '0 0 5px rgba(0,0,0,0.3)'
+                      }}
+                      animate={{
+                        scale: selectedTier === tier.id ? 1.15 : 1
+                      }}
+                      transition={{ duration: 0.3 }}
                     >
-                      {/* Icon Circle */}
-                      <motion.div 
-                        className={`w-16 h-16 rounded-full border-4 flex items-center justify-center mb-2 transition-all duration-500 ${
-                          selectedTier === tier.id 
-                            ? 'bg-white/20 backdrop-blur-sm'
-                            : 'bg-black/40 backdrop-blur-sm border-opacity-60 hover:border-opacity-100'
-                        }`}
+                      <div 
+                        className="w-6 h-6 flex items-center justify-center"
+                        style={{ color: tier.colors.primary }}
+                      >
+                        {tier.icon}
+                      </div>
+                    </motion.div>
+                    
+                    {/* Title */}
+                    <motion.div 
+                      className="text-center"
+                      animate={{
+                        opacity: selectedTier === tier.id ? 1 : 0.7,
+                        y: selectedTier === tier.id ? -2 : 0
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div 
+                        className="font-emerland text-xs font-bold tracking-wider"
                         style={{
-                          borderColor: tier.colors.primary,
-                          boxShadow: selectedTier === tier.id ? `0 0 20px ${tier.colors.glow}` : 'none'
+                          color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
                         }}
-                        animate={{
-                          scale: selectedTier === tier.id ? 1.2 : 1,
-                          backgroundColor: selectedTier === tier.id ? `${tier.colors.primary}20` : 'rgba(0,0,0,0.4)'
-                        }}
-                        transition={{ duration: 0.3 }}
                       >
-                        <div 
-                          className="w-8 h-8 flex items-center justify-center"
-                          style={{ color: tier.colors.primary }}
-                        >
-                          {tier.icon}
-                        </div>
-                      </motion.div>
-                      
-                      {/* Title */}
-                      <motion.div 
-                        className="text-center"
-                        animate={{
-                          opacity: selectedTier === tier.id ? 1 : 0.7,
-                          y: selectedTier === tier.id ? -2 : 0
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div 
-                          className={`font-emerland text-xs font-bold tracking-wider ${
-                            selectedTier === tier.id ? 'text-white' : 'text-amber-200'
-                          }`}
-                          style={{
-                            color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
-                          }}
-                        >
-                          {tier.title}
-                        </div>
-                        <div className="font-emerland text-xs text-amber-200/60 mt-1">
-                          {tier.subtitle.split(' ').slice(0, 2).join(' ')}
-                        </div>
-                      </motion.div>
-                    </motion.button>
-                  ))}
-                </div>
+                        {tier.title}
+                      </div>
+                      <div className="font-emerland text-xs text-amber-200/60 mt-1">
+                        {tier.subtitle.split(' ').slice(0, 2).join(' ')}
+                      </div>
+                    </motion.div>
+                  </motion.button>
+                ))}
               </div>
             </div>
           </div>
