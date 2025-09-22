@@ -376,25 +376,20 @@ export default function JourneySelectionPage() {
                     </h3>
 
                     <div className="max-w-2xl mx-auto">
-                      {/* How Deep Question */}
-                      <div className="text-center mb-6">
-                        <p className="font-emerland text-lg text-amber-200 mb-4">
-                          How deep are you willing to go?
-                        </p>
-                        <p className="font-emerland text-amber-200">
-                          Baseline investment: ${selectedTierData.basePrice.toLocaleString()}
+                      {/* Simple Opening Line */}
+                      <div className="text-center mb-8">
+                        <p className="font-thornelia text-2xl text-amber-200 mb-6">
+                          The future you dream is one story away.
                         </p>
                       </div>
 
-                      {/* Payment Options */}
-                      <div className="space-y-4 mb-6">
-                        <p className="font-emerland text-amber-200 mb-3">Choose your investment:</p>
-                        
+                      {/* Simple Payment Options */}
+                      <div className="space-y-4 mb-8">
                         {/* Full Payment Option */}
                         <button
                           onClick={() => setSelectedPaymentPlan(0)}
-                          className={`w-full p-4 rounded border-2 transition-all duration-300 text-left ${
-                            selectedPaymentPlan === 0 ? 'border-opacity-100 bg-opacity-20' : 'border-opacity-30 hover:border-opacity-60'
+                          className={`w-full p-6 rounded border-2 transition-all duration-300 text-left ${
+                            selectedPaymentPlan === 0 ? 'border-opacity-100 bg-opacity-20' : 'border-opacity-50 hover:border-opacity-80'
                           }`}
                           style={{
                             borderColor: selectedTierData.colors.primary,
@@ -402,22 +397,22 @@ export default function JourneySelectionPage() {
                           }}
                         >
                           <div className="flex items-center">
-                            <div className={`w-4 h-4 rounded border-2 mr-3 ${
+                            <div className={`w-5 h-5 rounded border-2 mr-4 ${
                               selectedPaymentPlan === 0 ? 'bg-opacity-100' : ''
                             }`} style={{ borderColor: selectedTierData.colors.primary, backgroundColor: selectedPaymentPlan === 0 ? selectedTierData.colors.primary : 'transparent' }}></div>
                             <div>
-                              <div className="font-thornelia text-lg" style={{ color: selectedTierData.colors.primary }}>
+                              <div className="font-thornelia text-xl mb-1" style={{ color: selectedTierData.colors.primary }}>
                                 Full commitment: ${selectedTierData.basePrice.toLocaleString()} + bonus initiation session*
                               </div>
                             </div>
                           </div>
                         </button>
 
-                        {/* Two Payments Option */}
+                        {/* Payment Plans Option */}
                         <button
                           onClick={() => setSelectedPaymentPlan(1)}
-                          className={`w-full p-4 rounded border-2 transition-all duration-300 text-left ${
-                            selectedPaymentPlan === 1 ? 'border-opacity-100 bg-opacity-20' : 'border-opacity-30 hover:border-opacity-60'
+                          className={`w-full p-6 rounded border-2 transition-all duration-300 text-left ${
+                            selectedPaymentPlan === 1 ? 'border-opacity-100 bg-opacity-20' : 'border-opacity-50 hover:border-opacity-80'
                           }`}
                           style={{
                             borderColor: selectedTierData.colors.primary,
@@ -425,110 +420,34 @@ export default function JourneySelectionPage() {
                           }}
                         >
                           <div className="flex items-center">
-                            <div className={`w-4 h-4 rounded border-2 mr-3 ${
+                            <div className={`w-5 h-5 rounded border-2 mr-4 ${
                               selectedPaymentPlan === 1 ? 'bg-opacity-100' : ''
                             }`} style={{ borderColor: selectedTierData.colors.primary, backgroundColor: selectedPaymentPlan === 1 ? selectedTierData.colors.primary : 'transparent' }}></div>
                             <div>
-                              <div className="font-thornelia" style={{ color: selectedTierData.colors.primary }}>
-                                Two payments: ${selectedTierData.content.paymentPlans[1].amount.toLocaleString()} each (${(selectedTierData.content.paymentPlans[1].amount * 2).toLocaleString()} total)
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-
-                        {/* Three Payments Option */}
-                        <button
-                          onClick={() => setSelectedPaymentPlan(2)}
-                          className={`w-full p-4 rounded border-2 transition-all duration-300 text-left ${
-                            selectedPaymentPlan === 2 ? 'border-opacity-100 bg-opacity-20' : 'border-opacity-30 hover:border-opacity-60'
-                          }`}
-                          style={{
-                            borderColor: selectedTierData.colors.primary,
-                            backgroundColor: selectedPaymentPlan === 2 ? `${selectedTierData.colors.primary}20` : 'transparent'
-                          }}
-                        >
-                          <div className="flex items-center">
-                            <div className={`w-4 h-4 rounded border-2 mr-3 ${
-                              selectedPaymentPlan === 2 ? 'bg-opacity-100' : ''
-                            }`} style={{ borderColor: selectedTierData.colors.primary, backgroundColor: selectedPaymentPlan === 2 ? selectedTierData.colors.primary : 'transparent' }}></div>
-                            <div>
-                              <div className="font-thornelia" style={{ color: selectedTierData.colors.primary }}>
-                                Three payments: ${selectedTierData.content.paymentPlans[2].amount.toLocaleString()} each (${(selectedTierData.content.paymentPlans[2].amount * 3).toLocaleString()} total)
+                              <div className="font-thornelia text-xl" style={{ color: selectedTierData.colors.primary }}>
+                                Payment plans available
                               </div>
                             </div>
                           </div>
                         </button>
                       </div>
 
-                      {/* Scholarship Section */}
-                      <div className="border-t border-amber-200/20 pt-6 mb-6">
-                        <div className="flex justify-between items-center mb-4">
-                          <span className="font-emerland text-amber-200">Bring others with you:</span>
-                          <div className="flex items-center space-x-3">
-                            <Button
-                              onClick={() => setScholarshipCount(Math.max(0, scholarshipCount - 1))}
-                              disabled={scholarshipCount === 0}
-                              className="w-8 h-8 p-0 text-lg font-bold"
-                              style={{
-                                backgroundColor: `${selectedTierData.colors.primary}20`,
-                                borderColor: selectedTierData.colors.primary,
-                                color: selectedTierData.colors.primary
-                              }}
-                            >
-                              -
-                            </Button>
-                            <span className="font-thornelia text-xl min-w-[2rem] text-center" style={{ color: selectedTierData.colors.primary }}>
-                              {scholarshipCount}
-                            </span>
-                            <Button
-                              onClick={() => setScholarshipCount(scholarshipCount + 1)}
-                              className="w-8 h-8 p-0 text-lg font-bold"
-                              style={{
-                                backgroundColor: `${selectedTierData.colors.primary}20`,
-                                borderColor: selectedTierData.colors.primary,
-                                color: selectedTierData.colors.primary
-                              }}
-                            >
-                              +
-                            </Button>
-                          </div>
-                        </div>
-                        
-                        <p className="font-emerland text-sm text-amber-200/80 mb-4">
-                          Every $600 above baseline funds another person's transformation. The deeper your commitment to your own story, the more lives you change through this movement.
+                      {/* Bonus Session Note */}
+                      <div className="bg-black/40 p-4 rounded border border-amber-200/20 mb-8">
+                        <p className="font-emerland text-sm text-amber-200/80 italic">
+                          *First 20 people who pay in full receive a personal initiation session before the cohort begins.
                         </p>
-                        
-                        <div className="bg-black/40 p-4 rounded border" style={{ borderColor: selectedTierData.colors.primary }}>
-                          <div className="flex justify-between mb-2">
-                            <span className="font-emerland text-amber-200">Current total:</span>
-                            <span className="font-thornelia text-lg" style={{ color: selectedTierData.colors.primary }}>
-                              ${((selectedPaymentPlan === 0 ? selectedTierData.basePrice : selectedTierData.content.paymentPlans[selectedPaymentPlan].amount * selectedTierData.content.paymentPlans[selectedPaymentPlan].payments) + (scholarshipCount * 600)).toLocaleString()}
-                            </span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="font-emerland text-amber-200">Scholarships you're funding:</span>
-                            <span className="font-thornelia" style={{ color: selectedTierData.colors.primary }}>
-                              {scholarshipCount}
-                            </span>
-                          </div>
-                        </div>
-                        
-                        {selectedPaymentPlan === 0 && (
-                          <p className="font-emerland text-xs text-amber-200/60 mt-3 italic">
-                            *First 20 people who pay in full receive a personal initiation session before the cohort begins.
-                          </p>
-                        )}
                       </div>
 
-                      {/* CTA Button */}
+                      {/* CTA Buttons */}
                       <motion.div
-                        className="mt-8"
+                        className="space-y-4"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 2.8 }}
                       >
                         <Button 
-                          className="w-full py-4 text-xl font-semibold rounded-lg transition-all duration-300"
+                          className="w-full py-5 text-xl font-bold rounded-lg transition-all duration-300"
                           style={{
                             backgroundColor: selectedTierData.colors.primary,
                             color: selectedTier === 'seekers' ? 'white' : 'black',
@@ -537,6 +456,18 @@ export default function JourneySelectionPage() {
                           data-testid="button-claim-author-seat"
                         >
                           CLAIM YOUR AUTHOR'S SEAT
+                        </Button>
+                        
+                        <Button 
+                          variant="outline"
+                          className="w-full py-4 text-lg font-semibold rounded-lg transition-all duration-300 bg-transparent"
+                          style={{
+                            borderColor: selectedTierData.colors.primary,
+                            color: selectedTierData.colors.primary
+                          }}
+                          data-testid="button-book-call"
+                        >
+                          Questions? Book a Call
                         </Button>
                       </motion.div>
                     </div>
@@ -548,7 +479,7 @@ export default function JourneySelectionPage() {
         </div>
 
         {/* Clean Timeline Navigation at Bottom */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm py-6">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm py-8 pb-12">
           <div className="w-full max-w-4xl mx-auto px-8">
             {/* Timeline Line with Gradient */}
             <div className="relative">
@@ -570,15 +501,15 @@ export default function JourneySelectionPage() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {/* Icon Circle - Centered on line */}
+                    {/* Icon Circle - Perfectly centered on line */}
                     <motion.div 
-                      className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer"
+                      className="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer"
                       style={{
                         backgroundColor: 'rgb(0, 0, 0)',
                         border: `${selectedTier === tier.id ? '3px' : '2px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 25px ${tier.colors.glow}, 0 0 40px ${tier.colors.glow}, 0 0 60px ${tier.colors.glow}` : '0 0 5px rgba(0,0,0,0.3)',
-                        marginTop: '-28px', // Half the height to center on line
-                        marginBottom: '8px'
+                        transform: 'translateY(-50%)', // Perfect centering on line
+                        marginBottom: '16px'
                       }}
                       animate={{
                         scale: selectedTier === tier.id ? 1.15 : 1
@@ -595,7 +526,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Title */}
                     <motion.div 
-                      className="text-center"
+                      className="text-center max-w-[140px]"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7,
                         y: selectedTier === tier.id ? -2 : 0
@@ -603,14 +534,14 @@ export default function JourneySelectionPage() {
                       transition={{ duration: 0.3 }}
                     >
                       <div 
-                        className="font-emerland text-xs font-bold tracking-wider"
+                        className="font-emerland text-sm font-bold tracking-wider mb-2"
                         style={{
                           color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
                         }}
                       >
                         {tier.title}
                       </div>
-                      <div className="font-emerland text-xs text-amber-200/60 mt-1 px-2">
+                      <div className="font-emerland text-xs text-amber-200/80 leading-relaxed px-1">
                         {tier.subtitle}
                       </div>
                     </motion.div>
