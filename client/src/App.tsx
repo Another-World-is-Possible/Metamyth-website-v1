@@ -16,6 +16,7 @@ import QuestionairePage from "@/pages/questionaire";
 import FederationPage from "@/pages/federation";
 import BeginPortal from "@/pages/begin-portal";
 import MetamythJourneyPage from "@/pages/metamyth-journey";
+import TransformationJourneysPage from "@/pages/transformation-journeys";
 import SwordCursor from "@/components/sword-cursor";
 import { ImageLoadingProvider } from "@/contexts/ImageLoadingContext";
 import { AudioProvider } from "@/contexts/audio-context";
@@ -47,6 +48,7 @@ function Router() {
       <Route path="/federation" component={FederationPage} />
       <Route path="/begin" component={BeginPortal} />
       <Route path="/metamyth-journey" component={MetamythJourneyPage} />
+      <Route path="/transformation-journeys" component={TransformationJourneysPage} />
       <Route component={NotFound} />
     </Switch>
   );
