@@ -125,7 +125,7 @@ const journeyTiers: JourneyTier[] = [
 
 export default function JourneySelectionPage() {
   const [location] = useLocation();
-  const [selectedTier, setSelectedTier] = useState<string | null>(null);
+  const [selectedTier, setSelectedTier] = useState<string>('changemakers'); // Default to changemakers
   const [scholarshipCount, setScholarshipCount] = useState(0);
   const [selectedPaymentPlan, setSelectedPaymentPlan] = useState(0);
 
@@ -138,9 +138,9 @@ export default function JourneySelectionPage() {
     }
   }, [location]);
 
-  const selectedTierData = journeyTiers.find(tier => tier.id === selectedTier);
-  const totalPrice = selectedTierData ? selectedTierData.basePrice + (scholarshipCount * 600) : 0;
-  const paymentAmount = selectedTierData && selectedPaymentPlan < selectedTierData.content.paymentPlans.length 
+  const selectedTierData = journeyTiers.find(tier => tier.id === selectedTier)!;
+  const totalPrice = selectedTierData.basePrice + (scholarshipCount * 600);
+  const paymentAmount = selectedPaymentPlan < selectedTierData.content.paymentPlans.length 
     ? selectedTierData.content.paymentPlans[selectedPaymentPlan].amount + (scholarshipCount * 600 / selectedTierData.content.paymentPlans[selectedPaymentPlan].payments)
     : 0;
 
@@ -158,7 +158,7 @@ export default function JourneySelectionPage() {
       />
       
       {/* Content */}
-      <div className="relative z-10 min-h-screen">
+      <div className="relative z-10">
         {/* Header */}
         <header className="text-center py-16 px-4">
           <motion.h1 
@@ -187,193 +187,188 @@ export default function JourneySelectionPage() {
           </motion.p>
         </header>
 
-        <div className="flex flex-col lg:flex-row min-h-[70vh]">
-          {/* Journey Timeline */}
-          <div className="lg:w-2/3 px-4 lg:px-8">
-            {/* Journey Path */}
-            <div className="relative mb-16 lg:mb-8">
-              <div className="hidden lg:block absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-[hsl(45,85%,55%)] via-[hsl(178,65%,45%)] to-[hsl(45,85%,55%)] opacity-50"></div>
-              
-              {/* Journey Stations */}
-              <div className="flex flex-col lg:flex-row lg:justify-between space-y-8 lg:space-y-0 lg:relative">
-                {journeyTiers.map((tier) => (
-                  <motion.div
-                    key={tier.id}
-                    className={`relative ${tier.position} cursor-pointer group`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setSelectedTier(tier.id)}
-                  >
-                    <div className={`w-32 h-32 mx-auto rounded-full border-4 transition-all duration-300 flex items-center justify-center ${
-                      selectedTier === tier.id 
-                        ? 'border-[hsl(178,65%,45%)] bg-[hsl(178,65%,45%)]/20 shadow-[0_0_30px_rgba(72,196,196,0.5)]' 
-                        : 'border-[hsl(45,85%,55%)] bg-[hsl(45,85%,55%)]/10 shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:border-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,45%)]/10'
-                    }`}>
-                      <div className={`transition-all duration-300 ${
-                        selectedTier === tier.id ? 'text-[hsl(178,65%,45%)]' : 'text-[hsl(45,85%,55%)] group-hover:text-[hsl(178,65%,45%)]'
-                      }`}>
-                        {tier.icon}
-                      </div>
-                    </div>
-                    <div className="text-center mt-4">
-                      <h3 className="font-angle text-xl md:text-2xl text-gradient-gold mb-2">{tier.title}</h3>
-                      <p className="font-emerland text-sm text-amber-200">{tier.subtitle}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+        {/* Main Content Sections */}
+        <div className="max-w-6xl mx-auto px-4 space-y-16 pb-32">
+          
+          {/* Tier Overview */}
+          <motion.section
+            className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(178,65%,45%)] rounded-lg p-8 shadow-[0_0_30px_rgba(72,196,196,0.3)]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="text-center mb-8">
+              <h2 className="font-angle text-3xl md:text-4xl text-gradient-gold mb-4">
+                {selectedTierData.title}
+              </h2>
+              <p className="font-emerland text-xl text-amber-200 italic">
+                {selectedTierData.subtitle}
+              </p>
             </div>
-          </div>
+          </motion.section>
 
-          {/* Content Panel */}
-          <div className="lg:w-1/3 px-4 lg:px-8">
-            <AnimatePresence mode="wait">
-              {selectedTier ? (
-                <motion.div
-                  key={selectedTier}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(178,65%,45%)] rounded-lg p-6 shadow-[0_0_30px_rgba(72,196,196,0.3)]"
+          {/* Where You Are Section */}
+          <motion.section
+            className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(45,85%,55%)] rounded-lg p-8 shadow-[0_0_30px_rgba(255,215,0,0.3)]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h3 className="font-angle text-2xl md:text-3xl text-[hsl(178,65%,45%)] mb-6 text-center">
+              Where You Are in Your Journey
+            </h3>
+            <div className="space-y-6 max-w-4xl mx-auto">
+              {selectedTierData.content.whereYouAre.map((paragraph, index) => (
+                <p key={index} className="font-emerland text-lg leading-relaxed text-amber-200">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* How We Serve Section */}
+          <motion.section
+            className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(178,65%,45%)] rounded-lg p-8 shadow-[0_0_30px_rgba(72,196,196,0.3)]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <h3 className="font-angle text-2xl md:text-3xl text-[hsl(178,65%,45%)] mb-6 text-center">
+              How We Serve You at This Level
+            </h3>
+            <div className="space-y-6 max-w-4xl mx-auto">
+              {selectedTierData.content.howWeServe.map((paragraph, index) => (
+                <p key={index} className="font-emerland text-lg leading-relaxed text-amber-200">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* What's Included Section */}
+          <motion.section
+            className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(45,85%,55%)] rounded-lg p-8 shadow-[0_0_30px_rgba(255,215,0,0.3)]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <h3 className="font-angle text-2xl md:text-3xl text-[hsl(178,65%,45%)] mb-8 text-center">
+              Your Transformation Includes
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+              {selectedTierData.content.includes.map((item, index) => (
+                <div key={index} className="flex items-start bg-black/40 p-4 rounded-lg">
+                  <span className="text-[hsl(45,85%,55%)] mr-3 mt-1 text-xl">✦</span>
+                  <span className="font-emerland text-lg text-amber-200">{item}</span>
+                </div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* Pricing Section */}
+          <motion.section
+            className="bg-black/60 backdrop-blur-sm border-2 border-[hsl(178,65%,45%)] rounded-lg p-8 shadow-[0_0_30px_rgba(72,196,196,0.3)]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <h3 className="font-angle text-3xl md:text-4xl text-gradient-gold mb-8 text-center">
+              What Is Your Story Worth to You?
+            </h3>
+
+            <div className="max-w-2xl mx-auto">
+              {/* Base Investment */}
+              <div className="text-center mb-8">
+                <div className="font-thornelia text-5xl text-[hsl(45,85%,55%)] mb-4">
+                  ${totalPrice.toLocaleString()}
+                </div>
+                <p className="font-emerland text-lg text-amber-200">
+                  Baseline investment: ${selectedTierData.basePrice.toLocaleString()}
+                  {scholarshipCount > 0 && ` + ${scholarshipCount} scholarship${scholarshipCount > 1 ? 's' : ''} ($${(scholarshipCount * 600).toLocaleString()})`}
+                </p>
+              </div>
+
+              {/* Scholarship Buttons */}
+              <div className="flex justify-center items-center space-x-4 mb-8">
+                <span className="font-emerland text-lg text-amber-200">Bring others with you:</span>
+                <Button
+                  onClick={() => setScholarshipCount(Math.max(0, scholarshipCount - 1))}
+                  disabled={scholarshipCount === 0}
+                  className="bg-[hsl(45,85%,55%)]/20 hover:bg-[hsl(45,85%,55%)]/30 text-[hsl(45,85%,55%)] border border-[hsl(45,85%,55%)]/50 px-4 py-2 text-lg"
                 >
-                  {selectedTierData && (
-                    <>
-                      <div className="mb-6">
-                        <h2 className="font-angle text-2xl md:text-3xl text-gradient-gold mb-2">
-                          {selectedTierData.title}
-                        </h2>
-                        <p className="font-emerland text-lg text-amber-200 italic">
-                          {selectedTierData.subtitle}
-                        </p>
-                      </div>
-
-                      {/* Where You Are */}
-                      <div className="mb-6">
-                        <h3 className="font-thornelia text-xl text-[hsl(178,65%,45%)] mb-3">
-                          Where You Are in Your Journey
-                        </h3>
-                        {selectedTierData.content.whereYouAre.map((paragraph, index) => (
-                          <p key={index} className="font-emerland text-sm leading-relaxed text-amber-200 mb-3">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-
-                      {/* How We Serve */}
-                      <div className="mb-6">
-                        <h3 className="font-thornelia text-xl text-[hsl(178,65%,45%)] mb-3">
-                          How We Serve You at This Level
-                        </h3>
-                        {selectedTierData.content.howWeServe.map((paragraph, index) => (
-                          <p key={index} className="font-emerland text-sm leading-relaxed text-amber-200 mb-3">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-
-                      {/* Includes */}
-                      <div className="mb-8">
-                        <h3 className="font-thornelia text-xl text-[hsl(178,65%,45%)] mb-3">
-                          Your Transformation Includes
-                        </h3>
-                        <div className="space-y-2">
-                          {selectedTierData.content.includes.map((item, index) => (
-                            <div key={index} className="flex items-start">
-                              <span className="text-[hsl(45,85%,55%)] mr-2 mt-1">✦</span>
-                              <span className="font-emerland text-sm text-amber-200">{item}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Pricing Section */}
-                      <div className="border-t border-[hsl(178,65%,45%)]/30 pt-6">
-                        <h3 className="font-angle text-2xl text-gradient-gold mb-4 text-center">
-                          What Is Your Story Worth to You?
-                        </h3>
-
-                        {/* Base Investment */}
-                        <div className="text-center mb-4">
-                          <div className="font-thornelia text-3xl text-[hsl(45,85%,55%)] mb-2">
-                            ${totalPrice.toLocaleString()}
-                          </div>
-                          <p className="font-emerland text-sm text-amber-200">
-                            Baseline investment: ${selectedTierData.basePrice.toLocaleString()}
-                            {scholarshipCount > 0 && ` + ${scholarshipCount} scholarship${scholarshipCount > 1 ? 's' : ''} ($${(scholarshipCount * 600).toLocaleString()})`}
-                          </p>
-                        </div>
-
-                        {/* Scholarship Buttons */}
-                        <div className="flex justify-center items-center space-x-3 mb-6">
-                          <span className="font-emerland text-sm text-amber-200">Bring others with you:</span>
-                          <Button
-                            onClick={() => setScholarshipCount(Math.max(0, scholarshipCount - 1))}
-                            disabled={scholarshipCount === 0}
-                            className="bg-[hsl(45,85%,55%)]/20 hover:bg-[hsl(45,85%,55%)]/30 text-[hsl(45,85%,55%)] border border-[hsl(45,85%,55%)]/50 px-3 py-1 text-sm"
-                          >
-                            -
-                          </Button>
-                          <span className="font-thornelia text-lg text-[hsl(178,65%,45%)] min-w-[2rem] text-center">
-                            {scholarshipCount}
-                          </span>
-                          <Button
-                            onClick={() => setScholarshipCount(scholarshipCount + 1)}
-                            className="bg-[hsl(45,85%,55%)]/20 hover:bg-[hsl(45,85%,55%)]/30 text-[hsl(45,85%,55%)] border border-[hsl(45,85%,55%)]/50 px-3 py-1 text-sm"
-                          >
-                            <Plus className="w-4 h-4" />
-                          </Button>
-                        </div>
-
-                        {/* Payment Plans */}
-                        <div className="mb-6">
-                          <p className="font-emerland text-sm text-amber-200 mb-3 text-center">Payment plans available:</p>
-                          <div className="space-y-2">
-                            {selectedTierData.content.paymentPlans.map((plan, index) => (
-                              <button
-                                key={index}
-                                onClick={() => setSelectedPaymentPlan(index)}
-                                className={`w-full p-3 rounded border-2 transition-all duration-300 ${
-                                  selectedPaymentPlan === index
-                                    ? 'border-[hsl(178,65%,45%)] bg-[hsl(178,65%,45%)]/10'
-                                    : 'border-[hsl(45,85%,55%)]/30 hover:border-[hsl(45,85%,55%)]/60'
-                                }`}
-                              >
-                                <div className="font-thornelia text-[hsl(45,85%,55%)]">
-                                  {plan.payments === 1 ? 'Full Payment' : `${plan.payments} Payments`}
-                                </div>
-                                <div className="font-emerland text-sm text-amber-200">
-                                  ${Math.ceil(paymentAmount).toLocaleString()}{plan.payments > 1 ? ` each` : ''}
-                                </div>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Claim Button */}
-                        <Button 
-                          className="w-full py-4 text-xl font-semibold rounded-lg bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_25px_rgba(72,196,196,0.5)] transition-all duration-300"
-                          data-testid="button-claim-author-seat"
-                        >
-                          CLAIM YOUR AUTHOR'S SEAT
-                        </Button>
-                      </div>
-                    </>
-                  )}
-                </motion.div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="bg-black/40 border-2 border-[hsl(45,85%,55%)]/30 rounded-lg p-8 text-center shadow-[0_0_20px_rgba(255,215,0,0.2)]"
+                  -
+                </Button>
+                <span className="font-thornelia text-2xl text-[hsl(178,65%,45%)] min-w-[3rem] text-center">
+                  {scholarshipCount}
+                </span>
+                <Button
+                  onClick={() => setScholarshipCount(scholarshipCount + 1)}
+                  className="bg-[hsl(45,85%,55%)]/20 hover:bg-[hsl(45,85%,55%)]/30 text-[hsl(45,85%,55%)] border border-[hsl(45,85%,55%)]/50 px-4 py-2 text-lg"
                 >
-                  <Compass className="w-16 h-16 text-[hsl(45,85%,55%)] mx-auto mb-4 opacity-50" />
-                  <p className="font-emerland text-lg text-amber-200">
-                    Select your journey stage to discover your path
-                  </p>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                  <Plus className="w-5 h-5" />
+                </Button>
+              </div>
+
+              {/* Payment Plans */}
+              <div className="mb-8">
+                <p className="font-emerland text-lg text-amber-200 mb-4 text-center">Payment plans available:</p>
+                <div className="grid gap-4">
+                  {selectedTierData.content.paymentPlans.map((plan, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedPaymentPlan(index)}
+                      className={`w-full p-4 rounded-lg border-2 transition-all duration-300 ${
+                        selectedPaymentPlan === index
+                          ? 'border-[hsl(178,65%,45%)] bg-[hsl(178,65%,45%)]/10'
+                          : 'border-[hsl(45,85%,55%)]/30 hover:border-[hsl(45,85%,55%)]/60'
+                      }`}
+                    >
+                      <div className="font-thornelia text-xl text-[hsl(45,85%,55%)]">
+                        {plan.payments === 1 ? 'Full Payment' : `${plan.payments} Payments`}
+                      </div>
+                      <div className="font-emerland text-lg text-amber-200">
+                        ${Math.ceil(paymentAmount).toLocaleString()}{plan.payments > 1 ? ` each` : ''}
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Claim Button */}
+              <Button 
+                className="w-full py-6 text-2xl font-semibold rounded-lg bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_30px_rgba(72,196,196,0.5)] transition-all duration-300"
+                data-testid="button-claim-author-seat"
+              >
+                CLAIM YOUR AUTHOR'S SEAT
+              </Button>
+            </div>
+          </motion.section>
+        </div>
+
+        {/* Timeline Navigation at Bottom */}
+        <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-[hsl(178,65%,45%)]/30 py-4">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="flex justify-center space-x-8">
+              {journeyTiers.map((tier) => (
+                <button
+                  key={tier.id}
+                  onClick={() => setSelectedTier(tier.id)}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
+                    selectedTier === tier.id 
+                      ? 'bg-[hsl(178,65%,45%)]/20 border-2 border-[hsl(178,65%,45%)] text-[hsl(178,65%,45%)]'
+                      : 'border-2 border-[hsl(45,85%,55%)]/30 text-amber-200 hover:border-[hsl(45,85%,55%)]/60'
+                  }`}
+                >
+                  <div className="w-6 h-6">{tier.icon}</div>
+                  <span className="font-emerland text-sm font-semibold">{tier.title}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
