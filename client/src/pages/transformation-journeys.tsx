@@ -155,16 +155,16 @@ export default function TransformationJourneysPage() {
               ].map((movement, index) => (
                 <motion.div 
                   key={movement.title}
-                  className="bg-black/40 p-6 rounded-lg border border-amber-800/30"
+                  className="bg-black/40 p-6 rounded-lg border-2 border-[hsl(178,65%,45%)] shadow-[0_0_15px_rgba(72,196,196,0.3)]"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <h4 className="font-thornelia text-xl md:text-2xl mb-4 text-amber-300">
+                  <h4 className="font-thornelia text-xl md:text-2xl mb-4 text-[hsl(178,65%,45%)]">
                     {movement.title}
                   </h4>
-                  <p className="font-emerland text-lg leading-relaxed">
+                  <p className="font-emerland text-lg leading-relaxed text-amber-200">
                     {movement.description}
                   </p>
                 </motion.div>
@@ -237,16 +237,16 @@ export default function TransformationJourneysPage() {
               ].map((author, index) => (
                 <motion.div 
                   key={author.name}
-                  className="bg-black/40 p-6 rounded-lg border border-amber-800/30"
+                  className="bg-black/40 p-6 rounded-lg border-2 border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.3)]"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <h4 className="font-thornelia text-xl md:text-2xl mb-4 text-amber-300">
+                  <h4 className="font-thornelia text-xl md:text-2xl mb-4 text-[hsl(45,85%,55%)]">
                     {author.name}
                   </h4>
-                  <p className="font-emerland text-lg leading-relaxed">
+                  <p className="font-emerland text-lg leading-relaxed text-amber-200">
                     {author.transformation}
                   </p>
                 </motion.div>
@@ -332,8 +332,8 @@ export default function TransformationJourneysPage() {
                   key={pathway.title}
                   className={`bg-black/50 p-8 rounded-lg border-2 ${
                     pathway.highlight 
-                      ? 'border-mystical-teal shadow-[0_0_20px_rgba(72,196,196,0.4)]' 
-                      : 'border-ancient-gold/30 shadow-[0_0_15px_rgba(255,215,0,0.2)]'
+                      ? 'border-[hsl(178,65%,45%)] shadow-[0_0_20px_rgba(72,196,196,0.4)]' 
+                      : 'border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.3)]'
                   } relative cursor-pointer hover:scale-105 transition-all duration-300`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -341,7 +341,7 @@ export default function TransformationJourneysPage() {
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                 >
                   {pathway.highlight && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-mystical-teal text-black px-4 py-1 rounded-full text-sm font-semibold">
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[hsl(178,65%,45%)] text-black px-4 py-1 rounded-full text-sm font-semibold">
                       MOST POPULAR
                     </div>
                   )}
@@ -358,7 +358,7 @@ export default function TransformationJourneysPage() {
                   <ul className="space-y-3 mb-6 font-emerland">
                     {pathway.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
-                        <span className={`mr-2 ${pathway.highlight ? 'text-mystical-teal' : 'text-ancient-gold'}`}>✦</span>
+                        <span className={`mr-2 ${pathway.highlight ? 'text-[hsl(178,65%,45%)]' : 'text-[hsl(45,85%,55%)]'}`}>✦</span>
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -371,8 +371,8 @@ export default function TransformationJourneysPage() {
                   <Button 
                     className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-300 ${
                       pathway.highlight 
-                        ? 'bg-mystical-teal hover:bg-mystical-teal/80 text-black shadow-[0_0_15px_rgba(72,196,196,0.4)]' 
-                        : 'bg-ancient-gold/20 hover:bg-ancient-gold/30 text-ancient-gold border border-ancient-gold/50 shadow-[0_0_10px_rgba(255,215,0,0.2)]'
+                        ? 'bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_15px_rgba(72,196,196,0.4)]' 
+                        : 'bg-[hsl(45,85%,55%)]/20 hover:bg-[hsl(45,85%,55%)]/30 text-[hsl(45,85%,55%)] border border-[hsl(45,85%,55%)]/50 shadow-[0_0_10px_rgba(255,215,0,0.2)]'
                     }`}
                     data-testid={`button-select-${pathway.title.toLowerCase()}`}
                   >

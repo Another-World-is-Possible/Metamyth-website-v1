@@ -1,0 +1,66 @@
+# REPLIT BUILD INSTRUCTIONS: MetaMyth Journey Selection Page
+
+## Core Structure
+Build a single-page interactive tier selector with horizontal journey timeline design.
+
+## Layout Requirements
+
+**Header Section:**
+- Title: "Choose Your Place in the Journey"
+- Subtitle: "Where are you in your story transformation?"
+- Urgency text: "First cohort - 50 spots - Last opportunity this year"
+
+**Main Timeline:**
+- Horizontal path/road graphic spanning page width
+- Three circular stations positioned along path (left, center, right)
+- Each station clickable with unique icon:
+  - Seekers: Compass icon
+  - Changemakers: Bridge icon  
+  - World Builders: Mountain peak icon
+- Station labels below icons (no prices visible initially)
+
+## Interaction Behavior
+
+**Default State:**
+- All three stations visible and clickable
+- No tier pre-selected
+- Right sidebar empty with prompt "Select your journey stage"
+
+**Click Behavior:**
+- Selected station enlarges and gets highlighted border
+- Other stations dim but remain clickable
+- Right sidebar slides in with full tier content
+- Smooth transitions, no page reload
+
+**Content Panel Structure (Right Sidebar):**
+1. Tier name and tagline
+2. "Where You Are in Your Journey" section
+3. "How We Serve You at This Level" section  
+4. Includes list (formatted as readable paragraphs, not bullet points)
+5. Pricing section titled "What Is Your Story Worth to You?"
+6. Investment amount with payment plan options
+7. Scholarship increment buttons (+$600) with counter
+8. "Claim Your Author's Seat" button
+
+## Technical Requirements
+
+**Responsive Design:**
+- Desktop: Horizontal timeline with right sidebar
+- Mobile: Vertical station stack with content expanding below each selection
+
+**Interactive Elements:**
+- Smooth hover effects on stations
+- +$600 buttons that update total and scholarship counter
+- Payment plan toggle (full payment vs 2x vs 3x)
+- Final amount calculation display
+
+**Visual Polish:**
+- Clean, modern design
+- Consistent color scheme
+- Readable typography hierarchy
+- Subtle animations for state changes
+
+## Content Integration
+Use the exact tier descriptions provided, maintaining the psychological flow from identity recognition through value demonstration to investment revelation. Ensure pricing appears 2/3 down each panel after emotional engagement is established.
+
+Build as single HTML file with embedded CSS and JavaScript. Focus on smooth user experience and conversion-optimized information hierarchy.
