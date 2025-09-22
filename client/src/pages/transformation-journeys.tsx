@@ -52,6 +52,21 @@ export default function TransformationJourneysPage() {
                 The oldest technology powered by modern magic. A system to reprogram your future and reclaim your story from the forces that have kept you playing small. Join the pioneers authoring the new world story.
               </p>
             </motion.div>
+
+            <motion.div
+              className="mt-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.8 }}
+            >
+              <Button 
+                onClick={() => window.location.href = '/journey-selection?tier=changemakers'}
+                className="cta-button-base bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black text-xl px-12 py-6 shadow-[0_0_25px_rgba(72,196,196,0.5)]"
+                data-testid="button-claim-author-seat-top"
+              >
+                CLAIM YOUR AUTHOR'S SEAT
+              </Button>
+            </motion.div>
           </div>
         </section>
 
@@ -369,6 +384,7 @@ export default function TransformationJourneysPage() {
                   </p>
                   
                   <Button 
+                    onClick={() => window.location.href = `/journey-selection?tier=${pathway.title.toLowerCase().replace(' ', '')}`}
                     className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-300 ${
                       pathway.highlight 
                         ? 'bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_15px_rgba(72,196,196,0.4)]' 
@@ -430,7 +446,8 @@ export default function TransformationJourneysPage() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <Button 
-                className="cta-button-base cta-button-gold text-2xl px-12 py-6"
+                onClick={() => window.location.href = '/journey-selection?tier=changemakers'}
+                className="bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black text-2xl px-12 py-6 font-semibold rounded-lg shadow-[0_0_25px_rgba(72,196,196,0.5)] transition-all duration-300"
                 data-testid="button-claim-author-seat"
               >
                 CLAIM YOUR AUTHOR'S SEAT

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Compass, Bridge, Mountain, Plus } from "lucide-react";
+import { Compass, Zap, Mountain, Plus } from "lucide-react";
 import { useLocation } from "wouter";
 import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
 
@@ -55,7 +55,7 @@ const journeyTiers: JourneyTier[] = [
     id: "changemakers",
     title: "CHANGEMAKERS",
     subtitle: "Intensive Transformation Through Fellowship",
-    icon: <Bridge className="w-8 h-8" />,
+    icon: <Zap className="w-8 h-8" />,
     position: "left-1/2 transform -translate-x-1/2",
     basePrice: 2100,
     content: {
