@@ -57,7 +57,7 @@ export default function SharedNavigation() {
     { id: 'metamyth', label: 'Our Metamyth', path: '/metamyth' },
     { id: 'stories', label: 'Stories We Tell', path: '/stories' },
     { id: 'quest', label: 'Our Quest', path: '/quest' },
-    { id: 'questionaire', label: 'QUESTionaire', path: '/questionaire' }
+    { id: 'transformation-journeys', label: 'Transformation Journeys', path: '/transformation-journeys' }
   ];
 
   const handleNavClick = (path: string) => {
