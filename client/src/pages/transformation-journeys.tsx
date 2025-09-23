@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import SharedNavigation from "@/components/shared-navigation";
 import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
 
 export default function TransformationJourneysPage() {
   return (
     <div className="min-h-screen bg-black text-amber-100">
+      <SharedNavigation />
+      
       {/* Starry background */}
       <div 
         className="fixed inset-0 opacity-60"

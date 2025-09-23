@@ -54,10 +54,10 @@ export default function SharedNavigation() {
   const navItems = [
     { id: 'why-story-matters', label: 'Why Story Matters', path: '/why-story-matters' },
     { id: 'systems', label: 'The Systems', path: '/systems' },
+    { id: 'transformation-journeys', label: 'Transformation Journeys', path: '/transformation-journeys' },
     { id: 'metamyth', label: 'Our Metamyth', path: '/metamyth' },
     { id: 'stories', label: 'Stories We Tell', path: '/stories' },
-    { id: 'quest', label: 'Our Quest', path: '/quest' },
-    { id: 'transformation-journeys', label: 'Transformation Journeys', path: '/transformation-journeys' }
+    { id: 'quest', label: 'Our Quest', path: '/quest' }
   ];
 
   const handleNavClick = (path: string) => {
@@ -151,6 +151,7 @@ export default function SharedNavigation() {
                     ? 'nav-tab-active'
                     : 'text-cream-white hover:nav-tab-hover'
                 }`}
+                data-testid={`nav-${item.id}`}
               >
                 {item.label}
               </Button>

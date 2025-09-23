@@ -450,16 +450,20 @@
   /* Navigation tab styling - smooth teal glow without yellow flash */
   .nav-tab-active {
     color: rgb(20, 184, 166) !important;
-    background: rgba(20, 184, 166, 0.1) !important;
+    background: transparent !important;
     text-shadow:
-      0 0 8px rgba(20, 184, 166, 0.6),
-      0 0 16px rgba(20, 184, 166, 0.3);
+      0 0 12px rgba(20, 184, 166, 0.8),
+      0 0 24px rgba(20, 184, 166, 0.4),
+      0 0 36px rgba(20, 184, 166, 0.2);
     transition: all 0.3s ease !important;
   }
 
   .nav-tab-hover {
     color: rgb(212, 175, 55) !important;
-    background: rgba(20, 184, 166, 0.2) !important;
+    background: transparent !important;
+    text-shadow:
+      0 0 8px rgba(212, 175, 55, 0.6),
+      0 0 16px rgba(212, 175, 55, 0.3);
     transition: all 0.3s ease !important;
   }
 
