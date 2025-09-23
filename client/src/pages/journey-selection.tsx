@@ -479,37 +479,34 @@ export default function JourneySelectionPage() {
         </div>
 
         {/* Ultra-Compact Timeline Navigation */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm py-2">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm py-3">
           <div className="w-full max-w-4xl mx-auto px-8">
-            <div className="relative h-14">
-              {/* Gradient Line - Perfectly centered */}
+            <div className="relative h-16">
+              {/* Gradient Line */}
               <div 
-                className="absolute top-1/2 left-8 right-8 h-1 rounded-full transform -translate-y-1/2"
+                className="absolute top-8 left-8 right-8 h-1 rounded-full"
                 style={{
                   background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%), hsl(178,65%,45%))'
                 }}
               ></div>
               
               {/* Timeline Points */}
-              <div className="flex justify-between items-center h-full relative">
+              <div className="flex justify-between items-start h-full relative pt-2">
                 {journeyTiers.map((tier, index) => (
                   <motion.button
                     key={tier.id}
                     onClick={() => setSelectedTier(tier.id)}
-                    className="flex flex-col items-center justify-center relative z-10 cursor-pointer"
+                    className="flex flex-col items-center cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {/* Title Above - Extra spacing for CHANGEMAKERS */}
+                    {/* Title Above */}
                     <motion.div 
-                      className={`text-center ${tier.id === 'changemakers' ? 'mb-3' : 'mb-2'}`}
+                      className="text-center mb-2"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
                       transition={{ duration: 0.3 }}
-                      style={{
-                        transform: tier.id === 'changemakers' ? 'translateY(-4px)' : 'none'
-                      }}
                     >
                       <div 
                         className="font-emerland text-xs font-bold tracking-wider whitespace-nowrap"
@@ -521,16 +518,13 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                     
-                    {/* Icon Circle - Perfectly centered on line */}
+                    {/* Icon Circle - Centered on line */}
                     <motion.div 
                       className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 mb-2"
                       style={{
                         backgroundColor: 'rgb(0, 0, 0)',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
-                        boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
-                        position: 'absolute',
-                        top: '50%',
-                        transform: 'translateY(-50%)' // Perfect centering on the line
+                        boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)'
                       }}
                       animate={{
                         scale: selectedTier === tier.id ? 1.1 : 1
@@ -547,7 +541,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="text-center absolute bottom-0"
+                      className="text-center"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
