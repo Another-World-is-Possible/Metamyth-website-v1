@@ -553,7 +553,7 @@ export default function JourneySelectionPage() {
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
-                        bottom: '6px',
+                        bottom: '24px',
                         left: '50%',
                         transform: 'translateX(-50%)',
                         zIndex: 10
