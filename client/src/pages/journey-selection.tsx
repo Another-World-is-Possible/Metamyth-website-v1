@@ -524,7 +524,7 @@ export default function JourneySelectionPage() {
                       className="absolute whitespace-nowrap text-center pointer-events-none z-20"
                       style={{ 
                         left: centerXFor(index),
-                        top: 'calc(50% - 35px)', // Above the timeline
+                        top: 'calc(50% - 42px)', // Above the timeline
                         transform: 'translateX(-50%)'
                       }}
                       animate={{
