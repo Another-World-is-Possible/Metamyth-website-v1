@@ -504,28 +504,24 @@ export default function JourneySelectionPage() {
                 }}
               ></div>
               
-              {/* Timeline Points - Direct positioning to match gradient line */}
-              {journeyTiers.map((tier, index) => (
-                <motion.button
-                  key={tier.id}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    // Update URL query parameter instead of just local state
-                    const newUrl = new URL(window.location.href);
-                    newUrl.searchParams.set('tier', tier.id);
-                    window.history.pushState({}, '', newUrl);
-                    // Trigger the useEffect by updating location
-                    window.dispatchEvent(new PopStateEvent('popstate'));
-                    window.scrollTo(0, 0); // Scroll to top when tier changes
-                  }}
-                  className="cursor-pointer absolute z-10 top-1/2 -translate-y-1/2"
-                  style={{
-                    left: `${32 + (index * (100 - 64) / 2)}px`, // 32px for left-8, distribute remaining width
-                    transform: index === 0 ? 'translateX(0%) translateY(-50%)' : index === 1 ? 'translateX(-50%) translateY(-50%)' : 'translateX(-100%) translateY(-50%)'
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+              {/* Timeline Points */}
+              <div className="flex justify-between h-full absolute bottom-3 left-8 right-8">
+                {journeyTiers.map((tier, index) => (
+                  <motion.button
+                    key={tier.id}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // Update URL query parameter instead of just local state
+                      const newUrl = new URL(window.location.href);
+                      newUrl.searchParams.set('tier', tier.id);
+                      window.history.pushState({}, '', newUrl);
+                      // Trigger the useEffect by updating location
+                      window.dispatchEvent(new PopStateEvent('popstate'));
+                      window.scrollTo(0, 0); // Scroll to top when tier changes
+                    }}
+                    className="flex flex-col items-center cursor-pointer relative z-10 flex-1"
+                    whileTap={{ scale: 0.95 }}
+                  >
                     {/* Title Above */}
                     <motion.div 
                       className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
@@ -545,13 +541,16 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                     
-                    {/* Icon Circle - Already positioned by button */}
+                    {/* Icon Circle - Centered on line */}
                     <motion.div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
+                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 absolute"
                       style={{
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
                         zIndex: 10
                       }}
                       animate={{
@@ -580,7 +579,8 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                   </motion.button>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
