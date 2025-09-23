@@ -153,7 +153,7 @@ const journeyTiers: JourneyTier[] = [
 
 export default function JourneySelectionPage() {
   const [location] = useLocation();
-  const [selectedTier, setSelectedTier] = useState<string>('worldbuilders'); // Default to worldbuilders (button fallback)
+  const [selectedTier, setSelectedTier] = useState<string>('default'); // Safe default for button fallback
   const [scholarshipCount, setScholarshipCount] = useState(0);
   const [selectedPaymentPlan, setSelectedPaymentPlan] = useState(0);
 
@@ -166,7 +166,7 @@ export default function JourneySelectionPage() {
     }
   }, [location]);
 
-  const selectedTierData = journeyTiers.find(tier => tier.id === selectedTier)!;
+  const selectedTierData = journeyTiers.find(tier => tier.id === selectedTier) || journeyTiers[0]; // Fallback to first tier for display
   const totalPrice = selectedTierData.basePrice + (scholarshipCount * 600);
   const paymentAmount = selectedPaymentPlan < selectedTierData.content.paymentPlans.length 
     ? selectedTierData.content.paymentPlans[selectedPaymentPlan].amount + (scholarshipCount * 600 / selectedTierData.content.paymentPlans[selectedPaymentPlan].payments)
@@ -465,6 +465,22 @@ export default function JourneySelectionPage() {
                         ) : selectedTier === 'changemakers' ? (
                           <a 
                             href="https://buy.stripe.com/28E28qad276031i1MyfQI02"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full py-5 text-xl font-bold rounded-lg transition-all duration-300 text-center"
+                            style={{
+                              backgroundColor: selectedTierData.colors.primary,
+                              color: 'black',
+                              boxShadow: `0 0 25px ${selectedTierData.colors.glow}`,
+                              textDecoration: 'none'
+                            }}
+                            data-testid="button-claim-author-seat"
+                          >
+                            CLAIM YOUR AUTHOR'S SEAT
+                          </a>
+                        ) : selectedTier === 'worldbuilders' ? (
+                          <a 
+                            href="https://buy.stripe.com/28E28qad29e8eK01MyfQI03"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="block w-full py-5 text-xl font-bold rounded-lg transition-all duration-300 text-center"
