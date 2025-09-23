@@ -551,19 +551,16 @@ export default function JourneySelectionPage() {
                     </motion.div>
                     
                     {/* Icon Circle - Centered on line */}
-                    <motion.div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 absolute left-0 -translate-x-1/2 pointer-events-none"
+                    <div 
+                      className="w-10 h-10 rounded-full flex items-center justify-center absolute left-0 -translate-x-1/2 pointer-events-none"
                       style={{
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
                         top: '-20px',
-                        zIndex: 10
+                        zIndex: 10,
+                        transform: selectedTier === tier.id ? 'translateX(-50%) scale(1.05)' : 'translateX(-50%) scale(1)'
                       }}
-                      animate={{
-                        scale: selectedTier === tier.id ? 1.1 : 1
-                      }}
-                      transition={{ duration: 0.3 }}
                     >
                       <div 
                         className="w-4 h-4 flex items-center justify-center"
@@ -571,7 +568,7 @@ export default function JourneySelectionPage() {
                       >
                         {tier.icon}
                       </div>
-                    </motion.div>
+                    </div>
                     
                     {/* Description Below */}
                     <motion.div 
