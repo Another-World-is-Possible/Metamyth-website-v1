@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import SharedNavigation from "@/components/shared-navigation";
+import PageLayout from "@/components/layouts/page-layout";
 import { useLocation } from "wouter";
 import cosmicPathwayBg from "@assets/cosmic_pathway_bg.png";
 
@@ -8,9 +8,7 @@ export default function TransformationJourneysPage() {
   const [, navigate] = useLocation();
 
   return (
-    <div className="min-h-screen bg-black text-amber-100">
-      <SharedNavigation />
-      
+    <PageLayout hideFooter={true}>
       {/* Cosmic pathway background */}
       <div 
         className="fixed inset-0 opacity-60"
@@ -23,10 +21,10 @@ export default function TransformationJourneysPage() {
       />
       
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 bg-black text-amber-100">
         {/* Hero Section */}
         <section className="min-h-screen flex items-center justify-center px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             <motion.h1 
               className="font-angle text-6xl md:text-8xl mb-8 text-gradient-gold"
               initial={{ opacity: 0, y: 30 }}
@@ -305,7 +303,7 @@ export default function TransformationJourneysPage() {
             </motion.h2>
             
             <motion.div 
-              className="grid md:grid-cols-3 gap-8 mt-16"
+              className="grid md:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -478,6 +476,6 @@ export default function TransformationJourneysPage() {
           </div>
         </section>
       </div>
-    </div>
+    </PageLayout>
   );
 }
