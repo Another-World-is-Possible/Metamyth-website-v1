@@ -154,7 +154,7 @@ const journeyTiers: JourneyTier[] = [
 
 export default function JourneySelectionPage() {
   const [location, setLocation] = useLocation();
-  const [selectedTier, setSelectedTier] = useState<string>('default'); // Safe default for button fallback
+  const [selectedTier, setSelectedTier] = useState<string>('changemakers'); // Default to changemakers tier
   const [scholarshipCount, setScholarshipCount] = useState(0);
   const [selectedPaymentPlan, setSelectedPaymentPlan] = useState(0);
 
@@ -167,6 +167,9 @@ export default function JourneySelectionPage() {
     const tier = params.get('tier');
     if (tier && journeyTiers.find(t => t.id === tier)) {
       setSelectedTier(tier);
+    } else {
+      // Set default tier if no URL parameter
+      setSelectedTier('changemakers');
     }
   }, [location]);
 
@@ -510,9 +513,11 @@ export default function JourneySelectionPage() {
                   key={tier.id}
                   onClick={(e) => {
                     e.stopPropagation();
-                    // Use wouter's navigation to properly update URL and trigger re-render
+                    // Update state directly for immediate response
+                    setSelectedTier(tier.id);
+                    // Also update URL for sharing/bookmarking
                     const currentPath = window.location.pathname;
-                    setLocation(`${currentPath}?tier=${tier.id}`);
+                    window.history.replaceState({}, '', `${currentPath}?tier=${tier.id}`);
                     window.scrollTo(0, 0); // Scroll to top when tier changes
                   }}
                   className="cursor-pointer absolute z-10"
