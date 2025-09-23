@@ -499,10 +499,12 @@ export default function JourneySelectionPage() {
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm py-4">
           <div className="w-full max-w-3xl mx-auto px-8">
             <div className="relative h-20">
-              {/* Gradient Line */}
+              {/* Gradient Line - Clamped to circle centers */}
               <div 
-                className="absolute top-1/2 -translate-y-1/2 left-8 right-8 h-1 rounded-full"
+                className="absolute top-1/2 -translate-y-1/2 h-1 rounded-full"
                 style={{
+                  left: '57px', // 32px (left button) + 25px (button center) = 57px
+                  right: '57px', // Same distance from right
                   background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%), hsl(178,65%,45%))'
                 }}
               ></div>
@@ -558,17 +560,17 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                     
-                    {/* Icon Circle - Centered on line */}
+                    {/* Icon Circle - Centered on button/line */}
                     <div 
                       className="w-10 h-10 rounded-full flex items-center justify-center absolute pointer-events-none"
                       style={{
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
-                        left: `${circleLeft}px`, // Position circle in center of button
-                        top: '5px', // Center 40px circle to intersect with horizontal line
+                        left: '50%', // Center of button
+                        top: '50%', // Center of button
                         zIndex: 10,
-                        transform: selectedTier === tier.id ? 'scale(1.05)' : 'scale(1)'
+                        transform: selectedTier === tier.id ? 'translate(-50%, -50%) scale(1.05)' : 'translate(-50%, -50%) scale(1)'
                       }}
                     >
                       <div 
