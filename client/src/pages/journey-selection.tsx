@@ -550,7 +550,7 @@ export default function JourneySelectionPage() {
                       className="absolute text-center pointer-events-none z-20"
                       style={{ 
                         left: centerXFor(index),
-                        top: 'calc(50% + 42px)', // Below the timeline with more space
+                        top: 'calc(50% + 28px)', // Below the timeline
                         transform: 'translateX(-50%)',
                         width: '120px' // Give it a fixed width for proper wrapping
                       }}
