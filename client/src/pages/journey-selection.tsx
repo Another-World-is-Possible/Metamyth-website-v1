@@ -528,7 +528,7 @@ export default function JourneySelectionPage() {
                 >
                     {/* Title Above */}
                     <motion.div 
-                      className="absolute -top-8 left-0 -translate-x-1/2 whitespace-nowrap text-center"
+                      className="absolute -top-10 left-0 -translate-x-1/2 whitespace-nowrap text-center pointer-events-none"
                       style={{ marginLeft: '16px' }}
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
@@ -548,7 +548,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Icon Circle - Centered on line */}
                     <motion.div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 absolute left-0 -translate-x-1/2"
+                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 absolute left-0 -translate-x-1/2 cursor-pointer"
                       style={{
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
@@ -571,7 +571,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="absolute top-8 left-0 -translate-x-1/2 whitespace-nowrap text-center"
+                      className="absolute top-8 left-0 -translate-x-1/2 whitespace-nowrap text-center pointer-events-none"
                       style={{ marginLeft: '16px' }}
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
