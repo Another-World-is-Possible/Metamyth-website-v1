@@ -508,33 +508,38 @@ export default function JourneySelectionPage() {
               ></div>
               
               {/* Timeline Points */}
-              {journeyTiers.map((tier, index) => (
-                <motion.button
-                  key={tier.id}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    // Update state directly for immediate response
-                    setSelectedTier(tier.id);
-                    // Also update URL for sharing/bookmarking
-                    const currentPath = window.location.pathname;
-                    window.history.replaceState({}, '', `${currentPath}?tier=${tier.id}`);
-                    window.scrollTo(0, 0); // Scroll to top when tier changes
-                  }}
-                  className="cursor-pointer absolute z-10"
-                  style={{
-                    left: index === 0 ? '32px' : index === 1 ? '50%' : 'calc(100% - 32px)',
-                    top: '50%',
-                    transform: index === 0 ? 'translateY(-50%)' : index === 1 ? 'translate(-50%, -50%)' : 'translate(-100%, -50%)',
-                    width: '50px',
-                    height: '50px'
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
+              {journeyTiers.map((tier, index) => {
+                // Calculate exact positions to avoid transform conflicts
+                const buttonLeft = index === 0 ? 32 : index === 1 ? 'calc(50% - 25px)' : 'calc(100% - 82px)';
+                const circleLeft = index === 0 ? 5 : index === 1 ? 5 : 5; // 5px to center 40px circle in 50px button
+                
+                return (
+                  <motion.button
+                    key={tier.id}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // Update state directly for immediate response
+                      setSelectedTier(tier.id);
+                      // Also update URL for sharing/bookmarking
+                      const currentPath = window.location.pathname;
+                      window.history.replaceState({}, '', `${currentPath}?tier=${tier.id}`);
+                      window.scrollTo(0, 0); // Scroll to top when tier changes
+                    }}
+                    className="cursor-pointer absolute z-10"
+                    style={{
+                      left: buttonLeft,
+                      top: 'calc(50% - 25px)', // Center 50px button vertically
+                      width: '50px',
+                      height: '50px'
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     {/* Title Above */}
                     <motion.div 
-                      className="absolute -top-10 whitespace-nowrap text-center pointer-events-none"
+                      className="absolute whitespace-nowrap text-center pointer-events-none"
                       style={{ 
-                        left: '-4px', // Adjusted to align with circle center
+                        left: '25px', // Center of 50px button
+                        top: '-40px',
                         transform: 'translateX(-50%)'
                       }}
                       animate={{
@@ -560,8 +565,8 @@ export default function JourneySelectionPage() {
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
-                        left: '-20px', // Half of 40px circle width to center it
-                        top: '-20px',
+                        left: `${circleLeft}px`, // Position circle in center of button
+                        top: '-15px', // Position to intersect the horizontal line
                         zIndex: 10,
                         transform: selectedTier === tier.id ? 'scale(1.05)' : 'scale(1)'
                       }}
@@ -576,9 +581,10 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="absolute top-8 whitespace-nowrap text-center pointer-events-none"
+                      className="absolute whitespace-nowrap text-center pointer-events-none"
                       style={{ 
-                        left: '-4px', // Adjusted to align with circle center
+                        left: '25px', // Center of 50px button
+                        top: '32px',
                         transform: 'translateX(-50%)'
                       }}
                       animate={{
@@ -591,7 +597,8 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                   </motion.button>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
