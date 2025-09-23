@@ -505,7 +505,7 @@ export default function JourneySelectionPage() {
               ></div>
               
               {/* Timeline Points */}
-              <div className="flex justify-between h-full absolute bottom-3 left-8 right-8">
+              <div className="h-full absolute bottom-3 left-8 right-8">
                 {journeyTiers.map((tier, index) => (
                   <motion.button
                     key={tier.id}
@@ -519,7 +519,11 @@ export default function JourneySelectionPage() {
                       window.dispatchEvent(new PopStateEvent('popstate'));
                       window.scrollTo(0, 0); // Scroll to top when tier changes
                     }}
-                    className="flex flex-col items-center cursor-pointer relative z-10 flex-1"
+                    className="flex flex-col items-center cursor-pointer absolute z-10"
+                    style={{
+                      left: index === 0 ? '0%' : index === 1 ? '50%' : '100%',
+                      transform: index === 0 ? 'translateX(0%)' : index === 1 ? 'translateX(-50%)' : 'translateX(-100%)'
+                    }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
