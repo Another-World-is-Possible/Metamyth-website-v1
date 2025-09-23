@@ -505,7 +505,7 @@ export default function JourneySelectionPage() {
               ></div>
               
               {/* Timeline Points */}
-              <div className="flex justify-between items-center h-full relative" style={{paddingTop: '27px'}}>
+              <div className="flex justify-between h-full relative" style={{paddingTop: '7px'}}>
                 {journeyTiers.map((tier, index) => (
                   <motion.button
                     key={tier.id}
@@ -520,15 +520,16 @@ export default function JourneySelectionPage() {
                   >
                     {/* Title Above */}
                     <motion.div 
-                      className="text-center mb-2"
+                      className="text-center mb-1"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
                       transition={{ duration: 0.3 }}
                     >
                       <div 
-                        className="font-emerland font-bold tracking-wide text-center leading-tight" style={{fontSize: '10px'}}
+                        className="font-emerland font-bold tracking-wide text-center leading-tight"
                         style={{
+                          fontSize: '10px',
                           color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
                         }}
                       >
@@ -538,7 +539,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Icon Circle - Centered on line */}
                     <motion.div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
+                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 mb-1"
                       style={{
                         backgroundColor: 'rgb(0, 0, 0)',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
