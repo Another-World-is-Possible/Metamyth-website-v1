@@ -8,10 +8,10 @@ export default function TransformationJourneysPage() {
   const [, navigate] = useLocation();
 
   return (
-    <PageLayout hideFooter={true}>
+    <PageLayout hideFooter={true} className="bg-black">
       {/* Cosmic pathway background */}
       <div 
-        className="fixed inset-0 opacity-60"
+        className="fixed inset-0 opacity-60 z-0"
         style={{
           backgroundImage: `url(${cosmicPathwayBg})`,
           backgroundSize: 'cover',
@@ -21,10 +21,10 @@ export default function TransformationJourneysPage() {
       />
       
       {/* Content */}
-      <div className="relative z-10 bg-black text-amber-100">
+      <div className="relative z-10 text-amber-100">
         {/* Hero Section */}
         <section className="min-h-screen flex items-center justify-center px-6">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center">
             <motion.h1 
               className="font-angle text-4xl md:text-6xl mb-8 text-gradient-gold"
               initial={{ opacity: 0, y: 30 }}
@@ -76,7 +76,7 @@ export default function TransformationJourneysPage() {
 
         {/* The Calling Section */}
         <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <motion.h2 
               className="font-angle text-4xl md:text-6xl mb-12 text-center text-gradient-gold"
               initial={{ opacity: 0, y: 20 }}
@@ -122,7 +122,7 @@ export default function TransformationJourneysPage() {
 
         {/* The MetaMyth Solution */}
         <section className="py-20 px-6 bg-black/30">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <motion.h2 
               className="font-angle text-4xl md:text-6xl mb-12 text-center text-gradient-gold"
               initial={{ opacity: 0, y: 20 }}
@@ -204,7 +204,7 @@ export default function TransformationJourneysPage() {
 
         {/* Reality Authors in Action */}
         <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <motion.h2 
               className="font-angle text-4xl md:text-6xl mb-12 text-center text-gradient-gold"
               initial={{ opacity: 0, y: 20 }}
@@ -291,7 +291,7 @@ export default function TransformationJourneysPage() {
 
         {/* Pricing Section */}
         <section className="py-20 px-6 bg-black/30">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <motion.h2 
               className="font-angle text-4xl md:text-6xl mb-12 text-center text-gradient-gold"
               initial={{ opacity: 0, y: 20 }}
@@ -303,7 +303,7 @@ export default function TransformationJourneysPage() {
             </motion.h2>
             
             <motion.div 
-              className="grid md:grid-cols-3 gap-8 mt-16 max-w-3xl mx-auto"
+              className="grid md:grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -423,7 +423,7 @@ export default function TransformationJourneysPage() {
 
         {/* Call to Action */}
         <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center">
             <motion.h2 
               className="font-angle text-4xl md:text-6xl mb-8 text-gradient-gold"
               initial={{ opacity: 0, y: 20 }}

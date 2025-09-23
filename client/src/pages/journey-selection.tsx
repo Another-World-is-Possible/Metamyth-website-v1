@@ -194,7 +194,7 @@ export default function JourneySelectionPage() {
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col pt-16">
         {/* Header */}
-        <header className="text-center py-8 px-6 max-w-4xl mx-auto">
+        <header className="text-center py-8 px-6 max-w-3xl mx-auto">
           <motion.h1 
             className="font-angle text-3xl md:text-5xl mb-2 text-gradient-gold"
             initial={{ opacity: 0, y: 20 }}
@@ -222,7 +222,7 @@ export default function JourneySelectionPage() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="w-full max-w-4xl mx-auto"
+              className="w-full max-w-3xl mx-auto"
             >
               
               {/* Cinematic Title Section */}
@@ -494,7 +494,7 @@ export default function JourneySelectionPage() {
 
         {/* Ultra-Compact Timeline Navigation */}
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm py-4">
-          <div className="w-full max-w-4xl mx-auto px-8">
+          <div className="w-full max-w-3xl mx-auto px-8">
             <div className="relative h-20">
               {/* Gradient Line */}
               <div 
@@ -527,12 +527,12 @@ export default function JourneySelectionPage() {
                       transition={{ duration: 0.3 }}
                     >
                       <div 
-                        className="font-emerland text-xs font-bold tracking-wider whitespace-nowrap"
+                        className="font-emerland text-xs font-bold tracking-wide text-center leading-tight"
                         style={{
                           color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
                         }}
                       >
-                        {tier.title}
+                        {tier.id === 'changemakers' ? 'CHANGE MAKERS' : tier.id === 'worldbuilders' ? 'WORLD BUILDERS' : tier.title}
                       </div>
                     </motion.div>
                     
