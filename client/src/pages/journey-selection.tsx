@@ -505,7 +505,7 @@ export default function JourneySelectionPage() {
               ></div>
               
               {/* Timeline Points */}
-              <div className="flex justify-between h-full relative" style={{paddingTop: '7px'}}>
+              <div className="flex justify-between h-full absolute top-3 left-8 right-8">
                 {journeyTiers.map((tier, index) => (
                   <motion.button
                     key={tier.id}
