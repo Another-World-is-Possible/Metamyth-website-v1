@@ -479,9 +479,9 @@ export default function JourneySelectionPage() {
         </div>
 
         {/* Ultra-Compact Timeline Navigation */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm py-3">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm py-4">
           <div className="w-full max-w-4xl mx-auto px-8">
-            <div className="relative h-16">
+            <div className="relative h-20">
               {/* Gradient Line */}
               <div 
                 className="absolute top-8 left-8 right-8 h-1 rounded-full"
