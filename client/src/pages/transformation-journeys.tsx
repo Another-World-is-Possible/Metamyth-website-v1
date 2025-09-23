@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import SharedNavigation from "@/components/shared-navigation";
+import { useLocation } from "wouter";
 import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
 
 export default function TransformationJourneysPage() {
+  const [, navigate] = useLocation();
+
   return (
     <div className="min-h-screen bg-black text-amber-100">
       <SharedNavigation />
@@ -63,7 +66,7 @@ export default function TransformationJourneysPage() {
               transition={{ duration: 1, delay: 0.8 }}
             >
               <Button 
-                onClick={() => window.location.href = '/journey-selection?tier=changemakers'}
+                onClick={() => navigate('/journey-selection?tier=changemakers')}
                 className="cta-button-base bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black text-xl px-12 py-6 shadow-[0_0_25px_rgba(72,196,196,0.5)]"
                 data-testid="button-claim-author-seat-top"
               >
@@ -394,7 +397,7 @@ export default function TransformationJourneysPage() {
                         'WORLD BUILDERS': 'worldbuilders'
                       };
                       const tierParam = tierMap[pathway.title] || 'changemakers';
-                      window.location.href = `/journey-selection?tier=${tierParam}`;
+                      navigate(`/journey-selection?tier=${tierParam}`);
                     }}
                     className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-300 ${
                       pathway.highlight 
@@ -457,7 +460,7 @@ export default function TransformationJourneysPage() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <Button 
-                onClick={() => window.location.href = '/journey-selection?tier=changemakers'}
+                onClick={() => navigate('/journey-selection?tier=changemakers')}
                 className="bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black text-2xl px-12 py-6 font-semibold rounded-lg shadow-[0_0_25px_rgba(72,196,196,0.5)] transition-all duration-300"
                 data-testid="button-claim-author-seat"
               >
