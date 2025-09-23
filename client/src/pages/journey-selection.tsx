@@ -194,7 +194,7 @@ export default function JourneySelectionPage() {
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col pt-16">
         {/* Header */}
-        <header className="text-center py-8 px-4 max-w-5xl mx-auto">
+        <header className="text-center py-8 px-6 max-w-4xl mx-auto">
           <motion.h1 
             className="font-angle text-3xl md:text-5xl mb-2 text-gradient-gold"
             initial={{ opacity: 0, y: 20 }}
@@ -214,7 +214,7 @@ export default function JourneySelectionPage() {
         </header>
 
         {/* Main Content Area */}
-        <div className="flex-1 flex flex-col justify-center px-4 pb-24">
+        <div className="flex-1 flex flex-col justify-center px-6 pb-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedTier}
@@ -222,7 +222,7 @@ export default function JourneySelectionPage() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="w-full max-w-5xl mx-auto"
+              className="w-full max-w-4xl mx-auto"
             >
               
               {/* Cinematic Title Section */}
