@@ -498,35 +498,34 @@ export default function JourneySelectionPage() {
             <div className="relative h-20">
               {/* Gradient Line */}
               <div 
-                className="absolute bottom-11 left-8 right-8 h-1 rounded-full"
+                className="absolute top-1/2 -translate-y-1/2 left-8 right-8 h-1 rounded-full"
                 style={{
                   background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%), hsl(178,65%,45%))'
                 }}
               ></div>
               
-              {/* Timeline Points */}
-              <div className="h-full absolute bottom-3 left-8 right-8">
-                {journeyTiers.map((tier, index) => (
-                  <motion.button
-                    key={tier.id}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      // Update URL query parameter instead of just local state
-                      const newUrl = new URL(window.location.href);
-                      newUrl.searchParams.set('tier', tier.id);
-                      window.history.pushState({}, '', newUrl);
-                      // Trigger the useEffect by updating location
-                      window.dispatchEvent(new PopStateEvent('popstate'));
-                      window.scrollTo(0, 0); // Scroll to top when tier changes
-                    }}
-                    className="flex flex-col items-center cursor-pointer absolute z-10"
-                    style={{
-                      left: index === 0 ? '0%' : index === 1 ? '50%' : '100%',
-                      transform: index === 0 ? 'translateX(0%)' : index === 1 ? 'translateX(-50%)' : 'translateX(-100%)'
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
+              {/* Timeline Points - Direct positioning to match gradient line */}
+              {journeyTiers.map((tier, index) => (
+                <motion.button
+                  key={tier.id}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Update URL query parameter instead of just local state
+                    const newUrl = new URL(window.location.href);
+                    newUrl.searchParams.set('tier', tier.id);
+                    window.history.pushState({}, '', newUrl);
+                    // Trigger the useEffect by updating location
+                    window.dispatchEvent(new PopStateEvent('popstate'));
+                    window.scrollTo(0, 0); // Scroll to top when tier changes
+                  }}
+                  className="cursor-pointer absolute z-10 top-1/2 -translate-y-1/2"
+                  style={{
+                    left: `${32 + (index * (100 - 64) / 2)}px`, // 32px for left-8, distribute remaining width
+                    transform: index === 0 ? 'translateX(0%) translateY(-50%)' : index === 1 ? 'translateX(-50%) translateY(-50%)' : 'translateX(-100%) translateY(-50%)'
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                     {/* Title Above */}
                     <motion.div 
                       className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
@@ -536,7 +535,7 @@ export default function JourneySelectionPage() {
                       transition={{ duration: 0.3 }}
                     >
                       <div 
-                        className="font-emerland font-bold tracking-wide text-center leading-none whitespace-nowrap"
+                        className="font-emerland font-bold tracking-wide leading-none whitespace-nowrap"
                         style={{
                           fontSize: '10px',
                           color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
@@ -546,16 +545,13 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                     
-                    {/* Icon Circle - Centered on line */}
+                    {/* Icon Circle - Already positioned by button */}
                     <motion.div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 mb-1 absolute"
+                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
                       style={{
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
-                        bottom: '24px',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
                         zIndex: 10
                       }}
                       animate={{
@@ -584,8 +580,7 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                   </motion.button>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
