@@ -505,7 +505,7 @@ export default function JourneySelectionPage() {
               ></div>
               
               {/* Timeline Points */}
-              <div className="flex justify-between h-full absolute top-0 left-8 right-8">
+              <div className="flex justify-between h-full absolute top-3 left-8 right-8">
                 {journeyTiers.map((tier, index) => (
                   <motion.button
                     key={tier.id}
@@ -525,7 +525,7 @@ export default function JourneySelectionPage() {
                   >
                     {/* Title Above */}
                     <motion.div 
-                      className="text-center absolute top-1 left-1/2 transform -translate-x-1/2 w-32"
+                      className="text-center absolute -top-3 left-1/2 transform -translate-x-1/2 w-32"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
@@ -549,7 +549,7 @@ export default function JourneySelectionPage() {
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
-                        top: '18px',
+                        top: '2px',
                         left: '50%',
                         transform: 'translateX(-50%)',
                         zIndex: 10
@@ -569,7 +569,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="text-center absolute top-16 left-1/2 transform -translate-x-1/2 w-32"
+                      className="text-center absolute top-8 left-1/2 transform -translate-x-1/2 w-32"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
