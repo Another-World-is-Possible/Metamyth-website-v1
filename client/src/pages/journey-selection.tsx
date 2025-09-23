@@ -505,7 +505,7 @@ export default function JourneySelectionPage() {
               ></div>
               
               {/* Timeline Points */}
-              <div className="flex justify-between items-start h-full relative pt-2">
+              <div className="flex justify-between items-center h-full relative" style={{paddingTop: '27px'}}>
                 {journeyTiers.map((tier, index) => (
                   <motion.button
                     key={tier.id}
@@ -527,7 +527,7 @@ export default function JourneySelectionPage() {
                       transition={{ duration: 0.3 }}
                     >
                       <div 
-                        className="font-emerland text-xs font-bold tracking-wide text-center leading-tight"
+                        className="font-emerland font-bold tracking-wide text-center leading-tight" style={{fontSize: '10px'}}
                         style={{
                           color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
                         }}
@@ -538,7 +538,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Icon Circle - Centered on line */}
                     <motion.div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 mb-2"
+                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
                       style={{
                         backgroundColor: 'rgb(0, 0, 0)',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
