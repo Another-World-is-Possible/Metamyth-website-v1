@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Shield, Sword, Globe, Plus } from "lucide-react";
@@ -514,10 +514,58 @@ export default function JourneySelectionPage() {
                 // Calculate exact positions to avoid transform conflicts
                 const buttonLeft = index === 0 ? 32 : index === 1 ? 'calc(50% - 25px)' : 'calc(100% - 82px)';
                 const circleLeft = index === 0 ? 5 : index === 1 ? 5 : 5; // 5px to center 40px circle in 50px button
+                // Helper for text positioning - same coordinates that work for circles
+                const centerXFor = (i: number) => i === 0 ? '57px' : i === 1 ? '50%' : 'calc(100% - 57px)';
                 
                 return (
-                  <motion.button
-                    key={tier.id}
+                  <React.Fragment key={`timeline-${tier.id}`}>
+                    {/* Title Above - Positioned absolutely in timeline container */}
+                    <motion.div 
+                      className="absolute whitespace-nowrap text-center pointer-events-none z-20"
+                      style={{ 
+                        left: centerXFor(index),
+                        top: 'calc(50% - 65px)', // Above the timeline
+                        transform: 'translateX(-50%)'
+                      }}
+                      animate={{
+                        opacity: selectedTier === tier.id ? 1 : 0.7
+                      }}
+                      transition={{ duration: 0.3 }}
+                      initial={false}
+                      layout="position"
+                    >
+                      <div 
+                        className="font-emerland font-bold tracking-wide leading-none whitespace-nowrap"
+                        style={{
+                          fontSize: '10px',
+                          color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
+                        }}
+                      >
+                        {tier.id === 'changemakers' ? 'CHANGE MAKERS' : tier.id === 'worldbuilders' ? 'WORLD BUILDERS' : tier.title}
+                      </div>
+                    </motion.div>
+                    
+                    {/* Description Below - Positioned absolutely in timeline container */}
+                    <motion.div 
+                      className="absolute whitespace-nowrap text-center pointer-events-none z-20"
+                      style={{ 
+                        left: centerXFor(index),
+                        top: 'calc(50% + 32px)', // Below the timeline
+                        transform: 'translateX(-50%)'
+                      }}
+                      animate={{
+                        opacity: selectedTier === tier.id ? 1 : 0.6
+                      }}
+                      transition={{ duration: 0.3 }}
+                      initial={false}
+                      layout="position"
+                    >
+                      <div className="font-emerland text-amber-200/70 leading-none whitespace-nowrap" style={{ fontSize: '10px' }}>
+                        {tier.subtitle.split(' ').slice(0, 3).join(' ')}
+                      </div>
+                    </motion.div>
+                    
+                    <motion.button
                     onClick={(e) => {
                       e.stopPropagation();
                       // Update state directly for immediate response
@@ -536,30 +584,6 @@ export default function JourneySelectionPage() {
                     }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {/* Title Above */}
-                    <motion.div 
-                      className="absolute whitespace-nowrap text-center pointer-events-none"
-                      style={{ 
-                        left: '50%', // Match circle centering
-                        top: '-40px',
-                        transform: 'translateX(-50%)'
-                      }}
-                      animate={{
-                        opacity: selectedTier === tier.id ? 1 : 0.7
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div 
-                        className="font-emerland font-bold tracking-wide leading-none whitespace-nowrap"
-                        style={{
-                          fontSize: '10px',
-                          color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
-                        }}
-                      >
-                        {tier.id === 'changemakers' ? 'CHANGE MAKERS' : tier.id === 'worldbuilders' ? 'WORLD BUILDERS' : tier.title}
-                      </div>
-                    </motion.div>
-                    
                     {/* Icon Circle - Centered on button/line */}
                     <div 
                       className="w-10 h-10 rounded-full flex items-center justify-center absolute pointer-events-none"
@@ -580,25 +604,8 @@ export default function JourneySelectionPage() {
                         {tier.icon}
                       </div>
                     </div>
-                    
-                    {/* Description Below */}
-                    <motion.div 
-                      className="absolute whitespace-nowrap text-center pointer-events-none"
-                      style={{ 
-                        left: '50%', // Match circle centering
-                        top: '32px',
-                        transform: 'translateX(-50%)'
-                      }}
-                      animate={{
-                        opacity: selectedTier === tier.id ? 1 : 0.6
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className="font-emerland text-amber-200/70 leading-none whitespace-nowrap" style={{ fontSize: '10px' }}>
-                        {tier.subtitle.split(' ').slice(0, 3).join(' ')}
-                      </div>
-                    </motion.div>
                   </motion.button>
+                </React.Fragment>
                 );
               })}
             </div>
