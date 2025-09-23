@@ -355,7 +355,7 @@ export default function TransformationJourneysPage() {
                     pathway.highlight 
                       ? 'border-[hsl(178,65%,45%)] shadow-[0_0_20px_rgba(72,196,196,0.4)]' 
                       : 'border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.3)]'
-                  } relative cursor-pointer hover:scale-105 transition-all duration-300`}
+                  } relative hover:scale-105 transition-all duration-300`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -390,7 +390,8 @@ export default function TransformationJourneysPage() {
                   </p>
                   
                   <Button 
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent event bubbling
                       const tierMap: { [key: string]: string } = {
                         'SEEKERS': 'seekers',
                         'CHANGEMAKERS': 'changemakers', 
@@ -399,7 +400,7 @@ export default function TransformationJourneysPage() {
                       const tierParam = tierMap[pathway.title] || 'changemakers';
                       navigate(`/journey-selection?tier=${tierParam}`);
                     }}
-                    className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-300 ${
+                    className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-300 relative z-10 cursor-pointer ${
                       pathway.highlight 
                         ? 'bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_15px_rgba(72,196,196,0.4)]' 
                         : 'bg-[hsl(45,85%,55%)]/60 hover:bg-[hsl(45,85%,55%)]/80 text-black border border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.4)] font-bold'
@@ -409,7 +410,8 @@ export default function TransformationJourneysPage() {
                       background: pathway.highlight ? undefined : 'hsla(45, 85%, 55%, 0.6)',
                       color: pathway.highlight ? undefined : 'black',
                       border: pathway.highlight ? undefined : '1px solid hsl(45, 85%, 55%)',
-                      fontWeight: pathway.highlight ? undefined : 'bold'
+                      fontWeight: pathway.highlight ? undefined : 'bold',
+                      pointerEvents: 'auto' // Ensure buttons are clickable
                     }}
                   >
                     JOIN {pathway.title}
