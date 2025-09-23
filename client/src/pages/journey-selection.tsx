@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Shield, Sword, Globe, Plus } from "lucide-react";
-import { useLocation } from "wouter";
+import { useLocation, useRoute } from "wouter";
 import SharedNavigation from "@/components/shared-navigation";
 import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
 
@@ -153,7 +153,7 @@ const journeyTiers: JourneyTier[] = [
 ];
 
 export default function JourneySelectionPage() {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
   const [selectedTier, setSelectedTier] = useState<string>('default'); // Safe default for button fallback
   const [scholarshipCount, setScholarshipCount] = useState(0);
   const [selectedPaymentPlan, setSelectedPaymentPlan] = useState(0);
@@ -510,12 +510,9 @@ export default function JourneySelectionPage() {
                   key={tier.id}
                   onClick={(e) => {
                     e.stopPropagation();
-                    // Update URL query parameter instead of just local state
-                    const newUrl = new URL(window.location.href);
-                    newUrl.searchParams.set('tier', tier.id);
-                    window.history.pushState({}, '', newUrl);
-                    // Trigger the useEffect by updating location
-                    window.dispatchEvent(new PopStateEvent('popstate'));
+                    // Use wouter's navigation to properly update URL and trigger re-render
+                    const currentPath = window.location.pathname;
+                    setLocation(`${currentPath}?tier=${tier.id}`);
                     window.scrollTo(0, 0); // Scroll to top when tier changes
                   }}
                   className="cursor-pointer absolute z-10"
