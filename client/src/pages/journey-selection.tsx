@@ -446,17 +446,35 @@ export default function JourneySelectionPage() {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 2.8 }}
                       >
-                        <Button 
-                          className="w-full py-5 text-xl font-bold rounded-lg transition-all duration-300"
-                          style={{
-                            backgroundColor: selectedTierData.colors.primary,
-                            color: selectedTier === 'seekers' ? 'white' : 'black',
-                            boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
-                          }}
-                          data-testid="button-claim-author-seat"
-                        >
-                          CLAIM YOUR AUTHOR'S SEAT
-                        </Button>
+                        {selectedTier === 'seekers' ? (
+                          <a 
+                            href="https://buy.stripe.com/aFa00ibh6duo0Ta62OfQI01"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full py-5 text-xl font-bold rounded-lg transition-all duration-300 text-center"
+                            style={{
+                              backgroundColor: selectedTierData.colors.primary,
+                              color: 'white',
+                              boxShadow: `0 0 25px ${selectedTierData.colors.glow}`,
+                              textDecoration: 'none'
+                            }}
+                            data-testid="button-claim-author-seat"
+                          >
+                            CLAIM YOUR AUTHOR'S SEAT
+                          </a>
+                        ) : (
+                          <Button 
+                            className="w-full py-5 text-xl font-bold rounded-lg transition-all duration-300"
+                            style={{
+                              backgroundColor: selectedTierData.colors.primary,
+                              color: selectedTier === 'seekers' ? 'white' : 'black',
+                              boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
+                            }}
+                            data-testid="button-claim-author-seat"
+                          >
+                            CLAIM YOUR AUTHOR'S SEAT
+                          </Button>
+                        )}
                         
                         <Button 
                           variant="outline"
