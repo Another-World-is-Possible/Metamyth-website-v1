@@ -157,8 +157,11 @@ export default function JourneySelectionPage() {
   const [scholarshipCount, setScholarshipCount] = useState(0);
   const [selectedPaymentPlan, setSelectedPaymentPlan] = useState(0);
 
-  // Check URL parameters for pre-selection
+  // Check URL parameters for pre-selection and scroll to top
   useEffect(() => {
+    // Scroll to top when page loads
+    window.scrollTo(0, 0);
+    
     const params = new URLSearchParams(window.location.search);
     const tier = params.get('tier');
     if (tier && journeyTiers.find(t => t.id === tier)) {
