@@ -495,7 +495,7 @@ export default function JourneySelectionPage() {
         {/* Ultra-Compact Timeline Navigation */}
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm py-4">
           <div className="w-full max-w-3xl mx-auto px-8">
-            <div className="relative h-28">
+            <div className="relative h-32">
               {/* Gradient Line */}
               <div 
                 className="absolute top-8 left-8 right-8 h-1 rounded-full"
@@ -525,16 +525,16 @@ export default function JourneySelectionPage() {
                   >
                     {/* Title Above */}
                     <motion.div 
-                      className="text-center absolute -top-6 left-1/2 transform -translate-x-1/2 w-20"
+                      className="text-center absolute -top-7 left-1/2 transform -translate-x-1/2 w-24"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
                       transition={{ duration: 0.3 }}
                     >
                       <div 
-                        className="font-emerland font-bold tracking-wide text-center leading-tight"
+                        className="font-emerland font-bold tracking-wide text-center leading-none whitespace-nowrap"
                         style={{
-                          fontSize: '10px',
+                          fontSize: '9px',
                           color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
                         }}
                       >
@@ -569,14 +569,14 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="text-center absolute top-12 left-1/2 transform -translate-x-1/2 w-20"
+                      className="text-center absolute top-14 left-1/2 transform -translate-x-1/2 w-24"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="font-emerland text-xs text-amber-200/70 leading-none whitespace-nowrap">
-                        {tier.subtitle.split(' ').slice(0, 2).join(' ')}
+                      <div className="font-emerland text-amber-200/70 leading-none whitespace-nowrap" style={{ fontSize: '9px' }}>
+                        {tier.subtitle.split(' ').slice(0, 3).join(' ')}
                       </div>
                     </motion.div>
                   </motion.button>
