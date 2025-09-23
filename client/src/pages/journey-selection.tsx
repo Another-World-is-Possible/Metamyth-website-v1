@@ -532,8 +532,11 @@ export default function JourneySelectionPage() {
                 >
                     {/* Title Above */}
                     <motion.div 
-                      className="absolute -top-10 left-0 -translate-x-1/2 whitespace-nowrap text-center pointer-events-none"
-                      style={{ marginLeft: '16px' }}
+                      className="absolute -top-10 whitespace-nowrap text-center pointer-events-none"
+                      style={{ 
+                        left: '-4px', // Adjusted to align with circle center
+                        transform: 'translateX(-50%)'
+                      }}
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
@@ -552,14 +555,15 @@ export default function JourneySelectionPage() {
                     
                     {/* Icon Circle - Centered on line */}
                     <div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center absolute left-0 -translate-x-1/2 pointer-events-none"
+                      className="w-10 h-10 rounded-full flex items-center justify-center absolute pointer-events-none"
                       style={{
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
+                        left: '-20px', // Half of 40px circle width to center it
                         top: '-20px',
                         zIndex: 10,
-                        transform: selectedTier === tier.id ? 'translateX(-50%) scale(1.05)' : 'translateX(-50%) scale(1)'
+                        transform: selectedTier === tier.id ? 'scale(1.05)' : 'scale(1)'
                       }}
                     >
                       <div 
@@ -572,8 +576,11 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="absolute top-8 left-0 -translate-x-1/2 whitespace-nowrap text-center pointer-events-none"
-                      style={{ marginLeft: '16px' }}
+                      className="absolute top-8 whitespace-nowrap text-center pointer-events-none"
+                      style={{ 
+                        left: '-4px', // Adjusted to align with circle center
+                        transform: 'translateX(-50%)'
+                      }}
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
