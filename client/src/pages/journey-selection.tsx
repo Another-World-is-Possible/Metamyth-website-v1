@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Shield, Sword, Feather, Plus } from "lucide-react";
+import { Shield, Sword, Globe, Plus } from "lucide-react";
 import { useLocation } from "wouter";
 import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
 
@@ -110,7 +110,7 @@ const journeyTiers: JourneyTier[] = [
     id: "worldbuilders",
     title: "WORLD BUILDERS",
     subtitle: "Scaling Transformation to Planetary Impact",
-    icon: <Feather className="w-8 h-8" />,
+    icon: <Globe className="w-8 h-8" />,
     position: "right-8",
     basePrice: 4200,
     colors: {
@@ -479,12 +479,12 @@ export default function JourneySelectionPage() {
         </div>
 
         {/* Ultra-Compact Timeline Navigation */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm py-2">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm py-2">
           <div className="w-full max-w-4xl mx-auto px-8">
-            <div className="relative h-12">
-              {/* Gradient Line */}
+            <div className="relative h-14">
+              {/* Gradient Line - Perfectly centered */}
               <div 
-                className="absolute top-6 left-8 right-8 h-1 rounded-full"
+                className="absolute top-1/2 left-8 right-8 h-1 rounded-full transform -translate-y-1/2"
                 style={{
                   background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%), hsl(178,65%,45%))'
                 }}
@@ -500,13 +500,16 @@ export default function JourneySelectionPage() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {/* Title Above */}
+                    {/* Title Above - Extra spacing for CHANGEMAKERS */}
                     <motion.div 
-                      className="text-center mb-1"
+                      className={`text-center ${tier.id === 'changemakers' ? 'mb-3' : 'mb-2'}`}
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
                       transition={{ duration: 0.3 }}
+                      style={{
+                        transform: tier.id === 'changemakers' ? 'translateY(-4px)' : 'none'
+                      }}
                     >
                       <div 
                         className="font-emerland text-xs font-bold tracking-wider whitespace-nowrap"
@@ -518,14 +521,16 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                     
-                    {/* Icon Circle - ON the line (positioned at line's y-position) */}
+                    {/* Icon Circle - Perfectly centered on line */}
                     <motion.div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 mb-1"
+                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 mb-2"
                       style={{
                         backgroundColor: 'rgb(0, 0, 0)',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
-                        marginTop: '-20px' // This centers it exactly on the line at top-6
+                        position: 'absolute',
+                        top: '50%',
+                        transform: 'translateY(-50%)' // Perfect centering on the line
                       }}
                       animate={{
                         scale: selectedTier === tier.id ? 1.1 : 1
@@ -542,7 +547,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="text-center"
+                      className="text-center absolute bottom-0"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
