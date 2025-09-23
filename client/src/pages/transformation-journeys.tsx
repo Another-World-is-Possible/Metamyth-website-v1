@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import SharedNavigation from "@/components/shared-navigation";
 import { useLocation } from "wouter";
-import cosmicPathwayBg from "@assets/json__cosmic_city_vision-__prompt-_an_impossibly_vast_and_epic_landscape_like_the_sierra_nevada_de__h8rnlsruu7ca00t0jh44_1_1755889977562.png";
+import cosmicPathwayBg from "@assets/cosmic_pathway_bg.png";
 
 export default function TransformationJourneysPage() {
   const [, navigate] = useLocation();
