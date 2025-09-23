@@ -525,7 +525,7 @@ export default function JourneySelectionPage() {
                   >
                     {/* Title Above */}
                     <motion.div 
-                      className="text-center absolute -top-4 left-1/2 transform -translate-x-1/2 w-28"
+                      className="text-center absolute -top-4 inset-x-0 flex justify-center"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
@@ -569,7 +569,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="text-center absolute top-7 left-1/2 transform -translate-x-1/2 w-28"
+                      className="text-center absolute top-7 inset-x-0 flex justify-center"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
