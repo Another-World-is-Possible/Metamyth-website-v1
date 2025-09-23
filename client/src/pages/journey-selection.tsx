@@ -505,26 +505,30 @@ export default function JourneySelectionPage() {
               ></div>
               
               {/* Timeline Points */}
-              <div className="flex justify-between absolute top-1/2 -translate-y-1/2 left-8 right-8">
-                {journeyTiers.map((tier, index) => (
-                  <motion.button
-                    key={tier.id}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      // Update URL query parameter instead of just local state
-                      const newUrl = new URL(window.location.href);
-                      newUrl.searchParams.set('tier', tier.id);
-                      window.history.pushState({}, '', newUrl);
-                      // Trigger the useEffect by updating location
-                      window.dispatchEvent(new PopStateEvent('popstate'));
-                      window.scrollTo(0, 0); // Scroll to top when tier changes
-                    }}
-                    className="cursor-pointer relative z-10 flex-1 h-0"
-                    whileTap={{ scale: 0.95 }}
-                  >
+              {journeyTiers.map((tier, index) => (
+                <motion.button
+                  key={tier.id}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Update URL query parameter instead of just local state
+                    const newUrl = new URL(window.location.href);
+                    newUrl.searchParams.set('tier', tier.id);
+                    window.history.pushState({}, '', newUrl);
+                    // Trigger the useEffect by updating location
+                    window.dispatchEvent(new PopStateEvent('popstate'));
+                    window.scrollTo(0, 0); // Scroll to top when tier changes
+                  }}
+                  className="cursor-pointer absolute z-10"
+                  style={{
+                    left: index === 0 ? '32px' : index === 1 ? '50%' : 'calc(100% - 32px)',
+                    top: '50%',
+                    transform: index === 0 ? 'translateY(-50%)' : index === 1 ? 'translate(-50%, -50%)' : 'translate(-100%, -50%)'
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
                     {/* Title Above */}
                     <motion.div 
-                      className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
+                      className="absolute -top-8 left-0 -translate-x-1/2 whitespace-nowrap text-center"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
@@ -543,7 +547,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Icon Circle - Centered on line */}
                     <motion.div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 absolute left-1/2 -translate-x-1/2"
+                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 absolute left-0 -translate-x-1/2"
                       style={{
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
@@ -566,7 +570,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
+                      className="absolute top-8 left-0 -translate-x-1/2 whitespace-nowrap text-center"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
@@ -577,8 +581,7 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                   </motion.button>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
