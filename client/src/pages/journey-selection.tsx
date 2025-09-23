@@ -153,7 +153,7 @@ const journeyTiers: JourneyTier[] = [
 
 export default function JourneySelectionPage() {
   const [location] = useLocation();
-  const [selectedTier, setSelectedTier] = useState<string>('changemakers'); // Default to changemakers
+  const [selectedTier, setSelectedTier] = useState<string>('worldbuilders'); // Default to worldbuilders (button fallback)
   const [scholarshipCount, setScholarshipCount] = useState(0);
   const [selectedPaymentPlan, setSelectedPaymentPlan] = useState(0);
 
@@ -462,12 +462,28 @@ export default function JourneySelectionPage() {
                           >
                             CLAIM YOUR AUTHOR'S SEAT
                           </a>
+                        ) : selectedTier === 'changemakers' ? (
+                          <a 
+                            href="https://buy.stripe.com/28E28qad276031i1MyfQI02"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full py-5 text-xl font-bold rounded-lg transition-all duration-300 text-center"
+                            style={{
+                              backgroundColor: selectedTierData.colors.primary,
+                              color: 'black',
+                              boxShadow: `0 0 25px ${selectedTierData.colors.glow}`,
+                              textDecoration: 'none'
+                            }}
+                            data-testid="button-claim-author-seat"
+                          >
+                            CLAIM YOUR AUTHOR'S SEAT
+                          </a>
                         ) : (
                           <Button 
                             className="w-full py-5 text-xl font-bold rounded-lg transition-all duration-300"
                             style={{
                               backgroundColor: selectedTierData.colors.primary,
-                              color: selectedTier === 'seekers' ? 'white' : 'black',
+                              color: 'black',
                               boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
                             }}
                             data-testid="button-claim-author-seat"
