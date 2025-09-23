@@ -511,7 +511,12 @@ export default function JourneySelectionPage() {
                     key={tier.id}
                     onClick={(e) => {
                       e.stopPropagation();
-                      setSelectedTier(tier.id);
+                      // Update URL query parameter instead of just local state
+                      const newUrl = new URL(window.location.href);
+                      newUrl.searchParams.set('tier', tier.id);
+                      window.history.pushState({}, '', newUrl);
+                      // Trigger the useEffect by updating location
+                      window.dispatchEvent(new PopStateEvent('popstate'));
                       window.scrollTo(0, 0); // Scroll to top when tier changes
                     }}
                     className="flex flex-col items-center cursor-pointer relative z-10"
