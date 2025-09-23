@@ -498,7 +498,7 @@ export default function JourneySelectionPage() {
         {/* Ultra-Compact Timeline Navigation */}
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm py-4">
           <div className="w-full max-w-3xl mx-auto px-8">
-            <div className="relative h-20">
+            <div className="relative h-28">
               {/* Gradient Line - Clamped to circle centers */}
               <div 
                 className="absolute top-1/2 -translate-y-1/2 h-1 rounded-full"
@@ -547,11 +547,12 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below - Positioned absolutely in timeline container */}
                     <motion.div 
-                      className="absolute whitespace-nowrap text-center pointer-events-none z-20"
+                      className="absolute text-center pointer-events-none z-20"
                       style={{ 
                         left: centerXFor(index),
-                        top: 'calc(50% + 32px)', // Below the timeline
-                        transform: 'translateX(-50%)'
+                        top: 'calc(50% + 42px)', // Below the timeline with more space
+                        transform: 'translateX(-50%)',
+                        width: '120px' // Give it a fixed width for proper wrapping
                       }}
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
@@ -560,8 +561,8 @@ export default function JourneySelectionPage() {
                       initial={false}
                       layout="position"
                     >
-                      <div className="font-emerland text-amber-200/70 leading-none whitespace-nowrap" style={{ fontSize: '10px' }}>
-                        {tier.subtitle.split(' ').slice(0, 3).join(' ')}
+                      <div className="font-emerland text-amber-200/70 leading-tight" style={{ fontSize: '9px' }}>
+                        {tier.subtitle}
                       </div>
                     </motion.div>
                     
