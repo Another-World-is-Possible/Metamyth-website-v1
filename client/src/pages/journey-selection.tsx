@@ -449,7 +449,7 @@ export default function JourneySelectionPage() {
 
                       {/* Scholarship Info */}
                       <p className="font-emerland text-amber-200/90 mb-8 text-lg">
-                        Investment above baseline ($1,200) funds scholarship sponsorships at $600 each.
+                        Investment above baseline (${selectedTierData.basePrice.toLocaleString()}) funds scholarship sponsorships at $600 each.
                       </p>
 
                       {/* Secondary Button */}
