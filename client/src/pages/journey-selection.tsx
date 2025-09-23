@@ -540,7 +540,7 @@ export default function JourneySelectionPage() {
                     <motion.div 
                       className="absolute whitespace-nowrap text-center pointer-events-none"
                       style={{ 
-                        left: '25px', // Center of 50px button
+                        left: '50%', // Match circle centering
                         top: '-40px',
                         transform: 'translateX(-50%)'
                       }}
@@ -585,7 +585,7 @@ export default function JourneySelectionPage() {
                     <motion.div 
                       className="absolute whitespace-nowrap text-center pointer-events-none"
                       style={{ 
-                        left: '25px', // Center of 50px button
+                        left: '50%', // Match circle centering
                         top: '32px',
                         transform: 'translateX(-50%)'
                       }}
