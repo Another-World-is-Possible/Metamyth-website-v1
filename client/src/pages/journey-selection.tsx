@@ -519,7 +519,7 @@ export default function JourneySelectionPage() {
                       window.dispatchEvent(new PopStateEvent('popstate'));
                       window.scrollTo(0, 0); // Scroll to top when tier changes
                     }}
-                    className="flex flex-col items-center cursor-pointer relative z-10 flex-1"
+                    className="cursor-pointer relative z-10 flex-1 h-0"
                     whileTap={{ scale: 0.95 }}
                   >
                     {/* Title Above */}
@@ -548,9 +548,9 @@ export default function JourneySelectionPage() {
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
-                        top: '0',
+                        top: '-20px',
                         left: '50%',
-                        transform: 'translate(-50%, -50%)',
+                        transform: 'translateX(-50%)',
                         zIndex: 10
                       }}
                       animate={{
