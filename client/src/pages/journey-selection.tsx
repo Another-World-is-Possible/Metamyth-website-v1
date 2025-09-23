@@ -529,7 +529,7 @@ export default function JourneySelectionPage() {
                     {/* Title Above */}
                     <motion.div 
                       className="absolute -top-8 left-0 -translate-x-1/2 whitespace-nowrap text-center"
-                      style={{ marginLeft: '6px' }}
+                      style={{ marginLeft: '8px' }}
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
@@ -572,7 +572,7 @@ export default function JourneySelectionPage() {
                     {/* Description Below */}
                     <motion.div 
                       className="absolute top-8 left-0 -translate-x-1/2 whitespace-nowrap text-center"
-                      style={{ marginLeft: '6px' }}
+                      style={{ marginLeft: '8px' }}
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
