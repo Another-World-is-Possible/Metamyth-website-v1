@@ -498,7 +498,7 @@ export default function JourneySelectionPage() {
             <div className="relative h-20">
               {/* Gradient Line */}
               <div 
-                className="absolute bottom-8 left-8 right-8 h-1 rounded-full"
+                className="absolute bottom-11 left-8 right-8 h-1 rounded-full"
                 style={{
                   background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%), hsl(178,65%,45%))'
                 }}
@@ -525,7 +525,7 @@ export default function JourneySelectionPage() {
                   >
                     {/* Title Above */}
                     <motion.div 
-                      className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
+                      className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
@@ -549,7 +549,7 @@ export default function JourneySelectionPage() {
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
-                        bottom: '18px',
+                        bottom: '6px',
                         left: '50%',
                         transform: 'translateX(-50%)',
                         zIndex: 10
@@ -569,7 +569,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="absolute top-14 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
+                      className="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
