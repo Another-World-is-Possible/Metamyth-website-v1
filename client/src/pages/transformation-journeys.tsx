@@ -403,7 +403,7 @@ export default function TransformationJourneysPage() {
                     }`}
                     data-testid={`button-select-${pathway.title.toLowerCase().replace(' ', '-')}`}
                   >
-                    EXPLORE {pathway.title}
+                    JOIN {pathway.title}
                   </Button>
                 </motion.div>
               ))}

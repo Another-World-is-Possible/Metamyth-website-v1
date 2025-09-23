@@ -112,7 +112,7 @@ const journeyTiers: JourneyTier[] = [
     subtitle: "Scaling Transformation to Planetary Impact",
     icon: <Globe className="w-8 h-8" />,
     position: "right-8",
-    basePrice: 4200,
+    basePrice: 3300,
     colors: {
       primary: "hsl(178, 65%, 45%)", // Teal
       secondary: "hsl(178, 55%, 35%)",
@@ -356,7 +356,7 @@ export default function JourneySelectionPage() {
                   </div>
                 </motion.div>
 
-                {/* Pricing Section */}
+                {/* Simplified Pricing Section */}
                 <motion.div
                   className="lg:col-span-2"
                   initial={{ opacity: 0, y: 50 }}
@@ -364,84 +364,22 @@ export default function JourneySelectionPage() {
                   transition={{ duration: 0.8, delay: 2.2 }}
                 >
                   <div 
-                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-6"
+                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-8"
                     style={{
                       borderColor: selectedTierData.colors.border,
                       background: selectedTierData.colors.background,
                       boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
                     }}
                   >
-                    <h3 className="font-angle text-3xl mb-6 text-center text-gradient-gold">
-                      What Is Your Story Worth to You?
-                    </h3>
+                    <div className="max-w-2xl mx-auto text-center">
+                      {/* Main Message */}
+                      <p className="font-thornelia text-3xl text-amber-200 mb-8">
+                        The future you dream is one story away.
+                      </p>
 
-                    <div className="max-w-2xl mx-auto">
-                      {/* Simple Opening Line */}
-                      <div className="text-center mb-8">
-                        <p className="font-thornelia text-2xl text-amber-200 mb-6">
-                          The future you dream is one story away.
-                        </p>
-                      </div>
-
-                      {/* Simple Payment Options */}
-                      <div className="space-y-4 mb-8">
-                        {/* Full Payment Option */}
-                        <button
-                          onClick={() => setSelectedPaymentPlan(0)}
-                          className={`w-full p-6 rounded border-2 transition-all duration-300 text-left ${
-                            selectedPaymentPlan === 0 ? 'border-opacity-100 bg-opacity-20' : 'border-opacity-50 hover:border-opacity-80'
-                          }`}
-                          style={{
-                            borderColor: selectedTierData.colors.primary,
-                            backgroundColor: selectedPaymentPlan === 0 ? `${selectedTierData.colors.primary}20` : 'transparent'
-                          }}
-                        >
-                          <div className="flex items-center">
-                            <div className={`w-5 h-5 rounded border-2 mr-4 ${
-                              selectedPaymentPlan === 0 ? 'bg-opacity-100' : ''
-                            }`} style={{ borderColor: selectedTierData.colors.primary, backgroundColor: selectedPaymentPlan === 0 ? selectedTierData.colors.primary : 'transparent' }}></div>
-                            <div>
-                              <div className="font-thornelia text-xl mb-1" style={{ color: selectedTierData.colors.primary }}>
-                                Full commitment: ${selectedTierData.basePrice.toLocaleString()} + bonus initiation session*
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-
-                        {/* Payment Plans Option */}
-                        <button
-                          onClick={() => setSelectedPaymentPlan(1)}
-                          className={`w-full p-6 rounded border-2 transition-all duration-300 text-left ${
-                            selectedPaymentPlan === 1 ? 'border-opacity-100 bg-opacity-20' : 'border-opacity-50 hover:border-opacity-80'
-                          }`}
-                          style={{
-                            borderColor: selectedTierData.colors.primary,
-                            backgroundColor: selectedPaymentPlan === 1 ? `${selectedTierData.colors.primary}20` : 'transparent'
-                          }}
-                        >
-                          <div className="flex items-center">
-                            <div className={`w-5 h-5 rounded border-2 mr-4 ${
-                              selectedPaymentPlan === 1 ? 'bg-opacity-100' : ''
-                            }`} style={{ borderColor: selectedTierData.colors.primary, backgroundColor: selectedPaymentPlan === 1 ? selectedTierData.colors.primary : 'transparent' }}></div>
-                            <div>
-                              <div className="font-thornelia text-xl" style={{ color: selectedTierData.colors.primary }}>
-                                Payment plans available
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                      </div>
-
-                      {/* Bonus Session Note */}
-                      <div className="bg-black/40 p-4 rounded border border-amber-200/20 mb-8">
-                        <p className="font-emerland text-sm text-amber-200/80 italic">
-                          *First 20 people who pay in full receive a personal initiation session before the cohort begins.
-                        </p>
-                      </div>
-
-                      {/* CTA Buttons */}
+                      {/* Primary Button */}
                       <motion.div
-                        className="space-y-4"
+                        className="mb-6"
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6, delay: 2.8 }}
@@ -451,7 +389,7 @@ export default function JourneySelectionPage() {
                             href="https://buy.stripe.com/aFa00ibh6duo0Ta62OfQI01"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block w-full py-5 text-xl font-bold rounded-lg transition-all duration-300 text-center"
+                            className="block w-full py-6 text-2xl font-bold rounded-lg transition-all duration-300 text-center"
                             style={{
                               backgroundColor: selectedTierData.colors.primary,
                               color: 'white',
@@ -460,14 +398,14 @@ export default function JourneySelectionPage() {
                             }}
                             data-testid="button-claim-author-seat"
                           >
-                            CLAIM YOUR AUTHOR'S SEAT
+                            Claim Your Author's Seat - $1,200 (Flexible Pricing)
                           </a>
                         ) : selectedTier === 'changemakers' ? (
                           <a 
                             href="https://buy.stripe.com/28E28qad276031i1MyfQI02"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block w-full py-5 text-xl font-bold rounded-lg transition-all duration-300 text-center"
+                            className="block w-full py-6 text-2xl font-bold rounded-lg transition-all duration-300 text-center"
                             style={{
                               backgroundColor: selectedTierData.colors.primary,
                               color: 'black',
@@ -476,14 +414,14 @@ export default function JourneySelectionPage() {
                             }}
                             data-testid="button-claim-author-seat"
                           >
-                            CLAIM YOUR AUTHOR'S SEAT
+                            Claim Your Author's Seat - $2,100 (Flexible Pricing)
                           </a>
                         ) : selectedTier === 'worldbuilders' ? (
                           <a 
                             href="https://buy.stripe.com/28E28qad29e8eK01MyfQI03"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="block w-full py-5 text-xl font-bold rounded-lg transition-all duration-300 text-center"
+                            className="block w-full py-6 text-2xl font-bold rounded-lg transition-all duration-300 text-center"
                             style={{
                               backgroundColor: selectedTierData.colors.primary,
                               color: 'black',
@@ -492,11 +430,11 @@ export default function JourneySelectionPage() {
                             }}
                             data-testid="button-claim-author-seat"
                           >
-                            CLAIM YOUR AUTHOR'S SEAT
+                            Claim Your Author's Seat - $3,300 (Flexible Pricing)
                           </a>
                         ) : (
                           <Button 
-                            className="w-full py-5 text-xl font-bold rounded-lg transition-all duration-300"
+                            className="w-full py-6 text-2xl font-bold rounded-lg transition-all duration-300"
                             style={{
                               backgroundColor: selectedTierData.colors.primary,
                               color: 'black',
@@ -504,13 +442,25 @@ export default function JourneySelectionPage() {
                             }}
                             data-testid="button-claim-author-seat"
                           >
-                            CLAIM YOUR AUTHOR'S SEAT
+                            Claim Your Author's Seat - $1,200 (Flexible Pricing)
                           </Button>
                         )}
-                        
+                      </motion.div>
+
+                      {/* Scholarship Info */}
+                      <p className="font-emerland text-amber-200/90 mb-8 text-lg">
+                        Investment above baseline ($1,200) funds scholarship sponsorships at $600 each.
+                      </p>
+
+                      {/* Secondary Button */}
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 3.0 }}
+                      >
                         <Button 
                           variant="outline"
-                          className="w-full py-4 text-lg font-semibold rounded-lg transition-all duration-300 bg-transparent"
+                          className="w-full py-4 text-xl font-semibold rounded-lg transition-all duration-300 bg-transparent mb-3"
                           style={{
                             borderColor: selectedTierData.colors.primary,
                             color: selectedTierData.colors.primary
@@ -519,6 +469,9 @@ export default function JourneySelectionPage() {
                         >
                           Questions? Book a Call
                         </Button>
+                        <p className="font-emerland text-amber-200/70 text-sm">
+                          Payment plans • Contribution options • General questions
+                        </p>
                       </motion.div>
                     </div>
                   </div>
