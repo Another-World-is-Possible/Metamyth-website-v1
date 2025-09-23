@@ -566,7 +566,7 @@ export default function JourneySelectionPage() {
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
                         left: `${circleLeft}px`, // Position circle in center of button
-                        top: '-15px', // Position to intersect the horizontal line
+                        top: '5px', // Center 40px circle to intersect with horizontal line
                         zIndex: 10,
                         transform: selectedTier === tier.id ? 'scale(1.05)' : 'scale(1)'
                       }}
