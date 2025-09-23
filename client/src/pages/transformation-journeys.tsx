@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import SharedNavigation from "@/components/shared-navigation";
 import { useLocation } from "wouter";
-import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
+import cosmicPathwayBg from "@assets/json__cosmic_city_vision-__prompt-_an_impossibly_vast_and_epic_landscape_like_the_sierra_nevada_de__h8rnlsruu7ca00t0jh44_1_1755889977562.png";
 
 export default function TransformationJourneysPage() {
   const [, navigate] = useLocation();
@@ -11,11 +11,11 @@ export default function TransformationJourneysPage() {
     <div className="min-h-screen bg-black text-amber-100">
       <SharedNavigation />
       
-      {/* Starry background */}
+      {/* Cosmic pathway background */}
       <div 
         className="fixed inset-0 opacity-60"
         style={{
-          backgroundImage: `url(${starryVoidBg})`,
+          backgroundImage: `url(${cosmicPathwayBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
