@@ -159,7 +159,7 @@ export default function JourneySelectionPage() {
 
   // Check URL parameters for pre-selection
   useEffect(() => {
-    const params = new URLSearchParams(location.split('?')[1] || '');
+    const params = new URLSearchParams(window.location.search);
     const tier = params.get('tier');
     if (tier && journeyTiers.find(t => t.id === tier)) {
       setSelectedTier(tier);
@@ -479,30 +479,30 @@ export default function JourneySelectionPage() {
         </div>
 
         {/* Ultra-Compact Timeline Navigation */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm py-1">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm py-2">
           <div className="w-full max-w-4xl mx-auto px-8">
-            <div className="relative h-16">
+            <div className="relative h-12">
               {/* Gradient Line */}
               <div 
-                className="absolute top-8 left-8 right-8 h-1 rounded-full"
+                className="absolute top-6 left-8 right-8 h-1 rounded-full"
                 style={{
                   background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%), hsl(178,65%,45%))'
                 }}
               ></div>
               
               {/* Timeline Points */}
-              <div className="flex justify-between items-stretch h-full relative">
+              <div className="flex justify-between items-center h-full relative">
                 {journeyTiers.map((tier, index) => (
                   <motion.button
                     key={tier.id}
                     onClick={() => setSelectedTier(tier.id)}
-                    className="flex flex-col items-center justify-center relative z-10 cursor-pointer min-w-0 flex-1"
+                    className="flex flex-col items-center justify-center relative z-10 cursor-pointer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {/* Title Above Line */}
+                    {/* Title Above */}
                     <motion.div 
-                      className="text-center absolute top-1 left-1/2 transform -translate-x-1/2"
+                      className="text-center mb-1"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
@@ -518,13 +518,14 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                     
-                    {/* Icon Circle - Exactly ON the line */}
+                    {/* Icon Circle - ON the line (positioned at line's y-position) */}
                     <motion.div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 mb-1"
                       style={{
                         backgroundColor: 'rgb(0, 0, 0)',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
-                        boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)'
+                        boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
+                        marginTop: '-20px' // This centers it exactly on the line at top-6
                       }}
                       animate={{
                         scale: selectedTier === tier.id ? 1.1 : 1
@@ -539,9 +540,9 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                     
-                    {/* Description Below Line */}
+                    {/* Description Below */}
                     <motion.div 
-                      className="text-center absolute bottom-1 left-1/2 transform -translate-x-1/2"
+                      className="text-center"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}

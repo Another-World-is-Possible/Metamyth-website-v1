@@ -384,13 +384,21 @@ export default function TransformationJourneysPage() {
                   </p>
                   
                   <Button 
-                    onClick={() => window.location.href = `/journey-selection?tier=${pathway.title.toLowerCase().replace(' ', '')}`}
+                    onClick={() => {
+                      const tierMap: { [key: string]: string } = {
+                        'SEEKERS': 'seekers',
+                        'CHANGEMAKERS': 'changemakers', 
+                        'WORLD BUILDERS': 'worldbuilders'
+                      };
+                      const tierParam = tierMap[pathway.title] || 'changemakers';
+                      window.location.href = `/journey-selection?tier=${tierParam}`;
+                    }}
                     className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-300 ${
                       pathway.highlight 
                         ? 'bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_15px_rgba(72,196,196,0.4)]' 
                         : 'bg-[hsl(45,85%,55%)]/20 hover:bg-[hsl(45,85%,55%)]/30 text-[hsl(45,85%,55%)] border border-[hsl(45,85%,55%)]/50 shadow-[0_0_10px_rgba(255,215,0,0.2)]'
                     }`}
-                    data-testid={`button-select-${pathway.title.toLowerCase()}`}
+                    data-testid={`button-select-${pathway.title.toLowerCase().replace(' ', '-')}`}
                   >
                     EXPLORE {pathway.title}
                   </Button>
