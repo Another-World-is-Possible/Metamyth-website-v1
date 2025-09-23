@@ -518,16 +518,17 @@ export default function JourneySelectionPage() {
                     window.dispatchEvent(new PopStateEvent('popstate'));
                     window.scrollTo(0, 0); // Scroll to top when tier changes
                   }}
-                  className="cursor-pointer absolute z-10 w-12 h-12 flex items-center justify-center"
+                  className="cursor-pointer absolute z-10 w-16 h-16"
                   style={{
-                    left: index === 0 ? '26px' : index === 1 ? 'calc(50% - 24px)' : 'calc(100% - 38px)',
-                    top: 'calc(50% - 24px)'
+                    left: index === 0 ? '24px' : index === 1 ? 'calc(50% - 32px)' : 'calc(100% - 40px)',
+                    top: 'calc(50% - 32px)'
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
                     {/* Title Above */}
                     <motion.div 
-                      className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-center pointer-events-none"
+                      className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-center pointer-events-none"
+                      style={{ marginLeft: '16px' }}
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
@@ -546,7 +547,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Icon Circle - Centered on line */}
                     <motion.div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 pointer-events-none"
+                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                       style={{
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
@@ -569,7 +570,8 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-center pointer-events-none"
+                      className="absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap text-center pointer-events-none"
+                      style={{ marginLeft: '16px' }}
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
