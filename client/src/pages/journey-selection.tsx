@@ -463,10 +463,15 @@ export default function JourneySelectionPage() {
                       >
                         <Button 
                           variant="outline"
-                          className="w-full py-4 text-xl font-semibold rounded-lg transition-all duration-300 bg-transparent mb-3"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            window.open('https://calendly.com/anotherworldispossible/start-conversation', '_blank', 'noopener,noreferrer');
+                          }}
+                          className="w-full py-4 text-xl font-semibold rounded-lg transition-all duration-300 bg-transparent mb-3 relative z-10 cursor-pointer"
                           style={{
                             borderColor: selectedTierData.colors.primary,
-                            color: selectedTierData.colors.primary
+                            color: selectedTierData.colors.primary,
+                            pointerEvents: 'auto'
                           }}
                           data-testid="button-book-call"
                         >
@@ -501,8 +506,12 @@ export default function JourneySelectionPage() {
                 {journeyTiers.map((tier, index) => (
                   <motion.button
                     key={tier.id}
-                    onClick={() => setSelectedTier(tier.id)}
-                    className="flex flex-col items-center cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedTier(tier.id);
+                      window.scrollTo(0, 0); // Scroll to top when tier changes
+                    }}
+                    className="flex flex-col items-center cursor-pointer relative z-10"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
