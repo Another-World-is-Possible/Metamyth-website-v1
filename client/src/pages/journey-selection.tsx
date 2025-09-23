@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Shield, Sword, Globe, Plus } from "lucide-react";
 import { useLocation } from "wouter";
+import SharedNavigation from "@/components/shared-navigation";
 import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
 
 interface JourneyTier {
@@ -177,6 +178,8 @@ export default function JourneySelectionPage() {
 
   return (
     <div className="min-h-screen bg-black text-amber-100 overflow-hidden">
+      <SharedNavigation />
+      
       {/* Starry background */}
       <div 
         className="fixed inset-0 opacity-60"
@@ -189,9 +192,9 @@ export default function JourneySelectionPage() {
       />
       
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col">
+      <div className="relative z-10 min-h-screen flex flex-col pt-16">
         {/* Header */}
-        <header className="text-center py-8 px-4">
+        <header className="text-center py-8 px-4 max-w-5xl mx-auto">
           <motion.h1 
             className="font-angle text-3xl md:text-5xl mb-2 text-gradient-gold"
             initial={{ opacity: 0, y: 20 }}
@@ -219,7 +222,7 @@ export default function JourneySelectionPage() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="w-full max-w-6xl mx-auto"
+              className="w-full max-w-5xl mx-auto"
             >
               
               {/* Cinematic Title Section */}
