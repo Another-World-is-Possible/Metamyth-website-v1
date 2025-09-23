@@ -478,39 +478,38 @@ export default function JourneySelectionPage() {
           </AnimatePresence>
         </div>
 
-        {/* Compact Timeline Navigation at Bottom */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm py-4">
+        {/* Ultra-Compact Timeline Navigation */}
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm py-1">
           <div className="w-full max-w-4xl mx-auto px-8">
-            {/* Timeline */}
-            <div className="relative py-6">
+            <div className="relative h-16">
               {/* Gradient Line */}
               <div 
-                className="absolute top-1/2 left-8 right-8 h-1 transform -translate-y-1/2 rounded-full"
+                className="absolute top-8 left-8 right-8 h-1 rounded-full"
                 style={{
                   background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%), hsl(178,65%,45%))'
                 }}
               ></div>
               
               {/* Timeline Points */}
-              <div className="flex justify-between items-center relative">
+              <div className="flex justify-between items-stretch h-full relative">
                 {journeyTiers.map((tier, index) => (
                   <motion.button
                     key={tier.id}
                     onClick={() => setSelectedTier(tier.id)}
-                    className="flex flex-col items-center group relative z-10 cursor-pointer"
+                    className="flex flex-col items-center justify-center relative z-10 cursor-pointer min-w-0 flex-1"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {/* Title Above */}
+                    {/* Title Above Line */}
                     <motion.div 
-                      className="text-center mb-3"
+                      className="text-center absolute top-1 left-1/2 transform -translate-x-1/2"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
                       transition={{ duration: 0.3 }}
                     >
                       <div 
-                        className="font-emerland text-xs font-bold tracking-wider"
+                        className="font-emerland text-xs font-bold tracking-wider whitespace-nowrap"
                         style={{
                           color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
                         }}
@@ -519,13 +518,13 @@ export default function JourneySelectionPage() {
                       </div>
                     </motion.div>
                     
-                    {/* Icon Circle - ON the line */}
+                    {/* Icon Circle - Exactly ON the line */}
                     <motion.div 
-                      className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 mb-3"
+                      className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
                       style={{
                         backgroundColor: 'rgb(0, 0, 0)',
-                        border: `${selectedTier === tier.id ? '3px' : '2px'} solid ${tier.colors.primary}`,
-                        boxShadow: selectedTier === tier.id ? `0 0 20px ${tier.colors.glow}, 0 0 30px ${tier.colors.glow}` : '0 0 5px rgba(0,0,0,0.3)'
+                        border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
+                        boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)'
                       }}
                       animate={{
                         scale: selectedTier === tier.id ? 1.1 : 1
@@ -533,23 +532,23 @@ export default function JourneySelectionPage() {
                       transition={{ duration: 0.3 }}
                     >
                       <div 
-                        className="w-5 h-5 flex items-center justify-center"
+                        className="w-4 h-4 flex items-center justify-center"
                         style={{ color: tier.colors.primary }}
                       >
                         {tier.icon}
                       </div>
                     </motion.div>
                     
-                    {/* Description Below */}
+                    {/* Description Below Line */}
                     <motion.div 
-                      className="text-center max-w-[120px]"
+                      className="text-center absolute bottom-1 left-1/2 transform -translate-x-1/2"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="font-emerland text-xs text-amber-200/70 leading-tight">
-                        {tier.subtitle.split(' ').slice(0, 3).join(' ')}
+                      <div className="font-emerland text-xs text-amber-200/70 leading-none whitespace-nowrap">
+                        {tier.subtitle.split(' ').slice(0, 2).join(' ')}
                       </div>
                     </motion.div>
                   </motion.button>
