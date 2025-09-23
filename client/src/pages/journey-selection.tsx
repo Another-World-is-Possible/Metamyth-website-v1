@@ -468,7 +468,7 @@ export default function JourneySelectionPage() {
                           variant="outline"
                           onClick={(e) => {
                             e.stopPropagation();
-                            window.open('https://calendly.com/anotherworldispossible/start-conversation', '_blank', 'noopener,noreferrer');
+                            window.open('https://zcal.co/i/OmCpmYrt', '_blank', 'noopener,noreferrer');
                           }}
                           className="w-full py-4 text-xl font-semibold rounded-lg transition-all duration-300 bg-transparent mb-3 relative z-10 cursor-pointer"
                           style={{
