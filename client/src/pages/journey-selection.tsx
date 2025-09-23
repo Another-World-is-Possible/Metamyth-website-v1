@@ -561,7 +561,7 @@ export default function JourneySelectionPage() {
                       initial={false}
                       layout="position"
                     >
-                      <div className="font-emerland text-amber-200/70 leading-tight" style={{ fontSize: '9px' }}>
+                      <div className="font-emerland text-amber-200/70 leading-tight" style={{ fontSize: '12px' }}>
                         {tier.subtitle}
                       </div>
                     </motion.div>
