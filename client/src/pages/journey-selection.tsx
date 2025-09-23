@@ -495,17 +495,17 @@ export default function JourneySelectionPage() {
         {/* Ultra-Compact Timeline Navigation */}
         <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm py-4">
           <div className="w-full max-w-3xl mx-auto px-8">
-            <div className="relative h-32">
+            <div className="relative h-20">
               {/* Gradient Line */}
               <div 
-                className="absolute top-8 left-8 right-8 h-1 rounded-full"
+                className="absolute bottom-4 left-8 right-8 h-1 rounded-full"
                 style={{
                   background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%), hsl(178,65%,45%))'
                 }}
               ></div>
               
               {/* Timeline Points */}
-              <div className="flex justify-between h-full absolute top-3 left-8 right-8">
+              <div className="flex justify-between h-full absolute bottom-7 left-8 right-8">
                 {journeyTiers.map((tier, index) => (
                   <motion.button
                     key={tier.id}
@@ -519,13 +519,13 @@ export default function JourneySelectionPage() {
                       window.dispatchEvent(new PopStateEvent('popstate'));
                       window.scrollTo(0, 0); // Scroll to top when tier changes
                     }}
-                    className="flex flex-col items-center cursor-pointer relative z-10"
+                    className="flex flex-col items-center cursor-pointer relative z-10 flex-1"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     {/* Title Above */}
                     <motion.div 
-                      className="text-center absolute -top-4 inset-x-0 flex justify-center"
+                      className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.7
                       }}
@@ -549,7 +549,7 @@ export default function JourneySelectionPage() {
                         backgroundColor: '#000000',
                         border: `${selectedTier === tier.id ? '2px' : '1px'} solid ${tier.colors.primary}`,
                         boxShadow: selectedTier === tier.id ? `0 0 15px ${tier.colors.glow}, 0 0 25px ${tier.colors.glow}` : '0 0 3px rgba(0,0,0,0.3)',
-                        top: '2px',
+                        bottom: '2px',
                         left: '50%',
                         transform: 'translateX(-50%)',
                         zIndex: 10
@@ -569,7 +569,7 @@ export default function JourneySelectionPage() {
                     
                     {/* Description Below */}
                     <motion.div 
-                      className="text-center absolute top-7 inset-x-0 flex justify-center"
+                      className="absolute top-7 left-1/2 -translate-x-1/2 whitespace-nowrap text-center"
                       animate={{
                         opacity: selectedTier === tier.id ? 1 : 0.6
                       }}
