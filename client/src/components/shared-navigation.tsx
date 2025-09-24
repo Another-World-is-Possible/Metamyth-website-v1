@@ -52,11 +52,11 @@ export default function SharedNavigation() {
   }, [location]);
 
   const navItems = [
-    { id: 'why-story-matters', label: 'Why Story', path: '/why-story-matters' },
-    { id: 'systems', label: 'Systems', path: '/systems' },
-    { id: 'transformation-journeys', label: 'Journeys', path: '/transformation-journeys' },
-    { id: 'metamyth', label: 'Metamyth', path: '/metamyth' },
-    { id: 'stories', label: 'Stories', path: '/stories' },
+    { id: 'why-story-matters', label: 'Why Story Matters', path: '/why-story-matters' },
+    { id: 'systems', label: 'The Systems', path: '/systems' },
+    { id: 'transformation-journeys', label: 'Transformation Journeys', path: '/transformation-journeys' },
+    { id: 'metamyth', label: 'Our Metamyth', path: '/metamyth' },
+    { id: 'stories', label: 'Stories We Tell', path: '/stories' },
     { id: 'quest', label: 'Our Quest', path: '/quest' }
   ];
 
@@ -141,13 +141,13 @@ export default function SharedNavigation() {
           {/* Logo and Audio Controls Group - END */}
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2">
+          <div className="hidden md:flex md:flex-wrap md:items-start lg:items-center lg:flex-nowrap divide-x divide-mystical-teal/30">
             {navItems.map((item) => (
               <Button
                 key={item.id}
                 variant="ghost"
                 onClick={() => handleNavClick(item.path)}
-                className={`text-xs px-2 py-1 transition-all duration-300 ${
+                className={`text-xs px-1 py-0.5 md:px-1.5 md:py-1 transition-all duration-300 ${
                   location === item.path
                     ? 'nav-tab-active'
                     : 'text-cream-white hover:nav-tab-hover'
