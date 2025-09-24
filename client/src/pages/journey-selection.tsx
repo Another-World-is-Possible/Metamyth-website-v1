@@ -13,6 +13,7 @@ interface JourneyTier {
   icon: React.ReactNode;
   position: string;
   basePrice: number;
+  originalPrice?: number;
   colors: {
     primary: string;
     secondary: string;
@@ -24,7 +25,7 @@ interface JourneyTier {
     whereYouAre: string[];
     howWeServe: string[];
     includes: string[];
-    paymentPlans: { payments: number; amount: number }[];
+    paymentPlans: { payments: number; amount: number; originalAmount?: number }[];
   };
 }
 
@@ -35,7 +36,8 @@ const journeyTiers: JourneyTier[] = [
     subtitle: "Discovering Your Authentic Story",
     icon: <Shield className="w-8 h-8" />,
     position: "left-8",
-    basePrice: 1200,
+    basePrice: 700,
+    originalPrice: 1200,
     colors: {
       primary: "hsl(0, 70%, 45%)", // Dark red
       secondary: "hsl(0, 60%, 35%)",
@@ -60,19 +62,20 @@ const journeyTiers: JourneyTier[] = [
         "Permanent access to your story artifacts and tools"
       ],
       paymentPlans: [
-        { payments: 1, amount: 1200 },
-        { payments: 2, amount: 650 },
-        { payments: 3, amount: 450 }
+        { payments: 1, amount: 700, originalAmount: 1200 },
+        { payments: 2, amount: 380, originalAmount: 650 },
+        { payments: 3, amount: 263, originalAmount: 450 }
       ]
     }
   },
   {
     id: "changemakers",
-    title: "CHANGEMAKERS",
+    title: "STORYTELLER",
     subtitle: "Intensive Transformation Through Fellowship",
     icon: <Sword className="w-8 h-8" />,
     position: "left-1/2 transform -translate-x-1/2",
-    basePrice: 2100,
+    basePrice: 1400,
+    originalPrice: 2100,
     colors: {
       primary: "hsl(45, 85%, 55%)", // Gold
       secondary: "hsl(45, 75%, 45%)",
@@ -101,52 +104,9 @@ const journeyTiers: JourneyTier[] = [
         "Forum access for ongoing community connection"
       ],
       paymentPlans: [
-        { payments: 1, amount: 2100 },
-        { payments: 2, amount: 1100 },
-        { payments: 3, amount: 750 }
-      ]
-    }
-  },
-  {
-    id: "worldbuilders",
-    title: "WORLD BUILDERS",
-    subtitle: "Scaling Transformation to Planetary Impact",
-    icon: <Globe className="w-8 h-8" />,
-    position: "right-8",
-    basePrice: 3300,
-    colors: {
-      primary: "hsl(178, 65%, 45%)", // Teal
-      secondary: "hsl(178, 55%, 35%)",
-      border: "hsl(178, 65%, 45%)",
-      glow: "rgba(72, 196, 196, 0.4)",
-      background: "linear-gradient(135deg, hsl(178, 65%, 45%)/15, hsl(178, 45%, 25%)/5)"
-    },
-    content: {
-      whereYouAre: [
-        "You're a leader, a legend in the making, a hero already established on your journey and ready to go further. You've built something significant in the world, accumulated influence and resources, yet you know your greatest contribution still lies ahead. You carry a vision that could change everything—an idea, innovation, or way of being that the world desperately needs.",
-        "You understand that your personal transformation ripples through everyone you influence. Your story extends beyond your individual life into your work, relationships, platform, and legacy. You're ready to take full authorship of your role in the larger story of human transformation."
-      ],
-      howWeServe: [
-        "The World Builder experience operates as an exclusive mastermind of established leaders building something bigger than themselves. Your container includes peers who navigate the complexities of conscious leadership at scale.",
-        "Your weekly rhythm includes Monday community calls, Friday Q&A sessions, and weekend mixers, plus two strategic consultation calls designed to integrate your metamyth directly into your existing platform and future vision. You select a protégé—someone you sponsor into the Changemaker tier, recognizing that transformation scales through relationship and example."
-      ],
-      includes: [
-        "Weekly Monday community calls with the full cohort",
-        "Complete MetaMyth app with all seven movements",
-        "Recorded content library for self-paced integration",
-        "Exclusive World Builder mastermind format",
-        "Friday Q&A calls for direct transformation support",
-        "Weekend mixer calls with the larger community",
-        "Two strategic consultation calls for integration and implementation",
-        "Ability to select and sponsor a protégé (Changemaker level)",
-        "Direct support for scaling transformation into existing work",
-        "Case study development for movement inspiration",
-        "Forum access for ongoing community connection"
-      ],
-      paymentPlans: [
-        { payments: 1, amount: 4200 },
-        { payments: 2, amount: 2200 },
-        { payments: 3, amount: 1500 }
+        { payments: 1, amount: 1400, originalAmount: 2100 },
+        { payments: 2, amount: 734, originalAmount: 1100 },
+        { payments: 3, amount: 500, originalAmount: 750 }
       ]
     }
   }
@@ -154,7 +114,7 @@ const journeyTiers: JourneyTier[] = [
 
 export default function JourneySelectionPage() {
   const [location, setLocation] = useLocation();
-  const [selectedTier, setSelectedTier] = useState<string>('changemakers'); // Default to changemakers tier
+  const [selectedTier, setSelectedTier] = useState<string>('seekers'); // Default to seekers tier
   const [scholarshipCount, setScholarshipCount] = useState(0);
   const [selectedPaymentPlan, setSelectedPaymentPlan] = useState(0);
 
@@ -169,7 +129,7 @@ export default function JourneySelectionPage() {
       setSelectedTier(tier);
     } else {
       // Set default tier if no URL parameter
-      setSelectedTier('changemakers');
+      setSelectedTier('seekers');
     }
   }, [location]);
 
@@ -407,9 +367,12 @@ export default function JourneySelectionPage() {
                             }}
                             data-testid="button-claim-author-seat"
                           >
-                            Claim Your Author's Seat - $1,200 (Flexible Pricing)
+                            <div className="flex items-center justify-center gap-3">
+                              <span>Claim Your Author's Seat - $700</span>
+                              <span className="line-through text-white/60 text-lg">$1,200</span>
+                            </div>
                           </a>
-                        ) : selectedTier === 'changemakers' ? (
+                        ) : (
                           <a 
                             href="https://buy.stripe.com/28E28qad276031i1MyfQI02"
                             target="_blank"
@@ -423,36 +386,11 @@ export default function JourneySelectionPage() {
                             }}
                             data-testid="button-claim-author-seat"
                           >
-                            Claim Your Author's Seat - $2,100 (Flexible Pricing)
+                            <div className="flex items-center justify-center gap-3">
+                              <span>Claim Your Author's Seat - $1,400</span>
+                              <span className="line-through text-black/60 text-lg">$2,100</span>
+                            </div>
                           </a>
-                        ) : selectedTier === 'worldbuilders' ? (
-                          <a 
-                            href="https://buy.stripe.com/28E28qad29e8eK01MyfQI03"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block w-full py-6 text-2xl font-bold rounded-lg transition-all duration-300 text-center"
-                            style={{
-                              backgroundColor: selectedTierData.colors.primary,
-                              color: 'black',
-                              boxShadow: `0 0 25px ${selectedTierData.colors.glow}`,
-                              textDecoration: 'none'
-                            }}
-                            data-testid="button-claim-author-seat"
-                          >
-                            Claim Your Author's Seat - $3,300 (Flexible Pricing)
-                          </a>
-                        ) : (
-                          <Button 
-                            className="w-full py-6 text-2xl font-bold rounded-lg transition-all duration-300"
-                            style={{
-                              backgroundColor: selectedTierData.colors.primary,
-                              color: 'black',
-                              boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
-                            }}
-                            data-testid="button-claim-author-seat"
-                          >
-                            Claim Your Author's Seat - $1,200 (Flexible Pricing)
-                          </Button>
                         )}
                       </motion.div>
 
@@ -505,17 +443,17 @@ export default function JourneySelectionPage() {
                 style={{
                   left: '57px', // 32px (left button) + 25px (button center) = 57px
                   right: '57px', // Same distance from right
-                  background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%), hsl(178,65%,45%))'
+                  background: 'linear-gradient(to right, hsl(0,70%,45%), hsl(45,85%,55%))'
                 }}
               ></div>
               
               {/* Timeline Points */}
               {journeyTiers.map((tier, index) => {
                 // Calculate exact positions to avoid transform conflicts
-                const buttonLeft = index === 0 ? 32 : index === 1 ? 'calc(50% - 25px)' : 'calc(100% - 82px)';
-                const circleLeft = index === 0 ? 5 : index === 1 ? 5 : 5; // 5px to center 40px circle in 50px button
-                // Helper for text positioning - same coordinates that work for circles
-                const centerXFor = (i: number) => i === 0 ? '57px' : i === 1 ? '50%' : 'calc(100% - 57px)';
+                const buttonLeft = index === 0 ? 32 : 'calc(100% - 82px)';
+                const circleLeft = index === 0 ? 5 : 5; // 5px to center 40px circle in 50px button
+                // Helper for text positioning - same coordinates that work for circles  
+                const centerXFor = (i: number) => i === 0 ? '57px' : 'calc(100% - 57px)';
                 
                 return (
                   <React.Fragment key={`timeline-${tier.id}`}>
@@ -541,7 +479,7 @@ export default function JourneySelectionPage() {
                           color: selectedTier === tier.id ? tier.colors.primary : 'rgb(253 230 138)'
                         }}
                       >
-                        {tier.id === 'changemakers' ? 'CHANGE MAKERS' : tier.id === 'worldbuilders' ? 'WORLD BUILDERS' : tier.title}
+                        {tier.title}
                       </div>
                     </motion.div>
                     
