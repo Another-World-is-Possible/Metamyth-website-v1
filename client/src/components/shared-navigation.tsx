@@ -141,13 +141,13 @@ export default function SharedNavigation() {
           {/* Logo and Audio Controls Group - END */}
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:flex-wrap md:items-start lg:items-center lg:flex-nowrap divide-x divide-mystical-teal/30">
+          <div className="hidden md:flex md:items-center divide-x divide-mystical-teal/30">
             {navItems.map((item) => (
               <Button
                 key={item.id}
                 variant="ghost"
                 onClick={() => handleNavClick(item.path)}
-                className={`text-xs px-1 py-0.5 md:px-1.5 md:py-1 transition-all duration-300 ${
+                className={`text-xs px-1 py-0.5 md:px-1.5 md:py-1 transition-all duration-300 whitespace-normal text-center leading-tight ${
                   location === item.path
                     ? 'nav-tab-active'
                     : 'text-cream-white hover:nav-tab-hover'
