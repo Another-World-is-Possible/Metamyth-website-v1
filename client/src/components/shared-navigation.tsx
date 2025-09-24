@@ -54,7 +54,7 @@ export default function SharedNavigation() {
   const navItems = [
     { id: 'why-story-matters', label: 'Why Story Matters', path: '/why-story-matters' },
     { id: 'systems', label: 'The Systems', path: '/systems' },
-    { id: 'transformation-journeys', label: 'Transformation Journeys', path: '/transformation-journeys' },
+    { id: 'transformation-journeys', label: 'Journeys', path: '/transformation-journeys' },
     { id: 'metamyth', label: 'Our Metamyth', path: '/metamyth' },
     { id: 'stories', label: 'Stories We Tell', path: '/stories' },
     { id: 'quest', label: 'Our Quest', path: '/quest' }
@@ -140,13 +140,13 @@ export default function SharedNavigation() {
           {/* Logo and Audio Controls Group - END */}
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-3">
             {navItems.map((item) => (
               <Button
                 key={item.id}
                 variant="ghost"
                 onClick={() => handleNavClick(item.path)}
-                className={`typography-body transition-all duration-300 ${
+                className={`text-sm transition-all duration-300 ${
                   location === item.path
                     ? 'nav-tab-active'
                     : 'text-cream-white hover:nav-tab-hover'
