@@ -81,7 +81,8 @@ export default function SharedNavigation() {
             >
               <Shield className="text-ancient-gold animate-spin-slow h-6 w-6" />
               <span className="typography-h3 text-ancient-gold select-none text-glow-gold">
-                Metamyth
+                <span className="hidden md:inline">Metamyth</span>
+                <span className="md:hidden">M</span>
               </span>
             </button>
 
@@ -140,7 +141,7 @@ export default function SharedNavigation() {
           {/* Logo and Audio Controls Group - END */}
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-3">
             {navItems.map((item) => (
               <Button
                 key={item.id}
@@ -161,7 +162,7 @@ export default function SharedNavigation() {
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" className="md:hidden text-cream-white hover:text-ancient-gold">
+              <Button variant="ghost" className="lg:hidden text-cream-white hover:text-ancient-gold">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
