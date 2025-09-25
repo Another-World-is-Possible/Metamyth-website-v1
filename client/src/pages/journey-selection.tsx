@@ -154,6 +154,57 @@ export default function JourneySelectionPage() {
     ? selectedTierData.content.paymentPlans[selectedPaymentPlan].amount + (scholarshipCount * 600 / selectedTierData.content.paymentPlans[selectedPaymentPlan].payments)
     : 0;
 
+  // Countdown Timer Component
+  const CountdownTimer = ({ targetDate }: { targetDate: string }) => {
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+    useEffect(() => {
+      const calculateTimeLeft = () => {
+        const difference = +new Date(targetDate) - +new Date();
+        
+        if (difference > 0) {
+          setTimeLeft({
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60)
+          });
+        }
+      };
+
+      calculateTimeLeft();
+      const timer = setInterval(calculateTimeLeft, 1000);
+
+      return () => clearInterval(timer);
+    }, [targetDate]);
+
+    return (
+      <div className="bg-black/60 border-2 border-amber-500 rounded-lg p-4 max-w-lg mx-auto" style={{ boxShadow: '0 0 15px rgba(245, 158, 11, 0.3)' }}>
+        <div className="text-center mb-2">
+          <div className="font-thornelia text-lg text-amber-400 mb-2">Time Until Enrollment Closes</div>
+          <div className="grid grid-cols-4 gap-2 text-center">
+            <div className="bg-amber-500/20 rounded p-2">
+              <div className="font-angle text-xl md:text-2xl text-amber-300 font-bold">{timeLeft.days}</div>
+              <div className="font-emerland text-xs text-amber-200">DAYS</div>
+            </div>
+            <div className="bg-amber-500/20 rounded p-2">
+              <div className="font-angle text-xl md:text-2xl text-amber-300 font-bold">{timeLeft.hours}</div>
+              <div className="font-emerland text-xs text-amber-200">HOURS</div>
+            </div>
+            <div className="bg-amber-500/20 rounded p-2">
+              <div className="font-angle text-xl md:text-2xl text-amber-300 font-bold">{timeLeft.minutes}</div>
+              <div className="font-emerland text-xs text-amber-200">MINS</div>
+            </div>
+            <div className="bg-amber-500/20 rounded p-2">
+              <div className="font-angle text-xl md:text-2xl text-amber-300 font-bold">{timeLeft.seconds}</div>
+              <div className="font-emerland text-xs text-amber-200">SECS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-black text-amber-100 overflow-hidden">
       <SharedNavigation />
@@ -181,14 +232,33 @@ export default function JourneySelectionPage() {
           >
             Choose Your Place in the Journey
           </motion.h1>
-          <motion.p 
-            className="font-emerland text-sm text-[hsl(178,65%,45%)] font-semibold"
+          {/* Countdown Timer */}
+          <motion.div 
+            className="mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            First cohort - 50 spots - Last opportunity this year
-          </motion.p>
+            <CountdownTimer targetDate="2025-10-20T23:59:59" />
+          </motion.div>
+          
+          {/* Prominent Spots Remaining */}
+          <motion.div 
+            className="inline-block bg-gradient-to-r from-red-600/20 to-orange-600/20 border-2 border-red-500 rounded-lg px-6 py-3 mb-2"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4, type: "spring", bounce: 0.3 }}
+            style={{ boxShadow: '0 0 20px rgba(239, 68, 68, 0.4)' }}
+          >
+            <div className="text-center">
+              <div className="font-angle text-2xl md:text-3xl text-red-400 font-bold mb-1">
+                45 SPOTS LEFT
+              </div>
+              <div className="font-emerland text-sm text-amber-200 font-semibold">
+                out of 50 • First Cohort • Last Opportunity This Year
+              </div>
+            </div>
+          </motion.div>
         </header>
 
         {/* Main Content Area */}
