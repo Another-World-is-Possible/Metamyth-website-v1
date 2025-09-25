@@ -370,10 +370,10 @@ export default function JourneySelectionPage() {
                           transition={{ duration: 0.6, delay: 2.8 }}
                         >
                           <div className="grid md:grid-cols-2 gap-4">
-                            {/* Option A: $700 + Gifts */}
+                            {/* Option A: $700 + Contribution */}
                             <div className="bg-black/40 p-6 rounded-lg border-2 border-[hsl(45,85%,55%)]/50">
                               <h4 className="font-thornelia text-xl mb-3 text-[hsl(45,85%,55%)]">
-                                Option A: $700 + Your Gifts
+                                Option A: $700 + Contribution
                               </h4>
                               <p className="font-emerland text-amber-200 mb-4 text-sm">
                                 Perfect for changemakers ready to contribute beyond money
@@ -381,21 +381,41 @@ export default function JourneySelectionPage() {
                               <p className="font-emerland text-amber-200/80 mb-4 text-xs">
                                 $500 value contribution (skills, time, network, advocacy)
                               </p>
+                              
+                              {/* Payment Plans */}
+                              <div className="mb-4 space-y-2">
+                                <p className="font-emerland text-amber-200/90 text-xs font-semibold">Payment Plans Available:</p>
+                                <div className="text-xs text-amber-200/70 space-y-1">
+                                  <div>• $700 full payment</div>
+                                  <div>• 2 payments of $375</div>
+                                  <div>• 3 payments of $258</div>
+                                </div>
+                              </div>
+                              
                               <a 
                                 href="https://buy.stripe.com/aFa00ibh6duo0Ta62OfQI01"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block w-full py-4 text-lg font-bold rounded-lg transition-all duration-300 text-center bg-[hsl(45,85%,55%)]/80 hover:bg-[hsl(45,85%,55%)] text-black"
+                                className="block w-full py-3 text-lg font-bold rounded-lg transition-all duration-300 text-center bg-[hsl(45,85%,55%)]/80 hover:bg-[hsl(45,85%,55%)] text-black mb-3"
                                 data-testid="button-join-metamyth-gifts"
                               >
-                                JOIN METAMYTH - $700 + GIFTS
+                                JOIN METAMYTH - $700 + CONTRIBUTION
                               </a>
+                              
+                              <Button 
+                                variant="outline"
+                                onClick={() => window.open('https://zcal.co/i/OmCpmYrt', '_blank', 'noopener,noreferrer')}
+                                className="w-full py-2 text-sm font-medium rounded border-[hsl(45,85%,55%)]/60 text-[hsl(45,85%,55%)] hover:bg-[hsl(45,85%,55%)]/10"
+                                data-testid="button-book-call-gifts"
+                              >
+                                Questions? Book a Call
+                              </Button>
                             </div>
 
-                            {/* Option B: $1200 Full */}
+                            {/* Option B: $1000 Full */}
                             <div className="bg-black/40 p-6 rounded-lg border-2 border-[hsl(45,85%,55%)]">
                               <h4 className="font-thornelia text-xl mb-3 text-[hsl(45,85%,55%)]">
-                                Option B: $1,200 Full Investment
+                                Option B: $1,000 Full Investment
                               </h4>
                               <p className="font-emerland text-amber-200 mb-4 text-sm">
                                 For those ready to dive in completely
@@ -403,11 +423,22 @@ export default function JourneySelectionPage() {
                               <p className="font-emerland text-amber-200/80 mb-4 text-xs">
                                 Same transformation, no additional contribution required
                               </p>
+                              
+                              {/* Payment Plans */}
+                              <div className="mb-4 space-y-2">
+                                <p className="font-emerland text-amber-200/90 text-xs font-semibold">Payment Plans Available:</p>
+                                <div className="text-xs text-amber-200/70 space-y-1">
+                                  <div>• $1,000 full payment</div>
+                                  <div>• 2 payments of $525</div>
+                                  <div>• 3 payments of $367</div>
+                                </div>
+                              </div>
+                              
                               <a 
                                 href="https://buy.stripe.com/28E28qad276031i1MyfQI02"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block w-full py-4 text-lg font-bold rounded-lg transition-all duration-300 text-center"
+                                className="block w-full py-3 text-lg font-bold rounded-lg transition-all duration-300 text-center mb-3"
                                 style={{
                                   backgroundColor: selectedTierData.colors.primary,
                                   color: 'black',
@@ -416,10 +447,19 @@ export default function JourneySelectionPage() {
                                 data-testid="button-join-metamyth-full"
                               >
                                 <div className="flex items-center justify-center gap-2">
-                                  <span>JOIN METAMYTH - $1,200</span>
-                                  <span className="line-through text-black/60 text-sm">$2,100</span>
+                                  <span>JOIN METAMYTH - $1,000</span>
+                                  <span className="line-through text-black/60 text-sm">$1,700</span>
                                 </div>
                               </a>
+                              
+                              <Button 
+                                variant="outline"
+                                onClick={() => window.open('https://zcal.co/i/OmCpmYrt', '_blank', 'noopener,noreferrer')}
+                                className="w-full py-2 text-sm font-medium rounded border-[hsl(45,85%,55%)]/60 text-[hsl(45,85%,55%)] hover:bg-[hsl(45,85%,55%)]/10"
+                                data-testid="button-book-call-full"
+                              >
+                                Questions? Book a Call
+                              </Button>
                             </div>
                           </div>
                         </motion.div>

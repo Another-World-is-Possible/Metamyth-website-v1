@@ -362,14 +362,14 @@ export default function TransformationJourneysPage() {
                       className="w-full py-3 text-xs font-semibold rounded-lg bg-[hsl(45,85%,55%)]/60 hover:bg-[hsl(45,85%,55%)]/80 text-black border border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.4)] font-bold"
                       data-testid="button-join-metamyth-gifts"
                     >
-                      JOIN METAMYTH - $700 + GIFTS
+                      JOIN METAMYTH - $700 + CONTRIBUTION
                     </Button>
                   </div>
 
                   {/* Option B */}
                   <div className="bg-black/30 p-6 rounded-lg border border-[hsl(45,85%,55%)]/50">
                     <h4 className="font-thornelia text-xl mb-4 text-[hsl(45,85%,55%)]">
-                      Option B: $1,200 Full Investment
+                      Option B: $1,000 Full Investment
                     </h4>
                     <p className="font-emerland text-amber-200 mb-4 italic">
                       For those ready to dive in completely
@@ -397,7 +397,7 @@ export default function TransformationJourneysPage() {
                       className="w-full py-3 text-xs font-semibold rounded-lg bg-[hsl(45,85%,55%)]/60 hover:bg-[hsl(45,85%,55%)]/80 text-black border border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.4)] font-bold"
                       data-testid="button-join-metamyth-full"
                     >
-                      JOIN METAMYTH - $1,200 FULL
+                      JOIN METAMYTH - $1,000 FULL
                     </Button>
                   </div>
                 </div>
