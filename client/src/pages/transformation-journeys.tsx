@@ -531,11 +531,11 @@ export default function TransformationJourneysPage() {
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <Button 
-                onClick={() => navigate('/journey-selection?tier=changemakers')}
+                onClick={() => navigate('/journey-selection?tier=metamyth-transformation')}
                 className="bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black text-2xl px-12 py-6 font-semibold rounded-lg shadow-[0_0_25px_rgba(72,196,196,0.5)] transition-all duration-300"
                 data-testid="button-claim-author-seat"
               >
-                CLAIM YOUR AUTHOR'S SEAT
+                START YOUR TRANSFORMATION
               </Button>
             </motion.div>
           </div>

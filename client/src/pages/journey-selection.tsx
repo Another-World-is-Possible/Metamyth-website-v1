@@ -31,51 +31,13 @@ interface JourneyTier {
 
 const journeyTiers: JourneyTier[] = [
   {
-    id: "seekers",
-    title: "SEEKERS",
-    subtitle: "Discovering Your Authentic Story",
+    id: "metamyth-transformation",
+    title: "METAMYTH TRANSFORMATION",
+    subtitle: "Complete Story Transformation Through Community",
     icon: <Shield className="w-8 h-8" />,
     position: "left-8",
     basePrice: 700,
     originalPrice: 1200,
-    colors: {
-      primary: "hsl(0, 70%, 45%)", // Dark red
-      secondary: "hsl(0, 60%, 35%)",
-      border: "hsl(0, 70%, 45%)",
-      glow: "rgba(220, 38, 38, 0.4)",
-      background: "linear-gradient(135deg, hsl(0, 70%, 45%)/10, hsl(0, 50%, 25%)/5)"
-    },
-    content: {
-      whereYouAre: [
-        "Life feels like something happening to you rather than something you're creating. You're surviving the story you're living, reacting to circumstances, trying to keep your head above water while the world spins around you.",
-        "You sense there's something more—a deeper story wanting to emerge—but you feel trapped by the narrative you were handed. You're tired of being a character in someone else's plot and ready to discover what it means to become the author of your own reality."
-      ],
-      howWeServe: [
-        "The Seekers experience creates the foundation for taking back authorship of your life. You join the full cohort for weekly Monday community calls where you'll work through each movement of the MetaMyth alongside others who are also remembering their power to rewrite reality.",
-        "Your custom app becomes a living system where you build story artifacts week by week, revealing connections between where you've been, where you are, and where you're capable of going. The recorded content library provides flexibility to revisit concepts and work at your own pace. The self-organizing community connects you with fellow travelers who understand what it feels like to outgrow a story that never really fit."
-      ],
-      includes: [
-        "Weekly Monday community calls with the full cohort",
-        "Complete MetaMyth app with all seven movements",
-        "Recorded content library for self-paced exploration",
-        "Forum access for ongoing community connection",
-        "Permanent access to your story artifacts and tools"
-      ],
-      paymentPlans: [
-        { payments: 1, amount: 700, originalAmount: 1200 },
-        { payments: 2, amount: 380, originalAmount: 650 },
-        { payments: 3, amount: 263, originalAmount: 450 }
-      ]
-    }
-  },
-  {
-    id: "changemakers",
-    title: "STORYTELLER",
-    subtitle: "Intensive Transformation Through Fellowship",
-    icon: <Sword className="w-8 h-8" />,
-    position: "left-1/2 transform -translate-x-1/2",
-    basePrice: 1200,
-    originalPrice: 2100,
     colors: {
       primary: "hsl(45, 85%, 55%)", // Gold
       secondary: "hsl(45, 75%, 45%)",
@@ -85,28 +47,67 @@ const journeyTiers: JourneyTier[] = [
     },
     content: {
       whereYouAre: [
-        "You've outgrown your old life. You know you're meant for more than what you're currently living. Maybe you climbed the ladder society pointed you toward only to realize it was leaning against the wrong wall. Or you carry a vision burning in your heart—you know exactly why you're here and what you're meant to create, but you struggle to make that vision real in the world.",
-        "You're on the threshold between knowing what you want and actually living it. You have the passion but need the systems, support, and strategic clarity to bridge the gap between what is and what could be. You understand that real transformation requires community, accountability, and the courage to be witnessed as you become who you're meant to be."
+        "You know there's more. You've felt it in quiet moments when the noise stops and something deeper calls. Maybe you're successful but unfulfilled, climbing ladders that lean against the wrong walls. Or you carry a vision burning in your heart but struggle to make it real in the world.",
+        "You're ready to stop seeking and start becoming. You understand that transformation requires more than inspiration—it needs systems, community, and the courage to be witnessed as you author yourself into who you're meant to be."
       ],
       howWeServe: [
-        "The Changemaker experience provides intensive support for the leap from knowing to becoming. You're placed in carefully curated story circles of 4-6 people—intimate containers where your vision gets refined and your obstacles transform into assets. These become laboratories for your emerging authentic story.",
-        "Your weekly rhythm includes Monday community calls with the full cohort, Friday Q&A sessions for direct support as you navigate transformation, and weekend mixers that create cross-pollination between circles. You receive community facilitation training, developing your capacity to guide others while deepening your own journey."
+        "The MetaMyth Transformation provides complete story transformation through facilitated community circles. You're placed in intimate groups where your vision gets refined and your obstacles transform into assets. These become laboratories for your emerging authentic story.",
+        "You get access to observe our Hero's Circle sessions—learning from their direct coaching while focusing on your own transformation in community circles designed for mutual support and accountability."
       ],
       includes: [
-        "Weekly Monday community calls with the full cohort",
-        "Complete MetaMyth app with all seven movements",
-        "Recorded content library for self-paced integration",
-        "Curated story circles (4-6 people maximum)",
-        "Friday Q&A calls for direct transformation support",
-        "Weekend mixer calls connecting you with the larger movement",
-        "Priority placement in intimate accountability partnerships",
-        "Community facilitation training",
-        "Forum access for ongoing community connection"
+        "Complete MetaMyth journey across all five movements",
+        "Facilitated story circles with expert guidance",
+        "Access to observe Hero's Circle sessions (listen-only)",
+        "All frameworks, materials, and app access",
+        "Community forum for ongoing connection",
+        "Recorded content library for integration",
+        "Weekend integration and reflection sessions"
       ],
       paymentPlans: [
-        { payments: 1, amount: 1200, originalAmount: 2100 },
-        { payments: 2, amount: 630, originalAmount: 1100 },
-        { payments: 3, amount: 428, originalAmount: 750 }
+        { payments: 1, amount: 700, originalAmount: 1200 },
+        { payments: 2, amount: 380, originalAmount: 650 },
+        { payments: 3, amount: 263, originalAmount: 450 }
+      ]
+    }
+  },
+  {
+    id: "heroes-circle",
+    title: "HERO'S CIRCLE",
+    subtitle: "Direct Mentorship & Elite Peer Community",
+    icon: <Sword className="w-8 h-8" />,
+    position: "left-1/2 transform -translate-x-1/2",
+    basePrice: 2000,
+    originalPrice: 2000,
+    colors: {
+      primary: "hsl(178, 65%, 45%)", // Teal
+      secondary: "hsl(178, 55%, 35%)",
+      border: "hsl(178, 65%, 45%)",
+      glow: "rgba(72, 196, 196, 0.4)",
+      background: "linear-gradient(135deg, hsl(178, 65%, 45%)/15, hsl(178, 45%, 25%)/5)"
+    },
+    content: {
+      whereYouAre: [
+        "You've outgrown your old story completely. You're already doing significant work in the world, but you know your deepest calling is bigger than your current reality. Your vision is so large that people can't see it, so revolutionary it sounds impossible, so important you can't afford to get the story wrong.",
+        "You're ready for direct access, immediate feedback, and a peer group of other visionaries operating at planetary scale. You understand that legendary impact requires legendary support."
+      ],
+      howWeServe: [
+        "The Hero's Circle provides direct story mentorship and elite peer community. You're part of an exclusive circle of 15 visionaries, divided into two intimate sub-groups for deeper connection. Every session includes direct access to personalized guidance on your specific story challenges.",
+        "You become part of our founding community—the pioneers who help scale this transformation globally while receiving the most intensive support we offer."
+      ],
+      includes: [
+        "Two direct mentorship calls weekly with immediate access to personalized guidance",
+        "90 minutes of Q&A every Friday - full session dedicated to your questions",
+        "Elite peer group of 14 other epic visionaries (two sub-groups of 7-8)",
+        "Midpoint reflection call to integrate the first half of your journey",
+        "Completion ceremony call to anchor your transformation",
+        "Founding cohort pricing - this rate will never be offered again",
+        "Partnership opportunity to help scale this work through your network",
+        "Case study collaboration to document your transformation"
+      ],
+      paymentPlans: [
+        { payments: 1, amount: 2000, originalAmount: 2000 },
+        { payments: 2, amount: 1050, originalAmount: 1050 },
+        { payments: 3, amount: 700, originalAmount: 700 }
       ]
     }
   }
@@ -114,7 +115,7 @@ const journeyTiers: JourneyTier[] = [
 
 export default function JourneySelectionPage() {
   const [location, setLocation] = useLocation();
-  const [selectedTier, setSelectedTier] = useState<string>('seekers'); // Default to seekers tier
+  const [selectedTier, setSelectedTier] = useState<string>('metamyth-transformation'); // Default to metamyth transformation tier
   const [scholarshipCount, setScholarshipCount] = useState(0);
   const [selectedPaymentPlan, setSelectedPaymentPlan] = useState(0);
 
@@ -124,12 +125,26 @@ export default function JourneySelectionPage() {
     window.scrollTo(0, 0);
     
     const params = new URLSearchParams(window.location.search);
-    const tier = params.get('tier');
-    if (tier && journeyTiers.find(t => t.id === tier)) {
-      setSelectedTier(tier);
+    const tierParam = params.get('tier');
+    
+    // Map new tier parameters to actual tier IDs
+    const tierMapping: { [key: string]: string } = {
+      'metamyth-gifts': 'metamyth-transformation',
+      'metamyth-full': 'metamyth-transformation',
+      'metamyth-transformation': 'metamyth-transformation',
+      'heroes-circle': 'heroes-circle',
+      // Legacy support
+      'seekers': 'metamyth-transformation',
+      'changemakers': 'metamyth-transformation',
+      'storyteller': 'metamyth-transformation'
+    };
+    
+    const mappedTier = tierParam ? tierMapping[tierParam] : null;
+    if (mappedTier && journeyTiers.find(t => t.id === mappedTier)) {
+      setSelectedTier(mappedTier);
     } else {
       // Set default tier if no URL parameter
-      setSelectedTier('seekers');
+      setSelectedTier('metamyth-transformation');
     }
   }, [location]);
 
