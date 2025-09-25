@@ -74,7 +74,7 @@ const journeyTiers: JourneyTier[] = [
     subtitle: "Intensive Transformation Through Fellowship",
     icon: <Sword className="w-8 h-8" />,
     position: "left-1/2 transform -translate-x-1/2",
-    basePrice: 1400,
+    basePrice: 1200,
     originalPrice: 2100,
     colors: {
       primary: "hsl(45, 85%, 55%)", // Gold
@@ -104,9 +104,9 @@ const journeyTiers: JourneyTier[] = [
         "Forum access for ongoing community connection"
       ],
       paymentPlans: [
-        { payments: 1, amount: 1400, originalAmount: 2100 },
-        { payments: 2, amount: 734, originalAmount: 1100 },
-        { payments: 3, amount: 500, originalAmount: 750 }
+        { payments: 1, amount: 1200, originalAmount: 2100 },
+        { payments: 2, amount: 630, originalAmount: 1100 },
+        { payments: 3, amount: 428, originalAmount: 750 }
       ]
     }
   }
@@ -387,16 +387,16 @@ export default function JourneySelectionPage() {
                             data-testid="button-claim-author-seat"
                           >
                             <div className="flex items-center justify-center gap-3">
-                              <span>Claim Your Author's Seat - $1,400</span>
+                              <span>Claim Your Author's Seat - $1,200</span>
                               <span className="line-through text-black/60 text-lg">$2,100</span>
                             </div>
                           </a>
                         )}
                       </motion.div>
 
-                      {/* Scholarship Info */}
+                      {/* Origin Pricing Info */}
                       <p className="font-emerland text-amber-200/90 mb-8 text-lg">
-                        Investment above baseline (${selectedTierData.basePrice.toLocaleString()}) funds scholarship sponsorships at $600 each.
+                        Origin pricing for first 25 heroes to take back their story.
                       </p>
 
                       {/* Secondary Button */}
