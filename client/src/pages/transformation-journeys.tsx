@@ -299,124 +299,189 @@ export default function TransformationJourneysPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              THREE PATHWAYS TO AUTHORSHIP
+              Two Ways to Transform Your Story
             </motion.h2>
             
+            <motion.p 
+              className="text-lg leading-relaxed font-emerland text-center text-amber-200 mb-12"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Choose the path that matches where you are and where you're ready to go. Both lead to the same destination: living the epic story you were meant to tell.
+            </motion.p>
+            
+            {/* Tier 1: METAMYTH TRANSFORMATION */}
             <motion.div 
-              className="grid md:grid-cols-3 gap-4 mt-16 max-w-2xl mx-auto"
+              className="mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              {[
-                {
-                  title: "SEEKERS",
-                  subtitle: "Discovering your authentic story",
-                  features: [
-                    "Weekly community calls",
-                    "Forum access",
-                    "Complete MetaMyth guide",
-                    "Self-organizing peer connections"
-                  ],
-                  description: "Perfect for exploration mode when you need community support to uncover your deeper purpose."
-                },
-                {
-                  title: "CHANGEMAKERS",
-                  subtitle: "Intensive transformation",
-                  features: [
-                    "Everything Seekers receive",
-                    "Curated story circles of 4-6 people",
-                    "Weekly feedback calls with guides",
-                    "Midweek mixers",
-                    "Community facilitation training"
-                  ],
-                  description: "Designed for people ready for deep accountability and intimate transformation.",
-                  highlight: true
-                },
-                {
-                  title: "WORLD BUILDERS",
-                  subtitle: "Scaling transformation to planetary impact",
-                  features: [
-                    "Exclusive mastermind for established leaders",
-                    "All previous benefits",
-                    "Strategic consultation",
-                    "Direct facilitator access",
-                    "Protégé scholarship selection"
-                  ],
-                  description: "For established leaders with brands, companies, and world-changing visions."
-                }
-              ].map((pathway, index) => (
-                <motion.div 
-                  key={pathway.title}
-                  className={`bg-black/50 p-8 rounded-lg border-2 ${
-                    pathway.highlight 
-                      ? 'border-[hsl(178,65%,45%)] shadow-[0_0_20px_rgba(72,196,196,0.4)]' 
-                      : 'border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.3)]'
-                  } relative hover:scale-105 transition-all duration-300`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  {pathway.highlight && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[hsl(178,65%,45%)] text-black px-4 py-1 rounded-full text-sm font-semibold">
-                      MOST POPULAR
-                    </div>
-                  )}
-                  
-                  <div className="text-center mb-6">
-                    <h3 className="font-angle text-2xl md:text-3xl mb-4 text-gradient-gold">
-                      {pathway.title}
-                    </h3>
-                    <p className="font-emerland text-base text-amber-200 italic">
-                      {pathway.subtitle}
+              <div className="bg-black/50 p-8 rounded-lg border-2 border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.3)] relative">
+                <div className="text-center mb-6">
+                  <h3 className="font-angle text-3xl md:text-4xl mb-4 text-gradient-gold">
+                    METAMYTH TRANSFORMATION
+                  </h3>
+                  <p className="font-emerland text-lg text-amber-200 italic mb-6">
+                    Complete Story Transformation Through Community
+                  </p>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Option A */}
+                  <div className="bg-black/30 p-6 rounded-lg border border-[hsl(45,85%,55%)]/50">
+                    <h4 className="font-thornelia text-xl mb-4 text-[hsl(45,85%,55%)]">
+                      Option A: $700 + Your Gifts
+                    </h4>
+                    <p className="font-emerland text-amber-200 mb-4 italic">
+                      Perfect for changemakers ready to contribute beyond money
                     </p>
+                    <ul className="space-y-2 mb-4 font-emerland text-sm">
+                      <li className="flex items-start">
+                        <span className="text-[hsl(45,85%,55%)] mr-2">✦</span>
+                        <span>7-week complete transformation</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[hsl(45,85%,55%)] mr-2">✦</span>
+                        <span>$500 value contribution (skills, time, network, advocacy)</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[hsl(45,85%,55%)] mr-2">✦</span>
+                        <span>Self-guided community with expert facilitation</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[hsl(45,85%,55%)] mr-2">✦</span>
+                        <span>All frameworks and materials</span>
+                      </li>
+                    </ul>
+                    <Button 
+                      onClick={() => navigate('/journey-selection?tier=metamyth-gifts')}
+                      className="w-full py-3 text-xs font-semibold rounded-lg bg-[hsl(45,85%,55%)]/60 hover:bg-[hsl(45,85%,55%)]/80 text-black border border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.4)] font-bold"
+                      data-testid="button-join-metamyth-gifts"
+                    >
+                      JOIN METAMYTH - $700 + GIFTS
+                    </Button>
                   </div>
-                  
-                  <ul className="space-y-3 mb-6 font-emerland">
-                    {pathway.features.map((feature, idx) => (
+
+                  {/* Option B */}
+                  <div className="bg-black/30 p-6 rounded-lg border border-[hsl(45,85%,55%)]/50">
+                    <h4 className="font-thornelia text-xl mb-4 text-[hsl(45,85%,55%)]">
+                      Option B: $1,200 Full Investment
+                    </h4>
+                    <p className="font-emerland text-amber-200 mb-4 italic">
+                      For those ready to dive in completely
+                    </p>
+                    <ul className="space-y-2 mb-4 font-emerland text-sm">
+                      <li className="flex items-start">
+                        <span className="text-[hsl(45,85%,55%)] mr-2">✦</span>
+                        <span>Same transformation, no additional contribution required</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[hsl(45,85%,55%)] mr-2">✦</span>
+                        <span>Complete focus on your story evolution</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[hsl(45,85%,55%)] mr-2">✦</span>
+                        <span>All community features and materials</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-[hsl(45,85%,55%)] mr-2">✦</span>
+                        <span>Access to observe Legend sessions</span>
+                      </li>
+                    </ul>
+                    <Button 
+                      onClick={() => navigate('/journey-selection?tier=metamyth-full')}
+                      className="w-full py-3 text-xs font-semibold rounded-lg bg-[hsl(45,85%,55%)]/60 hover:bg-[hsl(45,85%,55%)]/80 text-black border border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.4)] font-bold"
+                      data-testid="button-join-metamyth-full"
+                    >
+                      JOIN METAMYTH - $1,200 FULL
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Tier 2: HERO'S CIRCLE */}
+            <motion.div 
+              className="mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <div className="bg-black/50 p-8 rounded-lg border-2 border-[hsl(178,65%,45%)] shadow-[0_0_20px_rgba(72,196,196,0.4)] relative">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[hsl(178,65%,45%)] text-black px-4 py-1 rounded-full text-sm font-semibold">
+                  LIMITED TO 15 VISIONARIES
+                </div>
+                
+                <div className="text-center mb-6">
+                  <h3 className="font-angle text-3xl md:text-4xl mb-4 text-gradient-teal">
+                    HERO'S CIRCLE
+                  </h3>
+                  <p className="font-emerland text-lg text-amber-200 italic mb-2">
+                    Direct Mentorship & Elite Peer Community
+                  </p>
+                  <p className="font-thornelia text-2xl text-[hsl(178,65%,45%)] mb-6">
+                    $2,000 - Application Required
+                  </p>
+                </div>
+                
+                <p className="font-emerland text-amber-200 mb-6 text-center">
+                  For visionaries ready for direct mentorship and peer community at the highest level
+                </p>
+                
+                <div className="mb-6">
+                  <h4 className="font-thornelia text-xl mb-4 text-[hsl(178,65%,45%)]">
+                    What Makes This Extraordinary:
+                  </h4>
+                  <ul className="space-y-3 font-emerland">
+                    {[
+                      "Direct story feedback from me personally every week",
+                      "3 intensive calls weekly with immediate access to guidance",
+                      "Elite peer group of 14 other epic visionaries (two intimate sub-groups)",
+                      "Founding cohort pricing - this rate will never be offered again",
+                      "Partnership opportunity to help scale this transformation globally"
+                    ].map((feature, idx) => (
                       <li key={idx} className="flex items-start">
-                        <span className={`mr-2 ${pathway.highlight ? 'text-[hsl(178,65%,45%)]' : 'text-[hsl(45,85%,55%)]'}`}>✦</span>
+                        <span className="mr-2 text-[hsl(178,65%,45%)]">✦</span>
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  
-                  <p className="font-emerland text-sm leading-relaxed text-amber-200 mb-6">
-                    {pathway.description}
-                  </p>
-                  
-                  <Button 
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent event bubbling
-                      const tierMap: { [key: string]: string } = {
-                        'SEEKERS': 'seekers',
-                        'CHANGEMAKERS': 'changemakers', 
-                        'WORLD BUILDERS': 'worldbuilders'
-                      };
-                      const tierParam = tierMap[pathway.title] || 'changemakers';
-                      navigate(`/journey-selection?tier=${tierParam}`);
-                    }}
-                    className={`w-full py-3 text-xs font-semibold rounded-lg transition-all duration-300 relative z-10 cursor-pointer ${
-                      pathway.highlight 
-                        ? 'bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_15px_rgba(72,196,196,0.4)]' 
-                        : 'bg-[hsl(45,85%,55%)]/60 hover:bg-[hsl(45,85%,55%)]/80 text-black border border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.4)] font-bold'
-                    }`}
-                    data-testid={`button-select-${pathway.title.toLowerCase().replace(/\s+/g, '-')}`}
-                    style={{
-                      background: pathway.highlight ? undefined : 'hsla(45, 85%, 55%, 0.6)',
-                      color: pathway.highlight ? undefined : 'black',
-                      border: pathway.highlight ? undefined : '1px solid hsl(45, 85%, 55%)',
-                      fontWeight: pathway.highlight ? undefined : 'bold',
-                      pointerEvents: 'auto' // Ensure buttons are clickable
-                    }}
-                  >
-                    JOIN {pathway.title}
-                  </Button>
-                </motion.div>
-              ))}
+                </div>
+
+                <div className="mb-6">
+                  <h4 className="font-thornelia text-xl mb-4 text-[hsl(178,65%,45%)]">
+                    This is for you if:
+                  </h4>
+                  <ul className="space-y-2 font-emerland">
+                    {[
+                      "You're already doing significant work in the world",
+                      "You want direct access and immediate feedback on your story",
+                      "You're ready to be part of our founding community",
+                      "You're willing to share your transformation to inspire others"
+                    ].map((criteria, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <span className="mr-2 text-[hsl(178,65%,45%)]">•</span>
+                        <span>{criteria}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <Button 
+                  onClick={() => navigate('/journey-selection?tier=heroes-circle')}
+                  className="w-full py-3 text-sm font-semibold rounded-lg bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_15px_rgba(72,196,196,0.4)] transition-all duration-300"
+                  data-testid="button-apply-heroes-circle"
+                >
+                  APPLY - HERO'S CIRCLE $2,000
+                </Button>
+              </div>
             </motion.div>
+
             
           </div>
         </section>
