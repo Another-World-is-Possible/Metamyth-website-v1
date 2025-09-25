@@ -361,53 +361,104 @@ export default function JourneySelectionPage() {
                         The future you dream is one story away.
                       </p>
 
-                      {/* Primary Button */}
-                      <motion.div
-                        className="mb-6"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6, delay: 2.8 }}
-                      >
-                        {selectedTier === 'seekers' ? (
-                          <a 
-                            href="https://buy.stripe.com/aFa00ibh6duo0Ta62OfQI01"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block w-full py-6 text-2xl font-bold rounded-lg transition-all duration-300 text-center"
-                            style={{
-                              backgroundColor: selectedTierData.colors.primary,
-                              color: 'white',
-                              boxShadow: `0 0 25px ${selectedTierData.colors.glow}`,
-                              textDecoration: 'none'
-                            }}
-                            data-testid="button-claim-author-seat"
-                          >
-                            <div className="flex items-center justify-center gap-3">
-                              <span>Claim Your Author's Seat - $700</span>
-                              <span className="line-through text-white/60 text-lg">$1,200</span>
+                      {/* Pricing Options */}
+                      {selectedTier === 'metamyth-transformation' ? (
+                        <motion.div
+                          className="mb-6 space-y-4"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.6, delay: 2.8 }}
+                        >
+                          <div className="grid md:grid-cols-2 gap-4">
+                            {/* Option A: $700 + Gifts */}
+                            <div className="bg-black/40 p-6 rounded-lg border-2 border-[hsl(45,85%,55%)]/50">
+                              <h4 className="font-thornelia text-xl mb-3 text-[hsl(45,85%,55%)]">
+                                Option A: $700 + Your Gifts
+                              </h4>
+                              <p className="font-emerland text-amber-200 mb-4 text-sm">
+                                Perfect for changemakers ready to contribute beyond money
+                              </p>
+                              <p className="font-emerland text-amber-200/80 mb-4 text-xs">
+                                $500 value contribution (skills, time, network, advocacy)
+                              </p>
+                              <a 
+                                href="https://buy.stripe.com/aFa00ibh6duo0Ta62OfQI01"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block w-full py-4 text-lg font-bold rounded-lg transition-all duration-300 text-center bg-[hsl(45,85%,55%)]/80 hover:bg-[hsl(45,85%,55%)] text-black"
+                                data-testid="button-join-metamyth-gifts"
+                              >
+                                JOIN METAMYTH - $700 + GIFTS
+                              </a>
                             </div>
-                          </a>
-                        ) : (
-                          <a 
-                            href="https://buy.stripe.com/28E28qad276031i1MyfQI02"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block w-full py-6 text-2xl font-bold rounded-lg transition-all duration-300 text-center"
-                            style={{
-                              backgroundColor: selectedTierData.colors.primary,
-                              color: 'black',
-                              boxShadow: `0 0 25px ${selectedTierData.colors.glow}`,
-                              textDecoration: 'none'
-                            }}
-                            data-testid="button-claim-author-seat"
-                          >
-                            <div className="flex items-center justify-center gap-3">
-                              <span>Claim Your Author's Seat - $1,200</span>
-                              <span className="line-through text-black/60 text-lg">$2,100</span>
+
+                            {/* Option B: $1200 Full */}
+                            <div className="bg-black/40 p-6 rounded-lg border-2 border-[hsl(45,85%,55%)]">
+                              <h4 className="font-thornelia text-xl mb-3 text-[hsl(45,85%,55%)]">
+                                Option B: $1,200 Full Investment
+                              </h4>
+                              <p className="font-emerland text-amber-200 mb-4 text-sm">
+                                For those ready to dive in completely
+                              </p>
+                              <p className="font-emerland text-amber-200/80 mb-4 text-xs">
+                                Same transformation, no additional contribution required
+                              </p>
+                              <a 
+                                href="https://buy.stripe.com/28E28qad276031i1MyfQI02"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block w-full py-4 text-lg font-bold rounded-lg transition-all duration-300 text-center"
+                                style={{
+                                  backgroundColor: selectedTierData.colors.primary,
+                                  color: 'black',
+                                  boxShadow: `0 0 15px ${selectedTierData.colors.glow}`
+                                }}
+                                data-testid="button-join-metamyth-full"
+                              >
+                                <div className="flex items-center justify-center gap-2">
+                                  <span>JOIN METAMYTH - $1,200</span>
+                                  <span className="line-through text-black/60 text-sm">$2,100</span>
+                                </div>
+                              </a>
                             </div>
-                          </a>
-                        )}
-                      </motion.div>
+                          </div>
+                        </motion.div>
+                      ) : (
+                        // HERO'S CIRCLE
+                        <motion.div
+                          className="mb-6"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.6, delay: 2.8 }}
+                        >
+                          <div className="bg-black/40 p-8 rounded-lg border-2 border-[hsl(178,65%,45%)] relative">
+                            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[hsl(178,65%,45%)] text-black px-4 py-1 rounded-full text-sm font-semibold">
+                              LIMITED TO 15 VISIONARIES
+                            </div>
+                            <div className="text-center">
+                              <h3 className="font-thornelia text-3xl mb-4 text-[hsl(178,65%,45%)]">
+                                Application Required
+                              </h3>
+                              <p className="font-emerland text-amber-200 mb-6">
+                                For visionaries ready for direct mentorship and peer community at the highest level
+                              </p>
+                              <div className="mb-6">
+                                <span className="font-angle text-4xl text-[hsl(178,65%,45%)]">$2,000</span>
+                                <p className="font-emerland text-amber-200/80 text-sm mt-2">
+                                  Founding cohort pricing - this rate will never be offered again
+                                </p>
+                              </div>
+                              <Button 
+                                onClick={() => window.open('https://zcal.co/i/OmCpmYrt', '_blank', 'noopener,noreferrer')}
+                                className="w-full py-4 text-xl font-semibold rounded-lg bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_15px_rgba(72,196,196,0.4)] transition-all duration-300"
+                                data-testid="button-apply-heroes-circle"
+                              >
+                                APPLY FOR HERO'S CIRCLE
+                              </Button>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
 
                       {/* Origin Pricing Info */}
                       <p className="font-emerland text-amber-200/90 mb-8 text-lg">
