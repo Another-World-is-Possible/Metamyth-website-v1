@@ -76,8 +76,8 @@ const journeyTiers: JourneyTier[] = [
     subtitle: "Direct Mentorship & Elite Peer Community",
     icon: <Sword className="w-8 h-8" />,
     position: "left-1/2 transform -translate-x-1/2",
-    basePrice: 2000,
-    originalPrice: 2000,
+    basePrice: 1500,
+    originalPrice: 2100,
     colors: {
       primary: "hsl(178, 65%, 45%)", // Teal
       secondary: "hsl(178, 55%, 35%)",
@@ -105,9 +105,9 @@ const journeyTiers: JourneyTier[] = [
         "Case study collaboration to document your transformation"
       ],
       paymentPlans: [
-        { payments: 1, amount: 2000, originalAmount: 2000 },
-        { payments: 2, amount: 1050, originalAmount: 1050 },
-        { payments: 3, amount: 700, originalAmount: 700 }
+        { payments: 1, amount: 1500, originalAmount: 2100 },
+        { payments: 2, amount: 788, originalAmount: 1100 },
+        { payments: 3, amount: 525, originalAmount: 734 }
       ]
     }
   }
@@ -472,14 +472,6 @@ export default function JourneySelectionPage() {
                                 JOIN METAMYTH - $700 + CONTRIBUTION
                               </a>
                               
-                              <Button 
-                                variant="outline"
-                                onClick={() => window.open('https://zcal.co/i/OmCpmYrt', '_blank', 'noopener,noreferrer')}
-                                className="w-full py-2 text-sm font-medium rounded border-[hsl(45,85%,55%)]/60 text-[hsl(45,85%,55%)] hover:bg-[hsl(45,85%,55%)]/10"
-                                data-testid="button-book-call-gifts"
-                              >
-                                Questions? Book a Call
-                              </Button>
                             </div>
 
                             {/* Option B: $1000 Full */}
@@ -522,14 +514,6 @@ export default function JourneySelectionPage() {
                                 </div>
                               </a>
                               
-                              <Button 
-                                variant="outline"
-                                onClick={() => window.open('https://zcal.co/i/OmCpmYrt', '_blank', 'noopener,noreferrer')}
-                                className="w-full py-2 text-sm font-medium rounded border-[hsl(45,85%,55%)]/60 text-[hsl(45,85%,55%)] hover:bg-[hsl(45,85%,55%)]/10"
-                                data-testid="button-book-call-full"
-                              >
-                                Questions? Book a Call
-                              </Button>
                             </div>
                           </div>
                         </motion.div>
@@ -553,7 +537,10 @@ export default function JourneySelectionPage() {
                                 For visionaries ready for direct mentorship and peer community at the highest level
                               </p>
                               <div className="mb-6">
-                                <span className="font-angle text-4xl text-[hsl(178,65%,45%)]">$2,000</span>
+                                <div className="flex items-center justify-center gap-3">
+                                  <span className="font-angle text-4xl text-[hsl(178,65%,45%)]">$1,500</span>
+                                  <span className="font-angle text-2xl line-through text-amber-200/50">$2,100</span>
+                                </div>
                                 <p className="font-emerland text-amber-200/80 text-sm mt-2">
                                   Founding cohort pricing - this rate will never be offered again
                                 </p>
