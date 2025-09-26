@@ -23,10 +23,10 @@ export default function TransformationJourneysPage() {
       {/* Content */}
       <div className="relative z-10 text-amber-100">
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center justify-center px-6">
+        <section className="min-h-screen flex items-center justify-center px-6 py-8 sm:py-0">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h1 
-              className="font-angle text-4xl md:text-6xl mb-8 text-gradient-gold"
+              className="font-angle text-2xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-gradient-gold"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
@@ -35,7 +35,7 @@ export default function TransformationJourneysPage() {
             </motion.h1>
             
             <motion.h2 
-              className="font-thornelia text-2xl md:text-4xl mb-12 text-amber-200"
+              className="font-thornelia text-lg sm:text-2xl md:text-4xl mb-8 sm:mb-12 text-amber-200"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -44,12 +44,12 @@ export default function TransformationJourneysPage() {
             </motion.h2>
             
             <motion.div 
-              className="space-y-6 text-lg leading-relaxed font-emerland max-w-3xl mx-auto"
+              className="space-y-4 sm:space-y-6 text-sm sm:text-lg leading-relaxed font-emerland max-w-3xl mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              <p className="text-xl font-semibold text-amber-300">
+              <p className="text-base sm:text-xl font-semibold text-amber-300">
                 Take back control of your narrative. Transform from background character to author of reality while building the future we're all here to live.
               </p>
               <p>
@@ -58,14 +58,14 @@ export default function TransformationJourneysPage() {
             </motion.div>
 
             <motion.div
-              className="mt-12"
+              className="mt-8 sm:mt-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.8 }}
             >
               <Button 
                 onClick={() => navigate('/journey-selection?tier=changemakers')}
-                className="cta-button-base bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black text-xl px-12 py-6 shadow-[0_0_25px_rgba(72,196,196,0.5)]"
+                className="cta-button-base bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black text-base sm:text-xl px-6 sm:px-12 py-4 sm:py-6 shadow-[0_0_25px_rgba(72,196,196,0.5)]"
                 data-testid="button-claim-author-seat-top"
               >
                 CLAIM YOUR AUTHOR'S SEAT
@@ -75,10 +75,10 @@ export default function TransformationJourneysPage() {
         </section>
 
         {/* The Calling Section */}
-        <section className="py-20 px-6">
+        <section className="py-12 sm:py-20 px-6">
           <div className="max-w-3xl mx-auto">
             <motion.h2 
-              className="font-angle text-4xl md:text-6xl mb-12 text-center text-gradient-gold"
+              className="font-angle text-2xl sm:text-4xl md:text-6xl mb-8 sm:mb-12 text-center text-gradient-gold"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -88,7 +88,7 @@ export default function TransformationJourneysPage() {
             </motion.h2>
             
             <motion.h3 
-              className="font-thornelia text-2xl md:text-3xl mb-8 text-center text-amber-200"
+              className="font-thornelia text-lg sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-center text-amber-200"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -98,7 +98,7 @@ export default function TransformationJourneysPage() {
             </motion.h3>
             
             <motion.div 
-              className="space-y-6 text-lg leading-relaxed font-emerland"
+              className="space-y-4 sm:space-y-6 text-sm sm:text-lg leading-relaxed font-emerland"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -121,10 +121,10 @@ export default function TransformationJourneysPage() {
         </section>
 
         {/* The MetaMyth Solution */}
-        <section className="py-20 px-6 bg-black/30">
+        <section className="py-12 sm:py-20 px-6 bg-black/30">
           <div className="max-w-3xl mx-auto">
             <motion.h2 
-              className="font-angle text-4xl md:text-6xl mb-12 text-center text-gradient-gold"
+              className="font-angle text-2xl sm:text-4xl md:text-6xl mb-8 sm:mb-12 text-center text-gradient-gold"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -134,7 +134,7 @@ export default function TransformationJourneysPage() {
             </motion.h2>
             
             <motion.h3 
-              className="font-thornelia text-2xl md:text-3xl mb-12 text-center text-amber-200"
+              className="font-thornelia text-lg sm:text-2xl md:text-3xl mb-8 sm:mb-12 text-center text-amber-200"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -174,16 +174,16 @@ export default function TransformationJourneysPage() {
               ].map((movement, index) => (
                 <motion.div 
                   key={movement.title}
-                  className="bg-black/40 p-6 rounded-lg border-2 border-[hsl(178,65%,45%)] shadow-[0_0_15px_rgba(72,196,196,0.3)]"
+                  className="bg-black/40 p-4 sm:p-6 rounded-lg border-2 border-[hsl(178,65%,45%)] shadow-[0_0_15px_rgba(72,196,196,0.3)]"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <h4 className="font-thornelia text-xl md:text-2xl mb-4 text-[hsl(178,65%,45%)]">
+                  <h4 className="font-thornelia text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 text-[hsl(178,65%,45%)]">
                     {movement.title}
                   </h4>
-                  <p className="font-emerland text-lg leading-relaxed text-amber-200">
+                  <p className="font-emerland text-sm sm:text-lg leading-relaxed text-amber-200">
                     {movement.description}
                   </p>
                 </motion.div>
@@ -203,10 +203,10 @@ export default function TransformationJourneysPage() {
         </section>
 
         {/* Reality Authors in Action */}
-        <section className="py-20 px-6">
+        <section className="py-12 sm:py-20 px-6">
           <div className="max-w-3xl mx-auto">
             <motion.h2 
-              className="font-angle text-4xl md:text-6xl mb-12 text-center text-gradient-gold"
+              className="font-angle text-2xl sm:text-4xl md:text-6xl mb-8 sm:mb-12 text-center text-gradient-gold"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -216,7 +216,7 @@ export default function TransformationJourneysPage() {
             </motion.h2>
             
             <motion.h3 
-              className="font-thornelia text-2xl md:text-3xl mb-12 text-center text-amber-200"
+              className="font-thornelia text-lg sm:text-2xl md:text-3xl mb-8 sm:mb-12 text-center text-amber-200"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -256,16 +256,16 @@ export default function TransformationJourneysPage() {
               ].map((author, index) => (
                 <motion.div 
                   key={author.name}
-                  className="bg-black/40 p-6 rounded-lg border-2 border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.3)]"
+                  className="bg-black/40 p-4 sm:p-6 rounded-lg border-2 border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.3)]"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <h4 className="font-thornelia text-xl md:text-2xl mb-4 text-[hsl(45,85%,55%)]">
+                  <h4 className="font-thornelia text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 text-[hsl(45,85%,55%)]">
                     {author.name}
                   </h4>
-                  <p className="font-emerland text-lg leading-relaxed text-amber-200">
+                  <p className="font-emerland text-sm sm:text-lg leading-relaxed text-amber-200">
                     {author.transformation}
                   </p>
                 </motion.div>
@@ -290,10 +290,10 @@ export default function TransformationJourneysPage() {
         </section>
 
         {/* Pricing Section */}
-        <section className="py-20 px-6 bg-black/30">
+        <section className="py-12 sm:py-20 px-6 bg-black/30">
           <div className="max-w-3xl mx-auto">
             <motion.h2 
-              className="font-angle text-4xl md:text-6xl mb-12 text-center text-gradient-gold"
+              className="font-angle text-2xl sm:text-4xl md:text-6xl mb-8 sm:mb-12 text-center text-gradient-gold"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -303,7 +303,7 @@ export default function TransformationJourneysPage() {
             </motion.h2>
             
             <motion.p 
-              className="text-lg leading-relaxed font-emerland text-center text-amber-200 mb-12"
+              className="text-sm sm:text-lg leading-relaxed font-emerland text-center text-amber-200 mb-8 sm:mb-12"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -320,23 +320,23 @@ export default function TransformationJourneysPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="bg-black/50 p-8 rounded-lg border-2 border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.3)] relative">
-                <div className="text-center mb-6">
-                  <h3 className="font-angle text-3xl md:text-4xl mb-4 text-gradient-gold">
+              <div className="bg-black/50 p-4 sm:p-8 rounded-lg border-2 border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.3)] relative">
+                <div className="text-center mb-4 sm:mb-6">
+                  <h3 className="font-angle text-xl sm:text-3xl md:text-4xl mb-3 sm:mb-4 text-gradient-gold">
                     METAMYTH TRANSFORMATION
                   </h3>
-                  <p className="font-emerland text-lg text-amber-200 italic mb-6">
+                  <p className="font-emerland text-sm sm:text-lg text-amber-200 italic mb-4 sm:mb-6">
                     Complete Story Transformation Through Community
                   </p>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   {/* Option A */}
-                  <div className="bg-black/30 p-6 rounded-lg border border-[hsl(45,85%,55%)]/50">
-                    <h4 className="font-thornelia text-xl mb-4 text-[hsl(45,85%,55%)]">
+                  <div className="bg-black/30 p-4 sm:p-6 rounded-lg border border-[hsl(45,85%,55%)]/50">
+                    <h4 className="font-thornelia text-lg sm:text-xl mb-3 sm:mb-4 text-[hsl(45,85%,55%)]">
                       Option A: $700 + Your Gifts
                     </h4>
-                    <p className="font-emerland text-amber-200 mb-4 italic">
+                    <p className="font-emerland text-amber-200 mb-3 sm:mb-4 italic text-sm sm:text-base">
                       Perfect for changemakers ready to contribute beyond money
                     </p>
                     <ul className="space-y-2 mb-4 font-emerland text-sm">
@@ -367,11 +367,11 @@ export default function TransformationJourneysPage() {
                   </div>
 
                   {/* Option B */}
-                  <div className="bg-black/30 p-6 rounded-lg border border-[hsl(45,85%,55%)]/50">
-                    <h4 className="font-thornelia text-xl mb-4 text-[hsl(45,85%,55%)]">
-                      Option B: <span className="mr-2">$1,000</span><span className="line-through text-amber-200/50 text-lg">$1,200</span> Full Investment
+                  <div className="bg-black/30 p-4 sm:p-6 rounded-lg border border-[hsl(45,85%,55%)]/50">
+                    <h4 className="font-thornelia text-lg sm:text-xl mb-3 sm:mb-4 text-[hsl(45,85%,55%)]">
+                      Option B: <span className="mr-2">$1,000</span><span className="line-through text-amber-200/50 text-sm sm:text-lg">$1,200</span> Full Investment
                     </h4>
-                    <p className="font-emerland text-amber-200 mb-4 italic">
+                    <p className="font-emerland text-amber-200 mb-3 sm:mb-4 italic text-sm sm:text-base">
                       For those ready to dive in completely
                     </p>
                     <ul className="space-y-2 mb-4 font-emerland text-sm">
@@ -412,19 +412,19 @@ export default function TransformationJourneysPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <div className="bg-black/50 p-8 rounded-lg border-2 border-[hsl(178,65%,45%)] shadow-[0_0_20px_rgba(72,196,196,0.4)] relative">
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[hsl(178,65%,45%)] text-black px-4 py-1 rounded-full text-sm font-semibold">
+              <div className="bg-black/50 p-4 sm:p-8 rounded-lg border-2 border-[hsl(178,65%,45%)] shadow-[0_0_20px_rgba(72,196,196,0.4)] relative">
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[hsl(178,65%,45%)] text-black px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold">
                   LIMITED TO 15 VISIONARIES
                 </div>
                 
-                <div className="text-center mb-6">
-                  <h3 className="font-angle text-3xl md:text-4xl mb-4 text-gradient-teal">
+                <div className="text-center mb-4 sm:mb-6">
+                  <h3 className="font-angle text-xl sm:text-3xl md:text-4xl mb-3 sm:mb-4 text-gradient-teal">
                     HERO'S CIRCLE
                   </h3>
-                  <p className="font-emerland text-lg text-amber-200 italic mb-2">
+                  <p className="font-emerland text-sm sm:text-lg text-amber-200 italic mb-2">
                     Direct Mentorship & Elite Peer Community
                   </p>
-                  <p className="font-thornelia text-2xl text-[hsl(178,65%,45%)] mb-6">
+                  <p className="font-thornelia text-lg sm:text-2xl text-[hsl(178,65%,45%)] mb-4 sm:mb-6">
                     $2,000 - Application Required
                   </p>
                 </div>
@@ -487,10 +487,10 @@ export default function TransformationJourneysPage() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-20 px-6">
+        <section className="py-12 sm:py-20 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.h2 
-              className="font-angle text-4xl md:text-6xl mb-8 text-gradient-gold"
+              className="font-angle text-2xl sm:text-4xl md:text-6xl mb-6 sm:mb-8 text-gradient-gold"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -500,7 +500,7 @@ export default function TransformationJourneysPage() {
             </motion.h2>
             
             <motion.h3 
-              className="font-thornelia text-2xl md:text-3xl mb-8 text-amber-200"
+              className="font-thornelia text-lg sm:text-2xl md:text-3xl mb-6 sm:mb-8 text-amber-200"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -510,7 +510,7 @@ export default function TransformationJourneysPage() {
             </motion.h3>
             
             <motion.div 
-              className="space-y-6 text-lg leading-relaxed font-emerland mb-12"
+              className="space-y-4 sm:space-y-6 text-sm sm:text-lg leading-relaxed font-emerland mb-8 sm:mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -532,7 +532,7 @@ export default function TransformationJourneysPage() {
             >
               <Button 
                 onClick={() => navigate('/journey-selection?tier=metamyth-transformation')}
-                className="bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black text-2xl px-12 py-6 font-semibold rounded-lg shadow-[0_0_25px_rgba(72,196,196,0.5)] transition-all duration-300"
+                className="bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black text-base sm:text-2xl px-6 sm:px-12 py-4 sm:py-6 font-semibold rounded-lg shadow-[0_0_25px_rgba(72,196,196,0.5)] transition-all duration-300"
                 data-testid="button-claim-author-seat"
               >
                 START YOUR TRANSFORMATION
