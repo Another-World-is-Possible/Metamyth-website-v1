@@ -510,7 +510,7 @@ export default function JourneySelectionPage() {
                               >
                                 <div className="flex items-center justify-center gap-2">
                                   <span>JOIN METAMYTH - $1,000</span>
-                                  <span className="line-through text-black/60 text-sm">$1,700</span>
+                                  <span className="line-through text-black/60 text-sm">$1,200</span>
                                 </div>
                               </a>
                               
