@@ -346,7 +346,7 @@ export default function TransformationJourneysPage() {
                       </li>
                       <li className="flex items-start">
                         <span className="text-[hsl(45,85%,55%)] mr-2">✦</span>
-                        <span>$500 value contribution (skills, time, network, advocacy)</span>
+                        <span>Contribution of skills, time and gifts to advance the mission</span>
                       </li>
                       <li className="flex items-start">
                         <span className="text-[hsl(45,85%,55%)] mr-2">✦</span>

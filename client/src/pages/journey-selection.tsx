@@ -449,7 +449,7 @@ export default function JourneySelectionPage() {
                                 Perfect for changemakers ready to contribute beyond money
                               </p>
                               <p className="font-emerland text-amber-200/80 mb-4 text-xs">
-                                $500 value contribution (skills, time, network, advocacy)
+                                Contribution of skills, time and gifts to advance the mission
                               </p>
                               
                               {/* Payment Plans */}
