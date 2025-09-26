@@ -369,7 +369,7 @@ export default function TransformationJourneysPage() {
                   {/* Option B */}
                   <div className="bg-black/30 p-4 sm:p-6 rounded-lg border border-[hsl(45,85%,55%)]/50">
                     <h4 className="font-thornelia text-lg sm:text-xl mb-3 sm:mb-4 text-[hsl(45,85%,55%)]">
-                      Option B: <span className="mr-2">$1,000</span><span className="line-through text-amber-200/50 text-sm sm:text-lg">$1,200</span> Full Investment
+                      Option B: <span className="mr-2">$1,000</span><span className="line-through text-red-500 text-sm sm:text-lg">$1,400</span> Full Investment
                     </h4>
                     <p className="font-emerland text-amber-200 mb-3 sm:mb-4 italic text-sm sm:text-base">
                       For those ready to dive in completely
@@ -397,7 +397,7 @@ export default function TransformationJourneysPage() {
                       className="w-full py-3 text-xs font-semibold rounded-lg bg-[hsl(45,85%,55%)]/60 hover:bg-[hsl(45,85%,55%)]/80 text-black border border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.4)] font-bold"
                       data-testid="button-join-metamyth-full"
                     >
-                      <span className="mr-2">JOIN METAMYTH - $1,000</span><span className="line-through text-black/60 text-sm">$1,200</span>
+                      <span className="mr-2">JOIN METAMYTH - $1,000</span><span className="line-through text-red-500 text-sm">$1,400</span>
                     </Button>
                   </div>
                 </div>

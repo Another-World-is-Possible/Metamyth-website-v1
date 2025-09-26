@@ -454,12 +454,7 @@ export default function JourneySelectionPage() {
                               
                               {/* Payment Plans */}
                               <div className="mb-4 space-y-2">
-                                <p className="font-emerland text-amber-200/90 text-xs font-semibold">Payment Plans Available:</p>
-                                <div className="text-xs text-amber-200/70 space-y-1">
-                                  <div>• $700 full payment</div>
-                                  <div>• 2 payments of $375</div>
-                                  <div>• 3 payments of $258</div>
-                                </div>
+                                <p className="font-emerland text-amber-200/90 text-xs font-semibold">Payment plans available</p>
                               </div>
                               
                               <a 
@@ -488,12 +483,7 @@ export default function JourneySelectionPage() {
                               
                               {/* Payment Plans */}
                               <div className="mb-4 space-y-2">
-                                <p className="font-emerland text-amber-200/90 text-xs font-semibold">Payment Plans Available:</p>
-                                <div className="text-xs text-amber-200/70 space-y-1">
-                                  <div>• $1,000 full payment</div>
-                                  <div>• 2 payments of $525</div>
-                                  <div>• 3 payments of $367</div>
-                                </div>
+                                <p className="font-emerland text-amber-200/90 text-xs font-semibold">Payment plans available</p>
                               </div>
                               
                               <a 
@@ -510,7 +500,7 @@ export default function JourneySelectionPage() {
                               >
                                 <div className="flex items-center justify-center gap-2">
                                   <span>JOIN METAMYTH - $1,000</span>
-                                  <span className="line-through text-black/60 text-sm">$1,200</span>
+                                  <span className="line-through text-red-500 text-sm">$1,400</span>
                                 </div>
                               </a>
                               
