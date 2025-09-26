@@ -334,7 +334,7 @@ export default function TransformationJourneysPage() {
                   {/* Option A */}
                   <div className="bg-black/30 p-4 sm:p-6 rounded-lg border border-[hsl(45,85%,55%)]/50">
                     <h4 className="font-thornelia text-lg sm:text-xl mb-3 sm:mb-4 text-[hsl(45,85%,55%)]">
-                      Option A: $700 + Your Gifts
+                      Option A: Your Gifts
                     </h4>
                     <p className="font-emerland text-amber-200 mb-3 sm:mb-4 italic text-sm sm:text-base">
                       Perfect for changemakers ready to contribute beyond money
@@ -362,14 +362,14 @@ export default function TransformationJourneysPage() {
                       className="w-full py-3 text-xs font-semibold rounded-lg bg-[hsl(45,85%,55%)]/60 hover:bg-[hsl(45,85%,55%)]/80 text-black border border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.4)] font-bold"
                       data-testid="button-join-metamyth-gifts"
                     >
-                      JOIN METAMYTH - $700 + CONTRIBUTION
+$700 + your gifts
                     </Button>
                   </div>
 
                   {/* Option B */}
                   <div className="bg-black/30 p-4 sm:p-6 rounded-lg border border-[hsl(45,85%,55%)]/50">
                     <h4 className="font-thornelia text-lg sm:text-xl mb-3 sm:mb-4 text-[hsl(45,85%,55%)]">
-                      Option B: <span className="mr-2">$1,000</span><span className="line-through text-red-500 text-sm sm:text-lg">$1,400</span> Full Investment
+                      Option B: Full Investment
                     </h4>
                     <p className="font-emerland text-amber-200 mb-3 sm:mb-4 italic text-sm sm:text-base">
                       For those ready to dive in completely
@@ -397,7 +397,7 @@ export default function TransformationJourneysPage() {
                       className="w-full py-3 text-xs font-semibold rounded-lg bg-[hsl(45,85%,55%)]/60 hover:bg-[hsl(45,85%,55%)]/80 text-black border border-[hsl(45,85%,55%)] shadow-[0_0_15px_rgba(255,215,0,0.4)] font-bold"
                       data-testid="button-join-metamyth-full"
                     >
-                      <span className="mr-2">JOIN METAMYTH - $1,000</span><span className="line-through text-red-500 text-sm">$1,400</span>
+JOIN METAMYTH - Full Investment
                     </Button>
                   </div>
                 </div>
@@ -425,7 +425,7 @@ export default function TransformationJourneysPage() {
                     Direct Mentorship & Elite Peer Community
                   </p>
                   <p className="font-thornelia text-lg sm:text-2xl text-[hsl(178,65%,45%)] mb-4 sm:mb-6">
-                    $2,000 - Application Required
+                    Application Required
                   </p>
                 </div>
                 
@@ -477,7 +477,7 @@ export default function TransformationJourneysPage() {
                   className="w-full py-3 text-sm font-semibold rounded-lg bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_15px_rgba(72,196,196,0.4)] transition-all duration-300"
                   data-testid="button-apply-heroes-circle"
                 >
-                  APPLY - HERO'S CIRCLE $2,000
+                  APPLY - HERO'S CIRCLE
                 </Button>
               </div>
             </motion.div>
