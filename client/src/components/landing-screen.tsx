@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "wouter";
 import starryVoidBg from "@assets/_minimal_starry_void-__prompt-_deep_black_void_of_space_with_minimal_scattered_starlight_pure_black_vg62ynp7p0tqsuuy3buz_1_1757022711872.png";
 
 interface LandingScreenProps {
@@ -8,6 +9,7 @@ interface LandingScreenProps {
 }
 
 export default function LandingScreen({ onBeginJourney }: LandingScreenProps) {
+  const [, navigate] = useLocation();
   const [typewriterText, setTypewriterText] = useState("");
   const [showButton, setShowButton] = useState(false);
   const fullText = "The world is made of stories";
@@ -72,11 +74,14 @@ export default function LandingScreen({ onBeginJourney }: LandingScreenProps) {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <Button
-              onClick={onBeginJourney}
+              onClick={() => {
+                onBeginJourney();
+                navigate('/questionaire');
+              }}
               className="cta-button-base cta-button-gold text-xl px-8 py-4"
-              data-testid="button-begin-journey"
+              data-testid="button-questionaire"
             >
-              BEGIN YOUR JOURNEY
+              ARE YOU A VICTIM OR AN AUTHOR: TAKE THE QUESTIONAIRE
             </Button>
           </motion.div>
         )}

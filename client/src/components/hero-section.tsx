@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useImageLoading } from "@/contexts/ImageLoadingContext";
+import { useLocation } from "wouter";
 
 interface HeroSectionProps {
   setActiveTab?: (tab: string) => void;
@@ -8,6 +9,7 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ setActiveTab, showContent = true }: HeroSectionProps) {
+  const [, navigate] = useLocation();
   const { isImageReady, getImageSrc } = useImageLoading();
   const backgroundLoaded = isImageReady('hero');
   const heroBackground = getImageSrc('hero');
@@ -67,18 +69,18 @@ export default function HeroSection({ setActiveTab, showContent = true }: HeroSe
             style={{ transform: 'translateY(-70px)' }}
           >
             <button
-              onClick={() => setActiveTab?.('questionaire')}
+              onClick={() => navigate('/questionaire')}
               className="cta-button-base cta-button-gold"
-              data-testid="button-regenerate-story"
+              data-testid="button-questionaire"
             >
-              REGENERATE YOUR STORY
+              ARE YOU A VICTIM OR AN AUTHOR: TAKE THE QUESTIONAIRE
             </button>
             <button
-              onClick={() => setActiveTab?.('questionaire')}
+              onClick={() => navigate('/transformation-journeys')}
               className="cta-button-base cta-button-teal"
-              data-testid="button-join-quest"
+              data-testid="button-rewrite-story"
             >
-              JOIN THE QUEST
+              REWRITE YOUR STORY IN 7 WEEKS
             </button>
           </motion.div>
         </div>

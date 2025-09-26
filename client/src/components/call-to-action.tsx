@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLocation } from "wouter";
 
 interface CallToActionProps {
   setActiveTab?: (tab: string) => void;
 }
 
 export default function CallToAction({ setActiveTab }: CallToActionProps) {
+  const [, navigate] = useLocation();
+  
   return (
     <section className="relative py-20 overflow-hidden call-to-action-section">
       {/* Overlay for readability */}
@@ -44,18 +47,18 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
 
         <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto justify-center">
           <button
-            onClick={() => setActiveTab?.('questionaire')}
+            onClick={() => navigate('/questionaire')}
             className="cta-button-base cta-button-gold mx-4 mb-6"
-            data-testid="button-begin-journey"
+            data-testid="button-questionaire"
           >
-            BEGIN YOUR JOURNEY
+            ARE YOU A VICTIM OR AN AUTHOR: TAKE THE QUESTIONAIRE
           </button>
           <button
-            onClick={() => setActiveTab?.('questionaire')}
+            onClick={() => navigate('/transformation-journeys')}
             className="cta-button-base cta-button-teal mx-4 mb-6"
-            data-testid="button-join-quest-cta"
+            data-testid="button-rewrite-story"
           >
-            JOIN THE QUEST
+            REWRITE YOUR STORY IN 7 WEEKS
           </button>
         </div>
       </div>
