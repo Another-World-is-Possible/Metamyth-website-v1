@@ -31,11 +31,23 @@ interface ThresholdItem {
   status: 'pending' | 'in-progress' | 'completed';
 }
 
+interface SupportItem {
+  id: string;
+  type: 'human-ally' | 'ai-guidance' | 'resource-library' | 'peer-learning';
+  title: string;
+  description: string;
+  contact?: string;
+}
+
+interface CouncilSupport {
+  [thresholdId: string]: SupportItem[];
+}
+
 interface StarData {
   gifts: { [key: string]: string[] };
   thresholds: { [key: string]: string[] };
   priorities: { [key: string]: number };
-  councilSupport: { [key: string]: any };
+  councilSupport: CouncilSupport;
   agreements: { [key: string]: any };
   thresholdItems: ThresholdItem[];
 }
@@ -145,6 +157,32 @@ export default function TheStarPage() {
     priority: i + 1,
     thresholds: starData.thresholdItems.filter(item => item.priority === i + 1)
   }));
+
+  // Council support functions
+  const addSupportItem = (thresholdId: string, supportItem: Omit<SupportItem, 'id'>) => {
+    const newSupportItem: SupportItem = {
+      ...supportItem,
+      id: `support-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+    };
+    
+    setStarData(prev => ({
+      ...prev,
+      councilSupport: {
+        ...prev.councilSupport,
+        [thresholdId]: [...(prev.councilSupport[thresholdId] || []), newSupportItem]
+      }
+    }));
+  };
+
+  const removeSupportItem = (thresholdId: string, supportItemId: string) => {
+    setStarData(prev => ({
+      ...prev,
+      councilSupport: {
+        ...prev.councilSupport,
+        [thresholdId]: (prev.councilSupport[thresholdId] || []).filter(item => item.id !== supportItemId)
+      }
+    }));
+  };
 
   // Calculate star point intensity based on gifts vs thresholds
   const getPointIntensity = (areaId: string) => {
@@ -375,12 +413,62 @@ export default function TheStarPage() {
 
             {/* COUNCIL TAB - Support Network */}
             <TabsContent value="council" className="mt-8">
-              <div className="text-center py-12">
-                <h3 className="font-thornelia text-2xl text-amber-400 mb-4">COUNCIL - Support Network</h3>
-                <p className="font-emerland text-amber-200 mb-8">Build your support system for each threshold challenge</p>
-                <div className="bg-amber-400/10 border border-amber-400/30 rounded-lg p-8">
-                  <p className="font-emerland text-amber-300">Council interface coming next - support network management</p>
-                </div>
+              <div className="mb-8">
+                <h3 className="font-thornelia text-2xl text-amber-400 mb-4 text-center">COUNCIL - Support Network</h3>
+                <p className="font-emerland text-amber-200 mb-8 text-center">Build your support system for each threshold challenge</p>
+                
+                {starData.thresholdItems.length === 0 ? (
+                  <div className="bg-amber-400/10 border border-amber-400/30 rounded-lg p-8 text-center">
+                    <p className="font-emerland text-amber-300">
+                      No thresholds to support yet. Add thresholds in the FOUNTAIN tab first.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {starData.thresholdItems.map((threshold) => (
+                      <CouncilThresholdCard
+                        key={threshold.id}
+                        threshold={threshold}
+                        supportItems={starData.councilSupport[threshold.id] || []}
+                        onAddSupport={(supportItem) => addSupportItem(threshold.id, supportItem)}
+                        onRemoveSupport={(supportItemId) => removeSupportItem(threshold.id, supportItemId)}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                {/* Council Completeness Summary */}
+                {starData.thresholdItems.length > 0 && (
+                  <div className="mt-8 bg-black/40 border border-amber-400/30 rounded-lg p-6">
+                    <h4 className="font-thornelia text-xl text-amber-400 mb-4">Council Completeness</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div className="text-center">
+                        <div className="text-2xl font-angle text-blue-400">
+                          {Object.values(starData.councilSupport).flat().filter(s => s.type === 'human-ally').length}
+                        </div>
+                        <div className="font-emerland text-sm text-amber-200">Human Allies</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-angle text-purple-400">
+                          {Object.values(starData.councilSupport).flat().filter(s => s.type === 'ai-guidance').length}
+                        </div>
+                        <div className="font-emerland text-sm text-amber-200">AI Guidance</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-angle text-green-400">
+                          {Object.values(starData.councilSupport).flat().filter(s => s.type === 'resource-library').length}
+                        </div>
+                        <div className="font-emerland text-sm text-amber-200">Resources</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-angle text-orange-400">
+                          {Object.values(starData.councilSupport).flat().filter(s => s.type === 'peer-learning').length}
+                        </div>
+                        <div className="font-emerland text-sm text-amber-200">Peer Learning</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </TabsContent>
 
@@ -644,5 +732,162 @@ function PriorityColumn({
         )}
       </div>
     </div>
+  );
+}
+
+// Component for council support management
+function CouncilThresholdCard({ 
+  threshold, 
+  supportItems, 
+  onAddSupport, 
+  onRemoveSupport 
+}: {
+  threshold: ThresholdItem;
+  supportItems: SupportItem[];
+  onAddSupport: (supportItem: Omit<SupportItem, 'id'>) => void;
+  onRemoveSupport: (supportItemId: string) => void;
+}) {
+  const [isAddingSupport, setIsAddingSupport] = useState(false);
+  const [newSupport, setNewSupport] = useState({
+    type: 'human-ally' as SupportItem['type'],
+    title: '',
+    description: '',
+    contact: ''
+  });
+
+  const supportTypeConfig = {
+    'human-ally': { icon: Users, label: 'Human Ally', color: 'text-blue-400', bgColor: 'bg-blue-400/20' },
+    'ai-guidance': { icon: Zap, label: 'AI Guidance', color: 'text-purple-400', bgColor: 'bg-purple-400/20' },
+    'resource-library': { icon: BookOpen, label: 'Resource Library', color: 'text-green-400', bgColor: 'bg-green-400/20' },
+    'peer-learning': { icon: Users, label: 'Peer Learning', color: 'text-orange-400', bgColor: 'bg-orange-400/20' }
+  };
+
+  const handleAddSupport = () => {
+    if (newSupport.title.trim() && newSupport.description.trim()) {
+      onAddSupport(newSupport);
+      setNewSupport({
+        type: 'human-ally',
+        title: '',
+        description: '',
+        contact: ''
+      });
+      setIsAddingSupport(false);
+    }
+  };
+
+  return (
+    <Card className="bg-black/40 border border-amber-400/30 hover:border-amber-400/50 transition-colors duration-300">
+      <CardHeader className="pb-3">
+        <CardTitle className="font-emerland text-sm text-amber-400">
+          {threshold.areaName}
+        </CardTitle>
+        <p className="font-emerland text-xs text-amber-200">{threshold.text}</p>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {/* Existing Support Items */}
+        <div className="space-y-3">
+          {supportItems.map((supportItem) => {
+            const config = supportTypeConfig[supportItem.type];
+            const Icon = config.icon;
+            
+            return (
+              <div key={supportItem.id} className={`p-3 rounded-lg border ${config.bgColor} border-current/20`}>
+                <div className="flex items-start gap-3">
+                  <Icon className={`w-4 h-4 ${config.color} mt-1`} />
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className={`font-emerland text-xs ${config.color}`}>{config.label}</span>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => onRemoveSupport(supportItem.id)}
+                        className="h-4 w-4 p-0 text-amber-400/60 hover:text-amber-400"
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </div>
+                    <p className="font-emerland text-sm text-amber-200 mb-1">{supportItem.title}</p>
+                    <p className="font-emerland text-xs text-amber-300/80">{supportItem.description}</p>
+                    {supportItem.contact && (
+                      <p className="font-emerland text-xs text-amber-400/80 mt-1">Contact: {supportItem.contact}</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Add Support Interface */}
+        {isAddingSupport ? (
+          <div className="bg-amber-400/10 p-4 rounded-lg border border-amber-400/30">
+            <div className="space-y-3">
+              <select
+                value={newSupport.type}
+                onChange={(e) => setNewSupport(prev => ({ ...prev, type: e.target.value as SupportItem['type'] }))}
+                className="w-full bg-black/50 border border-amber-400/30 text-amber-200 text-sm rounded p-2"
+              >
+                <option value="human-ally">Human Ally</option>
+                <option value="ai-guidance">AI Guidance</option>
+                <option value="resource-library">Resource Library</option>
+                <option value="peer-learning">Peer Learning</option>
+              </select>
+              
+              <Input
+                placeholder="Support title..."
+                value={newSupport.title}
+                onChange={(e) => setNewSupport(prev => ({ ...prev, title: e.target.value }))}
+                className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50"
+              />
+              
+              <Textarea
+                placeholder="Description of how this support helps..."
+                value={newSupport.description}
+                onChange={(e) => setNewSupport(prev => ({ ...prev, description: e.target.value }))}
+                className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50 min-h-16"
+              />
+              
+              {(newSupport.type === 'human-ally' || newSupport.type === 'peer-learning') && (
+                <Input
+                  placeholder="Contact information (optional)..."
+                  value={newSupport.contact}
+                  onChange={(e) => setNewSupport(prev => ({ ...prev, contact: e.target.value }))}
+                  className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50"
+                />
+              )}
+              
+              <div className="flex gap-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleAddSupport}
+                  className="text-amber-400 hover:text-amber-300"
+                >
+                  Add Support
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setIsAddingSupport(false)}
+                  className="text-amber-400/60 hover:text-amber-400"
+                >
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsAddingSupport(true)}
+            className="w-full text-amber-400 hover:text-amber-300 border border-amber-400/30 hover:border-amber-400/50"
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Add Support
+          </Button>
+        )}
+      </CardContent>
+    </Card>
   );
 }
