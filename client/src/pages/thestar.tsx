@@ -6,46 +6,91 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import PageLayout from "@/components/layouts/page-layout";
-import { Star, Plus, Trash2, Download, Upload, ToggleLeft, ToggleRight, Sparkles, Target, Users } from "lucide-react";
+import { Star, Plus, Trash2, Download, ToggleLeft, ToggleRight, GripVertical, Calendar, Users, BookOpen, Zap } from "lucide-react";
 import cosmicPathwayBg from "@assets/cosmic_pathway_bg.png";
 
 // Eight vital areas positioned around the star
 const VITAL_AREAS = [
-  { id: 'purposeful-authorship', name: 'PURPOSEFUL AUTHORSHIP', position: 'top', angle: 0, color: 'text-amber-400', x: 50, y: 15 },
-  { id: 'visionary-strategy', name: 'VISIONARY STRATEGY', position: 'top-right', angle: 45, color: 'text-orange-400', x: 75, y: 25 },
-  { id: 'truthful-expression', name: 'TRUTHFUL EXPRESSION', position: 'right', angle: 90, color: 'text-yellow-400', x: 85, y: 50 },
-  { id: 'community-wellbeing', name: 'COMMUNITY WELLBEING', position: 'bottom-right', angle: 135, color: 'text-lime-400', x: 75, y: 75 },
-  { id: 'structural-integrity', name: 'STRUCTURAL INTEGRITY', position: 'bottom', angle: 180, color: 'text-green-400', x: 50, y: 85 },
-  { id: 'creative-attraction', name: 'CREATIVE ATTRACTION', position: 'bottom-left', angle: 225, color: 'text-teal-400', x: 25, y: 75 },
-  { id: 'right-livelihood', name: 'RIGHT LIVELIHOOD', position: 'left', angle: 270, color: 'text-cyan-400', x: 15, y: 50 },
-  { id: 'quest-council', name: 'QUEST COUNCIL', position: 'top-left', angle: 315, color: 'text-blue-400', x: 25, y: 25 }
+  { id: 'purposeful-authorship', name: 'PURPOSEFUL AUTHORSHIP', position: 'top', angle: 0, color: 'text-amber-400' },
+  { id: 'visionary-strategy', name: 'VISIONARY STRATEGY', position: 'top-right', angle: 45, color: 'text-orange-400' },
+  { id: 'truthful-expression', name: 'TRUTHFUL EXPRESSION', position: 'right', angle: 90, color: 'text-yellow-400' },
+  { id: 'community-wellbeing', name: 'COMMUNITY WELLBEING', position: 'bottom-right', angle: 135, color: 'text-lime-400' },
+  { id: 'structural-integrity', name: 'STRUCTURAL INTEGRITY', position: 'bottom', angle: 180, color: 'text-green-400' },
+  { id: 'creative-attraction', name: 'CREATIVE ATTRACTION', position: 'bottom-left', angle: 225, color: 'text-teal-400' },
+  { id: 'right-livelihood', name: 'RIGHT LIVELIHOOD', position: 'left', angle: 270, color: 'text-cyan-400' },
+  { id: 'quest-council', name: 'QUEST COUNCIL', position: 'top-left', angle: 315, color: 'text-blue-400' }
 ];
+
+interface ThresholdItem {
+  id: string;
+  text: string;
+  areaId: string;
+  areaName: string;
+  priority: number;
+  urgency: 'low' | 'medium' | 'high';
+  status: 'pending' | 'in-progress' | 'completed';
+}
+
+interface SupportItem {
+  id: string;
+  type: 'human-ally' | 'ai-guidance' | 'resource-library' | 'peer-learning';
+  title: string;
+  description: string;
+  contact?: string;
+}
+
+interface CouncilSupport {
+  [thresholdId: string]: SupportItem[];
+}
+
+interface Agreement {
+  id: string;
+  type: 'development' | 'gift-sharing';
+  areaId: string;
+  areaName: string;
+  commitment: string;
+  accountability: string;
+  timeframe: string;
+  status: 'active' | 'completed' | 'needs-revision';
+  createdAt: string;
+  lastCheckin: string;
+}
 
 interface StarData {
   gifts: { [key: string]: string[] };
   thresholds: { [key: string]: string[] };
-  councilSupport: { [key: string]: any[] };
-  agreements: { [key: string]: any[] };
+  priorities: { [key: string]: number };
+  councilSupport: CouncilSupport;
+  agreements: Agreement[];
+  thresholdItems: ThresholdItem[];
 }
 
 export default function TheStarPage() {
   const [activeTab, setActiveTab] = useState("fountain");
   const [viewMode, setViewMode] = useState<"personal" | "organizational">("personal");
-  const [selectedArea, setSelectedArea] = useState<string | null>(null);
-  const [starData, setStarData] = useState<StarData>({
-    gifts: {},
-    thresholds: {},
-    councilSupport: {},
-    agreements: {}
-  });
+  // Load initial data from localStorage
+  const loadDataFromStorage = (): StarData => {
+    try {
+      const saved = localStorage.getItem(`star-tool-${viewMode}`);
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (error) {
+      console.error('Error loading star data:', error);
+    }
+    
+    return {
+      gifts: {},
+      thresholds: {},
+      priorities: {},
+      councilSupport: {},
+      agreements: [],
+      thresholdItems: []
+    };
+  };
 
-  // Initialize empty arrays for each vital area
-  VITAL_AREAS.forEach(area => {
-    if (!starData.gifts[area.id]) starData.gifts[area.id] = [];
-    if (!starData.thresholds[area.id]) starData.thresholds[area.id] = [];
-    if (!starData.councilSupport[area.id]) starData.councilSupport[area.id] = [];
-    if (!starData.agreements[area.id]) starData.agreements[area.id] = [];
-  });
+  const [starData, setStarData] = useState<StarData>(loadDataFromStorage);
+  const [draggedItem, setDraggedItem] = useState<string | null>(null);
 
   // Auto-save to localStorage whenever starData changes
   useEffect(() => {
@@ -56,74 +101,17 @@ export default function TheStarPage() {
     }
   }, [starData, viewMode]);
 
-  // Load data from localStorage on mount and view mode change
+  // Switch data when view mode changes
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(`star-tool-${viewMode}`);
-      if (saved) {
-        setStarData(JSON.parse(saved));
-      } else {
-        // Reset to empty data if no saved data for this mode
-        setStarData({
-          gifts: {},
-          thresholds: {},
-          councilSupport: {},
-          agreements: {}
-        });
-      }
-    } catch (error) {
-      console.error('Error loading star data:', error);
-      // Reset to empty data on error
-      setStarData({
-        gifts: {},
-        thresholds: {},
-        councilSupport: {},
-        agreements: {}
-      });
-    }
+    setStarData(loadDataFromStorage());
   }, [viewMode]);
 
-  // Calculate star point intensity based on gifts vs thresholds
-  const getPointIntensity = (areaId: string) => {
-    const gifts = starData.gifts[areaId]?.length || 0;
-    const thresholds = starData.thresholds[areaId]?.length || 0;
-    
-    if (gifts > thresholds) return 'high'; // More gifts than thresholds - warm/glowing
-    if (thresholds > gifts) return 'low'; // More thresholds than gifts - cool/contracted
-    return 'medium'; // Balanced
-  };
+  // Initialize empty arrays for each vital area
+  VITAL_AREAS.forEach(area => {
+    if (!starData.gifts[area.id]) starData.gifts[area.id] = [];
+    if (!starData.thresholds[area.id]) starData.thresholds[area.id] = [];
+  });
 
-  // Get point visual style based on intensity and tab
-  const getPointStyle = (area: typeof VITAL_AREAS[0]) => {
-    const intensity = getPointIntensity(area.id);
-    const isSelected = selectedArea === area.id;
-    
-    let baseClasses = "absolute cursor-pointer transition-all duration-300 transform hover:scale-110";
-    
-    if (isSelected) {
-      baseClasses += " scale-125 ring-2 ring-amber-400 ring-opacity-50";
-    }
-    
-    // Size based on intensity
-    const sizeClasses = intensity === 'high' ? 'w-8 h-8' : intensity === 'low' ? 'w-4 h-4' : 'w-6 h-6';
-    
-    // Color based on intensity and area
-    let colorClasses = area.color;
-    if (intensity === 'high') {
-      colorClasses += " drop-shadow-lg filter brightness-125";
-    } else if (intensity === 'low') {
-      colorClasses += " opacity-60";
-    }
-    
-    return `${baseClasses} ${sizeClasses} ${colorClasses}`;
-  };
-
-  // Handle star point click
-  const handlePointClick = (areaId: string) => {
-    setSelectedArea(selectedArea === areaId ? null : areaId);
-  };
-
-  // Data management functions
   const addGift = (areaId: string, gift: string) => {
     if (gift.trim()) {
       setStarData(prev => ({
@@ -138,12 +126,24 @@ export default function TheStarPage() {
 
   const addThreshold = (areaId: string, threshold: string) => {
     if (threshold.trim()) {
+      const areaName = VITAL_AREAS.find(area => area.id === areaId)?.name || '';
+      const newThresholdItem: ThresholdItem = {
+        id: `threshold-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        text: threshold.trim(),
+        areaId,
+        areaName,
+        priority: 0,
+        urgency: 'medium',
+        status: 'pending'
+      };
+      
       setStarData(prev => ({
         ...prev,
         thresholds: {
           ...prev.thresholds,
           [areaId]: [...(prev.thresholds[areaId] || []), threshold.trim()]
-        }
+        },
+        thresholdItems: [...prev.thresholdItems, newThresholdItem]
       }));
     }
   };
@@ -153,21 +153,112 @@ export default function TheStarPage() {
       ...prev,
       gifts: {
         ...prev.gifts,
-        [areaId]: prev.gifts[areaId].filter((_, i) => i !== index)
+        [areaId]: prev.gifts[areaId]?.filter((_, i) => i !== index) || []
       }
     }));
   };
 
   const removeThreshold = (areaId: string, index: number) => {
+    const thresholdText = starData.thresholds[areaId]?.[index];
     setStarData(prev => ({
       ...prev,
       thresholds: {
         ...prev.thresholds,
-        [areaId]: prev.thresholds[areaId].filter((_, i) => i !== index)
+        [areaId]: prev.thresholds[areaId]?.filter((_, i) => i !== index) || []
+      },
+      thresholdItems: prev.thresholdItems.filter(item => 
+        !(item.areaId === areaId && item.text === thresholdText)
+      )
+    }));
+  };
+
+  const updateThresholdPriority = (thresholdId: string, priority: number) => {
+    setStarData(prev => ({
+      ...prev,
+      thresholdItems: prev.thresholdItems.map(item =>
+        item.id === thresholdId ? { ...item, priority } : item
+      )
+    }));
+  };
+
+  const updateThresholdStatus = (thresholdId: string, status: ThresholdItem['status']) => {
+    setStarData(prev => ({
+      ...prev,
+      thresholdItems: prev.thresholdItems.map(item =>
+        item.id === thresholdId ? { ...item, status } : item
+      )
+    }));
+  };
+
+  // Get all thresholds without priority assigned (priority = 0)
+  const unassignedThresholds = starData.thresholdItems.filter(item => item.priority === 0);
+  
+  // Get thresholds grouped by priority level (1-8)
+  const prioritizedThresholds = Array.from({length: 8}, (_, i) => ({
+    priority: i + 1,
+    thresholds: starData.thresholdItems.filter(item => item.priority === i + 1)
+  }));
+
+  // Council support functions
+  const addSupportItem = (thresholdId: string, supportItem: Omit<SupportItem, 'id'>) => {
+    const newSupportItem: SupportItem = {
+      ...supportItem,
+      id: `support-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+    };
+    
+    setStarData(prev => ({
+      ...prev,
+      councilSupport: {
+        ...prev.councilSupport,
+        [thresholdId]: [...(prev.councilSupport[thresholdId] || []), newSupportItem]
       }
     }));
   };
 
+  const removeSupportItem = (thresholdId: string, supportItemId: string) => {
+    setStarData(prev => ({
+      ...prev,
+      councilSupport: {
+        ...prev.councilSupport,
+        [thresholdId]: (prev.councilSupport[thresholdId] || []).filter(item => item.id !== supportItemId)
+      }
+    }));
+  };
+
+  // Agreement functions
+  const addAgreement = (agreement: Omit<Agreement, 'id' | 'createdAt' | 'lastCheckin'>) => {
+    const newAgreement: Agreement = {
+      ...agreement,
+      id: `agreement-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      createdAt: new Date().toISOString(),
+      lastCheckin: new Date().toISOString()
+    };
+    
+    setStarData(prev => ({
+      ...prev,
+      agreements: [...prev.agreements, newAgreement]
+    }));
+  };
+
+  const updateAgreement = (agreementId: string, updates: Partial<Agreement>) => {
+    setStarData(prev => ({
+      ...prev,
+      agreements: prev.agreements.map(agreement =>
+        agreement.id === agreementId 
+          ? { ...agreement, ...updates, lastCheckin: new Date().toISOString() }
+          : agreement
+      )
+    }));
+  };
+
+  const removeAgreement = (agreementId: string) => {
+    setStarData(prev => ({
+      ...prev,
+      agreements: prev.agreements.filter(agreement => agreement.id !== agreementId)
+    }));
+  };
+
+  // Data export/import functions
   const exportData = () => {
     const dataToExport = {
       personal: JSON.parse(localStorage.getItem('star-tool-personal') || '{}'),
@@ -204,18 +295,9 @@ export default function TheStarPage() {
         }
         
         // Reload current view mode data
-        const saved = localStorage.getItem(`star-tool-${viewMode}`);
-        if (saved) {
-          setStarData(JSON.parse(saved));
-        } else {
-          setStarData({
-            gifts: {},
-            thresholds: {},
-            councilSupport: {},
-            agreements: {}
-          });
-        }
+        setStarData(loadDataFromStorage());
         
+        // Reset the file input
         event.target.value = '';
       } catch (error) {
         console.error('Error importing data:', error);
@@ -232,226 +314,367 @@ export default function TheStarPage() {
       setStarData({
         gifts: {},
         thresholds: {},
+        priorities: {},
         councilSupport: {},
-        agreements: {}
+        agreements: [],
+        thresholdItems: []
       });
     }
   };
 
-  const selectedAreaData = selectedArea ? VITAL_AREAS.find(a => a.id === selectedArea) : null;
+  // Calculate star point intensity based on gifts vs thresholds
+  const getPointIntensity = (areaId: string) => {
+    const gifts = starData.gifts[areaId]?.length || 0;
+    const thresholds = starData.thresholds[areaId]?.length || 0;
+    const balance = gifts - thresholds;
+    return Math.max(0.3, Math.min(1, 0.5 + (balance * 0.1)));
+  };
+
+  const getPointColor = (areaId: string) => {
+    const gifts = starData.gifts[areaId]?.length || 0;
+    const thresholds = starData.thresholds[areaId]?.length || 0;
+    const balance = gifts - thresholds;
+    
+    if (balance > 0) return "text-amber-400"; // Warm colors for gifts
+    if (balance < 0) return "text-blue-400";  // Cool colors for thresholds
+    return "text-gray-400";
+  };
 
   return (
-    <PageLayout>
+    <PageLayout hideFooter={true} className="bg-black min-h-screen">
+      {/* Background */}
       <div 
-        className="min-h-screen relative overflow-hidden"
+        className="fixed inset-0 opacity-40 z-0"
         style={{
           backgroundImage: `url(${cosmicPathwayBg})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          backgroundRepeat: 'no-repeat'
         }}
-      >
-        {/* Content overlay */}
-        <div className="relative z-10 bg-black/70 min-h-screen">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="container mx-auto px-6 py-8"
-          >
-            {/* Header */}
-            <div className="text-center mb-8">
-              <h1 className="font-thornelia text-3xl md:text-5xl text-amber-400 mb-3">
-                THE EIGHT-POINTED STAR TOOL
-              </h1>
-              <p className="font-emerland text-lg text-amber-200 max-w-3xl mx-auto">
-                Navigate your eight vital areas through the interactive star
-              </p>
+      />
+      
+      {/* Main Content */}
+      <div className="relative z-10 text-amber-100 py-8 px-4">
+        {/* Header */}
+        <motion.div 
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="font-angle text-3xl md:text-5xl mb-4 text-gradient-gold">
+            THE EIGHT-POINTED STAR
+          </h1>
+          <p className="font-thornelia text-lg md:text-xl text-amber-200 mb-6">
+            Dynamic Balance & Mission Completion Tool
+          </p>
+          
+          {/* View Mode Toggle */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <span className="font-emerland text-sm">Personal</span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setViewMode(viewMode === "personal" ? "organizational" : "personal")}
+              className="p-2"
+            >
+              {viewMode === "personal" ? 
+                <ToggleLeft className="h-6 w-6 text-amber-400" /> : 
+                <ToggleRight className="h-6 w-6 text-amber-400" />
+              }
+            </Button>
+            <span className="font-emerland text-sm">Organizational</span>
+          </div>
+        </motion.div>
+
+        {/* Eight-Pointed Star Visualization */}
+        <motion.div 
+          className="flex justify-center mb-12"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          <div className="relative w-96 h-96">
+            {/* Central Star */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Star className="w-32 h-32 text-ancient-gold animate-pulse" />
             </div>
+            
+            {/* Eight Points with Labels */}
+            {VITAL_AREAS.map((area, index) => {
+              const radius = 140;
+              const angleRad = (area.angle * Math.PI) / 180;
+              const x = Math.cos(angleRad) * radius;
+              const y = Math.sin(angleRad) * radius;
+              
+              return (
+                <motion.div
+                  key={area.id}
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
+                  style={{
+                    left: `calc(50% + ${x}px)`,
+                    top: `calc(50% + ${y}px)`,
+                  }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ 
+                    opacity: getPointIntensity(area.id), 
+                    scale: 1 
+                  }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <div className={`w-4 h-4 rounded-full ${getPointColor(area.id)} border-2 border-current shadow-lg group-hover:shadow-xl transition-all duration-300`} />
+                  <div className="absolute whitespace-nowrap text-xs font-emerland text-center mt-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {area.name}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
 
-            {/* Controls */}
-            <div className="flex justify-between items-center mb-8">
-              {/* Personal vs Organizational Toggle */}
-              <div className="flex items-center gap-2">
-                <span className="font-emerland text-amber-300 text-sm">Personal</span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setViewMode(viewMode === "personal" ? "organizational" : "personal")}
-                  className="p-0 h-auto"
-                >
-                  {viewMode === "personal" ? (
-                    <ToggleLeft className="h-6 w-6 text-amber-400" />
-                  ) : (
-                    <ToggleRight className="h-6 w-6 text-amber-400" />
-                  )}
-                </Button>
-                <span className="font-emerland text-amber-300 text-sm">Organizational</span>
-              </div>
+        {/* Main Interface Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-6xl mx-auto">
+            <TabsList className="grid w-full grid-cols-4 bg-black/50 border border-amber-400/30 rounded-lg">
+              <TabsTrigger value="fountain" className="font-emerland text-amber-200 data-[state=active]:bg-amber-400/20 data-[state=active]:text-amber-400">
+                FOUNTAIN
+              </TabsTrigger>
+              <TabsTrigger value="path" className="font-emerland text-amber-200 data-[state=active]:bg-amber-400/20 data-[state=active]:text-amber-400">
+                PATH
+              </TabsTrigger>
+              <TabsTrigger value="council" className="font-emerland text-amber-200 data-[state=active]:bg-amber-400/20 data-[state=active]:text-amber-400">
+                COUNCIL
+              </TabsTrigger>
+              <TabsTrigger value="ethos" className="font-emerland text-amber-200 data-[state=active]:bg-amber-400/20 data-[state=active]:text-amber-400">
+                ETHOS
+              </TabsTrigger>
+            </TabsList>
 
-              {/* Data Management */}
-              <div className="flex items-center gap-2">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={exportData}
-                  className="text-amber-400 hover:text-amber-300"
-                  title="Export all data"
-                >
-                  <Download className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-amber-400 hover:text-amber-300 relative"
-                  title="Import data"
-                >
-                  <Upload className="h-4 w-4" />
-                  <input
-                    type="file"
-                    accept=".json"
-                    onChange={importData}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            {/* FOUNTAIN TAB - Assessment & Mapping */}
+            <TabsContent value="fountain" className="mt-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {VITAL_AREAS.map((area) => (
+                  <FountainAreaCard 
+                    key={area.id}
+                    area={area}
+                    gifts={starData.gifts[area.id] || []}
+                    thresholds={starData.thresholds[area.id] || []}
+                    onAddGift={(gift) => addGift(area.id, gift)}
+                    onAddThreshold={(threshold) => addThreshold(area.id, threshold)}
+                    onRemoveGift={(index) => removeGift(area.id, index)}
+                    onRemoveThreshold={(index) => removeThreshold(area.id, index)}
                   />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={clearAllData}
-                  className="text-red-400 hover:text-red-300"
-                  title="Clear all data"
-                >
-                  <Trash2 className="h-4 w-4" />
+                ))}
+              </div>
+              
+              <div className="flex justify-center mt-8">
+                <Button className="bg-amber-400/20 hover:bg-amber-400/30 text-amber-400 border border-amber-400/50">
+                  <Download className="w-4 h-4 mr-2" />
+                  Complete Fountain Assessment
                 </Button>
               </div>
-            </div>
+            </TabsContent>
 
-            {/* Tab System */}
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
-              <TabsList className="grid w-full grid-cols-4 bg-black/50 border border-amber-400/30">
-                <TabsTrigger value="fountain" className="data-[state=active]:bg-amber-400/20 text-amber-200">
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  FOUNTAIN
-                </TabsTrigger>
-                <TabsTrigger value="path" className="data-[state=active]:bg-amber-400/20 text-amber-200">
-                  <Target className="w-4 h-4 mr-2" />
-                  PATH
-                </TabsTrigger>
-                <TabsTrigger value="council" className="data-[state=active]:bg-amber-400/20 text-amber-200">
-                  <Users className="w-4 h-4 mr-2" />
-                  COUNCIL
-                </TabsTrigger>
-                <TabsTrigger value="ethos" className="data-[state=active]:bg-amber-400/20 text-amber-200">
-                  <Star className="w-4 h-4 mr-2" />
-                  ETHOS
-                </TabsTrigger>
-              </TabsList>
-
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
-                {/* Interactive Star Visualization */}
-                <div className="lg:col-span-2">
-                  <Card className="bg-black/40 border border-amber-400/30 h-96 relative">
-                    <CardContent className="p-0 h-full">
-                      {/* Central Star with Interactive Points */}
-                      <div className="relative w-full h-full flex items-center justify-center">
-                        {/* Central star shape */}
-                        <div className="absolute w-32 h-32 text-amber-400/20">
-                          <Star className="w-full h-full" />
+            {/* PATH TAB - Development Sequencing */}
+            <TabsContent value="path" className="mt-8">
+              <div className="mb-8">
+                <h3 className="font-thornelia text-2xl text-amber-400 mb-4 text-center">PATH - Development Sequencing</h3>
+                <p className="font-emerland text-amber-200 mb-8 text-center">Prioritize and sequence your threshold challenges for optimal development</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* Unassigned Thresholds */}
+                  <div className="lg:col-span-1">
+                    <h4 className="font-emerland text-lg text-amber-400 mb-4">Unassigned Thresholds</h4>
+                    <div className="space-y-3 max-h-96 overflow-y-auto">
+                      {unassignedThresholds.length === 0 ? (
+                        <div className="bg-amber-400/10 border border-amber-400/30 rounded-lg p-4 text-center">
+                          <p className="font-emerland text-amber-300 text-sm">
+                            No unassigned thresholds. Add thresholds in the FOUNTAIN tab.
+                          </p>
                         </div>
-                        
-                        {/* Clickable points around the star */}
-                        {VITAL_AREAS.map((area) => (
-                          <motion.div
-                            key={area.id}
-                            className={getPointStyle(area)}
-                            style={{ 
-                              left: `${area.x}%`, 
-                              top: `${area.y}%`,
-                              transform: 'translate(-50%, -50%)'
-                            }}
-                            onClick={() => handlePointClick(area.id)}
-                            whileHover={{ scale: 1.2 }}
-                            whileTap={{ scale: 0.9 }}
-                          >
-                            <Star className="w-full h-full" />
-                            
-                            {/* Area label */}
-                            <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 text-xs font-emerland ${area.color} whitespace-nowrap pointer-events-none`}>
-                              {area.name}
-                            </div>
-                          </motion.div>
-                        ))}
-                        
-                        {/* Central balance indicator */}
-                        <div className="absolute w-4 h-4 bg-amber-400 rounded-full opacity-80" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <div className="mt-4 text-center">
-                    <p className="font-emerland text-amber-200 text-sm">
-                      Click on any star point to interact with that vital area
-                    </p>
+                      ) : (
+                        unassignedThresholds.map((threshold) => (
+                          <ThresholdCard 
+                            key={threshold.id}
+                            threshold={threshold}
+                            onUpdatePriority={updateThresholdPriority}
+                            onUpdateStatus={updateThresholdStatus}
+                            draggable={true}
+                          />
+                        ))
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Priority Columns */}
+                  <div className="lg:col-span-2">
+                    <h4 className="font-emerland text-lg text-amber-400 mb-4">Priority Levels (1 = Highest)</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {prioritizedThresholds.map(({ priority, thresholds }) => (
+                        <PriorityColumn
+                          key={priority}
+                          priority={priority}
+                          thresholds={thresholds}
+                          onUpdatePriority={updateThresholdPriority}
+                          onUpdateStatus={updateThresholdStatus}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                {/* Area Detail Panel */}
-                <div>
-                  {selectedAreaData ? (
-                    <AreaDetailPanel 
-                      area={selectedAreaData}
-                      gifts={starData.gifts[selectedAreaData.id] || []}
-                      thresholds={starData.thresholds[selectedAreaData.id] || []}
-                      activeTab={activeTab}
-                      onAddGift={(gift) => addGift(selectedAreaData.id, gift)}
-                      onAddThreshold={(threshold) => addThreshold(selectedAreaData.id, threshold)}
-                      onRemoveGift={(index) => removeGift(selectedAreaData.id, index)}
-                      onRemoveThreshold={(index) => removeThreshold(selectedAreaData.id, index)}
-                    />
-                  ) : (
-                    <Card className="bg-black/40 border border-amber-400/30">
-                      <CardContent className="p-8 text-center">
-                        <Sparkles className="w-12 h-12 text-amber-400/50 mx-auto mb-4" />
-                        <h3 className="font-thornelia text-xl text-amber-400 mb-2">Select a Vital Area</h3>
-                        <p className="font-emerland text-amber-200/80">
-                          Click on any point of the star to explore and develop that area
-                        </p>
-                      </CardContent>
-                    </Card>
-                  )}
+                {/* Path Progress Summary */}
+                <div className="mt-8 bg-black/40 border border-amber-400/30 rounded-lg p-6">
+                  <h4 className="font-thornelia text-xl text-amber-400 mb-4">Development Path Summary</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-amber-400">{unassignedThresholds.length}</div>
+                      <div className="font-emerland text-sm text-amber-200">Unassigned</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-blue-400">{starData.thresholdItems.filter(t => t.status === 'in-progress').length}</div>
+                      <div className="font-emerland text-sm text-amber-200">In Progress</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-green-400">{starData.thresholdItems.filter(t => t.status === 'completed').length}</div>
+                      <div className="font-emerland text-sm text-amber-200">Completed</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              {/* Tab-specific content */}
-              <TabsContent value="fountain" className="mt-8">
-                <FountainView starData={starData} />
-              </TabsContent>
-              
-              <TabsContent value="path" className="mt-8">
-                <PathView starData={starData} />
-              </TabsContent>
-              
-              <TabsContent value="council" className="mt-8">
-                <CouncilView starData={starData} />
-              </TabsContent>
-              
-              <TabsContent value="ethos" className="mt-8">
-                <EthosView starData={starData} />
-              </TabsContent>
-            </Tabs>
-          </motion.div>
-        </div>
+            </TabsContent>
+
+            {/* COUNCIL TAB - Support Network */}
+            <TabsContent value="council" className="mt-8">
+              <div className="mb-8">
+                <h3 className="font-thornelia text-2xl text-amber-400 mb-4 text-center">COUNCIL - Support Network</h3>
+                <p className="font-emerland text-amber-200 mb-8 text-center">Build your support system for each threshold challenge</p>
+                
+                {starData.thresholdItems.length === 0 ? (
+                  <div className="bg-amber-400/10 border border-amber-400/30 rounded-lg p-8 text-center">
+                    <p className="font-emerland text-amber-300">
+                      No thresholds to support yet. Add thresholds in the FOUNTAIN tab first.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {starData.thresholdItems.map((threshold) => (
+                      <CouncilThresholdCard
+                        key={threshold.id}
+                        threshold={threshold}
+                        supportItems={starData.councilSupport[threshold.id] || []}
+                        onAddSupport={(supportItem) => addSupportItem(threshold.id, supportItem)}
+                        onRemoveSupport={(supportItemId) => removeSupportItem(threshold.id, supportItemId)}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                {/* Council Completeness Summary */}
+                {starData.thresholdItems.length > 0 && (
+                  <div className="mt-8 bg-black/40 border border-amber-400/30 rounded-lg p-6">
+                    <h4 className="font-thornelia text-xl text-amber-400 mb-4">Council Completeness</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div className="text-center">
+                        <div className="text-2xl font-angle text-blue-400">
+                          {Object.values(starData.councilSupport).flat().filter(s => s.type === 'human-ally').length}
+                        </div>
+                        <div className="font-emerland text-sm text-amber-200">Human Allies</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-angle text-purple-400">
+                          {Object.values(starData.councilSupport).flat().filter(s => s.type === 'ai-guidance').length}
+                        </div>
+                        <div className="font-emerland text-sm text-amber-200">AI Guidance</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-angle text-green-400">
+                          {Object.values(starData.councilSupport).flat().filter(s => s.type === 'resource-library').length}
+                        </div>
+                        <div className="font-emerland text-sm text-amber-200">Resources</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-angle text-orange-400">
+                          {Object.values(starData.councilSupport).flat().filter(s => s.type === 'peer-learning').length}
+                        </div>
+                        <div className="font-emerland text-sm text-amber-200">Peer Learning</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </TabsContent>
+
+            {/* ETHOS TAB - Agreements & Accountability */}
+            <TabsContent value="ethos" className="mt-8">
+              <div className="mb-8">
+                <h3 className="font-thornelia text-2xl text-amber-400 mb-4 text-center">ETHOS - Agreements & Accountability</h3>
+                <p className="font-emerland text-amber-200 mb-8 text-center">Create commitments for development and gift sharing</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {VITAL_AREAS.map((area) => (
+                    <EthosAreaCard
+                      key={area.id}
+                      area={area}
+                      gifts={starData.gifts[area.id] || []}
+                      thresholds={starData.thresholds[area.id] || []}
+                      agreements={starData.agreements.filter(a => a.areaId === area.id)}
+                      onAddAgreement={addAgreement}
+                      onUpdateAgreement={updateAgreement}
+                      onRemoveAgreement={removeAgreement}
+                    />
+                  ))}
+                </div>
+
+                {/* Ethos Summary */}
+                <div className="mt-8 bg-black/40 border border-amber-400/30 rounded-lg p-6">
+                  <h4 className="font-thornelia text-xl text-amber-400 mb-4">Commitment Overview</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-purple-400">
+                        {starData.agreements.filter(a => a.type === 'development').length}
+                      </div>
+                      <div className="font-emerland text-sm text-amber-200">Development</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-orange-400">
+                        {starData.agreements.filter(a => a.type === 'gift-sharing').length}
+                      </div>
+                      <div className="font-emerland text-sm text-amber-200">Gift Sharing</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-green-400">
+                        {starData.agreements.filter(a => a.status === 'active').length}
+                      </div>
+                      <div className="font-emerland text-sm text-amber-200">Active</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-blue-400">
+                        {starData.agreements.filter(a => a.status === 'completed').length}
+                      </div>
+                      <div className="font-emerland text-sm text-amber-200">Completed</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </motion.div>
       </div>
     </PageLayout>
   );
 }
 
-// Area Detail Panel Component
-function AreaDetailPanel({ 
+// Component for individual area assessment in Fountain tab
+function FountainAreaCard({ 
   area, 
   gifts, 
   thresholds, 
-  activeTab, 
   onAddGift, 
   onAddThreshold, 
   onRemoveGift, 
@@ -460,7 +683,6 @@ function AreaDetailPanel({
   area: typeof VITAL_AREAS[0];
   gifts: string[];
   thresholds: string[];
-  activeTab: string;
   onAddGift: (gift: string) => void;
   onAddThreshold: (threshold: string) => void;
   onRemoveGift: (index: number) => void;
@@ -470,126 +692,94 @@ function AreaDetailPanel({
   const [newThreshold, setNewThreshold] = useState("");
 
   const handleAddGift = () => {
-    if (newGift.trim()) {
-      onAddGift(newGift);
-      setNewGift("");
-    }
+    onAddGift(newGift);
+    setNewGift("");
   };
 
   const handleAddThreshold = () => {
-    if (newThreshold.trim()) {
-      onAddThreshold(newThreshold);
-      setNewThreshold("");
-    }
+    onAddThreshold(newThreshold);
+    setNewThreshold("");
   };
 
   return (
-    <Card className="bg-black/40 border border-amber-400/30">
-      <CardHeader>
-        <CardTitle className={`font-emerland text-lg ${area.color}`}>
+    <Card className="bg-black/40 border border-amber-400/30 hover:border-amber-400/50 transition-colors duration-300">
+      <CardHeader className="pb-3">
+        <CardTitle className={`font-emerland text-sm ${area.color} text-center`}>
           {area.name}
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
-        {activeTab === 'fountain' && (
-          <>
-            {/* Gifts Section */}
-            <div>
-              <h4 className="font-emerland text-sm text-green-400 mb-3">GIFTS ({gifts.length})</h4>
-              <div className="space-y-2 mb-3">
-                {gifts.map((gift, index) => (
-                  <div key={index} className="flex items-center gap-2 p-2 bg-green-400/10 rounded">
-                    <span className="flex-1 font-emerland text-sm text-amber-200">{gift}</span>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => onRemoveGift(index)}
-                      className="h-6 w-6 p-0 text-red-400 hover:text-red-300"
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
-                  </div>
-                ))}
-              </div>
-              <div className="flex gap-2">
-                <Input
-                  placeholder="Add a gift..."
-                  value={newGift}
-                  onChange={(e) => setNewGift(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleAddGift()}
-                  className="bg-black/50 border-amber-400/30 text-amber-200 text-sm"
-                />
-                <Button onClick={handleAddGift} size="sm" className="bg-green-600 hover:bg-green-700">
-                  <Plus className="h-4 w-4" />
+      <CardContent className="space-y-4">
+        {/* Gifts Section */}
+        <div>
+          <h4 className="font-emerland text-xs text-amber-400 mb-2">GIFTS</h4>
+          <div className="space-y-2 mb-3">
+            {gifts.map((gift, index) => (
+              <div key={index} className="flex items-center gap-2 bg-amber-400/10 p-2 rounded border border-amber-400/20">
+                <span className="font-emerland text-xs text-amber-200 flex-1">{gift}</span>
+                <Button
+                  variant="ghost" 
+                  size="sm"
+                  onClick={() => onRemoveGift(index)}
+                  className="h-6 w-6 p-0 text-amber-400/60 hover:text-amber-400"
+                >
+                  <Trash2 className="h-3 w-3" />
                 </Button>
               </div>
-            </div>
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <Input
+              placeholder="Add gift..."
+              value={newGift}
+              onChange={(e) => setNewGift(e.target.value)}
+              className="flex-1 bg-black/50 border-amber-400/30 text-amber-200 text-xs placeholder:text-amber-400/50"
+              onKeyPress={(e) => e.key === 'Enter' && handleAddGift()}
+            />
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleAddGift}
+              className="text-amber-400 hover:text-amber-300"
+            >
+              <Plus className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
 
-            {/* Thresholds Section */}
-            <div>
-              <h4 className="font-emerland text-sm text-red-400 mb-3">THRESHOLDS ({thresholds.length})</h4>
-              <div className="space-y-2 mb-3">
-                {thresholds.map((threshold, index) => (
-                  <div key={index} className="flex items-center gap-2 p-2 bg-red-400/10 rounded">
-                    <span className="flex-1 font-emerland text-sm text-amber-200">{threshold}</span>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => onRemoveThreshold(index)}
-                      className="h-6 w-6 p-0 text-red-400 hover:text-red-300"
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
-                  </div>
-                ))}
-              </div>
-              <div className="flex gap-2">
-                <Input
-                  placeholder="Add a threshold..."
-                  value={newThreshold}
-                  onChange={(e) => setNewThreshold(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleAddThreshold()}
-                  className="bg-black/50 border-amber-400/30 text-amber-200 text-sm"
-                />
-                <Button onClick={handleAddThreshold} size="sm" className="bg-red-600 hover:bg-red-700">
-                  <Plus className="h-4 w-4" />
+        {/* Thresholds Section */}
+        <div>
+          <h4 className="font-emerland text-xs text-blue-400 mb-2">THRESHOLDS</h4>
+          <div className="space-y-2 mb-3">
+            {thresholds.map((threshold, index) => (
+              <div key={index} className="flex items-center gap-2 bg-blue-400/10 p-2 rounded border border-blue-400/20">
+                <span className="font-emerland text-xs text-blue-200 flex-1">{threshold}</span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => onRemoveThreshold(index)}
+                  className="h-6 w-6 p-0 text-blue-400/60 hover:text-blue-400"
+                >
+                  <Trash2 className="h-3 w-3" />
                 </Button>
               </div>
-            </div>
-          </>
-        )}
-
-        {activeTab !== 'fountain' && (
-          <div className="text-center py-8">
-            <p className="font-emerland text-amber-200/80">
-              {activeTab.toUpperCase()} view for {area.name} - coming soon
-            </p>
+            ))}
           </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
-// Tab View Components (simplified for now)
-function FountainView({ starData }: { starData: StarData }) {
-  const totalGifts = Object.values(starData.gifts).flat().length;
-  const totalThresholds = Object.values(starData.thresholds).flat().length;
-  
-  return (
-    <Card className="bg-black/40 border border-amber-400/30">
-      <CardHeader>
-        <CardTitle className="font-thornelia text-xl text-amber-400">Fountain Overview</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="text-center">
-            <div className="text-3xl font-thornelia text-green-400">{totalGifts}</div>
-            <div className="font-emerland text-sm text-amber-200">Total Gifts</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-thornelia text-red-400">{totalThresholds}</div>
-            <div className="font-emerland text-sm text-amber-200">Total Thresholds</div>
+          <div className="flex gap-2">
+            <Input
+              placeholder="Add threshold..."
+              value={newThreshold}
+              onChange={(e) => setNewThreshold(e.target.value)}
+              className="flex-1 bg-black/50 border-blue-400/30 text-blue-200 text-xs placeholder:text-blue-400/50"
+              onKeyPress={(e) => e.key === 'Enter' && handleAddThreshold()}
+            />
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleAddThreshold}
+              className="text-blue-400 hover:text-blue-300"
+            >
+              <Plus className="h-4 w-4" />
+            </Button>
           </div>
         </div>
       </CardContent>
@@ -597,41 +787,542 @@ function FountainView({ starData }: { starData: StarData }) {
   );
 }
 
-function PathView({ starData }: { starData: StarData }) {
+// Component for threshold cards in PATH tab
+function ThresholdCard({ 
+  threshold, 
+  onUpdatePriority, 
+  onUpdateStatus, 
+  draggable = false 
+}: {
+  threshold: ThresholdItem;
+  onUpdatePriority: (id: string, priority: number) => void;
+  onUpdateStatus: (id: string, status: ThresholdItem['status']) => void;
+  draggable?: boolean;
+}) {
+  const statusColors = {
+    pending: 'bg-gray-400/20 text-gray-300',
+    'in-progress': 'bg-blue-400/20 text-blue-300',
+    completed: 'bg-green-400/20 text-green-300'
+  };
+
+  const urgencyColors = {
+    low: 'border-l-gray-400',
+    medium: 'border-l-amber-400',
+    high: 'border-l-red-400'
+  };
+
   return (
-    <Card className="bg-black/40 border border-amber-400/30">
-      <CardHeader>
-        <CardTitle className="font-thornelia text-xl text-amber-400">Development Path</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="font-emerland text-amber-200">Path timeline interface coming soon...</p>
+    <Card 
+      className={`bg-black/40 border border-amber-400/30 hover:border-amber-400/50 transition-colors duration-300 ${urgencyColors[threshold.urgency]} border-l-4`}
+      draggable={draggable}
+    >
+      <CardContent className="p-4">
+        <div className="flex items-start gap-3">
+          {draggable && <GripVertical className="w-4 h-4 text-amber-400/60 mt-1 cursor-grab" />}
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="font-emerland text-xs text-amber-400">{threshold.areaName}</span>
+              <div className={`px-2 py-1 rounded-full text-xs ${statusColors[threshold.status]}`}>
+                {threshold.status.replace('-', ' ')}
+              </div>
+            </div>
+            <p className="font-emerland text-sm text-amber-200 mb-3">{threshold.text}</p>
+            <div className="flex gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => onUpdateStatus(threshold.id, 
+                  threshold.status === 'pending' ? 'in-progress' : 
+                  threshold.status === 'in-progress' ? 'completed' : 'pending'
+                )}
+                className="text-xs text-amber-400 hover:text-amber-300"
+              >
+                {threshold.status === 'pending' ? 'Start' : 
+                 threshold.status === 'in-progress' ? 'Complete' : 'Reset'}
+              </Button>
+            </div>
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
 }
 
-function CouncilView({ starData }: { starData: StarData }) {
+// Component for priority columns in PATH tab
+function PriorityColumn({ 
+  priority, 
+  thresholds, 
+  onUpdatePriority, 
+  onUpdateStatus 
+}: {
+  priority: number;
+  thresholds: ThresholdItem[];
+  onUpdatePriority: (id: string, priority: number) => void;
+  onUpdateStatus: (id: string, status: ThresholdItem['status']) => void;
+}) {
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    const thresholdId = e.dataTransfer.getData('text/plain');
+    if (thresholdId) {
+      onUpdatePriority(thresholdId, priority);
+    }
+  };
+
+  const handleDragStart = (e: React.DragEvent, thresholdId: string) => {
+    e.dataTransfer.setData('text/plain', thresholdId);
+  };
+
   return (
-    <Card className="bg-black/40 border border-amber-400/30">
-      <CardHeader>
-        <CardTitle className="font-thornelia text-xl text-amber-400">Council Network</CardTitle>
+    <div 
+      className="bg-black/20 border border-amber-400/20 rounded-lg p-3 min-h-32"
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+    >
+      <div className="text-center mb-3">
+        <div className="font-angle text-lg text-amber-400">{priority}</div>
+        <div className="font-emerland text-xs text-amber-200">
+          {priority === 1 ? 'Highest' : priority === 8 ? 'Lowest' : 'Priority'}
+        </div>
+      </div>
+      
+      <div className="space-y-2">
+        {thresholds.map((threshold) => (
+          <div
+            key={threshold.id}
+            draggable
+            onDragStart={(e) => handleDragStart(e, threshold.id)}
+            className="cursor-move"
+          >
+            <ThresholdCard 
+              threshold={threshold}
+              onUpdatePriority={onUpdatePriority}
+              onUpdateStatus={onUpdateStatus}
+              draggable={false}
+            />
+          </div>
+        ))}
+        
+        {thresholds.length === 0 && (
+          <div className="text-center py-4 border-2 border-dashed border-amber-400/20 rounded-lg">
+            <p className="font-emerland text-xs text-amber-400/60">Drop threshold here</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Component for council support management
+function CouncilThresholdCard({ 
+  threshold, 
+  supportItems, 
+  onAddSupport, 
+  onRemoveSupport 
+}: {
+  threshold: ThresholdItem;
+  supportItems: SupportItem[];
+  onAddSupport: (supportItem: Omit<SupportItem, 'id'>) => void;
+  onRemoveSupport: (supportItemId: string) => void;
+}) {
+  const [isAddingSupport, setIsAddingSupport] = useState(false);
+  const [newSupport, setNewSupport] = useState({
+    type: 'human-ally' as SupportItem['type'],
+    title: '',
+    description: '',
+    contact: ''
+  });
+
+  const supportTypeConfig = {
+    'human-ally': { icon: Users, label: 'Human Ally', color: 'text-blue-400', bgColor: 'bg-blue-400/20' },
+    'ai-guidance': { icon: Zap, label: 'AI Guidance', color: 'text-purple-400', bgColor: 'bg-purple-400/20' },
+    'resource-library': { icon: BookOpen, label: 'Resource Library', color: 'text-green-400', bgColor: 'bg-green-400/20' },
+    'peer-learning': { icon: Users, label: 'Peer Learning', color: 'text-orange-400', bgColor: 'bg-orange-400/20' }
+  };
+
+  const handleAddSupport = () => {
+    if (newSupport.title.trim() && newSupport.description.trim()) {
+      onAddSupport(newSupport);
+      setNewSupport({
+        type: 'human-ally',
+        title: '',
+        description: '',
+        contact: ''
+      });
+      setIsAddingSupport(false);
+    }
+  };
+
+  return (
+    <Card className="bg-black/40 border border-amber-400/30 hover:border-amber-400/50 transition-colors duration-300">
+      <CardHeader className="pb-3">
+        <CardTitle className="font-emerland text-sm text-amber-400">
+          {threshold.areaName}
+        </CardTitle>
+        <p className="font-emerland text-xs text-amber-200">{threshold.text}</p>
       </CardHeader>
-      <CardContent>
-        <p className="font-emerland text-amber-200">Council network interface coming soon...</p>
+      <CardContent className="space-y-4">
+        {/* Existing Support Items */}
+        <div className="space-y-3">
+          {supportItems.map((supportItem) => {
+            const config = supportTypeConfig[supportItem.type];
+            const Icon = config.icon;
+            
+            return (
+              <div key={supportItem.id} className={`p-3 rounded-lg border ${config.bgColor} border-current/20`}>
+                <div className="flex items-start gap-3">
+                  <Icon className={`w-4 h-4 ${config.color} mt-1`} />
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className={`font-emerland text-xs ${config.color}`}>{config.label}</span>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => onRemoveSupport(supportItem.id)}
+                        className="h-4 w-4 p-0 text-amber-400/60 hover:text-amber-400"
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </div>
+                    <p className="font-emerland text-sm text-amber-200 mb-1">{supportItem.title}</p>
+                    <p className="font-emerland text-xs text-amber-300/80">{supportItem.description}</p>
+                    {supportItem.contact && (
+                      <p className="font-emerland text-xs text-amber-400/80 mt-1">Contact: {supportItem.contact}</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Add Support Interface */}
+        {isAddingSupport ? (
+          <div className="bg-amber-400/10 p-4 rounded-lg border border-amber-400/30">
+            <div className="space-y-3">
+              <select
+                value={newSupport.type}
+                onChange={(e) => setNewSupport(prev => ({ ...prev, type: e.target.value as SupportItem['type'] }))}
+                className="w-full bg-black/50 border border-amber-400/30 text-amber-200 text-sm rounded p-2"
+              >
+                <option value="human-ally">Human Ally</option>
+                <option value="ai-guidance">AI Guidance</option>
+                <option value="resource-library">Resource Library</option>
+                <option value="peer-learning">Peer Learning</option>
+              </select>
+              
+              <Input
+                placeholder="Support title..."
+                value={newSupport.title}
+                onChange={(e) => setNewSupport(prev => ({ ...prev, title: e.target.value }))}
+                className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50"
+              />
+              
+              <Textarea
+                placeholder="Description of how this support helps..."
+                value={newSupport.description}
+                onChange={(e) => setNewSupport(prev => ({ ...prev, description: e.target.value }))}
+                className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50 min-h-16"
+              />
+              
+              {(newSupport.type === 'human-ally' || newSupport.type === 'peer-learning') && (
+                <Input
+                  placeholder="Contact information (optional)..."
+                  value={newSupport.contact}
+                  onChange={(e) => setNewSupport(prev => ({ ...prev, contact: e.target.value }))}
+                  className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50"
+                />
+              )}
+              
+              <div className="flex gap-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleAddSupport}
+                  className="text-amber-400 hover:text-amber-300"
+                >
+                  Add Support
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setIsAddingSupport(false)}
+                  className="text-amber-400/60 hover:text-amber-400"
+                >
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsAddingSupport(true)}
+            className="w-full text-amber-400 hover:text-amber-300 border border-amber-400/30 hover:border-amber-400/50"
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Add Support
+          </Button>
+        )}
       </CardContent>
     </Card>
   );
 }
 
-function EthosView({ starData }: { starData: StarData }) {
+// Component for ETHOS tab area management
+function EthosAreaCard({ 
+  area, 
+  gifts, 
+  thresholds, 
+  agreements, 
+  onAddAgreement, 
+  onUpdateAgreement, 
+  onRemoveAgreement 
+}: {
+  area: typeof VITAL_AREAS[0];
+  gifts: string[];
+  thresholds: string[];
+  agreements: Agreement[];
+  onAddAgreement: (agreement: Omit<Agreement, 'id' | 'createdAt' | 'lastCheckin'>) => void;
+  onUpdateAgreement: (agreementId: string, updates: Partial<Agreement>) => void;
+  onRemoveAgreement: (agreementId: string) => void;
+}) {
+  const [isAddingAgreement, setIsAddingAgreement] = useState(false);
+  const [newAgreement, setNewAgreement] = useState({
+    type: 'development' as Agreement['type'],
+    commitment: '',
+    accountability: '',
+    timeframe: ''
+  });
+
+  const developmentAgreements = agreements.filter(a => a.type === 'development');
+  const giftSharingAgreements = agreements.filter(a => a.type === 'gift-sharing');
+
+  const handleAddAgreement = () => {
+    if (newAgreement.commitment.trim() && newAgreement.accountability.trim()) {
+      onAddAgreement({
+        type: newAgreement.type,
+        areaId: area.id,
+        areaName: area.name,
+        commitment: newAgreement.commitment.trim(),
+        accountability: newAgreement.accountability.trim(),
+        timeframe: newAgreement.timeframe.trim() || 'Ongoing',
+        status: 'active'
+      });
+      setNewAgreement({
+        type: 'development',
+        commitment: '',
+        accountability: '',
+        timeframe: ''
+      });
+      setIsAddingAgreement(false);
+    }
+  };
+
   return (
-    <Card className="bg-black/40 border border-amber-400/30">
-      <CardHeader>
-        <CardTitle className="font-thornelia text-xl text-amber-400">Sacred Agreements</CardTitle>
+    <Card className="bg-black/40 border border-amber-400/30 hover:border-amber-400/50 transition-colors duration-300">
+      <CardHeader className="pb-3">
+        <CardTitle className={`font-emerland text-sm ${area.color}`}>
+          {area.name}
+        </CardTitle>
+        <div className="text-xs font-emerland text-amber-200/80">
+          {gifts.length} gifts • {thresholds.length} thresholds
+        </div>
       </CardHeader>
-      <CardContent>
-        <p className="font-emerland text-amber-200">Agreements interface coming soon...</p>
+      <CardContent className="space-y-4">
+        {/* Development Commitments */}
+        {thresholds.length > 0 && (
+          <div>
+            <h5 className="font-emerland text-xs text-purple-400 mb-2">DEVELOPMENT COMMITMENTS</h5>
+            <div className="space-y-2 mb-3">
+              {developmentAgreements.map((agreement) => (
+                <AgreementItem 
+                  key={agreement.id}
+                  agreement={agreement}
+                  onUpdate={onUpdateAgreement}
+                  onRemove={onRemoveAgreement}
+                />
+              ))}
+              {developmentAgreements.length === 0 && (
+                <div className="text-xs text-amber-400/60 italic p-2 bg-amber-400/5 rounded">
+                  No development commitments yet
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Gift Sharing Agreements */}
+        {gifts.length > 0 && (
+          <div>
+            <h5 className="font-emerland text-xs text-orange-400 mb-2">GIFT SHARING AGREEMENTS</h5>
+            <div className="space-y-2 mb-3">
+              {giftSharingAgreements.map((agreement) => (
+                <AgreementItem 
+                  key={agreement.id}
+                  agreement={agreement}
+                  onUpdate={onUpdateAgreement}
+                  onRemove={onRemoveAgreement}
+                />
+              ))}
+              {giftSharingAgreements.length === 0 && (
+                <div className="text-xs text-amber-400/60 italic p-2 bg-amber-400/5 rounded">
+                  No gift sharing agreements yet
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Add Agreement Interface */}
+        {(gifts.length > 0 || thresholds.length > 0) && (
+          isAddingAgreement ? (
+            <div className="bg-amber-400/10 p-4 rounded-lg border border-amber-400/30">
+              <div className="space-y-3">
+                <select
+                  value={newAgreement.type}
+                  onChange={(e) => setNewAgreement(prev => ({ ...prev, type: e.target.value as Agreement['type'] }))}
+                  className="w-full bg-black/50 border border-amber-400/30 text-amber-200 text-sm rounded p-2"
+                >
+                  {thresholds.length > 0 && <option value="development">Development Commitment</option>}
+                  {gifts.length > 0 && <option value="gift-sharing">Gift Sharing Agreement</option>}
+                </select>
+                
+                <Textarea
+                  placeholder={`I commit to ${newAgreement.type === 'development' ? '[specific action]' : 'share [specific gift] through [method] to help others with [type of challenge]'}...`}
+                  value={newAgreement.commitment}
+                  onChange={(e) => setNewAgreement(prev => ({ ...prev, commitment: e.target.value }))}
+                  className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50 min-h-16"
+                />
+                
+                <Input
+                  placeholder="Accountability from [person/system]..."
+                  value={newAgreement.accountability}
+                  onChange={(e) => setNewAgreement(prev => ({ ...prev, accountability: e.target.value }))}
+                  className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50"
+                />
+                
+                <Input
+                  placeholder="Timeframe (optional)..."
+                  value={newAgreement.timeframe}
+                  onChange={(e) => setNewAgreement(prev => ({ ...prev, timeframe: e.target.value }))}
+                  className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50"
+                />
+                
+                <div className="flex gap-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleAddAgreement}
+                    className="text-amber-400 hover:text-amber-300"
+                  >
+                    Create Agreement
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsAddingAgreement(false)}
+                    className="text-amber-400/60 hover:text-amber-400"
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsAddingAgreement(true)}
+              className="w-full text-amber-400 hover:text-amber-300 border border-amber-400/30 hover:border-amber-400/50"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Add Agreement
+            </Button>
+          )
+        )}
+
+        {gifts.length === 0 && thresholds.length === 0 && (
+          <div className="text-center text-xs text-amber-400/60 italic p-4">
+            Add gifts or thresholds in FOUNTAIN to create agreements
+          </div>
+        )}
       </CardContent>
     </Card>
+  );
+}
+
+// Component for individual agreement items
+function AgreementItem({ 
+  agreement, 
+  onUpdate, 
+  onRemove 
+}: {
+  agreement: Agreement;
+  onUpdate: (agreementId: string, updates: Partial<Agreement>) => void;
+  onRemove: (agreementId: string) => void;
+}) {
+  const statusColors = {
+    active: 'bg-green-400/20 text-green-300',
+    completed: 'bg-blue-400/20 text-blue-300',
+    'needs-revision': 'bg-amber-400/20 text-amber-300'
+  };
+
+  const typeColors = {
+    development: 'text-purple-400',
+    'gift-sharing': 'text-orange-400'
+  };
+
+  const cycleStatus = () => {
+    const statuses: Agreement['status'][] = ['active', 'completed', 'needs-revision'];
+    const currentIndex = statuses.indexOf(agreement.status);
+    const nextStatus = statuses[(currentIndex + 1) % statuses.length];
+    onUpdate(agreement.id, { status: nextStatus });
+  };
+
+  return (
+    <div className="p-3 rounded-lg border border-amber-400/20 bg-black/20">
+      <div className="flex items-start gap-3">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-1">
+            <div className={`px-2 py-1 rounded-full text-xs ${statusColors[agreement.status]}`}>
+              {agreement.status.replace('-', ' ')}
+            </div>
+            <span className={`font-emerland text-xs ${typeColors[agreement.type]}`}>
+              {agreement.type.replace('-', ' ')}
+            </span>
+          </div>
+          <p className="font-emerland text-sm text-amber-200 mb-1">{agreement.commitment}</p>
+          <p className="font-emerland text-xs text-amber-300/80 mb-1">
+            <strong>Accountability:</strong> {agreement.accountability}
+          </p>
+          <p className="font-emerland text-xs text-amber-400/80">
+            <strong>Timeframe:</strong> {agreement.timeframe}
+          </p>
+        </div>
+        <div className="flex flex-col gap-1">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={cycleStatus}
+            className="h-6 w-6 p-0 text-amber-400/60 hover:text-amber-400"
+          >
+            <Calendar className="h-3 w-3" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => onRemove(agreement.id)}
+            className="h-6 w-6 p-0 text-amber-400/60 hover:text-amber-400"
+          >
+            <Trash2 className="h-3 w-3" />
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 }
