@@ -43,12 +43,25 @@ interface CouncilSupport {
   [thresholdId: string]: SupportItem[];
 }
 
+interface Agreement {
+  id: string;
+  type: 'development' | 'gift-sharing';
+  areaId: string;
+  areaName: string;
+  commitment: string;
+  accountability: string;
+  timeframe: string;
+  status: 'active' | 'completed' | 'needs-revision';
+  createdAt: string;
+  lastCheckin: string;
+}
+
 interface StarData {
   gifts: { [key: string]: string[] };
   thresholds: { [key: string]: string[] };
   priorities: { [key: string]: number };
   councilSupport: CouncilSupport;
-  agreements: { [key: string]: any };
+  agreements: Agreement[];
   thresholdItems: ThresholdItem[];
 }
 
@@ -60,7 +73,7 @@ export default function TheStarPage() {
     thresholds: {},
     priorities: {},
     councilSupport: {},
-    agreements: {},
+    agreements: [],
     thresholdItems: []
   });
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
@@ -181,6 +194,39 @@ export default function TheStarPage() {
         ...prev.councilSupport,
         [thresholdId]: (prev.councilSupport[thresholdId] || []).filter(item => item.id !== supportItemId)
       }
+    }));
+  };
+
+  // Agreement functions
+  const addAgreement = (agreement: Omit<Agreement, 'id' | 'createdAt' | 'lastCheckin'>) => {
+    const newAgreement: Agreement = {
+      ...agreement,
+      id: `agreement-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      createdAt: new Date().toISOString(),
+      lastCheckin: new Date().toISOString()
+    };
+    
+    setStarData(prev => ({
+      ...prev,
+      agreements: [...prev.agreements, newAgreement]
+    }));
+  };
+
+  const updateAgreement = (agreementId: string, updates: Partial<Agreement>) => {
+    setStarData(prev => ({
+      ...prev,
+      agreements: prev.agreements.map(agreement =>
+        agreement.id === agreementId 
+          ? { ...agreement, ...updates, lastCheckin: new Date().toISOString() }
+          : agreement
+      )
+    }));
+  };
+
+  const removeAgreement = (agreementId: string) => {
+    setStarData(prev => ({
+      ...prev,
+      agreements: prev.agreements.filter(agreement => agreement.id !== agreementId)
     }));
   };
 
@@ -474,11 +520,54 @@ export default function TheStarPage() {
 
             {/* ETHOS TAB - Agreements & Accountability */}
             <TabsContent value="ethos" className="mt-8">
-              <div className="text-center py-12">
-                <h3 className="font-thornelia text-2xl text-amber-400 mb-4">ETHOS - Agreements & Accountability</h3>
-                <p className="font-emerland text-amber-200 mb-8">Create commitments for development and gift sharing</p>
-                <div className="bg-amber-400/10 border border-amber-400/30 rounded-lg p-8">
-                  <p className="font-emerland text-amber-300">Ethos interface coming next - agreements and accountability system</p>
+              <div className="mb-8">
+                <h3 className="font-thornelia text-2xl text-amber-400 mb-4 text-center">ETHOS - Agreements & Accountability</h3>
+                <p className="font-emerland text-amber-200 mb-8 text-center">Create commitments for development and gift sharing</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {VITAL_AREAS.map((area) => (
+                    <EthosAreaCard
+                      key={area.id}
+                      area={area}
+                      gifts={starData.gifts[area.id] || []}
+                      thresholds={starData.thresholds[area.id] || []}
+                      agreements={starData.agreements.filter(a => a.areaId === area.id)}
+                      onAddAgreement={addAgreement}
+                      onUpdateAgreement={updateAgreement}
+                      onRemoveAgreement={removeAgreement}
+                    />
+                  ))}
+                </div>
+
+                {/* Ethos Summary */}
+                <div className="mt-8 bg-black/40 border border-amber-400/30 rounded-lg p-6">
+                  <h4 className="font-thornelia text-xl text-amber-400 mb-4">Commitment Overview</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-purple-400">
+                        {starData.agreements.filter(a => a.type === 'development').length}
+                      </div>
+                      <div className="font-emerland text-sm text-amber-200">Development</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-orange-400">
+                        {starData.agreements.filter(a => a.type === 'gift-sharing').length}
+                      </div>
+                      <div className="font-emerland text-sm text-amber-200">Gift Sharing</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-green-400">
+                        {starData.agreements.filter(a => a.status === 'active').length}
+                      </div>
+                      <div className="font-emerland text-sm text-amber-200">Active</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-blue-400">
+                        {starData.agreements.filter(a => a.status === 'completed').length}
+                      </div>
+                      <div className="font-emerland text-sm text-amber-200">Completed</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </TabsContent>
@@ -889,5 +978,259 @@ function CouncilThresholdCard({
         )}
       </CardContent>
     </Card>
+  );
+}
+
+// Component for ETHOS tab area management
+function EthosAreaCard({ 
+  area, 
+  gifts, 
+  thresholds, 
+  agreements, 
+  onAddAgreement, 
+  onUpdateAgreement, 
+  onRemoveAgreement 
+}: {
+  area: typeof VITAL_AREAS[0];
+  gifts: string[];
+  thresholds: string[];
+  agreements: Agreement[];
+  onAddAgreement: (agreement: Omit<Agreement, 'id' | 'createdAt' | 'lastCheckin'>) => void;
+  onUpdateAgreement: (agreementId: string, updates: Partial<Agreement>) => void;
+  onRemoveAgreement: (agreementId: string) => void;
+}) {
+  const [isAddingAgreement, setIsAddingAgreement] = useState(false);
+  const [newAgreement, setNewAgreement] = useState({
+    type: 'development' as Agreement['type'],
+    commitment: '',
+    accountability: '',
+    timeframe: ''
+  });
+
+  const developmentAgreements = agreements.filter(a => a.type === 'development');
+  const giftSharingAgreements = agreements.filter(a => a.type === 'gift-sharing');
+
+  const handleAddAgreement = () => {
+    if (newAgreement.commitment.trim() && newAgreement.accountability.trim()) {
+      onAddAgreement({
+        type: newAgreement.type,
+        areaId: area.id,
+        areaName: area.name,
+        commitment: newAgreement.commitment.trim(),
+        accountability: newAgreement.accountability.trim(),
+        timeframe: newAgreement.timeframe.trim() || 'Ongoing',
+        status: 'active'
+      });
+      setNewAgreement({
+        type: 'development',
+        commitment: '',
+        accountability: '',
+        timeframe: ''
+      });
+      setIsAddingAgreement(false);
+    }
+  };
+
+  return (
+    <Card className="bg-black/40 border border-amber-400/30 hover:border-amber-400/50 transition-colors duration-300">
+      <CardHeader className="pb-3">
+        <CardTitle className={`font-emerland text-sm ${area.color}`}>
+          {area.name}
+        </CardTitle>
+        <div className="text-xs font-emerland text-amber-200/80">
+          {gifts.length} gifts • {thresholds.length} thresholds
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {/* Development Commitments */}
+        {thresholds.length > 0 && (
+          <div>
+            <h5 className="font-emerland text-xs text-purple-400 mb-2">DEVELOPMENT COMMITMENTS</h5>
+            <div className="space-y-2 mb-3">
+              {developmentAgreements.map((agreement) => (
+                <AgreementItem 
+                  key={agreement.id}
+                  agreement={agreement}
+                  onUpdate={onUpdateAgreement}
+                  onRemove={onRemoveAgreement}
+                />
+              ))}
+              {developmentAgreements.length === 0 && (
+                <div className="text-xs text-amber-400/60 italic p-2 bg-amber-400/5 rounded">
+                  No development commitments yet
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Gift Sharing Agreements */}
+        {gifts.length > 0 && (
+          <div>
+            <h5 className="font-emerland text-xs text-orange-400 mb-2">GIFT SHARING AGREEMENTS</h5>
+            <div className="space-y-2 mb-3">
+              {giftSharingAgreements.map((agreement) => (
+                <AgreementItem 
+                  key={agreement.id}
+                  agreement={agreement}
+                  onUpdate={onUpdateAgreement}
+                  onRemove={onRemoveAgreement}
+                />
+              ))}
+              {giftSharingAgreements.length === 0 && (
+                <div className="text-xs text-amber-400/60 italic p-2 bg-amber-400/5 rounded">
+                  No gift sharing agreements yet
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Add Agreement Interface */}
+        {(gifts.length > 0 || thresholds.length > 0) && (
+          isAddingAgreement ? (
+            <div className="bg-amber-400/10 p-4 rounded-lg border border-amber-400/30">
+              <div className="space-y-3">
+                <select
+                  value={newAgreement.type}
+                  onChange={(e) => setNewAgreement(prev => ({ ...prev, type: e.target.value as Agreement['type'] }))}
+                  className="w-full bg-black/50 border border-amber-400/30 text-amber-200 text-sm rounded p-2"
+                >
+                  {thresholds.length > 0 && <option value="development">Development Commitment</option>}
+                  {gifts.length > 0 && <option value="gift-sharing">Gift Sharing Agreement</option>}
+                </select>
+                
+                <Textarea
+                  placeholder={`I commit to ${newAgreement.type === 'development' ? '[specific action]' : 'share [specific gift] through [method] to help others with [type of challenge]'}...`}
+                  value={newAgreement.commitment}
+                  onChange={(e) => setNewAgreement(prev => ({ ...prev, commitment: e.target.value }))}
+                  className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50 min-h-16"
+                />
+                
+                <Input
+                  placeholder="Accountability from [person/system]..."
+                  value={newAgreement.accountability}
+                  onChange={(e) => setNewAgreement(prev => ({ ...prev, accountability: e.target.value }))}
+                  className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50"
+                />
+                
+                <Input
+                  placeholder="Timeframe (optional)..."
+                  value={newAgreement.timeframe}
+                  onChange={(e) => setNewAgreement(prev => ({ ...prev, timeframe: e.target.value }))}
+                  className="bg-black/50 border-amber-400/30 text-amber-200 text-sm placeholder:text-amber-400/50"
+                />
+                
+                <div className="flex gap-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={handleAddAgreement}
+                    className="text-amber-400 hover:text-amber-300"
+                  >
+                    Create Agreement
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsAddingAgreement(false)}
+                    className="text-amber-400/60 hover:text-amber-400"
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsAddingAgreement(true)}
+              className="w-full text-amber-400 hover:text-amber-300 border border-amber-400/30 hover:border-amber-400/50"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Add Agreement
+            </Button>
+          )
+        )}
+
+        {gifts.length === 0 && thresholds.length === 0 && (
+          <div className="text-center text-xs text-amber-400/60 italic p-4">
+            Add gifts or thresholds in FOUNTAIN to create agreements
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+// Component for individual agreement items
+function AgreementItem({ 
+  agreement, 
+  onUpdate, 
+  onRemove 
+}: {
+  agreement: Agreement;
+  onUpdate: (agreementId: string, updates: Partial<Agreement>) => void;
+  onRemove: (agreementId: string) => void;
+}) {
+  const statusColors = {
+    active: 'bg-green-400/20 text-green-300',
+    completed: 'bg-blue-400/20 text-blue-300',
+    'needs-revision': 'bg-amber-400/20 text-amber-300'
+  };
+
+  const typeColors = {
+    development: 'text-purple-400',
+    'gift-sharing': 'text-orange-400'
+  };
+
+  const cycleStatus = () => {
+    const statuses: Agreement['status'][] = ['active', 'completed', 'needs-revision'];
+    const currentIndex = statuses.indexOf(agreement.status);
+    const nextStatus = statuses[(currentIndex + 1) % statuses.length];
+    onUpdate(agreement.id, { status: nextStatus });
+  };
+
+  return (
+    <div className="p-3 rounded-lg border border-amber-400/20 bg-black/20">
+      <div className="flex items-start gap-3">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-1">
+            <div className={`px-2 py-1 rounded-full text-xs ${statusColors[agreement.status]}`}>
+              {agreement.status.replace('-', ' ')}
+            </div>
+            <span className={`font-emerland text-xs ${typeColors[agreement.type]}`}>
+              {agreement.type.replace('-', ' ')}
+            </span>
+          </div>
+          <p className="font-emerland text-sm text-amber-200 mb-1">{agreement.commitment}</p>
+          <p className="font-emerland text-xs text-amber-300/80 mb-1">
+            <strong>Accountability:</strong> {agreement.accountability}
+          </p>
+          <p className="font-emerland text-xs text-amber-400/80">
+            <strong>Timeframe:</strong> {agreement.timeframe}
+          </p>
+        </div>
+        <div className="flex flex-col gap-1">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={cycleStatus}
+            className="h-6 w-6 p-0 text-amber-400/60 hover:text-amber-400"
+          >
+            <Calendar className="h-3 w-3" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => onRemove(agreement.id)}
+            className="h-6 w-6 p-0 text-amber-400/60 hover:text-amber-400"
+          >
+            <Trash2 className="h-3 w-3" />
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 }
