@@ -51,7 +51,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300"
           >
             <Shield className="text-ancient-gold animate-spin-slow h-6 w-6" />
-            <span className="typography-h3 text-ancient-gold select-none">
+            <span className="text-lg sm:text-xl font-angle text-ancient-gold select-none">
               Metamyth
             </span>
           </button>
