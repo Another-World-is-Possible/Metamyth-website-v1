@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -68,15 +68,43 @@ interface StarData {
 export default function TheStarPage() {
   const [activeTab, setActiveTab] = useState("fountain");
   const [viewMode, setViewMode] = useState<"personal" | "organizational">("personal");
-  const [starData, setStarData] = useState<StarData>({
-    gifts: {},
-    thresholds: {},
-    priorities: {},
-    councilSupport: {},
-    agreements: [],
-    thresholdItems: []
-  });
+  // Load initial data from localStorage
+  const loadDataFromStorage = (): StarData => {
+    try {
+      const saved = localStorage.getItem(`star-tool-${viewMode}`);
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (error) {
+      console.error('Error loading star data:', error);
+    }
+    
+    return {
+      gifts: {},
+      thresholds: {},
+      priorities: {},
+      councilSupport: {},
+      agreements: [],
+      thresholdItems: []
+    };
+  };
+
+  const [starData, setStarData] = useState<StarData>(loadDataFromStorage);
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
+
+  // Auto-save to localStorage whenever starData changes
+  useEffect(() => {
+    try {
+      localStorage.setItem(`star-tool-${viewMode}`, JSON.stringify(starData));
+    } catch (error) {
+      console.error('Error saving star data:', error);
+    }
+  }, [starData, viewMode]);
+
+  // Switch data when view mode changes
+  useEffect(() => {
+    setStarData(loadDataFromStorage());
+  }, [viewMode]);
 
   // Initialize empty arrays for each vital area
   VITAL_AREAS.forEach(area => {
@@ -228,6 +256,70 @@ export default function TheStarPage() {
       ...prev,
       agreements: prev.agreements.filter(agreement => agreement.id !== agreementId)
     }));
+  };
+
+  // Data export/import functions
+  const exportData = () => {
+    const dataToExport = {
+      personal: JSON.parse(localStorage.getItem('star-tool-personal') || '{}'),
+      organizational: JSON.parse(localStorage.getItem('star-tool-organizational') || '{}'),
+      exportDate: new Date().toISOString(),
+      version: '1.0'
+    };
+    
+    const blob = new Blob([JSON.stringify(dataToExport, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `star-tool-data-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const importData = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const importedData = JSON.parse(e.target?.result as string);
+        
+        if (importedData.personal) {
+          localStorage.setItem('star-tool-personal', JSON.stringify(importedData.personal));
+        }
+        if (importedData.organizational) {
+          localStorage.setItem('star-tool-organizational', JSON.stringify(importedData.organizational));
+        }
+        
+        // Reload current view mode data
+        setStarData(loadDataFromStorage());
+        
+        // Reset the file input
+        event.target.value = '';
+      } catch (error) {
+        console.error('Error importing data:', error);
+        alert('Error importing data. Please check the file format.');
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  const clearAllData = () => {
+    if (confirm('Are you sure you want to clear all data? This cannot be undone.')) {
+      localStorage.removeItem('star-tool-personal');
+      localStorage.removeItem('star-tool-organizational');
+      setStarData({
+        gifts: {},
+        thresholds: {},
+        priorities: {},
+        councilSupport: {},
+        agreements: [],
+        thresholdItems: []
+      });
+    }
   };
 
   // Calculate star point intensity based on gifts vs thresholds
