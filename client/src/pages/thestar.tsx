@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import PageLayout from "@/components/layouts/page-layout";
-import { Star, Plus, Trash2, Download, ToggleLeft, ToggleRight } from "lucide-react";
+import { Star, Plus, Trash2, Download, ToggleLeft, ToggleRight, GripVertical, Calendar, Users, BookOpen, Zap } from "lucide-react";
 import cosmicPathwayBg from "@assets/cosmic_pathway_bg.png";
 
 // Eight vital areas positioned around the star
@@ -21,12 +21,23 @@ const VITAL_AREAS = [
   { id: 'quest-council', name: 'QUEST COUNCIL', position: 'top-left', angle: 315, color: 'text-blue-400' }
 ];
 
+interface ThresholdItem {
+  id: string;
+  text: string;
+  areaId: string;
+  areaName: string;
+  priority: number;
+  urgency: 'low' | 'medium' | 'high';
+  status: 'pending' | 'in-progress' | 'completed';
+}
+
 interface StarData {
   gifts: { [key: string]: string[] };
   thresholds: { [key: string]: string[] };
   priorities: { [key: string]: number };
   councilSupport: { [key: string]: any };
   agreements: { [key: string]: any };
+  thresholdItems: ThresholdItem[];
 }
 
 export default function TheStarPage() {
@@ -37,8 +48,10 @@ export default function TheStarPage() {
     thresholds: {},
     priorities: {},
     councilSupport: {},
-    agreements: {}
+    agreements: {},
+    thresholdItems: []
   });
+  const [draggedItem, setDraggedItem] = useState<string | null>(null);
 
   // Initialize empty arrays for each vital area
   VITAL_AREAS.forEach(area => {
@@ -60,12 +73,24 @@ export default function TheStarPage() {
 
   const addThreshold = (areaId: string, threshold: string) => {
     if (threshold.trim()) {
+      const areaName = VITAL_AREAS.find(area => area.id === areaId)?.name || '';
+      const newThresholdItem: ThresholdItem = {
+        id: `threshold-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+        text: threshold.trim(),
+        areaId,
+        areaName,
+        priority: 0,
+        urgency: 'medium',
+        status: 'pending'
+      };
+      
       setStarData(prev => ({
         ...prev,
         thresholds: {
           ...prev.thresholds,
           [areaId]: [...(prev.thresholds[areaId] || []), threshold.trim()]
-        }
+        },
+        thresholdItems: [...prev.thresholdItems, newThresholdItem]
       }));
     }
   };
@@ -81,14 +106,45 @@ export default function TheStarPage() {
   };
 
   const removeThreshold = (areaId: string, index: number) => {
+    const thresholdText = starData.thresholds[areaId]?.[index];
     setStarData(prev => ({
       ...prev,
       thresholds: {
         ...prev.thresholds,
         [areaId]: prev.thresholds[areaId]?.filter((_, i) => i !== index) || []
-      }
+      },
+      thresholdItems: prev.thresholdItems.filter(item => 
+        !(item.areaId === areaId && item.text === thresholdText)
+      )
     }));
   };
+
+  const updateThresholdPriority = (thresholdId: string, priority: number) => {
+    setStarData(prev => ({
+      ...prev,
+      thresholdItems: prev.thresholdItems.map(item =>
+        item.id === thresholdId ? { ...item, priority } : item
+      )
+    }));
+  };
+
+  const updateThresholdStatus = (thresholdId: string, status: ThresholdItem['status']) => {
+    setStarData(prev => ({
+      ...prev,
+      thresholdItems: prev.thresholdItems.map(item =>
+        item.id === thresholdId ? { ...item, status } : item
+      )
+    }));
+  };
+
+  // Get all thresholds without priority assigned (priority = 0)
+  const unassignedThresholds = starData.thresholdItems.filter(item => item.priority === 0);
+  
+  // Get thresholds grouped by priority level (1-8)
+  const prioritizedThresholds = Array.from({length: 8}, (_, i) => ({
+    priority: i + 1,
+    thresholds: starData.thresholdItems.filter(item => item.priority === i + 1)
+  }));
 
   // Calculate star point intensity based on gifts vs thresholds
   const getPointIntensity = (areaId: string) => {
@@ -250,11 +306,69 @@ export default function TheStarPage() {
 
             {/* PATH TAB - Development Sequencing */}
             <TabsContent value="path" className="mt-8">
-              <div className="text-center py-12">
-                <h3 className="font-thornelia text-2xl text-amber-400 mb-4">PATH - Development Sequencing</h3>
-                <p className="font-emerland text-amber-200 mb-8">Prioritize and sequence your threshold challenges for optimal development</p>
-                <div className="bg-amber-400/10 border border-amber-400/30 rounded-lg p-8">
-                  <p className="font-emerland text-amber-300">Path interface coming next - drag and drop threshold prioritization</p>
+              <div className="mb-8">
+                <h3 className="font-thornelia text-2xl text-amber-400 mb-4 text-center">PATH - Development Sequencing</h3>
+                <p className="font-emerland text-amber-200 mb-8 text-center">Prioritize and sequence your threshold challenges for optimal development</p>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* Unassigned Thresholds */}
+                  <div className="lg:col-span-1">
+                    <h4 className="font-emerland text-lg text-amber-400 mb-4">Unassigned Thresholds</h4>
+                    <div className="space-y-3 max-h-96 overflow-y-auto">
+                      {unassignedThresholds.length === 0 ? (
+                        <div className="bg-amber-400/10 border border-amber-400/30 rounded-lg p-4 text-center">
+                          <p className="font-emerland text-amber-300 text-sm">
+                            No unassigned thresholds. Add thresholds in the FOUNTAIN tab.
+                          </p>
+                        </div>
+                      ) : (
+                        unassignedThresholds.map((threshold) => (
+                          <ThresholdCard 
+                            key={threshold.id}
+                            threshold={threshold}
+                            onUpdatePriority={updateThresholdPriority}
+                            onUpdateStatus={updateThresholdStatus}
+                            draggable={true}
+                          />
+                        ))
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Priority Columns */}
+                  <div className="lg:col-span-2">
+                    <h4 className="font-emerland text-lg text-amber-400 mb-4">Priority Levels (1 = Highest)</h4>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      {prioritizedThresholds.map(({ priority, thresholds }) => (
+                        <PriorityColumn
+                          key={priority}
+                          priority={priority}
+                          thresholds={thresholds}
+                          onUpdatePriority={updateThresholdPriority}
+                          onUpdateStatus={updateThresholdStatus}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Path Progress Summary */}
+                <div className="mt-8 bg-black/40 border border-amber-400/30 rounded-lg p-6">
+                  <h4 className="font-thornelia text-xl text-amber-400 mb-4">Development Path Summary</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-amber-400">{unassignedThresholds.length}</div>
+                      <div className="font-emerland text-sm text-amber-200">Unassigned</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-blue-400">{starData.thresholdItems.filter(t => t.status === 'in-progress').length}</div>
+                      <div className="font-emerland text-sm text-amber-200">In Progress</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-angle text-green-400">{starData.thresholdItems.filter(t => t.status === 'completed').length}</div>
+                      <div className="font-emerland text-sm text-amber-200">Completed</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </TabsContent>
@@ -401,5 +515,134 @@ function FountainAreaCard({
         </div>
       </CardContent>
     </Card>
+  );
+}
+
+// Component for threshold cards in PATH tab
+function ThresholdCard({ 
+  threshold, 
+  onUpdatePriority, 
+  onUpdateStatus, 
+  draggable = false 
+}: {
+  threshold: ThresholdItem;
+  onUpdatePriority: (id: string, priority: number) => void;
+  onUpdateStatus: (id: string, status: ThresholdItem['status']) => void;
+  draggable?: boolean;
+}) {
+  const statusColors = {
+    pending: 'bg-gray-400/20 text-gray-300',
+    'in-progress': 'bg-blue-400/20 text-blue-300',
+    completed: 'bg-green-400/20 text-green-300'
+  };
+
+  const urgencyColors = {
+    low: 'border-l-gray-400',
+    medium: 'border-l-amber-400',
+    high: 'border-l-red-400'
+  };
+
+  return (
+    <Card 
+      className={`bg-black/40 border border-amber-400/30 hover:border-amber-400/50 transition-colors duration-300 ${urgencyColors[threshold.urgency]} border-l-4`}
+      draggable={draggable}
+    >
+      <CardContent className="p-4">
+        <div className="flex items-start gap-3">
+          {draggable && <GripVertical className="w-4 h-4 text-amber-400/60 mt-1 cursor-grab" />}
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="font-emerland text-xs text-amber-400">{threshold.areaName}</span>
+              <div className={`px-2 py-1 rounded-full text-xs ${statusColors[threshold.status]}`}>
+                {threshold.status.replace('-', ' ')}
+              </div>
+            </div>
+            <p className="font-emerland text-sm text-amber-200 mb-3">{threshold.text}</p>
+            <div className="flex gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => onUpdateStatus(threshold.id, 
+                  threshold.status === 'pending' ? 'in-progress' : 
+                  threshold.status === 'in-progress' ? 'completed' : 'pending'
+                )}
+                className="text-xs text-amber-400 hover:text-amber-300"
+              >
+                {threshold.status === 'pending' ? 'Start' : 
+                 threshold.status === 'in-progress' ? 'Complete' : 'Reset'}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+// Component for priority columns in PATH tab
+function PriorityColumn({ 
+  priority, 
+  thresholds, 
+  onUpdatePriority, 
+  onUpdateStatus 
+}: {
+  priority: number;
+  thresholds: ThresholdItem[];
+  onUpdatePriority: (id: string, priority: number) => void;
+  onUpdateStatus: (id: string, status: ThresholdItem['status']) => void;
+}) {
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    const thresholdId = e.dataTransfer.getData('text/plain');
+    if (thresholdId) {
+      onUpdatePriority(thresholdId, priority);
+    }
+  };
+
+  const handleDragStart = (e: React.DragEvent, thresholdId: string) => {
+    e.dataTransfer.setData('text/plain', thresholdId);
+  };
+
+  return (
+    <div 
+      className="bg-black/20 border border-amber-400/20 rounded-lg p-3 min-h-32"
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+    >
+      <div className="text-center mb-3">
+        <div className="font-angle text-lg text-amber-400">{priority}</div>
+        <div className="font-emerland text-xs text-amber-200">
+          {priority === 1 ? 'Highest' : priority === 8 ? 'Lowest' : 'Priority'}
+        </div>
+      </div>
+      
+      <div className="space-y-2">
+        {thresholds.map((threshold) => (
+          <div
+            key={threshold.id}
+            draggable
+            onDragStart={(e) => handleDragStart(e, threshold.id)}
+            className="cursor-move"
+          >
+            <ThresholdCard 
+              threshold={threshold}
+              onUpdatePriority={onUpdatePriority}
+              onUpdateStatus={onUpdateStatus}
+              draggable={false}
+            />
+          </div>
+        ))}
+        
+        {thresholds.length === 0 && (
+          <div className="text-center py-4 border-2 border-dashed border-amber-400/20 rounded-lg">
+            <p className="font-emerland text-xs text-amber-400/60">Drop threshold here</p>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
