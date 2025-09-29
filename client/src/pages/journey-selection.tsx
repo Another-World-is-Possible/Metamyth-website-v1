@@ -37,7 +37,7 @@ const journeyTiers: JourneyTier[] = [
     icon: <Shield className="w-8 h-8" />,
     position: "left-8",
     basePrice: 700,
-    originalPrice: 1200,
+    originalPrice: 1100,
     colors: {
       primary: "hsl(45, 85%, 55%)", // Gold
       secondary: "hsl(45, 75%, 45%)",
@@ -64,9 +64,9 @@ const journeyTiers: JourneyTier[] = [
         "Weekend integration and reflection sessions"
       ],
       paymentPlans: [
-        { payments: 1, amount: 700, originalAmount: 1200 },
-        { payments: 2, amount: 380, originalAmount: 650 },
-        { payments: 3, amount: 263, originalAmount: 450 }
+        { payments: 1, amount: 700, originalAmount: 1100 },
+        { payments: 2, amount: 380, originalAmount: 595 },
+        { payments: 3, amount: 263, originalAmount: 413 }
       ]
     }
   },
