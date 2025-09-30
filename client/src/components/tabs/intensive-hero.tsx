@@ -81,7 +81,7 @@ const testimonials = [
   },
   {
     name: "Zachary Marlow",
-    result: "Turned a failed suicide attempt into the revelation that life is a story and we hold the pen. This became a global adventure across 6 continents, creating a network with thousands of collaborators, engaging hundreds of thousands, and growing an organization with hundreds of volunteers who transformed their life's direction."
+    result: "The originator of Another World is Possible turned a failed suicide attempt into the revelation that life is a story and we hold the pen. This became a global adventure across 6 continents, creating a network with thousands of collaborators, engaging hundreds of thousands, and growing an organization with hundreds of volunteers who transformed their life's direction, the story brought his wife Aeriane, and together they are creating a company and movement by speaking it into existence. Story isn't theory, it is currency, a lifestyle, proof that another world is not just possible, it's here when we remember we write the future."
   }
 ];
 
@@ -431,8 +431,9 @@ export default function IntensiveHero() {
               </Card>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              {testimonials.map((testimonial, index) => (
+            {/* First 4 testimonials in 2-column grid */}
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              {testimonials.slice(0, 4).map((testimonial, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 50 }}
@@ -452,6 +453,25 @@ export default function IntensiveHero() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Zachary Marlow centered at bottom */}
+            <motion.div
+              className="flex justify-center"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 max-w-4xl">
+                <CardContent className="p-6">
+                  <h4 className="typography-h3 font-bold text-ancient-gold mb-3">
+                    {testimonials[4].name}
+                  </h4>
+                  <p className="text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                    {testimonials[4].result}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
 
             <motion.p
               className="text-center text-2xl text-mystical-teal font-bold mt-8 font-angle"
