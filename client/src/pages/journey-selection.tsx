@@ -223,9 +223,9 @@ export default function JourneySelectionPage() {
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col pt-16">
         {/* Header */}
-        <header className="text-center py-8 px-6 max-w-3xl mx-auto">
+        <header className="text-center py-6 md:py-8 px-4 md:px-6 max-w-3xl mx-auto">
           <motion.h1 
-            className="font-angle text-3xl md:text-5xl mb-2 text-gradient-gold"
+            className="font-angle text-2xl md:text-3xl lg:text-5xl mb-2 text-gradient-gold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -244,17 +244,17 @@ export default function JourneySelectionPage() {
           
           {/* Prominent Spots Remaining */}
           <motion.div 
-            className="inline-block bg-gradient-to-r from-red-600/20 to-orange-600/20 border-2 border-red-500 rounded-lg px-6 py-3 mb-2"
+            className="inline-block bg-gradient-to-r from-red-600/20 to-orange-600/20 border-2 border-red-500 rounded-lg px-4 md:px-6 py-2 md:py-3 mb-2"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, type: "spring", bounce: 0.3 }}
             style={{ boxShadow: '0 0 20px rgba(239, 68, 68, 0.4)' }}
           >
             <div className="text-center">
-              <div className="font-angle text-2xl md:text-3xl text-red-400 font-bold mb-1">
+              <div className="font-angle text-xl md:text-2xl lg:text-3xl text-red-400 font-bold mb-1">
                 45 SPOTS LEFT
               </div>
-              <div className="font-emerland text-sm text-amber-200 font-semibold">
+              <div className="font-emerland text-xs md:text-sm text-amber-200 font-semibold">
                 out of 50 • First Cohort • Last Opportunity This Year
               </div>
             </div>
@@ -262,7 +262,7 @@ export default function JourneySelectionPage() {
         </header>
 
         {/* Main Content Area */}
-        <div className="flex-1 flex flex-col justify-center px-6 pb-24">
+        <div className="flex-1 flex flex-col justify-center px-4 md:px-6 pb-24">
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedTier}
@@ -297,7 +297,7 @@ export default function JourneySelectionPage() {
                 </div>
                 
                 <motion.h1 
-                  className="font-angle text-5xl md:text-7xl mb-4"
+                  className="font-angle text-3xl md:text-5xl lg:text-7xl mb-4 leading-tight"
                   style={{ color: selectedTierData.colors.primary }}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -307,7 +307,7 @@ export default function JourneySelectionPage() {
                 </motion.h1>
                 
                 <motion.p 
-                  className="font-emerland text-xl md:text-2xl text-amber-200 italic"
+                  className="font-emerland text-lg md:text-xl lg:text-2xl text-amber-200 italic"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1, delay: 1.2 }}
@@ -317,7 +317,7 @@ export default function JourneySelectionPage() {
               </motion.div>
 
               {/* Content Sections Grid */}
-              <div className="grid lg:grid-cols-2 gap-8">
+              <div className="grid lg:grid-cols-2 gap-6 md:gap-8">
                 
                 {/* Where You Are */}
                 <motion.div
@@ -327,19 +327,19 @@ export default function JourneySelectionPage() {
                   transition={{ duration: 0.8, delay: 1.4 }}
                 >
                   <div 
-                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-6"
+                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-4 md:p-6"
                     style={{
                       borderColor: selectedTierData.colors.border,
                       background: selectedTierData.colors.background,
                       boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
                     }}
                   >
-                    <h3 className="font-angle text-2xl mb-4" style={{ color: selectedTierData.colors.primary }}>
+                    <h3 className="font-angle text-xl md:text-2xl mb-3 md:mb-4" style={{ color: selectedTierData.colors.primary }}>
                       Where You Are in Your Journey
                     </h3>
-                    <div className="space-y-4">
+                    <div className="space-y-3 md:space-y-4">
                       {selectedTierData.content.whereYouAre.map((paragraph, index) => (
-                        <p key={index} className="font-emerland text-amber-200 leading-relaxed">
+                        <p key={index} className="font-emerland text-sm md:text-base text-amber-200 leading-relaxed">
                           {paragraph}
                         </p>
                       ))}
@@ -355,19 +355,19 @@ export default function JourneySelectionPage() {
                   transition={{ duration: 0.8, delay: 1.6 }}
                 >
                   <div 
-                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-6"
+                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-4 md:p-6"
                     style={{
                       borderColor: selectedTierData.colors.border,
                       background: selectedTierData.colors.background,
                       boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
                     }}
                   >
-                    <h3 className="font-angle text-2xl mb-4" style={{ color: selectedTierData.colors.primary }}>
+                    <h3 className="font-angle text-xl md:text-2xl mb-3 md:mb-4" style={{ color: selectedTierData.colors.primary }}>
                       How We Serve You at This Level
                     </h3>
-                    <div className="space-y-4">
+                    <div className="space-y-3 md:space-y-4">
                       {selectedTierData.content.howWeServe.map((paragraph, index) => (
-                        <p key={index} className="font-emerland text-amber-200 leading-relaxed">
+                        <p key={index} className="font-emerland text-sm md:text-base text-amber-200 leading-relaxed">
                           {paragraph}
                         </p>
                       ))}
@@ -383,14 +383,14 @@ export default function JourneySelectionPage() {
                   transition={{ duration: 0.8, delay: 1.8 }}
                 >
                   <div 
-                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-6"
+                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-4 md:p-6"
                     style={{
                       borderColor: selectedTierData.colors.border,
                       background: selectedTierData.colors.background,
                       boxShadow: `0 0 25px ${selectedTierData.colors.glow}`
                     }}
                   >
-                    <h3 className="font-angle text-2xl mb-6 text-center" style={{ color: selectedTierData.colors.primary }}>
+                    <h3 className="font-angle text-xl md:text-2xl mb-4 md:mb-6 text-center" style={{ color: selectedTierData.colors.primary }}>
                       Your Transformation Includes
                     </h3>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -418,7 +418,7 @@ export default function JourneySelectionPage() {
                   transition={{ duration: 0.8, delay: 2.2 }}
                 >
                   <div 
-                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-8"
+                    className="bg-black/60 backdrop-blur-sm border-2 rounded-lg p-4 md:p-6 lg:p-8"
                     style={{
                       borderColor: selectedTierData.colors.border,
                       background: selectedTierData.colors.background,
@@ -427,7 +427,7 @@ export default function JourneySelectionPage() {
                   >
                     <div className="max-w-2xl mx-auto text-center">
                       {/* Main Message */}
-                      <p className="font-thornelia text-3xl text-amber-200 mb-8">
+                      <p className="font-thornelia text-xl md:text-2xl lg:text-3xl text-amber-200 mb-6 md:mb-8 leading-tight px-2">
                         The future you dream is one story away.
                       </p>
 
@@ -441,11 +441,11 @@ export default function JourneySelectionPage() {
                         >
                           <div className="grid md:grid-cols-2 gap-4">
                             {/* Option A: $700 + Contribution */}
-                            <div className="bg-black/40 p-6 rounded-lg border-2 border-[hsl(45,85%,55%)]/50">
-                              <h4 className="font-thornelia text-xl mb-3 text-[hsl(45,85%,55%)]">
+                            <div className="bg-black/40 p-4 md:p-6 rounded-lg border-2 border-[hsl(45,85%,55%)]/50">
+                              <h4 className="font-thornelia text-lg md:text-xl mb-2 md:mb-3 text-[hsl(45,85%,55%)]">
                                 Option A: $700 + Contribution
                               </h4>
-                              <p className="font-emerland text-amber-200 mb-4 text-sm">
+                              <p className="font-emerland text-amber-200 mb-3 md:mb-4 text-xs md:text-sm">
                                 Perfect for changemakers ready to contribute beyond money
                               </p>
                               <p className="font-emerland text-amber-200/80 mb-4 text-xs">
@@ -470,11 +470,11 @@ export default function JourneySelectionPage() {
                             </div>
 
                             {/* Option B: $1000 Full */}
-                            <div className="bg-black/40 p-6 rounded-lg border-2 border-[hsl(45,85%,55%)]">
-                              <h4 className="font-thornelia text-xl mb-3 text-[hsl(45,85%,55%)]">
+                            <div className="bg-black/40 p-4 md:p-6 rounded-lg border-2 border-[hsl(45,85%,55%)]">
+                              <h4 className="font-thornelia text-lg md:text-xl mb-2 md:mb-3 text-[hsl(45,85%,55%)]">
                                 Option B: $1,000 Full Investment
                               </h4>
-                              <p className="font-emerland text-amber-200 mb-4 text-sm">
+                              <p className="font-emerland text-amber-200 mb-3 md:mb-4 text-xs md:text-sm">
                                 For those ready to dive in completely
                               </p>
                               <p className="font-emerland text-amber-200/80 mb-4 text-xs">
@@ -515,21 +515,21 @@ export default function JourneySelectionPage() {
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.6, delay: 2.8 }}
                         >
-                          <div className="bg-black/40 p-8 rounded-lg border-2 border-[hsl(178,65%,45%)] relative">
-                            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[hsl(178,65%,45%)] text-black px-4 py-1 rounded-full text-sm font-semibold">
+                          <div className="bg-black/40 p-4 md:p-6 lg:p-8 rounded-lg border-2 border-[hsl(178,65%,45%)] relative">
+                            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[hsl(178,65%,45%)] text-black px-3 md:px-4 py-1 rounded-full text-xs md:text-sm font-semibold whitespace-nowrap">
                               LIMITED TO 15 VISIONARIES
                             </div>
                             <div className="text-center">
-                              <h3 className="font-thornelia text-3xl mb-4 text-[hsl(178,65%,45%)]">
+                              <h3 className="font-thornelia text-2xl md:text-3xl mb-3 md:mb-4 text-[hsl(178,65%,45%)] mt-2 md:mt-0">
                                 Application Required
                               </h3>
                               <p className="font-emerland text-amber-200 mb-6">
                                 For visionaries ready for direct mentorship and peer community at the highest level
                               </p>
-                              <div className="mb-6">
-                                <div className="flex items-center justify-center gap-3">
-                                  <span className="font-angle text-4xl text-[hsl(178,65%,45%)]">$1,500</span>
-                                  <span className="font-angle text-2xl line-through text-amber-200/50">$2,100</span>
+                              <div className="mb-4 md:mb-6">
+                                <div className="flex items-center justify-center gap-2 md:gap-3">
+                                  <span className="font-angle text-3xl md:text-4xl text-[hsl(178,65%,45%)]">$1,500</span>
+                                  <span className="font-angle text-xl md:text-2xl line-through text-amber-200/50">$2,100</span>
                                 </div>
                                 <p className="font-emerland text-amber-200/80 text-sm mt-2">
                                   Founding cohort pricing - this rate will never be offered again
@@ -548,7 +548,7 @@ export default function JourneySelectionPage() {
                       )}
 
                       {/* Origin Pricing Info */}
-                      <p className="font-emerland text-amber-200/90 mb-8 text-lg">
+                      <p className="font-emerland text-amber-200/90 mb-6 md:mb-8 text-sm md:text-base lg:text-lg">
                         Origin pricing for first 25 heroes to take back their story.
                       </p>
 
@@ -564,7 +564,7 @@ export default function JourneySelectionPage() {
                             e.stopPropagation();
                             window.open('https://zcal.co/i/OmCpmYrt', '_blank', 'noopener,noreferrer');
                           }}
-                          className="w-full py-4 text-xl font-semibold rounded-lg transition-all duration-300 bg-transparent mb-3 relative z-10 cursor-pointer"
+                          className="w-full py-3 md:py-4 text-lg md:text-xl font-semibold rounded-lg transition-all duration-300 bg-transparent mb-3 relative z-10 cursor-pointer"
                           style={{
                             borderColor: selectedTierData.colors.primary,
                             color: selectedTierData.colors.primary,
@@ -574,7 +574,7 @@ export default function JourneySelectionPage() {
                         >
                           Questions? Book a Call
                         </Button>
-                        <p className="font-emerland text-amber-200/70 text-sm">
+                        <p className="font-emerland text-amber-200/70 text-xs md:text-sm">
                           Payment plans • Contribution options • General questions
                         </p>
                       </motion.div>
