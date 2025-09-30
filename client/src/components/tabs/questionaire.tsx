@@ -219,15 +219,15 @@ export default function QUESTionaire() {
                               radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
                               radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
            }}>
-        <div className="pt-24 pb-12 px-4 min-h-screen flex items-center justify-center">
+        <div className="pt-16 md:pt-24 pb-8 md:pb-12 px-4 min-h-screen flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-4xl mx-auto w-full"
           >
-            <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-12">
-              <CardContent>
-                <h1 className="typography-h1 text-ancient-gold mb-8 text-center font-angle" 
+            <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-6 md:p-12">
+              <CardContent className="p-0">
+                <h1 className="text-2xl md:text-4xl lg:text-5xl text-ancient-gold mb-6 md:mb-8 text-center font-angle leading-tight" 
                     style={{
                       textShadow: `0 0 20px rgba(212, 175, 55, 0.4), 
                                   0 0 40px rgba(212, 175, 55, 0.2),
@@ -236,20 +236,20 @@ export default function QUESTionaire() {
                   Are You a Victim of Circumstance or an Author of Reality?
                 </h1>
                 
-                <div className="space-y-6 text-cream-white font-emerland text-lg leading-relaxed mb-12">
+                <div className="space-y-4 md:space-y-6 text-cream-white font-emerland text-base md:text-lg leading-relaxed mb-8 md:mb-12">
                   <p>
                     Most people live as background characters in stories they never chose—following scripts written by others, performing roles assigned by circumstances, competing in games they didn't design.
                   </p>
                   <p>
                     They wake up one day—successful, maybe even admired—and realize they're living someone else's story. The life they built doesn't match the life they were meant to live.
                   </p>
-                  <p className="font-bold text-mystical-teal text-xl">
+                  <p className="font-bold text-mystical-teal text-lg md:text-xl">
                     Here's what changes everything: Reality is made of stories. Whoever controls the narrative controls the future.
                   </p>
                   <p>
                     The old stories that once served us are ending. Not because they're being taken away, but because we're outgrowing them. We're being called to evolve—to stop being characters and become authors, to recognize the pen has always been in our hands.
                   </p>
-                  <p className="italic text-xl">
+                  <p className="italic text-lg md:text-xl">
                     This questionnaire reveals where you are in that awakening. Eight questions showing whether you're living your story or someone else's, whether this is your moment to claim authorship.
                   </p>
                 </div>
@@ -258,10 +258,10 @@ export default function QUESTionaire() {
                   <Button
                     onClick={handleBegin}
                     size="lg"
-                    className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-xl px-12 py-6"
+                    className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-lg md:text-xl px-8 md:px-12 py-4 md:py-6 w-full md:w-auto"
                   >
                     Begin Your Journey
-                    <ChevronRight className="ml-2 w-6 h-6" />
+                    <ChevronRight className="ml-2 w-5 h-5 md:w-6 md:h-6" />
                   </Button>
                 </div>
               </CardContent>
@@ -283,15 +283,15 @@ export default function QUESTionaire() {
                               radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
                               radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
            }}>
-        <div className="pt-24 pb-12 px-4 min-h-screen flex items-center justify-center">
+        <div className="pt-16 md:pt-24 pb-8 md:pb-12 px-4 min-h-screen flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-3xl w-full mx-auto"
           >
-            <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-12">
-              <CardContent>
-                <h2 className="typography-h2 text-ancient-gold text-center mb-8 font-angle"
+            <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-6 md:p-12">
+              <CardContent className="p-0">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl text-ancient-gold text-center mb-6 md:mb-8 font-angle leading-tight"
                     style={{
                       textShadow: `0 0 20px rgba(212, 175, 55, 0.4), 
                                   0 0 40px rgba(212, 175, 55, 0.2),
@@ -299,17 +299,17 @@ export default function QUESTionaire() {
                     }}>
                   Your Journey Awaits
                 </h2>
-                <div className="space-y-6 text-center">
-                  <p className="typography-lead text-cream-white font-emerland leading-relaxed">
+                <div className="space-y-4 md:space-y-6 text-center">
+                  <p className="text-lg md:text-xl text-cream-white font-emerland leading-relaxed">
                     The old story is ending. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable.
                   </p>
-                  <p className="text-lg text-cream-white font-emerland leading-relaxed">
+                  <p className="text-base md:text-lg text-cream-white font-emerland leading-relaxed">
                     Your responses reveal where you are in this transformation and illuminate the specific support that could accelerate your journey.
                   </p>
-                  <p className="text-lg text-cream-white font-emerland leading-relaxed">
+                  <p className="text-base md:text-lg text-cream-white font-emerland leading-relaxed">
                     Within 48 hours, we'll reach out with the path designed for you—whether that's intensive direct work to transform your organizational story or community transformation to discover and build your authentic narrative.
                   </p>
-                  <p className="typography-h3 text-mystical-teal font-angle mt-8"
+                  <p className="text-xl md:text-2xl lg:text-3xl text-mystical-teal font-angle mt-6 md:mt-8"
                      style={{
                        textShadow: `0 0 20px rgba(129, 236, 236, 0.4), 
                                    0 0 40px rgba(129, 236, 236, 0.2),
@@ -318,11 +318,11 @@ export default function QUESTionaire() {
                     What reality will you create?
                   </p>
                 </div>
-                <div className="mt-12 flex justify-center">
+                <div className="mt-8 md:mt-12 flex justify-center">
                   <Button
                     onClick={determineRoute}
                     size="lg"
-                    className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-xl px-12 py-6"
+                    className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-lg md:text-xl px-8 md:px-12 py-4 md:py-6 w-full md:w-auto"
                   >
                     Discover Your Path
                     <ExternalLink className="ml-2 w-5 h-5" />
@@ -346,16 +346,16 @@ export default function QUESTionaire() {
                             radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
                             radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
          }}>
-      <div className="pt-24 pb-12 px-4 min-h-screen flex items-center justify-center">
+      <div className="pt-16 md:pt-24 pb-8 md:pb-12 px-4 min-h-screen flex items-center justify-center">
         <div className="max-w-4xl w-full mx-auto">
           {/* Progress bar */}
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             <div className="mb-2">
-              <span className="text-ancient-gold font-angle text-lg">
+              <span className="text-ancient-gold font-angle text-base md:text-lg">
                 Question {currentQuestion + 1} of {questions.length}
               </span>
             </div>
-            <div className="h-3 bg-deep-black/50 rounded-full overflow-hidden border border-ancient-gold/30">
+            <div className="h-2 md:h-3 bg-deep-black/50 rounded-full overflow-hidden border border-ancient-gold/30">
               <motion.div
                 className="h-full bg-gradient-to-r from-ancient-gold to-mystical-teal"
                 initial={{ width: 0 }}
@@ -374,9 +374,9 @@ export default function QUESTionaire() {
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.3 }}
             >
-              <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-8">
-                <CardContent>
-                  <h2 className="typography-h2 text-ancient-gold mb-3 font-angle"
+              <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-4 md:p-8">
+                <CardContent className="p-0">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl text-ancient-gold mb-2 md:mb-3 font-angle leading-tight"
                       style={{
                         textShadow: `0 0 20px rgba(212, 175, 55, 0.4), 
                                     0 0 40px rgba(212, 175, 55, 0.2),
@@ -384,7 +384,7 @@ export default function QUESTionaire() {
                       }}>
                     {question.title}
                   </h2>
-                  <h3 className="typography-h3 text-mystical-teal mb-6 font-emerland"
+                  <h3 className="text-lg md:text-xl lg:text-2xl text-mystical-teal mb-4 md:mb-6 font-emerland leading-tight"
                       style={{
                         textShadow: `0 0 20px rgba(129, 236, 236, 0.3), 
                                     0 0 40px rgba(129, 236, 236, 0.15),
@@ -393,7 +393,7 @@ export default function QUESTionaire() {
                     {question.subtitle}
                   </h3>
 
-                  <div className="mb-8 text-cream-white font-emerland text-lg leading-relaxed whitespace-pre-line">
+                  <div className="mb-6 md:mb-8 text-cream-white font-emerland text-base md:text-lg leading-relaxed whitespace-pre-line">
                     {question.description}
                   </div>
 
@@ -401,18 +401,18 @@ export default function QUESTionaire() {
                     <Textarea
                       value={(answers[question.id] as string) || ""}
                       onChange={(e) => handleTextAnswer(e.target.value)}
-                      className="min-h-[250px] bg-deep-black/50 border-2 border-mystical-teal/50 text-cream-white font-emerland text-lg focus:border-ancient-gold/70 focus:ring-ancient-gold/50"
+                      className="min-h-[200px] md:min-h-[250px] bg-deep-black/50 border-2 border-mystical-teal/50 text-cream-white font-emerland text-base md:text-lg focus:border-ancient-gold/70 focus:ring-ancient-gold/50"
                       placeholder={question.placeholder}
                     />
                   )}
 
                   {question.type === "radio" && question.options && (
-                    <div className="space-y-4">
+                    <div className="space-y-3 md:space-y-4">
                       {question.options.map((option, index) => (
                         <button
                           key={index}
                           onClick={() => handleAnswer(option)}
-                          className={`w-full text-left p-5 rounded-lg border-2 transition-all duration-300 font-emerland text-lg ${
+                          className={`w-full text-left p-4 md:p-5 rounded-lg border-2 transition-all duration-300 font-emerland text-base md:text-lg ${
                             answers[question.id] === option
                               ? "border-ancient-gold bg-ancient-gold/20 text-cream-white shadow-lg shadow-ancient-gold/20"
                               : "border-mystical-teal/30 bg-deep-black/30 text-cream-white hover:border-mystical-teal hover:bg-mystical-teal/10 hover:shadow-lg hover:shadow-mystical-teal/10"
@@ -425,8 +425,8 @@ export default function QUESTionaire() {
                   )}
 
                   {question.type === "checkbox" && question.options && (
-                    <div className="space-y-4">
-                      <p className="text-cream-white/70 font-emerland mb-4 italic">
+                    <div className="space-y-3 md:space-y-4">
+                      <p className="text-cream-white/70 font-emerland mb-3 md:mb-4 italic text-sm md:text-base">
                         Select all that apply:
                       </p>
                       {question.options.map((option, index) => {
@@ -435,7 +435,7 @@ export default function QUESTionaire() {
                           <button
                             key={index}
                             onClick={() => handleAnswer(option, true)}
-                            className={`w-full text-left p-5 rounded-lg border-2 transition-all duration-300 font-emerland text-lg ${
+                            className={`w-full text-left p-4 md:p-5 rounded-lg border-2 transition-all duration-300 font-emerland text-base md:text-lg ${
                               isSelected
                                 ? "border-ancient-gold bg-ancient-gold/20 text-cream-white shadow-lg shadow-ancient-gold/20"
                                 : "border-mystical-teal/30 bg-deep-black/30 text-cream-white hover:border-mystical-teal hover:bg-mystical-teal/10 hover:shadow-lg hover:shadow-mystical-teal/10"
@@ -443,12 +443,12 @@ export default function QUESTionaire() {
                           >
                             <div className="flex items-center">
                               <div
-                                className={`w-6 h-6 rounded border-2 mr-4 flex items-center justify-center flex-shrink-0 ${
+                                className={`w-5 h-5 md:w-6 md:h-6 rounded border-2 mr-3 md:mr-4 flex items-center justify-center flex-shrink-0 ${
                                   isSelected ? "border-ancient-gold bg-ancient-gold" : "border-mystical-teal"
                                 }`}
                               >
                                 {isSelected && (
-                                  <svg className="w-4 h-4 text-deep-black" fill="currentColor" viewBox="0 0 20 20">
+                                  <svg className="w-3 h-3 md:w-4 md:h-4 text-deep-black" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                                   </svg>
                                 )}
@@ -462,25 +462,23 @@ export default function QUESTionaire() {
                   )}
 
                   {/* Navigation buttons */}
-                  <div className="flex justify-between mt-10">
+                  <div className="flex justify-between gap-3 mt-8 md:mt-10">
                     <Button
                       onClick={handleBack}
                       disabled={currentQuestion === 0}
                       variant="outline"
-                      size="lg"
-                      className="border-2 border-mystical-teal text-mystical-teal hover:bg-mystical-teal/20 disabled:opacity-50 font-angle font-bold"
+                      className="border-2 border-mystical-teal text-mystical-teal hover:bg-mystical-teal/20 disabled:opacity-50 font-angle font-bold text-sm md:text-base px-4 md:px-6 py-2 md:py-3"
                     >
-                      <ChevronLeft className="w-5 h-5 mr-2" />
+                      <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2" />
                       Back
                     </Button>
                     <Button
                       onClick={handleNext}
                       disabled={!canProceed()}
-                      size="lg"
-                      className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold disabled:opacity-50"
+                      className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold disabled:opacity-50 text-sm md:text-base px-4 md:px-6 py-2 md:py-3"
                     >
                       {isLastQuestion ? "Complete" : "Next"}
-                      <ChevronRight className="w-5 h-5 ml-2" />
+                      <ChevronRight className="w-4 h-4 md:w-5 md:h-5 ml-1 md:ml-2" />
                     </Button>
                   </div>
                 </CardContent>
