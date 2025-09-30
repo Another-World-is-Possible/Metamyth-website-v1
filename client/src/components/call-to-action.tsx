@@ -51,7 +51,7 @@ export default function CallToAction({ setActiveTab }: CallToActionProps) {
             className="cta-button-base cta-button-gold mx-4 mb-6"
             data-testid="button-questionaire"
           >
-            ARE YOU A VICTIM OR AN AUTHOR: TAKE THE QUESTIONAIRE
+            ARE YOU A VICTIM OR AN AUTHOR? TAKE THE QUESTIONNAIRE
           </button>
           <button
             onClick={() => navigate('/transformation-journeys')}
