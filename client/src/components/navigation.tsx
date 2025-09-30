@@ -27,12 +27,13 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
 
   const navItems = [
     { id: 'why-story', label: 'Why Story Matters' },
-    { id: 'systems', label: 'The Systems' },
+    { id: 'story-system', label: 'Story System' },
     { id: 'metamyth', label: 'Our Metamyth' },
-    { id: 'stories', label: 'Stories We Tell' },
     { id: 'quest', label: 'Our Quest' },
     { id: 'transformation-journeys', label: 'Transformation Journeys' }
     // { id: 'federation', label: 'The Federation' } - Hidden but retained
+    // { id: 'systems', label: 'The Systems' } - Hidden but retained
+    // { id: 'stories', label: 'Stories We Tell' } - Hidden but retained
   ];
 
   const handleNavClick = (tabId: string) => {

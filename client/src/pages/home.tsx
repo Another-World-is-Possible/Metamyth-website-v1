@@ -30,6 +30,8 @@ function HomeContent() {
       navigate('/why-story-matters');
     } else if (tab === 'systems') {
       navigate('/systems');
+    } else if (tab === 'story-system') {
+      navigate('/story-system');
     } else if (tab === 'federation') {
       navigate('/federation');
     } else if (tab === 'transformation-journeys') {

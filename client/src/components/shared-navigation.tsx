@@ -53,10 +53,9 @@ export default function SharedNavigation() {
 
   const navItems = [
     { id: 'why-story-matters', label: 'Why Story Matters', path: '/why-story-matters' },
-    { id: 'systems', label: 'The Systems', path: '/systems' },
+    { id: 'story-system', label: 'Story System', path: '/story-system' },
     { id: 'transformation-journeys', label: 'Transformation Journeys', path: '/transformation-journeys' },
     { id: 'metamyth', label: 'Our Metamyth', path: '/metamyth' },
-    { id: 'stories', label: 'Stories We Tell', path: '/stories' },
     { id: 'quest', label: 'Our Quest', path: '/quest' }
   ];
 

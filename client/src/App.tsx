@@ -19,7 +19,7 @@ import MetamythJourneyPage from "@/pages/metamyth-journey";
 import TransformationJourneysPage from "@/pages/transformation-journeys";
 import JourneySelectionPage from "@/pages/journey-selection";
 import TheStarPage from "@/pages/thestar";
-import IntensiveHeroPage from "@/pages/intensive-hero";
+import StorySystemPage from "@/pages/intensive-hero";
 import SwordCursor from "@/components/sword-cursor";
 import { ImageLoadingProvider } from "@/contexts/ImageLoadingContext";
 import { AudioProvider } from "@/contexts/audio-context";
@@ -54,7 +54,7 @@ function Router() {
       <Route path="/transformation-journeys" component={TransformationJourneysPage} />
       <Route path="/journey-selection" component={JourneySelectionPage} />
       <Route path="/thestar" component={TheStarPage} />
-      <Route path="/intensive-hero" component={IntensiveHeroPage} />
+      <Route path="/story-system" component={StorySystemPage} />
       <Route component={NotFound} />
     </Switch>
   );
