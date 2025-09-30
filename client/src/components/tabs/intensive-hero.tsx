@@ -132,38 +132,39 @@ export default function IntensiveHero() {
       
       {/* Content */}
       <div className="relative z-10">
-        <div className="max-w-6xl mx-auto px-4 py-10">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-10">
           
           {/* Hero Section */}
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="typography-h1 text-ancient-gold mb-6 font-angle" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 0, 0, 0.7), 0 0 32px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.9)' }}>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-ancient-gold mb-4 md:mb-6 font-angle leading-tight" style={{ textShadow: '0 0 8px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 0, 0, 0.7), 0 0 32px rgba(0, 0, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.9)' }}>
               INTENSIVE METAMYTH TRANSFORMATION
             </h1>
-            <h2 className="typography-h2 text-mystical-teal mb-4 font-angle" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7)' }}>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl text-mystical-teal mb-3 md:mb-4 font-angle leading-tight" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7)' }}>
               Story Architecture for Planetary Impact
             </h2>
-            <p className="typography-lead text-cream-white max-w-4xl mx-auto leading-relaxed font-emerland mb-6" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+            <p className="text-lg md:text-xl lg:text-2xl text-cream-white max-w-4xl mx-auto leading-relaxed font-emerland mb-4 md:mb-6" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
               We give people back control of their stories, transforming scattered narratives into coherent forces of planetary transformation.
             </p>
-            <p className="typography-lead text-cream-white max-w-4xl mx-auto leading-relaxed font-emerland italic" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+            <p className="text-lg md:text-xl lg:text-2xl text-cream-white max-w-4xl mx-auto leading-relaxed font-emerland italic" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
               From background character in someone else's plot to author of reality itself.
             </p>
-            <div className="mt-8">
+            <div className="mt-6 md:mt-8">
               <a 
                 href="https://zcal.co/i/nIEsikdu" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                className="block md:inline-block"
               >
                 <Button 
                   size="lg" 
-                  className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-xl px-8 py-6"
+                  className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-base md:text-lg lg:text-xl px-6 md:px-8 py-4 md:py-6 w-full md:w-auto"
                 >
-                  <ExternalLink className="w-5 h-5 mr-2" />
+                  <ExternalLink className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                   SCHEDULE YOUR STRATEGY SESSION
                 </Button>
               </a>
@@ -172,17 +173,17 @@ export default function IntensiveHero() {
 
           {/* The Calling Section */}
           <motion.div
-            className="mb-16"
+            className="mb-10 md:mb-16"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
-              <CardContent className="p-8">
-                <h3 className="typography-h2 font-bold text-ancient-gold mb-6 text-center">
+              <CardContent className="p-5 md:p-8">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-ancient-gold mb-4 md:mb-6 text-center leading-tight">
                   THE CALLING
                 </h3>
-                <div className="space-y-4 text-cream-white font-emerland leading-relaxed text-lg" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                <div className="space-y-3 md:space-y-4 text-cream-white font-emerland leading-relaxed text-base md:text-lg" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                   <p>The world is burning. Systems designed for abundance create scarcity. Economic mythologies devour the living world. The stories holding civilization together reveal themselves as precisely what's tearing it apart.</p>
                   <p>We're living through the climax of the old story—the moment when everything built on extraction and competition reaches its natural conclusion. Leaders discover the ladders they climbed lean against collapsing walls. Professionals win games that reveal themselves as meaningless. Organizations doing good work can't break through the noise. Visionaries carry solutions the world desperately needs but can't seem to make real.</p>
                   <p>The crisis is both planetary and personal. The gap between who we are and who we're meant to be grows unbearable. Work that should feel meaningful drains the soul. Resources that should flow remain stuck. People who should naturally find us require convincing. Teams that should unite around mission operate from fragmented narratives.</p>
@@ -196,17 +197,17 @@ export default function IntensiveHero() {
 
           {/* The Quest Section */}
           <motion.div
-            className="mb-16"
+            className="mb-10 md:mb-16"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
-              <CardContent className="p-8">
-                <h3 className="typography-h2 font-bold text-ancient-gold mb-6 text-center">
+              <CardContent className="p-5 md:p-8">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-ancient-gold mb-4 md:mb-6 text-center leading-tight">
                   THE QUEST
                 </h3>
-                <div className="space-y-4 text-cream-white font-emerland leading-relaxed text-lg" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                <div className="space-y-3 md:space-y-4 text-cream-white font-emerland leading-relaxed text-base md:text-lg" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                   <p className="font-bold text-mystical-teal text-xl">Are you living your story or someone else's?</p>
                   <p>Most people never ask. They remain background characters in plots they never chose. But you're reading this, which means you've started questioning. You sense the gap. You know you're made for more.</p>
                   <p className="font-bold">Here's what changes everything:</p>
@@ -221,12 +222,12 @@ export default function IntensiveHero() {
           </motion.div>
 
           {/* Who This Serves - Image Cards */}
-          <div className="mb-16">
-            <h3 className="typography-h2 font-bold text-center text-mystical-teal mb-12 font-angle">
+          <div className="mb-10 md:mb-16">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-mystical-teal mb-8 md:mb-12 font-angle leading-tight">
               WHO THIS SERVES
             </h3>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {whoThisServes.map((audience, index) => (
                 <motion.div
                   key={index}
@@ -236,16 +237,16 @@ export default function IntensiveHero() {
                 >
                   <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 overflow-hidden hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 h-full">
                     <div 
-                      className="h-48 bg-cover bg-center relative"
+                      className="h-40 md:h-48 bg-cover bg-center relative"
                       style={{ backgroundImage: `url(${audience.bgImage})` }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-t from-deep-black/80 via-deep-black/20 to-transparent" />
                     </div>
-                    <CardContent className="p-6">
-                      <h4 className="typography-h3 font-bold text-ancient-gold mb-4">
+                    <CardContent className="p-4 md:p-6">
+                      <h4 className="text-xl md:text-2xl font-bold text-ancient-gold mb-3 md:mb-4 leading-tight">
                         {audience.title}
                       </h4>
-                      <p className="text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                      <p className="text-base md:text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                         {audience.description}
                       </p>
                     </CardContent>
@@ -256,27 +257,27 @@ export default function IntensiveHero() {
 
             {/* Additional Who This Serves */}
             <motion.div
-              className="mt-8 grid md:grid-cols-2 gap-8"
+              className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40">
-                <CardContent className="p-6">
-                  <h4 className="typography-h3 font-bold text-ancient-gold mb-4">
+                <CardContent className="p-4 md:p-6">
+                  <h4 className="text-xl md:text-2xl font-bold text-ancient-gold mb-3 md:mb-4 leading-tight">
                     Purpose-Driven Organizations Scaling Impact
                   </h4>
-                  <p className="text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                  <p className="text-base md:text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                     Already doing meaningful work. Ready for story architecture that naturally attracts aligned resources while creating unified mission.
                   </p>
                 </CardContent>
               </Card>
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40">
-                <CardContent className="p-6">
-                  <h4 className="typography-h3 font-bold text-ancient-gold mb-4">
+                <CardContent className="p-4 md:p-6">
+                  <h4 className="text-xl md:text-2xl font-bold text-ancient-gold mb-3 md:mb-4 leading-tight">
                     Personal Brands Building Movements
                   </h4>
-                  <p className="text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                  <p className="text-base md:text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                     Platform built, audience engaged, but impact could be exponentially larger. Ready to transform following into movement, transaction into transformation.
                   </p>
                 </CardContent>
@@ -286,17 +287,17 @@ export default function IntensiveHero() {
 
           {/* The Vision Section */}
           <motion.div
-            className="mb-16"
+            className="mb-10 md:mb-16"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
-              <CardContent className="p-8">
-                <h3 className="typography-h2 font-bold text-ancient-gold mb-6 text-center">
+              <CardContent className="p-5 md:p-8">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-ancient-gold mb-4 md:mb-6 text-center leading-tight">
                   THE VISION
                 </h3>
-                <div className="space-y-4 text-cream-white font-emerland leading-relaxed text-lg" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                <div className="space-y-3 md:space-y-4 text-cream-white font-emerland leading-relaxed text-base md:text-lg" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                   <p>Imagine waking up knowing exactly why you're here. Scattered threads suddenly coherent. No more questioning whether you're on the right path—you are the path.</p>
                   <p className="font-bold text-mystical-teal">The people and resources you need flow naturally.</p>
                   <p>Not through chasing or convincing, but because your story calls to those meant to find you. Prospects become partners. Transactions become transformations.</p>
@@ -313,12 +314,12 @@ export default function IntensiveHero() {
           </motion.div>
 
           {/* The Mission - Three Phases */}
-          <div className="mb-16">
-            <h3 className="typography-h2 font-bold text-center text-ancient-gold mb-12 font-angle">
+          <div className="mb-10 md:mb-16">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-ancient-gold mb-8 md:mb-12 font-angle leading-tight">
               THE MISSION
             </h3>
             
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               {transformationPhases.map((phase, index) => (
                 <motion.div
                   key={phase.id}
@@ -327,31 +328,31 @@ export default function IntensiveHero() {
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                 >
                   <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
-                    <CardContent className="p-8">
-                      <div className="flex items-start gap-6">
-                        <div className="p-4 rounded-lg bg-ancient-gold/20 border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/30">
-                          <phase.icon className="text-ancient-gold text-3xl" style={{ textShadow: '0 0 8px currentColor' }} />
+                    <CardContent className="p-5 md:p-8">
+                      <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
+                        <div className="p-3 md:p-4 rounded-lg bg-ancient-gold/20 border-2 border-ancient-gold/60 shadow-lg shadow-ancient-gold/30">
+                          <phase.icon className="text-ancient-gold text-2xl md:text-3xl" style={{ textShadow: '0 0 8px currentColor' }} />
                         </div>
 
                         <div className="flex-1">
-                          <h4 className="typography-h3 text-ancient-gold mb-2 font-angle">
+                          <h4 className="text-xl md:text-2xl text-ancient-gold mb-1 md:mb-2 font-angle leading-tight">
                             {phase.title}
                           </h4>
-                          <p className="text-2xl text-mystical-teal mb-6 italic font-emerland">
+                          <p className="text-lg md:text-xl lg:text-2xl text-mystical-teal mb-4 md:mb-6 italic font-emerland">
                             {phase.subtitle}
                           </p>
 
-                          <div className="space-y-4 mb-6">
+                          <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
                             {phase.paragraphs.map((paragraph, idx) => (
-                              <p key={idx} className="text-lg text-cream-white font-emerland leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                              <p key={idx} className="text-base md:text-lg text-cream-white font-emerland leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                                 {paragraph}
                               </p>
                             ))}
                           </div>
 
-                          <div className="bg-deep-black/60 border-2 border-ancient-gold rounded-lg p-4 shadow-lg shadow-ancient-gold/50">
-                            <h5 className="text-ancient-gold font-bold mb-3 text-xl font-angle" style={{ textShadow: '0 0 8px currentColor' }}>The outcome:</h5>
-                            <p className="text-cream-white text-lg font-medium leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.75), 0 0 12px rgba(0,0,0,0.7)' }}>
+                          <div className="bg-deep-black/60 border-2 border-ancient-gold rounded-lg p-3 md:p-4 shadow-lg shadow-ancient-gold/50">
+                            <h5 className="text-ancient-gold font-bold mb-2 md:mb-3 text-lg md:text-xl font-angle" style={{ textShadow: '0 0 8px currentColor' }}>The outcome:</h5>
+                            <p className="text-cream-white text-base md:text-lg font-medium leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.75), 0 0 12px rgba(0,0,0,0.7)' }}>
                               {phase.outcome}
                             </p>
                           </div>
@@ -365,7 +366,7 @@ export default function IntensiveHero() {
 
             {/* CTA after phases */}
             <motion.div
-              className="text-center mt-12"
+              className="text-center mt-8 md:mt-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
@@ -374,12 +375,13 @@ export default function IntensiveHero() {
                 href="https://zcal.co/i/nIEsikdu" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                className="block md:inline-block"
               >
                 <Button 
                   size="lg" 
-                  className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-xl px-8 py-6"
+                  className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-base md:text-lg lg:text-xl px-6 md:px-8 py-4 md:py-6 w-full md:w-auto"
                 >
-                  <ExternalLink className="w-5 h-5 mr-2" />
+                  <ExternalLink className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                   SCHEDULE YOUR STRATEGY SESSION
                 </Button>
               </a>
@@ -388,17 +390,17 @@ export default function IntensiveHero() {
 
           {/* The Request Section */}
           <motion.div
-            className="mb-16"
+            className="mb-10 md:mb-16"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
           >
             <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300">
-              <CardContent className="p-8">
-                <h3 className="typography-h2 font-bold text-ancient-gold mb-6 text-center">
+              <CardContent className="p-5 md:p-8">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-ancient-gold mb-4 md:mb-6 text-center leading-tight">
                   THE REQUEST
                 </h3>
-                <div className="space-y-4 text-cream-white font-emerland leading-relaxed text-lg" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                <div className="space-y-3 md:space-y-4 text-cream-white font-emerland leading-relaxed text-base md:text-lg" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                   <p>This work serves those ready to invest significantly in foundational transformation—intensive, personalized work that restructures reality itself, custom scoped to your needs and timeline.</p>
                   <p>Whether you're a leader seeking deeper alignment, a professional who's succeeded and now asks "what's next?", a personal brand ready to scale impact, a visionary making the impossible real, or an organization unifying around mission—if you know you're made for more and you're ready to author that reality, this conversation is for you.</p>
                   <p className="font-bold text-mystical-teal">In the strategy session, we'll explore what's possible and design the right intensive for your journey.</p>
@@ -409,30 +411,30 @@ export default function IntensiveHero() {
           </motion.div>
 
           {/* Reality Authors in Action */}
-          <div className="mb-16">
-            <h3 className="typography-h2 font-bold text-center text-ancient-gold mb-12 font-angle">
+          <div className="mb-10 md:mb-16">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-ancient-gold mb-8 md:mb-12 font-angle leading-tight">
               REALITY AUTHORS IN ACTION
             </h3>
             
             {/* Crystal Quote */}
             <motion.div
-              className="mb-12"
+              className="mb-8 md:mb-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 max-w-4xl mx-auto">
-                <CardContent className="p-8">
-                  <p className="text-2xl italic text-cream-white font-emerland text-center leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                <CardContent className="p-5 md:p-8">
+                  <p className="text-lg md:text-xl lg:text-2xl italic text-cream-white font-emerland text-center leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                     "{crystalQuote}"
                   </p>
-                  <p className="text-xl text-ancient-gold font-bold text-center mt-4 font-angle">— Crystal</p>
+                  <p className="text-lg md:text-xl text-ancient-gold font-bold text-center mt-3 md:mt-4 font-angle">— Crystal</p>
                 </CardContent>
               </Card>
             </motion.div>
 
             {/* First 4 testimonials in 2-column grid */}
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-5 md:mb-6">
               {testimonials.slice(0, 4).map((testimonial, index) => (
                 <motion.div
                   key={index}
@@ -441,11 +443,11 @@ export default function IntensiveHero() {
                   transition={{ duration: 0.6, delay: 0.1 * index }}
                 >
                   <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 h-full">
-                    <CardContent className="p-6">
-                      <h4 className="typography-h3 font-bold text-ancient-gold mb-3">
+                    <CardContent className="p-4 md:p-6">
+                      <h4 className="text-xl md:text-2xl font-bold text-ancient-gold mb-2 md:mb-3 leading-tight">
                         {testimonial.name}
                       </h4>
-                      <p className="text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                      <p className="text-base md:text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                         {testimonial.result}
                       </p>
                     </CardContent>
@@ -461,12 +463,12 @@ export default function IntensiveHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 max-w-4xl">
-                <CardContent className="p-6">
-                  <h4 className="typography-h3 font-bold text-ancient-gold mb-3">
+              <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 max-w-4xl w-full">
+                <CardContent className="p-4 md:p-6">
+                  <h4 className="text-xl md:text-2xl font-bold text-ancient-gold mb-2 md:mb-3 leading-tight">
                     {testimonials[4].name}
                   </h4>
-                  <p className="text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                  <p className="text-base md:text-lg leading-relaxed text-cream-white font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
                     {testimonials[4].result}
                   </p>
                 </CardContent>
@@ -474,7 +476,7 @@ export default function IntensiveHero() {
             </motion.div>
 
             <motion.p
-              className="text-center text-2xl text-mystical-teal font-bold mt-8 font-angle"
+              className="text-center text-lg md:text-xl lg:text-2xl text-mystical-teal font-bold mt-6 md:mt-8 font-angle"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.2 }}
@@ -485,24 +487,25 @@ export default function IntensiveHero() {
 
           {/* Final CTA */}
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.3 }}
           >
-            <p className="typography-h2 text-mystical-teal mb-8 font-angle italic">
+            <p className="text-2xl md:text-3xl lg:text-4xl text-mystical-teal mb-6 md:mb-8 font-angle italic leading-tight">
               The future we dream is one story away.
             </p>
             <a 
               href="https://zcal.co/i/nIEsikdu" 
               target="_blank" 
               rel="noopener noreferrer"
+              className="block md:inline-block"
             >
               <Button 
                 size="lg" 
-                className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-xl px-8 py-6"
+                className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-base md:text-lg lg:text-xl px-6 md:px-8 py-4 md:py-6 w-full md:w-auto"
               >
-                <ExternalLink className="w-5 h-5 mr-2" />
+                <ExternalLink className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                 SCHEDULE YOUR STRATEGY SESSION
               </Button>
             </a>
