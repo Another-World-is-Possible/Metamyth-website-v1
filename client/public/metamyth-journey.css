@@ -1,0 +1,239 @@
+/* ==========================================================================
+   METAMYTH JOURNEY STYLESHEET
+   This is a complete and correct translation of all custom styles from the
+   original metamyth.html, designed to work with the Tailwind CDN.
+   ========================================================================== */
+
+/* --- 1. FONT DEFINITIONS --- */
+@font-face {
+    font-family: 'AngleFairy2024';
+    src: url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024') format('opentype');
+}
+@font-face {
+    font-family: 'GrillagesBold2024';
+    src: url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024') format('truetype');
+}
+
+/* --- 2. THEME VARIABLES --- */
+:root {
+    --bg-main: #1D4241;
+    --text-main: #FAF0E6;
+    --text-heading: #D4AF37;
+    --text-muted: #FAF0E6;
+    --border-color: #2c5d5b;
+    --accent-teal: #14B8A6;
+    --accent-gold: #D4AF37;
+}
+
+/* --- 3. BASE STYLES --- */
+body { 
+    background-color: var(--bg-main); 
+    color: var(--text-main); 
+    font-family: 'GrillagesBold2024', serif; 
+    font-weight: 700;
+}
+h1, h2, h3, h4 { 
+    font-family: 'AngleFairy2024', serif !important; 
+    color: var(--text-heading); 
+    letter-spacing: 0.05em;
+    font-weight: normal !important;
+}
+textarea::placeholder {
+    color: #a0a0a0;
+    opacity: 0.7;
+}
+textarea {
+    border: 2px solid var(--accent-teal) !important;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-main);
+    padding: 12px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold) !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+/* --- 4. CUSTOM COMPONENT STYLES --- */
+.text-gold {
+    color: var(--accent-gold);
+}
+.text-teal {
+    color: var(--accent-teal);
+}
+
+.content-card {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(20, 184, 166, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(20, 184, 166, 0.1);
+}
+.stage-content { display: none; }
+.stage-content.active { display: block; animation: fadeIn 0.6s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+.ornamental-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 3rem 0;
+}
+.synthesis-box {
+    background-color: rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    color: var(--text-main);
+    border: 1px solid var(--accent-gold);
+}
+.nav-link { 
+    transition: all 0.2s ease-in-out; 
+    border-left: 3px solid transparent; 
+    color: var(--text-muted);
+    padding: 0.75rem 1rem;
+}
+.nav-link.active { 
+    background-color: rgba(20, 184, 166, 0.05); 
+    color: var(--accent-teal); 
+    border-left-color: var(--accent-teal); 
+}
+.nav-link:hover { 
+    background-color: rgba(20, 184, 166, 0.1); 
+    color: var(--accent-gold); 
+}
+.nav-arc-header { 
+    color: #fff; 
+    letter-spacing: 0.1em; 
+    font-family: 'AngleFairy2024', serif !important; 
+    font-weight: normal;
+}
+.glow-arc { 
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 16px rgba(255, 215, 0, 0.4); 
+    color: var(--accent-gold) !important; 
+}
+.glow-title { text-shadow: 0 0 10px rgba(20, 184, 166, 0.8), 0 0 20px rgba(20, 184, 166, 0.4); }
+.glow-progress { background: linear-gradient(90deg, var(--accent-teal) 0%, var(--accent-gold) 100%); }
+.glow-indicator { box-shadow: 0 0 15px rgba(20, 184, 166, 0.4); }
+.glow-button { 
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.8); 
+    border-color: var(--accent-gold) !important; 
+    color: var(--accent-gold) !important; 
+}
+.glow-button:hover { 
+    background-color: var(--accent-gold) !important; 
+    color: black !important; 
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+.feedback-container {
+    background-color: rgba(10, 50, 48, 0.5);
+    border-left: 4px solid var(--accent-gold);
+    font-style: italic;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    margin-top: 1.5rem;
+}
+.field-feedback-display {
+    background-color: #1D4241;
+    border-left: 3px solid var(--accent-teal);
+    display: none;
+    font-style: italic;
+    color: #E0E0E0;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    margin-top: 0.75rem;
+    border-radius: 0.375rem;
+}
+.artifiction-icon { 
+    font-size: 2.5rem; 
+    line-height: 1; 
+    margin-right: 1.5rem;
+}
+.prose {
+    color: var(--text-main);
+    line-height: 1.8;
+    font-size: 1.125rem; /* text-lg */
+    max-width: none;
+}
+.prose p {
+    margin-bottom: 1.25em;
+}
+.prose strong {
+    color: var(--accent-teal);
+}
+.cta-button-base { 
+    position: relative; 
+    padding: 12px 24px; 
+    font-family: 'AngleFairy2024', serif; 
+    font-weight: bold; 
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    border: none; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    margin: 8px; 
+    border-radius: 9999px; 
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1); 
+}
+.cta-button-base:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.cta-button-base:hover:not(:disabled) {
+    box-shadow: 0 0 30px var(--button-glow-color), 0 0 60px var(--button-glow-color), 0 0 90px var(--button-glow-color), inset 0 0 30px rgba(255, 255, 255, 0.2);
+}
+.cta-button-gold {
+    --button-gradient: linear-gradient(90deg, #f39c12, #f1c40f, #f4d03f);
+    --button-text-color: #2c3e50;
+    --button-glow-color: rgba(241, 196, 15, 0.8);
+    --button-text-glow: 0 0 8px rgba(255, 255, 255, 0.9);
+    background: var(--button-gradient);
+    color: var(--button-text-color);
+    text-shadow: var(--button-text-glow);
+}
+.cta-button-teal {
+    --button-gradient: linear-gradient(90deg, #16a085, #1abc9c, #48c9b0);
+    --button-text-color: #2c3e50;
+    --button-glow-color: rgba(26, 188, 156, 0.8);
+    --button-text-glow: 0 0 8px rgba(255, 255, 255, 0.9);
+    background: var(--button-gradient);
+    color: var(--button-text-color);
+    text-shadow: var(--button-text-glow);
+}
+
+/* --- 5. COMPASS CHART & INPUT STYLES --- */
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+input[type=range].compass-input {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+input[type=range].compass-input:focus {
+    outline: none;
+}
+input[type=range].compass-input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: var(--border-color);
+    border-radius: 5px;
+}
+input[type=range].compass-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 2px solid var(--bg-main);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--accent-teal);
+    cursor: pointer;
+    margin-top: -8px; /* (thumb height - track height) / -2 */
+}

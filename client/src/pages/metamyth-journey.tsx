@@ -1,99 +1,95 @@
-// src/pages/metamyth-journey.tsx
-
 import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import PageLayout from '@/components/layouts/page-layout';
 
+// This Vite-specific import gets the final, correct URL of your stylesheet,
+// which is crucial for finding the compiled CSS.
+import cssUrl from '@/index.css?url';
+
 export default function MetamythJourneyPage() {
   const [, navigate] = useLocation();
-  const [iframeSrc, setIframeSrc] = useState<string | null>(null);
+  const [iframeContent, setIframeContent] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadJourneyAssets = async () => {
-      let storedHtml: string | null;
+    const loadAndBuildJourney = async () => {
+      try {
+        let htmlTemplate: string;
 
-      if (import.meta.env.DEV) {
-        try {
-          const response = await fetch('/metamyth.html');
-          if (!response.ok) {
-            console.error('Failed to fetch /metamyth.html. Is it being served correctly?');
+        // Step 1: Fetch the base HTML template from Supabase or the dev server.
+        if (import.meta.env.PROD) {
+          htmlTemplate = sessionStorage.getItem('metamythHTML');
+          if (!htmlTemplate) {
             navigate('/begin', { replace: true });
             return;
           }
-          storedHtml = await response.text();
-        } catch (error) {
-          console.error("Error fetching /metamyth.html:", error);
-          navigate('/begin', { replace: true });
-          return;
+        } else {
+          const response = await fetch('/metamyth.html');
+          if (!response.ok) throw new Error('Failed to fetch /metamyth.html in dev mode.');
+          htmlTemplate = await response.text();
         }
-      } else {
-        storedHtml = sessionStorage.getItem('metamythHTML');
-        if (!storedHtml) {
-          navigate('/begin', { replace: true });
-          return;
-        }
-      }
 
-      try {
+        // Step 2: Fetch the CONTENT of all required assets in parallel.
         const [
-          chatbotRes, 
-          journeyRes
+          chatbotJsRes,
+          journeyJsRes,
+          cssRes
         ] = await Promise.all([
           fetch('/chatbot.js'),
-          fetch('/metamyth-journey.js')
+          fetch('/metamyth-journey.js'),
+          fetch(cssUrl) // Use the imported URL to fetch the final CSS content.
         ]);
 
-        if (!chatbotRes.ok || !journeyRes.ok) {
-          throw new Error('Failed to fetch required JavaScript assets.');
+        if (!chatbotJsRes.ok || !journeyJsRes.ok || !cssRes.ok) {
+          throw new Error('Failed to fetch one or more required journey assets.');
         }
 
-        const chatbotJs = await chatbotRes.text();
-        const journeyJs = await journeyRes.text();
+        const chatbotJs = await chatbotJsRes.text();
+        const journeyJs = await journeyJsRes.text();
+        const mainCss = await cssRes.text();
 
-        const isLlmEnabled = import.meta.env.VITE_METAMYTH_USE_LLM === 'true';
-        const featureScript = `window.METAMYTH_USE_LLM = ${isLlmEnabled};`;
+        // Step 3: Assemble the final, self-contained HTML string.
 
-        const combinedScripts = `
-          <script>${featureScript}</script>
-          <script>${chatbotJs}</script>
-          <script>${journeyJs}</script>
-        `;
+        // Check the environment variable. It defaults to false.
+        const showResonance = import.meta.env.VITE_METAMYTH_USE_LLM === 'true';
+        // Create a script to inject this value into the iframe's window.
+        const resonanceScript = `<script>window.SHOW_RESONANCE = ${showResonance};</script>`;
 
-        let finalHtml = storedHtml;
+        // A <base> tag is crucial for any relative paths (like fonts) inside the iframe.
+        const baseTag = `<base href="${window.location.origin}">`;
 
-        const mainScriptRegex = /(<script>\n\/\/ Main Application Logic[\s\S]*?<\/script>)/;
-        const mainScriptMatch = finalHtml.match(mainScriptRegex);
+        // Create an inline <style> tag containing the entire content of your compiled index.css.
+        const styleTag = `<style>${mainCss}</style>`;
 
-        if (mainScriptMatch) {
-            const mainScriptHtml = mainScriptMatch[0];
-            finalHtml = finalHtml.replace(mainScriptHtml, '');
-            finalHtml = finalHtml.replace('</body>', `${mainScriptHtml}</body>`);
-        }
+        // Create an inline <script> tag with the combined JS content. This is the most reliable injection method.
+        const combinedScripts = `<script>${chatbotJs}\n\n${journeyJs}</script>`;
 
-        finalHtml = finalHtml.replace('</body>', `${combinedScripts}</body>`);
-        
-        const origin = window.location.origin;
-        finalHtml = finalHtml.replace('<head>', `<head><base href="${origin}">`);
-        finalHtml = finalHtml.replace('fetch(\`\${window.location.origin}/metamyth-journey.json\`)', "fetch('/metamyth-journey.json')");
+        // Inject all pieces into the fetched HTML template.
+        const finalHtml = htmlTemplate
+          .replace('<head>', `<head>${baseTag}${styleTag}`)
+          .replace('</body>', `${resonanceScript}${combinedScripts}</body>`);
 
+        // Create a Blob URL from this complete document. This is more reliable than srcDoc for complex scripts.
         const blob = new Blob([finalHtml], { type: 'text/html' });
         const url = URL.createObjectURL(blob);
-        setIframeSrc(url);
+        setIframeContent(url);
 
       } catch (error) {
         console.error("Error preparing Metamyth Journey:", error);
+        navigate('/begin', { replace: true });
       }
     };
 
-    loadJourneyAssets();
+    loadAndBuildJourney();
 
+    // Cleanup function to revoke the blob URL when the component unmounts
     return () => {
-      // Clean up the blob URL when the component unmounts
-      if (iframeSrc) URL.revokeObjectURL(iframeSrc);
+      if (iframeContent) {
+        URL.revokeObjectURL(iframeContent);
+      }
     };
   }, [navigate]);
 
-  if (!iframeSrc) {
+  if (!iframeContent) {
     return (
       <PageLayout>
         <div className="min-h-screen flex items-center justify-center">
@@ -106,11 +102,11 @@ export default function MetamythJourneyPage() {
   return (
     <PageLayout hideFooter>
       <iframe
-        src={iframeSrc}
+        src={iframeContent}
         title="Metamyth Journey"
-        scrolling="auto"
         style={{
           width: '100%',
+          height: '100%',
           flexGrow: 1,
           border: 'none',
           display: 'block'

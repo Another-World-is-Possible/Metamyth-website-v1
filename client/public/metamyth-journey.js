@@ -1,92 +1,246 @@
-// metamyth-journey.js
-
-// --- GLOBAL STATE VARIABLES ---
+// --- GLOBAL STATE & UI MAP ---
 let journeyData = {};
 let llmResponses = {};
+let validationConfig = {};
+let contentData = {};
+let stageIdToTitleMap = new Map();
+let compassChart;
 
-// --- CONSTANTS ---
+const stages = [
+    { id: 'intro', title: 'Awaken', arc: 'Preamble', icon: '✨' }, { id: 'origin', title: 'The Origin Story', arc: 'Preamble', icon: '🌱' },
+    { id: 'arc1', title: 'ARC I Intro', arc: 'ARC I', icon: '🔔' }, { id: 'dragon', title: 'The Dragon', arc: 'ARC I', icon: '🐉' },
+    { id: 'threshold', title: 'The Threshold', arc: 'ARC I', icon: '🌀' }, { id: 'shield', title: 'The Shield', arc: 'ARC I', icon: '🛡️' },
+    { id: 'pearl', title: 'The Pearl', arc: 'ARC I', icon: '⚪' }, { id: 'calling_synthesis', title: 'The Calling', arc: 'ARC I', icon: '📣' },
+    { id: 'arc2', title: 'ARC II Intro', arc: 'ARC II', icon: '🗺️' }, { id: 'star', title: 'The Star', arc: 'ARC II', icon: '⭐' },
+    { id: 'character', title: 'The Character', arc: 'ARC II', icon: '👤' }, { id: 'banner', title: 'The Banner', arc: 'ARC II', icon: '🚩' },
+    { id: 'sword', title: 'The Sword', arc: 'ARC II', icon: '⚔️' }, { id: 'quest_synthesis', title: 'The Quest', arc: 'ARC II', icon: '📜' },
+    { id: 'arc3', title: 'ARC III Intro', arc: 'ARC III', icon: '🌌' }, { id: 'looking_glass', title: 'The Looking Glass', arc: 'ARC III', icon: '🔮' },
+    { id: 'transformation', title: 'The Transformation', arc: 'ARC III', icon: '🦋' }, { id: 'globe', title: 'The Globe', arc: 'ARC III', icon: '🌍' },
+    { id: 'map', title: 'The Map', arc: 'ARC III', icon: '🗺️' }, { id: 'vision_synthesis', title: 'The Vision', arc: 'ARC III', icon: '🔭' },
+    { id: 'arc4', title: 'ARC IV Intro', arc: 'ARC IV', icon: '👣' }, { id: 'fountain', title: 'The Fountain', arc: 'ARC IV', icon: '⛲' },
+    { id: 'ethos', title: 'The Ethos', arc: 'ARC IV', icon: '📜' }, { id: 'plot', title: 'The Road', arc: 'ARC IV', icon: '🛤️' },
+    { id: 'compass', title: 'The Compass', arc: 'ARC IV', icon: '🧭' }, { id: 'mission_synthesis', title: 'The Journey', arc: 'ARC IV', icon: '🎯' },
+    { id: 'arc5', title: 'ARC V Intro', arc: 'ARC V', icon: '🏡' }, { id: 'grail', title: 'The Grail', arc: 'ARC V', icon: '🏆' },
+    { id: 'initiation', title: 'The Initiation', arc: 'ARC V', icon: '🌉' }, { id: 'campfire', title: 'The Campfire', arc: 'ARC V', icon: '🔥' },
+    { id: 'message', title: 'The Message', arc: 'ARC V', icon: '📢' }, { id: 'kindred_synthesis', title: 'The Request', arc: 'ARC V', icon: '🌟' },
+    { id: 'my_story', title: 'My Story', arc: 'Synthesis', icon: '📖' }, { id: 'legacy', title: 'The Legacy', arc: 'Legacy', icon: '🌅' },
+    { id: 'wizard', title: 'The Wizard', arc: 'Integration', icon: '🧙' }, { id: 'activate_wizard', title: 'Activate AI', arc: 'Integration', icon: '🤖' }
+];
+window.stages = stages;
 const STORAGE_KEY = 'metamythProgress';
-const stageIdToTitleMap = new Map(window.stages.map(s => [s.id, s.title]));
 
-// --- LOCAL STORAGE & PROGRESS MANAGEMENT ---
+async function initializeApp() {
+    try {
+        const [validationResponse, journeyResponse] = await Promise.all([
+            fetch('/metamyth-stage-validation.json'),
+            fetch('/metamyth-journey.json')
+        ]);
+        if (!validationResponse.ok) throw new Error(`Failed to load validation config: ${validationResponse.statusText}`);
+        validationConfig = await validationResponse.json();
+        if (!journeyResponse.ok) throw new Error(`Failed to load journey content: ${journeyResponse.statusText}`);
+        contentData = await journeyResponse.json();
+    } catch (error) {
+        console.error("Fatal Error: Could not load configuration files.", error);
+        document.getElementById('content-container').innerHTML = `<div class="content-card"><h2>Error</h2><p>Could not load journey content.</p></div>`;
+        return;
+    }
+    stageIdToTitleMap = new Map(stages.map(s => [s.id, s.title]));
+    finalizeSetup();
+}
 
+function finalizeSetup() {
+    const navContainer = document.getElementById('nav-container');
+    const contentContainer = document.getElementById('content-container');
+    let currentArc = '';
+    stages.forEach((stage, index) => {
+        if (stage.arc && stage.arc !== currentArc) {
+            currentArc = stage.arc;
+            const arcHeader = document.createElement('h3');
+            arcHeader.className = 'nav-arc-header text-lg uppercase mt-6 mb-2 px-4 glow-arc';
+            arcHeader.textContent = currentArc;
+            navContainer.appendChild(arcHeader);
+        }
+        const navLink = document.createElement('a');
+        navLink.href = '#';
+        navLink.id = `nav-${stage.id}`;
+        navLink.className = 'nav-link flex items-center rounded-md';
+        navLink.innerHTML = `<span class="mr-3">${stage.icon}</span> ${stage.title}`;
+        navLink.onclick = (e) => { e.preventDefault(); window.showStage(index); };
+        navContainer.appendChild(navLink);
+        const stageDiv = document.createElement('div');
+        stageDiv.id = stage.id;
+        stageDiv.className = 'stage-content';
+        stageDiv.innerHTML = generateStageHTML(stage, contentData[stage.id]);
+        contentContainer.appendChild(stageDiv);
+    });
+    
+    // Attach main button handlers
+    document.querySelectorAll('.stage-continue-button').forEach(button => button.addEventListener('click', handleStageContinue));
+    document.querySelectorAll('.measure-resonance-button').forEach(button => button.addEventListener('click', handleMeasureResonance));
+    
+    // Attach story button handlers
+    const storyBtnAction = () => {
+        const storyIndex = stages.findIndex(s => s.id === 'my_story');
+        if (storyIndex > -1) window.showStage(storyIndex);
+    };
+    const viewStoryBtn = document.getElementById('view-story-btn');
+    if (viewStoryBtn) viewStoryBtn.addEventListener('click', storyBtnAction);
+    
+    const debouncedSave = debounce(saveProgress, 500);
+    document.querySelectorAll('textarea[data-field-index]').forEach(input => input.addEventListener('input', debouncedSave));
+    
+    if (!loadProgress()) {
+        window.showStage(0);
+    }
+}
+
+// --- CORE LOGIC & EVENT HANDLERS ---
+function handleStageContinue(event) {
+    const stageId = event.target.dataset.stageId;
+    const stageContainer = document.getElementById(stageId);
+    if (stageContainer) {
+        const responses = [];
+        stageContainer.querySelectorAll('textarea[data-field-index]').forEach(input => {
+            const index = parseInt(input.dataset.fieldIndex, 10);
+            responses[index] = input.value;
+        });
+        if (responses.length > 0) journeyData[stageId] = responses;
+    }
+    const currentIndex = stages.findIndex(s => s.id === stageId);
+    if (currentIndex !== -1 && currentIndex < stages.length - 1) {
+        window.showStage(currentIndex + 1);
+        saveProgress();
+    }
+}
+async function handleMeasureResonance(event) {
+    const button = event.target;
+    const stageId = button.dataset.stageId;
+    const stageContainer = document.getElementById(stageId);
+    if (!stageContainer) return;
+    stageContainer.querySelectorAll('.field-feedback-display').forEach(el => { el.style.display = 'none'; el.textContent = ''; });
+    const overallFeedbackEl = stageContainer.querySelector(`#overall-feedback-${stageId}`);
+    if (overallFeedbackEl) { overallFeedbackEl.style.display = 'none'; overallFeedbackEl.textContent = ''; }
+    showLoadingOverlay();
+    button.disabled = true;
+    const inputs = Array.from(stageContainer.querySelectorAll('textarea[data-field-index]'));
+    const numInputs = inputs.length;
+    const currentStageResponses = inputs.map(input => input.value);
+    const fullJourneyContext = { ...journeyData, [stageId]: currentStageResponses };
+    const userInputForAI = formatContextForAI(fullJourneyContext, stageId, stageIdToTitleMap);
+    const modelToUse = validationConfig.model;
+    const promptObject = validationConfig.promptTemplates[stageId];
+    if (!promptObject || !promptObject.prompt || !modelToUse) {
+        displayOverallFeedback(stageContainer, "Validation Error: A prompt for this stage is missing.");
+        hideLoadingOverlay();
+        button.disabled = false;
+        return;
+    }
+    const systemPrompt = promptObject.prompt;
+    const examples = promptObject.examples || [];
+    const payload = { stageId, userInput: userInputForAI, systemPrompt, examples, model: modelToUse };
+    try {
+        const result = await sendJsonRequest(VALIDATE_STAGE_ENDPOINT, payload);
+        llmResponses[stageId] = result;
+        if (result.overallFeedback) displayOverallFeedback(stageContainer, result.overallFeedback);
+        const aiFeedback = result.fieldFeedback || [];
+        for (let i = 0; i < numInputs; i++) {
+            const fieldEl = stageContainer.querySelector(`#feedback-${stageId}-${i}`);
+            let feedbackText = "";
+            if (currentStageResponses[i].trim() === '') {
+                feedbackText = "This is a space for your reflection. What comes to mind?";
+            } else {
+                feedbackText = (aiFeedback[i] && typeof aiFeedback[i] === 'string') ? aiFeedback[i] : "MythOS is still reflecting on this point.";
+            }
+            if (fieldEl) {
+                fieldEl.textContent = feedbackText;
+                fieldEl.style.display = 'block';
+            }
+        }
+    } catch (error) {
+        displayOverallFeedback(stageContainer, `An API error occurred: ${error.message}`);
+    } finally {
+        hideLoadingOverlay();
+        button.disabled = false;
+        saveProgress();
+    }
+}
+
+// --- LOCAL STORAGE & PROGRESS ---
 function saveProgress() {
     try {
         const activeStage = document.querySelector('.stage-content.active');
         const lastStageId = activeStage ? activeStage.id : 'intro';
-        
         const formInputs = {};
-        document.querySelectorAll('textarea[data-field-index], .compass-input').forEach(input => {
-            const stageEl = input.closest('.stage-content');
-            if (!stageEl) return;
-            const stageId = stageEl.id;
+        document.querySelectorAll('textarea[data-field-index]').forEach(input => {
+            const stageId = input.closest('.stage-content').id;
             const fieldIndex = input.dataset.fieldIndex;
-            const key = `${stageId}-${fieldIndex}`;
-            if (input.value) {
-                formInputs[key] = input.value;
+            formInputs[`${stageId}-${fieldIndex}`] = input.value;
+        });
+        const feedbackContents = {};
+        document.querySelectorAll('.feedback-container, .field-feedback-display').forEach(el => {
+            if (el.style.display !== 'none' && el.textContent) {
+                feedbackContents[el.id] = el.innerHTML;
             }
         });
-
-        const progress = {
-            lastStageId: lastStageId,
-            journeyData: journeyData,
-            formInputs: formInputs,
-            llmResponses: llmResponses
-        };
-
+        const progress = { lastStageId, journeyData, formInputs, llmResponses, feedbackContents };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
-    } catch (error) {
-        console.error("Failed to save progress to localStorage:", error);
-    }
+    } catch (error) { console.error("Failed to save progress:", error); }
 }
 
 function loadProgress() {
     try {
         const savedProgress = localStorage.getItem(STORAGE_KEY);
-        if (!savedProgress) {
-            console.log("No saved progress found.");
-            return null;
-        }
-
+        if (!savedProgress) return null;
         const progress = JSON.parse(savedProgress);
-
-        if (progress.journeyData) {
-            journeyData = progress.journeyData;
-        }
-        
-        if (progress.llmResponses) {
-            llmResponses = progress.llmResponses;
-        }
-
+        journeyData = progress.journeyData || {};
+        llmResponses = progress.llmResponses || {};
         if (progress.formInputs) {
             Object.keys(progress.formInputs).forEach(key => {
                 const [stageId, fieldIndex] = key.split('-');
                 const input = document.querySelector(`#${stageId} [data-field-index="${fieldIndex}"]`);
-                if (input) {
-                    input.value = progress.formInputs[key];
-                }
+                if (input) input.value = progress.formInputs[key];
             });
         }
-
-        if (progress.lastStageId) {
-            const lastStageIndex = window.stages.findIndex(s => s.id === progress.lastStageId);
-            if (lastStageIndex !== -1) {
-                window.showStage(lastStageIndex);
-            } else {
-                window.showStage(0);
-            }
-        } else {
-            window.showStage(0);
+        if (progress.feedbackContents) {
+            Object.keys(progress.feedbackContents).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) { el.innerHTML = progress.feedbackContents[id]; el.style.display = 'block'; }
+            });
         }
-        
-        console.log("Progress successfully restored.");
+        const lastStageIndex = stages.findIndex(s => s.id === progress.lastStageId);
+        window.showStage(lastStageIndex !== -1 ? lastStageIndex : 0);
         return progress;
-
     } catch (error) {
-        console.error("Failed to load or parse progress from localStorage:", error);
+        console.error("Failed to load progress:", error);
         window.showStage(0);
         return null;
     }
+}
+
+// --- UI RENDERING & HELPERS ---
+function formatContextForAI(fullJourneyContext, currentStageId, stageMap) {
+    let formattedText = "--- User's Journey So Far ---\n\n";
+    for (const stageId in fullJourneyContext) {
+        if (stageId !== currentStageId && Array.isArray(fullJourneyContext[stageId])) {
+            const stageTitle = stageMap.get(stageId) || stageId;
+            const answers = fullJourneyContext[stageId];
+            if (answers.some(ans => ans && ans.trim() !== '')) {
+                formattedText += `**${stageTitle}**:\n`;
+                answers.forEach((answer, index) => {
+                    if (answer && answer.trim() !== '') formattedText += `${index + 1}. ${answer}\n`;
+                });
+                formattedText += "\n";
+            }
+        }
+    }
+    const currentStageTitle = stageMap.get(currentStageId) || currentStageId;
+    const currentAnswers = fullJourneyContext[currentStageId] || [];
+    formattedText += `--- Current Stage For Review: ${currentStageTitle} ---\n`;
+    currentAnswers.forEach((answer, index) => {
+        const text = (answer && answer.trim() !== '') ? answer : '[This field was left empty]';
+        formattedText += `${index + 1}. ${text}\n`;
+    });
+    return formattedText;
 }
 
 function debounce(func, delay) {
@@ -97,127 +251,245 @@ function debounce(func, delay) {
     };
 }
 
+function displayOverallFeedback(stageContainer, message) {
+  const feedbackEl = stageContainer.querySelector(`#overall-feedback-${stageContainer.id}`);
+  if (feedbackEl) {
+    feedbackEl.textContent = message;
+    feedbackEl.style.display = 'block';
+  }
+}
 
-// --- CORE INTERACTION LOGIC ---
+function generateStageHTML(stage, content) {
+    if (!content) return `<div class="content-card"><h2 class="text-4xl text-center">${stage.title}</h2><p>Content for this stage is missing.</p></div>`;
+    const buttonText = content.buttonText || 'Continue';
 
-async function handleStageSubmit(event) {
-  const button = event.target;
-  const stageId = button.dataset.stageId;
-
-  if (window.METAMYTH_USE_LLM !== true) {
-    console.log(`LLM validation feature not enabled. Auto-continuing from stage "${stageId}".`);
-    const currentIndex = window.stages.findIndex(s => s.id === stageId);
-    if (currentIndex !== -1 && currentIndex < window.stages.length - 1) {
-        window.showStage(currentIndex + 1);
-        saveProgress();
+    // This block for the 'intro' page is correct and complete.
+    if (stage.id === 'intro') {
+        const proseHTML = (content.prose || []).map(p => `<p class="text-lg">${p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>`).join('');
+        const calloutProse = (content.callout?.prose || []).map((p, i) => {
+            if (i === 2) return `<p class="text-center text-2xl font-bold text-gold mt-4">${p}</p>`;
+            if (i === 3) return `<p class="text-center mt-4 text-lg">${p}</p>`;
+            if (i === 1) return `<p class="mt-4">${p}</p>`;
+            return `<p>${p}</p>`;
+        }).join('');
+        const calloutHTML = content.callout ? `<div class="bg-black bg-opacity-30 border border-yellow-400 rounded-lg p-6 mt-8"><h3 class="text-2xl mb-4 text-gold">${content.callout.title}</h3>${calloutProse}</div>` : '';
+        return `<div class="content-card">
+            <div class="text-center">
+                <h1 class="text-5xl mb-2 text-gold text-center">${content.title}</h1>
+                <h2 class="text-2xl mb-4 text-white text-center">${content.subtitle}</h2>
+                <p class="text-lg text-gold mb-2 text-center">${content.tagline}</p>
+                <div class="mt-8 text-center">
+                    <h3 class="text-4xl mb-4 text-gold">${content.header}</h3>
+                    <p class="text-xl mb-6 text-white">${content.prompt}</p>
+                </div>
+            </div>
+            <div class="prose max-w-none mx-auto mt-8">${proseHTML}${calloutHTML}</div>
+            <div class="text-center mt-10">
+                <button class="cta-button-base cta-button-teal stage-continue-button" data-stage-id="${stage.id}">${buttonText}</button>
+            </div>
+        </div>`;
     }
-    return;
-  }
-  
-  console.log(`LLM validation feature is ON for stage "${stageId}".`);
-  const stageContainer = document.getElementById(stageId);
-  if (!stageContainer) return;
 
-  showLoadingOverlay(); 
-  button.disabled = true;
-  clearPreviousErrors(stageContainer);
-
-  const responses = [];
-  document.querySelectorAll(`#${stageId} [data-field-index]`).forEach(input => {
-    const index = parseInt(input.dataset.fieldIndex, 10);
-    responses[index] = input.value;
-  });
-
-  if (responses.length === 0) {
-      const currentIndex = window.stages.findIndex(s => s.id === stageId);
-      if (currentIndex !== -1 && currentIndex < window.stages.length - 1) {
-        window.showStage(currentIndex + 1);
-      }
-      hideLoadingOverlay();
-      button.disabled = false;
-      saveProgress();
-      return;
-  }
-
-  const promptTemplateId = button.dataset.promptTemplate || 'prompt-template-standard';
-  const context = { stageTitle: stageIdToTitleMap.get(stageId) || stageId };
-  const persona = updatePersonaWithTemplate(promptTemplateId, context);
-  if (!persona) {
-    hideLoadingOverlay();
-    button.disabled = false;
-    return;
-  }
-  const payload = { persona, user_input: JSON.stringify(responses) };
-
-  try {
-    const result = await sendJsonRequest(VALIDATE_STAGE_ENDPOINT, payload);
+    // This block for the 'my_story' page is correct and complete.
+    if (stage.id === 'my_story') {
+         return `<div class="content-card"><div class="flex items-center mb-6"><span class="artifiction-icon">${stage.icon}</span><h2 class="text-4xl glow-title">${content.title || 'My Metamyth Story'}</h2></div><div class="prose max-w-none mb-8"><p>${content.prose}</p></div><div class="space-y-6"><button id="generate-story-btn" class="cta-button-base cta-button-gold mb-6">${content.generateButtonText}</button><div id="compiled-story" class="bg-black bg-opacity-30 border border-teal-400 rounded-lg p-6 min-h-[24rem]"><div class="text-center text-gray-400 italic">${content.initialText}</div></div><div class="text-center mt-6"><button id="export-story-btn" class="cta-button-base cta-button-teal" style="display: none;">${content.exportButtonText}</button></div></div><div class="text-center mt-10"><button class="cta-button-base cta-button-teal stage-continue-button" data-stage-id="${stage.id}">${buttonText}</button></div></div>`;
+    }
     
-    llmResponses[stageId] = result;
+    // --- CORRECTED DEFAULT TEMPLATE FOR ALL OTHER STAGES ---
+    const hasFields = content.fields && content.fields.length > 0;
+    const hasSynthesis = !!content.synthesis;
 
-    if (result.continue === true) {
-      journeyData[stageId] = responses;
-      const currentIndex = window.stages.findIndex(s => s.id === stageId);
-      if (currentIndex !== -1 && currentIndex < window.stages.length - 1) {
-        window.showStage(currentIndex + 1);
-      }
+    if (stage.id === 'compass') {
+        const pointsHTML = (content.points || []).map((point, index) => `
+            <div>
+                <label class="font-semibold text-lg block mb-2 text-gold">${point.label}</label>
+                <p class="text-sm italic mb-3">${point.prompt}</p>
+                <input type="range" min="1" max="10" value="5" id="compass-input-${index}" class="w-full compass-input" data-field-index="${index}">
+                <div class="flex justify-between text-xs text-slate-400 mt-1">
+                    <span>1</span>
+                    <span>10</span>
+                </div>
+            </div>
+        `).join('<div class="ornamental-divider"></div>');
+
+        const themeColor = content.synthesis?.themeColor || 'gold';
+        const borderColorClass = themeColor === 'teal' ? 'border-teal-400' : `border-${themeColor}`;
+        const textColorClass = themeColor === 'teal' ? 'text-teal-400' : `text-${themeColor}`;
+        const synthesisHTML = content.synthesis ? `<div class="synthesis-box mt-8 ${borderColorClass}"><label class="font-semibold text-lg block mb-2 ${textColorClass}">${content.synthesis.label}</label><p class="text-sm mb-3 italic">${content.synthesis.prompt}</p><textarea data-field-index="${(content.points || []).length}" rows="4" placeholder="${content.synthesis.placeholder || 'Synthesize your thoughts here...'}"></textarea><div class="field-feedback-display" id="feedback-${stage.id}-${(content.points || []).length}"></div></div>` : '';
+
+        const resonanceButtonHTML = window.SHOW_RESONANCE ? `<button class="cta-button-base cta-button-gold measure-resonance-button" data-stage-id="${stage.id}">Measure Resonance</button>` : '';
+
+        return `<div class="content-card"><h2 class="text-4xl text-center mb-4"><span class="artifiction-icon">${stage.icon}</span>${content.title}</h2><div class="prose text-center max-w-none mb-8"><p class="text-lg font-semibold">${content.prose}</p></div><div class="ornamental-divider"></div><div class="flex flex-wrap -mx-4"><div class="w-full lg:w-1/2 px-4 space-y-8">${pointsHTML}</div><div class="w-full lg:w-1/2 px-4 flex items-center justify-center"><div class="chart-container relative w-full max-w-md mx-auto"><canvas id="compassChart"></canvas></div></div></div>${synthesisHTML}<div class="feedback-container" id="overall-feedback-${stage.id}" style="display: none;"></div><div class="text-center mt-10 flex flex-col sm:flex-row justify-center items-center">${resonanceButtonHTML}<button class="cta-button-base cta-button-teal stage-continue-button" data-stage-id="${stage.id}">${content.buttonText || 'Continue'}</button></div></div>`;
+    }
+
+    const isValidationStage = hasFields || hasSynthesis;
+
+    // This prose/subtitle is now correctly styled with the default text color (not gold).
+    const proseHTML = `<div class="prose text-center max-w-none mb-8"><p class="text-lg font-semibold">${Array.isArray(content.prose) ? content.prose.join('</p><p>') : content.prose || ''}</p></div>`;
+    
+    let fieldsHTML = '';
+    if (hasFields) {
+        // FIXED: Added 'text-yellow-400' class to the question labels
+        fieldsHTML = (content.fields || []).map((field, index) => `
+            <div>
+                <label class="font-semibold text-lg block mb-2 text-gold">${field.label}</label>
+                <p class="text-sm mb-3 italic">${field.prompt || ''}</p>
+                <textarea data-field-index="${index}" rows="4" placeholder="${field.placeholder || 'Your reflections...'}"></textarea>
+                <div class="field-feedback-display" id="feedback-${stage.id}-${index}"></div>
+            </div>
+        `).join('<div class="ornamental-divider"></div>');
+    }
+
+    let synthesisHTML = '';
+    if (hasSynthesis) {
+        const synthesisIndex = hasFields ? content.fields.length : 0;
+        const themeColor = content.synthesis.themeColor || 'gold';
+        const borderColorClass = themeColor === 'teal' ? 'border-teal-400' : `border-${themeColor}`;
+        const textColorClass = themeColor === 'teal' ? 'text-teal-400' : `text-${themeColor}`;
+
+        synthesisHTML = `
+            <div class="synthesis-box mt-8 ${borderColorClass}">
+                <label class="font-semibold text-lg block mb-2 ${textColorClass}">${content.synthesis.label}</label>
+                <p class="text-sm mb-3 italic">${content.synthesis.prompt || ''}</p>
+                <textarea data-field-index="${synthesisIndex}" rows="6" placeholder="${content.synthesis.placeholder || 'Synthesize your thoughts here...'}"></textarea>
+                <div class="field-feedback-display" id="feedback-${stage.id}-${synthesisIndex}"></div>
+            </div>`;
+    }
+
+    let buttonsHTML = '';
+    if (isValidationStage) {
+        const resonanceButtonHTML = window.SHOW_RESONANCE ? `<button class="cta-button-base cta-button-gold measure-resonance-button" data-stage-id="${stage.id}">Measure Resonance</button>` : '';
+        buttonsHTML = `
+            <div class="feedback-container" id="overall-feedback-${stage.id}" style="display: none;"></div>
+            <div class="text-center mt-10 flex flex-col sm:flex-row justify-center items-center">
+                ${resonanceButtonHTML}
+                <button class="cta-button-base cta-button-teal stage-continue-button" data-stage-id="${stage.id}">
+                    ${content.buttonText || 'Continue'}
+                </button>
+            </div>
+        `;
     } else {
-      displayFailureSummary(stageContainer, result.summary);
-      highlightInvalidFields(stageContainer, result.invalidIndexes);
+        buttonsHTML = `
+            <div class="text-center mt-10">
+                <button class="cta-button-base cta-button-teal stage-continue-button" data-stage-id="${stage.id}">
+                    ${buttonText}
+                </button>
+            </div>
+        `;
     }
-  } catch (error) {
-    displayFailureSummary(stageContainer, `An unexpected error occurred: ${error.message}`);
-  } finally {
-    hideLoadingOverlay();
-    button.disabled = false;
-    saveProgress();
-  }
+    
+    return `
+        <div class="content-card">
+            <h2 class="text-4xl text-center mb-4"><span class="artifiction-icon">${stage.icon || '🔹'}</span>${content.title}</h2>
+            ${content.subtitle ? `<p class="text-lg font-semibold text-gold text-center">${content.subtitle}</p>` : ''}${proseHTML}
+            ${content.header ? `<h3 class="text-xl mt-6 text-gold">${content.header}</h3>` : ''}
+            <div class="ornamental-divider"></div>
+            <div class="space-y-8">${fieldsHTML}</div>
+            ${synthesisHTML}
+            ${buttonsHTML}
+        </div>
+    `;
 }
 
-
-// --- UI HELPER FUNCTIONS ---
-
-function displayFailureSummary(stageContainer, summaryMessage) {
-  const summaryElement = stageContainer.querySelector('.stage-summary-error');
-  if (summaryElement) {
-    summaryElement.textContent = summaryMessage;
-    summaryElement.style.display = 'block';
-  }
+function showStage(index) {
+    document.querySelectorAll('.stage-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+    const stage = stages[index];
+    if (!stage) return;
+    const stageEl = document.getElementById(stage.id);
+    if (stageEl) stageEl.classList.add('active');
+    const navEl = document.getElementById(`nav-${stage.id}`);
+    if (navEl) navEl.classList.add('active');
+    const mainEl = document.querySelector('main');
+    if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+    updateProgressBar(index);
+    updateArtifactIndicator(stage, index);
+    if (stage.id === 'compass') setTimeout(initializeCompass, 100);
+    if (stage.id === 'my_story') setTimeout(initializeStoryGeneration, 100);
 }
 
-function highlightInvalidFields(stageContainer, invalidIndexes = []) {
-  invalidIndexes.forEach(index => {
-    const input = stageContainer.querySelector(`[data-field-index="${index}"]`);
-    if (input) {
-      input.classList.add('invalid-field');
-    }
-  });
+function updateProgressBar(currentIndex) {
+    const progressPercentage = `${Math.round(((currentIndex + 1) / stages.length) * 100)}%`;
+    const progressBar = document.getElementById('progress-bar');
+    if (progressBar) progressBar.style.width = progressPercentage;
 }
 
-function clearPreviousErrors(stageContainer) {
-  const summaryElement = stageContainer.querySelector('.stage-summary-error');
-  if (summaryElement) {
-    summaryElement.textContent = '';
-    summaryElement.style.display = 'none';
-  }
-  stageContainer.querySelectorAll('.invalid-field').forEach(el => {
-    el.classList.remove('invalid-field');
-  });
+function updateArtifactIndicator(currentStage, index) {
+    const progressText = `${index + 1}/${stages.length} Complete`;
+    const iconEl = document.getElementById('current-artifact-icon');
+    const titleEl = document.getElementById('current-artifact-title');
+    const progressEl = document.getElementById('current-progress');
+    if (iconEl) iconEl.textContent = currentStage.icon;
+    if (titleEl) titleEl.textContent = currentStage.title;
+    if (progressEl) progressEl.textContent = progressText;
 }
 
-// --- INITIALIZATION FUNCTION ---
-
-function finalizeSetup() {
-    document.querySelectorAll('.stage-submit-button').forEach(button => {
-        button.addEventListener('click', handleStageSubmit);
+function initializeCompass() { 
+    initializeCompassChart(); 
+    document.querySelectorAll('.compass-input').forEach(input => {
+        input.removeEventListener('input', updateCompassChart);
+        input.addEventListener('input', updateCompassChart);
     });
-
-    const debouncedSave = debounce(saveProgress, 500);
-
-    document.querySelectorAll('textarea[data-field-index], .compass-input').forEach(input => {
-        input.addEventListener('input', debouncedSave);
-    });
-
-    if (!loadProgress()) {
-        window.showStage(0);
-    }
 }
+
+function initializeCompassChart() { 
+    const ctx = document.getElementById('compassChart'); 
+    if (!ctx) return; 
+    if (compassChart) compassChart.destroy(); 
+    const labels = (contentData.compass?.points || []).map(p => p.label); 
+    const data = labels.map((_, index) => {
+        const input = document.getElementById(`compass-input-${index}`);
+        return input ? parseInt(input.value) : 5;
+    });
+    compassChart = new Chart(ctx, {type: 'radar', data: { labels: labels, datasets: [{ label: 'Alignment', data: data, borderColor: 'var(--accent-teal)', backgroundColor: 'rgba(20, 184, 166, 0.2)' }] }, options: { scales: { r: { min: 0, max: 10, ticks: { display: false } } }, plugins: { legend: { display: false } } } });
+}
+
+function updateCompassChart() { 
+    if (!compassChart) return; 
+    compassChart.data.datasets[0].data = compassChart.data.labels.map((_, index) => parseInt(document.getElementById(`compass-input-${index}`)?.value || '5')); 
+    compassChart.update();
+}
+
+function initializeStoryGeneration() { 
+    const generateBtn = document.getElementById('generate-story-btn'); 
+    const exportBtn = document.getElementById('export-story-btn'); 
+    const storyContainer = document.getElementById('compiled-story'); 
+    if (generateBtn) generateBtn.onclick = () => { 
+        storyContainer.innerHTML = generateCompleteStory(); 
+        if(exportBtn) exportBtn.style.display = 'inline-block'; 
+    }; 
+    if (exportBtn) exportBtn.onclick = () => { 
+        const blob = new Blob([storyContainer.innerText], { type: 'text/plain;charset=utf-8' }); 
+        const url = URL.createObjectURL(blob); 
+        const a = document.createElement('a'); 
+        a.href = url; a.download = 'my-metamyth-story.txt'; 
+        document.body.appendChild(a); 
+        a.click(); 
+        document.body.removeChild(a); 
+        URL.revokeObjectURL(url); 
+    }; 
+}
+
+function generateCompleteStory() { 
+    const synthesisOrder = ['origin', 'calling_synthesis', 'quest_synthesis', 'vision_synthesis', 'mission_synthesis', 'kindred_synthesis', 'legacy']; 
+    let storyHtml = `<div class="prose max-w-none text-left"><h3 class="text-3xl text-gold">${contentData.my_story.title}</h3>`;
+    let contentAdded = false; 
+    synthesisOrder.forEach(stageId => { 
+        const stageContent = contentData[stageId]; 
+        const stageData = window.journeyData?.[stageId]; 
+        if (stageContent?.synthesis && stageData) { 
+            const synthesisText = stageData[stageData.length - 1]; 
+            if (synthesisText?.trim()) { 
+                storyHtml += `<h4 class="text-2xl mt-8 text-teal-400">${stageContent.synthesis.label}</h4><p class="border-l-4 border-gold pl-4 py-2 bg-black/20">${synthesisText.replace(/\n/g, '<br>')}</p>`; 
+                contentAdded = true; 
+            } 
+        } 
+    }); 
+    if (!contentAdded) {
+        storyHtml += `<p class="italic text-gray-400 mt-4">${contentData.my_story.initialText}</p>`;
+    }
+    return storyHtml + '</div>'; 
+}
+
+// --- START THE APPLICATION ---
+initializeApp();
