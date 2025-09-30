@@ -10,6 +10,7 @@ interface Question {
   id: number;
   title: string;
   subtitle: string;
+  description: string;
   type: "radio" | "checkbox" | "text";
   options?: string[];
   placeholder?: string;
@@ -18,15 +19,17 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    title: "ORIGIN",
+    title: "QUESTION 1: ORIGIN",
     subtitle: "What Brought You to This Moment?",
+    description: "Every hero's journey begins with what came before—the experiences that forged you, the struggles that strengthened you, the commitments that shaped you.\n\nTell us your story: What brought you here? What have you already tried to move your life or work forward? What have you invested—time, money, energy, heart—in transformation, growth, or building something meaningful?",
     type: "text",
-    placeholder: "Every hero's journey begins with what came before—the experiences that forged you, the struggles that strengthened you, the commitments that shaped you.\n\nTell us your story: What brought you here? What have you already tried to move your life or work forward? What have you invested—time, money, energy, heart—in transformation, growth, or building something meaningful?"
+    placeholder: "Share your story..."
   },
   {
     id: 2,
-    title: "THE DRAGON",
+    title: "QUESTION 2: THE DRAGON",
     subtitle: "The Challenge You Can No Longer Ignore",
+    description: "Every meaningful quest involves facing what blocks your path. What story challenges are you currently navigating?",
     type: "checkbox",
     options: [
       "Clarity — I need to understand my unique narrative and contribution clearly",
@@ -42,8 +45,9 @@ const questions: Question[] = [
   },
   {
     id: 3,
-    title: "THE AUTHOR",
+    title: "QUESTION 3: THE AUTHOR",
     subtitle: "Claiming Your Power as Reality Author",
+    description: "You hold the pen. Where are you in claiming authorship of your destiny?",
     type: "radio",
     options: [
       "Leading the story — I actively shape organizational narrative and direction",
@@ -56,8 +60,9 @@ const questions: Question[] = [
   },
   {
     id: 4,
-    title: "THE VISION",
+    title: "QUESTION 4: THE VISION",
     subtitle: "What Victory Looks Like",
+    description: "When your story reaches its triumphant conclusion—when you've authored the reality you came here to create—what transformations become possible?",
     type: "checkbox",
     options: [
       "Crystal clarity — I know exactly who I am, what I offer, and why it matters deeply",
@@ -72,8 +77,9 @@ const questions: Question[] = [
   },
   {
     id: 5,
-    title: "THE PATH",
+    title: "QUESTION 5: THE PATH",
     subtitle: "How You Want to Create This Transformation",
+    description: "Different journeys serve different moments. How do you want to create this transformation?",
     type: "radio",
     options: [
       "Intensive Direct Work — I want personalized 1-on-1 guidance to transform my organization's story, brand, and positioning at the highest level",
@@ -83,8 +89,9 @@ const questions: Question[] = [
   },
   {
     id: 6,
-    title: "THE INVESTMENT",
+    title: "QUESTION 6: THE INVESTMENT",
     subtitle: "The Value of Your Transformation",
+    description: "When you imagine living the story you just envisioned—fully aligned, magnetically attractive, creating the impact you're meant for—what level of investment matches that transformation?",
     type: "radio",
     options: [
       "$15K-50K+ — Maximum commitment for intensive personalized support",
@@ -97,8 +104,9 @@ const questions: Question[] = [
   },
   {
     id: 7,
-    title: "THE STAKES",
+    title: "QUESTION 7: THE STAKES",
     subtitle: "The Cost of the Unchanged Story",
+    description: "If you stay exactly where you are now—living the same story, facing the same challenges, following the same patterns—what does your reality look like 12 months from now?",
     type: "radio",
     options: [
       "Potential withers — My gifts remain unrealized while I perform in stories that drain my soul",
@@ -111,8 +119,9 @@ const questions: Question[] = [
   },
   {
     id: 8,
-    title: "THE THRESHOLD",
+    title: "QUESTION 8: THE THRESHOLD",
     subtitle: "How Badly Do You Want This?",
+    description: "You're standing at the threshold of transformation. The old story ends whether we're ready or not. Those who step through now become the authors of what comes next. Those who wait remain characters in someone else's plot.\n\nHow urgent is this transformation for you?",
     type: "radio",
     options: [
       "Lightning strikes now — I'm ready to step through immediately. This can't wait.",
@@ -128,6 +137,7 @@ export default function QUESTionaire() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string | string[]>>({});
   const [showCompletion, setShowCompletion] = useState(false);
+  const [showOpening, setShowOpening] = useState(true);
 
   const question = questions[currentQuestion];
   const isLastQuestion = currentQuestion === questions.length - 1;
@@ -161,12 +171,19 @@ export default function QUESTionaire() {
     } else {
       setCurrentQuestion(currentQuestion + 1);
     }
+    window.scrollTo(0, 0);
   };
 
   const handleBack = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
+      window.scrollTo(0, 0);
     }
+  };
+
+  const handleBegin = () => {
+    setShowOpening(false);
+    window.scrollTo(0, 0);
   };
 
   const determineRoute = () => {
@@ -191,213 +208,289 @@ export default function QUESTionaire() {
     }
   };
 
-  if (showCompletion) {
+  // Opening screen
+  if (showOpening) {
     return (
-      <div className="min-h-screen bg-deep-black text-cream-white flex items-center justify-center p-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="max-w-3xl w-full"
-        >
-          <Card className="backdrop-blur-lg bg-mystical-teal/10 border-2 border-ancient-gold shadow-2xl">
-            <CardContent className="p-12">
-              <h2 className="typography-h2 text-ancient-gold text-center mb-6 font-angle">
-                Your Journey Awaits
-              </h2>
-              <div className="space-y-6 text-center">
-                <p className="typography-lead text-cream-white font-emerland">
-                  The old story is ending. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable.
-                </p>
-                <p className="typography-body text-cream-white font-emerland">
-                  Your responses reveal where you are in this transformation and illuminate the specific support that could accelerate your journey.
-                </p>
-                <p className="typography-body text-cream-white font-emerland">
-                  Within 48 hours, we'll reach out with the path designed for you—whether that's intensive direct work to transform your organizational story or community transformation to discover and build your authentic narrative.
-                </p>
-                <p className="typography-h3 text-mystical-teal font-angle mt-8">
-                  What reality will you create?
-                </p>
-              </div>
-              <div className="mt-12 flex justify-center">
-                <Button
-                  onClick={determineRoute}
-                  className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-xl px-12 py-6"
-                >
-                  Discover Your Path
-                  <ExternalLink className="ml-2 w-5 h-5" />
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-h-screen bg-deep-black text-cream-white flex items-center justify-center p-4">
-      <div className="max-w-4xl w-full">
-        {/* Opening - Only shown on first question */}
-        {currentQuestion === 0 && (
+      <div className="min-h-screen overflow-y-auto" 
+           style={{
+             backgroundColor: '#1D4241',
+             backgroundImage: `radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%),
+                              linear-gradient(45deg, rgba(29,66,65,0.9), rgba(29,66,65,0.8)), 
+                              radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
+           }}>
+        <div className="pt-24 pb-12 px-4 min-h-screen flex items-center justify-center">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-12 text-center"
+            className="max-w-4xl mx-auto"
           >
-            <h1 className="typography-h1 text-ancient-gold mb-6 font-angle">
-              Are You a Victim of Circumstance or an Author of Reality?
-            </h1>
-            <div className="space-y-4 text-cream-white font-emerland max-w-3xl mx-auto">
-              <p className="typography-lead">
-                Most people live as background characters in stories they never chose—following scripts written by others, performing roles assigned by circumstances, competing in games they didn't design.
-              </p>
-              <p className="typography-body">
-                They wake up one day—successful, maybe even admired—and realize they're living someone else's story. The life they built doesn't match the life they were meant to live.
-              </p>
-              <p className="typography-body font-bold text-mystical-teal">
-                Here's what changes everything: Reality is made of stories. Whoever controls the narrative controls the future.
-              </p>
-              <p className="typography-body">
-                The old stories that once served us are ending. Not because they're being taken away, but because we're outgrowing them. We're being called to evolve—to stop being characters and become authors, to recognize the pen has always been in our hands.
-              </p>
-              <p className="typography-body italic">
-                This questionnaire reveals where you are in that awakening. Eight questions showing whether you're living your story or someone else's, whether this is your moment to claim authorship.
-              </p>
-            </div>
-          </motion.div>
-        )}
+            <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-12">
+              <CardContent>
+                <h1 className="typography-h1 text-ancient-gold mb-8 text-center font-angle" 
+                    style={{
+                      textShadow: `0 0 20px rgba(212, 175, 55, 0.4), 
+                                  0 0 40px rgba(212, 175, 55, 0.2),
+                                  0 4px 6px rgba(0, 0, 0, 0.5)`
+                    }}>
+                  Are You a Victim of Circumstance or an Author of Reality?
+                </h1>
+                
+                <div className="space-y-6 text-cream-white font-emerland text-lg leading-relaxed mb-12">
+                  <p>
+                    Most people live as background characters in stories they never chose—following scripts written by others, performing roles assigned by circumstances, competing in games they didn't design.
+                  </p>
+                  <p>
+                    They wake up one day—successful, maybe even admired—and realize they're living someone else's story. The life they built doesn't match the life they were meant to live.
+                  </p>
+                  <p className="font-bold text-mystical-teal text-xl">
+                    Here's what changes everything: Reality is made of stories. Whoever controls the narrative controls the future.
+                  </p>
+                  <p>
+                    The old stories that once served us are ending. Not because they're being taken away, but because we're outgrowing them. We're being called to evolve—to stop being characters and become authors, to recognize the pen has always been in our hands.
+                  </p>
+                  <p className="italic text-xl">
+                    This questionnaire reveals where you are in that awakening. Eight questions showing whether you're living your story or someone else's, whether this is your moment to claim authorship.
+                  </p>
+                </div>
 
-        {/* Progress bar */}
-        <div className="mb-8">
-          <div className="flex justify-between mb-2">
-            <span className="text-ancient-gold font-angle">
-              Question {currentQuestion + 1} of {questions.length}
-            </span>
-            <span className="text-mystical-teal font-angle">
-              {Math.round(((currentQuestion + 1) / questions.length) * 100)}%
-            </span>
-          </div>
-          <div className="h-2 bg-deep-black/50 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-ancient-gold to-mystical-teal"
-              initial={{ width: 0 }}
-              animate={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-        </div>
-
-        {/* Question card */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentQuestion}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Card className="backdrop-blur-lg bg-mystical-teal/10 border-2 border-ancient-gold shadow-2xl">
-              <CardContent className="p-8">
-                <h2 className="typography-h2 text-ancient-gold mb-2 font-angle">
-                  {question.title}
-                </h2>
-                <h3 className="typography-h3 text-mystical-teal mb-8 font-emerland">
-                  {question.subtitle}
-                </h3>
-
-                {question.type === "text" && (
-                  <div className="space-y-4">
-                    <p className="text-cream-white font-emerland whitespace-pre-line mb-4">
-                      {question.placeholder}
-                    </p>
-                    <Textarea
-                      value={(answers[question.id] as string) || ""}
-                      onChange={(e) => handleTextAnswer(e.target.value)}
-                      className="min-h-[200px] bg-deep-black/50 border-mystical-teal/50 text-cream-white font-emerland"
-                      placeholder="Share your story..."
-                    />
-                  </div>
-                )}
-
-                {question.type === "radio" && question.options && (
-                  <div className="space-y-3">
-                    {question.options.map((option, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleAnswer(option)}
-                        className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 font-emerland ${
-                          answers[question.id] === option
-                            ? "border-ancient-gold bg-ancient-gold/20 text-cream-white"
-                            : "border-mystical-teal/30 bg-deep-black/30 text-cream-white hover:border-mystical-teal hover:bg-mystical-teal/10"
-                        }`}
-                      >
-                        {option}
-                      </button>
-                    ))}
-                  </div>
-                )}
-
-                {question.type === "checkbox" && question.options && (
-                  <div className="space-y-3">
-                    <p className="text-cream-white/70 font-emerland mb-4 italic">
-                      Select all that apply:
-                    </p>
-                    {question.options.map((option, index) => {
-                      const isSelected = (answers[question.id] as string[] || []).includes(option);
-                      return (
-                        <button
-                          key={index}
-                          onClick={() => handleAnswer(option, true)}
-                          className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-300 font-emerland ${
-                            isSelected
-                              ? "border-ancient-gold bg-ancient-gold/20 text-cream-white"
-                              : "border-mystical-teal/30 bg-deep-black/30 text-cream-white hover:border-mystical-teal hover:bg-mystical-teal/10"
-                          }`}
-                        >
-                          <div className="flex items-center">
-                            <div
-                              className={`w-5 h-5 rounded border-2 mr-3 flex items-center justify-center ${
-                                isSelected ? "border-ancient-gold bg-ancient-gold" : "border-mystical-teal"
-                              }`}
-                            >
-                              {isSelected && (
-                                <svg className="w-3 h-3 text-deep-black" fill="currentColor" viewBox="0 0 20 20">
-                                  <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
-                                </svg>
-                              )}
-                            </div>
-                            {option}
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* Navigation buttons */}
-                <div className="flex justify-between mt-8">
+                <div className="flex justify-center">
                   <Button
-                    onClick={handleBack}
-                    disabled={currentQuestion === 0}
-                    variant="outline"
-                    className="border-mystical-teal text-mystical-teal hover:bg-mystical-teal/20"
+                    onClick={handleBegin}
+                    size="lg"
+                    className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-xl px-12 py-6"
                   >
-                    <ChevronLeft className="w-5 h-5 mr-2" />
-                    Back
-                  </Button>
-                  <Button
-                    onClick={handleNext}
-                    disabled={!canProceed()}
-                    className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold"
-                  >
-                    {isLastQuestion ? "Complete" : "Next"}
-                    <ChevronRight className="w-5 h-5 ml-2" />
+                    Begin Your Journey
+                    <ChevronRight className="ml-2 w-6 h-6" />
                   </Button>
                 </div>
               </CardContent>
             </Card>
           </motion.div>
-        </AnimatePresence>
+        </div>
+      </div>
+    );
+  }
+
+  // Completion screen
+  if (showCompletion) {
+    return (
+      <div className="min-h-screen overflow-y-auto" 
+           style={{
+             backgroundColor: '#1D4241',
+             backgroundImage: `radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%),
+                              linear-gradient(45deg, rgba(29,66,65,0.9), rgba(29,66,65,0.8)), 
+                              radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
+           }}>
+        <div className="pt-24 pb-12 px-4 min-h-screen flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="max-w-3xl w-full mx-auto"
+          >
+            <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-12">
+              <CardContent>
+                <h2 className="typography-h2 text-ancient-gold text-center mb-8 font-angle"
+                    style={{
+                      textShadow: `0 0 20px rgba(212, 175, 55, 0.4), 
+                                  0 0 40px rgba(212, 175, 55, 0.2),
+                                  0 4px 6px rgba(0, 0, 0, 0.5)`
+                    }}>
+                  Your Journey Awaits
+                </h2>
+                <div className="space-y-6 text-center">
+                  <p className="typography-lead text-cream-white font-emerland leading-relaxed">
+                    The old story is ending. When we remember we are the authors of reality itself, the stories that seemed impossible become inevitable.
+                  </p>
+                  <p className="text-lg text-cream-white font-emerland leading-relaxed">
+                    Your responses reveal where you are in this transformation and illuminate the specific support that could accelerate your journey.
+                  </p>
+                  <p className="text-lg text-cream-white font-emerland leading-relaxed">
+                    Within 48 hours, we'll reach out with the path designed for you—whether that's intensive direct work to transform your organizational story or community transformation to discover and build your authentic narrative.
+                  </p>
+                  <p className="typography-h3 text-mystical-teal font-angle mt-8"
+                     style={{
+                       textShadow: `0 0 20px rgba(129, 236, 236, 0.4), 
+                                   0 0 40px rgba(129, 236, 236, 0.2),
+                                   0 4px 6px rgba(0, 0, 0, 0.5)`
+                     }}>
+                    What reality will you create?
+                  </p>
+                </div>
+                <div className="mt-12 flex justify-center">
+                  <Button
+                    onClick={determineRoute}
+                    size="lg"
+                    className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold text-xl px-12 py-6"
+                  >
+                    Discover Your Path
+                    <ExternalLink className="ml-2 w-5 h-5" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
+  // Question screens
+  return (
+    <div className="min-h-screen overflow-y-auto" 
+         style={{
+           backgroundColor: '#1D4241',
+           backgroundImage: `radial-gradient(circle at center, transparent 0%, transparent 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%),
+                            linear-gradient(45deg, rgba(29,66,65,0.9), rgba(29,66,65,0.8)), 
+                            radial-gradient(circle at 30% 70%, rgba(129, 236, 236, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)`,
+         }}>
+      <div className="pt-24 pb-12 px-4 min-h-screen flex items-center justify-center">
+        <div className="max-w-4xl w-full mx-auto">
+          {/* Progress bar */}
+          <div className="mb-8">
+            <div className="flex justify-between mb-2">
+              <span className="text-ancient-gold font-angle text-lg">
+                Question {currentQuestion + 1} of {questions.length}
+              </span>
+              <span className="text-mystical-teal font-angle text-lg">
+                {Math.round(((currentQuestion + 1) / questions.length) * 100)}%
+              </span>
+            </div>
+            <div className="h-3 bg-deep-black/50 rounded-full overflow-hidden border border-ancient-gold/30">
+              <motion.div
+                className="h-full bg-gradient-to-r from-ancient-gold to-mystical-teal"
+                initial={{ width: 0 }}
+                animate={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+                transition={{ duration: 0.5 }}
+              />
+            </div>
+          </div>
+
+          {/* Question card */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentQuestion}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Card className="backdrop-blur-lg bg-white/5 border-2 border-[#F0E2B6]/30 shadow-xl shadow-[#F0E2B6]/20 ring-2 ring-[#F0E2B6]/20 hover:border-[#F0E2B6]/50 hover:shadow-[#F0E2B6]/30 transition-all duration-300 p-8">
+                <CardContent>
+                  <h2 className="typography-h2 text-ancient-gold mb-3 font-angle"
+                      style={{
+                        textShadow: `0 0 20px rgba(212, 175, 55, 0.4), 
+                                    0 0 40px rgba(212, 175, 55, 0.2),
+                                    0 4px 6px rgba(0, 0, 0, 0.5)`
+                      }}>
+                    {question.title}
+                  </h2>
+                  <h3 className="typography-h3 text-mystical-teal mb-6 font-emerland"
+                      style={{
+                        textShadow: `0 0 20px rgba(129, 236, 236, 0.3), 
+                                    0 0 40px rgba(129, 236, 236, 0.15),
+                                    0 4px 6px rgba(0, 0, 0, 0.5)`
+                      }}>
+                    {question.subtitle}
+                  </h3>
+
+                  <div className="mb-8 text-cream-white font-emerland text-lg leading-relaxed whitespace-pre-line">
+                    {question.description}
+                  </div>
+
+                  {question.type === "text" && (
+                    <Textarea
+                      value={(answers[question.id] as string) || ""}
+                      onChange={(e) => handleTextAnswer(e.target.value)}
+                      className="min-h-[250px] bg-deep-black/50 border-2 border-mystical-teal/50 text-cream-white font-emerland text-lg focus:border-ancient-gold/70 focus:ring-ancient-gold/50"
+                      placeholder={question.placeholder}
+                    />
+                  )}
+
+                  {question.type === "radio" && question.options && (
+                    <div className="space-y-4">
+                      {question.options.map((option, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleAnswer(option)}
+                          className={`w-full text-left p-5 rounded-lg border-2 transition-all duration-300 font-emerland text-lg ${
+                            answers[question.id] === option
+                              ? "border-ancient-gold bg-ancient-gold/20 text-cream-white shadow-lg shadow-ancient-gold/20"
+                              : "border-mystical-teal/30 bg-deep-black/30 text-cream-white hover:border-mystical-teal hover:bg-mystical-teal/10 hover:shadow-lg hover:shadow-mystical-teal/10"
+                          }`}
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {question.type === "checkbox" && question.options && (
+                    <div className="space-y-4">
+                      <p className="text-cream-white/70 font-emerland mb-4 italic">
+                        Select all that apply:
+                      </p>
+                      {question.options.map((option, index) => {
+                        const isSelected = (answers[question.id] as string[] || []).includes(option);
+                        return (
+                          <button
+                            key={index}
+                            onClick={() => handleAnswer(option, true)}
+                            className={`w-full text-left p-5 rounded-lg border-2 transition-all duration-300 font-emerland text-lg ${
+                              isSelected
+                                ? "border-ancient-gold bg-ancient-gold/20 text-cream-white shadow-lg shadow-ancient-gold/20"
+                                : "border-mystical-teal/30 bg-deep-black/30 text-cream-white hover:border-mystical-teal hover:bg-mystical-teal/10 hover:shadow-lg hover:shadow-mystical-teal/10"
+                            }`}
+                          >
+                            <div className="flex items-center">
+                              <div
+                                className={`w-6 h-6 rounded border-2 mr-4 flex items-center justify-center flex-shrink-0 ${
+                                  isSelected ? "border-ancient-gold bg-ancient-gold" : "border-mystical-teal"
+                                }`}
+                              >
+                                {isSelected && (
+                                  <svg className="w-4 h-4 text-deep-black" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                                  </svg>
+                                )}
+                              </div>
+                              {option}
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* Navigation buttons */}
+                  <div className="flex justify-between mt-10">
+                    <Button
+                      onClick={handleBack}
+                      disabled={currentQuestion === 0}
+                      variant="outline"
+                      size="lg"
+                      className="border-2 border-mystical-teal text-mystical-teal hover:bg-mystical-teal/20 disabled:opacity-50 font-angle font-bold"
+                    >
+                      <ChevronLeft className="w-5 h-5 mr-2" />
+                      Back
+                    </Button>
+                    <Button
+                      onClick={handleNext}
+                      disabled={!canProceed()}
+                      size="lg"
+                      className="bg-ancient-gold hover:bg-ancient-gold/80 text-deep-black font-angle font-bold disabled:opacity-50"
+                    >
+                      {isLastQuestion ? "Complete" : "Next"}
+                      <ChevronRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );
