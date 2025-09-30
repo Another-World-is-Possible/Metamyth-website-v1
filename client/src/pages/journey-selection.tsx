@@ -52,12 +52,12 @@ const journeyTiers: JourneyTier[] = [
       ],
       howWeServe: [
         "The MetaMyth Transformation provides complete story transformation through facilitated community circles. You're placed in intimate groups where your vision gets refined and your obstacles transform into assets. These become laboratories for your emerging authentic story.",
-        "You get access to observe our Hero's Circle sessions—learning from their direct coaching while focusing on your own transformation in community circles designed for mutual support and accountability."
+        "You get access to observe our Heroes' Circle sessions—learning from their direct coaching while focusing on your own transformation in community circles designed for mutual support and accountability."
       ],
       includes: [
         "Complete MetaMyth journey across all five movements",
         "Facilitated story circles with expert guidance",
-        "Access to observe Hero's Circle sessions (listen-only)",
+        "Access to observe Heroes' Circle sessions (listen-only)",
         "All frameworks, materials, and app access",
         "Community forum for ongoing connection",
         "Recorded content library for integration",
@@ -72,7 +72,7 @@ const journeyTiers: JourneyTier[] = [
   },
   {
     id: "heroes-circle",
-    title: "HERO'S CIRCLE",
+    title: "HEROES' CIRCLE",
     subtitle: "Direct Mentorship & Elite Peer Community",
     icon: <Sword className="w-8 h-8" />,
     position: "left-1/2 transform -translate-x-1/2",
@@ -91,7 +91,7 @@ const journeyTiers: JourneyTier[] = [
         "You're ready for direct access, immediate feedback, and a peer group of other visionaries operating at planetary scale. You understand that legendary impact requires legendary support."
       ],
       howWeServe: [
-        "The Hero's Circle provides direct story mentorship and elite peer community. You're part of an exclusive circle of 15 visionaries, divided into two intimate sub-groups for deeper connection. Every session includes direct access to personalized guidance on your specific story challenges.",
+        "The Heroes' Circle provides direct story mentorship and elite peer community. You're part of an exclusive circle of 15 visionaries, divided into two intimate sub-groups for deeper connection. Every session includes direct access to personalized guidance on your specific story challenges.",
         "You become part of our founding community—the pioneers who help scale this transformation globally while receiving the most intensive support we offer."
       ],
       includes: [
@@ -508,7 +508,7 @@ export default function JourneySelectionPage() {
                           </div>
                         </motion.div>
                       ) : (
-                        // HERO'S CIRCLE
+                        // HEROES' CIRCLE
                         <motion.div
                           className="mb-6"
                           initial={{ opacity: 0, scale: 0.8 }}
@@ -535,13 +535,15 @@ export default function JourneySelectionPage() {
                                   Founding cohort pricing - this rate will never be offered again
                                 </p>
                               </div>
-                              <Button 
-                                onClick={() => window.open('https://zcal.co/i/OmCpmYrt', '_blank', 'noopener,noreferrer')}
-                                className="w-full py-4 text-xl font-semibold rounded-lg bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_15px_rgba(72,196,196,0.4)] transition-all duration-300"
+                              <a 
+                                href="https://buy.stripe.com/9B69AS1GwcqkbxOdvgfQI04"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block w-full py-4 text-xl font-semibold rounded-lg bg-[hsl(178,65%,45%)] hover:bg-[hsl(178,65%,35%)] text-black shadow-[0_0_15px_rgba(72,196,196,0.4)] transition-all duration-300 text-center"
                                 data-testid="button-apply-heroes-circle"
                               >
-                                APPLY FOR HERO'S CIRCLE
-                              </Button>
+                                APPLY FOR HEROES' CIRCLE
+                              </a>
                             </div>
                           </div>
                         </motion.div>
