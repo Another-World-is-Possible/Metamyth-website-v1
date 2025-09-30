@@ -350,12 +350,9 @@ export default function QUESTionaire() {
         <div className="max-w-4xl w-full mx-auto">
           {/* Progress bar */}
           <div className="mb-8">
-            <div className="flex justify-between mb-2">
+            <div className="mb-2">
               <span className="text-ancient-gold font-angle text-lg">
                 Question {currentQuestion + 1} of {questions.length}
-              </span>
-              <span className="text-mystical-teal font-angle text-lg">
-                {Math.round(((currentQuestion + 1) / questions.length) * 100)}%
               </span>
             </div>
             <div className="h-3 bg-deep-black/50 rounded-full overflow-hidden border border-ancient-gold/30">
