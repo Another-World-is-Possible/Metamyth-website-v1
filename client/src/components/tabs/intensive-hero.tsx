@@ -33,14 +33,9 @@ const transformationPhases = [
     icon: Compass,
     title: "Phase One: The Metamyth Journey",
     subtitle: "Cracking Open the Narrative Foundation",
-    duration: "90-minute intensive session",
-    description: "In 90 minutes, we crack open the possibility space of your entire story. This isn't casual conversation—this is high-leverage work that restructures the narrative foundation of everything you're building.",
-    elements: [
-      "We excavate the crisis that called this work into existence",
-      "We align scattered energy with the North Star",
-      "We expand vision beyond what seemed possible",
-      "We craft the living systems that turn dreams into inevitable outcomes",
-      "We design how others discover their role in your story"
+    paragraphs: [
+      "In 90 minutes, we crack open the possibility space of your entire story. This isn't casual conversation—this is high-leverage work that restructures the narrative foundation of everything you're building.",
+      "We excavate the crisis that called this work into existence, revealing how your deepest struggles become your qualifications. We align scattered energy with the North Star that makes every decision obvious. We expand vision beyond what seemed possible. We craft the living systems that turn dreams into inevitable outcomes. We design how others discover their role in your story."
     ],
     outcome: "Complete metamyth with five foundational statements that become your North Star—the story architecture making everything else possible."
   },
@@ -49,14 +44,9 @@ const transformationPhases = [
     icon: Users,
     title: "Phase Two: The Story Living Intensive",
     subtitle: "Weaving Story Into All Operations",
-    duration: "Multi-day deep dive",
-    description: "Multi-day deep dive where story becomes living system woven into every aspect of your operations. We create 22 living artifacts that transform abstract narrative into practical decision-making tools.",
-    elements: [
-      "22 living artifacts become practical tools for decision-making",
-      "Chart the course forward with strategy to actually live your story",
-      "AI as living mission intelligence trained on your complete metamyth",
-      "Create context-rich content that keeps you and your team aligned",
-      "Every piece of communication becomes extension of the foundational story"
+    paragraphs: [
+      "Multi-day deep dive where story becomes living system woven into every aspect of your operations. We create 22 living artifacts that transform abstract narrative into practical decision-making tools. We chart the course forward, giving you strategy to actually live your story rather than just tell it.",
+      "Then we bring it to life with AI as living mission intelligence—narrative guide trained on your complete metamyth, creating context-rich content that keeps you and your team aligned. Every piece of communication becomes extension of the foundational story."
     ],
     outcome: "Full transformation where story isn't just told but embodied by everyone touching the work. Culture becomes self-organizing around shared narrative. Operations become regenerative."
   },
@@ -65,14 +55,8 @@ const transformationPhases = [
     icon: Film,
     title: "Phase Three: Story Cinema",
     subtitle: "Making Transformation Visible",
-    duration: "Comprehensive media ecosystem",
-    description: "Comprehensive media ecosystem using cinematic narrative to make transformation feel inevitable. We create fundraising support through authentic storytelling, build community magnetism across platforms.",
-    elements: [
-      "Cinematic narrative production using regenerated stories",
-      "Fundraising support through authentic storytelling",
-      "Community building across platforms",
-      "Complete media implementation strategy",
-      "Movie magic that helps people believe another world is possible"
+    paragraphs: [
+      "Comprehensive media ecosystem using cinematic narrative to make transformation feel inevitable. We create fundraising support through authentic storytelling, build community magnetism across platforms, and deploy the movie magic that helps people believe another world is possible."
     ],
     outcome: "Complete media ecology attracting people into your story. Your story becomes visible evidence that the future you're building is already taking form."
   }
@@ -81,7 +65,7 @@ const transformationPhases = [
 const testimonials = [
   {
     name: "Michael Haupt",
-    result: "Transformed from warning about civilizational collapse to leading innovator at the end of normal. First video: 3,000 views, 60 webinar sign-ups. Wrote a 30,000-word book in three weeks."
+    result: "Transformed from warning about civilizational collapse to leading innovator at the end of normal. His first video: 3,000 views, 60 webinar sign-ups. He wrote a 30,000-word book in three weeks, saying he'd finally gotten out of his own way."
   },
   {
     name: "J Friday",
@@ -92,14 +76,16 @@ const testimonials = [
     result: "Shifted from academic exile to economic revolutionary. We created his institutional blueprint, immediately generating $15,000 in funding and attracting 10 volunteers in one session."
   },
   {
-    name: "Crystal",
-    result: "\"Where you see the vision of my story is so much grander than what my mind had initially thought. I could tap into that expanded space of bigger possibility.\""
+    name: "Ryan Tomlinson",
+    result: "Was already a successful cultural creative when our session revealed his success was just the beginning of what he's here to accomplish—a mission of planetary importance."
   },
   {
     name: "Zachary Marlow",
-    result: "Turned a failed suicide attempt into the revelation that life is a story and we hold the pen. This became a global adventure across 6 continents, creating a network with thousands of collaborators."
+    result: "Turned a failed suicide attempt into the revelation that life is a story and we hold the pen. This became a global adventure across 6 continents, creating a network with thousands of collaborators, engaging hundreds of thousands, and growing an organization with hundreds of volunteers who transformed their life's direction."
   }
 ];
+
+const crystalQuote = "Where you see the vision of my story is so much grander than what my mind had initially thought. I could tap into that expanded space of bigger possibility. I didn't realize how much bigger it could get.";
 
 export default function IntensiveHero() {
   const { isImageReady, getImageSrc } = useImageLoading();
@@ -161,6 +147,9 @@ export default function IntensiveHero() {
             <h2 className="typography-h2 text-mystical-teal mb-4 font-angle" style={{ textShadow: '0 0 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.75), 0 0 16px rgba(0, 0, 0, 0.7)' }}>
               Story Architecture for Planetary Impact
             </h2>
+            <p className="typography-lead text-cream-white max-w-4xl mx-auto leading-relaxed font-emerland mb-6" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+              We give people back control of their stories, transforming scattered narratives into coherent forces of planetary transformation.
+            </p>
             <p className="typography-lead text-cream-white max-w-4xl mx-auto leading-relaxed font-emerland italic" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
               From background character in someone else's plot to author of reality itself.
             </p>
@@ -348,36 +337,23 @@ export default function IntensiveHero() {
                           <h4 className="typography-h3 text-ancient-gold mb-2 font-angle">
                             {phase.title}
                           </h4>
-                          <p className="text-2xl text-mystical-teal mb-2 italic font-emerland">
+                          <p className="text-2xl text-mystical-teal mb-6 italic font-emerland">
                             {phase.subtitle}
                           </p>
-                          <p className="text-xl text-ancient-gold font-bold mb-4 font-angle">
-                            {phase.duration}
-                          </p>
 
-                          <p className="text-lg text-cream-white mb-4 font-emerland leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
-                            {phase.description}
-                          </p>
-
-                          <div className="grid md:grid-cols-2 gap-4 mb-4">
-                            <div>
-                              <h5 className="text-xl text-ancient-gold font-bold mb-2 font-angle">Key Elements:</h5>
-                              <ul className="space-y-1">
-                                {phase.elements.map((element, idx) => (
-                                  <li key={idx} className="text-cream-white/90 text-lg flex items-start gap-2 font-emerland" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
-                                    <CheckCircle className="text-ancient-gold text-xs mt-1 flex-shrink-0" size={16} />
-                                    {element}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-
-                            <div className="bg-deep-black/60 border-2 border-ancient-gold rounded-lg p-4 shadow-lg shadow-ancient-gold/50">
-                              <h5 className="text-ancient-gold font-bold mb-3 text-xl font-angle" style={{ textShadow: '0 0 8px currentColor' }}>Outcome:</h5>
-                              <p className="text-cream-white text-lg font-medium leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.75), 0 0 12px rgba(0,0,0,0.7)' }}>
-                                {phase.outcome}
+                          <div className="space-y-4 mb-6">
+                            {phase.paragraphs.map((paragraph, idx) => (
+                              <p key={idx} className="text-lg text-cream-white font-emerland leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                                {paragraph}
                               </p>
-                            </div>
+                            ))}
+                          </div>
+
+                          <div className="bg-deep-black/60 border-2 border-ancient-gold rounded-lg p-4 shadow-lg shadow-ancient-gold/50">
+                            <h5 className="text-ancient-gold font-bold mb-3 text-xl font-angle" style={{ textShadow: '0 0 8px currentColor' }}>The outcome:</h5>
+                            <p className="text-cream-white text-lg font-medium leading-relaxed font-emerland" style={{ textShadow: '0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.75), 0 0 12px rgba(0,0,0,0.7)' }}>
+                              {phase.outcome}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -438,6 +414,23 @@ export default function IntensiveHero() {
               REALITY AUTHORS IN ACTION
             </h3>
             
+            {/* Crystal Quote */}
+            <motion.div
+              className="mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="backdrop-blur-lg bg-mystical-teal/8 border-2 border-[#81ecec]/70 shadow-xl shadow-[#81ecec]/50 ring-2 ring-[#81ecec]/40 hover:border-[#81ecec]/90 hover:shadow-[#81ecec]/70 transition-all duration-300 max-w-4xl mx-auto">
+                <CardContent className="p-8">
+                  <p className="text-2xl italic text-cream-white font-emerland text-center leading-relaxed" style={{ textShadow: '0 0 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.75), 0 0 12px rgba(0, 0, 0, 0.7)' }}>
+                    "{crystalQuote}"
+                  </p>
+                  <p className="text-xl text-ancient-gold font-bold text-center mt-4 font-angle">— Crystal</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
             <div className="grid md:grid-cols-2 gap-6">
               {testimonials.map((testimonial, index) => (
                 <motion.div
