@@ -1,0 +1,39 @@
+metamyth-journey:46 Checking for redirect query parameter in index.html
+react-dom.development.js:29895 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+metamyth-journey.tsx:32 [MetamythJourney] 🔧 DEV MODE - Loading from /metamyth.html
+metamyth-journey.tsx:36 [MetamythJourney] ✅ Loaded HTML from dev server
+favicon.ico:1   GET https://988dd191-0edc-48bc-8b3b-db88eb37e0ed-00-2r2cmwesixa2f.kirk.replit.dev/favicon.ico 404 (Not Found)
+metamyth-journey.tsx:69 [MetamythJourney] 📄 Metamyth CSS length: 6834
+metamyth-journey.tsx:70 [MetamythJourney] 📄 First 300 chars of CSS: /* ==========================================================================
+   METAMYTH JOURNEY STYLESHEET
+   This is a complete and correct translation of all custom styles from the
+   original metamyth.html, designed to work with the Tailwind CDN.
+   =============================================
+metamyth-journey.tsx:71 [MetamythJourney] 🔍 Looking for font URLs in CSS...
+metamyth-journey.tsx:73 [MetamythJourney] Found font URLs: (2) ["url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024')", "url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024')"]
+metamyth-journey.tsx:79 [MetamythJourney] CSS font paths fixed? false
+metamyth-journey.tsx:80 [MetamythJourney] BASE_URL: /
+metamyth-journey.tsx:101 [MetamythJourney] 🔍 CSS contains .glow-arc? true
+metamyth-journey.tsx:102 [MetamythJourney] 🔍 .glow-arc snippet: .glow-arc { 
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 16px rgba(255, 215, 0, 0.4) !important; 
+    color: var(--accent-gold) !important; 
+}
+metamyth-journey.tsx:115 [MetamythJourney] Removed CSS link tag? Yes
+metamyth-journey.tsx:125 [MetamythJourney] 💡 Injected custom CSS at end of <body> AFTER Tailwind CDN for proper cascade
+metamyth-journey.tsx:127 [MetamythJourney] ✅ Final HTML assembled, length: 297857
+metamyth-journey.tsx:128 [MetamythJourney] Contains gold color (#D4AF37)? true
+metamyth-journey.tsx:134 [MetamythJourney] 🎬 Blob URL created: blob:https://988dd191-0edc-48bc-8b3b-db88eb37e0ed-00-2r2cmwesixa2f.kirk.replit.dev/8dd477f0-b5c2-472d-875f-1d03f970815a
+[NEW] Explain Console errors by using Copilot in Edge: click
+         
+         to explain an error. 
+        Learn more
+        Don't show again
+(index):64  cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
+(anonymous) @ (index):64
+(anonymous) @ (index):64
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
