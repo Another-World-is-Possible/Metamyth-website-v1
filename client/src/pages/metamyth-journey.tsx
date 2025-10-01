@@ -30,6 +30,8 @@ export default function MetamythJourneyPage() {
         }
 
         // Step 2: Fetch the CONTENT of all required assets in parallel.
+        // Use BASE_URL to handle GitHub Pages subdirectory deployments
+        const baseUrl = import.meta.env.BASE_URL || '/';
         const [
           chatbotJsRes,
           journeyJsRes,
@@ -37,11 +39,11 @@ export default function MetamythJourneyPage() {
           validationJsonRes,
           journeyJsonRes
         ] = await Promise.all([
-          fetch('/chatbot.js'),
-          fetch('/metamyth-journey.js'),
+          fetch(`${baseUrl}chatbot.js`),
+          fetch(`${baseUrl}metamyth-journey.js`),
           fetch(cssUrl), // Use the imported URL to fetch the final CSS content.
-          fetch('/metamyth-stage-validation.json'),
-          fetch('/metamyth-journey.json')
+          fetch(`${baseUrl}metamyth-stage-validation.json`),
+          fetch(`${baseUrl}metamyth-journey.json`)
         ]);
 
         if (!chatbotJsRes.ok || !journeyJsRes.ok || !cssRes.ok || !validationJsonRes.ok || !journeyJsonRes.ok) {
@@ -62,7 +64,9 @@ export default function MetamythJourneyPage() {
         const resonanceScript = `<script>window.SHOW_RESONANCE = ${showResonance};</script>`;
 
         // A <base> tag is crucial for any relative paths (like fonts) inside the iframe.
-        const baseTag = `<base href="${window.location.origin}">`;
+        // Include the base pathname to handle GitHub Pages subdirectory deployments
+        const baseHref = `${window.location.origin}${baseUrl}`;
+        const baseTag = `<base href="${baseHref}">`;
 
         // Create an inline <style> tag containing the entire content of your compiled index.css.
         const styleTag = `<style>${mainCss}</style>`;
