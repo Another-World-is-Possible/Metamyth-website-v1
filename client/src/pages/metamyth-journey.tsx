@@ -96,6 +96,10 @@ export default function MetamythJourneyPage() {
 
         // Create inline <style> tags for both CSS files
         const styleTag = `<style>${mainCss}</style><style>${metamythCss}</style>`;
+        
+        // Debug: Check if glow-arc class is in the CSS
+        console.log('[MetamythJourney] 🔍 CSS contains .glow-arc?', metamythCss.includes('.glow-arc'));
+        console.log('[MetamythJourney] 🔍 .glow-arc snippet:', metamythCss.match(/\.glow-arc[^}]+}/)?.[0]);
 
         // Inject JSON configuration data into window object so metamyth-journey.js can access it
         const configScript = `<script>
