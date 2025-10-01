@@ -271,8 +271,8 @@
   
   /* Improve line breaking for better text flow */
   p, blockquote {
-    font-family: 'Glocs2024', 'Georgia', serif !important;
-    color: hsl(45, 35%, 83%) !important;
+    font-family: 'Glocs2024', 'Georgia', serif;
+    /* Color inherited from body - allows utility classes like .text-gold to override */
     /* Prevent widows and orphans */
     text-wrap: pretty;
   }
