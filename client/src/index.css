@@ -142,11 +142,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Force text-cream-white class since Tailwind isn't generating it properly */
-.text-cream-white {
-  color: hsl(45, 35%, 83%) !important;
-}
-
 :root {
   --background: hsl(0 0% 100%);
   --foreground: hsl(210 25% 7.8431%);
@@ -417,8 +412,8 @@
 
   /* Smaller questionnaire buttons */
   .questionnaire-button {
-    padding: 8px 24px !important;
-    font-size: 0.7rem !important;
+    padding: 8px 24px;
+    font-size: 0.7rem;
     white-space: nowrap;
     display: inline-flex;
     align-items: center;
@@ -427,49 +422,49 @@
     
     /* No default glow - only on hover */
     box-shadow: 
-      inset 0 0 5px rgba(255, 255, 255, 0.05) !important;
+      inset 0 0 5px rgba(255, 255, 255, 0.05);
   }
   
   .questionnaire-button:hover {
     box-shadow: 
       0 0 6px var(--button-glow-color),
       0 0 12px var(--button-glow-color),
-      inset 0 0 8px rgba(255, 255, 255, 0.1) !important;
+      inset 0 0 8px rgba(255, 255, 255, 0.1);
   }
 
   /* Navigation tab styling - smooth teal glow without yellow flash */
   .nav-tab-active {
-    color: rgb(20, 184, 166) !important;
-    background: transparent !important;
+    color: rgb(20, 184, 166);
+    background: transparent;
     text-shadow:
       0 0 12px rgba(20, 184, 166, 0.8),
       0 0 24px rgba(20, 184, 166, 0.4),
       0 0 36px rgba(20, 184, 166, 0.2);
-    transition: all 0.3s ease !important;
+    transition: all 0.3s ease;
   }
 
   .nav-tab-hover {
-    color: rgb(212, 175, 55) !important;
-    background: transparent !important;
+    color: rgb(212, 175, 55);
+    background: transparent;
     text-shadow:
       0 0 8px rgba(212, 175, 55, 0.6),
       0 0 16px rgba(212, 175, 55, 0.3);
-    transition: all 0.3s ease !important;
+    transition: all 0.3s ease;
   }
 
   /* Subtle frosted glass effect - less distracting */
   .frosted-glass-subtle {
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    background: rgba(0, 0, 0, 0.3) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    transition: backdrop-filter 0.2s ease !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: backdrop-filter 0.2s ease;
   }
 
-  /* Force backdrop blur to render immediately during animations */
-  .backdrop-blur-lg {
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
+  /* Force backdrop blur to render immediately during animations - renamed to avoid Tailwind conflict */
+  .backdrop-blur-force {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     will-change: backdrop-filter;
     transform: translateZ(0);
     backface-visibility: hidden;
