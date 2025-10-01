@@ -17,11 +17,12 @@ export default function MetamythJourneyPage() {
 
         // Step 1: Fetch the base HTML template from Supabase or the dev server.
         if (import.meta.env.PROD) {
-          htmlTemplate = sessionStorage.getItem('metamythHTML');
-          if (!htmlTemplate) {
+          const storedHtml = sessionStorage.getItem('metamythHTML');
+          if (!storedHtml) {
             navigate('/begin', { replace: true });
             return;
           }
+          htmlTemplate = storedHtml;
         } else {
           const response = await fetch('/metamyth.html');
           if (!response.ok) throw new Error('Failed to fetch /metamyth.html in dev mode.');
@@ -32,20 +33,26 @@ export default function MetamythJourneyPage() {
         const [
           chatbotJsRes,
           journeyJsRes,
-          cssRes
+          cssRes,
+          validationJsonRes,
+          journeyJsonRes
         ] = await Promise.all([
           fetch('/chatbot.js'),
           fetch('/metamyth-journey.js'),
-          fetch(cssUrl) // Use the imported URL to fetch the final CSS content.
+          fetch(cssUrl), // Use the imported URL to fetch the final CSS content.
+          fetch('/metamyth-stage-validation.json'),
+          fetch('/metamyth-journey.json')
         ]);
 
-        if (!chatbotJsRes.ok || !journeyJsRes.ok || !cssRes.ok) {
+        if (!chatbotJsRes.ok || !journeyJsRes.ok || !cssRes.ok || !validationJsonRes.ok || !journeyJsonRes.ok) {
           throw new Error('Failed to fetch one or more required journey assets.');
         }
 
         const chatbotJs = await chatbotJsRes.text();
         const journeyJs = await journeyJsRes.text();
         const mainCss = await cssRes.text();
+        const validationJson = await validationJsonRes.text();
+        const journeyJson = await journeyJsonRes.text();
 
         // Step 3: Assemble the final, self-contained HTML string.
 
@@ -60,13 +67,19 @@ export default function MetamythJourneyPage() {
         // Create an inline <style> tag containing the entire content of your compiled index.css.
         const styleTag = `<style>${mainCss}</style>`;
 
+        // Inject JSON configuration data into window object so metamyth-journey.js can access it
+        const configScript = `<script>
+          window.METAMYTH_VALIDATION_CONFIG = ${validationJson};
+          window.METAMYTH_JOURNEY_DATA = ${journeyJson};
+        </script>`;
+
         // Create an inline <script> tag with the combined JS content. This is the most reliable injection method.
         const combinedScripts = `<script>${chatbotJs}\n\n${journeyJs}</script>`;
 
         // Inject all pieces into the fetched HTML template.
         const finalHtml = htmlTemplate
           .replace('<head>', `<head>${baseTag}${styleTag}`)
-          .replace('</body>', `${resonanceScript}${combinedScripts}</body>`);
+          .replace('</body>', `${configScript}${resonanceScript}${combinedScripts}</body>`);
 
         // Create a Blob URL from this complete document. This is more reliable than srcDoc for complex scripts.
         const blob = new Blob([finalHtml], { type: 'text/html' });

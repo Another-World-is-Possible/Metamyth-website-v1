@@ -31,14 +31,21 @@ const STORAGE_KEY = 'metamythProgress';
 
 async function initializeApp() {
     try {
-        const [validationResponse, journeyResponse] = await Promise.all([
-            fetch('/metamyth-stage-validation.json'),
-            fetch('/metamyth-journey.json')
-        ]);
-        if (!validationResponse.ok) throw new Error(`Failed to load validation config: ${validationResponse.statusText}`);
-        validationConfig = await validationResponse.json();
-        if (!journeyResponse.ok) throw new Error(`Failed to load journey content: ${journeyResponse.statusText}`);
-        contentData = await journeyResponse.json();
+        // Check if config data is injected via window object (for iframe usage)
+        if (window.METAMYTH_VALIDATION_CONFIG && window.METAMYTH_JOURNEY_DATA) {
+            validationConfig = window.METAMYTH_VALIDATION_CONFIG;
+            contentData = window.METAMYTH_JOURNEY_DATA;
+        } else {
+            // Fallback: fetch from server (for standalone usage)
+            const [validationResponse, journeyResponse] = await Promise.all([
+                fetch('/metamyth-stage-validation.json'),
+                fetch('/metamyth-journey.json')
+            ]);
+            if (!validationResponse.ok) throw new Error(`Failed to load validation config: ${validationResponse.statusText}`);
+            validationConfig = await validationResponse.json();
+            if (!journeyResponse.ok) throw new Error(`Failed to load journey content: ${journeyResponse.statusText}`);
+            contentData = await journeyResponse.json();
+        }
     } catch (error) {
         console.error("Fatal Error: Could not load configuration files.", error);
         document.getElementById('content-container').innerHTML = `<div class="content-card"><h2>Error</h2><p>Could not load journey content.</p></div>`;
