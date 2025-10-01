@@ -80,48 +80,42 @@
 
 /* Font Class Hierarchy */
 .font-angle {
-  font-family: 'AngleFairy2024', serif !important;
+  font-family: 'AngleFairy2024', serif;
   text-wrap: pretty;
 }
 
 .font-thornelia {
-  font-family: 'GrillagesBold2024', serif !important;
-  color: hsl(45, 35%, 83%) !important;
+  font-family: 'GrillagesBold2024', serif;
   text-wrap: pretty;
   font-weight: 700;
 }
 
 .font-game {
-  font-family: 'GrillagesBold2024', serif !important;
-  color: hsl(45, 35%, 83%) !important;
+  font-family: 'GrillagesBold2024', serif;
   text-wrap: pretty;
   font-weight: 700;
 }
 
 .font-emerland {
-  font-family: 'GrillagesBold2024', serif !important;
-  color: hsl(45, 35%, 83%) !important;
+  font-family: 'GrillagesBold2024', serif;
   text-wrap: pretty;
   font-weight: 700;
 }
 
 .font-north-roland {
-  font-family: 'NorthRoland2024', serif !important;
-  color: hsl(45, 35%, 83%) !important;
+  font-family: 'NorthRoland2024', serif;
   text-wrap: pretty;
   font-feature-settings: "liga" 1, "kern" 1;
 }
 
 .font-reusco {
-  font-family: 'GrillagesBold2024', serif !important;
-  color: hsl(45, 35%, 83%) !important;
+  font-family: 'GrillagesBold2024', serif;
   text-wrap: pretty;
   font-weight: 700;
 }
 
 .font-grillages {
-  font-family: 'GrillagesBold2024', serif !important;
-  color: hsl(45, 35%, 83%) !important;
+  font-family: 'GrillagesBold2024', serif;
   text-wrap: pretty;
   font-weight: 700;
   font-feature-settings: "liga" 1, "kern" 1;
@@ -130,20 +124,17 @@
 
 /* Legacy font classes for backward compatibility - redirect to new hierarchy */
 .font-kardige {
-  font-family: 'GrillagesBold2024', serif !important;
-  color: hsl(45, 35%, 83%) !important;
+  font-family: 'GrillagesBold2024', serif;
   font-weight: 700;
 }
 
 .font-khaft {
-  font-family: 'GrillagesBold2024', serif !important;
-  color: hsl(45, 35%, 83%) !important;
+  font-family: 'GrillagesBold2024', serif;
   font-weight: 700;
 }
 
 .font-king {
-  font-family: 'GrillagesBold2024', serif !important;
-  color: hsl(45, 35%, 83%) !important;
+  font-family: 'GrillagesBold2024', serif;
   font-weight: 700;
 }
 
@@ -246,21 +237,21 @@
     @apply bg-deep-black antialiased overflow-x-hidden;
     font-family: 'GrillagesBold2024', serif;
     font-weight: 700;
-    color: hsl(45, 35%, 83%) !important;
+    color: hsl(45, 35%, 83%);
     /* Cursor will be set by SwordCursor component */
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'AngleFairy2024', serif !important;
-    font-weight: normal !important;
+    font-family: 'AngleFairy2024', serif;
+    font-weight: normal;
     letter-spacing: 0.02em;
-    text-decoration: none !important;
-    text-decoration-line: none !important;
-    text-underline-offset: unset !important;
-    -webkit-text-decoration: none !important;
-    -webkit-font-smoothing: antialiased !important;
-    -moz-osx-font-smoothing: grayscale !important;
-    text-rendering: optimizeLegibility !important;
+    text-decoration: none;
+    text-decoration-line: none;
+    text-underline-offset: unset;
+    -webkit-text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     /* Add glowing effect to all titles */
     text-shadow: 
       0 0 10px rgba(212, 175, 55, 0.6),
@@ -279,8 +270,7 @@
 
   /* Ensure grillages font for rhetorical text */
   .font-thornelia {
-    font-family: 'GrillagesBold2024', serif !important;
-    color: hsl(45, 35%, 83%) !important;
+    font-family: 'GrillagesBold2024', serif;
     text-wrap: pretty;
     font-weight: 700;
   }
@@ -288,51 +278,51 @@
   /* Typography Tokens - Based on Hero Section Standards */
   .typography-h1 {
     @apply font-angle text-5xl md:text-7xl font-bold leading-tight;
-    font-family: 'AngleFairy2024', 'Times New Roman', serif !important;
-    font-weight: bold !important;
+    font-family: 'AngleFairy2024', 'Times New Roman', serif;
+    font-weight: bold;
     text-wrap: pretty;
   }
 
   .typography-h2 {
     @apply font-angle text-3xl md:text-5xl font-bold leading-tight;
-    font-family: 'AngleFairy2024', 'Times New Roman', serif !important;
-    font-weight: bold !important;
+    font-family: 'AngleFairy2024', 'Times New Roman', serif;
+    font-weight: bold;
     text-wrap: pretty;
   }
 
   .typography-h3 {
     @apply font-angle text-xl md:text-3xl font-bold leading-tight;
-    font-family: 'AngleFairy2024', 'Times New Roman', serif !important;
-    font-weight: bold !important;
+    font-family: 'AngleFairy2024', 'Times New Roman', serif;
+    font-weight: bold;
     text-wrap: pretty;
   }
 
   .typography-lead {
     @apply font-grillages text-xl md:text-2xl leading-relaxed;
-    font-family: 'GrillagesBold2024', 'Times New Roman', serif !important;
-    font-weight: 700 !important;
+    font-family: 'GrillagesBold2024', 'Times New Roman', serif;
+    font-weight: 700;
     text-wrap: pretty;
   }
 
   .typography-body {
     @apply font-grillages text-xl md:text-2xl leading-relaxed;
-    font-family: 'GrillagesBold2024', 'Times New Roman', serif !important;
-    font-weight: 700 !important;
+    font-family: 'GrillagesBold2024', 'Times New Roman', serif;
+    font-weight: 700;
     text-wrap: pretty;
   }
 
   /* Additional body text sizes for flexibility */
   .typography-body-large {
     @apply font-grillages text-2xl md:text-3xl leading-relaxed;
-    font-family: 'GrillagesBold2024', 'Times New Roman', serif !important;
-    font-weight: 700 !important;
+    font-family: 'GrillagesBold2024', 'Times New Roman', serif;
+    font-weight: 700;
     text-wrap: pretty;
   }
 
   .typography-body-small {
     @apply font-grillages text-lg md:text-xl leading-relaxed;
-    font-family: 'GrillagesBold2024', 'Times New Roman', serif !important;
-    font-weight: 700 !important;
+    font-family: 'GrillagesBold2024', 'Times New Roman', serif;
+    font-weight: 700;
     text-wrap: pretty;
   }
 
