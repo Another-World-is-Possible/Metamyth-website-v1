@@ -1,0 +1,41 @@
+begin-portal.tsx:151 [BeginPortal] ✅ Received HTML from Supabase
+begin-portal.tsx:152 [BeginPortal] HTML length: 3717
+begin-portal.tsx:153 [BeginPortal] HTML preview (first 200 chars): <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METAMYTH: A Journey of Transformation</title>
+ 
+begin-portal.tsx:154 [BeginPortal] Contains metamyth-journey.css link? true
+metamyth-journey.tsx:32 [MetamythJourney] 🔧 DEV MODE - Loading from /metamyth.html
+metamyth-journey.tsx:36 [MetamythJourney] ✅ Loaded HTML from dev server
+metamyth-journey.tsx:69 [MetamythJourney] 📄 Metamyth CSS length: 6779
+metamyth-journey.tsx:70 [MetamythJourney] 📄 First 300 chars of CSS: /* ==========================================================================
+   METAMYTH JOURNEY STYLESHEET
+   This is a complete and correct translation of all custom styles from the
+   original metamyth.html, designed to work with the Tailwind CDN.
+   =============================================
+metamyth-journey.tsx:71 [MetamythJourney] 🔍 Looking for font URLs in CSS...
+metamyth-journey.tsx:73 [MetamythJourney] Found font URLs: (2) ["url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024')", "url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024')"]0: "url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024')"1: "url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024')"length: 2[[Prototype]]: Array(0)
+metamyth-journey.tsx:79 [MetamythJourney] CSS font paths fixed? false
+metamyth-journey.tsx:80 [MetamythJourney] BASE_URL: /
+metamyth-journey.tsx:111 [MetamythJourney] Removed CSS link tag? Yes
+metamyth-journey.tsx:121 [MetamythJourney] 💡 Injected custom CSS at end of <body> AFTER Tailwind CDN for proper cascade
+metamyth-journey.tsx:123 [MetamythJourney] ✅ Final HTML assembled, length: 297802
+metamyth-journey.tsx:124 [MetamythJourney] Contains gold color (#D4AF37)? true
+metamyth-journey.tsx:130 [MetamythJourney] 🎬 Blob URL created: blob:https://988dd191-0edc-48bc-8b3b-db88eb37e0ed-00-2r2cmwesixa2f.kirk.replit.dev/36e06592-34fb-48d3-a982-3cc23664a959
+(index):64  cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
+(anonymous) @ (index):64
+(anonymous) @ (index):64
+[NEW] Explain Console errors by using Copilot in Edge: click
+         
+         to explain an error. 
+        Learn more
+        Don't show again
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.

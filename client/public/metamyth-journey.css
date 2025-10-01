@@ -111,21 +111,21 @@ textarea:focus {
     font-weight: normal;
 }
 .glow-arc { 
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 16px rgba(255, 215, 0, 0.4); 
-    color: var(--accent-gold); 
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 16px rgba(255, 215, 0, 0.4) !important; 
+    color: var(--accent-gold) !important; 
 }
-.glow-title { text-shadow: 0 0 10px rgba(20, 184, 166, 0.8), 0 0 20px rgba(20, 184, 166, 0.4); }
+.glow-title { text-shadow: 0 0 10px rgba(20, 184, 166, 0.8), 0 0 20px rgba(20, 184, 166, 0.4) !important; }
 .glow-progress { background: linear-gradient(90deg, var(--accent-teal) 0%, var(--accent-gold) 100%); }
 .glow-indicator { box-shadow: 0 0 15px rgba(20, 184, 166, 0.4); }
 .glow-button { 
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.8); 
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.8) !important; 
     border-color: var(--accent-gold); 
     color: var(--accent-gold); 
 }
 .glow-button:hover { 
     background-color: var(--accent-gold); 
     color: black; 
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6) !important;
 }
 .feedback-container {
     background-color: rgba(10, 50, 48, 0.5);
