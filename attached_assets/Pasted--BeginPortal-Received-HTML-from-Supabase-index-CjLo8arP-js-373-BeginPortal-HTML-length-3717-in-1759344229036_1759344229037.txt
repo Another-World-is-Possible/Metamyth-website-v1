@@ -1,0 +1,35 @@
+[BeginPortal] ✅ Received HTML from Supabase
+index-CjLo8arP.js:373 [BeginPortal] HTML length: 3717
+index-CjLo8arP.js:373 [BeginPortal] HTML preview (first 200 chars): <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METAMYTH: A Journey of Transformation</title>
+ 
+index-CjLo8arP.js:373 [BeginPortal] Contains metamyth-journey.css link? true
+index-CjLo8arP.js:588 [MetamythJourney] 🌐 PRODUCTION MODE - Loading from Supabase
+index-CjLo8arP.js:588 [MetamythJourney] ✅ Loaded HTML from sessionStorage
+index-CjLo8arP.js:588 [MetamythJourney] HTML length: 3717
+index-CjLo8arP.js:588 [MetamythJourney] First 200 chars: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METAMYTH: A Journey of Transformation</title>
+ 
+index-CjLo8arP.js:588 [MetamythJourney] 📄 Metamyth CSS length: 6889
+index-CjLo8arP.js:588 [MetamythJourney] 📄 First 300 chars of CSS: /* ==========================================================================
+   METAMYTH JOURNEY STYLESHEET
+   This is a complete and correct translation of all custom styles from the
+   original metamyth.html, designed to work with the Tailwind CDN.
+   =============================================
+index-CjLo8arP.js:588 [MetamythJourney] 🔍 Looking for font URLs in CSS...
+index-CjLo8arP.js:588 [MetamythJourney] Found font URLs: (2) ["url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024')", "url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024')"]
+index-CjLo8arP.js:588 [MetamythJourney] CSS font paths fixed? false
+index-CjLo8arP.js:588 [MetamythJourney] BASE_URL: /
+index-CjLo8arP.js:593 [MetamythJourney] Removed CSS link tag? Yes
+index-CjLo8arP.js:593 [MetamythJourney] ✅ Found Tailwind CDN, injecting custom CSS after it
+index-CjLo8arP.js:593 [MetamythJourney] ✅ Final HTML assembled, length: 219949
+index-CjLo8arP.js:593 [MetamythJourney] Contains gold color (#D4AF37)? true
+index-CjLo8arP.js:593 [MetamythJourney] 🎬 Blob URL created: blob:https://metamyth.quest/4b60515d-e9ed-4de6-ba2f-693f3ed51e88

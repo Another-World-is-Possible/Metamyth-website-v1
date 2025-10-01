@@ -110,26 +110,15 @@ export default function MetamythJourneyPage() {
         const cssLinkRemoved = htmlTemplate.match(/<link[^>]*metamyth-journey\.css[^>]*>/g);
         console.log('[MetamythJourney] Removed CSS link tag?', cssLinkRemoved ? 'Yes' : 'No (not found)');
         
-        // Strategy: Inject custom CSS AFTER Tailwind CDN script to ensure proper cascade order
-        // Find the Tailwind CDN script tag and inject our CSS right after it
-        const tailwindScriptRegex = /<script[^>]*tailwindcss\.com[^>]*><\/script>/;
-        const hasTailwindCdn = htmlTemplate.match(tailwindScriptRegex);
+        // Strategy: Inject custom CSS at the END of <head> to ensure it comes after Tailwind CDN's runtime-generated styles
+        // Tailwind CDN script runs and injects styles dynamically, so we need our CSS to be last in the head
+        const finalHtml = htmlTemplate
+          .replace(/<link[^>]*metamyth-journey\.css[^>]*>/g, '') // Remove the external CSS link
+          .replace('<head>', `<head>${baseTag}`) // Add base tag at beginning
+          .replace('</head>', `${styleTag}</head>`) // Inject CSS at END of head (last styles win)
+          .replace('</body>', `${configScript}${resonanceScript}${combinedScripts}</body>`);
         
-        let finalHtml;
-        if (hasTailwindCdn) {
-          console.log('[MetamythJourney] ✅ Found Tailwind CDN, injecting custom CSS after it');
-          finalHtml = htmlTemplate
-            .replace(/<link[^>]*metamyth-journey\.css[^>]*>/g, '') // Remove the external CSS link
-            .replace('<head>', `<head>${baseTag}`) // Just add base tag at head
-            .replace(tailwindScriptRegex, `$&${styleTag}`) // Inject CSS right after Tailwind CDN
-            .replace('</body>', `${configScript}${resonanceScript}${combinedScripts}</body>`);
-        } else {
-          console.log('[MetamythJourney] ⚠️ No Tailwind CDN found, using fallback injection');
-          finalHtml = htmlTemplate
-            .replace(/<link[^>]*metamyth-journey\.css[^>]*>/g, '')
-            .replace('<head>', `<head>${baseTag}${styleTag}`)
-            .replace('</body>', `${configScript}${resonanceScript}${combinedScripts}</body>`);
-        }
+        console.log('[MetamythJourney] 💡 Injected custom CSS at end of <head> for proper cascade');
 
         console.log('[MetamythJourney] ✅ Final HTML assembled, length:', finalHtml.length);
         console.log('[MetamythJourney] Contains gold color (#D4AF37)?', finalHtml.includes('#D4AF37') || finalHtml.includes('--accent-gold'));
