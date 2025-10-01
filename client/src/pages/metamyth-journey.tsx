@@ -110,15 +110,15 @@ export default function MetamythJourneyPage() {
         const cssLinkRemoved = htmlTemplate.match(/<link[^>]*metamyth-journey\.css[^>]*>/g);
         console.log('[MetamythJourney] Removed CSS link tag?', cssLinkRemoved ? 'Yes' : 'No (not found)');
         
-        // Strategy: Inject custom CSS at the END of <head> to ensure it comes after Tailwind CDN's runtime-generated styles
-        // Tailwind CDN script runs and injects styles dynamically, so we need our CSS to be last in the head
+        // Strategy: Inject custom CSS at the END of <body> AFTER Tailwind CDN runs
+        // Tailwind CDN script runs dynamically and injects styles into <head>
+        // By placing our CSS at the end of body, it loads AFTER Tailwind finishes, ensuring proper cascade
         const finalHtml = htmlTemplate
           .replace(/<link[^>]*metamyth-journey\.css[^>]*>/g, '') // Remove the external CSS link
           .replace('<head>', `<head>${baseTag}`) // Add base tag at beginning
-          .replace('</head>', `${styleTag}</head>`) // Inject CSS at END of head (last styles win)
-          .replace('</body>', `${configScript}${resonanceScript}${combinedScripts}</body>`);
+          .replace('</body>', `${styleTag}${configScript}${resonanceScript}${combinedScripts}</body>`); // Inject CSS + JS at END of body
         
-        console.log('[MetamythJourney] 💡 Injected custom CSS at end of <head> for proper cascade');
+        console.log('[MetamythJourney] 💡 Injected custom CSS at end of <body> AFTER Tailwind CDN for proper cascade');
 
         console.log('[MetamythJourney] ✅ Final HTML assembled, length:', finalHtml.length);
         console.log('[MetamythJourney] Contains gold color (#D4AF37)?', finalHtml.includes('#D4AF37') || finalHtml.includes('--accent-gold'));
