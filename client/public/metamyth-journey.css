@@ -59,10 +59,10 @@ textarea:focus {
 
 /* --- 4. CUSTOM COMPONENT STYLES --- */
 .text-gold {
-    color: var(--accent-gold);
+    color: var(--accent-gold) !important;
 }
 .text-teal {
-    color: var(--accent-teal);
+    color: var(--accent-teal) !important;
 }
 
 .content-card {
