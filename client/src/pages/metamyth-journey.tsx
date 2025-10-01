@@ -36,25 +36,31 @@ export default function MetamythJourneyPage() {
           chatbotJsRes,
           journeyJsRes,
           cssRes,
+          metamythCssRes,
           validationJsonRes,
           journeyJsonRes
         ] = await Promise.all([
           fetch(`${baseUrl}chatbot.js`),
           fetch(`${baseUrl}metamyth-journey.js`),
-          fetch(cssUrl), // Use the imported URL to fetch the final CSS content.
+          fetch(cssUrl), // Main app CSS (compiled index.css)
+          fetch(`${baseUrl}metamyth-journey.css`), // Metamyth-specific CSS
           fetch(`${baseUrl}metamyth-stage-validation.json`),
           fetch(`${baseUrl}metamyth-journey.json`)
         ]);
 
-        if (!chatbotJsRes.ok || !journeyJsRes.ok || !cssRes.ok || !validationJsonRes.ok || !journeyJsonRes.ok) {
+        if (!chatbotJsRes.ok || !journeyJsRes.ok || !cssRes.ok || !metamythCssRes.ok || !validationJsonRes.ok || !journeyJsonRes.ok) {
           throw new Error('Failed to fetch one or more required journey assets.');
         }
 
         const chatbotJs = await chatbotJsRes.text();
         const journeyJs = await journeyJsRes.text();
         const mainCss = await cssRes.text();
+        let metamythCss = await metamythCssRes.text();
         const validationJson = await validationJsonRes.text();
         const journeyJson = await journeyJsonRes.text();
+        
+        // Fix absolute font paths in metamyth CSS to work with base URL
+        metamythCss = metamythCss.replace(/url\(['"]?\/attached_assets\//g, `url('${baseUrl}attached_assets/`);
 
         // Step 3: Assemble the final, self-contained HTML string.
 
@@ -68,8 +74,8 @@ export default function MetamythJourneyPage() {
         const baseHref = `${window.location.origin}${baseUrl}`;
         const baseTag = `<base href="${baseHref}">`;
 
-        // Create an inline <style> tag containing the entire content of your compiled index.css.
-        const styleTag = `<style>${mainCss}</style>`;
+        // Create inline <style> tags for both CSS files
+        const styleTag = `<style>${mainCss}</style><style>${metamythCss}</style>`;
 
         // Inject JSON configuration data into window object so metamyth-journey.js can access it
         const configScript = `<script>
@@ -82,6 +88,7 @@ export default function MetamythJourneyPage() {
 
         // Inject all pieces into the fetched HTML template.
         const finalHtml = htmlTemplate
+          .replace(/<link[^>]*metamyth-journey\.css[^>]*>/g, '') // Remove the external CSS link
           .replace('<head>', `<head>${baseTag}${styleTag}`)
           .replace('</body>', `${configScript}${resonanceScript}${combinedScripts}</body>`);
 
