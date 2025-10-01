@@ -17,16 +17,23 @@ export default function MetamythJourneyPage() {
 
         // Step 1: Fetch the base HTML template from Supabase or the dev server.
         if (import.meta.env.PROD) {
+          console.log('[MetamythJourney] 🌐 PRODUCTION MODE - Loading from Supabase');
           const storedHtml = sessionStorage.getItem('metamythHTML');
           if (!storedHtml) {
+            console.error('[MetamythJourney] ❌ No HTML in sessionStorage, redirecting to /begin');
             navigate('/begin', { replace: true });
             return;
           }
           htmlTemplate = storedHtml;
+          console.log('[MetamythJourney] ✅ Loaded HTML from sessionStorage');
+          console.log('[MetamythJourney] HTML length:', htmlTemplate.length);
+          console.log('[MetamythJourney] First 200 chars:', htmlTemplate.substring(0, 200));
         } else {
+          console.log('[MetamythJourney] 🔧 DEV MODE - Loading from /metamyth.html');
           const response = await fetch('/metamyth.html');
           if (!response.ok) throw new Error('Failed to fetch /metamyth.html in dev mode.');
           htmlTemplate = await response.text();
+          console.log('[MetamythJourney] ✅ Loaded HTML from dev server');
         }
 
         // Step 2: Fetch the CONTENT of all required assets in parallel.
@@ -60,7 +67,13 @@ export default function MetamythJourneyPage() {
         const journeyJson = await journeyJsonRes.text();
         
         // Fix absolute font paths in metamyth CSS to work with base URL
+        const originalCss = metamythCss;
         metamythCss = metamythCss.replace(/url\(['"]?\/attached_assets\//g, `url('${baseUrl}attached_assets/`);
+        const pathsFixed = originalCss !== metamythCss;
+        console.log('[MetamythJourney] CSS font paths fixed?', pathsFixed);
+        if (pathsFixed) {
+          console.log('[MetamythJourney] BASE_URL:', baseUrl);
+        }
 
         // Step 3: Assemble the final, self-contained HTML string.
 
@@ -87,15 +100,22 @@ export default function MetamythJourneyPage() {
         const combinedScripts = `<script>${chatbotJs}\n\n${journeyJs}</script>`;
 
         // Inject all pieces into the fetched HTML template.
+        const cssLinkRemoved = htmlTemplate.match(/<link[^>]*metamyth-journey\.css[^>]*>/g);
+        console.log('[MetamythJourney] Removed CSS link tag?', cssLinkRemoved ? 'Yes' : 'No (not found)');
+        
         const finalHtml = htmlTemplate
           .replace(/<link[^>]*metamyth-journey\.css[^>]*>/g, '') // Remove the external CSS link
           .replace('<head>', `<head>${baseTag}${styleTag}`)
           .replace('</body>', `${configScript}${resonanceScript}${combinedScripts}</body>`);
 
+        console.log('[MetamythJourney] ✅ Final HTML assembled, length:', finalHtml.length);
+        console.log('[MetamythJourney] Contains gold color (#D4AF37)?', finalHtml.includes('#D4AF37') || finalHtml.includes('--accent-gold'));
+        
         // Create a Blob URL from this complete document. This is more reliable than srcDoc for complex scripts.
         const blob = new Blob([finalHtml], { type: 'text/html' });
         const url = URL.createObjectURL(blob);
         setIframeContent(url);
+        console.log('[MetamythJourney] 🎬 Blob URL created:', url);
 
       } catch (error) {
         console.error("Error preparing Metamyth Journey:", error);

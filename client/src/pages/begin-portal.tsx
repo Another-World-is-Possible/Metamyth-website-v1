@@ -148,6 +148,11 @@ export default function BeginPortal() {
       if (error) throw error;
 
       if (data.htmlContent) {
+        console.log('[BeginPortal] ✅ Received HTML from Supabase');
+        console.log('[BeginPortal] HTML length:', data.htmlContent.length);
+        console.log('[BeginPortal] HTML preview (first 200 chars):', data.htmlContent.substring(0, 200));
+        console.log('[BeginPortal] Contains metamyth-journey.css link?', data.htmlContent.includes('metamyth-journey.css'));
+        
         setSuccessState(true);
         setErrorState(false);
         sessionStorage.setItem('metamythHTML', data.htmlContent);
@@ -156,6 +161,7 @@ export default function BeginPortal() {
         throw new Error('Invalid response from server');
       }
     } catch (error) {
+      console.error('[BeginPortal] ❌ Error:', error);
       setErrorState(true);
       setSuccessState(false);
       setPasswordInput('');
