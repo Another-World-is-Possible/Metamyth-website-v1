@@ -1,0 +1,43 @@
+Checking for redirect query parameter in index.html
+?p=/begin:20 Found redirect query parameter. Rewriting URL.
+?p=/begin:24 New path: /begin
+9The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+[NEW] Explain Console errors by using Copilot in Edge: click
+         
+         to explain an error. 
+        Learn more
+        Don't show again
+index-CWx9tB03.js:373 [BeginPortal] ✅ Received HTML from Supabase
+index-CWx9tB03.js:373 [BeginPortal] HTML length: 3717
+index-CWx9tB03.js:373 [BeginPortal] HTML preview (first 200 chars): <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METAMYTH: A Journey of Transformation</title>
+ 
+index-CWx9tB03.js:373 [BeginPortal] Contains metamyth-journey.css link? true
+index-CWx9tB03.js:588 [MetamythJourney] 🌐 PRODUCTION MODE - Loading from Supabase
+index-CWx9tB03.js:588 [MetamythJourney] ✅ Loaded HTML from sessionStorage
+index-CWx9tB03.js:588 [MetamythJourney] HTML length: 3717
+index-CWx9tB03.js:588 [MetamythJourney] First 200 chars: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METAMYTH: A Journey of Transformation</title>
+ 
+index-CWx9tB03.js:588 [MetamythJourney] 📄 Metamyth CSS length: 6889
+index-CWx9tB03.js:588 [MetamythJourney] 📄 First 300 chars of CSS: /* ==========================================================================
+   METAMYTH JOURNEY STYLESHEET
+   This is a complete and correct translation of all custom styles from the
+   original metamyth.html, designed to work with the Tailwind CDN.
+   =============================================
+index-CWx9tB03.js:588 [MetamythJourney] 🔍 Looking for font URLs in CSS...
+index-CWx9tB03.js:588 [MetamythJourney] Found font URLs: (2) ["url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024')", "url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024')"]
+index-CWx9tB03.js:588 [MetamythJourney] CSS font paths fixed? false
+index-CWx9tB03.js:588 [MetamythJourney] BASE_URL: /
+index-CWx9tB03.js:593 [MetamythJourney] Removed CSS link tag? Yes
+index-CWx9tB03.js:593 [MetamythJourney] ✅ Final HTML assembled, length: 219949
+index-CWx9tB03.js:593 [MetamythJourney] Contains gold color (#D4AF37)? true
+index-CWx9tB03.js:593 [MetamythJourney] 🎬 Blob URL created: blob:https://metamyth.quest/80a17237-18f1-4dc9-a549-3c85c29c6240
