@@ -58,11 +58,12 @@ textarea:focus {
 }
 
 /* --- 4. CUSTOM COMPONENT STYLES --- */
+/* Using !important here is necessary to override global p { color: ... !important; } from main app CSS */
 .text-gold {
-    color: var(--accent-gold);
+    color: var(--accent-gold) !important;
 }
 .text-teal {
-    color: var(--accent-teal);
+    color: var(--accent-teal) !important;
 }
 
 .content-card {
