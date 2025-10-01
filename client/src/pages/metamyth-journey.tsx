@@ -66,13 +66,20 @@ export default function MetamythJourneyPage() {
         const validationJson = await validationJsonRes.text();
         const journeyJson = await journeyJsonRes.text();
         
+        console.log('[MetamythJourney] 📄 Metamyth CSS length:', metamythCss.length);
+        console.log('[MetamythJourney] 📄 First 300 chars of CSS:', metamythCss.substring(0, 300));
+        console.log('[MetamythJourney] 🔍 Looking for font URLs in CSS...');
+        const fontUrlMatches = metamythCss.match(/url\([^)]*attached_assets[^)]*\)/g);
+        console.log('[MetamythJourney] Found font URLs:', fontUrlMatches);
+        
         // Fix absolute font paths in metamyth CSS to work with base URL
         const originalCss = metamythCss;
         metamythCss = metamythCss.replace(/url\(['"]?\/attached_assets\//g, `url('${baseUrl}attached_assets/`);
         const pathsFixed = originalCss !== metamythCss;
         console.log('[MetamythJourney] CSS font paths fixed?', pathsFixed);
+        console.log('[MetamythJourney] BASE_URL:', baseUrl);
         if (pathsFixed) {
-          console.log('[MetamythJourney] BASE_URL:', baseUrl);
+          console.log('[MetamythJourney] ✅ Example fixed path:', metamythCss.match(/url\([^)]*attached_assets[^)]*\)/)?.[0]);
         }
 
         // Step 3: Assemble the final, self-contained HTML string.
