@@ -33,17 +33,17 @@ body {
     font-weight: 700;
 }
 h1, h2, h3, h4 { 
-    font-family: 'AngleFairy2024', serif !important; 
+    font-family: 'AngleFairy2024', serif; 
     color: var(--text-heading); 
     letter-spacing: 0.05em;
-    font-weight: normal !important;
+    font-weight: normal;
 }
 textarea::placeholder {
     color: #a0a0a0;
     opacity: 0.7;
 }
 textarea {
-    border: 2px solid var(--accent-teal) !important;
+    border: 2px solid var(--accent-teal);
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.3);
     color: var(--text-main);
@@ -53,7 +53,7 @@ textarea {
 }
 textarea:focus {
     outline: none;
-    border-color: var(--accent-gold) !important;
+    border-color: var(--accent-gold);
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
 }
 
@@ -107,24 +107,24 @@ textarea:focus {
 .nav-arc-header { 
     color: #fff; 
     letter-spacing: 0.1em; 
-    font-family: 'AngleFairy2024', serif !important; 
+    font-family: 'AngleFairy2024', serif; 
     font-weight: normal;
 }
 .glow-arc { 
     text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 16px rgba(255, 215, 0, 0.4); 
-    color: var(--accent-gold) !important; 
+    color: var(--accent-gold); 
 }
 .glow-title { text-shadow: 0 0 10px rgba(20, 184, 166, 0.8), 0 0 20px rgba(20, 184, 166, 0.4); }
 .glow-progress { background: linear-gradient(90deg, var(--accent-teal) 0%, var(--accent-gold) 100%); }
 .glow-indicator { box-shadow: 0 0 15px rgba(20, 184, 166, 0.4); }
 .glow-button { 
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.8); 
-    border-color: var(--accent-gold) !important; 
-    color: var(--accent-gold) !important; 
+    border-color: var(--accent-gold); 
+    color: var(--accent-gold); 
 }
 .glow-button:hover { 
-    background-color: var(--accent-gold) !important; 
-    color: black !important; 
+    background-color: var(--accent-gold); 
+    color: black; 
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
 }
 .feedback-container {
