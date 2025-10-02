@@ -282,11 +282,11 @@ function generateStageHTML(stage, content) {
         const calloutHTML = content.callout ? `<div class="bg-black bg-opacity-30 border border-yellow-400 rounded-lg p-6 mt-8"><h3 class="text-2xl mb-4 text-gold">${content.callout.title}</h3>${calloutProse}</div>` : '';
         return `<div class="content-card">
             <div class="text-center">
-                <h1 class="text-5xl mb-2 text-gold text-center">${content.title}</h1>
+                <h1 class="text-5xl mb-2 text-gold text-center glow-title">${content.title}</h1>
                 <h2 class="text-2xl mb-4 text-white text-center">${content.subtitle}</h2>
                 <p class="text-lg text-gold mb-2 text-center">${content.tagline}</p>
                 <div class="mt-8 text-center">
-                    <h3 class="text-4xl mb-4 text-gold">${content.header}</h3>
+                    <h3 class="text-4xl mb-4 text-gold glow-title">${content.header}</h3>
                     <p class="text-xl mb-6 text-white">${content.prompt}</p>
                 </div>
             </div>
