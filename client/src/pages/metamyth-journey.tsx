@@ -43,6 +43,9 @@ export default function MetamythJourneyPage() {
           throw error;
         }
 
+        const iframe = iframeRef.current;
+        if (!iframe?.contentWindow) return;
+
         if (data) {
           // Send progress to iframe
           const progress: JourneyProgress = {
@@ -53,7 +56,7 @@ export default function MetamythJourneyPage() {
             feedbackContents: data.llm_responses || {},
           };
           
-          iframeRef.current.contentWindow.postMessage({
+          iframe.contentWindow.postMessage({
             type: 'LOAD_PROGRESS',
             data: progress
           }, '*');
@@ -63,7 +66,7 @@ export default function MetamythJourneyPage() {
           setProgressLoaded(true);
         } else {
           // Check if localStorage has data and offer migration
-          iframeRef.current.contentWindow.postMessage({
+          iframe.contentWindow.postMessage({
             type: 'CHECK_LOCAL_PROGRESS'
           }, '*');
           setProgressLoaded(true);
@@ -86,8 +89,9 @@ export default function MetamythJourneyPage() {
   // Listen for messages from iframe
   useEffect(() => {
     const handleMessage = async (event: MessageEvent) => {
-      // Security: validate origin in production
-      if (import.meta.env.PROD && event.origin !== window.location.origin) {
+      // Security: validate that message is from our iframe
+      // Blob URLs have opaque origin ("null"), so check event.source instead
+      if (event.source !== iframeRef.current?.contentWindow) {
         return;
       }
 
@@ -137,16 +141,12 @@ export default function MetamythJourneyPage() {
             // Offer migration
             toast({
               title: 'Import existing progress?',
-              description: 'We found progress saved on this device. Import to your account?',
-              action: {
-                label: 'Import',
-                onClick: () => {
-                  iframeRef.current?.contentWindow?.postMessage({
-                    type: 'MIGRATE_TO_CLOUD'
-                  }, '*');
-                }
-              },
+              description: 'We found progress saved on this device. Click the button to import to your account.',
             });
+            // Send migration command automatically
+            iframeRef.current?.contentWindow?.postMessage({
+              type: 'MIGRATE_TO_CLOUD'
+            }, '*');
           }
           break;
 
