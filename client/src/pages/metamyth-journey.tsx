@@ -1,14 +1,197 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'wouter';
+import { useAuth } from '@/hooks/use-auth';
+import { supabase } from '@/lib/supabase';
+import { useToast } from '@/hooks/use-toast';
 import PageLayout from '@/components/layouts/page-layout';
-
-// This Vite-specific import gets the final, correct URL of your stylesheet,
-// which is crucial for finding the compiled CSS.
+import AuthDialog from '@/components/auth-dialog';
+import { Button } from '@/components/ui/button';
+import { LogIn, LogOut, Cloud, CloudOff, Loader2 } from 'lucide-react';
 import cssUrl from '@/index.css?url';
+
+type JourneyProgress = {
+  lastStageId?: string;
+  journeyData?: Record<string, any>;
+  formInputs?: Record<string, any>;
+  llmResponses?: Record<string, any>;
+  feedbackContents?: Record<string, any>;
+};
 
 export default function MetamythJourneyPage() {
   const [, navigate] = useLocation();
+  const { user, loading: authLoading, signOut } = useAuth();
+  const { toast } = useToast();
   const [iframeContent, setIframeContent] = useState<string | null>(null);
+  const [authDialogOpen, setAuthDialogOpen] = useState(false);
+  const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'synced' | 'local-only'>('idle');
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [progressLoaded, setProgressLoaded] = useState(false);
+
+  // Load progress from Supabase when user logs in
+  useEffect(() => {
+    if (!user || !iframeRef.current?.contentWindow || progressLoaded) return;
+
+    const loadProgress = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('journey_progress')
+          .select('*')
+          .eq('user_id', user.id)
+          .single();
+
+        if (error && error.code !== 'PGRST116') { // PGRST116 = no rows found
+          throw error;
+        }
+
+        if (data) {
+          // Send progress to iframe
+          const progress: JourneyProgress = {
+            lastStageId: data.last_stage_id || undefined,
+            journeyData: data.journey_data || {},
+            llmResponses: data.llm_responses || {},
+            formInputs: data.journey_data || {},
+            feedbackContents: data.llm_responses || {},
+          };
+          
+          iframeRef.current.contentWindow.postMessage({
+            type: 'LOAD_PROGRESS',
+            data: progress
+          }, '*');
+          
+          console.log('[MetamythJourney] ✅ Loaded progress from Supabase');
+          setSyncStatus('synced');
+          setProgressLoaded(true);
+        } else {
+          // Check if localStorage has data and offer migration
+          iframeRef.current.contentWindow.postMessage({
+            type: 'CHECK_LOCAL_PROGRESS'
+          }, '*');
+          setProgressLoaded(true);
+        }
+      } catch (error) {
+        console.error('[MetamythJourney] Failed to load progress:', error);
+        toast({
+          variant: 'destructive',
+          title: 'Failed to load progress',
+          description: 'Using local storage instead.',
+        });
+        setSyncStatus('local-only');
+        setProgressLoaded(true);
+      }
+    };
+
+    loadProgress();
+  }, [user, iframeRef.current, progressLoaded, toast]);
+
+  // Listen for messages from iframe
+  useEffect(() => {
+    const handleMessage = async (event: MessageEvent) => {
+      // Security: validate origin in production
+      if (import.meta.env.PROD && event.origin !== window.location.origin) {
+        return;
+      }
+
+      const { type, data } = event.data;
+
+      switch (type) {
+        case 'SAVE_PROGRESS':
+          if (user) {
+            // Save to Supabase
+            setSyncStatus('syncing');
+            try {
+              const { error } = await supabase
+                .from('journey_progress')
+                .upsert({
+                  user_id: user.id,
+                  journey_data: data.journeyData || data.formInputs || {},
+                  llm_responses: data.llmResponses || data.feedbackContents || {},
+                  last_stage_id: data.lastStageId,
+                  updated_at: new Date().toISOString(),
+                });
+
+              if (error) throw error;
+              
+              setSyncStatus('synced');
+            } catch (error) {
+              console.error('[MetamythJourney] Save to Supabase failed:', error);
+              
+              // Fallback to localStorage
+              iframeRef.current?.contentWindow?.postMessage({
+                type: 'SAVE_TO_LOCAL',
+                data
+              }, '*');
+              
+              setSyncStatus('local-only');
+              toast({
+                variant: 'destructive',
+                title: 'Cloud sync failed',
+                description: 'Progress saved locally only.',
+              });
+            }
+          }
+          // For anonymous users, iframe handles localStorage directly
+          break;
+
+        case 'LOCAL_PROGRESS_EXISTS':
+          if (user && data.hasProgress) {
+            // Offer migration
+            toast({
+              title: 'Import existing progress?',
+              description: 'We found progress saved on this device. Import to your account?',
+              action: {
+                label: 'Import',
+                onClick: () => {
+                  iframeRef.current?.contentWindow?.postMessage({
+                    type: 'MIGRATE_TO_CLOUD'
+                  }, '*');
+                }
+              },
+            });
+          }
+          break;
+
+        case 'MIGRATE_DATA':
+          if (user && data.progress) {
+            try {
+              const { error } = await supabase
+                .from('journey_progress')
+                .upsert({
+                  user_id: user.id,
+                  journey_data: data.progress.journeyData || data.progress.formInputs || {},
+                  llm_responses: data.progress.llmResponses || data.progress.feedbackContents || {},
+                  last_stage_id: data.progress.lastStageId,
+                  updated_at: new Date().toISOString(),
+                });
+
+              if (error) throw error;
+
+              toast({
+                title: 'Progress imported!',
+                description: 'Your journey is now synced to your account.',
+              });
+              
+              // Tell iframe to clear localStorage
+              iframeRef.current?.contentWindow?.postMessage({
+                type: 'CLEAR_LOCAL_STORAGE'
+              }, '*');
+              
+              setSyncStatus('synced');
+            } catch (error) {
+              console.error('[MetamythJourney] Migration failed:', error);
+              toast({
+                variant: 'destructive',
+                title: 'Import failed',
+                description: 'Could not import your progress. It remains saved locally.',
+              });
+            }
+          }
+          break;
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [user, toast]);
 
   useEffect(() => {
     const loadAndBuildJourney = async () => {
@@ -26,8 +209,6 @@ export default function MetamythJourneyPage() {
           }
           htmlTemplate = storedHtml;
           console.log('[MetamythJourney] ✅ Loaded HTML from sessionStorage');
-          console.log('[MetamythJourney] HTML length:', htmlTemplate.length);
-          console.log('[MetamythJourney] First 200 chars:', htmlTemplate.substring(0, 200));
         } else {
           console.log('[MetamythJourney] 🔧 DEV MODE - Loading from /metamyth.html');
           const response = await fetch('/metamyth.html');
@@ -37,7 +218,6 @@ export default function MetamythJourneyPage() {
         }
 
         // Step 2: Fetch the CONTENT of all required assets in parallel.
-        // Use BASE_URL to handle GitHub Pages subdirectory deployments
         const baseUrl = import.meta.env.BASE_URL || '/';
         const [
           chatbotJsRes,
@@ -49,8 +229,8 @@ export default function MetamythJourneyPage() {
         ] = await Promise.all([
           fetch(`${baseUrl}chatbot.js`),
           fetch(`${baseUrl}metamyth-journey.js`),
-          fetch(cssUrl), // Main app CSS (compiled index.css)
-          fetch(`${baseUrl}metamyth-journey.css`), // Metamyth-specific CSS
+          fetch(cssUrl),
+          fetch(`${baseUrl}metamyth-journey.css`),
           fetch(`${baseUrl}metamyth-stage-validation.json`),
           fetch(`${baseUrl}metamyth-journey.json`)
         ]);
@@ -66,68 +246,79 @@ export default function MetamythJourneyPage() {
         const validationJson = await validationJsonRes.text();
         const journeyJson = await journeyJsonRes.text();
         
-        console.log('[MetamythJourney] 📄 Metamyth CSS length:', metamythCss.length);
-        console.log('[MetamythJourney] 📄 First 300 chars of CSS:', metamythCss.substring(0, 300));
-        console.log('[MetamythJourney] 🔍 Looking for font URLs in CSS...');
-        const fontUrlMatches = metamythCss.match(/url\([^)]*attached_assets[^)]*\)/g);
-        console.log('[MetamythJourney] Found font URLs:', fontUrlMatches);
-        
         // Fix absolute font paths in metamyth CSS to work with base URL
-        const originalCss = metamythCss;
         metamythCss = metamythCss.replace(/url\(['"]?\/attached_assets\//g, `url('${baseUrl}attached_assets/`);
-        const pathsFixed = originalCss !== metamythCss;
-        console.log('[MetamythJourney] CSS font paths fixed?', pathsFixed);
-        console.log('[MetamythJourney] BASE_URL:', baseUrl);
-        if (pathsFixed) {
-          console.log('[MetamythJourney] ✅ Example fixed path:', metamythCss.match(/url\([^)]*attached_assets[^)]*\)/)?.[0]);
-        }
 
         // Step 3: Assemble the final, self-contained HTML string.
-
-        // Check the environment variable. It defaults to false.
         const showResonance = import.meta.env.VITE_METAMYTH_USE_LLM === 'true';
-        // Create a script to inject this value into the iframe's window.
         const resonanceScript = `<script>window.SHOW_RESONANCE = ${showResonance};</script>`;
-
-        // A <base> tag is crucial for any relative paths (like fonts) inside the iframe.
-        // Include the base pathname to handle GitHub Pages subdirectory deployments
+        
         const baseHref = `${window.location.origin}${baseUrl}`;
         const baseTag = `<base href="${baseHref}">`;
-
-        // Create inline <style> tags for both CSS files
         const styleTag = `<style>${mainCss}</style><style>${metamythCss}</style>`;
-        
-        // Debug: Check if glow-arc class is in the CSS
-        console.log('[MetamythJourney] 🔍 CSS contains .glow-arc?', metamythCss.includes('.glow-arc'));
-        console.log('[MetamythJourney] 🔍 .glow-arc snippet:', metamythCss.match(/\.glow-arc[^}]+}/)?.[0]);
 
-        // Inject JSON configuration data into window object so metamyth-journey.js can access it
+        // Inject JSON configuration data
         const configScript = `<script>
           window.METAMYTH_VALIDATION_CONFIG = ${validationJson};
           window.METAMYTH_JOURNEY_DATA = ${journeyJson};
         </script>`;
 
-        // Create an inline <script> tag with the combined JS content. This is the most reliable injection method.
+        // Create postMessage bridge script
+        const bridgeScript = `<script>
+          // postMessage bridge for parent-iframe communication
+          window.PARENT_HANDLES_STORAGE = ${!!user};
+          
+          // Override localStorage setItem to send to parent when user is logged in
+          if (window.PARENT_HANDLES_STORAGE) {
+            const originalSetItem = localStorage.setItem.bind(localStorage);
+            const originalGetItem = localStorage.getItem.bind(localStorage);
+            
+            window.__pendingProgress = null;
+            
+            localStorage.setItem = function(key, value) {
+              if (key === 'metamythProgress') {
+                const progress = JSON.parse(value);
+                window.__pendingProgress = progress;
+                window.parent.postMessage({ type: 'SAVE_PROGRESS', data: progress }, '*');
+              }
+              // Still save locally as backup
+              originalSetItem(key, value);
+            };
+          }
+          
+          // Listen for messages from parent
+          window.addEventListener('message', (event) => {
+            const { type, data } = event.data;
+            
+            if (type === 'LOAD_PROGRESS') {
+              localStorage.setItem('metamythProgress', JSON.stringify(data));
+              location.reload(); // Reload to apply loaded progress
+            } else if (type === 'CHECK_LOCAL_PROGRESS') {
+              const hasProgress = !!localStorage.getItem('metamythProgress');
+              window.parent.postMessage({ type: 'LOCAL_PROGRESS_EXISTS', data: { hasProgress } }, '*');
+            } else if (type === 'MIGRATE_TO_CLOUD') {
+              const progress = localStorage.getItem('metamythProgress');
+              if (progress) {
+                window.parent.postMessage({ type: 'MIGRATE_DATA', data: { progress: JSON.parse(progress) } }, '*');
+              }
+            } else if (type === 'CLEAR_LOCAL_STORAGE') {
+              localStorage.removeItem('metamythProgress');
+            } else if (type === 'SAVE_TO_LOCAL') {
+              localStorage.setItem('metamythProgress', JSON.stringify(data));
+            }
+          });
+        </script>`;
+
         const combinedScripts = `<script>${chatbotJs}\n\n${journeyJs}</script>`;
 
-        // Inject all pieces into the fetched HTML template.
-        const cssLinkRemoved = htmlTemplate.match(/<link[^>]*metamyth-journey\.css[^>]*>/g);
-        console.log('[MetamythJourney] Removed CSS link tag?', cssLinkRemoved ? 'Yes' : 'No (not found)');
-        
-        // Strategy: Inject custom CSS at the END of <body> AFTER Tailwind CDN runs
-        // Tailwind CDN script runs dynamically and injects styles into <head>
-        // By placing our CSS at the end of body, it loads AFTER Tailwind finishes, ensuring proper cascade
         const finalHtml = htmlTemplate
-          .replace(/<link[^>]*metamyth-journey\.css[^>]*>/g, '') // Remove the external CSS link
-          .replace('<head>', `<head>${baseTag}`) // Add base tag at beginning
-          .replace(/<\/body\s*>/i, `${styleTag}${configScript}${resonanceScript}${combinedScripts}</body>`); // Inject CSS + JS at END of body (regex handles whitespace)
+          .replace(/<link[^>]*metamyth-journey\.css[^>]*>/g, '')
+          .replace('<head>', `<head>${baseTag}`)
+          .replace(/<\/body\s*>/i, `${styleTag}${configScript}${resonanceScript}${bridgeScript}${combinedScripts}</body>`);
         
-        console.log('[MetamythJourney] 💡 Injected custom CSS at end of <body> AFTER Tailwind CDN for proper cascade');
-
+        console.log('[MetamythJourney] 💡 Injected custom CSS, config, and postMessage bridge');
         console.log('[MetamythJourney] ✅ Final HTML assembled, length:', finalHtml.length);
-        console.log('[MetamythJourney] Contains gold color (#D4AF37)?', finalHtml.includes('#D4AF37') || finalHtml.includes('--accent-gold'));
         
-        // Create a Blob URL from this complete document. This is more reliable than srcDoc for complex scripts.
         const blob = new Blob([finalHtml], { type: 'text/html' });
         const url = URL.createObjectURL(blob);
         setIframeContent(url);
@@ -141,13 +332,32 @@ export default function MetamythJourneyPage() {
 
     loadAndBuildJourney();
 
-    // Cleanup function to revoke the blob URL when the component unmounts
     return () => {
       if (iframeContent) {
         URL.revokeObjectURL(iframeContent);
       }
     };
-  }, [navigate]);
+  }, [navigate, user]);
+
+  const handleSignOut = async () => {
+    await signOut();
+    toast({
+      title: 'Signed out',
+      description: 'Your progress will now be saved locally only.',
+    });
+    setSyncStatus('idle');
+    setProgressLoaded(false);
+  };
+
+  if (authLoading) {
+    return (
+      <PageLayout>
+        <div className="min-h-screen flex items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-gold" />
+        </div>
+      </PageLayout>
+    );
+  }
 
   if (!iframeContent) {
     return (
@@ -161,7 +371,55 @@ export default function MetamythJourneyPage() {
 
   return (
     <PageLayout hideFooter>
+      {/* Auth UI Overlay */}
+      <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
+        {user ? (
+          <>
+            {syncStatus === 'syncing' && (
+              <div className="flex items-center gap-2 text-sm text-yellow-400">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                <span>Syncing...</span>
+              </div>
+            )}
+            {syncStatus === 'synced' && (
+              <div className="flex items-center gap-2 text-sm text-green-400">
+                <Cloud className="h-4 w-4" />
+                <span>Synced</span>
+              </div>
+            )}
+            {syncStatus === 'local-only' && (
+              <div className="flex items-center gap-2 text-sm text-orange-400">
+                <CloudOff className="h-4 w-4" />
+                <span>Local only</span>
+              </div>
+            )}
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={handleSignOut}
+              data-testid="button-signout"
+              className="gap-2"
+            >
+              <LogOut className="h-4 w-4" />
+              Sign Out
+            </Button>
+          </>
+        ) : (
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => setAuthDialogOpen(true)}
+            data-testid="button-signin"
+            className="gap-2"
+          >
+            <LogIn className="h-4 w-4" />
+            Sign In
+          </Button>
+        )}
+      </div>
+
       <iframe
+        ref={iframeRef}
         src={iframeContent}
         title="Metamyth Journey"
         style={{
@@ -171,7 +429,21 @@ export default function MetamythJourneyPage() {
           border: 'none',
           display: 'block'
         }}
-      ></iframe>
+        data-testid="iframe-journey"
+      />
+
+      <AuthDialog
+        open={authDialogOpen}
+        onOpenChange={setAuthDialogOpen}
+        onAuthSuccess={() => {
+          toast({
+            title: 'Welcome!',
+            description: 'Your progress will now be synced to the cloud.',
+          });
+          setSyncStatus('idle');
+          setProgressLoaded(false);
+        }}
+      />
     </PageLayout>
   );
 }
