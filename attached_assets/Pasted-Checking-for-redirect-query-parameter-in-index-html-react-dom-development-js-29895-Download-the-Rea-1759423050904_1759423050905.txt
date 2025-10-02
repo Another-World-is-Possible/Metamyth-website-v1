@@ -1,0 +1,31 @@
+Checking for redirect query parameter in index.html
+react-dom.development.js:29895 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+metamyth-journey.tsx:32 [MetamythJourney] 🔧 DEV MODE - Loading from /metamyth.html
+favicon.ico:1 
+ 
+ GET https://988dd191-0edc-48bc-8b3b-db88eb37e0ed-00-2r2cmwesixa2f.kirk.replit.dev/favicon.ico 404 (Not Found)
+[NEW] Explain Console errors by using Copilot in Edge: click 
+ to explain an error. Learn more
+Don't show again
+metamyth-journey.tsx:36 [MetamythJourney] ✅ Loaded HTML from dev server
+metamyth-journey.tsx:69 [MetamythJourney] 📄 Metamyth CSS length: 6834
+metamyth-journey.tsx:70 [MetamythJourney] 📄 First 300 chars of CSS: /* ==========================================================================
+   METAMYTH JOURNEY STYLESHEET
+   This is a complete and correct translation of all custom styles from the
+   original metamyth.html, designed to work with the Tailwind CDN.
+   =============================================
+metamyth-journey.tsx:71 [MetamythJourney] 🔍 Looking for font URLs in CSS...
+metamyth-journey.tsx:73 [MetamythJourney] Found font URLs: 
+(2) ["url('/attached_assets/Angle & Fairy_1755895085623.otf?v=2024')", "url('/attached_assets/GrillagesBold_1756520423796.ttf?v=2024')"]
+metamyth-journey.tsx:79 [MetamythJourney] CSS font paths fixed? false
+metamyth-journey.tsx:80 [MetamythJourney] BASE_URL: /
+metamyth-journey.tsx:101 [MetamythJourney] 🔍 CSS contains .glow-arc? true
+metamyth-journey.tsx:102 [MetamythJourney] 🔍 .glow-arc snippet: .glow-arc { 
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.8), 0 0 16px rgba(255, 215, 0, 0.4) !important; 
+    color: var(--accent-gold) !important; 
+}
+metamyth-journey.tsx:115 [MetamythJourney] Removed CSS link tag? Yes
+metamyth-journey.tsx:125 [MetamythJourney] 💡 Injected custom CSS at end of <body> AFTER Tailwind CDN for proper cascade
+metamyth-journey.tsx:127 [MetamythJourney] ✅ Final HTML assembled, length: 297857
+metamyth-journey.tsx:128 [MetamythJourney] Contains gold color (#D4AF37)? true
+metamyth-journey.tsx:134 [MetamythJourney] 🎬 Blob URL created: blob:https://988dd191-0edc-48bc-8b3b-db88eb37e0ed-00-2r2cmwesixa2f.kirk.replit.dev/0efa56d7-7e9d-4817-8fc7-303cb92615f6

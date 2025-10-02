@@ -267,7 +267,7 @@ function displayOverallFeedback(stageContainer, message) {
 }
 
 function generateStageHTML(stage, content) {
-    if (!content) return `<div class="content-card"><h2 class="text-4xl text-center">${stage.title}</h2><p>Content for this stage is missing.</p></div>`;
+    if (!content) return `<div class="content-card"><h2 class="text-4xl text-center glow-title">${stage.title}</h2><p>Content for this stage is missing.</p></div>`;
     const buttonText = content.buttonText || 'Continue';
 
     // This block for the 'intro' page is correct and complete.
@@ -326,7 +326,7 @@ function generateStageHTML(stage, content) {
 
         const resonanceButtonHTML = window.SHOW_RESONANCE ? `<button class="cta-button-base cta-button-gold measure-resonance-button" data-stage-id="${stage.id}">Measure Resonance</button>` : '';
 
-        return `<div class="content-card"><h2 class="text-4xl text-center mb-4"><span class="artifiction-icon">${stage.icon}</span>${content.title}</h2><div class="prose text-center max-w-none mb-8"><p class="text-lg font-semibold">${content.prose}</p></div><div class="ornamental-divider"></div><div class="flex flex-wrap -mx-4"><div class="w-full lg:w-1/2 px-4 space-y-8">${pointsHTML}</div><div class="w-full lg:w-1/2 px-4 flex items-center justify-center"><div class="chart-container relative w-full max-w-md mx-auto"><canvas id="compassChart"></canvas></div></div></div>${synthesisHTML}<div class="feedback-container" id="overall-feedback-${stage.id}" style="display: none;"></div><div class="text-center mt-10 flex flex-col sm:flex-row justify-center items-center">${resonanceButtonHTML}<button class="cta-button-base cta-button-teal stage-continue-button" data-stage-id="${stage.id}">${content.buttonText || 'Continue'}</button></div></div>`;
+        return `<div class="content-card"><h2 class="text-4xl text-center mb-4 glow-title"><span class="artifiction-icon">${stage.icon}</span>${content.title}</h2><div class="prose text-center max-w-none mb-8"><p class="text-lg font-semibold">${content.prose}</p></div><div class="ornamental-divider"></div><div class="flex flex-wrap -mx-4"><div class="w-full lg:w-1/2 px-4 space-y-8">${pointsHTML}</div><div class="w-full lg:w-1/2 px-4 flex items-center justify-center"><div class="chart-container relative w-full max-w-md mx-auto"><canvas id="compassChart"></canvas></div></div></div>${synthesisHTML}<div class="feedback-container" id="overall-feedback-${stage.id}" style="display: none;"></div><div class="text-center mt-10 flex flex-col sm:flex-row justify-center items-center">${resonanceButtonHTML}<button class="cta-button-base cta-button-teal stage-continue-button" data-stage-id="${stage.id}">${content.buttonText || 'Continue'}</button></div></div>`;
     }
 
     const isValidationStage = hasFields || hasSynthesis;
@@ -387,7 +387,7 @@ function generateStageHTML(stage, content) {
     
     return `
         <div class="content-card">
-            <h2 class="text-4xl text-center mb-4"><span class="artifiction-icon">${stage.icon || '🔹'}</span>${content.title}</h2>
+            <h2 class="text-4xl text-center mb-4 glow-title"><span class="artifiction-icon">${stage.icon || '🔹'}</span>${content.title}</h2>
             ${content.subtitle ? `<p class="text-lg font-semibold text-gold text-center">${content.subtitle}</p>` : ''}${proseHTML}
             ${content.header ? `<h3 class="text-xl mt-6 text-gold">${content.header}</h3>` : ''}
             <div class="ornamental-divider"></div>
