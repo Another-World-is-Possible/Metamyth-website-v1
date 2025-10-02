@@ -23,6 +23,7 @@ import StorySystemPage from "@/pages/intensive-hero";
 import SwordCursor from "@/components/sword-cursor";
 import { ImageLoadingProvider } from "@/contexts/ImageLoadingContext";
 import { AudioProvider } from "@/contexts/audio-context";
+import { AuthProvider } from "@/hooks/use-auth";
 import audioSrc from "@assets/background-music.mp3";
 import { useEffect } from "react";
 
@@ -70,17 +71,19 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AudioProvider audioSrc={audioSrc}>
-        <ImageLoadingProvider>
-          <TooltipProvider>
-            <div className="dark">
-              <SwordCursor />
-              <Toaster />
-              <Router />
-            </div>
-          </TooltipProvider>
-        </ImageLoadingProvider>
-      </AudioProvider>
+      <AuthProvider>
+        <AudioProvider audioSrc={audioSrc}>
+          <ImageLoadingProvider>
+            <TooltipProvider>
+              <div className="dark">
+                <SwordCursor />
+                <Toaster />
+                <Router />
+              </div>
+            </TooltipProvider>
+          </ImageLoadingProvider>
+        </AudioProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
