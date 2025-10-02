@@ -120,7 +120,7 @@ export default function MetamythJourneyPage() {
         const finalHtml = htmlTemplate
           .replace(/<link[^>]*metamyth-journey\.css[^>]*>/g, '') // Remove the external CSS link
           .replace('<head>', `<head>${baseTag}`) // Add base tag at beginning
-          .replace('</body>', `${styleTag}${configScript}${resonanceScript}${combinedScripts}</body>`); // Inject CSS + JS at END of body
+          .replace(/<\/body\s*>/i, `${styleTag}${configScript}${resonanceScript}${combinedScripts}</body>`); // Inject CSS + JS at END of body (regex handles whitespace)
         
         console.log('[MetamythJourney] 💡 Injected custom CSS at end of <body> AFTER Tailwind CDN for proper cascade');
 
