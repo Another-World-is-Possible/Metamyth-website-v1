@@ -175,14 +175,46 @@ async function handleMeasureResonance(event) {
 // --- LOCAL STORAGE & PROGRESS ---
 function saveProgress() {
     try {
-        const activeStage = document.querySelector('.stage-content.active');
-        const lastStageId = activeStage ? activeStage.id : 'intro';
         const formInputs = {};
         document.querySelectorAll('textarea[data-field-index]').forEach(input => {
             const stageId = input.closest('.stage-content').id;
             const fieldIndex = input.dataset.fieldIndex;
             formInputs[`${stageId}-${fieldIndex}`] = input.value;
         });
+        
+        // Determine lastStageId: first stage with empty input, or 'intro' if all empty
+        let lastStageId = 'intro'; // Default to Awaken stage
+        let hasAnyInput = false;
+        
+        for (const stage of stages) {
+            const stageInputs = document.querySelectorAll(`#${stage.id} textarea[data-field-index]`);
+            if (stageInputs.length === 0) continue; // Skip stages without textareas
+            
+            let hasEmptyField = false;
+            let hasFilledField = false;
+            
+            stageInputs.forEach(input => {
+                const value = input.value.trim();
+                if (value === '') {
+                    hasEmptyField = true;
+                } else {
+                    hasFilledField = true;
+                    hasAnyInput = true;
+                }
+            });
+            
+            // If this stage has any empty field and user has written something somewhere
+            if (hasEmptyField && hasAnyInput) {
+                lastStageId = stage.id;
+                break; // Found first incomplete stage
+            }
+            
+            // If all fields in this stage are filled, continue to next stage
+            if (!hasEmptyField && hasFilledField) {
+                lastStageId = stage.id; // Update as we go, in case this is the last filled stage
+            }
+        }
+        
         const feedbackContents = {};
         document.querySelectorAll('.feedback-container, .field-feedback-display').forEach(el => {
             if (el.style.display !== 'none' && el.textContent) {
