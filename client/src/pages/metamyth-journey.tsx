@@ -114,16 +114,19 @@ export default function MetamythJourneyPage() {
       }
 
       try {
-        const { data, error } = await supabase
+        const { data: journeys, error } = await supabase
           .from('journey_progress')
           .select('*')
           .eq('user_id', user.id)
           .eq('is_active', true)
-          .maybeSingle();
+          .order('id', { ascending: false })
+          .limit(1);
 
         if (error) {
           throw error;
         }
+
+        const data = journeys?.[0] || null;
 
         const iframe = iframeRef.current;
         if (!iframe?.contentWindow) return;
