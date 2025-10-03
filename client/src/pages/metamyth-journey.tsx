@@ -474,6 +474,27 @@ export default function MetamythJourneyPage() {
               <span>Local only</span>
             </div>
           )}
+          {syncStatus === 'verify-email' && (
+            <div className="flex flex-col gap-2 text-sm bg-black/80 backdrop-blur-sm border border-ancient-gold/30 rounded-lg p-3 max-w-xs">
+              <div className="flex items-start gap-2">
+                <CloudOff className="h-4 w-4 text-ancient-gold mt-0.5 flex-shrink-0" />
+                <div className="flex-1">
+                  <p className="text-ancient-gold font-semibold mb-1">Verify your email</p>
+                  <p className="text-cream-white/80 text-xs mb-2">
+                    Check your inbox to enable cloud sync. Progress is saved locally until verified.
+                  </p>
+                  <button
+                    onClick={handleResendVerification}
+                    disabled={resendingEmail}
+                    className="w-full bg-ancient-gold/20 hover:bg-ancient-gold/30 text-ancient-gold border border-ancient-gold/30 rounded px-2 py-1 text-xs transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    data-testid="button-resend-verification"
+                  >
+                    {resendingEmail ? 'Sending...' : 'Resend verification email'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
