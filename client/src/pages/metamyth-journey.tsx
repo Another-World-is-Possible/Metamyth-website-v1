@@ -439,11 +439,12 @@ export default function MetamythJourneyPage() {
           // postMessage bridge for parent-iframe communication
           window.PARENT_HANDLES_STORAGE = ${!!user};
           
+          // Store original methods before override
+          const originalSetItem = localStorage.setItem.bind(localStorage);
+          const originalGetItem = localStorage.getItem.bind(localStorage);
+          
           // Override localStorage setItem to send to parent when user is logged in
           if (window.PARENT_HANDLES_STORAGE) {
-            const originalSetItem = localStorage.setItem.bind(localStorage);
-            const originalGetItem = localStorage.getItem.bind(localStorage);
-            
             window.__pendingProgress = null;
             
             localStorage.setItem = function(key, value) {
@@ -462,20 +463,24 @@ export default function MetamythJourneyPage() {
             const { type, data } = event.data;
             
             if (type === 'LOAD_PROGRESS') {
-              localStorage.setItem('metamythProgress', JSON.stringify(data));
+              // Use original method to bypass override and prevent feedback loop
+              originalSetItem('metamythProgress', JSON.stringify(data));
               location.reload(); // Reload to apply loaded progress
+            } else if (type === 'SAVE_TO_LOCAL') {
+              // Use original method to bypass override and prevent feedback loop
+              originalSetItem('metamythProgress', JSON.stringify(data));
             } else if (type === 'CHECK_LOCAL_PROGRESS') {
-              const hasProgress = !!localStorage.getItem('metamythProgress');
+              const hasProgress = !!originalGetItem('metamythProgress');
               window.parent.postMessage({ type: 'LOCAL_PROGRESS_EXISTS', data: { hasProgress } }, '*');
             } else if (type === 'MIGRATE_TO_CLOUD') {
-              const progress = localStorage.getItem('metamythProgress');
+              const progress = originalGetItem('metamythProgress');
               if (progress) {
                 window.parent.postMessage({ type: 'MIGRATE_DATA', data: { progress: JSON.parse(progress) } }, '*');
               }
             } else if (type === 'CLEAR_LOCAL_STORAGE') {
+              // Use original method to clear
+              originalSetItem('metamythProgress', '');
               localStorage.removeItem('metamythProgress');
-            } else if (type === 'SAVE_TO_LOCAL') {
-              localStorage.setItem('metamythProgress', JSON.stringify(data));
             }
           });
         </script>`;
