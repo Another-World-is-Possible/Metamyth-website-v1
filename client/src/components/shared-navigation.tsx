@@ -1,15 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Shield, Volume2, VolumeX } from "lucide-react";
+import { Menu, Shield, Volume2, VolumeX, LogIn, LogOut, Cloud, CloudOff, Loader2 } from "lucide-react";
 import { useLocation } from "wouter";
 import { useAudio } from "@/contexts/audio-context";
+import { useAuth } from "@/hooks/use-auth";
 import { motion } from "framer-motion";
 
 export default function SharedNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [location, navigate] = useLocation();
-  const audioControlsRef = useRef<HTMLDivElement>(null); 
+  const audioControlsRef = useRef<HTMLDivElement>(null);
+  
+  // Auth state
+  const { user, loading: authLoading, signOut } = useAuth();
+  
   let audioControls = null;
   try {
     audioControls = useAudio();
@@ -133,6 +138,31 @@ export default function SharedNavigation() {
                       </div>
                     </div>
                   </motion.div>
+                )}
+              </div>
+            )}
+
+            {/* Auth Button */}
+            {!authLoading && (
+              <div className="ml-2">
+                {user ? (
+                  <button
+                    onClick={signOut}
+                    className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold hover:bg-ancient-gold/20 transition-all duration-300"
+                    data-testid="button-signout"
+                    title="Sign Out"
+                  >
+                    <LogOut size={18} />
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => navigate('/metamyth-journey')}
+                    className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold hover:bg-ancient-gold/20 transition-all duration-300"
+                    data-testid="button-signin"
+                    title="Sign In"
+                  >
+                    <LogIn size={18} />
+                  </button>
                 )}
               </div>
             )}

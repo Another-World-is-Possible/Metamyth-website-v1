@@ -5,8 +5,7 @@ import { supabase } from '@/lib/supabase';
 import { useToast } from '@/hooks/use-toast';
 import PageLayout from '@/components/layouts/page-layout';
 import AuthDialog from '@/components/auth-dialog';
-import { Button } from '@/components/ui/button';
-import { LogIn, LogOut, Cloud, CloudOff, Loader2 } from 'lucide-react';
+import { Cloud, CloudOff, Loader2 } from 'lucide-react';
 import cssUrl from '@/index.css?url';
 
 type JourneyProgress = {
@@ -26,6 +25,18 @@ export default function MetamythJourneyPage() {
   const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'synced' | 'local-only'>('idle');
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [progressLoaded, setProgressLoaded] = useState(false);
+  const [hasShownAuthPrompt, setHasShownAuthPrompt] = useState(false);
+
+  // Show auth dialog for anonymous users on first visit
+  useEffect(() => {
+    if (!authLoading && !user && !hasShownAuthPrompt && iframeContent) {
+      const timer = setTimeout(() => {
+        setAuthDialogOpen(true);
+        setHasShownAuthPrompt(true);
+      }, 1500); // Wait 1.5s for journey to load first
+      return () => clearTimeout(timer);
+    }
+  }, [authLoading, user, hasShownAuthPrompt, iframeContent]);
 
   // Load progress from Supabase when user logs in
   useEffect(() => {
@@ -339,16 +350,6 @@ export default function MetamythJourneyPage() {
     };
   }, [navigate, user]);
 
-  const handleSignOut = async () => {
-    await signOut();
-    toast({
-      title: 'Signed out',
-      description: 'Your progress will now be saved locally only.',
-    });
-    setSyncStatus('idle');
-    setProgressLoaded(false);
-  };
-
   if (authLoading) {
     return (
       <PageLayout>
@@ -371,52 +372,29 @@ export default function MetamythJourneyPage() {
 
   return (
     <PageLayout hideFooter>
-      {/* Auth UI Overlay */}
-      <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
-        {user ? (
-          <>
-            {syncStatus === 'syncing' && (
-              <div className="flex items-center gap-2 text-sm text-yellow-400">
-                <Loader2 className="h-4 w-4 animate-spin" />
-                <span>Syncing...</span>
-              </div>
-            )}
-            {syncStatus === 'synced' && (
-              <div className="flex items-center gap-2 text-sm text-green-400">
-                <Cloud className="h-4 w-4" />
-                <span>Synced</span>
-              </div>
-            )}
-            {syncStatus === 'local-only' && (
-              <div className="flex items-center gap-2 text-sm text-orange-400">
-                <CloudOff className="h-4 w-4" />
-                <span>Local only</span>
-              </div>
-            )}
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={handleSignOut}
-              data-testid="button-signout"
-              className="gap-2"
-            >
-              <LogOut className="h-4 w-4" />
-              Sign Out
-            </Button>
-          </>
-        ) : (
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => setAuthDialogOpen(true)}
-            data-testid="button-signin"
-            className="gap-2"
-          >
-            <LogIn className="h-4 w-4" />
-            Sign In
-          </Button>
-        )}
-      </div>
+      {/* Sync Status Indicator (only when logged in) */}
+      {user && (
+        <div className="absolute top-20 right-4 z-50 flex items-center gap-2">
+          {syncStatus === 'syncing' && (
+            <div className="flex items-center gap-2 text-sm text-yellow-400 bg-black/50 backdrop-blur-sm border border-yellow-400/30 rounded-full px-3 py-1">
+              <Loader2 className="h-4 w-4 animate-spin" />
+              <span>Syncing...</span>
+            </div>
+          )}
+          {syncStatus === 'synced' && (
+            <div className="flex items-center gap-2 text-sm text-green-400 bg-black/50 backdrop-blur-sm border border-green-400/30 rounded-full px-3 py-1">
+              <Cloud className="h-4 w-4" />
+              <span>Synced</span>
+            </div>
+          )}
+          {syncStatus === 'local-only' && (
+            <div className="flex items-center gap-2 text-sm text-orange-400 bg-black/50 backdrop-blur-sm border border-orange-400/30 rounded-full px-3 py-1">
+              <CloudOff className="h-4 w-4" />
+              <span>Local only</span>
+            </div>
+          )}
+        </div>
+      )}
 
       <iframe
         ref={iframeRef}
