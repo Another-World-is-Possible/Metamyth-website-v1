@@ -1,16 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Shield, Volume2, VolumeX, LogIn, LogOut, Cloud, CloudOff, Loader2 } from "lucide-react";
+import { Menu, Shield, Volume2, VolumeX, User } from "lucide-react";
 import { useLocation } from "wouter";
 import { useAudio } from "@/contexts/audio-context";
 import { useAuth } from "@/hooks/use-auth";
 import { motion } from "framer-motion";
+import AuthDialog from "@/components/auth-dialog";
 
 export default function SharedNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [location, navigate] = useLocation();
   const audioControlsRef = useRef<HTMLDivElement>(null);
+  const profileControlsRef = useRef<HTMLDivElement>(null);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [authDialogOpen, setAuthDialogOpen] = useState(false);
   
   // Auth state
   const { user, loading: authLoading, signOut } = useAuth();
@@ -36,14 +40,33 @@ export default function SharedNavigation() {
       if (audioControlsRef.current && !audioControlsRef.current.contains(event.target as Node)) {
         setShowControls(false);
       }
+      if (profileControlsRef.current && !profileControlsRef.current.contains(event.target as Node)) {
+        setShowProfileMenu(false);
+      }
     };
-    if (showControls) {
+
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        if (showProfileMenu) {
+          setShowProfileMenu(false);
+          event.stopPropagation();
+        }
+        if (showControls) {
+          setShowControls(false);
+          event.stopPropagation();
+        }
+      }
+    };
+
+    if (showControls || showProfileMenu) {
       document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("keydown", handleEscapeKey);
     }
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscapeKey);
     };
-  }, [showControls, setShowControls]);
+  }, [showControls, showProfileMenu]);
 
   useEffect(() => {
     const navElement = document.querySelector('nav');
@@ -142,27 +165,64 @@ export default function SharedNavigation() {
               </div>
             )}
 
-            {/* Auth Button */}
+            {/* Profile Menu */}
             {!authLoading && (
-              <div className="ml-2">
-                {user ? (
-                  <button
-                    onClick={signOut}
-                    className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold hover:bg-ancient-gold/20 transition-all duration-300"
-                    data-testid="button-signout"
-                    title="Sign Out"
+              <div className="relative ml-2" ref={profileControlsRef}>
+                <button
+                  onClick={() => setShowProfileMenu(!showProfileMenu)}
+                  className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold hover:bg-ancient-gold/20 transition-all duration-300"
+                  data-testid="button-profile"
+                  title="Profile"
+                >
+                  <User size={18} />
+                </button>
+
+                {/* Profile Menu Popover */}
+                {showProfileMenu && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: -10 }}
+                    className="absolute top-full left-0 mt-2 bg-black/80 backdrop-blur-md border border-ancient-gold/30 rounded-lg p-4 min-w-[240px] z-50"
                   >
-                    <LogOut size={18} />
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => navigate('/metamyth-journey')}
-                    className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold hover:bg-ancient-gold/20 transition-all duration-300"
-                    data-testid="button-signin"
-                    title="Sign In"
-                  >
-                    <LogIn size={18} />
-                  </button>
+                    {user ? (
+                      // Logged in user menu
+                      <div className="space-y-3">
+                        <div className="pb-3 border-b border-ancient-gold/20">
+                          <p className="text-ancient-gold text-sm font-semibold mb-1">Signed in as</p>
+                          <p className="text-cream-white text-xs break-all">{user.email}</p>
+                        </div>
+                        <button
+                          onClick={() => {
+                            signOut();
+                            setShowProfileMenu(false);
+                          }}
+                          className="w-full bg-ancient-gold/20 hover:bg-ancient-gold/30 text-ancient-gold border border-ancient-gold/30 rounded px-3 py-2 text-sm transition-all duration-200"
+                          data-testid="button-signout"
+                        >
+                          Sign Out
+                        </button>
+                      </div>
+                    ) : (
+                      // Anonymous user menu
+                      <div className="space-y-3">
+                        <p className="text-ancient-gold text-sm font-semibold mb-2">Account</p>
+                        <button
+                          onClick={() => {
+                            setAuthDialogOpen(true);
+                            setShowProfileMenu(false);
+                          }}
+                          className="w-full bg-ancient-gold/20 hover:bg-ancient-gold/30 text-ancient-gold border border-ancient-gold/30 rounded px-3 py-2 text-sm transition-all duration-200"
+                          data-testid="button-signin"
+                        >
+                          Sign In / Register
+                        </button>
+                        <p className="text-cream-white/60 text-xs text-center pt-2 border-t border-ancient-gold/20">
+                          Create an account to sync your journey progress across devices
+                        </p>
+                      </div>
+                    )}
+                  </motion.div>
                 )}
               </div>
             )}
@@ -223,6 +283,15 @@ export default function SharedNavigation() {
           </Sheet>
         </div>
       </div>
+
+      {/* Auth Dialog */}
+      <AuthDialog 
+        open={authDialogOpen}
+        onOpenChange={setAuthDialogOpen}
+        onAuthSuccess={() => {
+          setAuthDialogOpen(false);
+        }}
+      />
     </nav>
   );
 }

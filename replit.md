@@ -7,6 +7,16 @@ This is a Next.js-style web application called "Another World is Possible" - a s
 Preferred communication style: Simple, everyday language.
 
 ## Recent Updates (October 3, 2025)
+- ✅ **Profile Menu UI Enhancement**: Replaced login/logout buttons with unified Profile menu
+  - Profile button (User icon) added to upper-left navigation next to music controls
+  - Popover menu shows different content for anonymous vs authenticated users
+  - Anonymous users: "Sign In / Register" button with cloud sync explanation
+  - Authenticated users: Email display + "Sign Out" button
+  - Smooth animations via Framer Motion (opacity, scale, y transforms)
+  - Proper close behavior: Escape key, click outside, or toggle button
+  - Integrates with existing AuthDialog component for sign in/sign up flows
+  - Consistent styling with music controls (black/80 backdrop, ancient-gold borders)
+  
 - ✅ **Supabase Authentication Integration Complete**: Added user accounts with cloud sync for metamyth journey
   - Created journey_progress table with Row Level Security policies (supabase/migrations/002_create_table_journey_progress.sql)
   - Built AuthDialog component with sign in/sign up tabs (client/src/components/auth-dialog.tsx)
