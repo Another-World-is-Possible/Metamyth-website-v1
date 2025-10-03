@@ -22,10 +22,40 @@ export default function MetamythJourneyPage() {
   const { toast } = useToast();
   const [iframeContent, setIframeContent] = useState<string | null>(null);
   const [authDialogOpen, setAuthDialogOpen] = useState(false);
-  const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'synced' | 'local-only'>('idle');
+  const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'synced' | 'local-only' | 'verify-email'>('idle');
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [progressLoaded, setProgressLoaded] = useState(false);
   const [hasShownAuthPrompt, setHasShownAuthPrompt] = useState(false);
+  const [resendingEmail, setResendingEmail] = useState(false);
+
+  // Resend verification email
+  const handleResendVerification = async () => {
+    if (!user?.email) return;
+    
+    setResendingEmail(true);
+    try {
+      const { error } = await supabase.auth.resend({
+        type: 'signup',
+        email: user.email,
+      });
+      
+      if (error) throw error;
+      
+      toast({
+        title: 'Verification email sent',
+        description: 'Please check your inbox and spam folder.',
+      });
+    } catch (error) {
+      console.error('[MetamythJourney] Failed to resend verification:', error);
+      toast({
+        variant: 'destructive',
+        title: 'Failed to resend email',
+        description: 'Please try again later.',
+      });
+    } finally {
+      setResendingEmail(false);
+    }
+  };
 
   // Show auth dialog for anonymous users on first visit
   useEffect(() => {
@@ -38,11 +68,50 @@ export default function MetamythJourneyPage() {
     }
   }, [authLoading, user, hasShownAuthPrompt, iframeContent]);
 
+  // Poll for email verification and auto-migrate to cloud sync
+  useEffect(() => {
+    if (!user || syncStatus !== 'verify-email') return;
+
+    const checkVerification = async () => {
+      const { data: { user: refreshedUser } } = await supabase.auth.getUser();
+      
+      if (refreshedUser?.email_confirmed_at) {
+        console.log('[MetamythJourney] ✅ Email verified! Migrating to cloud sync...');
+        
+        // Request localStorage data from iframe for migration
+        iframeRef.current?.contentWindow?.postMessage({
+          type: 'CHECK_LOCAL_PROGRESS'
+        }, '*');
+        
+        // Reset progress loaded to trigger reload
+        setProgressLoaded(false);
+        
+        toast({
+          title: 'Email verified!',
+          description: 'Your progress is now syncing to the cloud.',
+        });
+      }
+    };
+
+    // Poll every 5 seconds while waiting for verification
+    const pollInterval = setInterval(checkVerification, 5000);
+    
+    return () => clearInterval(pollInterval);
+  }, [user, syncStatus, toast]);
+
   // Load progress from Supabase when user logs in
   useEffect(() => {
     if (!user || !iframeRef.current?.contentWindow || progressLoaded) return;
 
     const loadProgress = async () => {
+      // Check if email is verified
+      if (!user.email_confirmed_at) {
+        console.log('[MetamythJourney] ⚠️ Email not verified - using localStorage only');
+        setSyncStatus('verify-email');
+        setProgressLoaded(true);
+        return;
+      }
+
       try {
         const { data, error } = await supabase
           .from('journey_progress')
@@ -111,6 +180,18 @@ export default function MetamythJourneyPage() {
       switch (type) {
         case 'SAVE_PROGRESS':
           if (user) {
+            // Check if email is verified
+            if (!user.email_confirmed_at) {
+              console.log('[MetamythJourney] ⚠️ Email not verified - saving locally only');
+              setSyncStatus('verify-email');
+              // Save to localStorage via iframe
+              iframeRef.current?.contentWindow?.postMessage({
+                type: 'SAVE_TO_LOCAL',
+                data
+              }, '*');
+              break;
+            }
+
             // Save to Supabase
             setSyncStatus('syncing');
             try {
