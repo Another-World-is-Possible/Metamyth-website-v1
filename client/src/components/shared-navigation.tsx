@@ -191,6 +191,12 @@ export default function SharedNavigation() {
                         <div className="pb-3 border-b border-ancient-gold/20">
                           <p className="text-ancient-gold text-sm font-semibold mb-1">Signed in as</p>
                           <p className="text-cream-white text-xs break-all">{user.email}</p>
+                          {!user.email_confirmed_at && (
+                            <p className="text-orange-400 text-xs mt-2 flex items-center gap-1">
+                              <span className="inline-block w-1.5 h-1.5 bg-orange-400 rounded-full"></span>
+                              Email not verified - cloud sync disabled
+                            </p>
+                          )}
                         </div>
                         <button
                           onClick={() => {
