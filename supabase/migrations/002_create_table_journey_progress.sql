@@ -1,14 +1,18 @@
--- Create journey_progress table for storing user metamyth journey data
+-- Create journey_progress table that supports multiple journeys per user
 CREATE TABLE IF NOT EXISTS journey_progress (
-  user_id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   journey_data JSONB DEFAULT '{}'::jsonb,
   llm_responses JSONB DEFAULT '{}'::jsonb,
   last_stage_id TEXT,
+  is_active BOOLEAN DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Create index for faster lookups
+-- Create indexes for performance
 CREATE INDEX IF NOT EXISTS idx_journey_progress_user_id ON journey_progress(user_id);
+CREATE INDEX IF NOT EXISTS idx_journey_progress_user_active ON journey_progress(user_id, is_active);
 CREATE INDEX IF NOT EXISTS idx_journey_progress_updated_at ON journey_progress(updated_at);
 
 -- Enable Row Level Security
@@ -37,4 +41,4 @@ CREATE POLICY "Users can delete own progress" ON journey_progress
   FOR DELETE USING (auth.uid() = user_id);
 
 -- Add comment for documentation
-COMMENT ON TABLE journey_progress IS 'Stores user progress through the metamyth journey, synced from localStorage';
+COMMENT ON TABLE journey_progress IS 'Stores user progress through metamyth journeys. Supports multiple journeys per user with is_active flag.';

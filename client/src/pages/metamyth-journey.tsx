@@ -27,6 +27,7 @@ export default function MetamythJourneyPage() {
   const [progressLoaded, setProgressLoaded] = useState(false);
   const [hasShownAuthPrompt, setHasShownAuthPrompt] = useState(false);
   const [resendingEmail, setResendingEmail] = useState(false);
+  const [activeJourneyId, setActiveJourneyId] = useState<string | null>(null);
 
   // Resend verification email
   const handleResendVerification = async () => {
@@ -117,9 +118,10 @@ export default function MetamythJourneyPage() {
           .from('journey_progress')
           .select('*')
           .eq('user_id', user.id)
-          .single();
+          .eq('is_active', true)
+          .maybeSingle();
 
-        if (error && error.code !== 'PGRST116') { // PGRST116 = no rows found
+        if (error) {
           throw error;
         }
 
@@ -127,6 +129,9 @@ export default function MetamythJourneyPage() {
         if (!iframe?.contentWindow) return;
 
         if (data) {
+          // Store the journey ID for future updates
+          setActiveJourneyId(data.id);
+          
           // Send progress to iframe
           const progress: JourneyProgress = {
             lastStageId: data.last_stage_id || undefined,
@@ -145,7 +150,7 @@ export default function MetamythJourneyPage() {
           setSyncStatus('synced');
           setProgressLoaded(true);
         } else {
-          // Check if localStorage has data and offer migration
+          // No active journey exists - check if localStorage has data and offer migration
           iframe.contentWindow.postMessage({
             type: 'CHECK_LOCAL_PROGRESS'
           }, '*');
@@ -195,17 +200,36 @@ export default function MetamythJourneyPage() {
             // Save to Supabase
             setSyncStatus('syncing');
             try {
-              const { error } = await supabase
-                .from('journey_progress')
-                .upsert({
-                  user_id: user.id,
-                  journey_data: data.journeyData || data.formInputs || {},
-                  llm_responses: data.llmResponses || data.feedbackContents || {},
-                  last_stage_id: data.lastStageId,
-                  updated_at: new Date().toISOString(),
-                });
+              const journeyData = {
+                user_id: user.id,
+                journey_data: data.journeyData || data.formInputs || {},
+                llm_responses: data.llmResponses || data.feedbackContents || {},
+                last_stage_id: data.lastStageId,
+                is_active: true,
+                updated_at: new Date().toISOString(),
+              };
 
-              if (error) throw error;
+              let result;
+              if (activeJourneyId) {
+                // Update existing journey
+                result = await supabase
+                  .from('journey_progress')
+                  .update(journeyData)
+                  .eq('id', activeJourneyId);
+              } else {
+                // Insert new journey
+                result = await supabase
+                  .from('journey_progress')
+                  .insert(journeyData)
+                  .select('id')
+                  .single();
+                
+                if (result.data) {
+                  setActiveJourneyId(result.data.id);
+                }
+              }
+
+              if (result.error) throw result.error;
               
               setSyncStatus('synced');
             } catch (error) {
@@ -245,17 +269,36 @@ export default function MetamythJourneyPage() {
         case 'MIGRATE_DATA':
           if (user && data.progress) {
             try {
-              const { error } = await supabase
-                .from('journey_progress')
-                .upsert({
-                  user_id: user.id,
-                  journey_data: data.progress.journeyData || data.progress.formInputs || {},
-                  llm_responses: data.progress.llmResponses || data.progress.feedbackContents || {},
-                  last_stage_id: data.progress.lastStageId,
-                  updated_at: new Date().toISOString(),
-                });
+              const journeyData = {
+                user_id: user.id,
+                journey_data: data.progress.journeyData || data.progress.formInputs || {},
+                llm_responses: data.progress.llmResponses || data.progress.feedbackContents || {},
+                last_stage_id: data.progress.lastStageId,
+                is_active: true,
+                updated_at: new Date().toISOString(),
+              };
 
-              if (error) throw error;
+              let result;
+              if (activeJourneyId) {
+                // Update existing journey
+                result = await supabase
+                  .from('journey_progress')
+                  .update(journeyData)
+                  .eq('id', activeJourneyId);
+              } else {
+                // Insert new journey
+                result = await supabase
+                  .from('journey_progress')
+                  .insert(journeyData)
+                  .select('id')
+                  .single();
+                
+                if (result.data) {
+                  setActiveJourneyId(result.data.id);
+                }
+              }
+
+              if (result.error) throw result.error;
 
               toast({
                 title: 'Progress imported!',
@@ -283,7 +326,7 @@ export default function MetamythJourneyPage() {
 
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
-  }, [user, toast]);
+  }, [user, toast, activeJourneyId]);
 
   useEffect(() => {
     const loadAndBuildJourney = async () => {
