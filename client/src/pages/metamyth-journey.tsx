@@ -28,6 +28,8 @@ export default function MetamythJourneyPage() {
   const [hasShownAuthPrompt, setHasShownAuthPrompt] = useState(false);
   const [resendingEmail, setResendingEmail] = useState(false);
   const [activeJourneyId, setActiveJourneyId] = useState<string | null>(null);
+  const syncedTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isSyncingRef = useRef(false);
 
   // Resend verification email
   const handleResendVerification = async () => {
@@ -207,8 +209,19 @@ export default function MetamythJourneyPage() {
               break;
             }
 
+            // Clear any pending "synced" timeout
+            if (syncedTimeoutRef.current) {
+              clearTimeout(syncedTimeoutRef.current);
+              syncedTimeoutRef.current = null;
+            }
+
+            // Only show "syncing" if we're not already syncing
+            if (!isSyncingRef.current) {
+              setSyncStatus('syncing');
+              isSyncingRef.current = true;
+            }
+
             // Save to Supabase
-            setSyncStatus('syncing');
             try {
               const journeyData = {
                 user_id: user.id,
@@ -247,9 +260,16 @@ export default function MetamythJourneyPage() {
                 data
               }, '*');
               
+              // Show "synced" and keep it visible for 1.5 seconds
               setSyncStatus('synced');
+              isSyncingRef.current = false;
+              
+              syncedTimeoutRef.current = setTimeout(() => {
+                syncedTimeoutRef.current = null;
+              }, 1500);
             } catch (error) {
               console.error('[MetamythJourney] Save to Supabase failed:', error);
+              isSyncingRef.current = false;
               
               // Fallback to localStorage
               iframeRef.current?.contentWindow?.postMessage({
