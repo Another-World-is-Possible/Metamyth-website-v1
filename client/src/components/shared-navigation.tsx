@@ -58,13 +58,27 @@ export default function SharedNavigation() {
       }
     };
 
+    // Close pop-ups when focus moves to iframe (e.g., user clicks inside it)
+    const handleWindowBlur = () => {
+      // Small delay to let focus settle, then close if focus is in an iframe
+      setTimeout(() => {
+        const activeElement = document.activeElement;
+        if (activeElement && activeElement.tagName === 'IFRAME') {
+          setShowControls(false);
+          setShowProfileMenu(false);
+        }
+      }, 0);
+    };
+
     if (showControls || showProfileMenu) {
       document.addEventListener("mousedown", handleClickOutside);
       document.addEventListener("keydown", handleEscapeKey);
+      window.addEventListener("blur", handleWindowBlur);
     }
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleEscapeKey);
+      window.removeEventListener("blur", handleWindowBlur);
     };
   }, [showControls, showProfileMenu]);
 
