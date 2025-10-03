@@ -144,12 +144,19 @@ export default function MetamythJourneyPage() {
             feedbackContents: data.llm_responses || {},
           };
           
+          // Load into iframe AND sync to localStorage (keep cache up-to-date)
           iframe.contentWindow.postMessage({
             type: 'LOAD_PROGRESS',
             data: progress
           }, '*');
           
-          console.log('[MetamythJourney] ✅ Loaded progress from Supabase');
+          // Also save to localStorage to keep it as a hot cache
+          iframe.contentWindow.postMessage({
+            type: 'SAVE_TO_LOCAL',
+            data: progress
+          }, '*');
+          
+          console.log('[MetamythJourney] ✅ Loaded progress from Supabase and synced to localStorage');
           setSyncStatus('synced');
           setProgressLoaded(true);
         } else {
@@ -233,6 +240,12 @@ export default function MetamythJourneyPage() {
               }
 
               if (result.error) throw result.error;
+              
+              // Also save to localStorage to keep it as a hot cache
+              iframeRef.current?.contentWindow?.postMessage({
+                type: 'SAVE_TO_LOCAL',
+                data
+              }, '*');
               
               setSyncStatus('synced');
             } catch (error) {
