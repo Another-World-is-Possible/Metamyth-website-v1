@@ -184,34 +184,36 @@ function saveProgress() {
         
         // Determine lastStageId: first stage with empty input, or 'intro' if all empty
         let lastStageId = 'intro'; // Default to Awaken stage
-        let hasAnyInput = false;
         
-        for (const stage of stages) {
-            const stageInputs = document.querySelectorAll(`#${stage.id} textarea[data-field-index]`);
-            if (stageInputs.length === 0) continue; // Skip stages without textareas
-            
-            let hasEmptyField = false;
-            let hasFilledField = false;
-            
-            stageInputs.forEach(input => {
-                const value = input.value.trim();
-                if (value === '') {
-                    hasEmptyField = true;
-                } else {
-                    hasFilledField = true;
-                    hasAnyInput = true;
-                }
-            });
-            
-            // If this stage has any empty field and user has written something somewhere
-            if (hasEmptyField && hasAnyInput) {
-                lastStageId = stage.id;
-                break; // Found first incomplete stage
+        // First pass: check if ANY textarea has content
+        let hasAnyInput = false;
+        document.querySelectorAll('textarea[data-field-index]').forEach(input => {
+            if (input.value.trim() !== '') {
+                hasAnyInput = true;
             }
-            
-            // If all fields in this stage are filled, continue to next stage
-            if (!hasEmptyField && hasFilledField) {
-                lastStageId = stage.id; // Update as we go, in case this is the last filled stage
+        });
+        
+        // Second pass: find first stage with empty fields (if any input exists)
+        if (hasAnyInput) {
+            for (const stage of stages) {
+                const stageInputs = document.querySelectorAll(`#${stage.id} textarea[data-field-index]`);
+                if (stageInputs.length === 0) continue; // Skip stages without textareas
+                
+                let hasEmptyField = false;
+                stageInputs.forEach(input => {
+                    if (input.value.trim() === '') {
+                        hasEmptyField = true;
+                    }
+                });
+                
+                // Found first stage with at least one empty field
+                if (hasEmptyField) {
+                    lastStageId = stage.id;
+                    break;
+                }
+                
+                // If all fields filled in this stage, it could be the last stage
+                lastStageId = stage.id;
             }
         }
         
