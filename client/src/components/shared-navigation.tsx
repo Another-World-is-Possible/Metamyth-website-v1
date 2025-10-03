@@ -132,7 +132,7 @@ export default function SharedNavigation() {
               <div className="relative ml-2" ref={audioControlsRef}> {/* Added ml-2 here */}
                 <button
                   onClick={() => setShowControls(!showControls)}
-                  className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold hover:bg-ancient-gold/40 hover:border-ancient-gold/60 transition-all duration-300"
+                  className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold transition-all duration-300 hover:!bg-[hsl(45,85%,55%,0.4)] hover:!border-[hsl(45,85%,55%,0.6)]"
                   data-testid="button-audio-toggle"
                 >
                   {isPlaying ? <Volume2 size={18} /> : <VolumeX size={18} />}
@@ -186,7 +186,7 @@ export default function SharedNavigation() {
                   onClick={() => setShowProfileMenu(!showProfileMenu)}
                   className={`backdrop-blur-sm rounded-full p-2 transition-all duration-300 ${
                     user 
-                      ? 'bg-black/50 border border-ancient-gold/30 text-ancient-gold hover:bg-ancient-gold/40 hover:border-ancient-gold/60'
+                      ? 'bg-black/50 border border-ancient-gold/30 text-ancient-gold hover:!bg-[hsl(45,85%,55%,0.4)] hover:!border-[hsl(45,85%,55%,0.6)]'
                       : 'bg-primary text-primary-foreground hover:bg-[hsl(178,65%,35%)] shadow-[0_0_15px_rgba(72,196,196,0.5)] border-2 border-primary ring-[1.5px] ring-inset ring-black'
                   }`}
                   data-testid="button-profile"
