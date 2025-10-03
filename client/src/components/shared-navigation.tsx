@@ -187,7 +187,7 @@ export default function SharedNavigation() {
                   className={`backdrop-blur-sm rounded-full p-2 transition-all duration-300 ${
                     user 
                       ? 'bg-black/50 border border-ancient-gold/30 text-ancient-gold hover:bg-mystical-teal/40'
-                      : 'bg-primary text-primary-foreground hover:bg-[hsl(178,65%,35%)] shadow-[0_0_15px_rgba(72,196,196,0.5)] ring-2 ring-inset ring-black/30'
+                      : 'bg-primary text-primary-foreground hover:bg-[hsl(178,65%,35%)] shadow-[0_0_15px_rgba(72,196,196,0.5)] border-2 border-primary ring-[1.5px] ring-inset ring-black'
                   }`}
                   data-testid="button-profile"
                   title="Profile"
