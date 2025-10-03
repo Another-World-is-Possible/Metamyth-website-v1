@@ -77,6 +77,7 @@ export default function AuthDialog({ open, onOpenChange, onAuthSuccess }: AuthDi
       onOpenChange(false);
       form.reset();
     } catch (error: any) {
+      console.error('[AuthDialog] Authentication error:', error);
       toast({
         variant: 'destructive',
         title: 'Authentication failed',

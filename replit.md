@@ -7,11 +7,21 @@ This is a Next.js-style web application called "Another World is Possible" - a s
 Preferred communication style: Simple, everyday language.
 
 ## Recent Updates (October 3, 2025)
+- ✅ **Email Verification System Complete**: Comprehensive email verification with auto-upgrade to cloud sync
+  - Detection: Checks `user.email_confirmed_at` field to determine verification status
+  - Unverified users: Progress saves to localStorage only, shows "verify-email" sync status
+  - Verification prompt: Appears in top-right of journey page with resend email button
+  - Profile menu: Shows orange warning badge for unverified users
+  - Auto-polling: Checks verification status every 5 seconds, automatically upgrades to cloud sync
+  - Migration: When verified, localStorage data automatically uploads to database
+  - UX: Users can use app immediately after signup, cloud sync enables after verification
+  - **Known Issue**: Supabase project has domain restrictions that block test emails (example.com, test.com, testmail.test, etc.). For testing, use real email domains (gmail.com, yahoo.com, etc.) or disable email confirmation in Supabase Dashboard → Authentication → Providers → Email
+
 - ✅ **Profile Menu UI Enhancement**: Replaced login/logout buttons with unified Profile menu
   - Profile button (User icon) added to upper-left navigation next to music controls
   - Popover menu shows different content for anonymous vs authenticated users
   - Anonymous users: "Sign In / Register" button with cloud sync explanation
-  - Authenticated users: Email display + "Sign Out" button
+  - Authenticated users: Email display + "Sign Out" button (with verification warning if applicable)
   - Smooth animations via Framer Motion (opacity, scale, y transforms)
   - Proper close behavior: Escape key, click outside, or toggle button
   - Integrates with existing AuthDialog component for sign in/sign up flows

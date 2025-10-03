@@ -18,7 +18,7 @@ type JourneyProgress = {
 
 export default function MetamythJourneyPage() {
   const [, navigate] = useLocation();
-  const { user, loading: authLoading, signOut } = useAuth();
+  const { user, loading: authLoading, signOut, refreshUser } = useAuth();
   const { toast } = useToast();
   const [iframeContent, setIframeContent] = useState<string | null>(null);
   const [authDialogOpen, setAuthDialogOpen] = useState(false);
@@ -73,7 +73,7 @@ export default function MetamythJourneyPage() {
     if (!user || syncStatus !== 'verify-email') return;
 
     const checkVerification = async () => {
-      const { data: { user: refreshedUser } } = await supabase.auth.getUser();
+      const refreshedUser = await refreshUser();
       
       if (refreshedUser?.email_confirmed_at) {
         console.log('[MetamythJourney] ✅ Email verified! Migrating to cloud sync...');
@@ -97,7 +97,7 @@ export default function MetamythJourneyPage() {
     const pollInterval = setInterval(checkVerification, 5000);
     
     return () => clearInterval(pollInterval);
-  }, [user, syncStatus, toast]);
+  }, [user, syncStatus, toast, refreshUser]);
 
   // Load progress from Supabase when user logs in
   useEffect(() => {
