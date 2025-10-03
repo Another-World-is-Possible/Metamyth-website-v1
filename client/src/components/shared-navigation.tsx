@@ -184,7 +184,11 @@ export default function SharedNavigation() {
               <div className="relative ml-2" ref={profileControlsRef}>
                 <button
                   onClick={() => setShowProfileMenu(!showProfileMenu)}
-                  className="bg-black/50 backdrop-blur-sm border border-ancient-gold/30 rounded-full p-2 text-ancient-gold hover:bg-ancient-gold/20 transition-all duration-300"
+                  className={`backdrop-blur-sm border rounded-full p-2 transition-all duration-300 ${
+                    user 
+                      ? 'bg-black/50 border-ancient-gold/30 text-ancient-gold hover:bg-mystical-teal/40'
+                      : 'bg-primary border-primary text-primary-foreground hover:bg-primary/90'
+                  }`}
                   data-testid="button-profile"
                   title="Profile"
                 >
