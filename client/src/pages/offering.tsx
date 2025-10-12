@@ -191,6 +191,7 @@ export default function Offering() {
             <Transform from="Branding" to="worldbuilding" />
             <Transform from="Consumers and customers" to="characters in your story" />
             <Transform from="Background characters" to="authors of reality" />
+            <Transform from="Struggling to get by" to="calling in planetary resources" />
           </div>
           
           <p className="mt-8 text-mystical-teal text-xl font-semibold text-center">
