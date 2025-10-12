@@ -347,8 +347,7 @@ export default function Offering() {
           
           <Button
             asChild
-            size="lg"
-            className="bg-ancient-gold hover:bg-ancient-gold/90 text-deep-black font-semibold text-xl px-12 py-8 h-auto rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-ancient-gold/20"
+            className="bg-ancient-gold hover:bg-ancient-gold/90 text-deep-black font-semibold"
             data-testid="button-book-session"
           >
             <a href="https://zcal.co/i/nIEsikdu" target="_blank" rel="noopener noreferrer">
