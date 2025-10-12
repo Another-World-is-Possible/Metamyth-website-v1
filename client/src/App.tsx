@@ -20,6 +20,7 @@ import TransformationJourneysPage from "@/pages/transformation-journeys";
 import JourneySelectionPage from "@/pages/journey-selection";
 import TheStarPage from "@/pages/thestar";
 import StorySystemPage from "@/pages/intensive-hero";
+import OfferingPage from "@/pages/offering";
 import SwordCursor from "@/components/sword-cursor";
 import { ImageLoadingProvider } from "@/contexts/ImageLoadingContext";
 import { AudioProvider } from "@/contexts/audio-context";
@@ -56,6 +57,7 @@ function Router() {
       <Route path="/journey-selection" component={JourneySelectionPage} />
       <Route path="/thestar" component={TheStarPage} />
       <Route path="/story-system" component={StorySystemPage} />
+      <Route path="/offering" component={OfferingPage} />
       <Route component={NotFound} />
     </Switch>
   );
