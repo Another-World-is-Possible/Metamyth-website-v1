@@ -179,24 +179,57 @@ export default function Offering() {
 
         {/* THE TRANSFORMATION */}
         <Section title="THE TRANSFORMATION">
-          <p className="mb-8 text-ancient-gold">This process transforms:</p>
+          <p className="mb-6 text-ancient-gold">This process transforms:</p>
           
-          <div className="grid md:grid-cols-2 gap-4">
-            <Transform from="Scattered dreams" to="inevitable visions" />
-            <Transform from="Indecision and confusion" to="crystal clarity" />
-            <Transform from="Busyness" to="easiness" />
-            <Transform from="Sales" to="service" />
-            <Transform from="Transaction" to="transformation" />
-            <Transform from="Marketing" to="movements" />
-            <Transform from="Branding" to="worldbuilding" />
-            <Transform from="Consumers and customers" to="characters in your story" />
-            <Transform from="Background characters" to="authors of reality" />
-            <Transform from="Struggling to get by" to="calling in planetary resources" />
+          <ul className="space-y-3 mb-10">
+            <li>• Scattered dreams into inevitable visions</li>
+            <li>• Indecision and confusion into crystal clarity</li>
+            <li>• Busyness into easiness</li>
+            <li>• Sales into service</li>
+            <li>• Transaction into transformation</li>
+            <li>• Marketing into movements</li>
+            <li>• Branding into worldbuilding</li>
+            <li>• Consumers and customers into characters in your story, attracted by your purpose</li>
+            <li>• Background characters into authors of reality</li>
+            <li>• Your life into the epic adventure it was always meant to be</li>
+          </ul>
+          
+          <div className="mt-12 space-y-6">
+            <h3 className="text-ancient-gold font-semibold text-2xl mb-6">When Purpose Pays</h3>
+            
+            <p>
+              The process transforms how you make a living. Your personal transformation becomes your professional offering. 
+              The journey you've been on becomes the medicine you provide. Your wounds become your wisdom, and that wisdom 
+              becomes what sustains you economically.
+            </p>
+            
+            <p>
+              This isn't about slapping purpose onto an existing business model. It's about fundamentally restructuring how 
+              value flows—where customers become characters in your quest, where community itself becomes the business model, 
+              where marketing transforms into movement-building.
+            </p>
+            
+            <p>
+              We help you elevate your market into a cause, a self-aware culture that can endure and spread. A council to 
+              build collective intelligence. Ultimately a commons for connecting customers and audiences with each other—creating 
+              a field of transformation and a true community of purpose to advance your mission.
+            </p>
+            
+            <p>
+              This pulls us out of the race to the bottom that commodifies everything and gets right to what the biggest 
+              brands in the world understand: people buy into an identity, a deeper meaning, and a community.
+            </p>
+            
+            <p className="text-mystical-teal font-semibold">That's what everyone is really searching for.</p>
+            
+            <p>
+              Organizations that help the most people and take on the biggest problems call in the most resources. We help 
+              you align to that planetary potential, raise your positioning to cosmic stakes, and build something that lasts 
+              not just quarters but generations.
+            </p>
+            
+            <p className="text-ancient-gold text-xl font-semibold mt-8">When the story is right, purpose pays.</p>
           </div>
-          
-          <p className="mt-8 text-mystical-teal text-xl font-semibold text-center">
-            Your life into the epic adventure it was always meant to be
-          </p>
         </Section>
 
         {/* THE VISION */}
