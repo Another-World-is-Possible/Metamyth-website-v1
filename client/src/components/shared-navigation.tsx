@@ -98,7 +98,8 @@ export default function SharedNavigation() {
     { id: 'story-system', label: 'Story System', path: '/story-system' },
     { id: 'transformation-journeys', label: 'Transformation Journeys', path: '/transformation-journeys' },
     { id: 'metamyth', label: 'Our Metamyth', path: '/metamyth' },
-    { id: 'quest', label: 'Our Quest', path: '/quest' }
+    { id: 'quest', label: 'Our Quest', path: '/quest' },
+    { id: 'offering', label: 'Work With Us', path: '/offering' }
   ];
 
   const handleNavClick = (path: string) => {
