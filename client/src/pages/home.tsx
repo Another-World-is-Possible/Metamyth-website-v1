@@ -5,6 +5,7 @@ import HeroSection from "@/components/hero-section";
 import LandingScreen from "@/components/landing-screen";
 import MetamythTiles from "@/components/metamyth-tiles";
 import CallToAction from "@/components/call-to-action";
+import OurStorySection from "@/components/our-story-section";
 import VideoSection from "@/components/video-section";
 import SharedFooter from "@/components/layouts/shared-footer"; // Added import
 
@@ -124,6 +125,7 @@ function HomeContent() {
             }}
           >
             <CallToAction setActiveTab={handleNavigation} />
+            <OurStorySection />
             <VideoSection />
           </div>
         </div>
