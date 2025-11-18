@@ -125,8 +125,8 @@ function HomeContent() {
             }}
           >
             <CallToAction setActiveTab={handleNavigation} />
-            <OurStorySection />
             <VideoSection />
+            <OurStorySection />
           </div>
         </div>
       </main>
