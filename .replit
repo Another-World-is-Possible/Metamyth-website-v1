@@ -14,11 +14,14 @@ run = ["npm", "run", "start"]
 [[ports]]
 localPort = 5000
 externalPort = 80
-exposeLocalhost = true
 
 [[ports]]
 localPort = 5001
 externalPort = 3000
+
+[[ports]]
+localPort = 34281
+externalPort = 8008
 
 [[ports]]
 localPort = 34543

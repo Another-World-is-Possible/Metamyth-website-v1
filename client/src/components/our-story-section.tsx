@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
+import visionBg from "@assets/vision_section_bg.png";
 
 export default function OurStorySection() {
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section 
+      className="relative py-20 overflow-hidden"
+      style={{
+        backgroundImage: `url(${visionBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
       {/* Overlay for readability */}
       <div className="absolute inset-0 bg-deep-black/70"></div>
       <div className="relative z-10 max-w-6xl mx-auto px-4">
