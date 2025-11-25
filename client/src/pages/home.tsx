@@ -16,9 +16,30 @@ import bgImg from "@assets/_zln01ad4mec8v0qmtav0_0_1755899727372.jpg";
 
 function HomeContent() {
   const [, navigate] = useLocation();
-  const [showLanding, setShowLanding] = useState(true);
-  const [showHeroContent, setShowHeroContent] = useState(false);
+  const [showLanding, setShowLanding] = useState(false); // Skip intro page
+  const [showHeroContent, setShowHeroContent] = useState(true); // Show content immediately
   const { startMusic } = useAudio();
+
+  // Start music on first user interaction (browsers block autoplay without interaction)
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      startMusic();
+      // Remove listeners after first interaction
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('scroll', handleFirstInteraction);
+      window.removeEventListener('touchstart', handleFirstInteraction);
+    };
+
+    window.addEventListener('click', handleFirstInteraction);
+    window.addEventListener('scroll', handleFirstInteraction);
+    window.addEventListener('touchstart', handleFirstInteraction);
+
+    return () => {
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('scroll', handleFirstInteraction);
+      window.removeEventListener('touchstart', handleFirstInteraction);
+    };
+  }, [startMusic]);
 
   const handleNavigation = (tab: string | null) => {
     if (tab === 'metamyth') {
