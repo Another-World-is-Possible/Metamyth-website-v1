@@ -16,8 +16,8 @@ import bgImg from "@assets/_zln01ad4mec8v0qmtav0_0_1755899727372.jpg";
 
 function HomeContent() {
   const [, navigate] = useLocation();
-  const [showLanding, setShowLanding] = useState(false); // Skip intro page
-  const [showHeroContent, setShowHeroContent] = useState(true); // Show content immediately
+  const [showLanding, setShowLanding] = useState(true); // Show intro page
+  const [showHeroContent, setShowHeroContent] = useState(false); // Wait for intro to complete
   const { startMusic } = useAudio();
 
   // Start music on first user interaction (browsers block autoplay without interaction)
