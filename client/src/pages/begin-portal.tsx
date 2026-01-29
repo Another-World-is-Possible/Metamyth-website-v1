@@ -199,7 +199,7 @@ export default function BeginPortal() {
   };
 
   return (
-    <div className="threshold-container">
+    <div className="threshold-container" onClick={skipAnimation}>
       <style>
         {`
         .cosmic-background, .cosmic-overlay { transition: opacity 2s ease-in-out; }
