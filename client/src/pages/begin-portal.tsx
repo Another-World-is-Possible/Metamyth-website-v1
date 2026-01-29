@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useLocation } from "wouter";
 import { supabase } from "@/lib/supabase";
 
@@ -15,9 +15,11 @@ export default function BeginPortal() {
     finalText: 0,
   });
   const [portalTransform, setPortalTransform] = useState("translateY(20px)");
+  const [animationSkipped, setAnimationSkipped] = useState(false);
   
   // --- NEW: Add a ref for the canvas element ---
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const intervalsRef = useRef<NodeJS.Timeout[]>([]);
 
   const mysticalMessages = [
     "You stand at the threshold between stories...",
@@ -29,8 +31,33 @@ export default function BeginPortal() {
 
   const timeoutRef = useRef<NodeJS.Timeout>();
 
+  // Function to skip animation and show everything immediately
+  const skipAnimation = useCallback(() => {
+    if (animationSkipped) return;
+    setAnimationSkipped(true);
+    
+    // Clear all running intervals and timeouts
+    intervalsRef.current.forEach(id => clearInterval(id));
+    intervalsRef.current = [];
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    
+    // Instantly show all text
+    setTypedText(mysticalMessages);
+    
+    // Show all elements immediately
+    setElementOpacities({
+      cosmicBackground: 0.7,
+      cosmicOverlay: 1,
+      portal: 1,
+      finalText: 1,
+    });
+    setPortalTransform('translateY(0px)');
+  }, [animationSkipped, mysticalMessages]);
+
   // Typewriter animation useEffect
   useEffect(() => {
+    if (animationSkipped) return;
+
     const typeMessage = (messageIndex: number, callback: () => void) => {
       const text = mysticalMessages[messageIndex];
       let i = 0;
@@ -45,7 +72,8 @@ export default function BeginPortal() {
           clearInterval(intervalId);
           if (callback) callback();
         }
-      }, 30);
+      }, 15); // Faster typing speed (was 30ms, now 15ms)
+      intervalsRef.current.push(intervalId);
     };
 
     const runSequence = (index = 0) => {
@@ -54,25 +82,26 @@ export default function BeginPortal() {
       } else {
         timeoutRef.current = setTimeout(() => {
           setElementOpacities(prev => ({ ...prev, cosmicBackground: 0.7, cosmicOverlay: 1 }));
-        }, 400);
+        }, 200); // Reduced from 400ms
 
         timeoutRef.current = setTimeout(() => {
           setElementOpacities(prev => ({ ...prev, portal: 1 }));
           setPortalTransform('translateY(0px)');
-        }, 1000);
+        }, 400); // Reduced from 1000ms
 
         timeoutRef.current = setTimeout(() => {
           setElementOpacities(prev => ({ ...prev, finalText: 1 }));
-        }, 1400);
+        }, 600); // Reduced from 1400ms
       }
     };
 
-    timeoutRef.current = setTimeout(runSequence, 200);
+    timeoutRef.current = setTimeout(runSequence, 100); // Reduced from 200ms
 
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      intervalsRef.current.forEach(id => clearInterval(id));
     };
-  }, []);
+  }, [animationSkipped]);
   
   // --- NEW: useEffect for the canvas particle animation ---
   useEffect(() => {
