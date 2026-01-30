@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
+import PageLayout from "@/components/layouts/page-layout";
 
 export default function Offering() {
   const { scrollYProgress } = useScroll();
@@ -17,6 +18,7 @@ export default function Offering() {
   }, []);
 
   return (
+    <PageLayout>
     <div className="min-h-screen bg-deep-black text-cream-white relative overflow-x-hidden">
       {/* Animated background gradient */}
       <div className="fixed inset-0 bg-gradient-to-b from-deep-black via-forest-green/5 to-deep-black pointer-events-none" />
@@ -391,6 +393,7 @@ export default function Offering() {
         </motion.div>
       </div>
     </div>
+    </PageLayout>
   );
 }
 
