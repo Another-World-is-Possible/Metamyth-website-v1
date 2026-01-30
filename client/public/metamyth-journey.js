@@ -96,6 +96,9 @@ function finalizeSetup() {
     const debouncedSave = debounce(saveProgress, 500);
     document.querySelectorAll('textarea[data-field-index]').forEach(input => input.addEventListener('input', debouncedSave));
     
+    // Initialize mobile navigation
+    setupMobileNavigation();
+    
     if (!loadProgress()) {
         window.showStage(0);
     }
@@ -443,6 +446,9 @@ function showStage(index) {
     if (navEl) navEl.classList.add('active');
     const mainEl = document.querySelector('main');
     if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Update mobile navigation
+    updateMobileProgress(index);
     updateProgressBar(index);
     updateArtifactIndicator(stage, index);
     if (stage.id === 'compass') setTimeout(initializeCompass, 100);
@@ -530,6 +536,125 @@ function generateCompleteStory() {
         storyHtml += `<p class="italic text-gray-400 mt-4">${contentData.my_story.initialText}</p>`;
     }
     return storyHtml + '</div>'; 
+}
+
+// --- MOBILE NAVIGATION ---
+function setupMobileNavigation() {
+    const mobileBottomBar = document.getElementById('mobile-bottom-bar');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    
+    if (!mobileBottomBar || !mobileMenuOverlay) return;
+    
+    // Populate mobile bottom bar with progress info and menu button
+    mobileBottomBar.innerHTML = `
+        <div class="flex items-center justify-between w-full">
+            <div class="flex items-center gap-2">
+                <span id="mobile-current-icon" class="text-lg">✨</span>
+                <div class="flex flex-col">
+                    <span id="mobile-current-title" class="text-sm text-white font-semibold">Awaken</span>
+                    <span id="mobile-progress-text" class="text-xs text-gray-400">1/${stages.length}</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button id="mobile-story-btn" class="bg-transparent border border-gold text-gold text-xs py-1 px-3 rounded-full hover:bg-gold hover:text-black transition-all">
+                    📖 Story
+                </button>
+                <button id="mobile-menu-btn" class="bg-teal-600 hover:bg-teal-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition-all">
+                    ☰
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Populate mobile menu overlay
+    mobileMenuOverlay.innerHTML = `
+        <div class="flex items-center justify-between mb-4 pb-4 border-b border-teal-400/30">
+            <h3 class="text-xl text-gold font-angle">Journey Navigation</h3>
+            <button id="mobile-menu-close" class="text-white text-2xl hover:text-gold transition-colors">✕</button>
+        </div>
+        <div class="flex-1 overflow-y-auto">
+            <div id="mobile-nav-container" class="space-y-1"></div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-teal-400/30">
+            <div class="w-full bg-gray-700 rounded-full h-2">
+                <div id="mobile-progress-bar" class="h-2 rounded-full glow-progress" style="width: 0%"></div>
+            </div>
+            <p id="mobile-full-progress" class="text-xs text-gray-400 mt-2 text-center">1/${stages.length} Complete</p>
+        </div>
+    `;
+    
+    // Build mobile navigation links
+    const mobileNavContainer = document.getElementById('mobile-nav-container');
+    let currentArc = '';
+    stages.forEach((stage, index) => {
+        if (stage.arc && stage.arc !== currentArc) {
+            currentArc = stage.arc;
+            const arcHeader = document.createElement('h4');
+            arcHeader.className = 'nav-arc-header text-sm uppercase mt-4 mb-2 px-2 glow-arc';
+            arcHeader.textContent = currentArc;
+            mobileNavContainer.appendChild(arcHeader);
+        }
+        const navLink = document.createElement('a');
+        navLink.href = '#';
+        navLink.id = `mobile-nav-${stage.id}`;
+        navLink.className = 'nav-link flex items-center rounded-md text-sm py-2';
+        navLink.innerHTML = `<span class="mr-2">${stage.icon}</span> ${stage.title}`;
+        navLink.onclick = (e) => {
+            e.preventDefault();
+            window.showStage(index);
+            toggleMobileMenu(false);
+        };
+        mobileNavContainer.appendChild(navLink);
+    });
+    
+    // Toggle handlers
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const storyBtn = document.getElementById('mobile-story-btn');
+    
+    if (menuBtn) menuBtn.addEventListener('click', () => toggleMobileMenu(true));
+    if (closeBtn) closeBtn.addEventListener('click', () => toggleMobileMenu(false));
+    if (storyBtn) storyBtn.addEventListener('click', () => {
+        const storyIndex = stages.findIndex(s => s.id === 'my_story');
+        if (storyIndex > -1) window.showStage(storyIndex);
+    });
+}
+
+function toggleMobileMenu(show) {
+    const overlay = document.getElementById('mobile-menu-overlay');
+    if (!overlay) return;
+    
+    if (show) {
+        overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    } else {
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+}
+
+function updateMobileProgress(index) {
+    const stage = stages[index];
+    if (!stage) return;
+    
+    const mobileIcon = document.getElementById('mobile-current-icon');
+    const mobileTitle = document.getElementById('mobile-current-title');
+    const mobileProgressText = document.getElementById('mobile-progress-text');
+    const mobileProgressBar = document.getElementById('mobile-progress-bar');
+    const mobileFullProgress = document.getElementById('mobile-full-progress');
+    
+    if (mobileIcon) mobileIcon.textContent = stage.icon;
+    if (mobileTitle) mobileTitle.textContent = stage.title;
+    if (mobileProgressText) mobileProgressText.textContent = `${index + 1}/${stages.length}`;
+    
+    const progressPercent = `${Math.round(((index + 1) / stages.length) * 100)}%`;
+    if (mobileProgressBar) mobileProgressBar.style.width = progressPercent;
+    if (mobileFullProgress) mobileFullProgress.textContent = `${index + 1}/${stages.length} Complete`;
+    
+    // Update active state in mobile nav
+    document.querySelectorAll('[id^="mobile-nav-"]').forEach(el => el.classList.remove('active'));
+    const mobileNavEl = document.getElementById(`mobile-nav-${stage.id}`);
+    if (mobileNavEl) mobileNavEl.classList.add('active');
 }
 
 // --- START THE APPLICATION ---
