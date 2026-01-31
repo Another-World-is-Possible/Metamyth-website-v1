@@ -100,12 +100,14 @@ textarea:focus {
 }
 
 /* --- MOBILE MENU OVERLAY CONTENT CENTERING --- */
-#mobile-menu-overlay {
+#mobile-menu-overlay #mobile-nav-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
-#mobile-menu-overlay > * {
-    max-width: 20rem;
-    width: 100%;
+#mobile-menu-overlay #mobile-nav-container .nav-link,
+#mobile-menu-overlay #mobile-nav-container .nav-arc-header {
+    width: 16rem;
 }
 
 .nav-link { 
