@@ -111,6 +111,20 @@ textarea:focus {
     width: 100%;
 }
 
+/* --- MOBILE MENU OVERLAY CENTERING --- */
+#mobile-menu-overlay {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+#mobile-menu-overlay > div {
+    max-width: 28rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .nav-link { 
     transition: all 0.2s ease-in-out; 
     border-left: 3px solid transparent; 
