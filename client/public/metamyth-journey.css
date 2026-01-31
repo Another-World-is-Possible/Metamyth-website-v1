@@ -111,18 +111,17 @@ textarea:focus {
     width: 100%;
 }
 
-/* --- MOBILE MENU OVERLAY CENTERING --- */
-#mobile-menu-overlay {
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
+/* --- MOBILE MENU OVERLAY TEXT CENTERING --- */
+#mobile-menu-overlay #mobile-nav-container {
+    text-align: center;
 }
-#mobile-menu-overlay > div {
-    max-width: 28rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+#mobile-menu-overlay #mobile-nav-container .nav-link {
+    justify-content: center;
+    text-align: center;
+    border-left: none;
+}
+#mobile-menu-overlay #mobile-nav-container .nav-arc-header {
+    text-align: center;
 }
 
 .nav-link { 

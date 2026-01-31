@@ -568,20 +568,18 @@ function setupMobileNavigation() {
     
     // Populate mobile menu overlay
     mobileMenuOverlay.innerHTML = `
-        <div class="max-w-md mx-auto w-full flex flex-col h-full">
-            <div class="flex items-center justify-between mb-4 pb-4 border-b border-teal-400/30">
-                <h3 class="text-xl text-gold font-angle">Journey Navigation</h3>
-                <button id="mobile-menu-close" class="text-white text-2xl hover:text-gold transition-colors">✕</button>
+        <div class="flex items-center justify-between mb-4 pb-4 border-b border-teal-400/30">
+            <h3 class="text-xl text-gold font-angle">Journey Navigation</h3>
+            <button id="mobile-menu-close" class="text-white text-2xl hover:text-gold transition-colors">✕</button>
+        </div>
+        <div class="flex-1 overflow-y-auto">
+            <div id="mobile-nav-container" class="space-y-1"></div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-teal-400/30">
+            <div class="w-full bg-gray-700 rounded-full h-2">
+                <div id="mobile-progress-bar" class="h-2 rounded-full glow-progress" style="width: 0%"></div>
             </div>
-            <div class="flex-1 overflow-y-auto">
-                <div id="mobile-nav-container" class="space-y-1"></div>
-            </div>
-            <div class="mt-4 pt-4 border-t border-teal-400/30">
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                    <div id="mobile-progress-bar" class="h-2 rounded-full glow-progress" style="width: 0%"></div>
-                </div>
-                <p id="mobile-full-progress" class="text-xs text-gray-400 mt-2 text-center">1/${stages.length} Complete</p>
-            </div>
+            <p id="mobile-full-progress" class="text-xs text-gray-400 mt-2 text-center">1/${stages.length} Complete</p>
         </div>
     `;
     
