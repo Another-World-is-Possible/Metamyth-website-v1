@@ -547,7 +547,7 @@ function setupMobileNavigation() {
     
     // Populate mobile bottom bar with progress info and menu button
     mobileBottomBar.innerHTML = `
-        <div class="flex items-center justify-between max-w-md mx-auto">
+        <div class="flex items-center justify-between w-full">
             <div class="flex items-center gap-2">
                 <span id="mobile-current-icon" class="text-lg">✨</span>
                 <div class="flex flex-col">

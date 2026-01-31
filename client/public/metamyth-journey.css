@@ -99,29 +99,10 @@ textarea:focus {
     }
 }
 
-/* --- MOBILE BOTTOM BAR CENTERING --- */
-#mobile-bottom-bar {
-    display: flex;
-    justify-content: center;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-#mobile-bottom-bar > div {
-    max-width: 28rem;
-    width: 100%;
-}
-
-/* --- MOBILE MENU OVERLAY TEXT CENTERING --- */
-#mobile-menu-overlay #mobile-nav-container {
-    text-align: center;
-}
-#mobile-menu-overlay #mobile-nav-container .nav-link {
-    justify-content: center;
-    text-align: center;
-    border-left: none;
-}
-#mobile-menu-overlay #mobile-nav-container .nav-arc-header {
-    text-align: center;
+/* --- MOBILE MENU OVERLAY CONTENT CENTERING --- */
+#mobile-menu-overlay {
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 .nav-link { 
