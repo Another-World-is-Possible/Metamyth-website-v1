@@ -547,21 +547,23 @@ function setupMobileNavigation() {
     
     // Populate mobile bottom bar with progress info and menu button
     mobileBottomBar.innerHTML = `
-        <div class="flex items-center justify-between w-full">
-            <div class="flex items-center gap-2">
-                <span id="mobile-current-icon" class="text-lg">✨</span>
-                <div class="flex flex-col">
-                    <span id="mobile-current-title" class="text-sm text-white font-semibold">Awaken</span>
-                    <span id="mobile-progress-text" class="text-xs text-gray-400">1/${stages.length}</span>
+        <div class="flex justify-center w-full">
+            <div class="flex items-center justify-between w-full max-w-md">
+                <div class="flex items-center gap-2">
+                    <span id="mobile-current-icon" class="text-lg">✨</span>
+                    <div class="flex flex-col">
+                        <span id="mobile-current-title" class="text-sm text-white font-semibold">Awaken</span>
+                        <span id="mobile-progress-text" class="text-xs text-gray-400">1/${stages.length}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <button id="mobile-story-btn" class="bg-transparent border border-gold text-gold text-xs py-1 px-3 rounded-full hover:bg-gold hover:text-black transition-all">
-                    📖 Story
-                </button>
-                <button id="mobile-menu-btn" class="bg-teal-600 hover:bg-teal-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition-all">
-                    ☰
-                </button>
+                <div class="flex items-center gap-3">
+                    <button id="mobile-story-btn" class="bg-transparent border border-gold text-gold text-xs py-1 px-3 rounded-full hover:bg-gold hover:text-black transition-all">
+                        📖 Story
+                    </button>
+                    <button id="mobile-menu-btn" class="bg-teal-600 hover:bg-teal-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl transition-all">
+                        ☰
+                    </button>
+                </div>
             </div>
         </div>
     `;
