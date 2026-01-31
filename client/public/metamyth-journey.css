@@ -89,6 +89,16 @@ textarea:focus {
     color: var(--text-main);
     border: 1px solid var(--accent-gold);
 }
+/* --- SIDEBAR LAYOUT FIX --- */
+@media (min-width: 768px) {
+    #sidebar {
+        width: 320px;
+        max-width: 320px;
+        min-width: 320px;
+        flex-shrink: 0;
+    }
+}
+
 .nav-link { 
     transition: all 0.2s ease-in-out; 
     border-left: 3px solid transparent; 
