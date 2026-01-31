@@ -101,8 +101,11 @@ textarea:focus {
 
 /* --- MOBILE MENU OVERLAY CONTENT CENTERING --- */
 #mobile-menu-overlay {
-    padding-left: 15%;
-    padding-right: 15%;
+    align-items: center;
+}
+#mobile-menu-overlay > * {
+    max-width: 20rem;
+    width: 100%;
 }
 
 .nav-link { 
